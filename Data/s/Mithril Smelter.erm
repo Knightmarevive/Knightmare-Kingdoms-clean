@@ -1,0 +1,124 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=27.4(April).2016
+
+;30 09 2012
+;Author: Valery
+
+;FU32500-FU32502
+;v9600-v9613
+;z891=899
+;D15
+
+!#TM92:S1/999/1/255; (will not work with TM2, must be later)
+!?OB63/27;
+!!UN:P149/?v2;
+!!IF&1000/v2<>1:M^The mithril smelter will not be functional without mithril enhancements script^;
+!!PO998:N?v5;
+!!HE-1:O?v6;
+!!UN:J2/?y2; get difficulty level
+!!VRv9613&y2<3:S3; adjust smelter production
+!!VRv9613&y2=3:S2;
+!!VRv9613&y2=4:S1;
+
+!!SN:W^Knightmare Difficulty Enabled^/?y22;
+!!SN&y22=1:W^Knightmare Difficulty Mithril Smelter^/?v9613;
+
+!!VRz4:S^../Data/s/156.jpg^;
+!!VRz5:S^You gain a mithril smelter^;
+!!VRz6&v9613=1:S^bar^;
+!!VRz6&v9613>1:S^bars^;
+!!VRz7:S^{Mithril Smelter (%V9613 %Z6 Weekly)}^;
+!!IF&1000:D15/5/0/0/4/0/0/0/7/0/0/0/0/0/0/0;
+!!IF&1000/v5<>v6:E1/15;
+!_!VRv9613:*-1;
+!_!IF&1000/v5<>v6:Q1/7/v9613/1^^;
+!_!IF&1000/v5=v6:Q1/7/v9613/1^This Mithril Smelter already belongs to you^;
+!!IF&1000/v5<>v6:Q1/7/0/1^%Z7^;
+!!IF&1000/v5=v6:Q1/7/0/1^%Z7
+
+This Mithril Smelter already belongs to you^;
+!!if&v5<>v6:;
+!!VRz893&v6=0:S^Mithril Smelter (red player)^;
+!!VRz894&v6=1:S^Mithril Smelter (blue player)^;
+!!VRz895&v6=2:S^Mithril Smelter (tan player)^;
+!!VRz896&v6=3:S^Mithril Smelter (green player)^;
+!!VRz897&v6=4:S^Mithril Smelter (orange player)^;
+!!VRz898&v6=5:S^Mithril Smelter (purple player)^;
+!!VRz899&v6=6:S^Mithril Smelter (teal player)^;
+!!VRz900&v6=7:S^Mithril Smelter (pink player)^;
+!!OB998&v6=0:Hz893;
+!!OB998&v6=1:Hz894;
+!!OB998&v6=2:Hz895;
+!!OB998&v6=3:Hz896;
+!!OB998&v6=4:Hz897;
+!!OB998&v6=5:Hz898;
+!!OB998&v6=6:Hz899;
+!!OB998&v6=7:Hz900;
+!!PO998:Nv6;
+!!en:;
+
+!?TM92;
+!!UN:P60/?v1109; check if smelter enabled
+!!UN:P149/?v2; check if mithril enhancement/display enabled
+!!FU|v1109<>1/v2<>1:E;
+!!VRn:Sc;
+!!UN:U63/27/?y-1;  smelters qty
+!!VRv1:S-1;
+!!DO32500/1/y-1/1&y-1>0/n=1:P63/27;  Run through
+!!DO32501/1/y-1/1&y-1>0/n>1:P63/27;  Run through
+
+!?FU32500;
+[smelter coordinates]
+!!UN:Ux1/x2/-1/1;
+!!VRz892:S^Mithril Smelter^;
+!!OB1:Hz892;
+!!PO1:N15;
+
+!?FU32501;
+!!UN:Ux1/x2/-1/1;
+!!VRv300:Cv1/v2/v3;
+!!VRv9600:S9601;
+!!DO32502/0/7/1:P;  Check if all players alive and adjust name if mine owned by dead player
+!!PO300:N?v5;
+!!VRz892&v5=15:S^Mithril Smelter^;   If mine not visited
+!!VRz893&v5=0/v9601=0:S^Mithril Smelter (red player)^;  red alive
+!!VRz893&v5=0/v9601=1:S^Mithril Smelter^;  red dead
+!!VRz894&v5=1/v9602=0:S^Mithril Smelter (blue player)^;  same
+!!VRz894&v5=1/v9602=1:S^Mithril Smelter^;
+!!VRz895&v5=2/v6903=0:S^Mithril Smelter (tan player)^;
+!!VRz895&v5=2/v9603=1:S^Mithril Smelter^;
+!!VRz896&v5=3/v9604=0:S^Mithril Smelter (green player)^;
+!!VRz896&v5=3/v9604=1:S^Mithril Smelter^;
+!!VRz897&v5=4/v9605=0:S^Mithril Smelter (orange player)^;
+!!VRz897&v5=4/v9605=1:S^Mithril Smelter^;
+!!VRz898&v5=5/v9606=0:S^Mithril Smelter (purple player)^;
+!!VRz898&v5=5/v9606=1:S^Mithril Smelter^;
+!!VRz899&v5=6/v9607=0:S^Mithril Smelter (teal player)^;
+!!VRz899&v5=6/v9607=1:S^Mithril Smelter^;
+!!VRz900&v5=7/v9608=0:S^Mithril Smelter (pink player)^;
+!!VRz900&v5=7/v9608=1:S^Mithril Smelter^;
+!!OB300&v5=15:Hz892;  adjust names and owner
+!!OB300&v5=0:Hz893;  red
+!!OB300&v5=1:Hz894;  blue
+!!OB300&v5=2:Hz895;  tan
+!!OB300&v5=3:Hz896;  green
+!!OB300&v5=4:Hz897;  orange
+!!OB300&v5=5:Hz898;  purple
+!!OB300&v5=6:Hz899;  teal
+!!OB300&v5=7:Hz900;  pink
+!!OW:C?y4; check active player
+!!PO300:N?y5;  check which player owns the object (again, seems v5 gets lost in the way)
+!!FU&y4<>y5:E; only on current player turn
+!!UN:J2/?y2; get difficulty level
+!!VRv9613&y2<3:S3; adjust smelter production
+!!VRv9613&y2=3:S2;
+!!VRv9613&y2=4:S1;
+
+!!VRy99:S0 +c %7; y99 is day of week (0 to 6)
+!!OW&y99=1:Ry4/7/dv9613; if same, give mithril
+
+!?FU32502;  run all players and get value dead/alive
+!!VRv9600&x16>0:+1;
+!!OW:Ix16/d/?vv9600;

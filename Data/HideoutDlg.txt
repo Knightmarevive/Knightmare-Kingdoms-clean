@@ -1,0 +1,137 @@
+
+
+
+	#	1	-1	-1	601	593	52	-1	MrkCrArt.pcx	18
+	Pcx	38	38	120	72	91	TPMrkSeC.pcx	2048	
+	Pcx	39	120	120	72	91	TPMrkSeC.pcx	2048	
+	Pcx	40	204	120	72	91	TPMrkSeC.pcx	2048	
+	Pcx	41	38	218	72	91	TPMrkSeC.pcx	2048	
+	Pcx	42	120	218	72	91	TPMrkSeC.pcx	2048	
+	Pcx	43	204	218	72	91	TPMrkSeC.pcx	2048	
+	Pcx	44	120	317	72	91	TPMrkSeC.pcx	2048	
+	Pcx	45	338	178	48	48	TpMrkSeC.pcx	2048	
+	Pcx	46	421	178	48	48	TpMrkSeC.pcx	2048	
+	Pcx	47	504	178	48	48	TpMrkSeC.pcx	2048	
+	Pcx	48	338	257	48	48	TpMrkSeC.pcx	2048	
+	Pcx	49	421	257	48	48	TpMrkSeC.pcx	2048	
+	Pcx	50	504	257	48	48	TpMrkSeC.pcx	2048	
+	Pcx	51	421	336	48	48	TpMrkSeC.pcx	2048	
+	Def	1	45	123	58	64	twcrport.def	00	16	
+	Def	2	128	123	58	64	twcrport.def	2	16	
+	Def	3	211	123	58	64	twcrport.def	0	16	
+	Def	4	45	221	58	64	twcrport.def	0	16	
+	Def	5	128	221	58	64	twcrport.def	0	16	
+	Def	6	211	221	58	64	twcrport.def	0	16	
+	Def	7	128	319	58	64	twcrport.def	0	16	
+	Text	8	26	93	261	22		SmalFont.fnt	7	0	1	8	
+	Text	9	40	191	68	21		SmalFont.fnt	7	0	1	8	
+	Text	10	123	191	68	21		SmalFont.fnt	7	0	1	8	
+	Text	11	206	191	68	21		SmalFont.fnt	7	0	1	8	
+	Text	12	40	286	68	21		SmalFont.fnt	7	0	1	8	
+	Text	13	123	286	68	21		SmalFont.fnt	7	0	1	8	
+	Text	14	206	286	68	21		SmalFont.fnt	7	0	1	8	
+	Text	15	123	383	68	21		SmalFont.fnt	7	0	1	8	
+	Def	16	128	450	58	64	twcrport.def	0	16	
+	Text	17	123	516	68	21		SmalFont.fnt	7	0	1	8	
+	Text	18	8	567	586	19		SmalFont.fnt	7	0	1	8	
+	Text	19	314	139	261	21	Available for trade	SmalFont.fnt	7	0	1	8	
+	Def	20	340	180	44	44	artifact.def	145	16	
+	Def	21	423	180	44	44	artifact.def	145	16	
+	Def	22	506	180	44	44	artifact.def	145	16	
+	Def	23	340	258	44	44	artifact.def	145	16	
+	Def	24	423	258	44	44	artifact.def	145	16	
+	Def	25	506	258	44	44	artifact.def	145	16	
+	Def	26	423	338	44	44	artifact.def	145	16	
+	Def	27	423	447	44	44	Artifact.def	144	16	
+	Text	28	328	227	69	21		SmalFont.fnt	7	0	1	8	
+	Text	29	409	227	69	21		SmalFont.fnt	7	0	1	8	
+	Text	30	493	227	68	21		SmalFont.fnt	7	0	1	8	
+	Text	31	328	308	68	21		SmalFont.fnt	7	0	1	8	
+	Text	32	409	308	69	21		SmalFont.fnt	7	0	1	8	
+	Text	33	493	307	68	21		SmalFont.fnt	7	0	1	8	
+	Text	34	409	388	69	21		SmalFont.fnt	7	0	1	8	
+	Text	35	409	498	69	21		SmalFont.fnt	7	0	1	8	
+	Button	36	264	520	64	32	tpmrkb.def	2	Buy
+	Button	30721	515	520	64	32	iok6432.def	2	Exit
+	Text	37	315	49	260	73		SmalFont.fnt	7	0	1	8	
+	#	2	-1	-1	601	593	75	-1	MrkArtCr.pcx	20
+	Pcx	45	326	80	72	91	TPMrkSeC.pcx	2048	
+	Pcx	46	410	80	72	91	TPMrkSeC.pcx	2048	
+	Pcx	47	492	80	72	91	TPMrkSeC.pcx	2048	
+	Pcx	48	326	200	72	91	TPMrkSeC.pcx	2048	
+	Pcx	49	410	200	72	91	TPMrkSeC.pcx	2048	
+	Pcx	50	492	200	72	91	TPMrkSeC.pcx	2048	
+	Pcx	51	410	318	72	91	TPMrkSeC.pcx	2048	
+	Pcx	52	145	74	48	48	TpMrkSeC.pcx	2048	
+	Pcx	53	205	285	48	48	TpMrkSeC.pcx	2048	
+	Pcx	54	145	123	48	48	TpMrkSeC.pcx	2048	
+	Pcx	55	18	112	48	48	TpMrkSeC.pcx	2048	
+	Pcx	56	198	227	48	48	TpMrkSeC.pcx	2048	
+	Pcx	57	145	174	48	48	TpMrkSeC.pcx	2048	
+	Pcx	58	67	112	48	48	TpMrkSeC.pcx	2048	
+	Pcx	59	246	227	48	48	TpMrkSeC.pcx	2048	
+	Pcx	60	151	338	48	48	TpMrkSeC.pcx	2048	
+	Pcx	61	19	186	48	48	TpMrkSeC.pcx	2048	
+	Pcx	62	35	236	48	48	TpMrkSeC.pcx	2048	
+	Pcx	63	51	287	48	48	TpMrkSeC.pcx	2048	
+	Pcx	64	67	338	48	48	TpMrkSeC.pcx	2048	
+	Pcx	65	200	73	48	48	TpMrkSeC.pcx	2048	
+	Pcx	66	247	73	48	48	TpMrkSeC.pcx	2048	
+	Pcx	67	247	119	48	48	TpMrkSeC.pcx	2048	
+	Pcx	68	247	166	48	48	TpMrkSeC.pcx	2048	
+	Pcx	69	247	354	48	48	TpMrkSeC.pcx	2048	
+	Pcx	70	17	338	48	48	TpMrkSeC.pcx	2048	
+	Def	1	147	76	44	44	artifact.def	144	16	
+	Def	2	207	287	44	44	artifact.def	144	16	
+	Def	3	147	125	44	44	artifact.def	144	16	
+	Def	4	20	114	44	44	artifact.def	144	16	
+	Def	5	200	229	44	44	artifact.def	144	16	
+	Def	6	147	176	44	44	artifact.def	144	16	
+	Def	7	69	114	44	44	artifact.def	144	16	
+	Def	8	248	229	44	44	artifact.def	144	16	
+	Def	9	153	340	44	44	artifact.def	144	16	
+	Def	10	21	188	44	44	artifact.def	144	16	
+	Def	11	37	238	44	44	artifact.def	144	16	
+	Def	12	53	289	44	44	artifact.def	144	16	
+	Def	13	69	340	44	44	artifact.def	144	16	
+	Def	14	202	75	44	44	artifact.def	144	16	
+	Def	15	249	75	44	44	artifact.def	144	16	
+	Def	16	249	121	44	44	artifact.def	144	16	
+	Def	17	249	168	44	44	artifact.def	144	16	
+	Def	18	249	356	44	44	artifact.def	144	16	
+	Def	19	19	340	44	44	artifact.def	144	16	
+	Text	20	8	567	586	19		SmalFont.fnt	7	0	1	8	
+	Button	37	268	520	64	32	tpmrkb.def	2	Buy
+	Button	30721	507	520	64	32	iok6432.def	2	Exit
+	Text	21	25	47	262	20		MedFont.fnt	7	0	1	8	
+	Text	22	314	47	260	20	Available to hire:	MedFont.fnt	7	0	1	8	
+	Def	23	333	84	58	64	TwCrPort.def	0	16	
+	Def	24	416	84	58	64	TwCrPort.def	0	16	
+	Def	25	499	84	58	64	TwCrPort.def	0	16	
+	Def	26	333	202	58	64	TwCrPort.def	0	16	
+	Def	27	416	202	58	64	TwCrPort.def	0	16	
+	Def	28	499	202	58	64	TwCrPort.def	0	16	
+	Def	29	416	320	58	64	TwCrPort.def	0	16	
+	Def	30	414	467	58	64	TwCrPort.def	0	16	
+	Text	31	328	150	68	20		MedFont.fnt	7	0	1	8	
+	Text	32	411	150	68	20		MedFont.fnt	7	0	1	8	
+	Text	33	494	150	68	20		MedFont.fnt	7	0	1	8	
+	Text	34	328	268	68	20		MedFont.fnt	7	0	1	8	
+	Text	35	411	268	68	20		MedFont.fnt	7	0	1	8	
+	Text	37	411	386	68	20		MedFont.fnt	7	0	1	8	
+	Text	36	494	268	68	20		MedFont.fnt	7	0	1	8	
+	Def	39	41	410	44	44	artifact.def	144	16	
+	Def	40	41	410	44	44	artifact.def	144	16	
+	Def	41	86	410	44	44	artifact.def	144	16	
+	Def	42	131	410	44	44	artifact.def	144	16	
+	Def	43	176	410	44	44	artifact.def	144	16	
+	Def	44	221	410	44	44	artifact.def	144	16	
+	Button	71	18	409	22	46	hsbtns3.def	2	
+	Button	72	266	409	22	46	hsbtns5.def	2	
+	Def	73	134	469	44	44	artifact.def	144	16	
+	Text	74	411	532	68	20		MedFont.fnt	7	0	1	8	
+	#	3	-1	-1	96	152	3	-1		-1
+	Button	1	16	24	64	32	tpmrkCrA.def	2	Trade artifacts for creatures
+	Button	2	16	56	64	32	tpmrkArC.def	2	Trade artifacts for creatures
+	Button	3	16	88	64	32	ICN6432.def	2	Trade artifacts for creatures
+	#

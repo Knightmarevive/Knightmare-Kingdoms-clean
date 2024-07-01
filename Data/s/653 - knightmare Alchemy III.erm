@@ -1,0 +1,536 @@
+ZVSE
+
+
+!?FU55737; Prepare potions stats
+
+**** red, blue, yellow, purple, green, orange, gray
+
+!!SN:W^Artifact 300 - Alchemy Mode^/4;  Red    - Battle    - Heal unit
+!!SN:W^Artifact 301 - Alchemy Mode^/99; Blue   - Both      - More Mana (temporary)
+!!SN:W^Artifact 302 - Alchemy Mode^/2;  Yellow - Adventue  - More steps
+!!SN:W^Artifact 303 - Alchemy Mode^/4;  Purple - Battle    - More Retaliations
+!!SN:W^Artifact 304 - Alchemy Mode^/4;  Green  - Battle    - Cure spell + Heal
+!!SN:W^Artifact 305 - Alchemy Mode^/4;  Orange - Battle    - Ressurect
+
+
+**** red/orange    (307), red/purple    (308), red/green    (309)
+!!SN:W^Artifact 307 - Alchemy Mode^/4;  Master Ressurect
+!!SN:W^Artifact 308 - Alchemy Mode^/4;  Lesser Gate
+!!SN:W^Artifact 309 - Alchemy Mode^/4;  Prayer
+
+**** blue/orange   (310), blue/purple   (311), blue/green   (312)
+!!SN:W^Artifact 310 - Alchemy Mode^/4;  Clone
+!!SN:W^Artifact 311 - Alchemy Mode^/4;  Fire Shield
+!!SN:W^Artifact 312 - Alchemy Mode^/4;  Bless
+
+**** yellow/orange (313), yellow/purple (314), yellow/green (315)
+!!SN:W^Artifact 313 - Alchemy Mode^/2;  Even More Steps
+!_!SN:W^Artifact 314 - Alchemy Mode^/2;  Recruit Arcane Neutrals
+!_!SN:W^Artifact 315 - Alchemy Mode^/2;  Recruit Meelee Neutrals
+!!SN:W^Artifact 314 - Alchemy Mode^/4;  Summon Astral  Phoenix
+!!SN:W^Artifact 315 - Alchemy Mode^/4;  Summon Supreme Dracolich
+
+**** purple/orange (316), purple/green  (317), orange/green (318)
+!!SN:W^Artifact 316 - Alchemy Mode^/4;  Summon Magma   Dragon
+!!SN:W^Artifact 317 - Alchemy Mode^/4;  Summon Sylvan  Dragon
+!!SN:W^Artifact 318 - Alchemy Mode^/4;  Summon Sylfaen Dragon
+
+**** White Potions (320-329)
+**** Orange White  (320-322)  ****
+!!SN:W^Artifact 320 - Alchemy Mode^/2;  Call Hill Fort
+!!SN:W^Artifact 321 - Alchemy Mode^/2;  Troop Training
+!!SN:W^Artifact 322 - Alchemy Mode^/4;  Greater Gate
+**** Purple White  (323-325)  ****
+!!SN:W^Artifact 323 - Alchemy Mode^/2;   Teach Commander
+!!SN:W^Artifact 324 - Alchemy Mode^/2;   Learn Magic
+!_!SN:W^Artifact 325 - Alchemy Mode^/2;  Stealth Level
+!!SN:W^Artifact 325 - Alchemy Mode^/2;   Day of gods       (daily)
+**** Green  White (326-328)  ****
+!!SN:W^Artifact 326 - Alchemy Mode^/2;   Call Altar of Sacrifice
+!!SN:W^Artifact 327 - Alchemy Mode^/0;
+!!SN:W^Artifact 328 - Alchemy Mode^/0;
+**** Pure White (329)
+!!SN:W^Artifact 329 - Alchemy Mode^/2;  Harden Artifact
+
+
+**** black (330-335) ****
+!!SN:W^Artifact 330 - Alchemy Mode^/2;  Magic Quarter    (daily)
+!!SN:W^Artifact 331 - Alchemy Mode^/2;  Caster Leader
+!!SN:W^Artifact 332 - Alchemy Mode^/2;  Speed Leader
+!!SN:W^Artifact 333 - Alchemy Mode^/2;  Health Leader
+!!SN:W^Artifact 334 - Alchemy Mode^/2;  Damage Leader
+!!SN:W^Artifact 335 - Alchemy Mode^/2;  Stealth Level
+**** black (336-339) ****
+!!SN:W^Artifact 336 - Alchemy Mode^/2;  Increase Hero Attack
+!!SN:W^Artifact 337 - Alchemy Mode^/2;  Increase Hero Defense
+!!SN:W^Artifact 338 - Alchemy Mode^/2;  Increase Hero Power
+!!SN:W^Artifact 339 - Alchemy Mode^/2;  Increase Hero Knowledge
+
+!?FU55739; Drink Potion  (after close  dialog)
+!!VRy11:Sx1;
+
+!_!SN:W^Artifact 326 - Alredy used - Hero %Y11^/?y99;
+!_!FU644505&y99>0:Py11;
+!_!SN:W^Artifact 326 - Alredy used - Hero %Y11^/0;
+
+
+!?FU55738; Drink Potion (before close dialog)
+** x1 - Potion Type
+
+!_!SN:W^Artifact %X1 - Alchemy Mode^/?y99;
+!!SN:W^Virtual Backpack - Alchemy Mode^/?y99;
+
+!!if&y99=4:;
+!!BG:H?y11 N?y12;
+!!FU&y11<0:E;
+!!BMy12:P?y13 T?y14;
+
+!!VRy66:S0;
+!!VRy66&y14>=174/y14<=191:S1; Commanders don't drink
+!!VRy66&y14>=243/y14<=251:S1; Town Guardians don't drink
+!!if&y66=1:; Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Loyal units don't drink at duty.^;
+!!FU:E;
+!!en:;
+
+!!en:;
+
+!!if&y99=2:;
+!!SN:W^Virtual Backpack - Current Hero^/?y11;
+!!VRy12:S-1; !!VRy13:S-1;
+!!en:;
+
+!!if&x1=300:; Red
+!!BMy12:L0;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=301:; Blue
+!!HEy11:Id25/1;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=302:; Yellow
+!!HEy11:Wd750/1;
+!!FU:E;
+!!en:;
+
+!!if&x1=303:; Purple
+!_!BMy12:C37/y13/0/0/1;
+!!BMy12:R?y31;
+!!VRy32:S0; !!VRy32&y31<5:S1;
+!!if&y32=0:; Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!FU:E;
+!!en:;
+!!BMy12:Rd1;
+!_!BG:Ny12;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=304:; Green
+!!BMy12:C37/y13/2/2/1;
+!!BMy12:L0;
+!!BG:Ny12;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=305:; Orange
+!!BMy12:B?y31 N?y32 H?y33;
+!!VRy39:S0;
+!!VRy39&y32<y31/y33>0:S350 :y33 +1;
+!!VRy38:Sy33 +y39;
+!!if&y39=0:; Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!FU:E;
+!!en:;
+!!BMy12&y38<=y31:Ndy39;
+!!BMy12&y38>y31:Ny31;
+!!FU:E;
+!!en:;
+
+!!if&x1=307:; Orange/Red
+!!BMy12:B?y31 N?y32 H?y33 L?y34;
+!!VRy39:S0;
+!!VRy39&y32<y31/y33>0:S750 :y33 +1;
+!!VRy38:Sy33 +y39;
+!!if&y39=0:; Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!FU:E;
+!!en:;
+!!BMy12&y38<=y31:Ndy39;
+!!BMy12&y38>y31:Ny31;
+!!BMy12&y34>0:L0;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=308:; Purple/Red
+!!BMy12:B?y31 N?y32 H?y33;
+!!VRy39:S0;
+!!VRy39&y33>0:S250 :y33 +1;
+!!VRy38:Sy33 +y39;
+!!if&y39=0:; Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!FU:E;
+!!en:;
+!!BMy12:Bdy39 Ndy39;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=309:; Green/Red
+!!BMy12:C48/y13/2/255/1;
+!!BG:Ny12;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=310:; Blue/Orange
+!!BMy12:C65/y13/2/255/1;
+!!BG:Ny12;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=311:; Blue/Purple
+!!BMy12:C29/y13/2/255/1;
+!!BG:Ny12;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=312:; Blue/Green
+!!BMy12:C41/y13/2/255/1;
+!!BG:Ny12;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=313:; Yellow/Orange
+!!HEy11:Wd3750/1;
+!!FU:E;
+!!en:;
+
+!!if&x1=314:; Yellow/Purple
+!_!FU250040:Py11/265/2/266/2/268/2/292/2/1;
+!!VRy22:S66 R3;
+!!FU55418:Py22/100/273/1/-1;
+!!FU:E;
+!!en:;
+
+!!if&x1=315:; Yellow/Green
+!_!FU250040:Py11/260/12/281/12/283/9/284/9/1;
+!!VRy22:S66 R3;
+!!FU55418:Py22/100/255/1/-1;
+!!FU:E;
+!!en:;
+
+
+
+!!if&x1=316:;
+!!VRy22:S66 R3;
+!!FU55418:Py22/100/271/1/-1;
+!!FU:E;
+!!en:;
+
+!!if&x1=317:;
+!!VRy22:S66 R3;
+!!FU55418:Py22/100/272/1/-1;
+!!FU:E;
+!!en:;
+
+!!if&x1=318:;
+!!VRy22:S66 R3;
+!!FU55418:Py22/100/293/1/-1;
+!!FU:E;
+!!en:;
+
+!!if&x1=323:;
+!!CO-1:D?y1 E?y2;      [get y1 = 0 if alive, y2 = 1 if enabled]
+!!FU5586300&y1=0/y2=1:P0; [handle witch hut if alive enabled commander]
+**
+** Return if no effect
+!!SN|y1<>0/y2<>1:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+**
+!!FU:E;
+!!en:;
+
+!!if&x1=324:;     Learn Magic
+!!IF:Wy11;
+!!VRy55:Sw38;
+!!VRy55:%3;
+!!SN&y55=0:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!FU5599063:P;
+!!FU:E;
+!!en:;
+
+
+!!if|x1=325/x1=330:;  325 = Day of Gods     330 = Magic Quarter
+!!SN:W^Artifact %X1 - Today used - Hero %Y11^/?y99;
+!!VRy88:Sc;
+!!if&y99<y88:;
+!!SN:W^Artifact %X1 - Today used - Hero %Y11^/y88;
+!!el:;
+** Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Hero is immune to this type of potion. It can be drunken only one time a day.^;
+!!en:;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=329:;
+!!FU558160:P;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=326:; Altar of Sacrifice
+!_!SN:W^Artifact %X1 - Alredy used - Hero %Y11^/?y99;
+!_!SN&y99>0:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!_!SN:W^Artifact %X1 - Alredy used - Hero %Y11^/1;
+!!FU644505:Py11;
+!!FU:E;
+!!en:;
+
+!!if&x1=320:; Hill Fort
+!!HEy11:D;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=321:; Troop Training
+!!FU509:P;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=322:; Greater Gate
+!!BMy12:B?y31 N?y32 H?y33;
+!!VRy39:S0;
+!!VRy39&y33>0:S2250 :y33 +1;
+!!VRy38:Sy33 +y39;
+!!if&y39=0:; Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!FU:E;
+!!en:;
+!!BMy12:Bdy39 Ndy39;
+!!FU:E;
+!!en:;
+
+
+
+!!if|x1=331/x1=332/x1=333/x1=334:; Marker Only
+!!SN:W^Artifact %X1 - Alredy used - Hero %Y11^/?y99;
+**
+!!if&y99<5:;
+!!SN:W^Artifact %X1 - Alredy used - Hero %Y11^/d1;
+!!el:;
+** Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Hero is immune to this type of potion. It can be drunken only 5 times in life.^;
+
+!!en:;
+!!FU:E;
+!!en:;
+
+
+
+!!if&x1=335:;
+!!FU55449&1000:Py11;
+!!FU55450&-1000:Py11;
+!!SN:W^HE%Y11_Stealth_Level^/d1;
+!!FU:E;
+!!en:;
+
+
+
+!!if&x1=336:; Attack
+!!SN:W^Artifact 336 - Alredy used - Hero %Y11^/?y99;
+
+!!if&y99<5:;
+!!HEy11:Fd7/d/d/d;
+!!SN:W^Artifact 336 - Alredy used - Hero %Y11^/d1;
+!!el:;
+** Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Hero is immune to this type of potion. It can be drunken only 5 times in life.^;
+
+!!en:;
+!!FU:E;
+!!en:;
+
+
+!!if&x1=337:; Defence
+!!SN:W^Artifact 337 - Alredy used - Hero %Y11^/?y99;
+
+!!if&y99<5:;
+!!HEy11:Fd/d7/d/d;
+!!SN:W^Artifact 337 - Alredy used - Hero %Y11^/d1;
+!!el:;
+** Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Hero is immune to this type of potion. It can be drunken only 5 times in life.^;
+
+!!en:;
+!!FU:E;
+!!en:;
+
+!!if&x1=338:; Power
+!!SN:W^Artifact 338 - Alredy used - Hero %Y11^/?y99;
+
+!!if&y99<5:;
+!!HEy11:Fd/d/d7/d;
+!!SN:W^Artifact 338 - Alredy used - Hero %Y11^/d1;
+!!el:;
+** Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Hero is immune to this type of potion. It can be drunken only 5 times in life.^;
+
+!!en:;
+!!FU:E;
+!!en:;
+
+!!if&x1=339:; Knowledge
+!!SN:W^Artifact 339 - Alredy used - Hero %Y11^/?y99;
+
+!!if&y99<5:;
+!!HEy11:Fd/d/d/d7;
+!!SN:W^Artifact 339 - Alredy used - Hero %Y11^/d1;
+!!el:;
+** Return if no effect
+!!SN:W^Hero %Y11 - Virtual Backpack - Artifact %X1^/d1;
+!!IF&1000:M^Hero is immune to this type of potion. It can be drunken only 5 times in life.^;
+
+!!en:;
+!!FU:E;
+!!en:;
+
+
+!?MF1;
+!!BG:Q?y3;
+!!BHy3:N?y4;
+!!FU&y4<0:E;
+
+** Damage Leader Black potion
+!!SN:W^Artifact 334 - Alredy used - Hero %Y4^/?y99;
+!!VRy5:S5 *y99 +100; damage percentage
+
+!!MF:F?y6;
+!!VRy6:*y5 :100;
+!!MF:Fy6;
+
+
+!?BR;
+!!FU&v997<>0:E;
+!!VRy7:S0;
+
+!!BMy7:T?y8;
+!!if&y8>=0:;
+    !!BMy7:I?y9;
+    !!BHy9:N?y4;
+    !!if&y4>=0:;
+       !!SN:W^Artifact 333 - Alredy used - Hero %Y4^/?y99;
+       !!VRy5:S5 *y99 +100; health percentage
+
+       !!BMy7:H?y6;
+       !!VRy6:*y5 :100;
+       !!BMy7:Hy6;
+
+    !!en:;
+!!en:;
+
+!!VRy7:+1;
+!!SN&y7<42:G2;
+
+
+!?BR;
+!!FU&v997<>0:E;
+!!VRy7:S0;
+
+!!BMy7:T?y8;
+!!if&y8>=0:;
+    !!BMy7:I?y9;
+    !!BHy9:N?y4;
+    !!if&y4>=0:;
+       !!SN:W^Artifact 332 - Alredy used - Hero %Y4^/?y99;
+       !!VRy5:S2 *y99; Speed additive Bonus
+
+       !!BMy7:F?y11;
+       !!VRy11:&64;
+       !!VRy5&y11>0:S0;
+
+       !!BMy7:S?y6;
+       !!VRy6:+y5;
+       !!BMy7:Sy6;
+
+    !!en:;
+!!en:;
+
+!!VRy7:+1;
+!!SN&y7<42:G2;
+
+
+
+
+!?MR1;
+!!BG:Q?y2;
+!!VRy3:S1 -y2;
+!!BHy3:N?y4;
+!!FU&y4<0:E;
+
+** Caster Leader Black potion
+!!SN:W^Artifact 331 - Alredy used - Hero %Y4^/?y99;
+!!VRy5:S9 *y99 +100; damage percentage
+
+!!MR:F?y6;
+!!VRy6:*y5 :100;
+!!MR:Fy6;
+
+
+
+!?MR1;
+!!BG:Q?y3;
+!!BHy3:N?y4;
+!!FU&y4<0:E;
+
+** Magic Quarter Black potion
+!!SN:W^Artifact 330 - Today used - Hero %Y4^/?y99;
+!!VRy88:Sc;
+!!if&y99>=y88:;
+  !!VRy5:S25; damage percentage
+  !!MR:F?y6;
+  !!VRy6:*y5 :100;
+  !!MR:Fy6;
+!!en:;
+
+!?BR;
+!!FU&v997<>0:E;
+!!VRy7:S0;
+
+!!BMy7:T?y8;
+!!if&y8>=0:;
+    !!BMy7:I?y9;
+    !!BHy9:N?y4;
+    !!if&y4>=0:;
+       // Day of Gods white potion
+       !!SN:W^Artifact 325 - Today used - Hero %Y4^/?y99;
+       !!VRy88:Sc;
+       !!if&y99>=y88:;
+         !!BMy7:M41/255/3;
+         !!BMy7:M48/255/3;
+         !!BMy7:M49/255/3;
+         !!BMy7:M51/255/3;
+       !!en:;
+    !!en:;
+!!en:;
+
+!!VRy7:+1;
+!!SN&y7<42:G2;
+

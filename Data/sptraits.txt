@@ -1,0 +1,1740 @@
+			School				Cost				Effect					% Chance to gain									AI value				Right Click Text				
+Name	Abbreviated Name	Level	Earth	Water	Fire	Air	None	Basic	Advanced	Expert	Power 	None	Basic	Advanced	Expert	Castle	Rampart	Tower	Inferno	Necropolis	Dungeon	Stronghold	Fortress	Conflux	None	Basic	Advanced	Expert	Normal	Basic	Advanced	Expert	Attributes (reference only, do not change)
+
+Adventure Spells																																	
+
+Summon Boat	Summon Boat	1	 	x	 	 	8	7	6	5	0	40	60	80	100	7	7	4	2	5	2	3	5	4	10	10	10	10	"Summons an existing, friendly, unoccupied boat from anywhere in the world to your location with a certain success chance.
+
+{None:} 40% 
+Basic: 60% 
+Advanced: 80%, if no boats exist, one is created 
+Expert: 100%, if no boats exist, one is created"	"Summons an existing, friendly, unoccupied boat from anywhere in the world to your location with a certain success chance.
+
+None: 40% 
+{Basic:} 60% 
+Advanced: 80%, if no boats exist, one is created 
+Expert: 100%, if no boats exist, one is created"	"Summons an existing, friendly, unoccupied boat from anywhere in the world to your location with a certain success chance.
+
+None: 40% 
+Basic: 60% 
+{Advanced:} 80%, if no boats exist, one is created 
+Expert: 100%, if no boats exist, one is created"	"Summons an existing, friendly, unoccupied boat from anywhere in the world to your location with a certain success chance.
+
+None: 40% 
+Basic: 60% 
+Advanced: 80%, if no boats exist, one is created 
+{Expert:} 100%, if no boats exist, one is created"	 ADV_SPELL
+Placeholder	Plaeholder	1			x	 	8	7	6	5	0	40	60	80	100	7	7	4	2	5	2	3	5	4	1	1	1	1	"Destroys an unoccupied boat you own.
+
+{None:} 40% 
+Basic: 60% 
+Advanced: 80% 
+Expert: 100% "	"Destroys an unoccupied boat you own.
+
+None: 40% 
+{Basic:} 60% 
+Advanced: 80% 
+Expert: 100% "	"Destroys an unoccupied boat you own.
+
+None: 40% 
+Basic: 60% 
+{Advanced:} 80% 
+Expert: 100% "	"Destroys an unoccupied boat you own.
+
+None: 40% 
+Basic: 60% 
+Advanced: 80% 
+{Expert:} 100% "	 ADV_SPELL
+Visions	Visions	2	 	 	 	x	16	14	12	10	0	1	2	3	4	7	5	11	5	5	4	7	6	6	1	1	1	1	"                                                                                                                                   
+Within a certain radius (minimum 3 tiles) shows an exact number of neutral creatures and whether they would join or flee. 
+
+{None:} Power tiles
+Basic: 2 * Power, + amount of enemy hero's army
+Advanced: 3 * Power, + primary skills of an enemy hero
+Expert: 4 * Power, + amount of enemy town's army"	"                                                                                                                                   
+Within a certain radius (minimum 3 tiles) shows an exact number of neutral creatures and whether they would join or flee. 
+
+None: Power tiles
+{Basic:} 2 * Power, + amount of enemy hero's army
+Advanced: 3 * Power, + primary skills of an enemy hero
+Expert: 4 * Power, + amount of enemy town's army"	"                                                                                                                                   
+Within a certain radius (minimum 3 tiles) shows an exact number of neutral creatures and whether they would join or flee. 
+
+None: Power tiles
+Basic: 2 * Power, + amount of enemy hero's army
+{Advanced:} 3 * Power, + primary skills of an enemy hero
+Expert: 4 * Power, + amount of enemy town's army"	"                                                                                                                                   
+Within a certain radius (minimum 3 tiles) shows an exact number of neutral creatures and whether they would join or flee. 
+
+None: Power tiles
+Basic: 2 * Power, + amount of enemy hero's army
+Advanced: 3 * Power, + primary skills of an enemy hero
+{Expert:} 4 * Power, + amount of enemy town's army"	 ADV_SPELL
+Elevator	Elevator	4	x	 	 	 	32	28	24	20	7	2	3	4	5	4	7	4	5	9	7	5	6	5	1	1	1	1	"Reveals the location of all resources.
+
+{None:} -
+Basic: -
+Advanced: + location of all mines 
+Expert: + all terrain "	"Reveals the location of all resources.
+
+None: -
+{Basic:} -
+Advanced: + location of all mines 
+Expert: + all terrain "	"Reveals the location of all resources.
+
+None: -
+Basic: -
+{Advanced:} + location of all mines 
+Expert: + all terrain "	"Reveals the location of all resources.
+
+None: -
+Basic: -
+Advanced: + location of all mines 
+{Expert:} + all terrain "	 ADV_SPELL
+Reinforcements	Reinforcements	3	 	 	x		16	14	12	10	0	0	0	0	0	7	5	11	5	5	4	7	6	6	1	1	1	1	"                                                                                                                                   
+Makes all units in hero's army look like their
+most powerful unit to enemies trying to view this hero.
+
+{None:} -
+Basic: -
+Advanced: hides numbers of your army 
+Expert: units look like player's most powerful unit "	"                                                                                                                                   
+Makes all units in hero's army look like their
+most powerful unit to enemies trying to view this hero.
+
+None: -
+{Basic:} -
+Advanced: hides numbers of your army 
+Expert: units look like player's most powerful unit "	"                                                                                                                                   
+Makes all units in hero's army look like their
+most powerful unit to enemies trying to view this hero.
+
+None: -
+Basic: -
+{Advanced:} hides numbers of your army 
+Expert: units look like player's most powerful unit "	"                                                                                                                                   
+Makes all units in hero's army look like their
+most powerful unit to enemies trying to view this hero.
+
+None: -
+Basic: -
+Advanced: hides numbers of your army 
+{Expert:} units look like player's most powerful unit "	 ADV_SPELL
+Sprint	Sprint	5	 	 	 	x	40	35	30	25	3	20	40	60	80	5	3	8	4	3	3	5	4	4	1	1	1	1	"Reveals the location of all unclaimed artifacts.
+
+{None:} -
+Basic: -
+Advanced: + location of all heroes 
+Expert: + location of all towns "	"Reveals the location of all unclaimed artifacts.
+
+None: -
+{Basic:} -
+Advanced: + location of all heroes 
+Expert: + location of all towns "	"Reveals the location of all unclaimed artifacts.
+
+None: -
+Basic: -
+{Advanced:} + location of all heroes 
+Expert: + location of all towns "	"Reveals the location of all unclaimed artifacts.
+
+None: -
+Basic: -
+Advanced: + location of all heroes 
+{Expert:} + location of all towns "	 ADV_SPELL
+Fly	Fly	4	 	 	 	x	32	28	24	20	0	20	40	60	80	10	5	14	7	6	5	0	0	8	10	20	30	40	"Allows your army to fly over obstacles.
+You must land at the end of the turn.
+Usage of movement points:
+
+{None:} 180% 
+Basic: 160% 
+Advanced: 140% 
+Expert: 120% "	"Allows your army to fly over obstacles.
+You must land at the end of the turn.
+Usage of movement points:
+
+None: 180% 
+{Basic:} 160% 
+Advanced: 140% 
+Expert: 120% "	"Allows your army to fly over obstacles.
+You must land at the end of the turn.
+Usage of movement points:
+
+None: 180% 
+Basic: 160% 
+{Advanced:} 140% 
+Expert: 120% "	"Allows your army to fly over obstacles.
+You must land at the end of the turn.
+Usage of movement points:
+
+None: 180% 
+Basic: 160% 
+Advanced: 140% 
+{Expert:} 120% "	 ADV_SPELL
+Water Walk	Water Walk	4	 	x	 	 	32	28	24	20	0	40	60	80	100	12	13	7	4	8	3	0	0	8	5	10	15	20	"Allows your army to walk across water.
+You must end your movement on land.
+Usage of movement points:
+
+{None:} 180% 
+Basic: 160% 
+Advanced: 140% 
+Expert: 120% "	"Allows your army to walk across water.
+You must end your movement on land.
+Usage of movement points:
+
+None: 180% 
+{Basic:} 160% 
+Advanced: 140% 
+Expert: 120% "	"Allows your army to walk across water.
+You must end your movement on land.
+Usage of movement points:
+
+None: 180% 
+Basic: 160% 
+{Advanced:} 140% 
+Expert: 120% "	"Allows your army to walk across water.
+You must end your movement on land.
+Usage of movement points:
+
+None: 180% 
+Basic: 160% 
+Advanced: 140% 
+{Expert:} 120% "	 ADV_SPELL
+Dimension Door	Dimension Door	5	 	x	 	 	40	35	30	25	0	1	2	3	4	0	19	10	6	11	5	0	0	12	15	30	45	60	"You may teleport your hero to an unoccupied (but not necessarily visible) location on the adventure map a set number of times per day.
+
+{None:} once 
+Basic: 2 times 
+Advanced: 3 times 
+Expert: 4 times "	"You may teleport your hero to an unoccupied (but not necessarily visible) location on the adventure map a set number of times per day.
+
+None: once 
+{Basic:} 2 times 
+Advanced: 3 times 
+Expert: 4 times "	"You may teleport your hero to an unoccupied (but not necessarily visible) location on the adventure map a set number of times per day.
+
+None: once 
+Basic: 2 times 
+{Advanced:} 3 times 
+Expert: 4 times "	"You may teleport your hero to an unoccupied (but not necessarily visible) location on the adventure map a set number of times per day.
+
+None: once 
+Basic: 2 times 
+Advanced: 3 times 
+{Expert:} 4 times "	 ADV_SPELL
+Town Portal	Town Portal	5	x	 	 	 	40	35	30	25	0	100	80	60	40	0	19	13	15	27	20	0	0	13	5	5	60	60	"Teleports your hero to a friendly unoccupied town, your hero expends up to all remaining movement points.
+
+{None:} nearest town, up to all.
+Basic: nearest town, up to 80%.
+Advanced: any town, up to 60%.
+Expert: any town, up to 40%."	"Teleports your hero to a friendly unoccupied town, your hero expends up to all remaining movement points.
+
+None: nearest town, up to all.
+{Basic:} nearest town, up to 80%.
+Advanced: any town, up to 60%.
+Expert: any town, up to 40%."	"Teleports your hero to a friendly unoccupied town, your hero expends up to all remaining movement points.
+
+None: nearest town, up to all.
+Basic: nearest town, up to 80%.
+{Advanced:} any town, up to 60%.
+Expert: any town, up to 40%."	"Teleports your hero to a friendly unoccupied town, your hero expends up to all remaining movement points.
+
+None: nearest town, up to all.
+Basic: nearest town, up to 80%.
+Advanced: any town, up to 60%.
+{Expert:} any town, up to 40%."	 ADV_SPELL
+
+Combat Spells																																	
+
+Quicksand	Quicksand	1	x	 	 	 	8	7	6	5	0	0	0	0	0	4	7	4	5	9	7	5	6	5	1	1	1	1	"Randomly places several patches of quicksand on the battlefield which are only visible to the caster and creatures native to the terrain. Walking into quicksand ends a unit's movement for the turn and makes it visible to all.
+
+{None:} 8 patches 
+Basic: 10 patches 
+Advanced: 12 patches 
+Expert: 14 patches "	"Randomly places several patches of quicksand on the battlefield which are only visible to the caster and creatures native to the terrain. Walking into quicksand ends a unit's movement for the turn and makes it visible to all.
+
+None: 8 patches 
+{Basic:} 10 patches 
+Advanced: 12 patches 
+Expert: 14 patches "	"Randomly places several patches of quicksand on the battlefield which are only visible to the caster and creatures native to the terrain. Walking into quicksand ends a unit's movement for the turn and makes it visible to all.
+
+None: 8 patches 
+Basic: 10 patches 
+{Advanced:} 12 patches 
+Expert: 14 patches "	"Randomly places several patches of quicksand on the battlefield which are only visible to the caster and creatures native to the terrain. Walking into quicksand ends a unit's movement for the turn and makes it visible to all.
+
+None: 8 patches 
+Basic: 10 patches 
+Advanced: 12 patches 
+{Expert:} 14 patches "	 COMBAT_SPELL|LOCATION_TARGET
+Land Mine	Land Mine	1	 	 	x	 	8	7	6	5	10	15	30	45	60	2	1	2	7	2	6	5	3	5	10	15	20	25	"Randomly places several small areas of landmines on the battlefield which are only visible to the caster and creatures native to the terrain. It inflicts damage to any unit walking over it.
+
+{None:} 10 * Power + 15 damage, 4 mines 
+Basic: 10 * Power + 30 damage, 4 mines 
+Advanced: 10 * Power + 45 damage, 6 mines 
+Expert: 10 * Power + 60 damage, 8 mines 
+"	"Randomly places several small areas of landmines on the battlefield which are only visible to the caster and creatures native to the terrain. It inflicts damage to any unit walking over it.
+
+None: 10 * Power + 15 damage, 4 mines 
+{Basic:} 10 * Power + 30 damage, 4 mines 
+Advanced: 10 * Power + 45 damage, 6 mines 
+Expert: 10 * Power + 60 damage, 8 mines 
+"	"Randomly places several small areas of landmines on the battlefield which are only visible to the caster and creatures native to the terrain. It inflicts damage to any unit walking over it.
+
+None: 10 * Power + 15 damage, 4 mines 
+Basic: 10 * Power + 30 damage, 4 mines 
+{Advanced:} 10 * Power + 45 damage, 6 mines 
+Expert: 10 * Power + 60 damage, 8 mines 
+"	"Randomly places several small areas of landmines on the battlefield which are only visible to the caster and creatures native to the terrain. It inflicts damage to any unit walking over it.
+
+None: 10 * Power + 15 damage, 4 mines 
+Basic: 10 * Power + 30 damage, 4 mines 
+Advanced: 10 * Power + 45 damage, 6 mines 
+{Expert:} 10 * Power + 60 damage, 8 mines 
+"	 COMBAT_SPELL|LOCATION_TARGET
+Force Field	Force Field	2	x	 	 	 	16	14	12	10	0	0	0	0	0	5	9	6	7	11	10	8	8	6	1	1	1	1	"Places a Force Field on the battlefield at a point specified by the caster. It works like an obstacle.
+Size of the Force Field:
+
+{None:} 2 tiles 
+Basic: 2 tiles 
+Advanced: 3 tiles 
+Expert: 3 tiles "	"Places a Force Field on the battlefield at a point specified by the caster. It works like an obstacle.
+Size of the Force Field:
+
+None: 2 tiles 
+{Basic:} 2 tiles 
+Advanced: 3 tiles 
+Expert: 3 tiles "	"Places a Force Field on the battlefield at a point specified by the caster. It works like an obstacle.
+Size of the Force Field:
+
+None: 2 tiles 
+Basic: 2 tiles 
+{Advanced:} 3 tiles 
+Expert: 3 tiles "	"Places a Force Field on the battlefield at a point specified by the caster. It works like an obstacle.
+Size of the Force Field:
+
+None: 2 tiles 
+Basic: 2 tiles 
+Advanced: 3 tiles 
+{Expert:} 3 tiles "	 COMBAT_SPELL|LOCATION_TARGET
+Fire Wall	Fire Wall	2	 	 	x	 	16	14	12	10	15	30	60	90	120	4	2	3	10	3	9	6	4	7	10	15	20	25	"Places a wall of fire on the battlefield at a point specified by caster. Any units passing through the wall take damage.
+Size and damage of the fire wall:
+
+{None:} 15 * Power + 30 damage, 2 tiles 
+Basic: 15 * Power + 60 damage, 2 tiles 
+Advanced: 15 * Power + 90 damage, 3 tiles 
+Expert: 15 * Power + 120 damage, 3 tiles 
+"	"Places a wall of fire on the battlefield at a point specified by caster. Any units passing through the wall take damage.
+Size and damage of the fire wall:
+
+None: 15 * Power + 30 damage, 2 tiles 
+{Basic:} 15 * Power + 60 damage, 2 tiles 
+Advanced: 15 * Power + 90 damage, 3 tiles 
+Expert: 15 * Power + 120 damage, 3 tiles 
+"	"Places a wall of fire on the battlefield at a point specified by caster. Any units passing through the wall take damage.
+Size and damage of the fire wall:
+
+None: 15 * Power + 30 damage, 2 tiles 
+Basic: 15 * Power + 60 damage, 2 tiles 
+{Advanced:} 15 * Power + 90 damage, 3 tiles 
+Expert: 15 * Power + 120 damage, 3 tiles 
+"	"Places a wall of fire on the battlefield at a point specified by caster. Any units passing through the wall take damage.
+Size and damage of the fire wall:
+
+None: 15 * Power + 30 damage, 2 tiles 
+Basic: 15 * Power + 60 damage, 2 tiles 
+Advanced: 15 * Power + 90 damage, 3 tiles 
+{Expert:} 15 * Power + 120 damage, 3 tiles 
+"	 COMBAT_SPELL|LOCATION_TARGET
+Earthquake	Earthquake	2	x	 	 	 	16	14	12	10	1	1	2	3	4	5	9	6	7	11	10	8	8	6	1	1	1	1	"Randomly damages several sections of castle wall in combat. 
+
+{None:} 1 section 
+Basic: 2 sections 
+Advanced: 3 sections 
+Expert: 4 sections "	"Randomly damages several sections of castle wall in combat. 
+
+None: 1 section 
+{Basic:} 2 sections 
+Advanced: 3 sections 
+Expert: 4 sections "	"Randomly damages several sections of castle wall in combat. 
+
+None: 1 section 
+Basic: 2 sections 
+{Advanced:} 3 sections 
+Expert: 4 sections "	"Randomly damages several sections of castle wall in combat. 
+
+None: 1 section 
+Basic: 2 sections 
+Advanced: 3 sections 
+{Expert:} 4 sections "	 COMBAT_SPELL
+Magic Arrow	Magic Arrow	1	x	x	x	x	8	7	6	5	15	30	60	90	120	10	10	10	10	10	10	10	10	10	10	15	20	25	"Causes a bolt of magical energy to strike the selected enemy unit. 
+
+{None:} 15 * Power + 30 damage 
+Basic: 15 * Power + 60 damage 
+Advanced: 15 * Power + 90 damage 
+Expert: 15 * Power + 120 damage 
+"	"Causes a bolt of magical energy to strike the selected enemy unit. 
+
+None: 15 * Power + 30 damage 
+{Basic:} 15 * Power + 60 damage 
+Advanced: 15 * Power + 90 damage 
+Expert: 15 * Power + 120 damage 
+"	"Causes a bolt of magical energy to strike the selected enemy unit. 
+
+None: 15 * Power + 30 damage 
+Basic: 15 * Power + 60 damage 
+{Advanced:} 15 * Power + 90 damage 
+Expert: 15 * Power + 120 damage 
+"	"Causes a bolt of magical energy to strike the selected enemy unit. 
+
+None: 15 * Power + 30 damage 
+Basic: 15 * Power + 60 damage 
+Advanced: 15 * Power + 90 damage 
+{Expert:} 15 * Power + 120 damage 
+"	 COMBAT_SPELL|CREATURE_TARGET
+Ice Bolt	Ice Bolt	2	 	x	 	 	16	14	12	10	30	60	120	180	240	9	9	5	3	8	2	4	7	7	20	25	30	35	"Drains the body heat from the selected enemy unit.
+
+{None:} 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Drains the body heat from the selected enemy unit.
+
+None: 30 * Power + 60 damage 
+{Basic:} 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Drains the body heat from the selected enemy unit.
+
+None: 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+{Advanced:} 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Drains the body heat from the selected enemy unit.
+
+None: 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+{Expert:} 30 * Power + 240 damage 
+"	 COMBAT_SPELL|CREATURE_TARGET
+Lightning Bolt	Lightning Bolt	3	 	 	 	x	24	21	18	15	40	80	160	240	320	10	6	14	7	10	5	10	7	9	30	35	40	45	"Causes a bolt of lightning to strike the selected unit.
+
+{None:} 40 * Power + 80 damage 
+Basic: 40 * Power + 160 damage 
+Advanced: 40 * Power + 240 damage 
+Expert: 40 * Power + 320 damage 
+"	"Causes a bolt of lightning to strike the selected unit.
+
+None: 40 * Power + 80 damage 
+{Basic:} 40 * Power + 160 damage 
+Advanced: 40 * Power + 240 damage 
+Expert: 40 * Power + 320 damage 
+"	"Causes a bolt of lightning to strike the selected unit.
+
+None: 40 * Power + 80 damage 
+Basic: 40 * Power + 160 damage 
+{Advanced:} 40 * Power + 240 damage 
+Expert: 40 * Power + 320 damage 
+"	"Causes a bolt of lightning to strike the selected unit.
+
+None: 40 * Power + 80 damage 
+Basic: 40 * Power + 160 damage 
+Advanced: 40 * Power + 240 damage 
+{Expert:} 40 * Power + 320 damage 
+"	 COMBAT_SPELL|CREATURE_TARGET
+Implosion	Implosion	5	x	 	 	 	40	35	30	25	60	120	240	360	480	0	19	13	15	30	20	0	0	13	50	55	60	65	"Inflicts massive damage to a single creature stack.
+
+{None:} 60 * Power + 120 damage 
+Basic: 60 * Power + 240 damage 
+Advanced: 60 * Power + 360 damage 
+Expert: 60 * Power + 480 damage 
+"	"Inflicts massive damage to a single creature stack.
+
+None: 60 * Power + 120 damage 
+{Basic:} 60 * Power + 240 damage 
+Advanced: 60 * Power + 360 damage 
+Expert: 60 * Power + 480 damage 
+"	"Inflicts massive damage to a single creature stack.
+
+None: 60 * Power + 120 damage 
+Basic: 60 * Power + 240 damage 
+{Advanced:} 60 * Power + 360 damage 
+Expert: 60 * Power + 480 damage 
+"	"Inflicts massive damage to a single creature stack.
+
+None: 60 * Power + 120 damage 
+Basic: 60 * Power + 240 damage 
+Advanced: 60 * Power + 360 damage 
+{Expert:} 60 * Power + 480 damage 
+"	 COMBAT_SPELL|CREATURE_TARGET
+Chain Lightning	Chain Lightning	4	 	 	 	x	32	28	24	20	45	90	180	270	360	10	5	14	7	6	5	0	0	8	40	45	50	55	"Fires a bolt of lightning at the selected unit which then travels to the nearest adjacent unit, inflicting half damage before traveling to the next adjacent unit, again inflicting half damage, etc.
+
+{None:} 45 * Power + 90 initial damage, strikes 4 units 
+Basic: 45 * Power + 180 initial damage, strikes 4 units 
+Advanced: 45 * Power + 270 initial damage, strikes 5 units 
+Expert: 45 * Power + 360 initial damage, strikes 5 units 
+"	"Fires a bolt of lightning at the selected unit which then travels to the nearest adjacent unit, inflicting half damage before traveling to the next adjacent unit, again inflicting half damage, etc.
+
+None: 45 * Power + 90 initial damage, strikes 4 units 
+{Basic:} 45 * Power + 180 initial damage, strikes 4 units 
+Advanced: 45 * Power + 270 initial damage, strikes 5 units 
+Expert: 45 * Power + 360 initial damage, strikes 5 units 
+"	"Fires a bolt of lightning at the selected unit which then travels to the nearest adjacent unit, inflicting half damage before traveling to the next adjacent unit, again inflicting half damage, etc.
+
+None: 45 * Power + 90 initial damage, strikes 4 units 
+Basic: 45 * Power + 180 initial damage, strikes 4 units 
+{Advanced:} 45 * Power + 270 initial damage, strikes 5 units 
+Expert: 45 * Power + 360 initial damage, strikes 5 units 
+"	"Fires a bolt of lightning at the selected unit which then travels to the nearest adjacent unit, inflicting half damage before traveling to the next adjacent unit, again inflicting half damage, etc.
+
+None: 45 * Power + 90 initial damage, strikes 4 units 
+Basic: 45 * Power + 180 initial damage, strikes 4 units 
+Advanced: 45 * Power + 270 initial damage, strikes 5 units 
+{Expert:} 45 * Power + 360 initial damage, strikes 5 units 
+"	 COMBAT_SPELL|CREATURE_TARGET
+Frost Ring	Frost Ring	3	 	x	 	 	24	21	18	15	20	40	80	120	160	12	12	7	4	8	3	5	10	9	30	35	40	45	"Drains the body heat of any units adjacent to the target location, without inflicting damage on the target.
+
+{None:} 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Drains the body heat of any units adjacent to the target location, without inflicting damage on the target.
+
+None: 20 * Power + 40 damage 
+{Basic:} 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Drains the body heat of any units adjacent to the target location, without inflicting damage on the target.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+{Advanced:} 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Drains the body heat of any units adjacent to the target location, without inflicting damage on the target.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+{Expert:} 20 * Power + 160 damage 
+"	 COMBAT_SPELL|LOCATION_TARGET
+Fireball	Fireball	3	 	 	x	 	24	21	18	15	20	40	80	120	160	4	2	5	13	4	12	9	6	9	30	35	40	45	"Causes the selected target to burst into flames, inflicting fire damage to the target and any adjacent units.
+
+{None:} 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Causes the selected target to burst into flames, inflicting fire damage to the target and any adjacent units.
+
+None: 20 * Power + 40 damage 
+{Basic:} 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Causes the selected target to burst into flames, inflicting fire damage to the target and any adjacent units.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+{Advanced:} 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Causes the selected target to burst into flames, inflicting fire damage to the target and any adjacent units.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+{Expert:} 20 * Power + 160 damage 
+"	 COMBAT_SPELL|LOCATION_TARGET
+Inferno	Inferno	4	 	 	x	 	32	28	24	20	30	60	120	180	240	4	2	4	13	4	12	0	0	10	40	45	50	55	"Causes a huge blast of fire to strike the selected target.
+
+{None:} 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Causes a huge blast of fire to strike the selected target.
+
+None: 30 * Power + 60 damage 
+{Basic:} 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Causes a huge blast of fire to strike the selected target.
+
+None: 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+{Advanced:} 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Causes a huge blast of fire to strike the selected target.
+
+None: 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+{Expert:} 30 * Power + 240 damage 
+"	 COMBAT_SPELL|LOCATION_TARGET
+Meteor Shower	Meteor Shower	4	x	 	 	 	32	28	24	20	30	60	120	180	240	11	20	12	14	23	20	0	0	12	40	45	50	55	"Causes a meteor shower to rain down on the selected target and any adjacent units.
+
+{None:} 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Causes a meteor shower to rain down on the selected target and any adjacent units.
+
+None: 30 * Power + 60 damage 
+{Basic:} 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Causes a meteor shower to rain down on the selected target and any adjacent units.
+
+None: 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+{Advanced:} 30 * Power + 180 damage 
+Expert: 30 * Power + 240 damage 
+"	"Causes a meteor shower to rain down on the selected target and any adjacent units.
+
+None: 30 * Power + 60 damage 
+Basic: 30 * Power + 120 damage 
+Advanced: 30 * Power + 180 damage 
+{Expert:} 30 * Power + 240 damage 
+"	 COMBAT_SPELL|LOCATION_TARGET
+Death Ripple	Death Ripple	3	x	 	 	 	24	21	18	15	20	40	80	120	160	0	0	0	0	15	0	0	0	0	30	35	40	45	"Sends a wave of death across the battlefield which damages all living units.
+
+{None:} 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Sends a wave of death across the battlefield which damages all living units.
+
+None: 20 * Power + 40 damage 
+{Basic:} 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Sends a wave of death across the battlefield which damages all living units.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+{Advanced:} 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Sends a wave of death across the battlefield which damages all living units.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+{Expert:} 20 * Power + 160 damage 
+"	 COMBAT_SPELL
+Destroy Undead	Destroy Undead	3	 	 	 	x	24	21	18	15	20	40	80	120	160	10	6	14	7	0	5	10	7	9	30	35	40	45	"Attempts to destroy any undead creatures on the battlefield.
+
+{None:} 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Attempts to destroy any undead creatures on the battlefield.
+
+None: 20 * Power + 40 damage 
+{Basic:} 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Attempts to destroy any undead creatures on the battlefield.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+{Advanced:} 20 * Power + 120 damage 
+Expert: 20 * Power + 160 damage 
+"	"Attempts to destroy any undead creatures on the battlefield.
+
+None: 20 * Power + 40 damage 
+Basic: 20 * Power + 80 damage 
+Advanced: 20 * Power + 120 damage 
+{Expert:} 20 * Power + 160 damage 
+"	 COMBAT_SPELL
+Armageddon	Armageddon	5	 	 	x	 	40	35	30	25	40	80	160	240	320	0	3	6	19	6	18	0	0	0	50	55	60	65	"Rains fire down upon the battlefield, damaging all units.
+
+{None:} 40 * Power + 80 damage 
+Basic: 40 * Power + 160 damage 
+Advanced: 40 * Power + 240 damage 
+Expert: 40 * Power + 320 damage 
+"	"Rains fire down upon the battlefield, damaging all units.
+
+None: 40 * Power + 80 damage 
+{Basic:} 40 * Power + 160 damage 
+Advanced: 40 * Power + 240 damage 
+Expert: 40 * Power + 320 damage 
+"	"Rains fire down upon the battlefield, damaging all units.
+
+None: 40 * Power + 80 damage 
+Basic: 40 * Power + 160 damage 
+{Advanced:} 40 * Power + 240 damage 
+Expert: 40 * Power + 320 damage 
+"	"Rains fire down upon the battlefield, damaging all units.
+
+None: 40 * Power + 80 damage 
+Basic: 40 * Power + 160 damage 
+Advanced: 40 * Power + 240 damage 
+{Expert:} 40 * Power + 320 damage 
+"	 COMBAT_SPELL
+Shield	Shield	1	x	 	 	 	8	7	6	5	0	90	80	70	70	4	7	4	5	9	7	5	6	5	5	10	15	30	"Shields a selected unit, reducing the amount of damage received from melee attacks by fixed percentage.
+
+{None:} 10% 
+Basic: 20% 
+Advanced: 30% 
+Expert: 30%, affects all friendly units "	"Shields a selected unit, reducing the amount of damage received from melee attacks by fixed percentage.
+
+None: 10% 
+{Basic:} 20% 
+Advanced: 30% 
+Expert: 30%, affects all friendly units "	"Shields a selected unit, reducing the amount of damage received from melee attacks by fixed percentage.
+
+None: 10% 
+Basic: 20% 
+{Advanced:} 30% 
+Expert: 30%, affects all friendly units "	"Shields a selected unit, reducing the amount of damage received from melee attacks by fixed percentage.
+
+None: 10% 
+Basic: 20% 
+Advanced: 30% 
+{Expert:} 30%, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Air Shield	Air Shield	1	 	 	 	x	8	7	6	5	0	90	80	70	70	5	3	8	4	3	3	5	4	4	5	10	15	30	"Shields a selected unit, reducing the amount of damage received from ranged attacks by fixed percentage.
+
+{None:} 10% 
+Basic: 20% 
+Advanced: 30% 
+Expert: 30%, affects all friendly units "	"Shields a selected unit, reducing the amount of damage received from ranged attacks by fixed percentage.
+
+None: 10% 
+{Basic:} 20% 
+Advanced: 30% 
+Expert: 30%, affects all friendly units "	"Shields a selected unit, reducing the amount of damage received from ranged attacks by fixed percentage.
+
+None: 10% 
+Basic: 20% 
+{Advanced:} 30% 
+Expert: 30%, affects all friendly units "	"Shields a selected unit, reducing the amount of damage received from ranged attacks by fixed percentage.
+
+None: 10% 
+Basic: 20% 
+Advanced: 30% 
+{Expert:} 30%, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Fire Shield	Fire Shield	4	 	 	x	 	32	28	24	20	0	15	30	45	60	4	2	4	13	4	12	0	0	10	15	30	45	60	"Cast on a friendly unit, it does not provide any additional protection, but any enemy attacking through the fire shield will suffer damage equal to a portion of what it inflicts.
+
+{None:} 15% 
+Basic: 30% 
+Advanced: 45% 
+Expert: 60% "	"Cast on a friendly unit, it does not provide any additional protection, but any enemy attacking through the fire shield will suffer damage equal to a portion of what it inflicts.
+
+None: 15% 
+{Basic:} 30% 
+Advanced: 45% 
+Expert: 60% "	"Cast on a friendly unit, it does not provide any additional protection, but any enemy attacking through the fire shield will suffer damage equal to a portion of what it inflicts.
+
+None: 15% 
+Basic: 30% 
+{Advanced:} 45% 
+Expert: 60% "	"Cast on a friendly unit, it does not provide any additional protection, but any enemy attacking through the fire shield will suffer damage equal to a portion of what it inflicts.
+
+None: 15% 
+Basic: 30% 
+Advanced: 45% 
+{Expert:} 60% "	 COMBAT_SPELL|CREATURE_TARGET
+Protection from Air	Prot. from Air	1	 	 	 	x	8	7	6	5	0	75	50	25	25	5	3	8	4	3	3	5	4	4	5	5	5	10	"Protects the selected unit, reducing damage received from Air spells by fixed percentage.
+
+{None:} 25% 
+Basic: 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Air spells by fixed percentage.
+
+None: 25% 
+{Basic:} 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Air spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+{Advanced:} 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Air spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+Advanced: 75% 
+{Expert:} 75%, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Protection from Fire	Prot. from Fire	1	 	 	x	 	8	7	6	5	0	75	50	25	25	2	1	2	7	2	6	5	3	5	5	5	5	10	"Protects the selected unit, reducing damage received from Fire spells by fixed percentage.
+
+{None:} 25% 
+Basic: 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Fire spells by fixed percentage.
+
+None: 25% 
+{Basic:} 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Fire spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+{Advanced:} 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Fire spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+Advanced: 75% 
+{Expert:} 75%, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Protection from Water	Protection from Water	1	 	x	 	 	8	7	6	5	0	75	50	25	25	7	7	4	2	5	2	3	5	4	5	5	5	10	"Protects the selected unit, reducing damage received from Water spells by fixed percentage.
+
+{None:} 25% 
+Basic: 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Water spells by fixed percentage.
+
+None: 25% 
+{Basic:} 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Water spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+{Advanced:} 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Water spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+Advanced: 75% 
+{Expert:} 75%, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Protection from Earth	Protection from Earth	1	x	 	 	 	8	7	6	5	0	75	50	25	25	4	7	4	5	9	7	5	6	5	5	5	5	10	"Protects the selected unit, reducing damage received from Earth spells by fixed percentage.
+
+{None:} 25% 
+Basic: 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Earth spells by fixed percentage.
+
+None: 25% 
+{Basic:} 50% 
+Advanced: 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Earth spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+{Advanced:} 75% 
+Expert: 75%, affects all friendly units "	"Protects the selected unit, reducing damage received from Earth spells by fixed percentage.
+
+None: 25% 
+Basic: 50% 
+Advanced: 75% 
+{Expert:} 75%, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Anti-Magic	Anti-Magic	3	x	 	 	 	24	21	18	15	0	3	4	5	6	11	20	12	14	15	20	15	16	9	15	20	25	30	"Protects the selected unit from all spells of a certain level.
+
+{None:} levels 1-2 
+Basic: levels 1-3 
+Advanced: levels 1-4 
+Expert: levels 1-5 "	"Protects the selected unit from all spells of a certain level.
+
+None: levels 1-2 
+{Basic:} levels 1-3 
+Advanced: levels 1-4 
+Expert: levels 1-5 "	"Protects the selected unit from all spells of a certain level.
+
+None: levels 1-2 
+Basic: levels 1-3 
+{Advanced:} levels 1-4 
+Expert: levels 1-5 "	"Protects the selected unit from all spells of a certain level.
+
+None: levels 1-2 
+Basic: levels 1-3 
+Advanced: levels 1-4 
+{Expert:} levels 1-5 "	 COMBAT_SPELL|CREATURE_TARGET
+Dispel	Dispel	2	 	x	 	 	16	14	12	10	0	0	0	0	0	9	9	5	3	8	2	4	7	7	5	10	15	30	"Removes all spell effects from a creature.
+
+{None:} can be used on a friendly creature 
+Basic: can be used on a friendly creature 
+Advanced: can be used on any creature
+Expert: affects all creatures and the battlefield"	"Removes all spell effects from a creature.
+
+None: can be used on a friendly creature 
+{Basic:} can be used on a friendly creature 
+Advanced: can be used on any creature
+Expert: affects all creatures and the battlefield"	"Removes all spell effects from a creature.
+
+None: can be used on a friendly creature 
+Basic: can be used on a friendly creature 
+{Advanced:} can be used on any creature
+Expert: affects all creatures and the battlefield"	"Removes all spell effects from a creature.
+
+None: can be used on a friendly creature 
+Basic: can be used on a friendly creature 
+Advanced: can be used on any creature
+{Expert:} affects all creatures and the battlefield"	 COMBAT_SPELL|CREATURE_TARGET_1
+Magic Mirror	Magic Mirror	2	 	 	 	x	16	14	12	10	0	20	40	60	80	8	5	11	5	5	4	7	6	6	5	10	15	20	"Reflects hostile spells towards a random enemy creature with a certain chance.
+
+{None:} 20% 
+Basic: 40% 
+Advanced: 60% 
+Expert: 80% "	"Reflects hostile spells towards a random enemy creature with a certain chance.
+
+None: 20% 
+{Basic:} 40% 
+Advanced: 60% 
+Expert: 80% "	"Reflects hostile spells towards a random enemy creature with a certain chance.
+
+None: 20% 
+Basic: 40% 
+{Advanced:} 60% 
+Expert: 80% "	"Reflects hostile spells towards a random enemy creature with a certain chance.
+
+None: 20% 
+Basic: 40% 
+Advanced: 60% 
+{Expert:} 80% "	 COMBAT_SPELL|CREATURE_TARGET
+Cure	Cure	1	 	x	 	 	8	7	6	5	15	30	60	90	90	7	7	4	2	5	2	3	5	4	5	10	15	30	"                                                                                                                                   
+                                                                                                                                   
+Removes all negative spell effects and heals the selected unit.
+                                                                                                                                   
+{None:} 15 * Power + 30 hit points healed 
+Basic: 15 * Power + 60 hit points healed 
+Advanced: 15 * Power + 90 hit points healed 
+Expert: 15 * Power + 90 hit points healed, affects all friendly units"	"                                                                                                                                   
+Removes all negative spell effects and heals the selected unit.              
+                                                                                                                                   
+None: 15 * Power + 30 hit points healed 
+{Basic:} 15 * Power + 60 hit points healed 
+Advanced: 15 * Power + 90 hit points healed 
+Expert: 15 * Power + 90 hit points healed, affects all friendly units"	"                                                                                                                                   
+Removes all negative spell effects and heals the selected unit.              
+                                                                                                                                   
+None: 15 * Power + 30 hit points healed 
+Basic: 15 * Power + 60 hit points healed 
+{Advanced:} 15 * Power + 90 hit points healed 
+Expert: 15 * Power + 90 hit points healed, affects all friendly units"	"                                                                                                                                   
+Removes all negative spell effects and heals the selected unit.              
+                                                                                                                                   
+None: 15 * Power + 30 hit points healed 
+Basic: 15 * Power + 60 hit points healed 
+Advanced: 15 * Power + 90 hit points healed 
+{Expert:} 15 * Power + 90 hit points healed, affects all friendly units"	 COMBAT_SPELL|CREATURE_TARGET_1
+Resurrection	Resurrection	4	x	 	 	 	32	28	24	20	60	120	240	360	480	11	20	13	14	0	20	0	0	10	40	50	80	90	"                                                                                                                                   
+Resurrects living creatures in the selected group by restoring a fixed number of hit points to the target.
+
+{None:} 60 * Power + 120 hit points 
+Basic: 60 * Power + 240 hit points 
+Advanced: 60 * Power + 360 hit points permanently 
+Expert: 60 * Power + 480 hit points permanently "	"                                                                                                                                   
+Resurrects living creatures in the selected group by restoring a fixed number of hit points to the target.
+
+None: 60 * Power + 120 hit points 
+{Basic:} 60 * Power + 240 hit points 
+Advanced: 60 * Power + 360 hit points permanently 
+Expert: 60 * Power + 480 hit points permanently "	"                                                                                                                                   
+Resurrects living creatures in the selected group by restoring a fixed number of hit points to the target.
+
+None: 60 * Power + 120 hit points 
+Basic: 60 * Power + 240 hit points 
+{Advanced:} 60 * Power + 360 hit points permanently 
+Expert: 60 * Power + 480 hit points permanently "	"                                                                                                                                   
+Resurrects living creatures in the selected group by restoring a fixed number of hit points to the target.
+
+None: 60 * Power + 120 hit points 
+Basic: 60 * Power + 240 hit points 
+Advanced: 60 * Power + 360 hit points permanently 
+{Expert:} 60 * Power + 480 hit points permanently "	 COMBAT_SPELL|CREATURE_TARGET
+Animate Dead	Animate Dead	4	x	 	 	 	32	28	24	20	60	120	240	360	480	0	0	0	0	23	0	0	0	0	60	70	80	90	"Permanently re-animates any destroyed undead in the selected group by restoring a fixed number of hit points to the target.
+
+{None:} 60 * Power + 120 hit points 
+Basic: 60 * Power + 240 hit points 
+Advanced: 60 * Power + 360 hit points 
+Expert: 60 * Power + 480 hit points "	"Permanently re-animates any destroyed undead in the selected group by restoring a fixed number of hit points to the target.
+
+None: 60 * Power + 120 hit points 
+{Basic:} 60 * Power + 240 hit points 
+Advanced: 60 * Power + 360 hit points 
+Expert: 60 * Power + 480 hit points "	"Permanently re-animates any destroyed undead in the selected group by restoring a fixed number of hit points to the target.
+
+None: 60 * Power + 120 hit points 
+Basic: 60 * Power + 240 hit points 
+{Advanced:} 60 * Power + 360 hit points 
+Expert: 60 * Power + 480 hit points "	"Permanently re-animates any destroyed undead in the selected group by restoring a fixed number of hit points to the target.
+
+None: 60 * Power + 120 hit points 
+Basic: 60 * Power + 240 hit points 
+Advanced: 60 * Power + 360 hit points 
+{Expert:} 60 * Power + 480 hit points "	 COMBAT_SPELL|CREATURE_TARGET
+Sacrifice	Sacrifice	2	 	 	x	 	16	14	12	10	1	0	3	6	9	4	2	4	13	4	12	0	0	10	1	1	1	1	"Destroys a friendly creature group in order to resurrect a dead group, restoring a certain amount of hit points.
+
+{None:} (Power + Health) * Number of creatures       
+Basic: (Power + Health + 3) * Number of creatures 
+Advanced: (Power + Health + 6) * Number of creatures 
+Expert: (Power + Health + 9) * Number of creatures "	"Destroys a friendly creature group in order to resurrect a dead group, restoring a certain amount of hit points.
+
+None: (Power + Health) * Number of creatures       
+{Basic:} (Power + Health + 3) * Number of creatures 
+Advanced: (Power + Health + 6) * Number of creatures 
+Expert: (Power + Health + 9) * Number of creatures "	"Destroys a friendly creature group in order to resurrect a dead group, restoring a certain amount of hit points.
+
+None: (Power + Health) * Number of creatures       
+Basic: (Power + Health + 3) * Number of creatures 
+{Advanced:} (Power + Health + 6) * Number of creatures 
+Expert: (Power + Health + 9) * Number of creatures "	"Destroys a friendly creature group in order to resurrect a dead group, restoring a certain amount of hit points.
+
+None: (Power + Health) * Number of creatures       
+Basic: (Power + Health + 3) * Number of creatures 
+Advanced: (Power + Health + 6) * Number of creatures 
+{Expert:} (Power + Health + 9) * Number of creatures "	 COMBAT_SPELL|CREATURE_TARGET
+Bless	Bless	2	 	x	 	 	16	14	12	10	0	0	0	1	1	10	9	5	3	0	2	4	7	6	10	15	20	40	"                                                                                                                                   
+Causes the selected friendly unit to inflict maximum damage in combat.
+                                                                                                                                   
+{None:} -
+Basic: -
+Advanced: increases creatures' max. damage by 1
+Expert: increases creatures' max. damage by 1, affects all friendly units"	"                                                                                                                                   
+Causes the selected friendly unit to inflict maximum damage in combat.
+                                                                                                                                   
+None: -
+{Basic:} -
+Advanced: increases creatures' max. damage by 1
+Expert: increases creatures' max. damage by 1, affects all friendly units"	"                                                                                                                                   
+Causes the selected friendly unit to inflict maximum damage in combat.
+                                                                                                                                   
+None: -
+Basic: -
+{Advanced:} increases creatures' max. damage by 1
+Expert: increases creatures' max. damage by 1, affects all friendly units"	"                                                                                                                                   
+Causes the selected friendly unit to inflict maximum damage in combat.
+                                                                                                                                   
+None: -
+Basic: -
+Advanced: increases creatures' max. damage by 1
+{Expert:} increases creatures' max. damage by 1, affects all friendly units"	 COMBAT_SPELL|CREATURE_TARGET_2
+Curse	Curse	2	 	 	x	 	16	14	12	10	0	0	0	1	1	0	2	3	10	3	9	6	4	6	10	15	20	40	"                                                                                                                                   
+Causes the selected enemy unit to inflict minimum damage in combat.
+                                                                                                                                   
+{None:} -
+Basic: -
+Advanced: reduces creatures' minimum damage by 1
+Expert: reduces creatures' minimum damage by 1, affects all enemy units"	"                                                                                                                                   
+Causes the selected enemy unit to inflict minimum damage in combat.
+                                                                                                                                   
+None: -
+{Basic}: -
+Advanced: reduces creatures' minimum damage by 1
+Expert: reduces creatures' minimum damage by 1, affects all enemy units"	"                                                                                                                                   
+Causes the selected enemy unit to inflict minimum damage in combat.
+                                                                                                                                   
+None: -
+Basic: -
+{Advanced:} reduces creatures' minimum damage by 1
+Expert: reduces creatures' minimum damage by 1, affects all enemy units"	"                                                                                                                                   
+Causes the selected enemy unit to inflict minimum damage in combat.
+                                                                                                                                   
+None: -
+Basic: -
+Advanced: reduces creatures' minimum damage by 1
+{Expert:} reduces creatures' minimum damage by 1, affects all enemy units"	 COMBAT_SPELL|CREATURE_TARGET_2
+Bloodlust	Bloodlust	1	 	 	x	 	8	7	6	5	0	2	4	6	6	2	1	2	7	2	6	5	3	5	5	10	15	30	"Increases attack of the selected friendly unit in melee.
+
+{None:} by 2 
+Basic: by 4 
+Advanced: by 6 
+Expert: by 6, affects all friendly units"	"Increases attack of the selected friendly unit in melee.
+
+None: by 2 
+{Basic:} by 4 
+Advanced: by 6 
+Expert: by 6, affects all friendly units"	"Increases attack of the selected friendly unit in melee.
+
+None: by 2 
+Basic: by 4 
+{Advanced:} by 6 
+Expert: by 6, affects all friendly units"	"Increases attack of the selected friendly unit in melee.
+
+None: by 2 
+Basic: by 4 
+Advanced: by 6 
+{Expert:} by 6, affects all friendly units"	 COMBAT_SPELL|CREATURE_TARGET_2
+Precision	Precision	1	 	 	 	x	8	7	6	5	0	2	4	6	6	5	3	8	4	3	3	5	4	4	5	10	15	30	"Increases attack of the selected friendly unit in range.
+
+{None:} by 2 
+Basic: by 4 
+Advanced: by 6 
+Expert: by 6, affects all friendly units"	"Increases attack of the selected friendly unit in range.
+
+None: by 2 
+{Basic:} by 4 
+Advanced: by 6 
+Expert: by 6, affects all friendly units"	"Increases attack of the selected friendly unit in range.
+
+None: by 2 
+Basic: by 4 
+{Advanced:} by 6 
+Expert: by 6, affects all friendly units"	"Increases attack of the selected friendly unit in range.
+
+None: by 2 
+Basic: by 4 
+Advanced: by 6 
+{Expert:} by 6, affects all friendly units"	 COMBAT_SPELL|CREATURE_TARGET_2
+Weakness	Weakness	2	 	x	 	 	16	14	12	10	0	3	6	9	9	9	9	5	3	8	2	4	7	6	10	15	20	40	"Reduces attack of the selected enemy unit.
+
+{None:} by 3 
+Basic: by 6 
+Advanced: by 9 
+Expert: by 9, affects all enemy units "	"Reduces attack of the selected enemy unit.
+
+None: by 3 
+{Basic:} by 6 
+Advanced: by 9 
+Expert: by 9, affects all enemy units "	"Reduces attack of the selected enemy unit.
+
+None: by 3 
+Basic: by 6 
+{Advanced:} by 9 
+Expert: by 9, affects all enemy units "	"Reduces attack of the selected enemy unit.
+
+None: by 3 
+Basic: by 6 
+Advanced: by 9 
+{Expert:} by 9, affects all enemy units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Stone Skin	Stone Skin	2	x	 	 	 	16	14	12	10	0	3	6	9	9	5	9	6	7	11	10	8	8	6	10	15	20	40	"Increases defense of the selected friendly unit.
+
+{None:} by 3 
+Basic: by 6 
+Advanced: by 9 
+Expert: by 9, affects all friendly units "	"Increases defense of the selected friendly unit.
+
+None: by 3 
+{Basic:} by 6 
+Advanced: by 9 
+Expert: by 9, affects all friendly units "	"Increases defense of the selected friendly unit.
+
+None: by 3 
+Basic: by 6 
+{Advanced:} by 9 
+Expert: by 9, affects all friendly units "	"Increases defense of the selected friendly unit.
+
+None: by 3 
+Basic: by 6 
+Advanced: by 9 
+{Expert:} by 9, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Disrupting Ray	Disrupting Ray	4	 	 	 	x	32	28	24	20	0	8	12	16	20	10	5	14	7	6	5	0	0	8	15	30	45	60	"Reduces defence of the selected enemy unit. A unit can be targeted multiple times for cumulative effect. Can not be dispelled.
+
+{None:} by 8 
+Basic: by 12 
+Advanced: by 16 
+Expert: by 20 "	"Reduces defence of the selected enemy unit. A unit can be targeted multiple times for cumulative effect. Can not be dispelled.
+
+None: by 8 
+{Basic:} by 12 
+Advanced: by 16 
+Expert: by 20 "	"Reduces defence of the selected enemy unit. A unit can be targeted multiple times for cumulative effect. Can not be dispelled.
+
+None: by 8 
+Basic: by 12 
+{Advanced:} by 16 
+Expert: by 20 "	"Reduces defence of the selected enemy unit. A unit can be targeted multiple times for cumulative effect. Can not be dispelled.
+
+None: by 8 
+Basic: by 12 
+Advanced: by 16 
+{Expert:} by 20 "	 COMBAT_SPELL|CREATURE_TARGET_2
+Prayer	Prayer	5	 	x	 	 	40	35	30	25	0	4	5	6	6	0	19	10	0	0	5	0	0	12	25	30	35	70	"Increases attack, defense and speed of the selected friendly unit.
+
+{None:} by 4 
+Basic: by 5 
+Advanced: by 6 
+Expert: by 6, affects all friendly units "	"Increases attack, defense and speed of the selected friendly unit.
+
+None: by 4 
+{Basic:} by 5 
+Advanced: by 6 
+Expert: by 6, affects all friendly units "	"Increases attack, defense and speed of the selected friendly unit.
+
+None: by 4 
+Basic: by 5 
+{Advanced:} by 6 
+Expert: by 6, affects all friendly units "	"Increases attack, defense and speed of the selected friendly unit.
+
+None: by 4 
+Basic: by 5 
+Advanced: by 6 
+{Expert:} by 6, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Mirth	Mirth	1	 	x	 	 	8	7	6	5	0	1	2	3	3	7	7	4	2	0	2	3	5	4	5	10	15	30	"Increases morale of the selected friendly unit.
+
+{None:} by 1 
+Basic: by 2 
+Advanced: by 3 
+Expert: by 3, affects all friendly units "	"Increases morale of the selected friendly unit.
+
+None: by 1 
+{Basic:} by 2 
+Advanced: by 3 
+Expert: by 3, affects all friendly units "	"Increases morale of the selected friendly unit.
+
+None: by 1 
+Basic: by 2 
+{Advanced:} by 3 
+Expert: by 3, affects all friendly units "	"Increases morale of the selected friendly unit.
+
+None: by 1 
+Basic: by 2 
+Advanced: by 3 
+{Expert:} by 3, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2|MIND_SPELL
+Sorrow	Sorrow	1	x	 	 	 	8	7	6	5	0	1	2	3	3	4	7	4	5	9	7	5	6	5	5	10	15	30	"Reduces morale of the selected enemy unit.
+
+{None:} by 1 
+Basic: by 2 
+Advanced: by 3 
+Expert: by 3, affects all enemy units "	"Reduces morale of the selected enemy unit.
+
+None: by 1 
+{Basic:} by 2 
+Advanced: by 3 
+Expert: by 3, affects all enemy units "	"Reduces morale of the selected enemy unit.
+
+None: by 1 
+Basic: by 2 
+{Advanced:} by 3 
+Expert: by 3, affects all enemy units "	"Reduces morale of the selected enemy unit.
+
+None: by 1 
+Basic: by 2 
+Advanced: by 3 
+{Expert:} by 3, affects all enemy units "	 COMBAT_SPELL|CREATURE_TARGET_2|MIND_SPELL
+Fortune	Fortune	1	 	 	 	x	8	7	6	5	0	1	2	3	3	5	3	8	4	3	3	5	4	4	5	10	15	30	"Increases luck of the selected friendly unit.
+
+{None:} by 1 
+Basic: by 2 
+Advanced: by 3 
+Expert: by 3, affects all friendly units "	"Increases luck of the selected friendly unit.
+
+None: by 1 
+{Basic:} by 2 
+Advanced: by 3 
+Expert: by 3, affects all friendly units "	"Increases luck of the selected friendly unit.
+
+None: by 1 
+Basic: by 2 
+{Advanced:} by 3 
+Expert: by 3, affects all friendly units "	"Increases luck of the selected friendly unit.
+
+None: by 1 
+Basic: by 2 
+Advanced: by 3 
+{Expert:} by 3, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Misfortune	Misfortune	1	 	 	x	 	8	7	6	5	0	1	2	3	3	2	1	2	7	2	6	5	3	5	5	10	15	30	"Reduces luck of the selected enemy unit.
+
+{None:} by 1 
+Basic: by 2 
+Advanced: by 3 
+Expert: by 3, affects all enemy units "	"Reduces luck of the selected enemy unit.
+
+None: by 1 
+{Basic:} by 2 
+Advanced: by 3 
+Expert: by 3, affects all enemy units "	"Reduces luck of the selected enemy unit.
+
+None: by 1 
+Basic: by 2 
+{Advanced:} by 3 
+Expert: by 3, affects all enemy units "	"Reduces luck of the selected enemy unit.
+
+None: by 1 
+Basic: by 2 
+Advanced: by 3 
+{Expert:} by 3, affects all enemy units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Haste	Haste	3	 	 	 	x	24	21	18	15	0	1	2	3	3	10	6	14	7	10	5	10	7	9	10	20	30	60	"Increases speed of the selected friendly unit.
+
+{None:} by 1 
+Basic: by 2 
+Advanced: by 3 
+Expert: by 3, affects all friendly units "	"Increases speed of the selected friendly unit.
+
+None: by 1 
+{Basic:} by 2 
+Advanced: by 3 
+Expert: by 3, affects all friendly units "	"Increases speed of the selected friendly unit.
+
+None: by 1 
+Basic: by 2 
+{Advanced:} by 3 
+Expert: by 3, affects all friendly units "	"Increases speed of the selected friendly unit.
+
+None: by 1 
+Basic: by 2 
+Advanced: by 3 
+{Expert:} by 3, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Slow	Slow	3	x	 	 	 	24	21	18	15	0	90	80	70	70	11	20	12	14	14	20	15	15	9	10	20	30	60	"Reduces speed of the selected enemy unit.
+
+{None:} by 10% 
+Basic: by 20% 
+Advanced: by 30% 
+Expert: by 30%, affects all enemy units "	"Reduces speed of the selected enemy unit.
+
+None: by 10% 
+{Basic:} by 20% 
+Advanced: by 30% 
+Expert: by 30%, affects all enemy units "	"Reduces speed of the selected enemy unit.
+
+None: by 10% 
+Basic: by 20% 
+{Advanced:} by 30% 
+Expert: by 30%, affects all enemy units "	"Reduces speed of the selected enemy unit.
+
+None: by 10% 
+Basic: by 20% 
+Advanced: by 30% 
+{Expert:} by 30%, affects all enemy units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Slayer	Slayer	3	 	 	x	 	24	21	18	15	0	20	30	40	50	5	2	3	10	3	9	6	4	6	10	15	20	25	"When attacking, selected friendly unit
+finishes off wounded enemy creature.
+Also increases attack by 8.
+
+{None:} below 20% hit points
+Basic: below 30% hit points
+Advanced: below 40% hit points
+Expert: below 50% hit points"	"When attacking, selected friendly unit
+finishes off wounded enemy creature.
+Also increases attack by 8.
+
+None: below 20% hit points
+{Basic:} below 30% hit points
+Advanced: below 40% hit points
+Expert: below 50% hit points"	"When attacking, selected friendly unit
+finishes off wounded enemy creature.
+Also increases attack by 8.
+
+None: below 20% hit points
+Basic: below 30% hit points
+{Advanced:} below 40% hit points
+Expert: below 50% hit points"	"When attacking, selected friendly unit
+finishes off wounded enemy creature.
+Also increases attack by 8.
+
+None: below 20% hit points
+Basic: below 30% hit points
+Advanced: below 40% hit points
+{Expert:} below 50% hit points"	 COMBAT_SPELL|CREATURE_TARGET
+Frenzy	Frenzy	2	 	 	x	 	16	14	12	10	0	50	100	150	200	4	2	3	10	3	9	6	4	6	10	15	20	25	"Selected friendly unit lowers its defense to zero to increase its attack.
+
+{None:} by 50% of defense 
+Basic: by 100% of defense 
+Advanced: by 150% of defense 
+Expert: by 200% of defense "	"Selected friendly unit lowers its defense to zero to increase its attack.
+
+None: by 50% of defense 
+{Basic:} by 100% of defense 
+Advanced: by 150% of defense 
+Expert: by 200% of defense "	"Selected friendly unit lowers its defense to zero to increase its attack.
+
+None: by 50% of defense 
+Basic: by 100% of defense 
+{Advanced:} by 150% of defense 
+Expert: by 200% of defense "	"Selected friendly unit lowers its defense to zero to increase its attack.
+
+None: by 50% of defense 
+Basic: by 100% of defense 
+Advanced: by 150% of defense 
+{Expert:} by 200% of defense "	 COMBAT_SPELL|CREATURE_TARGET|MIND_SPELL
+Titan's Lightning Bolt	Titan's Bolt	5	 	 	 	x	0	0	0	0	0	1000	1000	1000	1000	0	0	0	0	0	0	0	0	0	100	100	100	100	"Deals 1000 damage to the target. It does not depend on hero's Air Magic skill, but receives bonuses from Sorcery skill and Orb of the Firmament.
+"	"Deals 1000 damage to the target. It does not depend on hero's Air Magic skill, but receives bonuses from Sorcery skill and Orb of the Firmament.
+"	"Deals 1000 damage to the target. It does not depend on hero's Air Magic skill, but receives bonuses from Sorcery skill and Orb of the Firmament.
+"	"Deals 1000 damage to the target. It does not depend on hero's Air Magic skill, but receives bonuses from Sorcery skill and Orb of the Firmament.
+"	 COMBAT_SPELL|CREATURE_TARGET
+Counterstrike	Counterstrike	2	 	 	 	x	16	14	12	10	0	1	2	3	3	8	5	11	5	5	4	7	6	6	10	15	20	40	"The selected friendly unit will retaliate against more attacks each round.
+
+{None:} 1 more 
+Basic: 2 more 
+Advanced: 3 more 
+Expert: 3 more, affects all friendly units "	"The selected friendly unit will retaliate against more attacks each round.
+
+None: 1 more 
+{Basic:} 2 more 
+Advanced: 3 more 
+Expert: 3 more, affects all friendly units "	"The selected friendly unit will retaliate against more attacks each round.
+
+None: 1 more 
+Basic: 2 more 
+{Advanced:} 3 more 
+Expert: 3 more, affects all friendly units "	"The selected friendly unit will retaliate against more attacks each round.
+
+None: 1 more 
+Basic: 2 more 
+Advanced: 3 more 
+{Expert:} 3 more, affects all friendly units "	 COMBAT_SPELL|CREATURE_TARGET_2
+Berserk	Berserk	5	 	 	x	 	40	35	30	25	0	0	0	1	2	0	3	6	25	6	18	0	0	26	40	40	55	70	"                                                                                                                                   
+Targeted units will randomly attack the nearest unit,
+be it friend or foe.
+
+{None:} affects an area of one tile
+Basic: affects an area of one tile
+Advanced: affects an area of 7 tiles (similar to Fireball)
+Expert: affects an area of 19 tiles (similar to Inferno)"	"                                                                                                                                   
+Targeted units will randomly attack the nearest unit,
+be it friend or foe.
+
+None: affects an area of one tile
+{Basic:} affects an area of one tile
+Advanced: affects an area of 7 tiles (similar to Fireball)
+Expert: affects an area of 19 tiles (similar to Inferno)"	"                                                                                                                                   
+Targeted units will randomly attack the nearest unit,
+be it friend or foe.
+
+None: affects an area of one tile
+Basic: affects an area of one tile
+{Advanced:} affects an area of 7 tiles (similar to Fireball)
+Expert: affects an area of 19 tiles (similar to Inferno)"	"                                                                                                                                   
+Targeted units will randomly attack the nearest unit,
+be it friend or foe.
+
+None: affects an area of one tile
+Basic: affects an area of one tile
+Advanced: affects an area of 7 tiles (similar to Fireball)
+{Expert:} affects an area of 19 tiles (similar to Inferno)"	 COMBAT_SPELL|CREATURE_TARGET|MIND_SPELL
+Hypnotize	Hypnotize	5	 	 	 	x	40	35	30	25	60	120	240	360	480	0	9	21	10	10	7	0	0	12	40	50	60	70	"Temporary gives you control over the selected enemy unit that has no more, than certain amount of hit points.
+
+{None:} 60 * Power + 120 
+Basic: 60 * Power + 240 
+Advanced: 60 * Power + 360 
+Expert: 60 * Power + 480 "	"Temporary gives you control over the selected enemy unit that has no more, than certain amount of hit points.
+
+None: 60 * Power + 120 
+{Basic:} 60 * Power + 240 
+Advanced: 60 * Power + 360 
+Expert: 60 * Power + 480 "	"Temporary gives you control over the selected enemy unit that has no more, than certain amount of hit points.
+
+None: 60 * Power + 120 
+Basic: 60 * Power + 240 
+{Advanced:} 60 * Power + 360 
+Expert: 60 * Power + 480 "	"Temporary gives you control over the selected enemy unit that has no more, than certain amount of hit points.
+
+None: 60 * Power + 120 
+Basic: 60 * Power + 240 
+Advanced: 60 * Power + 360 
+{Expert:} 60 * Power + 480 "	 COMBAT_SPELL|CREATURE_TARGET|MIND_SPELL
+Forgetfulness	Forgetfulness	3	 	x	 	 	24	21	18	15	0	0	0	0	0	12	12	7	4	8	3	5	10	9	10	15	20	25	"Some enemy creatures forget to use their ranged attack.
+
+{None:} half of the selected unit 
+Basic: half of the selected unit 
+Advanced: all of the selected unit 
+Expert: all enemy units "	"Some enemy creatures forget to use their ranged attack.
+
+None: half of the selected unit 
+{Basic:} half of the selected unit 
+Advanced: all of the selected unit 
+Expert: all enemy units "	"Some enemy creatures forget to use their ranged attack.
+
+None: half of the selected unit 
+Basic: half of the selected unit 
+{Advanced:} all of the selected unit 
+Expert: all enemy units "	"Some enemy creatures forget to use their ranged attack.
+
+None: half of the selected unit 
+Basic: half of the selected unit 
+Advanced: all of the selected unit 
+{Expert:} all enemy units "	 COMBAT_SPELL|CREATURE_TARGET|MIND_SPELL
+Blind	Blind	3	 	 	x	 	24	21	18	15	0	75	50	25	0	4	2	4	13	4	12	8	6	9	35	40	45	50	"Blinds selected enemy unit so it can not move and retaliate at full strength. The effect is broken when the unit is attacked.
+
+{None:} unit retaliates at 75% of its strength 
+Basic: unit retaliates at 50% of its strength 
+Advanced: unit retaliates at 25% of its strength 
+Expert: unit does not retaliate "	"Blinds selected enemy unit so it can not move and retaliate at full strength. The effect is broken when the unit is attacked.
+
+None: unit retaliates at 75% of its strength 
+{Basic:} unit retaliates at 50% of its strength 
+Advanced: unit retaliates at 25% of its strength 
+Expert: unit does not retaliate "	"Blinds selected enemy unit so it can not move and retaliate at full strength. The effect is broken when the unit is attacked.
+
+None: unit retaliates at 75% of its strength 
+Basic: unit retaliates at 50% of its strength 
+{Advanced:} unit retaliates at 25% of its strength 
+Expert: unit does not retaliate "	"Blinds selected enemy unit so it can not move and retaliate at full strength. The effect is broken when the unit is attacked.
+
+None: unit retaliates at 75% of its strength 
+Basic: unit retaliates at 50% of its strength 
+Advanced: unit retaliates at 25% of its strength 
+{Expert:} unit does not retaliate "	 COMBAT_SPELL|CREATURE_TARGET
+Teleport	Teleport	3	 	x	 	 	24	21	18	15	0	0	0	0	0	12	12	7	4	8	3	5	10	9	20	20	20	20	"Teleports selected friendly unit to an unoccupied spot on the battlefield.
+
+{None:} can not teleport over walls or moats 
+Basic: can not teleport over walls or moats 
+Advanced: can not teleport over walls
+Expert: no restrictions "	"Teleports selected friendly unit to an unoccupied spot on the battlefield.
+
+None: can not teleport over walls or moats 
+{Basic:} can not teleport over walls or moats 
+Advanced: can not teleport over walls
+Expert: no restrictions "	"Teleports selected friendly unit to an unoccupied spot on the battlefield.
+
+None: can not teleport over walls or moats 
+Basic: can not teleport over walls or moats 
+{Advanced:} can not teleport over walls
+Expert: no restrictions "	"Teleports selected friendly unit to an unoccupied spot on the battlefield.
+
+None: can not teleport over walls or moats 
+Basic: can not teleport over walls or moats 
+Advanced: can not teleport over walls
+{Expert:} no restrictions "	 COMBAT_SPELL|CREATURE_TARGET
+Remove Obstacle	Remove Obstacle	1	 	 	x	 	8	7	6	5	0	0	0	0	0	2	1	2	7	2	6	5	3	5	1	1	1	1	"Removes any normal obstacle (trees, rocks, etc.) of the caster's choice from the battlefield.
+
+{None:} -
+Basic: -
+Advanced: can remove Fire Walls 
+Expert: can remove any magical obstacle "	"Removes any normal obstacle (trees, rocks, etc.) of the caster's choice from the battlefield.
+
+None: -
+{Basic}: -
+Advanced: can remove Fire Walls 
+Expert: can remove any magical obstacle "	"Removes any normal obstacle (trees, rocks, etc.) of the caster's choice from the battlefield.
+
+None: -
+Basic: -
+{Advanced:} can remove Fire Walls 
+Expert: can remove any magical obstacle "	"Removes any normal obstacle (trees, rocks, etc.) of the caster's choice from the battlefield.
+
+None: -
+Basic: -
+Advanced: can remove Fire Walls 
+{Expert:} can remove any magical obstacle "	 COMBAT_SPELL|OBSTACLE_TARGET
+Clone	Clone	4	 	x	 	 	32	28	24	20	0	4	5	6	7	12	13	7	4	8	3	0	0	8	20	30	40	50	"Creates a duplicate of the selected unit stack. The image is dispelled if it is attacked.
+
+{None:} works on level 1-4 creatures
+Basic: works on level 1-5 creatures
+Advanced: works on level 1-6 creatures
+Expert: works on level 1-7 creatures"	"Creates a duplicate of the selected unit stack. The image is dispelled if it is attacked.
+
+None: works on level 1-4 creatures
+{Basic:} works on level 1-5 creatures
+Advanced: works on level 1-6 creatures
+Expert: works on level 1-7 creatures"	"Creates a duplicate of the selected unit stack. The image is dispelled if it is attacked.
+
+None: works on level 1-4 creatures
+Basic: works on level 1-5 creatures
+{Advanced:} works on level 1-6 creatures
+Expert: works on level 1-7 creatures"	"Creates a duplicate of the selected unit stack. The image is dispelled if it is attacked.
+
+None: works on level 1-4 creatures
+Basic: works on level 1-5 creatures
+Advanced: works on level 1-6 creatures
+{Expert:} works on level 1-7 creatures"	 COMBAT_SPELL|CREATURE_TARGET
+Summon: Fire	Summon: Fire	5	 	 	x	 	32	28	24	20	2	2	3	4	5	4	2	4	13	4	12	8	6	10	12	24	36	48	"Summons a group of fire messengers.
+Orb of Tempestuous Fire improves the effect.
+
+{None:} 120 * Power + 240 hit points 
+Basic: 120 * Power + 360 hit points 
+Advanced: 120 * Power + 480 hit points 
+Expert: 120 * Power + 600 hit points "	"Summons a group of fire messengers.
+Orb of Tempestuous Fire improves the effect.
+
+None: 120 * Power + 240 hit points 
+{Basic:} 120 * Power + 360 hit points 
+Advanced: 120 * Power + 480 hit points 
+Expert: 120 * Power + 600 hit points "	"Summons a group of fire messengers.
+Orb of Tempestuous Fire improves the effect.
+
+None: 120 * Power + 240 hit points 
+Basic: 120 * Power + 360 hit points 
+{Advanced:} 120 * Power + 480 hit points 
+Expert: 120 * Power + 600 hit points "	"Summons a group of fire messengers.
+Orb of Tempestuous Fire improves the effect.
+
+None: 120 * Power + 240 hit points 
+Basic: 120 * Power + 360 hit points 
+Advanced: 120 * Power + 480 hit points 
+{Expert:} 120 * Power + 600 hit points "	 COMBAT_SPELL
+Summon: Earth	Summon: Earth	5	x	 	 	 	32	28	24	20	2	2	3	4	5	5	9	6	7	11	10	8	8	7	15	30	45	60	"Summons a group of earth messengers.
+Orb of Silt improves the effect.
+
+{None:} 150 * Power + 300 hit points 
+Basic: 150 * Power + 450 hit points 
+Advanced: 150 * Power + 600 hit points 
+Expert: 150 * Power + 750 hit points "	"Summons a group of earth messengers.
+Orb of Silt improves the effect.
+
+None: 150 * Power + 300 hit points 
+{Basic:} 150 * Power + 450 hit points 
+Advanced: 150 * Power + 600 hit points 
+Expert: 150 * Power + 750 hit points "	"Summons a group of earth messengers.
+Orb of Silt improves the effect.
+
+None: 150 * Power + 300 hit points 
+Basic: 150 * Power + 450 hit points 
+{Advanced:} 150 * Power + 600 hit points 
+Expert: 150 * Power + 750 hit points "	"Summons a group of earth messengers.
+Orb of Silt improves the effect.
+
+None: 150 * Power + 300 hit points 
+Basic: 150 * Power + 450 hit points 
+Advanced: 150 * Power + 600 hit points 
+{Expert:} 150 * Power + 750 hit points "	 COMBAT_SPELL
+Summon: Water	Summon: Water	4	 	x	 	 	27	24	20	16	2	2	4	6	8	12	13	7	4	8	3	0	0	8	9	18	27	36	"Summons a group of water messengers.
+Orb of Driving Rain improves the effect.
+
+{None:} 90 * Power + 180 hit points 
+Basic: 90 * Power + 270 hit points 
+Advanced: 90 * Power + 360 hit points 
+Expert: 90 * Power + 450 hit points "	"Summons a group of water messengers.
+Orb of Driving Rain improves the effect.
+
+None: 90 * Power + 180 hit points 
+{Basic:} 90 * Power + 270 hit points 
+Advanced: 90 * Power + 360 hit points 
+Expert: 90 * Power + 450 hit points "	"Summons a group of water messengers.
+Orb of Driving Rain improves the effect.
+
+None: 90 * Power + 180 hit points 
+Basic: 90 * Power + 270 hit points 
+{Advanced:} 90 * Power + 360 hit points 
+Expert: 90 * Power + 450 hit points "	"Summons a group of water messengers.
+Orb of Driving Rain improves the effect.
+
+None: 90 * Power + 180 hit points 
+Basic: 90 * Power + 270 hit points 
+Advanced: 90 * Power + 360 hit points 
+{Expert:} 90 * Power + 450 hit points "	 COMBAT_SPELL
+Summon: Air	Summon: Air	4	 	 	 	x	27	24	20	16	2	2	4	6	8	0	9	21	10	10	7	0	0	12	6	12	18	24	"Summons a group of air messengers.
+Orb of the Firmament improves the effect.
+
+{None:} 60 * Power + 120 hit points 
+Basic: 60 * Power + 180 hit points 
+Advanced: 60 * Power + 240 hit points 
+Expert: 60 * Power + 300 hit points "	"Summons a group of air messengers.
+Orb of the Firmament improves the effect.
+
+None: 60 * Power + 120 hit points 
+{Basic:} 60 * Power + 180 hit points 
+Advanced: 60 * Power + 240 hit points 
+Expert: 60 * Power + 300 hit points "	"Summons a group of air messengers.
+Orb of the Firmament improves the effect.
+
+None: 60 * Power + 120 hit points 
+Basic: 60 * Power + 180 hit points 
+{Advanced:} 60 * Power + 240 hit points 
+Expert: 60 * Power + 300 hit points "	"Summons a group of air messengers.
+Orb of the Firmament improves the effect.
+
+None: 60 * Power + 120 hit points 
+Basic: 60 * Power + 180 hit points 
+Advanced: 60 * Power + 240 hit points 
+{Expert:} 60 * Power + 300 hit points "	 COMBAT_SPELL
+
+Creature Abilities																																	
+
+Stone Gaze	Stone Gaze	3					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Poison	Poison	0					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Bind	Bind	0					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Disease	Disease	2					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Paralyze	Paralyze	4					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Age	Age	5					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Death Cloud	Death Cloud	0					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Thunderbolt	Thunderbolt	0					0	0	0	0	0	0	0	0	0	12	13	12	13	12	13	12	13	13	1	1	1	1					 CREATURE_SPELL
+Dispel Helpful Spells	Dispel Helpful Spells	0					0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1					
+Death Stare	Death Stare	0					0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1					
+Acid breath	Acid Breath	0					0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1					
+
+WoG Spells																																	
+
+Summon Ghost	Summon Ghost	5	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	81
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	82
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	83
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	84
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	85
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	86
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	87
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	88
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	89
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	90
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	91
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	92
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	93
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	94
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	95
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	96
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	97
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	98
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	99
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	100
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	101
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	102
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	103
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	104
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	105
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	106
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	107
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	108
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	109
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	110
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	111
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	112
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	113
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	114
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	115
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	116
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	117
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	118
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	119
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	120
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	121
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	122
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	123
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	124
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	125
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	126
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	127
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	128
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	129
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	130
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	131
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	132
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	133
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	134
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	135
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	136
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	137
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	138
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	139
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	140
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	141
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	142
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	143
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	144
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	145
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	146
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	147
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	148
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	149
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	150
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	151
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	152
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	153
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	154
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	155
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	156
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	157
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	158
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	159
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	160
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	161
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	162
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	163
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	164
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	165
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	166
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	167
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	168
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	169
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	170
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	171
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	172
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	173
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	174
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	175
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	176
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	177
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	178
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	179
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	180
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	181
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	182
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	183
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	184
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	185
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	186
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	187
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	188
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	189
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	190
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	191
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	192
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	193
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	194
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	195
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	196
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	197
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	198
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	199
+WoG Spell	WoG Spell	0	x	x	x	x	5	4	3	2	20	5	10	15	20	20	10	10	10	10	10	10	10	10	25	25	25	25	WoG Spell Level Normal	WoG Spell Level Basic	WoG Spell Level Advanced	WoG Spell Level Expert	---

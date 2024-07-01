@@ -1,0 +1,70 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=6.5(May).2016
+
+Author: majaczek
+
+
+
+!?FU55126; //Advanced Guards type hook
+!!SN:X?y1/1; //registers addres
+!_!VRy11:S7721205; //not needed
+
+ErmHandlerFunc receives two SN:X arguments: (Context pointer, ExecuteOverwrittenCode? = 1)
+If you set ExecuteOverwrittenCode to 0, be sure to change context.RetAddr
+Context structure (offsets in brackets):
+: EDI (0), ESI (4), EBP (8), ESP (12), EBX (16), EDX (20), ECX (24), EAX (28)
+: RetAddr (32)
+
+!!VRy2:Sy1 +24; //y2 is pointer to ECX
+!!UN:Cy2/4/?y3; //get ECX to y3
+
+!!VRy3&y3=1:S138; halbardiers -> halfings
+!!VRy3&y3=17:S215; battle dwarves -> dwarf defenders
+!!VRy3&y3=43:S236; familiars -> scamps
+!!VRy3&y3=57:S218; skeleton warriors -> skeleton archers
+!!VRy3&y3=71:S233; Infernal Troglodytes -> phosporous troglodytes
+!!VRy3&y3=85:S143; Hobgoblins -> Rogues
+!!VRy3&y3=99:S143; Gnoll Maruders -> Rogues
+!!VRy3&y3=119:S227; Sprites -> nymphs
+
+!!UN:Cy2/4/y3; //store y3 to ECX
+
+
+
+
+**FU55129;
+**Reserved for Knightmare Heroes
+
+
+********************HOOK_CODE******************************
+!?BA0&1000;
+!!SN:L^EraPlugins\erm_hooker.era^/?y1 Ay1/^SetHook^/?y2;
+!_!SN:Ey2/1/7721202/55125; //enable guards            75D0F2
+!!SN:Ey2/1/7466720/55126; //guards type               71EEE0
+!_!SN:Ey2/1/7721659/55127; //creature spellpower
+
+!_!SN:Ey2/1/7695135/55128; //Ghost Hook               756B1F
+
+!_!SN:Ey2/1/7735075/55134; //Hell Steed Hook 3    760723
+!_!SN:Ey2/1/7727290/55133; //Hell Steed Hook 2    75E8BA
+!_!SN:Ey2/1/7719481/55130; //Hell Steed Hook      75CA39
+!_!SN:Ey2/1/7719276/55131; //Sorceress Hook       75C96C
+!_!SN:Ey2/1/4488921/55132; //Enchanter Hook       447ED9
+!?BA1&1000;
+!!SN:L^EraPlugins\erm_hooker.era^/?y1 Ay1/^UnsetHook^/?y2;
+
+!_!SN:Ey2/1/4488921;
+!_!SN:Ey2/1/7719276;
+!_!SN:Ey2/1/7719481;
+!_!SN:Ey2/1/7727290; //Hell Steed Hook 2
+!_!SN:Ey2/1/7735075; //Hell Steed Hook 3
+
+!_!SN:Ey2/1/7695135;   !_!UN:C7695514/4/159;
+
+!_!SN:Ey2/1/7721202;
+!!SN:Ey2/1/7466720;
+!_!SN:Ey2/1/7721659;
+************************************************************
+

@@ -1,0 +1,609 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=9.9(September).2012
+
+*Vars used: z1, v1 - temp vars
+
+*Functions used: 671088638-671088659
+*PO:B0 = 1 if market was from first  version (with only cr->art)
+*PO:B0 = 2 if market was from second version (cr->art + art->cr)
+
+*SN:M slots used: 1-11
+
+*** edited by majaczek ***
+* SN:M slots used: 1-9
+* fixed crashes with era 3.0.3
+
+************                           Globals
+!#VRz17:S^Smuggler's Hideout^;
+!#HT63/7:T17;
+!#SN:W^ThisMarketX^/-1;
+!#SN:W^ThisMarketY^/-1;
+!#SN:W^ThisMarketL^/-1;
+!#TM4:S1/999/7/255;             Timer once per week
+************                                      Creature pools for smugglers
+*00  Dirt
+!#SN:M1;
+!#SN:M1/9/0/1;
+!#SN:M1/0/1 M1/1/2 M1/2/16  M1/3/18  M1/4/138  M1/5/139 M1/6/140 M1/7/143 M1/8/194;
+*01  Sand
+!#SN:M2;
+!#SN:M2/10/0/1;
+!#SN:M2/0/56   M2/1/58 M2/2/70 M2/3/84 M2/4/85 M2/5/139 M2/6/143 M2/7/142 M2/8/142;
+!#SN:M2/9/141;
+*02  Grass
+!#SN:M3;
+!#SN:M3/18/0/1;
+!#SN:M3/0/1    M3/1/1    M3/2/2    M3/3/6    M3/4/14   M3/5/16   M3/6/18;
+!#SN:M3/7/56   M3/8/84   M3/9/98   M3/10/118 M3/11/119 M3/12/137 M3/13/138;
+!#SN:M3/14/139 M3/15/140 M3/16/143 M3/17/144;
+*03  Snow
+!#SN:M4;
+!#SN:M4/14/0/1;
+!#SN:M4/0/17  M4/1/28  M4/2/29   M4/3/34   M4/4/84   M4/5/85   M4/6/136 M4/7/139;
+!#SN:M4/8/143 M4/9/140 M4/10/170 M4/11/173 M4/12/193 M4/13/140;
+*04  Swamp
+!#SN:M5;
+!#SN:M5/17/0/1;
+!#SN:M5/0/42  M5/1/56  M5/2/59   M5/3/84   M5/4/85   M5/5/86   M5/6/87   M5/7/98;
+!#SN:M5/8/99  M5/9/100 M5/10/101 M5/11/138 M5/12/139 M5/13/140 M5/14/194 M5/15/144;
+!#SN:M5/16/143;
+*05  Rough
+!#SN:M6;
+!#SN:M6/12/0/1;
+!#SN:M6/0/56  M6/1/56  M6/2/70   M5/3/84   M5/4/85   M5/5/86   M5/6/87   M5/7/88;
+!#SN:M6/8/140 M6/9/139 M6/10/143 M6/11/194;
+*06  Subterranean
+!#SN:M7;
+!#SN:M7/19/0/1;
+!#SN:M7/0/16   M7/1/28   M7/2/42   M7/3/43  M7/4/56   M7/5/57   M7/6/70   M7/7/71;
+!#SN:M7/8/72   M7/9/73   M7/10/84  M7/11/86 M7/12/98  M7/13/138 M7/14/139 M7/15/140;
+!#SN:M7/16/142 M7/17/143 M7/17/171 M7/18/194;
+*07  Lava
+!#SN:M8;
+!#SN:M8/14/0/1;
+!#SN:M8/0/42  M8/1/43  M8/2/44   M8/3/56   M8/4/58   M8/5/71   M8/6/84 M8/7/138;
+!#SN:M8/8/139 M8/9/142 M8/10/143 M8/11/169 M8/12/171 M8/13/194;
+*08  Water/shared list
+!#SN:M9;
+!#SN:M9/8/0/1;
+!#SN:M9/0/6 M9/1/28 M9/2/34 M9/3/56 M9/4/84 M9/5/138 M9/6/139 M9/7/194;
+
+
+!?TM4;
+!!UN:U63/7/?y1;              Calculate hideouts
+!j!VRy1:-1;                    y1 - number of hideouts
+!!DO671088650/1/y1/1:P;       Loop over them and reset them
+
+!?FU671088650;                Reset hideout x16
+!!UN:U63/7/x16/1;
+!!VRv1:-1;                    correct X for entrance square
+!!PO1:B0/0;
+
+!?FU671088654;  !_!FU:E;       Set Dlg hint to any string
+!_!FU&x1=1/x2<=16:E; 
+!_!FU&x1=2/x2<=30/x2>=23:E;
+!!SN:E7510739/1/x1;           v1 = GetDlgStruct_729AD3(ID);
+!_!IF:M^ FU671088654 %V1 ^;
+!!SN:E7509967/2/v1/x2/x3;     SetDialogHint_7297CF(Dlg, ItemID, Hint);
+
+!?DL&v998=3/v999=1/v1000=13;
+!!FU671088651:P;                     Show DL1.
+!!DL3:C1;
+!?DL&v998=3/v999=2/v1000=13;
+!!FU671088652:P;                     Show DL2.
+!!DL3:C1;
+!?DL&v998=3/v999=3/v1000=13;
+!!DL3:C1;                            Exit.
+
+
+!?FU671088651;
+!!VRz1:S^HideoutDlg.txt^;
+!!DL1:Nz1;                Load DL templates
+!!SN:W^ThisMarketX^/?y1;
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!SN:M11;
+!!SN:M11/7/1/0;
+!!DO671088641/0/6/1:P;            Set up creature icons and captions
+!!HE-1:B0/?z1;                    Get hero's name
+!!VRz1:S^%Z1's creatures:^;
+!!DL1:A8/3/z1/1;                  Write caption for left side
+!!SN:M11;
+!!SN:M11/7/1/0;
+!!DO671088643/0/6/1:Py1/y2/y3;    Set artifacts
+!!DL1:S;                          Show dialog
+
+!?OB63/7&1000;                    Enter object (For human)
+!!SN:W^ThisMarketX^/v998;
+!!SN:W^ThisMarketY^/v999;
+!!SN:W^ThisMarketL^/v1000;
+!!SN:W^SelectedCreatureSlot^/-1;
+!!SN:W^SelectedMarketItem^/-1;
+!!SN:W^SelectedHeroArt^/-1;
+!!SN:W^SelectedSmugglerCreature^/-1;
+!!PO998:B0/?v1;                    v1 = 1 if market has setup already
+!!if&v1<>2;                         if no setup
+  !!DO671088642/0/6/1:Pv998/v999/v1000;   Create setup for artifacts
+  !!DO671088653/0/6/1:Pv998/v999/v1000;   Create setup for creatures
+  !!PO998:B0/2;                           Mark that there is setup
+!!en;
+!!VRz1:S^HideoutDlg.txt^;
+!!DL3:Nz1;                Load DL templates
+!!DL3:S;
+************                           Market functions
+
+!?FU671088644;                         Set pcx with ID x16 to zx1
+!!DLx2:Ax16/11/zx1/1;
+
+!?FU671088643;                            Set artifact pictures and hints
+!!SN:W^Market %X1/%X2/%X3 item %X16^/?y1;
+!!VRy3:S20+x16;                           y3 - Artifact slot
+!_!SN:M11/x16/^Sold out^;
+
+!!VRy44:S22 +x16;
+!_!VRzy44:S^ ^;
+!!VRy77:S512 *y44 -512 +9597928; 
+
+!!if&y1>-1;
+  !_!UN:N0/1/y1;
+  !!UN:N0/y44/y1;
+  !_!SN:M11/x16/z1;
+  !!DL1:Ay3/4/y1/1;
+!!el;
+  !!VRzy44:S^Sold out^;
+!!en;
+!_!SN:M11/?y4/x16;
+!_!FU671088654:P1/y3/y4;            Set Dlg hint
+!!FU671088654:P1/y3/y77;            Set Dlg hint
+
+!?FU671088642;          generate random artifacts for first visit.
+* excluded artifacts:
+* war machines
+* grail, spell book and scroll
+* highlighted slot and lock
+* blank WoG artifacts
+!!UN:J6/30/?y1;
+!!SN:W^Market %X1/%X2/%X3 item %X16^/y1;
+
+!?FU671088653;                          Generate random creatures
+!!TRx1/x2/x3:T?y1/d/d/d/d/d/d/d;
+!!VRy1:+1;                              y1 - Number of SN:M slot
+!!SN:W^Market %X1/%X2/%X3 creature %X16^/-1;
+!!VRy5:S1 R100;                         y5 - Random number [1;100]
+!!if&y5>50;
+  !!VRy1&y5<75:S9;                 y1 - shared creature array if random = [50;75]
+  !!SN:My1/?y2;                    y2 - Number of elements in slot y1
+  !!VRy2:-1;                       y2 - number of last element in slot
+  !!VRy3:S0 Ry2;                   y3 - selected slot
+  !!SN:My1/y3/?y7;                 y7 - creature type
+  !!SN:W^Market %X1/%X2/%X3 creature %X16^/y7;
+!!en;
+
+!?FU671088641;                  update hero information in dialog
+*x16 - Hero's slot
+!!HE-1:C0/x16/?y1/?y2;  y1 - creature type, y2 - amount of creatures
+!!VRy3:Sx16+1;          y3 - Creature portrait slot ID
+!!VRy4:S2+y1;           y4 - Frame of creature ID
+!!VRy4&y1=-1:S0;        y4 = 0 if no creature at that slot
+!!DL1:Ay3/4/y4/1;       End of creature icon section
+!!if&y1>-1;             if there is creature in that slot
+  !!VRy44:Sx16 +3;
+  !!UN:N3/y44/y1/1;       Get creature name
+  !_!SN:M11/x16/zy44;
+  !!VRy7:S512 *y44 -512 +9597928; set y7 to address of zy44
+  !!FU671088654:P1/y3/y7;
+  !!VRy3:+8;             y3 - ID of textbox
+  !!FU671088654:P1/y3/y7;
+
+  !_!UN:N3/1/y1/1;       Get creature name
+  !_!SN:M11/x16/z1;
+  !_!SN:M11/?y7/x16;
+  !_!FU671088654:P1/y3/y7;
+  !_!VRy3:+8;             y3 - ID of textbox
+  !_!FU671088654:P1/y3/y7;
+!!en;
+!!VRz2:S^%Y2^;          z1 - amount of creatures
+!!VRy4:S9+x16;          y4 - TextBox ID
+!!VRz2&y2=0:S^^;        Empty string if no creature
+!!DL1:Ay4/3/z2/1;       Set creature number caption
+
+!?FU671088647;                  Get cost of artifact in creatures
+*********************** x1 artifact ID, x2 - creature cost
+!!UN:Ax1/1/?y1;         y1 - art cost
+!!VRx3:Sy1*10:7:x2+1;   x3 - ArtCost in creatures
+
+!?FU671088645;              Update lower part when selects creature and artifact
+!!SN:W^ThisMarketX^/?y1;    coordinates
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!SN:W^SelectedMarketItem^/?y4;
+!!SN:W^SelectedCreatureSlot^/?y5;
+!!SN:W^Market %Y1/%Y2/%Y3 item %Y4^/?y6; y6 - artID
+!!FU&y6=-1:E;                            exit if empty slot
+!!HE-1:C0/y5/?y7/?y10;                   y10 - number of creatures in selected slot
+!!MA:Cy7/6/?y9;                          y9 - creature cost
+!!FU671088647:Py6/y9/?y8;                        y8 - ArtCost in creatures
+!!VRz2:S^^;
+!!SN:W^SelectedCreatureAmount^/-1;
+!!if&y10>=y8;                             if there are enough creatures in selected stack
+  !!VRz2:S^%Y8^;
+  !!SN:W^SelectedCreatureAmount^/y8;
+  !!DL1:A17/3/z2/1;                        Show number under creature portrait
+  !!VRy11:Sy7+2;
+  !!DL1:A16/4/y11/1;
+  !!DL1:A27/4/y6/1;
+!!en;
+
+!?FU671088646;                            Write price tags.
+!!SN:W^ThisMarketX^/?y1;                  coordinates
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!SN:W^Market %Y1/%Y2/%Y3 item %X16^/?y4; y4 - artID
+!!FU&y4=-1:E;
+!!FU671088647:Py4/x1/?y8;
+!!VRz1:S^%Y8^;                            z1 - string of cost
+!!VRy7:S28+x16;                           y7 - ID of text box
+!!DL1:Ay7/3/z1/1;                         Set text
+
+!?FU671088649;                            Clear lower area for Cr->Art
+!!DL1:A16/4/0/1;                          Hide selected creature pic
+!!DL1:A27/4/144/1;                        Hide selected art pic
+!!VRz2:S^^;
+!!DL1:A17/3/z2/1;                         Hide Creature num text
+!!DL1:Ay9/3/z2/1;                         Hide art text
+
+!?FU671088648;                            Reset SN:W memory on exit or screen switch
+!!SN:W^SelectedCreatureAmount^/-1;
+!!SN:W^SelectedCreatureSlot^/-1;
+!!SN:W^SelectedMarketItem^/-1;
+
+
+************                           Cr->Art DL
+
+!?DL&v998=1/v999=36/v1000=13;             Trade button
+!!SN:W^ThisMarketX^/?y1;                  coordinates
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!SN:W^SelectedCreatureSlot^/?y4;
+!!FU&y4=-1:E;
+!!SN:W^SelectedMarketItem^/?y5;
+!!FU&y5=-1:E;
+!!SN:W^Market %Y1/%Y2/%Y3 item %Y5^/?y6;  y6 - artID
+!!FU&y6=-1:E;
+!!SN:W^SelectedCreatureAmount^/?y7;
+!!FU&y7=-1:E;
+!!VRy7:*-1;
+!!HE-1:C0/y4/d/dy7;                       Take creatures
+!!HE-1:C0/y4/d/?y10;                      y10 - new amount of creatures
+!!VRy11:Sy4+9;                            y11 - ID of text box
+!!VRz2:S^%Y10^;                           z2 - sting of creature amount
+!!DL1:Ay11/3/z2/1;                        Update creature num
+!!HE-1:A4/y6;                             Give artifact
+!!SN:W^Market %Y1/%Y2/%Y3 item %Y5^/-1;   Set slot as empty
+!!VRy8:S20+y5;                            y8 - Artifact picture slot
+!!VRy9:S28+y5;                            y9 - Artifact cost slot
+!!VRz1:S^TpMrkSeC.pcx^;
+!!DO671088644/38/44/1:P1/1;                         Remove highlights
+!!VRz1:S^TpMrkSeA.pcx^;
+!!DO671088644/45/51/1:P1/1;                         Remove highlights
+!!DL1:Ay8/4/145/1;                        Set artifact picture
+!!FU671088649:P;
+!!FU671088648:P;
+!!VRy2:S22+y5;
+!!VRzy2:S^Sold out^;
+
+!?DL&v998=1/v999>0/v999<8/v1000=12;    Click on creature icon
+!!FU671088649:P;
+!!VRy4:Sv999-1;
+!!HE-1:C0/y4/?y6/d;                    y6 - Creature ID
+!!FU&y6=-1:E;                          Exit if no reature at that slot
+!!SN:W^SelectedCreatureSlot^/y4;
+!!VRz18:S^TpMrkSeC.pcx^;
+!!DO671088644/38/44/1:P18/1;           Reset outlines
+!!VRz18:S^TpMrkSe2.pcx^;
+!!VRy3:S37+v999;                       y3 - ID of outline of clicked item
+!!DL1:Ay3/11/z18/1;                    Show outline
+!!MA:Cy6/6/?y5;                        y5 - creature cost
+!!DO671088646/0/6/1:Py5;               Calculate costs and show them under artifacts
+!!SN:W^SelectedMarketItem^/?y6;
+!!FU&y6=-1:E;                          exit if no artifact selected
+!!FU671088645:P;                       Update lower part
+
+!?DL&v998=1/v999>19/v999<27/v1000=14;    RMB on artifact
+!!SN:W^ThisMarketX^/?y1;                 coordinates
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!VRy4:Sv999-20;
+!!SN:W^Market %Y1/%Y2/%Y3 item %Y4^/?y5;
+!!FU&y5=-1:E;
+!!UN:C6687592/4/?y6;             y6 - pArtTable
+!!VRy7:Sy5*32+16+y6;             y7 - Pointer to pointer to description
+!!UN:Cy7/4/?y8;                  y8 - Pointer to description
+!!SN:L^msvcrt.dll^/?y9;
+!!SN:Ay9/^strlen^/?y10;
+!!SN:Ey10/1/y8;
+!!VRy11:S512*0+9597928; Address of z1
+!!VRv1&v1>511:S511;     To avoid overwriting next var.
+!!SN:Kv1/y8/y11/1;      Copy memory
+!!VRy12:Sy11+v1;        place where NULL should be
+!!UN:Cy12/1/0;          Make it sz
+!!IF:Mv1/4/z1;
+
+!?DL&v998=1/v999>19/v999<27/v1000=13;         LMB on artifact
+!!VRy3:Sv999-20;
+!!SN:W^SelectedMarketItem^/y3;
+!!VRz18:S^TpMrkSeA.pcx^;
+!!DO671088644/45/51/1:P18/1;                  Reset outlines
+!!VRz18:S^TpMrkSe3.pcx^;
+!!VRy1:Sv999-20+45;                           y1 - ID of outline of clicked item
+!!DL1:Ay1/11/z18/1;                           Show outline
+!!SN:W^SelectedCreatureSlot^/?y2;
+!!FU&y2=-1:E;                                 exit if no creature selected
+!!FU671088645:P;                              Update lower part
+
+!?DL&v998=1/v999=30721/v1000=13;               exit button
+!!SN:W^ThisMarketX^/-1;
+!!SN:W^ThisMarketY^/-1;
+!!SN:W^ThisMarketL^/-1;
+!!FU671088648:P;
+!!DL1:C1;
+
+***************                                Art->Cr DL
+
+!?FU671088639;                                 Show creatures
+!!SN:W^Market %X1/%X2/%X3 creature %X16^/?y1;
+!!FU&y1=-1:E;                                  Exit if no creature
+!!VRy2:S23+x16;                                DlgItem ID
+!!VRy3:S2+y1;                                  y3 - Def Frame
+!!DL2:Ay2/4/y3/1;                              Set picture
+!_!UN:N3/1/y1/1;                                z1 - hint text
+!_!SN:M11/x16/z1;                               Set string x16 to z1
+!_!SN:M11/?y4/x16;                              Get address of hint text
+!_!FU671088654:P2/y2/y4;
+
+!!VRy44:S3 +x16;
+!!VRy77:S512 *y44 -512 +9597928;               set y77 to address of zy44
+!!UN:N3/y44/y1/1;                                zy44 - hint text
+!!FU671088654:P2/y2/y77;
+
+
+!?FU671088638;                                Show hero arts
+!!VRy2:Sx16+1;                                y2 - Dialog item ID
+!!HE-1:A1/?y1/x16;                            y1 - Artifact type
+!!if&y1=-1;
+  !!DL2:Ay2/4/144/1;                          Set picture
+  !_!SN&y1=0:M10/x16/^ ^;                      Correct name for
+  !!VRy44:S22 +x16;
+  !!VRzy44:S^ ^;
+  !!VRy77:S512 *y44 -512 +9597928;               set y77 to address of zy44
+!!el;
+  !!VRy1&y1>1000:S1;                            Correct frame number for scroll
+  !!VRy1&y1=1000:S0;                            Correct frame number for book
+  !!DL2:Ay2/4/y1/1;                             Set picture
+
+  !!VRy44:S22 +x16;
+  !!VRy77:S512 *y44 -512 +9597928;               set y77 to address of zy44
+  !!UN:N0/y44/y1;                                zy44 - Artifact name
+  !!VRzy44&y1=1:S^Spell Scroll^;             Correct name for scroll
+  !!VRzy44&y1=0:S^Spell Book^;               Correct name for book
+
+  !_!UN:N0/1/y1;                                 z1 - Artifact name
+  !_!SN&y1>2:M10/x16/z1;                         M10[x16] = z1
+  !_!SN&y1=1:M10/x16/^Spell Scroll^;             Correct name for scroll
+  !_!SN&y1=0:M10/x16/^Spell Book^;               Correct name for book
+!!en;
+!_!SN:M10/?y3/x16;                             Get address of hint
+!_!FU671088654:P2/y2/y3;                      Set hint
+!!FU671088654:P2/y2/y77;                      Set hint
+
+!?FU671088652;                         Display Art->Cr window
+!!VRz1:S^HideoutDlg.txt^;
+!!DL2:Nz1;
+!!SN:W^ThisMarketX^/?y1;
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!_!SN:M11;
+!_!SN:M11/7/1/0;
+!!DO671088639/0/6/1:Py1/y2/y3;         Show creatures
+!_!SN:M10;
+!_!SN:M10/20/1/0;
+!!DO671088638/0/19/1:P;                Show hero arts
+!!DL2:S1;                              Show DL2
+
+!?FU671088655;           Calculate how many creatures x1 for x2 amount of gold.
+!!MA:Cx1/6/?y1 Lx1/?y2;  y1 - creature cost
+!!VRy2:+1;
+
+!!VRy3:S7-y2;               y3 - 7 - [monster level]
+
+!!VRx3:Sx2*7*y2*y3 :6:7 :10 :y1+1;
+!-!VRx3&x3<1:S1;
+
+!?FU671088656;                                 Write creature amount under picture
+*x1-x3 - market coordinates
+*x4    - artifact type
+*x16   - selected creature slot
+!!VRx1&x1>1000:S1;
+!!SN:W^Market %X1/%X2/%X3 creature %X16^/?y2;
+!!FU&y2=-1:E;
+!!VRx4&x4>1000:S1;                             Correct art ID for scroll
+!!UN:Ax4/1/?y1;                                y1 - artifact cost
+!!FU671088655:Py2/y1/?y3;                      y3 - number of creatures for art
+!!VRz1:S^%Y3^;
+!!VRy4:S31+x16;
+!!DL2:Ay4/3/z1/1;                              set text
+
+!?FU671088657;                          Update lower part when art and cr selected
+!!SN:W^ThisMarketX^/?y1;
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!SN:W^SelectedSmugglerCreature^/?y4;
+!!SN:W^SelectedHeroArt^/?y5;
+!!SN:W^Market %Y1/%Y2/%Y3 creature %Y4^/?y6;
+!!FU&y6=-1:E;
+!!HE-1:A1/?y7/y5;                              y7 - selected art
+!!VRy7&y7>1000:S2;                             Correct y7 for scroll
+!!DL2:A73/4/y7/1;                               Set art icon
+!!VRy10:Sy6+2;                                 y10 - TWCRPORT def frame
+!!DL2:A30/4/y10/1;                               Set Cr icon
+!!UN:Ay7/1/?y9;                                y9 - Art cost
+!!FU671088655:Py6/y9/?y8;
+!!SN:W^NumOfCreaturesToBuy^/y8;
+!!VRz1:S^%Y8^;
+!!DL2:A74/3/z1/1;                              Set creature amount text
+
+!?FU671088659;
+!!SN:E7411341/1/x1;    GetHeroStruct_71168D(signed int HeroID)
+!!SN:E5123648/2/v1/x2; RemoveArtFromHero_4E2E40(HeroStruct *this, int Slot)
+
+!?FU671088658;
+!!HE-1:C0/y2/?y1/d;
+!!if&y1=-1;|y1=x2;
+  !!VRx1:Sx16;
+  !!VRx16:S999;
+!!en;
+
+!?DL&v998=2/v999=37/v1000=13;                   Trade Button
+!!SN:W^ThisMarketX^/?y1;
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!SN:W^SelectedSmugglerCreature^/?y4;
+!!FU&y4=-1:E;
+!!SN:W^SelectedHeroArt^/?y5;
+!!FU&y5=-1:E;
+!!SN:W^Market %Y1/%Y2/%Y3 creature %Y4^/?y6;
+!!FU&y6=-1:E;
+!!SN:W^NumOfCreaturesToBuy^/?y8;
+!!HE-1:C2/y6/y8/1;
+!!HE-1:A1/?y8/y7;
+!!HE-1:N?y10;                                   y10 - Hero Num
+!!FU671088659:Py10/y5;                          Remove artifact
+!!SN:W^SelectedHeroArt^/-1;
+!!SN:W^SelectedSmugglerCreature^/-1;
+
+!_!FU:E;
+
+!!VRz1:S^TpMrkSeA.pcx^;
+!!DO671088644/52/70/1:P1/2;                     Remove highlights
+!!VRz1:S^TpMrkSeC.pcx^;
+!!DO671088644/45/51/1:P1/2;                     Remove highlights
+
+!_!UN:R6/250;
+!_!DO671088638/0/19/1:P;                         Show hero arts
+!_!DO671088638/y5/y5/1:P;
+!_!UN:R6/250;
+
+!!VRy22:Sy5 +1;
+!!DL2:Ay22/4/144/1;                   Set picture
+!!VRy44:S22 +y5;
+!!VRzy44:S^ ^;
+
+!_!VRz10:S^ test ^; 
+!_!DL2:Hy22/z10;
+
+!_!VRy33:S512 *10 -512 +9597928;        set  y7 to adress of z10
+!_!SN:M10/y5/z10;                      Correct name for
+!_!SN:M10/?y33/y5;                    Get address of hint
+!_!FU671088654:P2/y22/y33;           Set hint
+!_!FU671088654:P2/y22/z10;           Set hint
+
+!_!FU:E;
+
+!!VRz1:S^ ^;
+!!DL2:A74/3/z1/1;                              Set creature amount text
+!!DL2:A73/4/144/1;                               Set art icon
+!!DL2:A30/4/0/1;                               Set Cr icon
+
+!_!FU671088652:P;
+
+!?DL&v998=2/v999>0/v999<20/v1000=13;               LMB on hero arts.
+!!SN:W^ThisMarketX^/?y4;
+!!SN:W^ThisMarketY^/?y5;
+!!SN:W^ThisMarketL^/?y6;
+!!VRy1:Sv999 -1;
+!!HE-1:A1/?y2/y1;                                  y2 - selected art
+!!FU&y2=-1:E;
+!!if&v999=17;
+  !!IF:M^The smugglers show no interest in your catapult.^;
+  !!FU:E;
+!!en;
+!!if&y2>775;
+  !!IF:M^The smugglers show no interest in your war machine.^;
+  !!FU:E;
+!!en;
+!!if&v999=18;
+  !!IF:M^The smugglers show no interest in your spell book.^;
+  !!FU:E;
+!!en;
+!!VRz1:S^TpMrkSeA.pcx^;
+!!DO671088644/52/70/1:P1/2;                         Remove highlights
+!!VRz1:S^TpMrkSe3.pcx^;
+!!VRy3:S51+v999;                                    y3 - outline ID
+!!DL2:Ay3/11/z1/1;
+!!DO671088656/0/7/1:Py4/y5/y6/y2;
+!!SN:W^SelectedHeroArt^/y1;
+!!SN:W^SelectedSmugglerCreature^/?y3;
+!!FU&y3=-1:E;
+!!FU671088657:P;                                    update lower part
+
+
+!?DL&v998=2/v999>0/v999<20/v1000=14;     RMB on hero arts
+!!VRy1:Sv999-1;                          y1 - DlgItem
+!!HE-1:A1/?y2/y1;                        y2 - ArtNum
+!!FU&y2=-1:E;
+!!if&v999=18;
+  !!IF:Mv1/4/^It's a spell book. Duh!^;
+  !!FU:E;
+!!en;
+!!if&y2>1000;
+  !!VRy13:Sy2-1001;              y13 - SpellNum
+  !!UN:C6848424/4/?y6;          y6 = *(void *)0x687FA8   (pSpellTable)
+  !!VRy7:S136*y13+120+y6;      y7 - pointer to pointer of description
+!!el;
+  !!UN:C6687592/4/?y6;             y6 - pArtTable
+  !!VRy7:Sy2*32+16+y6;             y7 - Pointer to pointer to description
+!!en;
+!!UN:Cy7/4/?y8;                  y8 - Pointer to description
+!!SN:L^msvcrt.dll^/?y9;          y9
+!!SN:Ay9/^strlen^/?y10;          y10 = &strlen
+!!SN:Ey10/1/y8;
+!!VRy11:S512*1+9597928;          y11 - Address of z2
+!!VRv1&v1>511:S511;              To avoid overwriting next var.
+!!SN:Kv1/y8/y11/1;
+!!VRy12:Sy11+v1;                 place where 0x00 should be
+!!UN:Cy12/1/0;                   Make sure z2 is null-terminated
+!!IF&y2>1000:Q1/9/y13/4^%Z2^;
+!!IF&y2<1000:M1/4/z2;
+
+!?DL&v998=2/v999>22/v999<30/v1000=13;               LMB on creatures.
+!!SN:W^ThisMarketX^/?y1;
+!!SN:W^ThisMarketY^/?y2;
+!!SN:W^ThisMarketL^/?y3;
+!!VRy4:Sv999-23;
+!!SN:W^Market %Y1/%Y2/%Y3 creature %Y4^/?y5;
+!!FU&y5=-1:E;
+!!VRz1:S^^;
+!!DL2:A74/3/z1/1;
+!!VRz1:S^TpMrkSeC.pcx^;
+!!DO671088644/45/51/1:P1/2;                         Remove highlights
+!!VRy6:S45+y4;                                      y6 - outline ID
+!!VRz1:S^TpMrkSe2.pcx^;
+!!DL2:Ay6/11/z1/1;                                    Show outline
+!!SN:W^SelectedSmugglerCreature^/y4;
+!!SN:W^SelectedHeroArt^/?y7;
+!!FU&y7=-1:E;
+!!FU671088657:P;
+
+!?DL&v998=2/v1000=14/v999>20;
+!!FU:E;
+!!IF:Mv1/4/^Item ID = %V999^;
+
+!?DL&v998=2/v999=30721/v1000=13;          exit button
+!!SN:W^ThisMarketX^/-1;
+!!SN:W^ThisMarketY^/-1;
+!!SN:W^ThisMarketL^/-1;
+!!SN:W^NumOfCreaturesToBuy^/-1;
+!!FU671088648:P;                          Clean all vars
+!!DL2:C1;

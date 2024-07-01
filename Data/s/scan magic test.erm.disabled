@@ -1,0 +1,42 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=27.7(July).2015
+
+!?FU55666;
+!!VRx4:Sx16;
+
+
+!!VRx10:Sx4;
+!!VRv1:C8/7/2;
+!!VRx4&x10>0:Sx10+7994243;
+!!VRx5&x10>0:Sx10+7994051;
+!!VRx6&x10>0:Sx10+7993859;
+!!UN&x10>0:Cx4/1/?y1 Cx5/1/?y2 Cx6/1/?y3;
+!_!UN:Cx7/1/?y4 Cx8/1/?y5 Cx9/1/?y6;
+!!VRv1&x10>0:Cy1/y2/y3/y4/y5/y6;
+
+!_!FU:E; //test
+
+!!FU&x10=0:E;
+
+!!VRz1:S^magic_monsters.ini^;
+!!VRz2:S^monster_%X16^;
+
+!!FU&v1=9/v2=8/v3=3:E;
+
+spell_1
+!!VRz3:S^%V1^;
+!!UN:N5/3/1/2/1;
+
+spell_2
+!!VRz3:S^%V2^;
+!!UN:N5/3/2/2/1;
+
+spell_3
+!!VRz3:S^%V3^;
+!!UN:N5/3/3/2/1;
+
+!?CM0;
+!!DO55666/13/196/1:P;
+

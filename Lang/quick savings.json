@@ -1,0 +1,12 @@
+{
+  "eqs": {
+    "start_savegame_name":    "@skirmish@_started_@player@",
+    "this_day_savegame_name": "@skirmish@\\@month@@week@@day@@player@_@version@",
+    "end_turn_autosave_name": "@skirmish@\\@month@@week@@day@@player@_End",
+    "quicksave_name":         "@skirmish@\\@month@@week@@day@@player@_Quick",
+    "lastsave_name":          "@skirmish@_@player@_Last",
+    "saved_msg":              "Saved!",
+    "quicksaved_msg":         "Quicksaved!",
+    "startsaved_msg":         "Skirmish Prepared!"
+  }
+}

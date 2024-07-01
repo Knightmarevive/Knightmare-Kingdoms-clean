@@ -1,0 +1,1515 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=1.7(July).2016
+
+!#UN:G2/0/1/0;  [set speciality pic]
+!#UN:G2/1/1/1;  [set speciality pic]
+!#UN:G2/2/1/2;  [set speciality pic]
+!#UN:G2/3/1/3;  [set speciality pic]
+!#UN:G2/4/1/4;  [set speciality pic]
+!#UN:G2/5/1/5;  [set speciality pic]
+!#UN:G2/6/1/6;  [set speciality pic]
+!#UN:G2/7/1/7;  [set speciality pic]
+!#UN:G2/8/1/8;  [set speciality pic]
+!#UN:G2/9/1/9;  [set speciality pic]
+!#UN:G2/10/1/10;  [set speciality pic]
+!#UN:G2/11/1/11;  [set speciality pic]
+!#UN:G2/12/1/12;  [set speciality pic]
+!#UN:G2/13/1/13;  [set speciality pic]
+!#UN:G2/14/1/14;  [set speciality pic]
+!#UN:G2/15/1/15;  [set speciality pic]
+!#UN:G2/16/1/16;  [set speciality pic]
+!#UN:G2/17/1/17;  [set speciality pic]
+!#UN:G2/18/1/18;  [set speciality pic]
+!#UN:G2/19/1/19;  [set speciality pic]
+!#UN:G2/20/1/20;  [set speciality pic]
+!#UN:G2/21/1/21;  [set speciality pic]
+!#UN:G2/22/1/22;  [set speciality pic]
+!#UN:G2/23/1/23;  [set speciality pic]
+!#UN:G2/24/1/24;  [set speciality pic]
+!#UN:G2/25/1/25;  [set speciality pic]
+!#UN:G2/26/1/26;  [set speciality pic]
+!#UN:G2/27/1/27;  [set speciality pic]
+!#UN:G2/28/1/28;  [set speciality pic]
+!#UN:G2/29/1/29;  [set speciality pic]
+!#UN:G2/30/1/30;  [set speciality pic]
+!#UN:G2/31/1/31;  [set speciality pic]
+!#UN:G2/32/1/32;  [set speciality pic]
+!#UN:G2/33/1/33;  [set speciality pic]
+!#UN:G2/34/1/34;  [set speciality pic]
+!#UN:G2/35/1/35;  [set speciality pic]
+!#UN:G2/36/1/36;  [set speciality pic]
+!#UN:G2/37/1/37;  [set speciality pic]
+!#UN:G2/38/1/38;  [set speciality pic]
+!#UN:G2/39/1/39;  [set speciality pic]
+!#UN:G2/40/1/40;  [set speciality pic]
+!#UN:G2/41/1/41;  [set speciality pic]
+!#UN:G2/42/1/42;  [set speciality pic]
+!#UN:G2/43/1/43;  [set speciality pic]
+!#UN:G2/44/1/44;  [set speciality pic]
+!#UN:G2/45/1/45;  [set speciality pic]
+!#UN:G2/46/1/46;  [set speciality pic]
+!#UN:G2/47/1/47;  [set speciality pic]
+!#UN:G2/48/1/48;  [set speciality pic]
+!#UN:G2/49/1/49;  [set speciality pic]
+!#UN:G2/50/1/50;  [set speciality pic]
+!#UN:G2/51/1/51;  [set speciality pic]
+!#UN:G2/52/1/52;  [set speciality pic]
+!#UN:G2/53/1/53;  [set speciality pic]
+!#UN:G2/54/1/54;  [set speciality pic]
+!#UN:G2/55/1/55;  [set speciality pic]
+!#UN:G2/56/1/56;  [set speciality pic]
+!#UN:G2/57/1/57;  [set speciality pic]
+!#UN:G2/58/1/58;  [set speciality pic]
+!#UN:G2/59/1/59;  [set speciality pic]
+!#UN:G2/60/1/60;  [set speciality pic]
+!#UN:G2/61/1/61;  [set speciality pic]
+!#UN:G2/62/1/62;  [set speciality pic]
+!#UN:G2/63/1/63;  [set speciality pic]
+!#UN:G2/64/1/64;  [set speciality pic]
+!#UN:G2/65/1/65;  [set speciality pic]
+!#UN:G2/66/1/66;  [set speciality pic]
+!#UN:G2/67/1/67;  [set speciality pic]
+!#UN:G2/68/1/68;  [set speciality pic]
+!#UN:G2/69/1/69;  [set speciality pic]
+!#UN:G2/70/1/70;  [set speciality pic]
+!#UN:G2/71/1/71;  [set speciality pic]
+!#UN:G2/72/1/72;  [set speciality pic]
+!#UN:G2/73/1/73;  [set speciality pic]
+!#UN:G2/74/1/74;  [set speciality pic]
+!#UN:G2/75/1/75;  [set speciality pic]
+!#UN:G2/76/1/76;  [set speciality pic]
+!#UN:G2/77/1/77;  [set speciality pic]
+!#UN:G2/78/1/78;  [set speciality pic]
+!#UN:G2/79/1/79;  [set speciality pic]
+!#UN:G2/80/1/80;  [set speciality pic]
+!#UN:G2/81/1/81;  [set speciality pic]
+!#UN:G2/82/1/82;  [set speciality pic]
+!#UN:G2/83/1/83;  [set speciality pic]
+!#UN:G2/84/1/84;  [set speciality pic]
+!#UN:G2/85/1/85;  [set speciality pic]
+!#UN:G2/86/1/86;  [set speciality pic]
+!#UN:G2/87/1/87;  [set speciality pic]
+!#UN:G2/88/1/88;  [set speciality pic]
+!#UN:G2/89/1/89;  [set speciality pic]
+!#UN:G2/90/1/90;  [set speciality pic]
+!#UN:G2/91/1/91;  [set speciality pic]
+!#UN:G2/92/1/92;  [set speciality pic]
+!#UN:G2/93/1/93;  [set speciality pic]
+!#UN:G2/94/1/94;  [set speciality pic]
+!#UN:G2/95/1/95;  [set speciality pic]
+!#UN:G2/96/1/96;  [set speciality pic]
+!#UN:G2/97/1/97;  [set speciality pic]
+!#UN:G2/98/1/98;  [set speciality pic]
+!#UN:G2/99/1/99;  [set speciality pic]
+!#UN:G2/100/1/100;  [set speciality pic]
+!#UN:G2/101/1/101;  [set speciality pic]
+!#UN:G2/102/1/102;  [set speciality pic]
+!#UN:G2/103/1/103;  [set speciality pic]
+!#UN:G2/104/1/104;  [set speciality pic]
+!#UN:G2/105/1/105;  [set speciality pic]
+!#UN:G2/106/1/106;  [set speciality pic]
+!#UN:G2/107/1/107;  [set speciality pic]
+!#UN:G2/108/1/108;  [set speciality pic]
+!#UN:G2/109/1/109;  [set speciality pic]
+!#UN:G2/110/1/110;  [set speciality pic]
+!#UN:G2/111/1/111;  [set speciality pic]
+!#UN:G2/112/1/112;  [set speciality pic]
+!#UN:G2/113/1/113;  [set speciality pic]
+!#UN:G2/114/1/114;  [set speciality pic]
+!#UN:G2/115/1/115;  [set speciality pic]
+!#UN:G2/116/1/116;  [set speciality pic]
+!#UN:G2/117/1/117;  [set speciality pic]
+!#UN:G2/118/1/118;  [set speciality pic]
+!#UN:G2/119/1/119;  [set speciality pic]
+!#UN:G2/120/1/120;  [set speciality pic]
+!#UN:G2/121/1/121;  [set speciality pic]
+!#UN:G2/122/1/122;  [set speciality pic]
+!#UN:G2/123/1/123;  [set speciality pic]
+!#UN:G2/124/1/124;  [set speciality pic]
+!#UN:G2/125/1/125;  [set speciality pic]
+!#UN:G2/126/1/126;  [set speciality pic]
+!#UN:G2/127/1/127;  [set speciality pic]
+!#UN:G2/128/1/128;  [set speciality pic]
+!#UN:G2/129/1/129;  [set speciality pic]
+!#UN:G2/130/1/130;  [set speciality pic]
+!#UN:G2/131/1/131;  [set speciality pic]
+!#UN:G2/132/1/132;  [set speciality pic]
+!#UN:G2/133/1/133;  [set speciality pic]
+!#UN:G2/134/1/134;  [set speciality pic]
+!#UN:G2/135/1/135;  [set speciality pic]
+!#UN:G2/136/1/136;  [set speciality pic]
+!#UN:G2/137/1/137;  [set speciality pic]
+!#UN:G2/138/1/138;  [set speciality pic]
+!#UN:G2/139/1/139;  [set speciality pic]
+!#UN:G2/140/1/140;  [set speciality pic]
+!#UN:G2/141/1/141;  [set speciality pic]
+!#UN:G2/142/1/142;  [set speciality pic]
+!#UN:G2/143/1/143;  [set speciality pic]
+!#UN:G2/144/1/144;  [set speciality pic]
+!#UN:G2/145/1/145;  [set speciality pic]
+!#UN:G2/146/1/146;  [set speciality pic]
+!#UN:G2/147/1/147;  [set speciality pic]
+!#UN:G2/148/1/148;  [set speciality pic]
+!#UN:G2/149/1/149;  [set speciality pic]
+!#UN:G2/150/1/150;  [set speciality pic]
+!#UN:G2/151/1/151;  [set speciality pic]
+!#UN:G2/152/1/152;  [set speciality pic]
+!#UN:G2/153/1/153;  [set speciality pic]
+!#UN:G2/154/1/154;  [set speciality pic]
+!#UN:G2/155/1/155;  [set speciality pic]
+
+
+!#UN:G2/0/3/0;  [set speciality pic]
+!#UN:G2/1/3/1;  [set speciality pic]
+!#UN:G2/2/3/2;  [set speciality pic]
+!#UN:G2/3/3/3;  [set speciality pic]
+!#UN:G2/4/3/4;  [set speciality pic]
+!#UN:G2/5/3/5;  [set speciality pic]
+!#UN:G2/6/3/6;  [set speciality pic]
+!#UN:G2/7/3/7;  [set speciality pic]
+!#UN:G2/8/3/8;  [set speciality pic]
+!#UN:G2/9/3/9;  [set speciality pic]
+!#UN:G2/10/3/10;  [set speciality pic]
+!#UN:G2/11/3/11;  [set speciality pic]
+!#UN:G2/12/3/12;  [set speciality pic]
+!#UN:G2/13/3/13;  [set speciality pic]
+!#UN:G2/14/3/14;  [set speciality pic]
+!#UN:G2/15/3/15;  [set speciality pic]
+!#UN:G2/16/3/16;  [set speciality pic]
+!#UN:G2/17/3/17;  [set speciality pic]
+!#UN:G2/18/3/18;  [set speciality pic]
+!#UN:G2/19/3/19;  [set speciality pic]
+!#UN:G2/20/3/20;  [set speciality pic]
+!#UN:G2/21/3/21;  [set speciality pic]
+!#UN:G2/22/3/22;  [set speciality pic]
+!#UN:G2/23/3/23;  [set speciality pic]
+!#UN:G2/24/3/24;  [set speciality pic]
+!#UN:G2/25/3/25;  [set speciality pic]
+!#UN:G2/26/3/26;  [set speciality pic]
+!#UN:G2/27/3/27;  [set speciality pic]
+!#UN:G2/28/3/28;  [set speciality pic]
+!#UN:G2/29/3/29;  [set speciality pic]
+!#UN:G2/30/3/30;  [set speciality pic]
+!#UN:G2/31/3/31;  [set speciality pic]
+!#UN:G2/32/3/32;  [set speciality pic]
+!#UN:G2/33/3/33;  [set speciality pic]
+!#UN:G2/34/3/34;  [set speciality pic]
+!#UN:G2/35/3/35;  [set speciality pic]
+!#UN:G2/36/3/36;  [set speciality pic]
+!#UN:G2/37/3/37;  [set speciality pic]
+!#UN:G2/38/3/38;  [set speciality pic]
+!#UN:G2/39/3/39;  [set speciality pic]
+!#UN:G2/40/3/40;  [set speciality pic]
+!#UN:G2/41/3/41;  [set speciality pic]
+!#UN:G2/42/3/42;  [set speciality pic]
+!#UN:G2/43/3/43;  [set speciality pic]
+!#UN:G2/44/3/44;  [set speciality pic]
+!#UN:G2/45/3/45;  [set speciality pic]
+!#UN:G2/46/3/46;  [set speciality pic]
+!#UN:G2/47/3/47;  [set speciality pic]
+!#UN:G2/48/3/48;  [set speciality pic]
+!#UN:G2/49/3/49;  [set speciality pic]
+!#UN:G2/50/3/50;  [set speciality pic]
+!#UN:G2/51/3/51;  [set speciality pic]
+!#UN:G2/52/3/52;  [set speciality pic]
+!#UN:G2/53/3/53;  [set speciality pic]
+!#UN:G2/54/3/54;  [set speciality pic]
+!#UN:G2/55/3/55;  [set speciality pic]
+!#UN:G2/56/3/56;  [set speciality pic]
+!#UN:G2/57/3/57;  [set speciality pic]
+!#UN:G2/58/3/58;  [set speciality pic]
+!#UN:G2/59/3/59;  [set speciality pic]
+!#UN:G2/60/3/60;  [set speciality pic]
+!#UN:G2/61/3/61;  [set speciality pic]
+!#UN:G2/62/3/62;  [set speciality pic]
+!#UN:G2/63/3/63;  [set speciality pic]
+!#UN:G2/64/3/64;  [set speciality pic]
+!#UN:G2/65/3/65;  [set speciality pic]
+!#UN:G2/66/3/66;  [set speciality pic]
+!#UN:G2/67/3/67;  [set speciality pic]
+!#UN:G2/68/3/68;  [set speciality pic]
+!#UN:G2/69/3/69;  [set speciality pic]
+!#UN:G2/70/3/70;  [set speciality pic]
+!#UN:G2/71/3/71;  [set speciality pic]
+!#UN:G2/72/3/72;  [set speciality pic]
+!#UN:G2/73/3/73;  [set speciality pic]
+!#UN:G2/74/3/74;  [set speciality pic]
+!#UN:G2/75/3/75;  [set speciality pic]
+!#UN:G2/76/3/76;  [set speciality pic]
+!#UN:G2/77/3/77;  [set speciality pic]
+!#UN:G2/78/3/78;  [set speciality pic]
+!#UN:G2/79/3/79;  [set speciality pic]
+!#UN:G2/80/3/80;  [set speciality pic]
+!#UN:G2/81/3/81;  [set speciality pic]
+!#UN:G2/82/3/82;  [set speciality pic]
+!#UN:G2/83/3/83;  [set speciality pic]
+!#UN:G2/84/3/84;  [set speciality pic]
+!#UN:G2/85/3/85;  [set speciality pic]
+!#UN:G2/86/3/86;  [set speciality pic]
+!#UN:G2/87/3/87;  [set speciality pic]
+!#UN:G2/88/3/88;  [set speciality pic]
+!#UN:G2/89/3/89;  [set speciality pic]
+!#UN:G2/90/3/90;  [set speciality pic]
+!#UN:G2/91/3/91;  [set speciality pic]
+!#UN:G2/92/3/92;  [set speciality pic]
+!#UN:G2/93/3/93;  [set speciality pic]
+!#UN:G2/94/3/94;  [set speciality pic]
+!#UN:G2/95/3/95;  [set speciality pic]
+!#UN:G2/96/3/96;  [set speciality pic]
+!#UN:G2/97/3/97;  [set speciality pic]
+!#UN:G2/98/3/98;  [set speciality pic]
+!#UN:G2/99/3/99;  [set speciality pic]
+!#UN:G2/100/3/100;  [set speciality pic]
+!#UN:G2/101/3/101;  [set speciality pic]
+!#UN:G2/102/3/102;  [set speciality pic]
+!#UN:G2/103/3/103;  [set speciality pic]
+!#UN:G2/104/3/104;  [set speciality pic]
+!#UN:G2/105/3/105;  [set speciality pic]
+!#UN:G2/106/3/106;  [set speciality pic]
+!#UN:G2/107/3/107;  [set speciality pic]
+!#UN:G2/108/3/108;  [set speciality pic]
+!#UN:G2/109/3/109;  [set speciality pic]
+!#UN:G2/110/3/110;  [set speciality pic]
+!#UN:G2/111/3/111;  [set speciality pic]
+!#UN:G2/112/3/112;  [set speciality pic]
+!#UN:G2/113/3/113;  [set speciality pic]
+!#UN:G2/114/3/114;  [set speciality pic]
+!#UN:G2/115/3/115;  [set speciality pic]
+!#UN:G2/116/3/116;  [set speciality pic]
+!#UN:G2/117/3/117;  [set speciality pic]
+!#UN:G2/118/3/118;  [set speciality pic]
+!#UN:G2/119/3/119;  [set speciality pic]
+!#UN:G2/120/3/120;  [set speciality pic]
+!#UN:G2/121/3/121;  [set speciality pic]
+!#UN:G2/122/3/122;  [set speciality pic]
+!#UN:G2/123/3/123;  [set speciality pic]
+!#UN:G2/124/3/124;  [set speciality pic]
+!#UN:G2/125/3/125;  [set speciality pic]
+!#UN:G2/126/3/126;  [set speciality pic]
+!#UN:G2/127/3/127;  [set speciality pic]
+!#UN:G2/128/3/128;  [set speciality pic]
+!#UN:G2/129/3/129;  [set speciality pic]
+!#UN:G2/130/3/130;  [set speciality pic]
+!#UN:G2/131/3/131;  [set speciality pic]
+!#UN:G2/132/3/132;  [set speciality pic]
+!#UN:G2/133/3/133;  [set speciality pic]
+!#UN:G2/134/3/134;  [set speciality pic]
+!#UN:G2/135/3/135;  [set speciality pic]
+!#UN:G2/136/3/136;  [set speciality pic]
+!#UN:G2/137/3/137;  [set speciality pic]
+!#UN:G2/138/3/138;  [set speciality pic]
+!#UN:G2/139/3/139;  [set speciality pic]
+!#UN:G2/140/3/140;  [set speciality pic]
+!#UN:G2/141/3/141;  [set speciality pic]
+!#UN:G2/142/3/142;  [set speciality pic]
+!#UN:G2/143/3/143;  [set speciality pic]
+!#UN:G2/144/3/144;  [set speciality pic]
+!#UN:G2/145/3/145;  [set speciality pic]
+!#UN:G2/146/3/146;  [set speciality pic]
+!#UN:G2/147/3/147;  [set speciality pic]
+!#UN:G2/148/3/148;  [set speciality pic]
+!#UN:G2/149/3/149;  [set speciality pic]
+!#UN:G2/150/3/150;  [set speciality pic]
+!#UN:G2/151/3/151;  [set speciality pic]
+!#UN:G2/152/3/152;  [set speciality pic]
+!#UN:G2/153/3/153;  [set speciality pic]
+!#UN:G2/154/3/154;  [set speciality pic]
+!#UN:G2/155/3/155;  [set speciality pic]
+
+
+!_#HE0:X0/26 S26/d1; Orin specialists of Exorcism
+
+!#HE3:X0/21 S21/d1; Sylvia specialists of learning
+
+!#HE15:X0/9 S9/d1; Caitlin specialists of Life Magic (former Luck)
+!#HE10:X0/5 S5/d1; Cuthbert specialists of Astral Magic (former navigation)
+
+!#HE11:X0/7 S7/d2 S24/d2; Adelaide specialists of Wisdom
+
+!_#HE17:X1/146; Ufretin specialists of balista
+!#HE18:X0/21 S21/d1; Jenova specialists of learning
+
+
+!#HE20:X0/0 S0/d1;  Thogrim specialists of Pathfinding
+
+!#HE25:X0/9 S9/d2; Uland specialists of Life Magic (former Luck)
+!#HE29:X0/25 S25/d1; Melodia specialists of Sorcery
+
+
+!#HE31:X0/7 S7/d2 S3/d2; Aeris specialists of Wisdom
+
+
+!#HE32:X0/0 S0/d2;  Piquedram specialists of Pathfinding
+
+!#HE38:X0/21 S21/d1; Rissa specialists of learning
+!#HE39:X0/5 S5/d2; Iona specialists of Astral Magic (former navigation)
+!#HE43:X3/65; !#HE43:M65/1; Daremyth specialists of Clone
+
+
+!#HE46:X0/7 S7/d2 S4/d2; Cyra specialists of Wisdom
+
+
+!#HE47:X0/25 S25/d1; Aine specialists of Sorcery
+!#HE52:X0/21 S21/d1; Octavia specialists of learning
+!#HE59:X0/5 S5/d1; Olema specialists of Astral Magic (former navigation)
+!_#HE60:X3/26; !_#HE60:M26/1; Calid specialists of Armageddon
+!_#HE60:X0/13; !_#HE60:S13/d1; Calid specialists of Estates
+!#HE60:X3/88; !#HE60:M88/1; Calid specialists of burning
+
+
+
+!_#HE64:X0/0 S0/2; specialists of Pathfinding
+
+!#HE79:X3/9; !#HE79:M9/d1; Nagash specialists of Town Portal
+
+!#HE91:X3/9; !#HE91:M9/1; !#HE91:M38/0; Jeditte specialists of Town Portal
+
+!#HE94:X0/21 S21/d1; Sepinroth specialists of learning
+
+!#HE95:X3/18; !#HE95:M18/1; Darkstorn specialists of Implosion
+
+
+!#HE105:X0/0 S0/d2;  Vey specialists of Pathfinding
+
+!#HE108:X0/7 S7/d2 S20/d2; Zubin specialists of Wisdom
+
+
+!#HE109:X0/24 S24/d1; Gundula specialists of inteligence
+
+!#HE111:X0/21 S21/d1; Saurug specialists of learning
+
+
+!#HE120:X0/5 S5/d1; Mirlanda specialists of Astral Magic (former navigation)
+!#HE122:X0/21 S21/d1; Voy specialists of learning
+
+
+!#HE128:X0/25 S25/d1; Pasis specialists of Sorcery
+!#HE129:X0/0 S0/d1;  Thunar specialists of Pathfinding
+!#HE130:X0/5 S5/d1; Ignissa specialists of Astral Magic (former navigation)
+
+
+!#HE135:X0/21 S21/d1; Kalt specialists of learning
+
+
+!#HE137:X3/19; !#HE137:M19/1; Brissa specialists of Chain Lighitng
+
+!#HE139:X3/9; !#HE139:M9/1; Labetha specialists of Town Portal
+
+!#HE140:X3/66; !#HE140:M66/1; Inetus specialists of Fire elemental spell
+
+!#HE141:X3/69; !#HE141:M69/1; Aenain specialists of Air elemental spell
+
+!#HE142:X3/68; !#HE142:M68/1; Gelare specialists of Water elemental spell
+
+!#HE143:X3/67; !#HE143:M67/1; Grindan specialists of Earth elemental spell
+
+
+!_#HE153:H0/135/1/3; !_#HE153:H1/134/1/3; !_#HE153:H0/132/0/1;  //mutare drake has standard speciality but starts with some dragons
+
+!#HE84:X0/22 S22/d2; Damacon specialist of offence
+!_#HE70:X1/178; !_#MA:U178/187; Clavius specialist of soul eaters (nope)
+!_#HE70:X1/159; Clavius specialist of ghosts (nope)
+!#HE70:X0/22 S22/d2; Clavius specialist of offence
+
+!_#HE61:X1/177; !_#MA:U177/186; Ash specialist of succubus (nope)
+!#HE61:X3/59; Ash specialist of Berserk
+
+!_#HE12:X0/18;  Ingham specialist of scholar
+!_#HE44:X0/18;  Theodorus specialist of scholar (nope)
+!#HE124:X0/18; Merist specialist of scholar
+
+!#HE51:S26/0 S19/d2; Ignatius has different skills
+!#HE83:S26/0 S6/d2;  Ajit has different skills
+!#HE64:S26/0 S11/d1; Straaker has different skills
+
+** year 2019 begin **
+
+!#HE6:X0/20;              Christian - Recruitment
+!#HE8:X0/27;              Rion      - Machinery
+!#HE17:X0/27 S27/1 S20/0; Ufretin   - Machinery
+!#HE27:X0/27;             Gem       - Machinery
+!#HE36:X0/20;             Thorosar  - Recruitment
+!#HE54:X0/20;             Pyre      - Recruitment
+!#HE81:X0/20;             Arlach    - Recruitment
+!#HE97:X0/27 S27/1 S20/0; Gurnisson - Machinery
+!#HE118:X0/20;            Gerwulf   - Recruitment
+!#HE123:X0/27;            Verdish   - Machinery
+!#HE154:X0/10;            Boragus   - Engineer
+
+** year 2020 begin **
+
+!#HE16:X1/192;         Mephala specialists of centaurs
+!#HE35:X0/26  S26/d1;  Neela specialists of Resistance
+!#HE115:X0/19 S19/d1;  Tazar specialists of Tactics
+
+** year 2021 begin **
+
+!#HE0:X0/26 S26/d1; Orin specialists of Resistance
+
+!#HE154:S10/d1; Boragus have at least one Engineering
+
+!?FU(KNI_HE_starting_skills);
+x16 - hero number
+!!HEx16:B2/?y2;
+!!VRy12:Sy2 %2;
+!!HEx16&y12=1:S7/d1;
+
+!!HEx16&y2=0:S4/d1  S20/d1;
+!!HEx16&y2=2:S26/d1 S0/d1;
+!!HEx16&y2=4:S21/d1 S7/d1;
+
+!!HEx16&y2=6:S11/d1  S13/d1;
+!!HEx16&y2=8:S12/d1  S7/d1;
+!!HEx16&y2=10:S25/d1 S7/d1;
+
+!!HEx16&y2=12:S3/d1  S0/d1;
+!!HEx16&y2=14:S21/d1 S20/d1;
+!!HEx16&y2=16:S7/d1  S3/d1;
+
+!!HEx16&y12=1/y2<6:S26/d1;
+!!HEx16&y12=1/y2>11:S8/d1;
+
+!!HEx16&y2=7:S21/d1;
+!!HEx16&y2=9:S12/d1;
+!!HEx16&y2=11:S25/d1;
+
+!#DO(KNI_HE_starting_skills)/0/155/1:P;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>154:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Engineer specialists doubles arrow tower Engineer bonus and get one free building daily.^;
+!!IF:N20/33/20/34/20/35;
+!!IF:N1/1;
+!!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>6/y-10<>36/y-10<>54/y-10<>81/y-10<>118:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Recruitment specialists get 0.2 percent per level more recruits to Recruitment Skill.^;
+!!IF:N20/63/20/64/20/65;
+!!IF:N1/1;
+!!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>8/y-10<>17/y-10<>27/y-10<>97/y-10<>123:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Machinery Specialists get bonuses to Faction Tents, Artillery Weapons and Ammo Carts.^;
+!!IF:N8/849/8/999/8/924;
+!!IF:N1/1;
+!!CM:R0;
+!!en:;
+
+** year 2019 end **
+
+!?MG0; //fix for nagash and jeditte
+!_!UN:G2/79/2/0; !_!UN:G2/91/2/0;
+!!HE79:X3/9;  Nagash specialists of Town Portal
+!!HE91:X3/9; Jeditte specialists of Town Portal
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>79/y-10<>91:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>124:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Scholar specialists get random 5th level spell every 5 levels^;
+!!IF:N9/57/20/59/20/26;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>69/y-10<>78:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Necromancy specialist gets 5% per level Necromancy bonus and Dark Magic bonus: +33% and +4% per level to these spells: ^;
+!!IF:N20/41/9/39/9/24;
+!!IF:N1/1;
+!!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>129/y-10<>105/y-10<>32/y-10<>20:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Receives a 5% per level bonus to Pathfinding skill percentage.
+Also it restores Additional 5 Movement Points per Hero level after Battle.
+Gives tiny amount of experience every hero step.^;
+!!IF:N20/3/20/4/20/5;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>11/y-10<>31/y-10<>46/y-10<>108:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Receives a 5% per level bonus to Wisdom skill percentage.
+Also it gives +1 Spellpower each level.
+Hero starts with expert Wisdom.^;
+!!IF:N20/24/20/25/20/26;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>15/y-10<>25:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Life Magic specialist gets Life Magic bonus: +33% and +6% per level to these spells: ^;
+!!IF:N9/37/9/38/9/25/9/40;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>39/y-10<>59/y-10<>120/y-10<>10/y-10<>130:E;
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+!!VRz1:S^Astromancy specialist gets Astromancy bonus: +33% and +3% per level to these spells: ^;
+!!IF:N9/17/9/19/9/23/9/26;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y10;
+!!FU&y10<>151/y10<>153:E;                [Mutare Rust Dragons]
+!!HE151:X1/271; Magma Dragons
+!!CM:I?y1 S?y2 F?y3;
+
+!!FU(CM2_Upgrade):P82/83/155/271/-1; magma
+!!FU(CM2_Upgrade)&7:P26/27/151/272/-1; sylvan
+!!FU(CM2_Upgrade)&7:P286/356/357/-1; chinese
+!!FU(CM2_Upgrade)&7:P134/293/358/-1; faerie
+!!FU(CM2_Upgrade)&7:P135/362/363/-1; Rust
+!!FU(CM2_Upgrade)&7:P133/339/339/-1; Crystal 
+!!FU(CM2_Upgrade)&7:P132/359/360/-1; Azure
+ 
+!!if&y1=118:;
+!!VRz1:S^Mutare can transform all living dragons into their better counterparts, and {Magma Dragons} get additional bonuses under her commmand^;
+!!IF:N21/27/21/69/21/83/21/134/21/133/21/135/21/196/21/132;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>150:E;                [Lord Haart Dracoliches]
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE150&y22=0:X1/196; Dracoliches
+!!HE150&y22=1:X1/255; Supreme Dracoliches
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade_Haart):P;
+
+!!if&y1=118:;
+!!VRz1&y22=0:S^Lord Haart can transform all living dragons into {Dracoliches}, which get additional bonuses under her commmand^;
+!!VRz1&y22=1:S^Lord Haart can transform all living dragons into {Supreme Dracoliches}, which get additional bonuses under her commmand^;
+!!IF:N21/27/21/69/21/83/21/134/21/133/21/135/21/151/21/132;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>152:E;                [Roland]
+!!HE152:X1/143; Rogues
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade_to_x1):P143/0/1/14/15/28/29/42/43/-1;
+!!FU(CM2_Upgrade_to_x1)&7:P143/56/57/70/71/84/85/98/99/118/119/-1;
+!!FU(CM2_Upgrade_to_x1)&7:P143/139/138/140/-1;
+ 
+!!if&y1=118:;
+!!VRz1:S^Roland can transform all level 1 units into {Rogues}, which get additional bonuses under his commmand.^;
+!!IF:N21/1/21/15/21/29/21/43/21/57/21/71/21/85/21/99;
+!!IF:N1/1;
+!!IF:N21/119/21/139/21/138/21/140;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>146:E;                [Catherine Nightmares]
+!!HE146:X1/172; Nightmares
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade_to_x1):P172/10/11/24/25/66/67/195/-1; 
+
+!!if&y1=118:;
+!!VRz1:S^Catherine can transform all level 6 horse units into {Nightmares}, which get additional bonuses under her command.^;
+!!IF:N21/10/21/11/21/24/21/25/21/66/21/67/21/195;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!FU:E;                          [Disabled by majaczek]
+!!HE-1:N?y-10;
+!!FU&y-10<>154:E;                [Boragus]
+!!HE154:X1/194; Werevolves
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1>=68/y1<=74:;
+!!VRy3:Sy1 -68; y3=troop slot, 0-6
+!!HE154:C0/y3/?v1/?v3; v1=type, v3=number
+!!FU|v1<0/v3<1:E; exit if slot empty
+!!VRv2:S-1;
+!!VRv2|v1=5/v1=6/v1=20/v1=21/v1=46/v1=47/v1=48/v1=49:S194;
+!!VRv2|v1=64/v1=65/v1=78/v1=79/v1=86/v1=87:S194;
+!!VRv2|v1=93/v1=92/v1=105/v1=104:S194;
+!!VRv2|v1=106/v1=107/v1=108/v1=109/v1=90/v1=91/v1=144:S194;
+!!HE154&v2>0:X6/v1/0/0/0/v1/v2;
+!!en:;
+!!if&y1=118:;
+!!VRz1:S^Boragus can transform all lesser beasts units into {Werevolves}, which get additional bonuses under his commmand.^;
+!!IF:N21/5/21/20/21/46/21/48/21/64/21/78/21/86/21/92;
+!!IF:N1/1;
+!!IF:N21/104/21/106/21/108/21/90/21/144;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>147:E;                [Dracon]
+!!HE147:X1/136; Enchanters
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade_to_x1):P136/8/9/34/35/64/65/193/169/-1;
+!!FU(CM2_Upgrade_to_x1)&7:P136/90/91/104/105/120/121/74/75/-1; 
+
+!!if&y1=118:;
+!!VRz1:S^Dracon can transform all mage units into {Enchanters}, which get additional bonuses under her command.^;
+!!IF:N21/8/21/9/21/34/21/35/21/64/21/65/21/193/21/169;
+!!IF:N1/1;
+!!IF:N21/90/21/91/21/104/21/105/21/120/21/121/21/74/21/75;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>148:E;                [Gelu]
+!!HE148:X1/137; Sharpshooters
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade_to_x1):P137/2/3/18/19/44/45/28/29/-1;
+!!FU(CM2_Upgrade_to_x1)&7:P137/76/77/88/89/94/95/138/-1;
+ 
+!!if&y1=118:;
+!!VRz1:S^Gelu can transform all Bowman units into {Sharpshooters}, which get additional bonuses under her command.^;
+!!IF:N21/2/21/3/21/18/21/19/21/44/21/45/21/28/21/29;
+!!IF:N1/1;
+!!IF:N21/76/21/77/21/88/21/89/21/94/21/95/21/138;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>145:E;                [Adrienne Gorynyches]
+!!HE145:X1/168; Gorynyches
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade_to_x1):P168/108/109/104/105/80/81/20/21/4/5/-1;
+ 
+
+!!if&y1=118:;
+!!VRz1:S^Adrienne can transform some flying units into {Gorynyches}, which get additional bonuses under her commmand^;
+!!IF:N21/108/21/104/21/80/21/20/21/4;
+!!IF:N1/1;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>16:E; Mephala
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE33&y22=0:X1/14; Centaurs
+!!HE33&y22=1:X1/192; Sylvan Centaurs
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P14/15/291/192/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Mephala upgrades Centaurs into {Centaur Captains}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Mephala upgrades Centaurs and Centaur Captain and Centaur Archers into {Sylvan Centaurs}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>33:E; Thane
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE33&y22=0:X1/37; Master genies
+!!HE33&y22=1:X1/349; Arcane genies
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P36/37/232/349/-1; 
+
+!!if&y1=118:;
+!!IF&y22=0:M^Thane upgrades Genies into {Master Genies}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Thane upgrades Genies and Master Genies and Arcane Genies into {Ancient} {Genies}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>44:E; Theodorus
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE44&y22=0:X1/35; Archmages
+!_!HE44&y22=1:X1/230; Master Archmages
+!!HE44&y22=1:X1/252; Red Wizards
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P34/35/230/252/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Theodorus upgrades Magi into {Archmages}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Theodorus upgrades Magi and Archmages and Master Archmages into {Red Wizards}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>34:E; Josephine
+!!HE34:X1/117; Diamond Golem
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P32/33/116/117/-1;
+
+!!if&y1=118:;
+!!IF:M^Josephine upgrades all golems into {Diamond Golems}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>37:E; Fafner
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE37&y22=0:X1/39; Naga Queen
+!!HE37&y22=1:X1/348; Spider Queen
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P38/39/240/348/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Fafner upgrades Nagas into {Naga Queens}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Fafner upgrades Nagas and Naga Queens and Spider Queens into {Spider} {Empress}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>1:E; Valeska
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE1&y22=0:X1/3; Marksman
+!!HE1&y22=1:X1/344; Musketeer
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P2/3/228/344/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Valeska upgrades Bowman into {Marksman}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Valeska upgrades Bowman and Marksman and Musketeers into {Royal} {Musketeers}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>2:E; Edric
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE2&y22=0:X1/5; Royal Griffins
+!!HE2&y22=1:X1/213; Caesar Griffins
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P4/5/213/336/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Edric upgrades Griffins into {Royal Griffins}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Edric upgrades Griffins and Royal Griffins and Caesar Griffins into {Ancient Griffins}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>5:E; Sorsha
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE5&y22=0:X1/7; Crusaders
+!_!HE5&y22=1:X1/197; Fanatics
+!!HE5&y22=1:X1/371;  Inquisitors
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P6/7/197/371/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Sorsha upgrades Swordsmen into {Crusaders}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Sorsha upgrades Swordsmen, Crusaders and Fanatics into {Inquisitors}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>7:E; Tyris
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE7&y22=0:X1/11; Champion
+!!HE7&y22=1:X1/379; Royal Champion
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P10/11/214/379/-1; 
+
+!!if&y1=118:;
+!!IF&y22=0:M^Tyris upgrades Cavaliers into {Champions}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Tyris upgrades Cavaliers and Champions and Holy Champions into {Royal Champions}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>12:E; Ingham
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE12&y22=0:X1/169; War Zealots
+!!HE12&y22=1:X1/285; Priestess
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P8/9/169/285/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Ingham upgrades Monks and Zealots into {War Zealots}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Ingham upgrades Monks, Zealots and War Zealots into {Priestess}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>19:E; Ryland
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE19&y22=0:X1/23; Dendroid Soldier
+!!HE19&y22=1:X1/350; Ancient Dendroid
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P22/23/199/350/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Ryland upgrades Dendroid Guards into {Dendroid Soldiers}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Ryland upgrades Dendroid Guards and Dendroid Soldiers and Ancient Dendroids into {ELdest} {Dendroids}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>21:E; Ivor
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE21&y22=0:X1/19; Grand Elves
+!!HE21&y22=1:X1/345; Hunter
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P18/19/229/345/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Ivor upgrades Wood Elves into {Grand Elves}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Ivor upgrades Wood Elves and Grand Elves and Hunters into {Spectral} {Hunters}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>22:E; Clancy
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE22&y22=0:X1/25; War Unicorns
+!_!HE22&y22=1:X1/195; Hell Steeds
+!!HE22&y22=1:X1/372; Hell Steeds
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P24/25/216/372/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Clancy upgrades Unicorns into {War Unicorns}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Clancy upgrades Unicorns and War Unicorns and Legendary Unicorns into {Mthical Unicorns}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>24:E; Coronius
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE24&y22=0:X1/15; Centaur Capitans
+!!HE24&y22=1:X1/192; Sylvan Centaurs
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P14/15/291/192/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Coronius upgrades Centaurs into {Centaur Captains}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Coronius upgrades Centaurs and Centaur Captains and Centaur Archers into {Sylvan Centaurs}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>48:E; Fiona
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE48&y22=0:X1/47; Cerberi
+!!HE48&y22=1:X1/373; Hell Cerberus
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P46/47/238/373/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Fiona upgrades Hell Hounds into {Cerberi}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Fiona upgrades Hell Hounds and Cerberi and Astral Cerberi into {Hell Cerberus}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>49:E; Rashka
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE49&y22=0:X1/53; Efreet Sultan
+!!HE49&y22=1:X1/274; Efreet Khans
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P52/53/205/274/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Rashka upgrades Efreets into {Efreet Sultans}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Rashka upgrades Efreets and Efreet Sultans and Efreet Rajahs into {Efreet Khans}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>50:E; Marius
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE50&y22=0:X1/49; Horned Demons
+!!HE50&y22=1:X1/262; Demon Princes
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P48/49/212/262/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Marius upgrades Demons into {Horned Demons}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Marius upgrades Demons and Horned Demons and Greater Demons into {Demon Princes}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>51:E; Ignatius
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE51&y22=0:X1/43; Familiars
+!!HE51&y22=1:X1/346; Scamps
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P42/43/236/346/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Ignatius upgrades Imps into {Familiars}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Ignatius upgrades Imps and Familiars and Scamps into {Tainted} {Scamps}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>53:E; Calh
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE53&y22=0:X1/45; Magogs
+!!HE53&y22=1:X1/347; Succubuses
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P44/45/237/347/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Calh upgrades Gogs into {Magogs}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Calh upgrades Gogs and Magogs and Succubuses into {Succubuses} {of} {Lust}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>55:E; Nymus
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE55&y22=0:X1/51; Pit Lords
+!!HE55&y22=1:X1/374; Pit Warden
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P50/51/209/374/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Nymus upgrades Pit Fiends into {Pit Lords}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Nymus upgrades Pit Fiends and Pit Lords and Pit Masters into {Pit} {Wardens}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>64:E; Straker
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE64&y22=0:X1/141; Mummies
+!!HE64&y22=1:X1/141; Mummy priests
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P58/59/290/141/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Straker upgrades Walking Dead and Zombies into {Mummies}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Straker upgrades Walking Dead and Zombies and Mymmy Servants into {Mummy Priests}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>65:E; Vokial
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE65&y22=0:X1/63; Vampire Lords
+!!HE65&y22=1:X1/366; Elder Nosferatus
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P62/63/226/366/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Vokial upgrades Vampires into {Vampire Lords}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Vokial upgrades Vampires and Vampire Lords and Nosferatus into {Elder} {Nosferatus}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>66:E; Moandor
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE66&y22=0:X1/65; Power Liches
+!!HE66&y22=1:X1/355; Ancient Liches
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P64/65/210/355/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Moandor upgrades Liches into {Power Liches}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Moandor upgrades Liches and Power Liches and Ancient Liches into {Lich Lords}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>67:E; Charna
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE67&y22=0:X1/61; Wraiths
+!!HE67&y22=1:X1/288; Elder Ghosts
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P60/61/159/288/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Charna upgrades Wights into {Wraiths}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Charna upgrades Wights and Wraiths into {Ghosts}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>68:E; Tamika
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE68&y22=0:X1/67; Dread Knights
+!!HE68&y22=1:X1/354; Grim Reapers
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P66/67/235/354/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Tamika upgrades Black Knights into {Dread Knights}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Tamika upgrades Black Knights and Dread Knights and Grim Reapers into {Shinigami}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>71:E; Galthran
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE71&y22=0:X1/57; Skeleton Warriors
+!!HE71&y22=1:X1/368; Shadow Skeleton Archers
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P56/57/218/368/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Galthran upgrades Skeletons into {Skeleton Warriors}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Galthran upgrades Skeletons and Skeleton Warriors and Skeleton Archers into {Shadow} {Skeleton} {Archers}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>80:E; Lorelei
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE80&y22=0:X1/73; Harpy Hags
+!!HE80&y22=1:X1/263; Harpy countess
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P72/73/234/263/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Lorelei upgrades Harpies into {Harpy Hags}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Lorelei upgrades Harpies and Harpy Hags and Seducing Harpies into {Harpy Countess}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>82:E; Dace
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE82&y22=0:X1/79; Minotaur Kings
+!!HE82&y22=1:X1/383; Tainted Minotaurs
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P78/79/200/383/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Dace upgrades Minotaurs into {Minotaur Kings}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Dace upgrades Minotaurs and Minotaur Kings and Blood Minotaurs into {Tainted} {Minotaurs}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>83:E; Ajit
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE83&y22=0:X1/75; Evil Eyes
+!!HE83&y22=1:X1/276; Weird Eyes
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P74/75/198/276/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Ajit upgrades Beholders into {Evil Eyes}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Ajit upgrades Beholders and Evil Eyes and Monstrous Eyes into {Weird Eyes}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>86:E; Synca
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE86&y22=0:X1/81; Scorpicores
+!!HE86&y22=1:X1/353; Female Warlocks
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P80/81/242/353/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Synca upgrades Manticores into {Scorpicores}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Synca upgrades Manticores and Scorpicores and Female Warlocks into {Tainted Warlocks}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>87:E; Shakti
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE87&y22=0:X1/71; Infernal Troglodites
+!!HE87&y22=1:X1/381; Cave Troglodites
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P70/71/233/381/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Shakti upgrades Troglodites into {Infernal Troglodites}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Shakti upgrades Troglodites and Infernal Troglodites and Phosforous Trogloditesinto {Cave} {Troglodites}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>96:E; Yog
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE96&y22=0:X1/95; Cyclop Kings
+!!HE96&y22=1:X1/352; Centamoth Throwers
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P94/95/241/352/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Yog upgrades Cyclops into {Cyclop Kings}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Yog upgrades Cyclops and Cyclop Kings and Centamoth Throwers into {Wild} {Centamoth} {Throwers}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>98:E; Jarkabas
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE98&y22=0:X1/89; Orc Chieftains
+!!HE98&y22=1:X1/385; Uruk-Hai
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P88/89/239/385/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Jarkabas upgrades Orcs into {Orc Chieftains}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Jarkabas upgrades Orcs and Orc Chieftains and Orc Leaders into {Uruk-Hai}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>99:E; Shiva
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE99&y22=0:X1/93; Thunderbirds
+!!HE99&y22=1:X1/387; Darkstorms
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P92/93/207/387/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Shiva upgrades Rocs into {Thunderbirds}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Shiva upgrades Rocs and Thunderbirds and Stormbirds into {Darkstorms}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>100:E; Gretchin
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE100&y22=0:X1/85; Hobgoblins
+!!HE100&y22=1:X1/384; Ferocious Wild Boar
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P84/85/140/384/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Gretchin upgrades Goblins into {Hobgoblins}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Gretchin upgrades Goblins and Hobgoblins and Boar Riders into {Ferocius} {Wild} {Boars}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>101:E; Krellion
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE101&y22=0:X1/91; Ogre Magi
+!!HE101&y22=1:X1/386; Ogre Shamans
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P90/91/219/386/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Krellion upgrades Ogres into {Ogre Magi}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Krellion upgrades Ogres and Ogre Magi and Ogre Warlocks into {Ogre} {Shamans}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>103:E;  Tyraxor
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE103&y22=0:X1/87;  Wolf Knights
+!!HE103&y22=1:X1/351; Golden Wolves
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P86/87/220/351/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Tyraxor upgrades Wolf Riders into {Wolf Knights}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Tyraxor upgrades Wolf Riders and Wolf Knights and Dire Wolves into {Golden} {Wolves}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>112:E;  Bron
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE112&y22=0:X1/107;  Greater Basilisk
+!!HE112&y22=1:X1/289; Prehistoric Basilisk
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P106/107/203/289/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Bron upgrades Basilisks into {Greater Basilisk}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Bron upgrades Basilisks and Greater Basilisk and Ancient Basilisk into {Prehistoric Basilisk}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>113:E; Drakon
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE113&y22=0:X1/99;  Gnoll Maruders
+!!HE113&y22=1:X1/388; Gnoll Leaders
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P98/99/211/388/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Drakon upgrades Gnolls into {Gnoll Maruders}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Drakon upgrades Gnolls and Gnoll Maruders and Gnoll Raiders into {Gnoll} {Leaders}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>114:E; Wystan
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE114&y22=0:X1/101; Reptilion
+!!HE114&y22=1:X1/389; Mist Reptilion
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P100/101/221/389/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Wystan upgrades Lizardmen into {Reptilions}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Wystan upgrades Lizardmen and Reptilions and Arcane Reptilions into {Mist} {Reptilions}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>116:E; Alkin
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE116&y22=0:X1/103; Mighty Gorgons
+!!HE116&y22=1:X1/390; Acid Gorgons
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P102/103/223/390/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Alkin upgrades Gorgons into {Mighty Gorgons}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Alkin upgrades Gorgons and Mighty Gorgons and Golden Gorgons into {Acid} {Gorgons}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>117:E; Korbac
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE117&y22=0:X1/105; Dragon Flies
+!!HE117&y22=1:X1/277; Deadly Wasps
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P104/105/222/277/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Korbac upgrades Serpent Flies into {Dragon Flies}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Korbac upgrades Serpent Flies and Dragon Flies and Blood Hornets into {Deadly Wasps}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>119:E; Broghild
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE119&y22=0:X1/109; Wyvern Monarchs
+!!HE119&y22=1:X1/391; Acid Wiverns
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P108/109/204/391/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Broghild upgrades Wyverns into {Wyvern Monarchs}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Broghild upgrades Wyverns and Wyvern Monarchs and Acid Wiverns into {Toxic} {Wiverns}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>131:E; Lacus
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE131&y22=0:X1/123; Ice Elementals
+!!HE131&y22=1:X1/224; Life Elementals
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P115/123/224/335/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Lacus upgrades Water Elementals into {Ice Elementals}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Lacus upgrades Water Elementals and Ice Elementals into {Life Elementals}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>132:E; Monere
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE132&y22=0:X1/121; Magic Elementals
+!!HE132&y22=1:X1/375; Aether Elementals
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P120/121/225/375/-1;
+
+!!if&y1=118:;
+!!IF&y22=0:M^Monere upgrades Psychic Elementals into {Magic Elementals}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Monere upgrades Psychic Elementals and Magic Elementals and Void Elementals into {Aether} {Elementals}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>133:E; Erdamon
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE133&y22=0:X1/125; Magma Elementals
+!!HE133&y22=1:X1/201; Mineral Elementals
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P113/125/201/333/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Erdamon upgrades Earth Elementals into {Magma Elementals}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Erdamon upgrades Earth Elementals and Magma Elementals into {Mineral Elementals}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>134:E; Fiur
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE134&y22=0:X1/129; Energy Elementals
+!!HE134&y22=1:X1/202; Electricity Elementals
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P114/129/202/334/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Fiur upgrades Fire Elementals into {Energy Elementals}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Fiur upgrades Fire Elementals and Energy Elementals into {Electricity Elementals}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!#HE155:X1/343;
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>155:E; Xeron
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE155&y22=0:X1/153; Hell Baron
+!!HE155&y22=1:X1/343; Lord of Kreegans
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P54/55/153/343/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Xeron upgrades Devils into {Hell Barons}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Xeron upgrades Devils and Hell Barons into {Lords of Kreegans}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;
+
+!!HE149:X1/270;
+!?CM2; Hero Screen,
+!!HE-1:N?y-10;
+!!FU&y-10<>149:E; Kilgor
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!HE149&y22=0:X1/153; Hell Baron
+!!HE149&y22=1:X1/270;  Mantis
+!!CM:I?y1 S?y2 F?y3;
+!!FU(CM2_Upgrade):P96/97/156/343/-1;
+ 
+!!if&y1=118:;
+!!IF&y22=0:M^Kilgor upgrades Behemots into {Ghost} {Behemots}, which get additional bonuses under her commmand^;
+!!IF&y22=1:M^Kilgor upgrades Behemots and Ghost Behemots into {Mantisses}, which get additional bonuses under her commmand^;
+!_!CM:R0;
+!!en:;

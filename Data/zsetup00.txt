@@ -1,0 +1,295 @@
+ WoG Setup Dialog	 
+1	WoGify Options
+2	Customize your WoGified maps
+3	The WoGify Options dialogue box lets each player select the scripts and options he or she prefers to use in WoGified maps.
+
+Any map, even an old RoE or AB map, can be WoGified (if desired) without the need to convert it to WoG format first.
+
+Click the Save button to save your custom WoGify setup.
+Click the Load button to load a previously saved setup file.
+Click the Restore button to load the preset defaults.
+(On startup, options load from the last file saved or loaded.)
+
+Right-clicking on any option displays more details about that particular option. In some cases, this includes very useful play hints and details for a particular script.
+4	Welcome to the Wake of Gods WoGify Options Dialogue Box!
+
+*********************************************
+
+The WoGify Options dialogue box lets each player select the scripts and options he or she prefers to use in WoGified maps.
+
+Any map, even an old RoE or AB map, can be WoGified (if desired) without the need to convert it to WoG format first.
+
+Click the Save button to save your custom WoGify setup.
+Click the Load button to load a previously saved setup file.
+Click the Restore button to load the preset defaults.
+(On startup, options load from the last file saved or loaded.)
+
+Right-clicking on any option displays more details about that particular option. In some cases, this includes very useful play hints and details for a particular script or if it is safe for game play!
+
+*********************************************
+
+Have fun and happy WoGifying!
+5 Page 0	WoGify Settings,
+Game Enhancements
+and Hard-Coded Options
+6 Page 0	This page lets you choose WoGify Settings, Hard-Coded Options and Game Enhancements.
+7 Page 0	This page lets you choose WoGify Settings, Hard-Coded Options and Game Enhancements.
+8 Page 1	Map Options and
+Enhancements
+9 Page 1	This page lets you select a variety of Map Options and Enhancements to customize your game.
+9 Page 1	This page lets you select a variety of Map Options and Enhancements to customize your game.
+11 Page 2	Skills, Monsters and Heroes:
+Enhancements and Balancing
+12 Page 2	This page lets you choose scripts that enhance Heroes and Monsters or rebalance them in the game.
+13 Page 2	This page lets you choose scripts that enhance Heroes and Monsters or rebalance them in the game.
+14 Page 3	Objects and Artifacts
+15 Page 3	This page lets you choose new and enhanced Objects, Artifacts and Treasure Chests for inclusion in the game.
+16 Page 3	This page lets you choose new and enhanced Objects, Artifacts and Treasure Chests for inclusion in the game.
+17 Page 4	Map Rules
+18 Page 4	This page lets you select the Map Rules you wish to use. You can also choose to have two random rules for each game or to select rules at the start of each game.
+19 Page 4	This page lets you select the Map Rules you wish to use. You can also choose to have two random rules for each game or to select rules at the start of each game.
+20 Page 5	Artifact and Spell Banning
+21 Page 5	This page lets you restrict the appearance of movement spells, Armageddon, and certain artifacts.
+22 Page 5	This page lets you restrict the appearance of movement spells, Armageddon, and certain artifacts.
+23 Page 6	Knightmare Kingdoms
+24 Page 6	Knightmare Kingdoms
+25 Page 6	Knightmare Kingdoms
+26 Page 7	Custom Scripts
+27 Page 7	This page may be used for custom player-made scripts.
+28 Page 7	This page may be used for custom player-made scripts.
+29 UL p0	WoGify Settings
+30 UL p0	WOGIFY SETTINGS
+
+These settings let you determine which maps will be WoGified.
+31 UL p0	WOGIFY SETTINGS
+
+These settings let you determine which maps will be WoGified.
+32 LL p0	Game Enhancements
+33 LL p0	GAME ENHANCEMENTS
+
+These scripts add extra functionality to the game without significantly changing the game itself.
+34 LL p0	GAME ENHANCEMENTS
+
+These scripts add extra functionality to the game without significantly changing the game itself.
+35 UR p0	Hard-Coded Options
+36 UR p0	HARD-CODED OPTIONS
+
+These WoG options are hard-coded into the game and not script-based.
+37 UR p0	HARD-CODED OPTIONS
+
+These WoG options are hard-coded into the game and not script-based.
+38 LR p0	AI Stack Experience Difficulty
+39 LR p0	AI STACK EXPERIENCE DIFFICULTY
+
+These settings determine how fast the AI hero and garrison troops gain experience when the Stack Experience option (Troop stacks gain Experience) is enabled in the Hard-Coded Options (above).
+
+The rate of Human stack experience may also be adjusted by selecting the Custom option.
+
+Note: These difficulty settings are script-based and only work if a map is WoGified. If Stack Experience is used for a non-WoGified map, the default setting (linked to player difficulty level) will be used instead.
+40 LR p0	AI STACK EXPERIENCE DIFFICULTY
+
+These settings determine how fast the AI hero and garrison troops gain experience when the Stack Experience option (Troop stacks gain Experience) is enabled in the Hard-Coded Options (above).
+
+The rate of Human stack experience may also be adjusted by selecting the Custom option.
+
+Note: These difficulty settings are script-based and only work if a map is WoGified. If Stack Experience is used for a non-WoGified map, the default setting (linked to player difficulty level) will be used instead.
+41 UL p1	Map Options
+42 UL p1	MAP OPTIONS
+
+These options let you customize certain aspects of a map.
+43 UL p1	MAP OPTIONS
+
+These options let you customize certain aspects of a map.
+44 LL p1	Map Enhancements
+45 LL p1	MAP ENHANCEMENTS
+
+These options let you enhance a map with a variety of scripts.
+46 LL p1	MAP ENHANCEMENTS
+
+These options let you enhance a map with a variety of scripts.
+47 UR p1	Map Enhancements
+48 UR p1	MAP ENHANCEMENTS
+
+These options let you enhance a map with a variety of scripts.
+49 UR p1	MAP ENHANCEMENTS
+
+These options let you enhance a map with a variety of scripts.
+50 LR p1	Map Enhancements
+51 LR p1	MAP ENHANCEMENTS
+
+These options let you enhance a map with a variety of scripts.
+52 LR p1	MAP ENHANCEMENTS
+
+These options let you enhance a map with a variety of scripts.
+53 UL p2	Hero Enhancements and Balancing
+54 UL p2	HERO ENHANCEMENTS AND BALANCING
+
+These options give bonuses to heroes or help balance them.
+55 UL p2	HERO ENHANCEMENTS AND BALANCING
+
+These options give bonuses to heroes or help balance them.
+56 LL p2	Skill Enhancements
+57 LL p2	SKILL ENHANCEMENTS
+
+These options give new abilities to secondary skills.
+58 LL p2	SKILL ENHANCEMENTS
+
+These options give new abilities to secondary skills.
+59 UR p2	Monster Enhancements and Balancing
+60 UR p2	MONSTER ENHANCEMENTS AND BALANCING
+
+These options give new abilities to monsters, alter their stats or help to balance them.
+61 UR p2	MONSTER ENHANCEMENTS AND BALANCING
+
+These options give new abilities to monsters, alter their stats or help to balance them.
+62 LR p2	Skill Enhancements
+63 LR p2	SKILL ENHANCEMENTS
+
+These options give new abilities to secondary skills.
+64 LR p2	SKILL ENHANCEMENTS
+
+These options give new abilities to secondary skills.
+65 UL p3	Chests and Artifacts
+66 UL p3	CHESTS AND ARTIFACTS
+
+Select the treasure chests and new and scripted artifacts you wish to appear in the game.
+67 UL p3	CHESTS AND ARTIFACTS
+
+Select the treasure chests and new and scripted artifacts you wish to appear in the game.
+68 LL p3	New Adventure Objects
+69 LL p3	NEW ADVENTURE OBJECTS
+
+Select the new and scripted adventure objects you wish to use in the game.
+70 LL p3	NEW ADVENTURE OBJECTS
+
+Select the new and scripted adventure objects you wish to use in the game.
+71 UR p3	Enhanced Adventure Objects
+72 UR p3	ENHANCED ADVENTURE OBJECTS
+
+Select the existing Heroes 3 adventure objects you wish to enhance with new features.
+73 UR p3	ENHANCED ADVENTURE OBJECTS
+
+Select the existing Heroes 3 adventure objects you wish to enhance with new features.
+74 LR p3	New Adventure Objects
+75 LR p3	NEW ADVENTURE OBJECTS
+
+Select the new and scripted adventure objects you wish to use in the game.
+76 LR p3	NEW ADVENTURE OBJECTS
+
+Select the new and scripted adventure objects you wish to use in the game.
+77 UL p4	Map Rule Options
+78 UL p4	MAP RULE OPTIONS
+
+Choose a Map Rule Option to determine how Map Rules will appear in the game.
+79 UL p4	MAP RULE OPTIONS
+
+Choose a Map Rule Option to determine how Map Rules will appear in the game.
+80 LL p4	Map Rules
+81 LL p4	MAP RULES
+
+Choose the Map Rules that you wish to use in the game when the appropriate option is also selected in the Map Rule Options settings above.
+82 LL p4	MAP RULES
+
+Choose the Map Rules that you wish to use in the game when the appropriate option is also selected in the Map Rule Options settings above.
+83 UR p4	Name for Page5 GroupRT
+84 UR p4	Hint for Page5 GroupRT
+85 UR p4	Pop Up Text for Page5 GroupRT
+86 LR p4	Map Rules
+87 LR p4	MAP RULES
+
+Choose the Map Rules that you wish to use in the game when the appropriate option is also selected in the Map Rule Options settings above.
+88 LR p4	MAP RULES
+
+Choose the Map Rules that you wish to use in the game when the appropriate option is also selected in the Map Rule Options settings above.
+89 UL p5	Spell Banning Options
+90 UL p5	SPELL BANNING OPTIONS
+
+Choose where selected spells are banned from.
+
+Note: most WoGify scripts that give out spells will ban the spells chosen here, regardless of specific banning locations.
+91 UL p5	SPELL BANNING OPTIONS
+
+Choose where selected spells are banned from.
+
+Note: most WoGify scripts that give out spells will ban the spells chosen here, regardless of specific banning locations.
+92 LL p5	Banned WoG Artifacts
+93 LL p5	BANNED WOG ARTIFACTS
+
+Select the WoG artifacts you wish to restrict.
+
+
+94 LL p5	BANNED WOG ARTIFACTS
+
+Select the WoG artifacts you wish to restrict.
+
+
+95 UR p5	Banned Artifacts
+96 UR p5	BANNED ARTIFACTS
+
+Select the artifacts you wish to restrict.
+97 UR p5	BANNED ARTIFACTS
+
+Select the artifacts you wish to restrict.
+98 LR p5	Banned WoG Artifacts
+99 LR p5	BANNED WOG ARTIFACTS
+
+Select the WoG artifacts you wish to restrict.
+
+
+100 LR p5	BANNED WOG ARTIFACTS
+
+Select the WoG artifacts you wish to restrict.
+
+
+101 UL p6	Knightmare Kingdoms
+102 UL p6	Knightmare Kingdoms
+103 UL p6	Knightmare Kingdoms
+104 LL p6	Knightmare Kingdoms
+105 LL p6	Knightmare Kingdoms
+106 LL p6	Knightmare Kingdoms
+107 UR p6	Knightmare Kingdoms
+108 UR p6	Knightmare Kingdoms
+109 UR p6	Knightmare Kingdoms
+110 LR p6	Knightmare Kingdoms
+111 LR p6	Knightmare Kingdoms
+112 LR p6	Knightmare Kingdoms
+113 UL p7	Custom Scripts
+114 UL p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+115 UL p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+116 LL p7	Custom Scripts
+117 LL p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+118 LL p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+119 UR p7	Custom Scripts
+120 UR p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+121 UR p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+122 LR p7	Custom Scripts
+123 LR p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+124 LR p7	CUSTOM SCRIPTS
+
+These are custom player-made script options.
+125	Cannot Save WoG settings
+126	Cannot Load WoG settings
+127	Options were saved in the previous WoG version.
+New options were not changed.
+128 3.58	Choose a file to save WoG set up options
+129 3.58	Choose a file to load WoG set up options
+130 3.58	Enter a file name to save your WoG Options setup. You may save as many different setup files as you wish.  Note: when WoG is started, options are automatically loaded from the last options file loaded or saved.
+131 3.58	Select a WoG Options setup file to load previously saved setup options.
+Note: when WoG is started, options are automatically loaded from the last options file loaded or saved.
+132 3.58	DAT files (*.dat)|*.dat|WOG files (*.wog)|*.wog|All files (*.*)|*.*
+133	
+	

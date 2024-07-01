@@ -1,0 +1,11 @@
+ZVSE
+!?FU77010; Before Hero Interaction
+!_!SN:L^HD_WOG.dll^/?y1 L^HD_MCR.dll^/?y2;
+!_!FU|y1=0/y2=0:E;
+!_!SN:L^Era.dll^/?y1 Ay1/^RedirectFile^/?y2 Ey2/1/^bckpck.def^/^bckpckHD.def^;
+
+!?FU77011; After  Hero Interaction
+!_!SN:L^HD_WOG.dll^/?y1 L^HD_MCR.dll^/?y2;
+!_!FU|y1=0/y2=0:E;
+!_!SN:L^Era.dll^/?y1 Ay1/^RedirectFile^/?y2 Ey2/1/^bckpck.def^/^^;
+

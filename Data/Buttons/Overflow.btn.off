@@ -1,0 +1,8 @@
+Hero;Aplus.ExpButton;Help_+.def;21;158;16;16;Increase Attack;Increase Attack;
+Hero;Amin.ExpButton;Help_-.def;71;158;16;16;Decrease Attack;Decrease Attack;
+Hero;Dplus.ExpButton;Help_+.def;91;158;16;16;Increase Defense;Increase Defense;
+Hero;Dmin.ExpButton;Help_-.def;141;158;16;16;Decrease Defense;Decrease Defense;
+Hero;Splus.ExpButton;Help_+.def;161;158;16;16;Increase Spell Power;Increase Spell Power;
+Hero;Smin.ExpButton;Help_-.def;211;158;16;16;Decrease Spell Power;Decrease Spell Power;
+Hero;Kplus.ExpButton;Help_+.def;231;158;16;16;Increase Knowledge;Increase Knowledge;
+Hero;Kmin.ExpButton;Help_-.def;281;158;16;16;Decrease Knowledge;Decrease Knowledge;

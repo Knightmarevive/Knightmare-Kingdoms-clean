@@ -1,0 +1,19 @@
+
+
+
+	#	55499	-1	-1	800	600	14	-1	SpelBk2.bmp	99
+	Button	2999	656	424	48	36	icm005.def	2	Exit
+	Def	1	144	56	78	65	spells.def	53	16	
+	Def	2	264	56	78	65	spells.def	56	16	
+	Button	2001	160	136	48	36	icm005.def	2	Rune Haste
+	Button	2002	280	136	48	36	icm005.def	2	Rune Spike
+	Text	99	8	544	792	32	Hint	HiScore.fnt	3	0	1	8	
+	Def	3	144	200	78	65	spells.def	37	16	
+	Def	4	264	200	78	65	spells.def	65	16	
+	Button	2003	160	280	48	36	icm005.def	2	Rune Heal
+	Button	2004	280	280	48	36	icm005.def	2	Rune Mirage
+	Def	5	144	328	78	65	spells.def	4	16	
+	Def	6	264	328	78	65	spells.def	57	16	
+	Button	2005	160	408	48	36	icm005.def	2	Rune Gate
+	Button	2006	280	408	48	36	icm005.def	2	Rune
+	#

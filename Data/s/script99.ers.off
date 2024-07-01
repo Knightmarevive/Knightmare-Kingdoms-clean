@@ -1,0 +1,23 @@
+Amethyst Upgrades	99	6	1	-1	1	0	555	KK UPGRADES FOR MONSTERS	Some creatures may be upgraded at their native town if a new town building is built there as well as their upgraded dwellings.	KNIGHTMARE UPGRADES FOR MONSTERS
+Option 555 by Acid Dragon, FU team and majaczek (script99)
+
+Now in every town owner can upgrade creatures twice. However you need to build Special Building (another for every town type). To try rightclick on town hall or Capitol.
+
+
+War Machines	99	6	1	-1	1	0	54	KK War Machines	Knightmare War Machines [should be enabled]	Knightmare War Machines
+Option 54 by majaczek (some credits to Overlord)
+
+Totally reworked war machines.
+KK Enchanced Commanders	99	6	1	-1	1	0	51	KK Enchanced Commanders	Kightmare Enchanced Commanders [should be enabled]	Kightmare Enchanced Commanders
+
+Totally reworked Enchanced Commanders script
+also some hardcoded changes.
+Hero Specialization Boost              	99	6	1	-1	0	0	39	KK Hero Specialization Boost	Applies a bonus in combat based on the hero's starting specialty. [should be enabled]	KNGHTMARE HERO SPECIALIZATION BOOST
+
+Option 039 by Alexis Koz and majaczek (script39)
+
+Applies a bonus based on the hero's starting specialty. Bonuses include better stats for their creatures for creature specialists and randomly cast spells for spell specialists. Does not work in multiplayer games except Hotseat.
+
+To see a Hero's enhanced bonus, right-click on the specialty icon in the hero screen or right-click on the top part of the hero in the combat screen (works for both players).
+
+Note: this option is disabled for network battles.

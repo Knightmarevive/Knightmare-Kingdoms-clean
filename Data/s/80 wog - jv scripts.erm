@@ -1,0 +1,693 @@
+ZVSE
+
+//New WoG script80.erm/Era script "80 wog - JV scripts.erm"
+//Thanks to: Bersy the Master Wizard for Era et al
+
+//uses ERM Option Numbers 280-283
+
+== Monster Resources created by J.H. Vogan ( 23 Sept 2007 )
+== Uses P280
+
+// This script gives resources for destroying certain types of monsters,
+// such as wood for dendroids, ore for stone golems, gold for gold golems,
+// gems for diamond golems, et cetera.
+
+// Variables used
+//
+// 1, 2 - attacking and defending hero owner numbers  (temp)
+// 3, 4 - attacking and defending hero numbers        (temp)
+// 300-308 - temporary storage of starting stack quantities
+// 2699 - set to 100 by this script at start of battle w/human player
+// 2700 - no. of attacking Dendroid Guards     (2 wood)
+// 2701 - no. of attacking Dendroid Soldiers   (3 wood)
+// 2702 - no. of attacking Stone Gargoyles     (1 ore)
+// 2703 - no. of attacking Obsidian Gargoyles  (1 crystal)
+// 2704 - no. of attacking Stone Golems        (2 ore)
+// 2705 - no. of attacking Iron Golems         (3 ore)
+// 2706 - no. of attacking Gold Golems         (100 gold)
+// 2707 - no. of attacking Diamond Golems      (2 gems)
+// 2708 - no. of attacking Crystal Dragons     (20 crystal)
+// 2800 - no. of defending Dendroid Guards
+// 2801 - no. of defending Dendroid Soldiers
+// 2802 - no. of attacking Stone Gargoyles
+// 2803 - no. of attacking Obsidian Gargoyles
+// 2804 - no. of defending Stone Golems        (2 ore)
+// 2805 - no. of defending Iron Golems         (3 ore)
+// 2806 - no. of defending Gold Golems         (100 gold)
+// 2807 - no. of defending Diamond Golems      (3 gems)
+// 2808 - no. of defending Crystal Dragons     (20 crystal)
+// string z1 -
+
+// Flags used
+// 1 - store temporary status
+
+// Functions
+// 408
+
+!?BA0&1000; start of a battle in which a human player is involved
+!!UN:P280/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+// set permanent variable flag (for turn checking)
+!!VRv2699:S100;
+
+// set permanent variables to zero
+!!VRv2700:S0;
+!!VRv2701:S0;
+!!VRv2702:S0;
+!!VRv2703:S0;
+!!VRv2704:S0;
+!!VRv2705:S0;
+!!VRv2706:S0;
+!!VRv2707:S0;
+!!VRv2708:S0;
+!!VRv2800:S0;
+!!VRv2801:S0;
+!!VRv2802:S0;
+!!VRv2803:S0;
+!!VRv2804:S0;
+!!VRv2805:S0;
+!!VRv2806:S0;
+!!VRv2807:S0;
+!!VRv2808:S0;
+
+!!BA:M0/0/?v1/?v2; get attacking slot 0 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+!!BA:M0/1/?v1/?v2; get attacking slot 1 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+!!BA:M0/2/?v1/?v2; get attacking slot 2 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+!!BA:M0/3/?v1/?v2; get attacking slot 3 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+!!BA:M0/4/?v1/?v2; get attacking slot 4 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+!!BA:M0/5/?v1/?v2; get attacking slot 5 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+!!BA:M0/6/?v1/?v2; get attacking slot 6 monster type (v1) and no.(v2)
+!!VRv2700&v1=22:+v2; IF(type=dendroid guard)v2700=v2700+no. of d.g.'s
+!!VRv2701&v1=23:+v2; IF(type=dendroid soldier)v2701=v2701+no. of d.s.'s
+!!VRv2702&v1=30:+v2; stone gargoyles
+!!VRv2703&v1=31:+v2; obsidian gargoyles
+!!VRv2704&v1=32:+v2; stone golems
+!!VRv2705&v1=33:+v2; iron golems
+!!VRv2706&v1=116:+v2; gold golems
+!!VRv2707&v1=117:+v2; diamond golems
+!!VRv2708&v1=133:+v2; crystal dragons
+
+!!BA:M1/0/?v1/?v2; get defending slot 0 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2800=v2800+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2801=v2801+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+!!BA:M1/1/?v1/?v2; get defending slot 1 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2800=v2800+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2801=v2801+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+!!BA:M1/2/?v1/?v2; get defending slot 2 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2800=v2800+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2801=v2801+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+!!BA:M1/3/?v1/?v2; get defending slot 3 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2800=v2800+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2801=v2801+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+!!BA:M1/4/?v1/?v2; get defending slot 4 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2800=v2800+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2801=v2801+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+!!BA:M1/5/?v1/?v2; get defending slot 5 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2801=v2801+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2800=v2800+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+!!BA:M1/6/?v1/?v2; get defending slot 6 monster type (v1) and no.(v2)
+!!VRv2800&v1=22:+v2; IF(type=dendroid guard)v2800=v2800+no. of d.g.'s
+!!VRv2801&v1=23:+v2; IF(type=dendroid soldier)v2801=v2801+no. of d.s.'s
+!!VRv2802&v1=30:+v2; stone gargoyles
+!!VRv2803&v1=31:+v2; obsidian gargoyles
+!!VRv2804&v1=32:+v2; stone golems
+!!VRv2805&v1=33:+v2; iron golems
+!!VRv2806&v1=116:+v2; gold golems
+!!VRv2807&v1=117:+v2; diamond golems
+!!VRv2808&v1=133:+v2; crystal dragons
+
+!?BG0&v2699=100; combat trigger before some action (check for retreat)
+!!BG:A?v1; get action no. (4=retreat)
+!!IF:V1/0; set flag 1 to zero
+!!IF&v1=4:V1/1; set flag 1 to 1 if current side is about to retreat
+
+!!BG&1:Q?v1; get current side (0=attacking, 1=defending)
+!!IF:V2/0; set flag 2 to zero
+!!IF&v1=1:V2/1; set flag 2 to 1 if current side is defender
+
+!!VRv300&1:S0;
+!!VRv301&1:S0;
+!!VRv302&1:S0;
+!!VRv303&1:S0;
+!!VRv304&1:S0;
+!!VRv305&1:S0;
+!!VRv306&1:S0;
+!!VRv307&1:S0;
+!!VRv308&1:S0;
+
+// get ending no.s of relevant monsters
+
+!!BM0&1:T?v1;
+!!BM0&1:N?v2;
+!!BM21&1/2:T?v1;
+!!BM21&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+!!BM1&1:T?v1;
+!!BM1&1:N?v2;
+!!BM22&1/2:T?v1;
+!!BM22&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+!!BM2&1:T?v1;
+!!BM2&1:N?v2;
+!!BM23&1/2:T?v1;
+!!BM23&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+!!BM3&1:T?v1;
+!!BM3&1:N?v2;
+!!BM24&1/2:T?v1;
+!!BM24&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+!!BM4&1:T?v1;
+!!BM4&1:N?v2;
+!!BM25&1/2:T?v1;
+!!BM25&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+!!BM5&1:T?v1;
+!!BM5&1:N?v2;
+!!BM26&1/2:T?v1;
+!!BM26&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+!!BM6&1:T?v1;
+!!BM6&1:N?v2;
+!!BM27&1/2:T?v1;
+!!BM27&1/2:N?v2;
+!!VRv300&1/v1=22:+v2; IF(type=dendroid guard)v300=v300+no. of d.g.'s
+!!VRv301&1/v1=23:+v2; IF(type=dendroid soldier)v301=v301+no. of d.s.'s
+!!VRv302&1/v1=30:+v2; stone gargoyles
+!!VRv303&1/v1=31:+v2; obsidian gargoyles
+!!VRv304&1/v1=32:+v2; stone golems
+!!VRv305&1/v1=33:+v2; iron golems
+!!VRv306&1/v1=116:+v2; gold golems
+!!VRv307&1/v1=117:+v2; diamond golems
+!!VRv308&1/v1=133:+v2; crystal dragons
+
+ // subtract starting from ending no.s
+
+// negate ending numbers
+!!VRv300&1:*-1; set v300 to -v300 to subtract ending no.
+!!VRv301&1:*-1; set v301 to -v301 to subtract ending no.
+!!VRv302&1:*-1;
+!!VRv303&1:*-1;
+!!VRv304&1:*-1;
+!!VRv305&1:*-1;
+!!VRv306&1:*-1;
+!!VRv307&1:*-1;
+!!VRv308&1:*-1;
+
+// add starting numbers to (-ending no.s)
+
+!!VRv2700&1/-2:+v300;
+!!VRv2701&1/-2:+v301;
+!!VRv2702&1/-2:+v302;
+!!VRv2703&1/-2:+v303;
+!!VRv2704&1/-2:+v304;
+!!VRv2705&1/-2:+v305;
+!!VRv2706&1/-2:+v306;
+!!VRv2707&1/-2:+v307;
+!!VRv2708&1/-2:+v308;
+
+!!VRv2800&1/2:+v300;
+!!VRv2801&1/2:+v301;
+!!VRv2802&1/2:+v302;
+!!VRv2803&1/2:+v303;
+!!VRv2804&1/2:+v304;
+!!VRv2805&1/2:+v305;
+!!VRv2806&1/2:+v306;
+!!VRv2807&1/2:+v307;
+!!VRv2808&1/2:+v308;
+
+!?BA1&1000; end of a battle in which a human player is involved
+!!UN:P280/?y1; check ERM options flag
+!!FU&y1<1:E; disable this script if option disabled
+
+!!BA:O?v1/?v2; get attacking and defending heroes owners (-1 if none)
+!!BA:H0/?v3; get attacking hero number (-2 if not a hero)
+!!BA:H1/?v4; get defending hero number (-2 if not a hero)
+
+
+!!FU408&v1>=0/v3>=0:Pv1/v2800/v2801/v2802/v2803/v2804/v2805/v2806/v2807/v2808; call with x1=v1 if attacker wins
+!!FU408&v1<0/v2>=0/v4>=0:Pv2/v2700/v2701/v2702/v2703/v2704/v2705/v2706/v2707/v2708; call with x1=v2 if defender wins
+// reset v2699 flag to zero
+!!VRv2699:S0;
+////////////////////////////////////////////////=
+
+!?FU408; // Function 408 (give winning player monster resources )
+// x1 = winning owner number (0-7) (maybe)
+// x2 = no. of Dendroid Guards destroyed
+// x3 = no. of Dendroid Soldiers destroyed
+// x4 = no. of Stone Gargoyles destroyed
+// x5 = no. of Obsidian Gargoyles destroyed
+// x6 = no. of Stone Golems destroyed
+// x7 = no. of Iron Golems destroyed
+// x8 = no. of Gold Golems destroyed
+// x9 = no. of Diamond Golems destroyed
+// x10= no. of Crystal Dragons destroyed
+
+!!VRy1:+x2+x3+x4+x5+x6+x7+x8+x9+x10; set y1(0 on entry) to sum
+!!FU&y1=0:E; exit if no relevant monsters destroyed
+
+// give the winning player monster resources
+!!OW:Rx1/0/?y1; get owner's current amount of wood
+!!VRx2:*2; give 2 wood per Dendroid Guard
+!!VRx3:*3; give 3 wood per Dendroid Soldier
+!!VRy2:+x2+x3; use local variable y2 for total wood (set to 0 by call)
+!!VRy1:+y2;
+!!OW:Rx1/0/y1;
+
+!!OW:Rx1/2/?y1; get owner's current amount of ore
+!!VRy3:Sx4; y3=ore gained from SG
+!!VRy1:+x4; cumulative ore
+!!OW:Rx1/2/y1;
+
+!!OW:Rx1/4/?y1; get owner's current amount of crystal
+!!VRy4:Sx5; y4=cyrstal gained from OG
+!!VRy1:+x5; cumulative crystal
+!!OW:Rx1/4/y1;
+
+!!OW:Rx1/2/?y1; get owner's current amount of ore
+!!VRx6:*2; give 2 ore per Stone Golem
+!!VRx7:*3; give 3 ore per Iron Golem
+!!VRy5:+x6+x7; use local variable y5 for golem ore (set to 0 by call)
+!!VRy1:+y5; cumulative ore
+!!OW:Rx1/2/y1;
+
+!!OW:Rx1/6/?y1; get owner's current amount of gold
+!!VRx8:*100; give 100 gold per Gold Golem
+!!VRy6:Sx8; y6=gold gained from GG
+!!VRy1:+x8; cumulative gold
+!!OW:Rx1/6/y1;
+
+!!OW:Rx1/5/?y1; get owner's current amount of gems
+!!VRx9:*2; give 2 gems per Diamond Golem
+!!VRy7:Sx9; y7=gems gained from DG
+!!VRy1:+x9; cumulative gems
+!!OW:Rx1/5/y1;
+
+!!OW:Rx1/4/?y1; get owner's current amount of crystal
+!!VRx10:*20; give 20 crystal per Crystal Dragon
+!!VRy8:Sx10; y7=crystal gained from CD
+!!VRy1:+x10; cumulative crystal
+!!OW:Rx1/4/y1;
+
+!!OW:Ix1/?y1; reuse y1 to get player status:  0-human, 1-AI
+
+!!IF&y1=0/y2>0:M^You collect %Y2 wood from the fallen Dendroids!^;
+!!IF&y1=0/y3>0:M^You collect %Y3 ore from the fallen Stone Gargoyles!^;
+!!IF&y1=0/y4>0:M^You collect %Y4 crystal from the fallen Obsidian Gargoyles!^;
+!!IF&y1=0/y5>0:M^You collect %Y5 ore from the fallen Golems!^;
+!!IF&y1=0/y6>0:M^You collect %Y6 gold from the fallen Gold Golems!^;
+!!IF&y1=0/y7>0:M^You collect %Y7 gems from the fallen Diamond Golems!^;
+!!IF&y1=0/y8>0:M^You collect %Y8 crystal from the fallen Crystal Dragons!^;
+//////////////// END OF MR SCRIPT //////////////////
+
+// Combo Artifact "Buckler of Beelzebub" by JH Vogan, Nov., 2009
+// uses P281, FU10939, w95, z177-178, combo artifact #15, and artifact #163
+
+!#UN:P281/?v2; check ERM Options flag
+!#UN&v2=1:A15/163/11/17/23/29; new combo #15 is formed of Sword of Hellfire (11),
+// Shield of the Damned (17), Hellstorm Helmet (23), and Breastplate of
+// Brimstone (29), and represented by shield #163
+
+!#VRz177&v2=1:S^Buckler of Beelzebub^;
+!#VRz178&v2=1:S^{Buckler of Beelzebub}
+
+Held with the left hand, the Buckler of Beelzebub gives the wearer a devil's power to teleport and avoid retaliation, and increases all attributes by 2.^;
+!#UN&v2=1:A163/9/177;
+!#UN&v2=1:A163/10/178;
+
+// Function to reset variable w95 at start
+!?FU10939;
+!!IF:Wx16;
+!!VRw95:S0;
+
+!#DO10939/0/155/1&v2=1:P;
+
+!?AE1&v998=163; artifact #163 put on
+!!UN:P281/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+// increase primary skills by 2 if v998=163
+!!HE-1:Fd2/d2/d2/d2;
+!!HE-1:M8/?v1; check for spell known (1) or unknown (0)
+!!HE-1&v1=0:M8/3;
+!!IF:W-1;
+!!VRw95:S1+v1;
+
+!?AE0&v998=163; artifact #163 taken off
+!!UN:P281/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+// decrease primary skills by 2 if v998=163
+!!HE-1:Fd-2/d-2/d-2/d-2;
+!!IF:W-1;
+!!HE-1&w95=1:M8/0;
+!!VRw95:S0;
+
+!?BG0;
+!!UN:P281/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+!!BG:H?v1 N?v2;
+!!IF&v1<>-1:Wv1;
+!!BMv2&v1<>-1/w95>0:F?v3;
+!!VRv3&v1<>-1/w95>0:|65536;
+!!BMv2&v1<>-1/w95>0:Fv3;
+//////////////// END OF BoB SCRIPT //////////////////
+
+// Improvement to Combo Artifact "Armor of the Damned" by JH Vogan, Nov., 2009
+* uses z179, P282
+
+!#UN:P282/?v2; check ERM Options flag
+!#VRz179&v2=1:S^{Armor of the Damned}
+
+Opponents' troops have Slow, Curse, Weakness, and Mistfortune cast on them for 50 turns, and the wearer's primary attributes are increased by 1 for every five hero levels.^;
+!#UN&v2=1:A132/10/179;
+
+!?AE1&v998=132; artifact #132 put on
+!!UN:P282/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+// increase primary skills by Lvl/5 if v998=132
+!!HE-1:E?v1/?v2; get exp. level (v2)
+!!VRv1:Sv2:5;
+!!HE-1:Fdv1/dv1/dv1/dv1;
+
+!?AE0&v998=132; artifact #132 taken off
+!!UN:P282/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+// decrease primary skills by Lvl/5 if v998=132
+!!HE-1:E?v1/?v2; get exp. level (v2)
+!!VRv1:Sv2:5*-1;
+!!HE-1:Fdv1/dv1/dv1/dv1;
+
+!?HL-1; any hero gets level increase
+!!UN:P282/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+!!HE-1:A2/132/?v1/?v2; check for AoD equipped (v2=1)
+!!FU&v2=0:E;
+!!HE-1:E?v1/?v2; get exp. level (v2)
+!!VRv1:Sv2-1; v1=old level?
+!!VRy1:Sv1:5*-1;
+!!HE-1:Fdy1/dy1/dy1/dy1;
+!!VRv1:Sv2:5;
+!!HE-1:Fdv1/dv1/dv1/dv1;
+//////////////// END OF AoD SCRIPT //////////////////
+
+* DressCode, JHV, 2011.4.18
+* uses v504-v505, v762-v775, v884-v897, w120-w128
+* uses FU871-FU879
+* Note:  locked slots as well as empty slots return -1.
+
+!#UN:P283/?v3; check ERM Options flag
+* get address for AE0(v998) argument
+!#UN:V?v1/?v2; WoG/ERM versions
+!#VRv504&v1=358/v3=1:S41849532; address to set to v998 for WoG 3.58f
+!#VRv504&v1=400/v3=1:S41916772; address to set to v998 for Era 1.8
+!#IF&v1<>358/v1<>400/v3=1:M^WoG version not recognized, Dress Code script may not work!^;
+
+!?CM2; right-click on active Hero in hero list
+!!UN:P283/?y1; check ERM Options flag
+!!FU&y1<1:E; disable this script if option disabled
+!!CM:I?v1 F?v2;
+!!FU|v1<>138/v2<>512:E;
+!!CM:R0;
+!!OW:A-1/?v505; get active Hero # (note HE-1 doesn't always work)
+!!IF&v505<0:M^Sorry, there is no active Hero to dress.^;
+!!FU&v505<0:E;
+!!IF:Wv505;
+!!VRz-1:S^WARNING:  does not work with NEW combo artifacts such as
+the Axe of Ferocity (158) or Buckler of Beezelbub (163)!^;
+!!VRz-2:S^Save current equipment for Day^; v10=1
+!!VRz-3:S^Save current equipment for Night^; v10=2
+!!VRz-4:S^Dress for Day^; v10=4
+!!VRz-5:S^Dress for Night^; v10=8
+!!VRz-6:S^Cancel^; v10=16
+!!IF:G1/1/16/-1/-2/-3/-4/-5/-6;  (G1 radio-buttons)
+!!FU&v1=16:E;
+!!IF:V2/0; chk for new Combos
+!!DO871/0/13/1:P; check artifact slots 0-12 & 18 --> v762-v775
+!!IF&2:M^Please disassemble new combination artifacts and try again.^;
+!!FU&2:E;
+!!FU872&v1=1:P120; save equipped artifacts in w120-w123
+!!FU872&v1=2:P124; save equipped artifacts in w124-w127
+!!FU873&v1=4:P120; restore equipped artifacts from w120-w123
+!!FU873&v1=8:P124; restore equipped artifacts from w124-w127
+
+!?FU871; x16=0-13, check artifact slots 0-12 & 18 --> v762-v775
+!!VRy1:Sx16+762; index to v762-v775
+!!VRx16&x16=13:S18;
+!!HEv505:A1/?y2/x16;
+!!IF|y2=158/y2=163:V2/1; chk for Axe of Fer. or BoB
+!!VRy2:+1; -1-->0
+!!VRy2&y2>999:-1000+180; spell scroll 1000+n-->180+n
+!!VRvy1:Sy2;
+
+!?FU872; save equipped artifacts in wx1-w[x1+4]
+!!VRwx1:Sv762*256+v763*256+v764*256+v765;
+!!VRx1:+1;
+!!VRwx1:Sv766*256+v767*256+v768*256+v769;
+!!VRx1:+1;
+!!VRwx1:Sv770*256+v771*256+v772*256+v773;
+!!VRx1:+1;
+!!VRwx1:Sv774*256+v775;
+
+!?FU873; equip with AR in wx1-w[x1+4]
+!!DO874/0/13/1:P; first remove current equipment
+!!VRy1:Swx1:16777216; head
+!!FU876:Py1;
+!!VRy2:Swx1:65536%256; shoulders
+!!FU876:Py2;
+!!VRy3:Swx1:256%256; neck
+!!FU876:Py3;
+!!VRy4:Swx1%256; RH
+!!FU876:Py4;
+!!VRx1:+1;
+!!VRy5:Swx1:16777216; LH
+!!FU876:Py5;
+!!VRy6:Swx1:65536%256; Torso
+!!FU876:Py6;
+!!VRy7:Swx1:256%256; RR
+!!FU876:Py7;
+!!VRy8:Swx1%256; LR
+!!FU876:Py8;
+!!VRx1:+1;
+!!VRy9:Swx1:16777216; Feet
+!!FU876:Py9;
+!!VRy10:Swx1:65536%256; M1
+!!FU876:Py10;
+!!VRy11:Swx1:256%256; M2
+!!FU876:Py11;
+!!VRy12:Swx1%256; M3
+!!FU876:Py12;
+!!VRx1:+1;
+!!VRy13:Swx1:256; M4
+!!FU876:Py13;
+!!VRy14:Swx1%256; M5
+!!FU876:Py14;
+* now restore all previously-removed artifacts to BP
+!!DO878/0/13/1:P;
+!!UN:R3/v505; redraw
+
+// remove all copies w/A-, but save count to add to backpack later
+!?FU874; x16=0-13, check artifact table v762-v775 & remove artifact
+!!VRy1:Sx16+762; index to v762-v775
+!!VRy2:Svy1;
+!!VRy3:Sy2-1; 0-->-1
+!!VRy3&y3>179:-180+1000; 180+n-->spell scroll 1000+n
+!!FU&y3<7:E;
+!!HEv505:A2/y3/?y4/?y5; total/# equipped
+!!VRy6:Sx16+884; index to v884-v897
+!!VRvy6:Sy4; save total count (to restore later)(will be 0 if removed prev.)
+!!FU&y5<1:E; equipped copy may have already been removed
+!!VRy6:Sy3*-1;
+!!HEv505:Ay6; remove all
+// Note:  removal of artifact via ERM does NOT trigger AE0.
+* (Although equipping via ERM DOES trigger AE1.)
+* HE:A- does not call AE0, so do so manually via FU30315 (thanx Solitaire345)
+!!UN:Cv504/4/y3;
+!!DO30315/1/y5/1:P;
+
+!?FU875; add artifact to BP, x1=artifact #
+!!HEv505:Ax1;
+
+!?FU876; x1=saved artifact code
+!!FU&x1<8:E;
+!!VRv2:S0; v2=0 if wasn't equipped
+!!DO877/0/13/1:Px1; check if x1 was currently equipped, reduce count to restore to BP if so
+!!VRx1:-1;
+!!VRx1&x1>179:-180+1000; 180+n-->spell scroll 1000+n
+!!HEv505:A2/x1/?y2/?y3;  total/# equipped
+!!VRy4:Sx1*-1;
+!!HEv505:Ay4; remove all
+* HE:A- does not call AE0, so do so manually via FU30315 (thanx Solitaire345)
+!!UN:Cv504/4/x1;
+!!DO30315/1/y3/1&y3>0:P;
+!!VRy3|v2>0/y2>y3:+1; equip 1 more if HE had 1 equipped originally or has some in BP
+!!VRy2:-y3; number to go in backpack
+!!DO879/1/y3/1&y3>0:Px1; equip y3 copies
+!!DO875/1/y2/1&y2>0:Px1; add back extra backpack copies for non-equipped
+
+!?FU877; x16=0-13, check artifact table v762-v775 for code x1
+!!VRy1:Sx16+762; index to v762-v775
+!!FU&vy1<>x1:E;
+* an artifact which the HE was wearing is to be restored
+* all copies of currently-worn artifacts were removed, to be restored later
+* therefore reduce BP count
+!!VRy2:Sx16+884; index to v884-v897
+!!VRv2:Svy2; (number in virtual BP)
+!!VRvy2:-1; reduce BP count (note only 1st count for multiple copies is used)
+!!VRx16:S99; end loop
+
+!?FU878; x16=0-13, check counts table v883-v897 & restore artifacts to backpack
+!!VRy1:Sx16+884; index to v884-v897
+!!FU&vy1<1:E;
+!!VRy2:Sx16+762; index to v762-v775 artifact codes
+!!VRy3:Svy2;
+!!FU&y3<8:E; dbl-chk
+!!VRy3:-1;
+!!VRy3&y3>179:-180+1000; 180+n-->spell scroll 1000+n
+!!DO875/1/vy1/1:Py3; add back removed artifacts to backpack
+
+!?FU879; equip artifact, x1=artifact #
+!!HEv505:A4/x1;
+

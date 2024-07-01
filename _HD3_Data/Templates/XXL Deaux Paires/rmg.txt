@@ -1,0 +1,58 @@
+Map			Zone																																																																									Connections								
+				Type					Restrictions				Player towns					Neutral towns					Town types									Minimum mines							Mine Density							Terrain									Monsters												Treasure									Zones					Restrictions			
+Name	Minimum Size	Maximum Size	Id	human start	computer start	Treasure	Junction	Base Size	Minimum human positions	Maximum human positions	Minimum total positions	Maximum total positions	Ownership	Minimum towns	Minimum castles	Town Density	Castle Density	Minimum towns	Minimum castles	Town Density	Castle Density	Towns are of same type	Castle	Rampart	Tower	Inferno	Necropolis	Dungeon	Stronghold	Fortress	Elemental	Wood	Mercury	Ore	Sulfur	Crystal	Gems	Gold	Wood	Mercury	Ore	Sulfur	Crystal	Gems	Gold	Match to town	Dirt	Sand	Grass	Snow	Swamp	Rough	Cave	Lava	Strength	Match to town	Neutral	Castle	Rampart	Tower	Inferno	Necropolis	Dungeon	Stronghold	Fortress	Forge	Low	High	Density	Low	High	Density	Low	High	Density	Zone 1	Zone 2	Value	Wide	Border Guard	Minimum human positions	Maximum human positions	Minimum total positions	Maximum total positions
+For 2x2 (Pit's design)	16	16	1	x				25	1	4	2	4	1		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	1	5	6000			1	4	2	4
+			2	x				25	1	4	2	4	2		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	2	6	6000			1	4	2	4
+			3	x				25	1	4	2	4	3		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	3	7	6000			1	4	2	4
+			4	x				25	1	4	2	4	4		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	4	8	6000			1	4	2	4
+			5			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	5	6	14000			1	4	2	4
+			6			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	5	8	14000			1	4	2	4
+			7			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	7	6	14000			1	4	2	4
+			8			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	7	8	14000			1	4	2	4
+			9			x		4	1	4	2	4						1					x	x	x	x	x	x	x	x	x							1									x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	1	9	5000			1	4	2	4
+			10			x		4	1	4	2	4						1					x	x	x	x	x	x	x	x	x							1									x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	2	10	5000			1	4	2	4
+			11			x		4	1	4	2	4						1					x	x	x	x	x	x	x	x	x							1									x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	3	11	5000			1	4	2	4
+			12			x		4	1	4	2	4						1					x	x	x	x	x	x	x	x	x							1									x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	4	12	5000			1	4	2	4
+																																																																																				
+For 2x2 (Pit's design)	9	9	1	x				25	1	4	2	4	1		1		2	2					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	1	5	6000			1	4	2	4
+			2	x				25	1	4	2	4	2		1		2	2					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	2	6	6000			1	4	2	4
+			3	x				25	1	4	2	4	3		1		2	2					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	3	7	6000			1	4	2	4
+			4	x				25	1	4	2	4	4		1		2	2					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	4	8	6000			1	4	2	4
+			5			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	5	6	12000			1	4	2	4
+			6			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	5	8	12000			1	4	2	4
+			7			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	7	6	12000			1	4	2	4
+			8			x		12	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	7	8	12000			1	4	2	4
+																																																																												5	7	12000			1	4	2	4
+																																																																												6	8	12000			1	4	2	4
+For 2x2 (Pit's design)	32	72	1	x				30	1	4	2	4	1		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	1	5	6000			1	4	2	4
+			2	x				30	1	4	2	4	2		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	2	6	6000			1	4	2	4
+			3	x				30	1	4	2	4	3		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	3	7	6000			1	4	2	4
+			4	x				30	1	4	2	4	4		1		2	1					x	x	x	x	x	x	x	x	x	1		1					2		2					x									avg		x	x	x	x	x	x	x	x	x	x	10000	15000	1	3000	6000	6	500	3000	9	4	8	6000			1	4	2	4
+			5			x		15	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	5	6	22500			1	4	2	4
+			6			x		15	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	5	8	22500			1	4	2	4
+			7			x		15	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	7	6	22500			1	4	2	4
+			8			x		15	1	4	2	4							1				x	x	x	x	x	x	x	x	x		1		1	1	1										x		x				x	x	strong		x	x	x	x	x	x	x	x	x	x	3500	7000	7	1500	2000	2	300	1500	5	7	8	22500			1	4	2	4
+			9			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x	1						1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	1	9	5000			1	4	2	4
+			10			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x	1						1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	2	10	5000			1	4	2	4
+			11			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x	1						1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	3	11	5000			1	4	2	4
+			12			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x	1						1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	4	12	5000			1	4	2	4
+			13			x		50	1	4	2	4							3				x	x	x	x	x	x	x	x	x							2									x	x	x	x	x	x		x	strong		x	x	x	x	x	x	x	x	x	x	35000	55000	3	25000	35000	10	10000	25000	10	5	13	45000			1	4	2	4
+			14			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x		1					1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	6	13	45000			1	4	2	4
+			15			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x		1					1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	7	13	45000			1	4	2	4
+			16			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x		1					1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	8	13	45000			1	4	2	4
+			17			x		15	1	4	2	4						1					x	x	x	x	x	x	x	x	x		1					1									x		x				x	x	avg		x	x	x	x	x	x	x	x	x	x	10000	60000	1	8000	9150	10	500	3000	4	9	13	45000			1	4	2	4
+																																																																												10	13	45000			1	4	2	4
+																																																																												11	13	45000			1	4	2	4
+																																																																												12	13	45000			1	4	2	4
+																																																																												1	14	5000			1	4	2	4
+																																																																												2	15	5000			1	4	2	4
+																																																																												3	16	5000			1	4	2	4
+																																																																												4	17	5000			1	4	2	4
+																																																																												14	9	5000			1	4	2	4
+																																																																												15	10	5000			1	4	2	4
+																																																																												16	11	5000			1	4	2	4
+																																																																												17	12	5000			1	4	2	4
+																																																																												14	5	6000			1	4	2	4
+																																																																												15	6	6000			1	4	2	4
+																																																																												16	7	6000			1	4	2	4
+																																																																												17	8	6000			1	4	2	4

@@ -1,0 +1,12 @@
+Hero;Knightmare.Backpack.PutIntoVirtual;mhrscr508.def;356;429;40;32;Open transfer from Real Backpack to Virtual Backpack.;To Virtual Backpack;
+Hero;Knightmare.Backpack.PutIntoReal;mhrscr507.def;405;429;40;32;Open transfer from Virtual Backpack to Real Backpack.;To Real Backpack;
+Hero;Knightmare.AdventureAlchemy;AlchemyBtn.def;453;429;36;36;Click for Alchemy Usage;Alchemy;
+Hero;Knightmare.BTN4;HSBTN196.def;495;429;36;36;Description.;Name of button 4;
+Hero;Knightmare.Reserve;SCRNHRR.def;474;494;10;44;Open reserve slot for view.;Show reserve slot;
+Hero;Knightmare.Backpack.PutAllIntoVirtual;ScrollLeft.def;355;410;44;12;Transfer All from Real Backpack to Virtual Backpack.;All To Virtual Backpack;
+Hero;Knightmare.Backpack.PutManyIntoReal;ScrolRight.def;403;410;44;12;Batch transfer from Virtual Backpack to Real Backpack.;Many To Real Backpack;
+Hero;Knightmare.ProcessAlchemy;ScrollLeft.def;448;410;44;12;Brew and Mix Potions.;Process Alchemy;
+Battle;Knightmare.BattleAlchemy;AlchemyBtn.def;126;5;35;35;Click for Alchemy Usage;Alchemy;
+Hero;Knightmare.BCKPCK;z_bckpck.def;500;307;36;36;Click to open backpack bag.; Real Backpack;
+Heroes;Knightmare.YBackpack1;z_bckpck.def;326;521;36;36; Click here to open your hero backpack bag.;Look into your backpack bag;
+Heroes;Knightmare.YBackpack2;z_bckpck.def;420;521;36;36; Click here to open your hero backpack bag.;Look into your backpack bag;

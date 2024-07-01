@@ -1,0 +1,258 @@
+ZVSE2
+
+***DEATH CHAMBER 10.0**** (by Rich Reed a.k.a. "Space8999")
+
+***UPDATED:  August 18, 2004
+
+***UPDATED and rewritten with ERM 2.0:  August 2, 2022 by daemon_n
+
+**This script allows for heroes to visit the new WoG structure in the Castle
+**Objects in the Map Editor that resembles a pile of skulls (it is the 7th
+**object in the very first column underneath the CASTLE town).  When a hero
+**visits it, he/she has a choice of fighting an "Undead King", which is a stack
+**of Power Liches.  Dread Knights, Wraiths, and Ghosts are
+**also summoned onto the battlefield to aid the King in battle.
+
+**Upon defeating the King, the hero is awarded lots of gold, Mithril,
+**and Ghosts attempt to join the hero's army.
+
+**This structure works similar to the other creature banks, such as the Medusa Stores,
+**Imp Cache, Transylvanian Tavern, Naga Bank, Cyclops Stockpile, etc.
+
+*
+*MAJOR THANKS TO TIM PULVER (a.k.a. "Fnord"), STEVE HANNA, ARSTAHD, AND TO ANYONE ELSE
+*WHO HELPED ME IN MAKING THIS SCRIPT POSSIBLE!
+*
+
+
+**------------------------------------------------------------------------------
+
+**Set up Death Chamber structure
+!?FU(WOG_70_Initialization);
+!!UN:P70/?i^WOG_70_enabled^; ** Store 1 in i^WOG_70_enabled^ if script enabled, 0 if disabled
+!!if&i^WOG_70_enabled^;
+  !!VRz890:S^Death Chamber (Not Visited)^;z170000;
+  !!HT63/15:P0/890;
+  !!VRz891:S^Death Chamber (Visited)^;Sz170001;
+  !!HT63/15:P1/891;
+!!en;
+
+
+!#FU(WOG_70_Initialization):P;
+**------------------------------------------------------------------------------
+
+!?FU(OnSavegameRead);
+!!FU(WOG_70_Initialization):P;
+
+!?OB63/15&1000/i^WOG_70_enabled^=1;  *Triggers when any "Death Chamber" is visited
+!!PO998:N?(visited:y) S?(coeff:y); **Check PO:N value of Death Chamber square
+
+!!if&(visited)<>0;
+  !!IF:M1/^The place is abandoned.^;
+!!el;
+  !!IF:Q3/21/247/2/^Do you want a deadly battle ?^;
+  !!if&3;
+    !!VRi^WOG_70_BattleRound^:S-2;
+
+    !!VRi^WOG_70_BattleDifficulty^:S1;
+    !!if&v998>35/v998<72;
+      !!VRi^WOG_70_BattleDifficulty^:S2;
+
+    !!el&v998>71/v998<108;
+      !!VRi^WOG_70_BattleDifficulty^:S3;
+
+    !!el&v998>107;
+      !!VRi^WOG_70_BattleDifficulty^:S4;
+    !!en;
+    !!UN:P235/?(cbGrowth:y); [Check if script is enabled: y-12]
+    !!if&(cbGrowth);
+      !!VRi^WOG_70_BattleDifficulty^:+(coeff);
+    !!en;
+    !_!UN:P(WOG_OPT_NEW_BATTLE_FIELDS)/?(battlefields:y) P(WOG_OPT_NEW_BATTLE_FIELDS)/0; 
+
+    !!HE-1:Tv998/v999/v1000/247/1 O?(owner:y); **Trigger battle with the Lich King
+    !_!UN:P(WOG_OPT_NEW_BATTLE_FIELDS)/?(battlefields:y); 
+
+    !!if&(owner)<>(NO_OWNER);
+      **==============================================================================
+      **BEGIN THE POST-BATTLE TRIGGER AND COMMANDS (Power Liches)
+      **==============================================================================
+      !#VA(picType[2]:y) (value[2]:y);
+      !!VR(picType[0]):S(NO_PIC_TYPE);
+      !!VR(picType[1]):S(NO_PIC_TYPE);
+      !!VR(value[0]):S(NO_PIC_TYPE);
+      !!VR(value[1]):S(NO_PIC_TYPE);
+      !!VR(ghosts:y):Si^WOG_70_BattleDifficulty^ + 1 *100;()
+
+      !!UN:P36/?(mithril:y);  [Check if Mithril script is enabled: v1]
+
+      !!if&(mithril);
+        !!VR(picType[0]):S(RES_MITHRIL);
+        !!VR(value[0]):Si^WOG_70_BattleDifficulty^ +*7 +9;
+        !!VR(mithril):S(value[0]);
+
+        !!OW:R-1/(RES_MITHRIL)/d(value); **Give Mithril to current player
+        !!VR(picType[1]):S(PIC_TYPE_MONSTER);
+        !!VR(value[1]):S(ghosts)* 65536 | 288;
+      !!el;
+        !!VR(picType[0]):S(PIC_TYPE_MONSTER);
+        !!VR(value[0]):S(ghosts)* 65536 | 288;
+      !!en;
+      
+      !_!SN:T^wog.70.reward^/?(msg:z)/^number^/(ghosts);
+      !!VR(gold:y):Si^WOG_70_BattleDifficulty^ *7500 + 16000;
+      !!VR(msg:z):S^You Gain %(gold) gold and %(mithril) mithril and %(ghosts) Elder Ghosts^;
+
+      !!OW:R-1/(RES_GOLD)/d(gold); **Give Mithril to current player
+      !!IF:Q3/(RES_GOLD)/(gold)/(picType[0])/(value[0])/(picType[1])/(value[1])/1/(msg);
+      !!HE-1:C2/288/(ghosts)/1;  **Give 60 Ghosts to current hero
+
+      !!PO998:N1;
+      !!UN:P235/?(cbGrowth:y);
+      !!if&(cbGrowth);
+        !!PO998:S28;
+      !!en;
+    !!en;
+    !!VRi^WOG_70_BattleDifficulty^:S0;
+    !!VRi^WOG_70_BattleRound^:S0;
+  !!en;
+!!en;
+
+//prevent repeating battle
+!?FU(OnAfterLoadGame)&i^WOG_70_BattleDifficulty^;
+!!VRi^WOG_70_BattleDifficulty^:S0;
+!!VRi^WOG_70_BattleRound^:S0;
+
+*===============================================================================
+**Set up the special "Death Chamber" battlefields and Power Liches
+*===============================================================================
+!?FU(OnBeforeBattle)&i^WOG_70_BattleDifficulty^;
+*!IF:M^%^;
+!!BA:B20;  **Evil Fog
+!?FU(OnBattleReplay)&i^WOG_70_BattleDifficulty^;
+!!BA:B20;  **Evil Fog
+
+
+!?FU(OnSetupBattlefield)&i^WOG_70_BattleDifficulty^;800/i^WOG_70_enabled^=1; **Sets up special battlefield
+  !!BU:G4;  **Evil Fog effect
+  !!BF:C; **Clear the battlefield
+  **Place 4 huge Crypts onto center of battlefield
+  !!BF:O65/59 O65/127 O65/89 O65/97;  
+   **Place spooky trees onto top and bottom of battlefield
+  !!BF:O34/3 O34/5 O34/7 O34/9 O34/11 O34/13 O34/173 O34/175 O34/177 O34/179 O34/181 O34/183;
+  **Place 8 Gravemarkers and 2 crosses onto the battlefield
+  !!BF:O62/21 O62/24 O62/26 O62/27 O62/30 O62/157 O62/160 O62/162 O62/163 O62/166;
+  **Place 4 tombstones to close up area in middle of battlefield
+  !!BF:O61/75 O61/79 O61/109 O61/113;
+
+  **Code for attributes for the Lich King stacks
+  !!VR(hp:y):Si^WOG_70_BattleDifficulty^ +*200 +1000;
+  !!VR(statsBon:y):Si^WOG_70_BattleDifficulty^ *2;
+  !!BM21:S50 H(hp) R5000 Fd|(MON_FLAG_ATTACKS_TWICE) Ad(statsBon) Dd(statsBon) U1/d(statsBon) U2/d(statsBon);    **Lich King has 50 speed for duration of combat && endless retaliations each round
+  !!if&(statsBon)>4;
+    !!BM21:Fd|(MON_FLAG_FLYER) Fd(MON_FLAG_NO_MELEE_PENALTY) Ad(statsBon) Dd(statsBon) U1/d(statsBon) U2/d(statsBon); 
+  !!en;
+  !!if&(statsBon)>6;
+    !!BM21:Fd|(MON_FLAG_NO_RETALIATION) Fd(MON_FLAG_ATTACKS_ALL_AROUND) Ad(statsBon) Dd(statsBon) U1/d(statsBon) U2/d(statsBon); 
+  !!en;
+*===================================================================================
+**Begin In-battle code for battle with Power Lich King
+*===================================================================================
+!?FU(OnSetupBattlefield)&i^WOG_70_BattleDifficulty^;/v997=0;
+  *!IF:M^% OnBattleRound^;
+  **Code to summon Dread Knights onto battlefield at beginning of combat
+  !!VR(dreads:y):Si^WOG_70_BattleDifficulty^ +1 *9;
+  !!BU:S354/(dreads:y)/41/1/-1/0  S354/(dreads:y)/47/1/-1/0;
+  !!BU:S354/(dreads:y)/143/1/-1/0 S354/(dreads:y)/149/1/-1/0;
+  ***********************************************************************************
+  *n Wraiths per stack summoned if x position
+  !!VR(wraiths:y):S(dreads:y) *5 -1;
+  !!BU:S61/(wraiths:y)/6/1/-1/0 S61/(wraiths:y)/8/1/-1/0 S61/(wraiths:y)/10/1/-1/0;
+  !!BU:S61/(wraiths:y)/176/1/-1/0 S61/(wraiths:y)/178/1/-1/0 S61/(wraiths:y)/180/1/-1/0;
+  ************************************************************************************
+  **Additional Lich stack summoned between the crypts depending upon x position
+  !!VR(liches:y):S(dreads:y) -1 *15;
+  !!BU:S64/(liches:y)/94/1/-1/0;
+  !!FU(WOG_231_SetBonuses):P;
+
+!?FU(OnAfterTacticsPhase);
+!!VRi^WOG_70_BattleRound^:S-1;
+!?FU(OnBattleRound)&i^WOG_70_BattleRound^>-2;
+!!VRi^WOG_70_BattleRound^:+1;
+
+!?FU(OnBeforeBattleAction)&i^WOG_70_BattleDifficulty^/i^WOG_70_BattleRound^>=0/i^battle_acting_stack^=21;/x1=21;
+  !!BM21:P?p; **Power Lich King casts "Death Ripple"
+  !!re i/0/i^WOG_70_BattleDifficulty^/1/-1;
+    !!VR(power:y):Si %2 +1 +i^WOG_70_BattleDifficulty^-1;
+    !!VR(skill:y):S(power) F1/3;
+    !!BM21:C(SPELL_DEATH_RIPPLE)/p/(power)/(skill)/1; **Power Lich King casts "Death Ripple"
+  !!en;
+  **Code to summon additional Lich stacks onto battlefield during second round
+  !!if&i^WOG_70_BattleRound^=1;
+    !!VRk:R0/1/10 Sdi^WOG_70_BattleDifficulty^; T10;
+
+    !!BM21:C64/60/3/3/0;**Lich King removes the 4 huge Crypts closing up the battlefield
+
+    !!BU:S64/k/60/1/-1/1;
+
+    !!BM21:C64/128/3/3/0;
+    !!BU:S64/k/128/1/-1/1;
+
+    !!BM21:C64/90/3/3/0;
+    !!BU:S64/k/90/1/-1/1;
+
+    !!BM21:C64/98/3/3/0;
+    !!BU:S64/k/98/1/-1/1;
+  !!en;
+
+  !!if&i^WOG_70_BattleRound^>1;
+    **The "Age" spell applied to hero's troops during THIRD ROUND of combat and beyond
+    !!re i/0/(BATTLE_ATTACKER_STACK_LAST);
+      !!BMi:M75/5/(SKILL_EXPERT);
+    !!en;
+    **Ghosts now summoned inbetween trees during the third round and beyond!
+    !!HE-10:E?p/?l;  **Get hero's current level into "l"
+    !!VR(ghosts:y):Si^WOG_70_BattleDifficulty^ *6 *l +i^battle_round^;
+    !!if&i^WOG_70_BattleRound^=2;
+      !!BU:S288/(ghosts:y)/4/(BATTLE_RIGHT)/-1/1;
+      !!BU:S288/(ghosts:y)/12/(BATTLE_RIGHT)/-1/1;
+      !!BU:S288/(ghosts:y)/174/(BATTLE_RIGHT)/-1/1;
+      !!BU:S288/(ghosts:y)/182/(BATTLE_RIGHT)/-1/1;
+    !!en;
+  !!en;
+
+
+*========================================================================================
+**Triggers for Power Lich King's spellcasting
+
+!?FU(OnBeforeBattleAction)&i^WOG_70_BattleDifficulty^/i^WOG_70_BattleRound^>=0;/i^battle_acting_side^=(BATTLE_RIGHT);
+!!VR(addPow:y):Si^WOG_70_BattleDifficulty^ F1/20;
+
+!!if&i^battle_acting_side^=(BATTLE_RIGHT);
+  !!BMi^battle_acting_stack^:G(SPELL_FIRE_SHIELD)/?(dur:y)/?(power:y) P?(pos:y); [**Get FIRE SHIELD info from current stack]
+  !!BM21&(dur:y)=0/(power:y)=1:C(SPELL_FIRE_SHIELD)/(pos:y)/(addPow:y)/1/0;               [**Power Lich King casts BASIC FIRE SHIELD]
+
+  !!BMi^battle_acting_stack^:G(SPELL_COUNTERSTRIKE)/?(dur:y)/?(power:y);         [**Get FIRE SHIELD info from current stack]
+  !!BM21&(dur:y)=0/(power:y)=1:C(SPELL_COUNTERSTRIKE)/(pos:y)/(addPow:y)/1/0;             [**Power Lich King casts BASIC FIRE SHIELD]
+!!el;
+  
+  !!if&i^WOG_70_BattleDifficulty^=1;
+    !!VR(spell:y):S(SPELL_MISFORTUNE);
+
+  !!el&i^WOG_70_BattleDifficulty^=2;
+    !!VR(spell:y):S(SPELL_DISRUPTING_RAY);
+
+  !!el&i^WOG_70_BattleDifficulty^=3;
+    !!VR(spell:y):S(SPELL_WEAKNESS);
+
+  !!el&i^WOG_70_BattleDifficulty^=4;
+    !!VR(spell:y):S(SPELL_SORROW);
+  !!el;
+    !!VR(spell:y):S(SPELL_SLOW);
+  !!en;
+
+  !!BMi^battle_acting_stack^:G(spell)/?(dur:y)/?(power:y) P?(pos:y);             [**Get FIRE SHIELD info from current stack]
+  !!BM21&(dur:y)=0/(power:y)=1:C(spell)/(pos:y)/(addPow:y)/1/0;                           [**Power Lich King casts BASIC FIREBALL]
+  !!BM21:C(SPELL_FIREBALL)/(pos:y)/(addPow:y)/1/0;                           [**Power Lich King casts BASIC FIREBALL]
+
+!!en;

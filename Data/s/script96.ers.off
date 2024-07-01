@@ -1,0 +1,142 @@
+Capture mills and gardens	96	7	2	-1	0	0	879	Capture mills and gardens	Mystical Garden, Windmill or Waterwheel are captureable.	Capture mills and gardens
+
+Option 879 [Author - DracoLich] 
+
+Now, once visited Mystical Garden, Windmill or Waterwheel,
+you become his master. And the miller or leprechaun bring
+you the resources at the beginning of the week. 
+Skeletons with artifacts	96	7	2	-1	0	0	882	Skeletons with artifacts	All the skeletons objects on the map will contain the artifact.
+
+
+Artifact completely random, but may be protected by reinforced
+ skeleton.	Skeletons with artifacts
+
+Option 882 [Author - DracoLich]
+
+Using this script, all the skeletons (objects)
+on the map will contain the artifact.
+
+Artifact completely random, but may be protected by reinforced
+skeleton, which does not want to give away the treasure.
+Scholars instead of obelisks	96	7	2	-1	0	0	783	Scholars instead of obelisks	Scholars instead of obelisks	Scholars instead of obelisks
+
+Option 783 [Author - Algor]
+
+All obelisks on the map are replaced by scholars 
+
+Scholars now do not offer primary skill learning if
+impossible learn his subject, ask hero, do he wants to
+learn and demands a fee for the training, the size of 
+which depends on the subject matter.
+
+Restrictions do not apply to AI: AI learns and gets 
+free primary skill, if the training is not possible.
+Advanced learning stones	96	7	2	-1	0	0	779	Advanced learning stones	Advanced learning stones	Advanced learning stones
+
+Option 779 [Author - Algor]
+
+The Learning Stones give more experience to
+high level heroes (+100 experience per level).
+Mana shrines	96	7	2	-1	0	0	749	Mana shrines	Mana shrines	Mana shrines
+
+Option 749 [Àuthor - Algor, idea - Ivor]
+
+Every day shrines accumulate mana. First visiting hero in a day restores 
+5 õ shrine lever mana but no more than maximum.
+New Mana Regeneration System	96	7	2	-1	0	0	787	New Mana Regeneration System	New Mana Regeneration System	New Mana Regeneration System
+
+Option 787 [Author - Algor]
+
+Now the heroes will recover 3% every day of their maximum mana         
+reserve (min. 1), but visiting magical wells only restore 20% (min. 20).
+
+Overnight stay in a town with a Mage Guild will restore a 20% reserve  
+(min. 20) dependant on Guild level.                                                                   
+
+Mysticism and Mana Artifacts allow restoring additional mana on a        
+daily basis and when visiting  wells and sleepovers in towns with              
+mage guilds.                                                                                                          
+
+AI heroes receive the same bonus and corresponds to one level                  
+of the Mysticism skill.                                                                                         
+(+3%/+20% min. 1/20) for every level of difficulty above "Easy."           
+
+This option automatically disables the Wog- option 35 "Mysticism I".    
+
+Nightly Scouting	96	7	2	-1	0	0	795	Nightly Scouting	Nightly Scouting	Nightly Scouting
+
+Option 795 [Author - Algor]
+
+Before and during the game on some available map areas, random    
+events are placed that can be activated by any hero who sleeps            
+over (ends turn) on that area or the areas nearby.                                 
+
+Heroes with the Scouting skill and/or artifacts Speculum and            
+Spyglass, during the night, can detect events in neighbouring areas.
+
+No more than one event is activated per night                                         
+(even if there are several events in the search radius).                          
+After activation, the event disappears regardless of                               
+whether the hero has used it or not.                                                          
+AI uses events only if they are beneficial to him/her.                             
+Peons	96	7	2	-1	0	0	785	Peons	Peons	Peons
+
+Option 785 [Author - Algor]
+
+Units in the town garrison can now be disbanded  
+and sent to work to increase the daily income of   
+the town.                                                                        
+
+You can view information about current income   
+and adding new peons by pressing a new button    
+in the town screen.                                                      
+
+Income from peons directly depends on it's Fight
+Value. Peasants work with a fivefold efficiency.   
+
+Disbanded units can not be collected again!           
+
+AI-players never use this feature,                            
+but with the option 780 "Size-limited cities"        
+20/25/33/50/100% of "extra" AI creatures         
+(depending on the level of difficulty) goes              
+into the category of peons.                                        
+
+zzz	96	7	2	-1	0	0	755	Mines exhaustion 	Mines exhaustion 	Mines exhaustion 
+
+Option 755 [Author - Algor, idea from Phoenix-mod]
+
+Mines now have limited resource capacity.
+Capacity of resource are random for every mine. 
+It sets at game start and depend on map size.
+
+Right-click on mine entrance show current capacity.
+zzz	96	7	2	-1	0	0	751	Self Necromancy	Self Necromancy	Necromancy
+
+Option 751 [Author - Äüÿêîí]
+
+Necromancy rises up to 15/30/50% {own} creatures 
+as undead after battle,
+.
+Experience For Letting Go	96	7	0	-1	0	0	878	Experience For Letting Go	Experience For Letting Go	Experience for letting go
+
+Option 878 [Author - DracoLich]
+
+Now hero gains experience, if let go monsters without a fight.
+
+Gained experience is dependent on the difficulty level
+(default is 100/80/60/40/20% of experience for killing).
+
+
+In file "option 878 - experience for letting go.ini"
+you can override these coefficients.
+Opened Map	96	7	0	-1	0	0	794	Opened Map	Opened Map	Opened Map
+
+Option 794 [Author - Algor]
+
+Before the start of the game, you are given a selection
+menu for which players can see the full map.                
+
+This option may be useful for testing map templates,   
+as well as fans of offline tournaments and playing        
+the game with a revealed map.                                           

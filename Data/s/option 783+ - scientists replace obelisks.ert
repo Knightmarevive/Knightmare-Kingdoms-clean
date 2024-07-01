@@ -1,0 +1,28 @@
+#	Text resource for "option 783 - scientists replace obelisks.erm"		
+179168	Attack		
+179169	Defence		
+179170	Power		
+179171	Knowledge		
+179172	Good day, hero!
+
+My specialty is: {%Z9}.
+
+%Z8		
+179173	I could teach you for the modest
+fee %Y9 gold. Do you agree?		
+179174	If you want that I train you,
+come back when you can pay
+%Y9 gold for training.		
+179175	Sorry, but I can not teach
+you anything new.		
+179176	All you have to to study are
+Magic Book and %Y9 gold.		
+179177	All you have to to study are
+Basic Wisdom, Magic Book
+and %Y9 gold.		
+179178	All you have to to study are
+Advanced Wisdom, Magic Book
+and %Y9 gold.		
+179179	All you have to to study are
+Expert Wisdom, Magic Book
+and %Y9 gold.		

@@ -1,0 +1,83 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=7.8(August).2015
+
+!?BA0;
+!!SN:W^AmeUpg Creature 240 Alias^/173;
+!!SN:W^AmeUpg Creature 242 Alias^/173;
+
+//Guardians
+!_!SN:W^AmeUpg Creature 243 Alias^/173;
+!_!SN:W^AmeUpg Creature 244 Alias^/173;
+!!SN:W^AmeUpg Creature 245 Alias^/173;
+!!SN:W^AmeUpg Creature 246 Alias^/173;
+!!SN:W^AmeUpg Creature 247 Alias^/173;
+!!SN:W^AmeUpg Creature 248 Alias^/173;
+!!SN:W^AmeUpg Creature 249 Alias^/173;
+!!SN:W^AmeUpg Creature 250 Alias^/173;
+!!SN:W^AmeUpg Creature 251 Alias^/173;
+
+
+!?FU55421;
+x16 Battle Monster ID
+
+!!SN:W^AmeUpg SpellFix BM%X16^/-1;
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+//store monster type
+!!SN:W^AmeUpg SpellFix BM%X16^/y5;
+
+!?FU55422;
+x1 - Battle Monster ID
+
+// if there is no stack leave
+!!BMx1:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+!!SN:W^AmeUpg SpellFix BM%X1^/?y5;
+!!FU&y5<0:E;
+!!BMx1:Ty5;
+
+!?FU55423;
+x1 - Battle Monster ID
+
+// if there is no stack leave
+!!BMx1:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+!!SN:W^AmeUpg Creature %X1 Alias^/?y7;
+!!FU&y7<1:E; //exit if no alias
+!!BMx1:Ty7;
+
+!?BF;
+!!DO55421/0/41/1:P;
+
+!?BR;
+!!DO55421/0/41/1:P;
+
+!?BG0;
+!!FU:E;
+!!BG:N?y77;
+!!FU55423:Py77;
+
+!?BG1;
+!_!FU:E;
+!!BG:N?y77;
+!!FU55422:Py77;
+
+!?FU77006; (stack receives move in battle)
+!_!FU:E;
+!_!BG:N?y77;
+!!SN:X?y55/?y77;
+!!FU55423:Py77;
+

@@ -1,0 +1,78 @@
+ZVSE
+!?FU(CM2_Upgrade);
+!!IF:V7/1;
+
+!!SN:L^new_towns.era^/?y73;
+!!SN:Ay73/^set_custom_creature_upgrade^/?y75;
+!!CM:I?y63; !!SN:Ey75/1/-1;
+!!if|y63<68/y63>74;
+  !!SN:Ey75/1/-1;
+  !!IF:V7/1;
+  !!FU:E;
+!!en;
+!!VRy64:Sy63 -68;
+!!HE-1:C0/y64/?y66/?y77;
+!!FU&y77<1:E;
+
+!!re i/1/14;
+  !!VRy1:Si;
+  !!VRy2:Si+1;
+  !!if&xy2<0;
+    !_!VRi:S16;
+    !!FU:E;
+  !!en;
+  !!if&y66=xy1/xy2>=0;
+    !!IF:V7/0;
+    !!SN:Ey75/1/xy2;
+  !!FU:E;
+  !!en;
+!!en;
+
+
+!?FU(CM2_Upgrade_Haart);
+!!IF:V7/0;
+!!SN:L^new_towns.era^/?y73;
+!!SN:Ay73/^set_custom_creature_upgrade^/?y75;
+!!CM:I?y63;
+!!if|y63<68/y63>74;
+  !!SN:Ey75/1/-1;
+  !!IF:V7/1;
+  !!FU:E;
+!!en;
+!!VRy64:Sy63 -68;
+!!HE-1:C0/y64/?y66/?y77;
+!!FU&y77<1:E;
+
+!!SN:Ey75/1/-1;
+!!MA:Xy66/?y55;
+!!VRy56:Sy55 &-2147483648; Dragon
+!!VRy57:Sy55 &262144;      Undead
+!!SN&y56<>0/y57=0:Ey75/1/255;
+!!IF|y56=0/y57<>0:V7/1;
+
+!?FU(CM2_Upgrade_to_x1);
+!!IF:V7/0;
+
+!!SN:L^new_towns.era^/?y73;
+!!SN:Ay73/^set_custom_creature_upgrade^/?y75;
+!!CM:I?y63;
+!!if|y63<68/y63>74;
+  !!SN:Ey75/1/-1;
+  !!IF:V7/1;
+  !!FU:E;
+!!en;
+!!VRy64:Sy63 -68;
+!!HE-1:C0/y64/?y66/?y77;
+!!FU&y77<1:E;
+
+!!re i/2/15;
+  !!if&xi<0;
+    !!SN:Ey75/1/-1;
+    !!IF:V7/1;
+    !!FU:E;
+  !!en;
+  !!if&xi=y66;
+    !!SN:Ey75/1/x1;
+    !!FU:E;
+  !!en;
+!!en;

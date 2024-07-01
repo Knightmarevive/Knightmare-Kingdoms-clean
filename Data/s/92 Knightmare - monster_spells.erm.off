@@ -1,0 +1,840 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ERMS_ScriptDate=6.5(May).2016
+
+!?PI;
+!_!IF:M^92 Knightmare - monster_spells.erm^;
+!!SN:W^92 Knightmare - monster_spells.erm^/1;
+
+
+
+!?MM0;
+
+!!FU:E; disabling  for debug
+
+!_!FU:E;
+!_!MM:D?y1;
+!!SN:X?y52/?y4/?y94/?y93;
+!!FU&y52<0:E;  !!BMy52:I?y88;
+!!BHy88:N?y87; !!HEy87&y87>=0:O?y86;
+!!OW&y87>=0:Iy86/?y81; !!FU&y87>=0/y81=1:E;
+!!BA:S?y85; !!BA:P?y84/?y83/?y82; !_!VRy83:-1;
+!!CAv998/v999/v1000&y85>0:O?y86; !_!CA-1&y85>0:O?y86;
+!!OW&y87>=0:Iy86/?y81; !!FU&y85>=0/y81=1:E;
+!!FU&y87<0/y85=0:E;
+
+!_!FU|y1<0/y1>186:E;
+!_!VRy4:S-1;
+!_!BG:A?y51; !!VRy51:S10;
+!_!BG:A?y51 N?y52;
+!_!BU:Ey1/?y4;
+
+!!FU55408:Py51/y52/y4/y1/y93;
+
+
+!?MM0; !!BA:Q?y99; !!FU&y99=1:E;
+!!SN:X?y52/?y44/?y94/?y93;
+!!FU&y52<0:E; !!FU&y52>41:E;
+!!BMy52:I?y88;
+
+
+!_!BA:S?y85;
+!!BA:P?y84/?y83/?y82;
+!!VRy86:S0 -1;
+!!UN:P904/1 P905/0; disable error messages
+!!CAy84/y83/y82:O?y86;
+!!UN:P904/0 P905/0; reenable error messages
+!!OW&y86>=0:Iy86/?y81;
+!!FU&y86>=0/y81=1/y88=1:E;
+
+!!BHy88:N?y87; !!HEy87&y87>=0:O?y81;
+!!OW&y87>=0:Iy81/?y89;
+!_!FU|y87<0/y89=1:E;
+!!FU&y87<0:E;
+!!FU&y87>=0/y89=1:E;
+
+!!OW&y87>=0:Iy86/?y81;
+!_!FU&y86<0/y87<0:E;
+
+!_!FU55407&y44<0:Py52;
+!_!FU&y44<0:E;
+!!VRy77:S9;
+!!BMy44&y44>=0:I?y77;
+
+!!if|y77=y88/y44<0:;
+      !!FU55407:Py52;
+!!el:;
+      !!FU55406:Py52;
+!!en:;
+
+!_?MM0;
+!_!SN:X?y52/?y4/?y94/?y93;
+!_!FU&y52<0:E;
+
+
+!!FU&y52<0:E; !!FU&y52>41:E;
+!!BMy52:T?y3;
+!_!FU|y22<0/y22>41:E;
+!_!FU55408:P-1;
+
+
+!!SN:W^AmeCre%Y3 Spell^/?y4;
+!!FU&y4<1:E;
+!_!BMy21:U4/y4;
+!!UN:N1/1/y4; !!VRz2:S^Cast %Z1^;
+!!MM:Mz2;
+
+
+!?MM0;   !!BA:Q?y99; !!FU&y99=1:E;
+!!SN:X?y1/?y2/?y3/?y4; Get parameters
+!!SN:X?y52/?y44/?y94/?y93;
+
+!!BH1:N?y66;
+!!if&y66<0:;
+  !!SN:W^Knightmare Difficulty Wild Monsters Might^/?y99;
+  !!VRy98:S100 - y99;
+  !!VRy3:*y98  :100;
+  !!VRy94:*y98 :100;
+!!en;
+
+!!FU&y52<0:E; !!FU&y52>41:E;
+
+!!BMy52:I?y88;
+!!FU&y94<1:E;  !!FU&y44<0:E;
+
+**  attacked creatures
+!!BMy44:H?y5 L?y6;   y5 — hitpoints, y6 — lost hitpoints
+!!BMy44:N?y7 T?y17;  y7 — number of creatures  y17 - type of creatures
+
+** owned creatures
+!!BMy52:N?y29 T?y19;
+!!if|y19<0/y29<0:;
+  !!MM:M^error^;
+  !!FU:E;
+!!en;
+
+** damage calculation
+ !!VRy8:Sy5-y6; y8 — health of last remaining troop
+ !!VRy9:Sy3:y5; y9 — Minimum number of killed creatures
+ !!VRy10:Sy3%y5; y10 — damage to top creature
+ !!VRy9&y10>=y8:+1; y9 — minimum kills
+ !!VRy11:Sy4:y5; y11 — maximum kills
+ !!VRy12:Sy4%y5; y12 — damage to top creature
+ !!VRy11&y12>=y8:+1; y11 — maximum killed creatures
+ !!VRy13:Sy5*y7-y6; y13 — total hitpoints
+ !!VRy9&y9>y7:Sy7; y9 — minimum kills
+ !!VRy11&y11>y7:Sy7; y11 — maximum kills
+
+** printing
+
+!!UN:N3/9/y19/1;    !!UN&y29<2:N3/9/y19/1;
+!!VRz8:S^%Y29 %Z9^; !!VRz8&y29<2:S^The %Z9^;
+
+!!UN:N3/7/y17/1;    !!UN&y7<2:N3/7/y17/1;
+!!VRz6:S^%Z7^;      !!VRz6&y7<2:S^the %Z7^;
+
+!!VRz5:S^ will do %Y94 damage^; !!VRz5&y93>y94:S^ will do %Y94-%Y93 damage^;
+!!VRz4:S^ to %Z6^; !!VRz4&y9>0:S^ and will kill {~Red}%Y9{~} %Z6^;
+!!VRz4&y11>y9:S^ and will kill {~Red}%Y9-%Y11{~} %Z6^;
+!!VRz4&y9=y7:S^ and all {~Red}%Y9{~} %Z6 will be {~Yellow}DESTROYED{~}^;
+!!VRz4&y9=y7/y9<2:S^ and %Z6 will be {~Yellow}DESTROYED{~}^;
+!!VRz2:S^%Z8%Z5%Z4.^;
+!!MM:Mz2;
+
+!?FU77006; (stack receives move in battle)
+!_!FU55408:P-1;
+
+!!SN:X?y51/?y52;
+
+!!FU&y52>=21:E;
+!!VRy51&y52=1:+21;
+
+!!FU55407:Py52;
+!!FU:E;
+
+!_!BA:S?y85;
+!!BA:P?y84/?y83/?y82;
+!!VRy86:S0 -1;
+!!UN:P904/1 P905/0; disable error messages
+!!CAy84/y83/y82:O?y86;
+!!UN:P904/0 P905/0; reenable error messages
+!!OW&y86>=0:Iy86/?y81;
+!_!FU&y86>=0/y81=1/y51=1:E;
+!!if&y86>=0/y51=1:;
+  !!FU&y81=1:E;
+!!en:;
+
+!!BHy51:N?y87; !!HEy87&y87>=0:O?y81;
+!!OW&y87>=0:Iy81/?y89; !!FU&y87>=0/y89=0:E;
+
+!!FU55407:Py52;
+
+!_!SN:W^Creature Spell Offensive^/0;
+!_!SN:W^Creature Spell Friendly^/0;
+
+!_!VRy88:S0 R1;
+!_!FU55406&y88=0:Py52;
+!_!FU55407&y88=1:Py52;
+
+
+!_!FU55406:Py52;
+!_!FU55407:Py52;
+
+!?FU77012; OnStackToStackDamage
+!!SN:X?y1/?y2/?y3/?y4/?y5/?y6/?y7/?y8/?y9;
+!_!FU&y9=0:E;
+!_!FU55408:P-1;
+
+!_!FU:E;
+!!FU&y5<1:E; no damage
+
+!!FU&y2<0:E; !!FU&y2>41:E;
+!!FU&y1<0:E; !!FU&y1>41:E;
+
+!_!BMy2:P?y99;
+
+!!BMy2:I?y62;
+!!BMy1:I?y61;
+!!FU&y62=y61:E;
+
+!_!FU&y3<1:E;
+!_!DO55401/y1/y1/1:P;
+!_!FU55406:Py1;
+!_!BU:R;
+
+
+!?FU55408;
+!!VRy51:Sx1; !!VRy52:Sx2; !!VRy53:Sx3; !!VRy54:Sx4;  !!VRy55:Sx5;
+
+!_!FU&y51=10:E;
+
+!_!FU&y51=2:E;
+
+  !!SN:W^Creature Spell Offensive^/?y66;
+  !!SN:W^Creature Spell Friendly^/?y77;
+
+
+!!BMy52:I?y62; !!VRy63:Sy62;
+!!BMy53&y53>=0:I?y63;
+
+!!if|y62<>y63/y55>0:;
+
+  !_!IF:M^offensive^;
+  !_!VRz1:S^offensive^;
+  !_!MM:Mz1;
+
+  !!BG&y77>0/y66=0:A0;
+  !!FU55406:Py52;
+  !_!BU:R;
+  !_!FU55406:Py52;
+  !!UN&y66>0/y77=0:R5/3/0;
+  !!FU:E;
+!!en:;
+
+!!if&y62=y63/y55<1:;
+
+
+  !_!IF:M^friendly^;
+  !_!VRz1:S^friendly^;
+  !_!MM:Mz1
+
+  !!BG&y66>0/y77=0:A0;
+  !!FU55407:Py52;
+  !_!BU:R;
+  !_!FU55407:Py52;
+  !!FU:E;
+!!en:;
+
+!!FU:E;
+
+!!if&y53<0:;
+
+  !!BG&y77>0/y66=0:A0;
+  !!FU55407:Py52;
+  !!BU:R;
+  !!FU:E;
+!!en:;
+
+!!FU:E;
+
+!!if|y53<0/y62=y63:;
+
+  !!BG&y66>0/y77=0:A0;
+  !!FU55406:Py52;
+  !!BU:R;
+  !!FU:E;
+!!en:;
+
+
+!!FU:E;
+
+!!if&y53<0/y51<>2:;
+  !!SN:W^Creature Spell Offensive^/0;
+  !!SN:W^Creature Spell Friendly^/0;
+!!en:;
+
+  !!SN:W^Creature Spell Offensive^/?y66;
+  !!SN:W^Creature Spell Friendly^/?y77;
+
+  !_!FU55406&y66>0/y77=0:Py52;
+  !_!FU55407&y77>0/y66=0:Py52;
+
+  !!if&y66=0/y77=0:;
+    !!VRy88:S0 R1;
+    !!FU55406&y88=0:Py52;
+    !!FU55407&y88=1:Py52;
+    !_!SN&y53>=0:W^Creature Spell Offensive^/1;
+    !_!SN&y53>=0:W^Creature Spell Friendly^/1;
+  !!en:;
+
+  !!BU:R;
+  !!FU:E;
+
+
+!?FU55402; !!FU:E;
+//random attack spell for creature x1
+!!VRy4:S15;
+!!VRy4:R8;
+!!SN:W^AmeCre%X1 Spell^/y4;
+
+!?FU55403;
+//x1 - creature, x2 - base power
+//x3 - Number of creatures
+//x4 - x4 power every creature
+//x5 - 1 power every x5 creatures
+!!VRy7:Sx2;
+
+!!VRy1:Sx3*x4;
+!!VRy7:+y1;
+
+!!VRy1&x5>0:Sx3 :x5;
+!!VRy7&x5>0:+y1;
+
+!!SN:W^AmeCre%X1 Power^/y7;
+
+!?FU55404;
+//random summon spell for creature x1
+!!VRy4:S66;
+!!VRy4:R3;
+!!SN:W^AmeCre%X1 Spell^/y4;
+
+!?FU55405;
+//x1 creature
+//x2 battle monster
+//x3 target field
+//x16 spell recast
+
+!!SN:W^AmeCre%X1 Recast%X16 Spell^/?y4; !!FU&y4<1:E;
+!!SN:W^AmeCre%X1 Recast%X16 Power^/?y7; !!FU&y7<1:E;
+
+!_!BMy11&x1=3/y20=10:Cy4/y47/3/y7/1;
+
+  !_!BG:Q?y97; !!SN:W^AmeCre Previous Side^/?y97;
+  !!DO55446/0/41/1:P; //count monsters
+  !!SN&y97=0:W^KNIGHTMARE_MON_ATTACKER^/?y99;
+  !!SN&y97=1:W^KNIGHTMARE_MON_DEFENDER^/?y99;
+
+!!FU&y99>=20/y4=65:E; //don't clone if no place
+!!FU&y99>=20/y4>=66/y4<=69:E; //don't summon if no place
+
+!!if&y4=65:;
+!!FU&x1>=174/x1<=191:E;
+!!FU&x1>=294/x1<=302:E;
+!!FU&x1>=243/x1<=251:E;
+!!en:;
+
+!!if|y4=38/y4=39:;
+!!FU&x1>=174/x1<=191:E;
+!!FU&x1>=294/x1<=302:E;
+!!BU:Ex3/?y77; !!FU&y77<0:E;
+!!BMy77:N?y70 B?y71;
+!!VRy4&y71<=y70:S37;
+!!en:;
+
+!!SN:W^AmeCre%X1 Recast%X16 Mastery^/?y99;
+!!VRy99|y99<=0/y99>3:S3;
+!!BMx2:Cy4/x3/y7/y7/1;
+
+!_!BG:A0;
+
+!?BA0;
+!_!SN:W^AmeCre242 Spell^/18;
+!_!SN:W^AmeCre242 Power^/10;
+
+
+
+//Ogre Warlock
+!!SN:W^AmeCre219 Recast1 Spell^/36;
+!!SN:W^AmeCre219 Recast1 Power^/19;
+
+//Arcane Genies
+!!SN:W^AmeCre232 Recast1 Spell^/36;
+!!SN:W^AmeCre232 Recast1 Power^/19;
+
+//Arcane Reptilion
+!_!SN:W^AmeCre221 Spell^/37;
+!_!SN:W^AmeCre221 Power^/19;
+!_!SN:W^AmeCre221 Recast1 Spell^/37;
+!_!SN:W^AmeCre221 Recast1 Power^/19;
+
+----------------------------------------------------------------
+
+//elementals
+!_!SN:W^AmeCre202 Spell^/65; electricity clones
+!_!SN:W^AmeCre202 Power^/19;
+!_!SN:W^AmeCre202 Recast1 Spell^/65; electricity clones
+!_!SN:W^AmeCre202 Recast1 Power^/19; 19;
+!_!SN:W^AmeCre202 Recast2 Spell^/65; electricity clones
+!_!SN:W^AmeCre202 Recast2 Power^/19; 19;
+!!SN:W^AmeCre202 Recast2 Spell^/0; electricity *blank*
+!!SN:W^AmeCre202 Recast2 Power^/0; 19;
+
+
+!_!SN:W^AmeCre201 Spell^/48; mineral prayer
+!_!SN:W^AmeCre201 Power^/19;
+!_!SN:W^AmeCre201 Spell^/46; mineral stone skin
+!_!SN:W^AmeCre201 Power^/19;
+
+!_!SN:W^AmeCre201 Recast1 Mastery^/2;
+!_!SN:W^AmeCre201 Recast1 Spell^/27; mineral shield
+!_!SN:W^AmeCre201 Recast1 Power^/19;
+
+!_!SN:W^AmeCre201 Recast2 Mastery^/2;
+!_!SN:W^AmeCre201 Recast2 Spell^/43; mineral bloodlust
+!_!SN:W^AmeCre201 Recast2 Power^/19;
+
+
+
+!_!SN:W^AmeCre208 Spell^/53; hurricane haste
+!_!SN:W^AmeCre208 Power^/19;
+
+!_!SN:W^AmeCre208 Recast1 Mastery^/2;
+!_!SN:W^AmeCre208 Recast1 Spell^/28; hurricane air shield
+!_!SN:W^AmeCre208 Recast1 Power^/19;
+
+!_!SN:W^AmeCre208 Recast2 Mastery^/2;
+!_!SN:W^AmeCre208 Recast2 Spell^/44; hurricane precision
+!_!SN:W^AmeCre208 Recast2 Power^/19;
+
+
+!_!SN:W^AmeCre224 Spell^/37; life cures
+!_!SN:W^AmeCre224 Power^/19;
+
+!_!SN:W^AmeCre224 Recast1 Mastery^/2;
+!_!SN:W^AmeCre224 Recast1 Spell^/49; life mirth
+!_!SN:W^AmeCre224 Recast1 Power^/19;
+
+!_!SN:W^AmeCre224 Recast2 Mastery^/2;
+!_!SN:W^AmeCre224 Recast2 Spell^/51; life Fortune
+!_!SN:W^AmeCre224 Recast2 Power^/19;
+
+
+
+
+!_!SN:W^AmeCre225 Spell^/34; void antimagic
+!_!SN:W^AmeCre225 Power^/19;
+!_!SN:W^AmeCre225 Recast1 Spell^/34; void antimagic
+!_!SN:W^AmeCre225 Recast1 Power^/19;
+
+
+----------------------------------------------------------------
+
+//Town Guardians
+!_!SN:W^AmeCre243 Spell^/38; //Castle
+!_!SN:W^AmeCre244 Spell^/38; //Rampart
+!_!SN:W^AmeCre245 Spell^/19; //Tower
+!_!SN:W^AmeCre246 Spell^/22; //Inferno
+!_!SN:W^AmeCre247 Spell^/39; //Necro
+!_!SN:W^AmeCre248 Spell^/23; //Dungeon
+!_!SN:W^AmeCre249 Spell^/37; //Stronghold
+!_!SN:W^AmeCre250 Spell^/65; //Fortress
+//Conflux (251)
+
+!_!SN:W^AmeCre252 Spell^/37; red wizard
+!_!SN:W^AmeCre253 Spell^/37;  templar
+!_!SN:W^AmeCre254 Spell^/37;  druid
+!_!SN:W^AmeCre255 Spell^/39;  Supreme Dracolich
+
+!_!SN:W^AmeCre278 Spell^/37;  Clerics
+!_!SN:W^AmeCre278 Recast1 Spell^/38;
+
+!_!SN:W^AmeCre267 Spell^/37;  War Priest
+!_!SN:W^AmeCre267 Recast1 Spell^/38;
+
+//Generic creature, spell special
+!_!SN:W^AmeCre264 Spell^/99;
+!_!SN:W^AmeCre265 Spell^/99;
+!_!SN:W^AmeCre266 Spell^/99;
+!_!SN:W^AmeCre268 Spell^/99;
+
+
+!?BR;
+!_!FU55402:P242; random spell for Female Warlock
+!_!FU55402:P240; random spell for Spider Queen
+!_!FU55402:P293; random spell for Sylfaen Dragons
+
+!!FU55404:P251; random spell for Conflux Guardian
+!!FU55404:P225; random spell for Void Elemental
+
+!_?FU77006; (stack receives move in battle)
+
+!?BA0;
+!!SN:W^AmeCre Previous Action^/0;
+
+!?FU55400;
+!_!FU:E; test - exit
+
+!_!BG:A?y10 N?y11;
+!!SN:W^Monster Spell Casted^/?y99;
+
+
+!_!FU&y10<>10|y11<0/y11>41:E; splitted into two lines below
+!_!FU&y10<>10:E;
+!_!FU&y11<0/y11>41:E;
+
+!_!FU&y99=0:E;
+
+!_!BMy11:T?y3;
+
+
+  !!SN:W^AmeCre Previous Action^/?y20;
+  !!SN:W^AmeCre Previous Action^/?y10;
+
+  !!SN:W^AmeCre Previous BM^/?y73;
+  !_!SN:W^AmeCre Previous BM^/?y3;
+
+  !!SN:W^AmeCre Previous BM^/?y11;
+  !!FU|y11<0/y11>41:E;
+  !!BMy11:T?y3;
+  !!FU|y3<0/y3>999:E; //999 creatures limit from amethyst2
+
+!!VRy4:S0;
+
+!_!VRy4&y3=242:S18; //implosion for female warlock
+!_!VRy7&y3=242:S10; //power 10 for female warlock
+
+!!SN:W^AmeCre%Y3 Spell^/?y4;
+!!SN:W^AmeCre%Y3 Power^/?y7;
+!_!SN:W^AmeCre%Y3 Turns^/?y8;
+
+
+
+!_!FU&y4<1:E;
+
+
+!_!IF:L^BG%X1 Creature %Y3 Spell %Y4 Action %Y10 Previous %Y20^; //Log
+
+  !!SN:W^AmeCre Previous Target Stack^/?y43;
+  !!SN:W^AmeCre Previous Target Position^/?y47;
+
+
+  !_!BG:E?y13;
+  !!SN:W^AmeCre Previous Target Stack^/?y13;
+  !_!BMy13:P?y33;
+  !_!BG:D?y33;
+  !!SN:W^AmeCre Previous Target Position^/?y33;
+
+
+!_!BMy11:U4/y4;
+!_!BMy11:Gy4/y8/y7;
+!_!BG:Sy4;
+
+!_!BMy13&y13>-1/y13<42/x1=1:Gy4/y8/y7;
+
+!_!FU&x1=0:E;
+!!FU&y13<0:E;
+!!FU&y13>41:E;
+
+!_!FU:E; test - exit
+
+!_!BG&y10=10/x1=0:A12; test - no action
+
+!_!BMy13:P?y33;
+
+!_!BMy11&y4>0:Gy4/y7/y7; //apply spell type - disabled - don't work anyway
+
+
+!_!FU55408:P-1;
+
+//force spell
+!_!BG&y10=10:A12;
+!_!BMy11&x1=3/y20=10:Cy4/y47/3/y7/1;
+!_!IF:L^Creature %Y3 Spell %Y4 Action %Y10^; //Log
+!!DO55405/0/9/1&x1=9/y99=1:Py3/y11/y47; //recast
+
+!_!IF:L^applied spell^;
+!!SN:W^Monster Spell Casted^/0;
+
+
+!?FU55401;
+!!FU|x16<0/x16>41:E;
+!!BMx16:T?y1 N?y2 H?y3;
+!!FU|y1<0/y1>999/y2<1/y3<1:E;
+
+
+!!FU&y1>=174/y1<=191:E;
+
+!!SN:W^AmeCre%Y1 Spell^/?y4;
+!!FU&y4<1:E;
+
+
+!!BMx16:U4/y4;
+!!FU:E;
+
+!!BU:R;
+!!BMx16:U4/y4;
+!!BU:R;
+
+
+
+
+!?FU55406;
+!_?MM0;
+!_!SN:X?y1/?y2/?y3/?y4; Get parameters
+
+!_!FU:E; disabling  for debug
+
+!!VRy1:Sx1;
+!_!VRy2:Sx2;
+
+!!BMy1:N?y13 T?y14;
+
+!_!FU|y14<0/y14>999:E;
+!!FU&y14<264:E; don't run if not needed
+!!FU&y14=267:E; don't run if not needed
+!!FU&y14>268/y14<1000:E; don't run if not needed
+
+
+!!SN:W^Creature Spell Offensive^/1;
+!!SN:W^Creature Spell Friendly^/0;
+
+
+
+!!if&y14=268:;
+!!SN:W^AmeCre268 Spell^/17; Raido
+!!SN:W^AmeCre268 Power^/y13;
+!!SN:W^AmeCre268 Recast2 Spell^/17;
+!!SN:W^AmeCre268 Recast2 Power^/y13;
+!!SN:W^AmeCre268 Recast3 Spell^/17;
+!!SN:W^AmeCre268 Recast3 Power^/y13;
+!!en:;
+
+!!if&y14=266:;
+!!SN:W^AmeCre266 Spell^/21; Fire Acolite
+!!SN:W^AmeCre266 Power^/y13;
+!!SN:W^AmeCre266 Recast2 Spell^/21;
+!!SN:W^AmeCre266 Recast2 Power^/y13;
+!!en:;
+
+!!if&y14=265:;
+!!SN:W^AmeCre265 Spell^/16; Ice Acolite
+!!SN:W^AmeCre265 Power^/y13;
+!!SN:W^AmeCre265 Recast2 Spell^/20;
+!!SN:W^AmeCre265 Recast2 Power^/y13;
+!!SN:W^AmeCre265 Recast3 Spell^/16;
+!!SN:W^AmeCre265 Recast3 Power^/y13;
+!!SN:W^AmeCre265 Recast4 Spell^/20;
+!!SN:W^AmeCre265 Recast4 Power^/y13;
+!!en:;
+
+!!if&y14=264:;
+!!SN:W^AmeCre264 Spell^/18; Darkness Acolite
+!!SN:W^AmeCre264 Power^/y13;
+!!SN:W^AmeCre264 Recast2 Spell^/23;
+!!SN:W^AmeCre264 Recast2 Power^/y13;
+!!en:;
+
+
+!!DO55401/y1/y1/1:P;
+!_!BU:R;
+
+!_!FU55400:P;
+
+!?FU55407;
+!!VRy1:Sx1;
+!_!VRy2:Sx2;
+
+!!BMy1:N?y13 T?y14;
+
+
+!_!FU|y14<0/y14>999:E;
+!!FU&y14<264:E; don't run if not needed
+!!FU&y14=267:E; don't run if not needed
+!!FU&y14>268/y14<1000:E; don't run if not needed
+
+!!SN:W^Creature Spell Offensive^/0;
+!!SN:W^Creature Spell Friendly^/1;
+
+
+
+
+!!if&y14=268:;
+!!SN:W^AmeCre268 Spell^/58; Raido
+!!SN:W^AmeCre268 Power^/y13;
+!!SN:W^AmeCre268 Recast1 Spell^/0;
+!!SN:W^AmeCre268 Recast2 Spell^/0;
+!!SN:W^AmeCre268 Recast3 Spell^/0;
+!!en:;
+
+!!if&y14=266:;
+!!SN:W^AmeCre266 Spell^/29; Fire Acolite
+!!SN:W^AmeCre266 Power^/y13;
+!!SN:W^AmeCre266 Recast1 Spell^/0;
+!!SN:W^AmeCre266 Recast2 Spell^/0;
+!!en:;
+
+!!if&y14=265:;
+!!SN:W^AmeCre265 Spell^/48; Ice Acolite
+!!SN:W^AmeCre265 Power^/y13;
+!!SN:W^AmeCre265 Recast1 Spell^/0;
+!!SN:W^AmeCre265 Recast2 Spell^/0;
+!!SN:W^AmeCre265 Recast3 Spell^/0;
+!!SN:W^AmeCre265 Recast4 Spell^/0;
+!!en:;
+
+!!if&y14=264:;
+!!SN:W^AmeCre264 Spell^/23; Darkness Acolite
+!!SN:W^AmeCre264 Power^/y13;
+!!SN:W^AmeCre264 Recast1 Spell^/0;
+!!SN:W^AmeCre264 Recast2 Spell^/0;
+!!SN:W^AmeCre265 Recast3 Spell^/0;
+!!en:;
+
+!!DO55401/y1/y1/1:P;
+!_!BU:R;
+
+!_!FU55400:P;
+
+!_?FU77006; (stack receives move in battle)
+!_!FU55400:P3;
+!_!IF:L^stack receives move in battle^;
+
+!?BG0;
+
+
+!!BG:N?y17 A?y18;
+!!FU&y17<0:E;
+!!FU&y17>41:E;
+
+!!if|y18=7/y18=6:;
+
+       //reset friendliness
+       !_!SN:W^Creature Spell Offensive^/0;
+       !_!SN:W^Creature Spell Friendly^/0;
+
+       !!BMy17:E?y7; !!BG:Q?y5;
+       !!BHy5:N?y6;  !!HEy6&y6>=0:O?y4;
+       !!OW&y6>=0:Iy4/?y3;
+       !_!FU55406&y7>0/y6>=0:Py17;
+       !!FU55406&y7>0:Py17;
+!!en:;
+
+!!if|y18=10/y18=7/y18=6:;
+       !!BMy17:E?y7; !!BG:Q?y5;
+       !!BG:E?y33; !!VRy36:S9;
+       !!BMy33&y33>=0:I?y36;
+
+       !!if&y36<>y5/y36<9:;
+         !!SN:W^Creature Spell Offensive^/?y88;
+         !!SN:W^Creature Spell Friendly^/?y89;
+         !!FU55406&y88=0/y89=1:Py17; !!BG&y88=0/y89=1/y18=10:A10;
+       !!en:;
+
+       !!if&y36=y5:;
+         !!SN:W^Creature Spell Friendly^/?y89;
+         !!SN:W^Creature Spell Offensive^/?y88;
+         !!FU55407&y89=0/y88=1:Py17; !!BG&y89=0/y88=1:A10;
+       !!en:;
+!!en:;
+
+!!BMy17:T?y19 E?y20;
+!!VRy21:S0;
+!!VRy21|y19=264/y19=265/y19=266/y19=268:S1;
+
+!!SN:W^Creature Spell Offensive^/?y66;
+!!SN:W^Creature Spell Friendly^/?y77;
+!!BG&y20>0/y18>5/y18<8/y66>0/y77=0/y21>0:A10;
+
+!_!FU55400:P0;
+!_!BU:R;
+!_!IF:L^BG0^;
+
+
+!?BG0; //Previous move
+
+!!BG:N?y17 A?y18 E?y43 D?y47 Q?y95;
+
+
+  !!SN:W^AmeCre Previous Target Stack^/y43;
+  !!SN:W^AmeCre Previous Target Position^/y47;
+  !!SN:W^AmeCre Previous Action^/y18;
+  !!SN:W^AmeCre Previous BM^/y17;
+  !!SN:W^AmeCre Previous Side^/y95;
+
+
+!!if&y18=10:;
+!!if&y43>=0/y17>=0:;
+    !!BMy17:U4/?y21;
+    !!if&y21=65:; if clone
+       !!VRy22:S0;
+       !!VRy22&x1>=174/x1<=191:S1;
+       !!VRy22&x1>=294/x1<=302:S1;
+       !!VRy22&x1>=243/x1<=251:S1;
+       !!if&y22>0:;
+         !!VRy18:S3; //defend
+         !!SN:W^AmeCre Previous Action^/y18;
+         !!BG:Ay18;
+       !!en:;
+    !!en:;
+!!en:;
+
+!!SN:W^Monster Spell Casted^/1;
+!_!FU55400:P0;
+!_!SN:W^Monster Spell Casted^/0;
+!!en:;
+
+
+
+!?BG1;
+!_!SN:W^Creature Spell Offensive^/0;
+!_!SN:W^Creature Spell Friendly^/0;
+
+
+!_!FU55400:P9;
+!_!SN:W^Monster Spell Casted^/0;
+!!BU:R;
+!_!IF:L^BG1^;
+
+!?FU77006;
+
+  !!SN:W^AmeCre Previous Target Stack^/?y43;
+  !!SN:W^AmeCre Previous Target Position^/?y47;
+  !!SN:W^AmeCre Previous Action^/?y18;
+  !!SN:W^AmeCre Previous BM^/?y17;
+  !!SN:W^AmeCre Previous Side^/?y95;
+  !!VRy77:Sy17 %22;
+
+!!SN:X?y1/?y2;
+!!SN:W^Monster Spell Casted^/?y99;
+
+!_!FU&y1=y95/y2=y43:E;
+!!FU&y99=0:E;
+
+!!FU55400:P9;
+
+!!SN:W^Monster Spell Casted^/?y99;
+!!FU&y99=0:E;
+
+!!SN:Xy95/y77; 2021-01-07 found guilty
+
+!?BF;
+
+!!SN:W^Monster Spell Casted^/0;
+!!SN:W^Creature Spell Offensive^/0;
+!!SN:W^Creature Spell Friendly^/0;
+
+!!DO55401/0/41/1:P;
+
+!?BR;
+!!DO55401/0/41/1:P;

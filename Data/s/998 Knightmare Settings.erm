@@ -1,0 +1,102 @@
+ZVSE2
+
+!?FU(OnGameEnter);
+!!MA:C173/6/68;
+
+** disable these wog options
+!#UN:P195/0;
+
+!#UN:P233/0;
+!#UN:P182/0;
+!#UN:P201/0;
+!#UN:P216/0;
+!#UN:P218/0;
+!#UN:P193/0;
+!#UN:P204/0;
+!#UN:P190/0;
+!#UN:P219/0;
+**
+!#UN:P208/0;
+!#UN:P69/0;
+
+** enable these wog options
+
+!#UN:P900/1;
+!#UN:P902/1;
+
+** set these wog options
+!#UN:P0/1;
+!#UN:P1/0;
+!#UN:P2/0;
+!#UN:P3/0;
+!#UN:P4/1;
+!#UN:P6/0;
+!#UN:P7/1;
+!#UN:P8/1;
+!#UN:P9/0;
+!#UN:P10/1;
+
+** AI thinking Radius
+!#UN:J4/64000;
+!?PI;
+!!UN:J4/64000;
+!?GM0;
+!!UN:J4/64000;
+!?TM1;
+!!UN:J4/64000;
+
+!?BA52;
+!!MA:B28/777;
+!!MA:B29/777;
+
+
+** assemble combos in RoE/AB maps and campaigns **
+!?FU(OnGameEnter);
+!!UN:C6919480/4/?y10;
+!!VRy10:+128664;
+!!UN:Cy10/4/?y11;
+!!UN&y11<2:Cy10/4/2;
+
+
+** unlock luck and morale limits **
+!?FU(OnGameEnter);
+!!UN:C4605318/1/24;
+!!UN:C4605324/1/232;
+!!UN:C4605331/1/232;
+!!UN:C4605344/1/24;
+
+!!UN:C4605771/1/24;
+!!UN:C4605780/1/232;
+!!UN:C4605820/1/232;
+!!UN:C4605836/1/24;
+
+!!UN:C4453976/1/24;
+!!UN:C4453983/1/24;
+!!UN:C4461882/1/24;
+!!UN:C4461889/1/24;
+
+!!UN:C4605854/1/10;
+!!UN:C4605354/1/20;
+
+  ** fixes for some settings **
+  !?FU(OnPreHeroScreen);
+  !!VRy11:Si^henchman_on^;
+  !!UN:P49/?i^henchman_on^;
+  !!VRv7181:Si^henchman_on^;
+  !!FU(henchman_LoadGlobalConfig)&y11=0/v7181=1:P;
+
+
+** changes positions of battle buttons **
+!?FU(OnGameEnter);
+!!UN:C4633292/4/1778739750;
+!!UN:C4633296/1/44;
+!!UN:C4633425/4/1778739750;
+!!UN:C4633429/1/85;
+!!UN:C4633558/1/38;
+!!UN:C4633691/4/1745185318;
+!!UN:C4633695/1/158;
+!!UN:C5116710/4/28141620;
+!!UN:C5116714/4/979894272;
+!!UN:C5116791/4/28141604;
+!!UN:C5116795/4/711458816;
+!!UN:C5116799/1/2;

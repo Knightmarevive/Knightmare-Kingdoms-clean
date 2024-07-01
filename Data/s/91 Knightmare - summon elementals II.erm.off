@@ -1,0 +1,166 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=8.2(February).2016
+
+Thanks for great help to Hawaiing !
+Now monster casters work also
+
+!?BG0;
+!!BG:A?y1 H?y2 S?y3 Q?y4;
+!!FU55418:P0/100/-1/-1/-1;
+!_!FU(Summon_Unlock):P;
+
+!?FU55418;
+*x1 = spell number, 0 - default
+*x2 = percentage of spellpower
+*x3 = monster to summon (-1 default)
+*x4 = spell power (-1 default)
+*x5 = side (-1 default)
+!!BG:A?y1 H?y2 S?y3 Q?y4;
+!!VRy4&x5>-1:Sx5; !!BHy4&x5>-1:N?y2; //if different hero than current
+!_!FU|y1<>1/y2<0/y3<66/y3>69:E;
+!!UN:C5909376/4/522067228;[reset old hard code]
+!!SN:W^more_SS_levels.era^/?y66;
+!!FU&y2<0:E; !!VRy99:S0;
+!!VRy99&y1=1/y3>=66/y3<=69:S1;
+
+!!if&x1>=66/x1<=69:;
+  !_!VRy3&x1>=66/x1<=69:Sx1;
+  !!VRy3:Sx1; !!VRy99:S1;
+!!en:;
+
+!!if&y1=10:;
+   !!BG:N?y7; !!BMy7:U4/?y3 T?y97;
+   !!VRy3|y97=182/y97=191:S66 R3;
+   !!VRy99&y3>=66/y3<=69:S1;
+   !_!IF:M^spell %Y3^;
+
+  !!DO55446/0/41/1:P; //count monsters
+  !!SN&y4=0:W^KNIGHTMARE_MON_ATTACKER^/?y97;
+  !!SN&y4=1:W^KNIGHTMARE_MON_DEFENDER^/?y97;
+  !!FU&y97>=20/y3>=66/y3<=69:E; //don't summon if no place
+!!en:;
+
+!_!VRy99&x3>=0:S1;
+!!FU&y99=0:E;
+
+!_!FU|y1<>1/y2<0/y3<66/y3>69:E;
+
+!!UN:C6919200/4/?y10;
+!!VRy13:Sy4*4+21452+y10;
+!!UN:Cy13/4/?y14;
+!!VRy15:Sy10+21440;
+!!UN:Cy15/4/?y16;
+!!SN:E5133040/2/y14/y3/y16;
+
+!_!FU|y1<>1/y2<0/y3<66/y3>69:E;
+
+   !!HEy2&y3=66:S14/?y88;   !!FU(SSL_get)&y3=66/y66>0:P14/y88/?y88/d/d/d;
+   !!HEy2&y3=67:S17/?y88;   !!FU(SSL_get)&y3=67/y66>0:P17/y88/?y88/d/d/d;
+   !!HEy2&y3=68:S16/?y88;   !!FU(SSL_get)&y3=68/y66>0:P16/y88/?y88/d/d/d;
+   !!HEy2&y3=69:S15/?y88;   !!FU(SSL_get)&y3=69/y66>0:P15/y88/?y88/d/d/d;
+   !!VRv1&y3>=66/y3<=69/y88>v1:Sy88;
+
+!!VRy17:Sv1;[skillLevel]
+!!VRy17&y17<0:S0;
+!!VRy17&y17>3/y66=0:S3;
+!!VRy17&y17>5/y66>0:S5;
+!!HEy2:S12/?y12;    !!FU(SSL_get)&y12>0/y66>0:P14/y12/?y12/d/d/d;
+
+!!if&x3>=0:;
+ !!UN:C5909376/4/623191333;[disable summon spell and rewrite it]
+ !_!IF:M^Summoning custom creature %X3^;
+ !!FU55419:Py4/y3/x3/x2/x4;
+ !!FU:E;
+!!en:;
+
+!!if&y12>0:;
+ !!UN:C5909376/4/623191333;[disable summon spell and rewrite it]
+ !!VRx2:*2;
+ !!FU55419&y3=66:Py4/66/159/x2/x4;
+ !!FU55419&y3=67:Py4/67/159/x2/x4;
+ !!FU55419&y3=68:Py4/68/159/x2/x4;
+ !!FU55419&y3=69:Py4/69/159/x2/x4;
+ !!FU:E;
+!!en:;
+
+* handle summon speciality
+!!HEy2:X?y70/?y71/?y72/?y73/?y74/?y75/?y76 E?y78/?y79;
+!!VRy81:Sy79 *10; !!VRx2&y70=3/y71=y3:+y81;
+
+
+ !!UN:C5909376/4/623191333;
+ !!if&y3=66:; Fire Magic
+ !!FU55419&y17<3:Py4/66/114/x2/x4;
+ !!FU55419&y17=3:Py4/66/129/x2/x4;
+ !!FU55419&y17=4:Py4/66/202/x2/x4;
+ !!FU55419&y17=5:Py4/66/334/x2/x4;
+ !!FU:E;
+ !!en:;
+ !!if&y3=69:; Air Magic
+ !!FU55419&y17<3:Py4/67/112/x2/x4;
+ !!FU55419&y17=3:Py4/67/127/x2/x4;
+ !!FU55419&y17=4:Py4/67/208/x2/x4;
+ !!FU55419&y17=5:Py4/67/332/x2/x4;
+ !!FU:E;
+ !!en:;
+ !!if&y3=68:; Water Magic
+ !!FU55419&y17<3:Py4/68/115/x2/x4;
+ !!FU55419&y17=3:Py4/68/123/x2/x4;
+ !!FU55419&y17=4:Py4/68/224/x2/x4;
+ !!FU55419&y17=5:Py4/68/335/x2/x4;
+ !!FU:E;
+ !!en:;
+ !!if&y3=67:; Earth Magic
+ !!FU55419&y17<3:Py4/69/113/x2/x4;
+ !!FU55419&y17=3:Py4/69/125/x2/x4;
+ !!FU55419&y17=4:Py4/69/201/x2/x4;
+ !!FU55419&y17=5:Py4/69/333/x2/x4;
+ !!FU:E;
+ !!en:;
+
+!?FU55419;[summon creature]
+*x1=0-1,x2=spellNUM(66-67,for Effect),x3=creature_type
+*x4=percentage premy
+*x5=override spellpower (-1 do not override)
+!!UN:C6919200/4/?y10;[pCombatManager]
+!!VRy11:Sx1*4+21460+y10;
+!!UN:Cy11/4/?y12;[spellPower]
+!!VRy12&x5>0:Sx5; override spellpower
+!!VRy13:Sx1*4+21452+y10;
+!!UN:Cy13/4/?y14;[hero]
+!!VRy15:Sy10+21440;
+!!UN:Cy15/4/?y16;
+!!SN:E5133040/2/y14/x2/y16;
+
+
+   !!BHx1:N?y2;
+   !!SN:W^more_SS_levels.era^/?y66;
+   
+   !!HEy2&x2=66:S14/?y88;   !!FU(SSL_get)&x2=66/y66>0:P14/y88/?y88/d/d/d;
+   !!HEy2&x2=67:S17/?y88;   !!FU(SSL_get)&x2=67/y66>0:P17/y88/?y88/d/d/d;
+   !!HEy2&x2=68:S16/?y88;   !!FU(SSL_get)&x2=68/y66>0:P16/y88/?y88/d/d/d;
+   !!HEy2&x2=69:S15/?y88;   !!FU(SSL_get)&x2=69/y66>0:P15/y88/?y88/d/d/d;
+
+   !!VRv1&x2>=66/x2<=69/y88>v1:Sy88;
+
+
+!!VRy12: *x4 :100;
+
+!!VRy17:Sv1;[skillLevel]
+!!VRy17&y17<0:S0;
+!!VRy17&y17>3/y66=0:S3;
+!!VRy17&y17>5/y66>0:S5;
+!!SN:E5927824/2/y10/x2/x3/y12/y17;
+!!VRy18:Sx1*4+78504+y10;
+!!UN:Cy18/4/-1;[disable one elemental type limit]
+
+!?FU(Summon_Unlock);
+!!UN:C6919200/4/?y10;[pCombatManager]
+
+!!VRy18:S0+78504+y10;
+!!UN:Cy18/4/-1;[disable one elemental type limit]
+
+!!VRy18:S4+78504+y10;
+!!UN:Cy18/4/-1;[disable one elemental type limit]

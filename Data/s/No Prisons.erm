@@ -1,0 +1,111 @@
+ZVSE
+
+;delete prisons mod
+
+!?FU(prison_9643278);
+;skills
+!!HEx16:S1/?y1/1; ask what skill occupies display slot 1
+!!HEx16:Sy1/?y2; get expertise
+!!SN:W^C_Hero1-1_%X16^/y1;
+!!SN:W^C_Hero1-2_%X16^/y2;
+!!HEx16:S2/?y1/1; ask what skill occupies display slot 2
+!!HEx16&y1>-1:Sy1/?y2; get expertise
+!!SN:W^C_Hero2-1_%X16^/y1;
+!!SN:W^C_Hero2-2_%X16^/y2;
+;stats
+!!HEx16:F?y1/?y2/?y3/?y4;
+!!SN:W^HERO3-A_%X16^/y1;
+!!SN:W^HERO3-D_%X16^/y2;
+!!SN:W^HERO3-S_%X16^/y3;
+!!SN:W^HERO3-K_%X16^/y4;
+;mana
+!!HEx16:I?y5;
+!!SN:W^HERO3-M_%X16^/y5;
+;movement
+!!HEx16:G?y6; check mvm points
+!!SN:W^HERO3-U_%X16^/y6;
+
+!#DO(prison_9643278)/0/155/1:P; store Heroes skills
+!#UN:P3/?y1; check if commanders are enabled
+!#UN:P3/1; disable them in both cases
+!#SN&y1=1:W^Com_disabled^/99;  store player option
+!#TM2:S1/999/1/255;
+
+!?TM2;
+!!OW:C?y1; get owner
+!!VRy2:Sc; get day of the game
+!!UN:U62/-1/?y-1;  get prisons n*
+!!VRv1:S-1;
+!!DO(prison_32456132)/1/y-1/1&y-1>0:P62; Loop prisons
+!!DO(prison_32456133)/0/155/1&y-1>0:P; run all heroes to fix prisoners levels
+!!SN:W^Com_disabled^/?y3; commanders enabled?
+!!UN&y2=1/y3<99:P3/0;  enable commanders on day 1 if commanders enabled
+!!DO(prison_32456135)/0/155/1&y2=1:Py1;  on day one, run all players taverns and add all heroes
+
+!!FU&y2<>1:E;
+!_!if&y2=1:;
+!!VRy3:S0R155; 8   get random hero to y3
+!!HEy3:O?v1;       check this hero owner
+!!SN&v1>-1:G8;     if owned, redo
+!!OW:Vy1/y3/d;     place him in tavern of current player, left side
+!!VRy4:S0R155; 12  same thing for right side
+!!HEy4:O?v1;
+!!SN|v1>-1/y3=y4:G12;  redo if same as left tavern hero or owned
+!!OW:Vy1/d/y4;
+!!VRv4:S0;
+!!UN:U112/-1/?y-1;
+!!VRv1:S-1;
+!_!en:;
+
+
+!?FU(prison_32456135); on day 1 add all heroes in tavern, left side (doesn't matter)
+;x1 current player
+!!HEx16:O?v1;
+!!FU&v1>-1:E;
+!!OW:Vx1/x16/d;
+
+
+!?FU(prison_32456132);
+;delete prisons
+!!UN:Ux1/-1/-1/1;
+!!UN:Ov1/v2/v3; [delete]
+!!UN:Iv1/v2/v3/112/0;
+!!VRy92:S0 R5;
+!!VRv1:-1;
+!!MLv1/v2/v3:By92/4;
+
+!?FU(prison_32456133);
+!!HEx16:O?v1;
+!!FU&v1>-1:E;
+!!HEx16:E?y1/?y2;
+!!FU&y1<200:E; don't bother if level 1
+;fix prisoners levels
+!!DO32456134/0/27/1:Px16; remove first all skills
+!!HEx16:E53/1; set to level 1
+!!SN:W^C_Hero1-1_%X16^/?y1;
+!!SN:W^C_Hero1-2_%X16^/?y2;
+!!HEx16:S1/y1/1; set skill
+!!HEx16:Sy1/y2;
+!!HEx16:S1/y1/1; set display slot 1 to y1 skill
+!!HEx16:S1;
+;
+!!SN:W^C_Hero2-1_%X16^/?y1;
+!!SN:W^C_Hero2-2_%X16^/?y2;
+!!HEx16&y1>-1:S2/y1/1; set skill
+!!HEx16&y1>-1:Sy1/y2;
+!!HEx16&y1>-1:S2/y1/1; set display slot 2 to y1 skill
+!!HEx16&y1>-1:S2;
+;reset stats and mana
+!!SN:W^HERO3-A_%X16^/?y1;
+!!SN:W^HERO3-D_%X16^/?y2;
+!!SN:W^HERO3-S_%X16^/?y3;
+!!SN:W^HERO3-K_%X16^/?y4;
+!!HEx16:Fy1/y2/y3/y4;
+!!SN:W^HERO3-M_%X16^/?y5;
+!!HEx16:Iy5;
+!!SN:W^HERO3-U_%X16^/?y6;
+!!HEx16:Gy6;
+
+!?FU(prison_32456134);
+;first delete all skills
+!!HEx1:Sx16/0;

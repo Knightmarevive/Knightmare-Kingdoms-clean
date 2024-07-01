@@ -1,0 +1,1540 @@
+ZVSE
+ERMS_ScriptDate=7.5(May).2016
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+
+****************************************************************
+********************* New Upgrades *****************************
+**** done by: **************************************************
+**** Acid Dragon (building, dwelling and modifying parts) ******
+**** Timothy Pulver (upgrading part) ***************************
+**** special thanks to Thomas Franz for the PO:V3 bit ;) *******
+****************************************************************
+
+* Variables Used: v9500-v9600 (not all of them, there exist some irregullar gaps)
+* Functions Used: FU9500-FU9513
+* z Variables Used: z943-z959, z199500-z199604
+
+
+
+!#VRv9500:S-1; [Initialize v9500 to -1]
+!#VRv9520:S0;
+!#VRv9562:S0;
+
+!?TM19&v9562=0; [occur at day one for all players, never after (timer from wogify)]
+!!UN:P555/?v1; [Check if New Upgrades script is enabled: v1=1 if Yes]
+!!FU9508&v1=1:P;
+
+!?FU9508;
+!#UN:P555/?v1; [Check if New Upgrades script is enabled: v1=1 if Yes]
+!#UN:P67/?v2; [Check if Neutral Town is enabled: v2=1 if yes]
+!#UN&v2=1/v1=1:P67/0; [DISABLE Neutral Town]
+!#UN:P56/?v2; [Check if Methamorphs are enabled: v2=1 if yes]
+!#UN&v2=1/v1=1:P56/0; [DISABLE Methamorphs]
+!#UN:P173/?v2; [Check if Extended Upgrades are enabled: v2=1 if yes]
+!#UN&v2=1/v1=1:P173/0; [DISABLE Extended Upgrades]
+!#UN:P174/?v2; [Check if Universal Upgrades are enabled: v2=1 if yes]
+!#UN&v2=1/v1=1:P174/0; [DISABLE Universal Upgrades]
+!#UN:P125/?v2; [Check if the rule upg level 7 become level 8 is enabled: v2=1 if yes]
+!#UN&v2=1/v1=1:P125/0; [DISABLE the rule]
+
+!#UN:P900/?v2; [Check if STACK EXPERIENCE is enabled: v2=0 if no]
+!#UN&v2=0/v1=1:P900/1; [ENABLE stack experience]
+
+*****************************************************************
+******************* New dwellings part **************************
+*****************************************************************
+
+!!FU:E; //Amethyst Upgrades does touch dwellings (yet)
+
+!!VRv9562:S1; [set v9562 to 1 so as not to do the loop again]
+!!UN:P555/?y3; [check if new upgrades option is enabled]
+
+!!UN&y3=1:U17/93/?v9561; [get number of natural calamities]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9505/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!!UN&y3=1:U17/89/?v9561; [get number of rock covered positions]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9506/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!!UN&y3=1:U17/90/?v9561; [get number of snow covered positions]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9507/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!!UN&y3=1:U16/13/?v9561; [get number of war emissaries' dwellings]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9509/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!!UN&y3=1:U16/14/?v9561; [get number of peace emissaries' dwellings]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9510/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!!UN&y3=1:U16/15/?v9561; [get number of lore emissaries' dwellings]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9511/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!!UN&y3=1:U16/16/?v9561; [get number of mana emissaries' dwellings]
+!!VRv9563:S-1; [Initialize v9563 to first object for faster UN:U format]
+!!DO9512/1/v9561/1&y3=1:P; [loop through dwellings]
+
+!?FU9505;
+!!UN:U17/93/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!DW9563:M0/166/5; [set 5 electricity elementals]
+!!DW9563:M1/165/4; [set 4 mineral elementals]
+!!DW9563:G0/166/10; [set 12 e. elementals as guards]
+!!DW9563:G1/165/8;  [set 9 m. elementals as guards]
+
+!?FU9506;
+!!UN:U17/89/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!DW9563:M0/171/4; [set 4 medusas]
+!!DW9563:M1/164/3; [set 3 blood minotaurs]
+!!DW9563:M2/170/2; [set 2 myriads]
+!!DW9563:G0/171/8;  [set 8 medusas as guards]
+!!DW9563:G1/164/6;  [set 6 blood minotaurs as guards]
+!!DW9563:G2/170/4;  [set 4 myriads as guards]
+
+!?FU9507;
+!!UN:U17/90/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!DW9563:M0/167/4; [set 4 ancient basilisks]
+!!DW9563:G0/167/10; [set 10 ancient basilisks as guards]
+
+!?FU9509;
+!!UN:U16/13/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!CB9563:G0/114/50;  [set 50 fire elementals as guards]
+!!CB9563:G1/129/50;  [set 50 energy elementals as guards]
+!!CB9563:G2/166/50;  [set 50 electricity elementals as guards]
+!!CB9563:G3/129/50;  [set 50 energy elementals as guards]
+
+!?FU9510;
+!!UN:U16/14/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!CB9563:G0/113/50;  [set 50 earth elementals as guards]
+!!CB9563:G1/125/50;  [set 50 magma elementals as guards]
+!!CB9563:G2/165/50;  [set 50 mineral elementals as guards]
+!!CB9563:G3/125/50;  [set 50 magma elementals as guards]
+
+!?FU9511;
+!!UN:U16/15/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!CB9563:G0/112/65;  [set 65 air elementals as guards]
+!!CB9563:G1/127/65;  [set 65 storm elementals as guards]
+!!CB9563:G2/112/65;  [set 65 air elementals as guards]
+!!CB9563:G3/127/65;  [set 65 storm elementals as guards]
+
+!?FU9512;
+!!UN:U16/16/-1/9563; [get x/y/l of yellow square of dwelling into v9563-v9566]
+!!CB9563:G0/115/65;  [set 65 water elementals as guards]
+!!CB9563:G1/123/65;  [set 65 ice elementals as guards]
+!!CB9563:G2/115/65;  [set 65 water elementals as guards]
+!!CB9563:G3/123/65;  [set 65 ice elementals as guards]
+
+!?OB17/93; [set again electricity elementals at slot one to avoid natural calamity's monster changing]
+!!UN:P555/?v1; [Check if Second Upgrades script is enabled: v1=1 if Yes]
+!!DWv998/v999/v1000&v1=1:M0/166/d0;
+!!DWv998/v999/v1000&v1=1:G0/166/d0;
+
+
+****************************************************************
+************************ Upgrading Part ************************
+****************************************************************
+
+!?OB98;
+!!UN:P555/?v1; [Check if New Upgrades script is enabled: v1=1 if Yes]
+!!CAv998/v999/v1000:T?y1 U?y3; !!VRy2:S-1;
+!_!FU9501&v1=1:Py1/y2/y3;
+
+!?CM1; !!CM:S?y99; !_!FU&y99<>12:E;
+!_!FU(reset_town_creatures)&y99=12:P;
+
+!!UN:P555/?v1; [Check if New Upgrades script is enabled: v1=1 if Yes]
+!_!FU(reset_town_creatures)&v1=1:P;
+!_!FU9500&v1=1:P;
+
+!?FU9500;
+!!UN:P555/?v1; [Check if New Upgrades script is enabled: v1=1 if Yes]
+!!UN:P900/?v2; [Check if STACK EXPERIENCE is enabled: v2=0 if no]
+!!UN&v2=0/v1=1:P900/1; [ENABLE stack experience]
+
+
+ [Set/Reset town types for creature upgrading]
+!!CA-1:T?y1; [Town Type: y1] !_!IF:L^%Y1^;
+!!CM:I?y2; [Position clicked: y2]
+!!CA-1:P?v9530/?v9531/?v9532;
+
+ [Check creature types]
+!!CA-1:P?y3/?y4/?y5; [Town's position: y3/y4/y5]
+!!SN:W^Neutral Town %Y3 %Y4 %Y5^/?y98; !_!FU&y98<>0:E;
+!!POy3/y4/y5:O?y6; [PO:O: y6]
+!_!FU9502&y6>0/y6<8:Py11; [Restore creatures unless nothing is stored yet]
+
+!_!IF:L^debug^;
+
+
+!!FU(reset_town_creatures):P;
+
+ [Set creature to be upgraded (if upgraded creature dwelling is built)]
+ !!CA-1:U?y3; [Town Number: y3]
+!_!FU9501:Py1/y2/y3; !!FU:E;
+
+!_!FU(reset_town_creatures)&y2<115:P;
+!!FU9501&y2>=115/y2<=121:Py1/y2/y3; [Garrison slots]
+!_!FU(reset_town_creatures)&y2>121/y2<140:P;
+!!FU9501&y2>=140/y2<=146:Py1/y2/y3; [Visiting hero slots]
+!_!FU(reset_town_creatures)&y2>146:P;
+
+------------------------------------------------------------------------------------------------------------------
+
+!?FU(reset_town_creatures);
+!!re i/0/7;
+  !!re j/0/6;
+    !!VRy1:Si *14 +j +j;
+    !!UN:Ti/j/0/y1;
+    !!VRy2:Sy1 +1;
+    !!UN:Ti/j/1/y2;
+    !!MA:Uy1/y2;
+  !!en;
+!!en;
+
+** fortress fix
+!!UN:T7/2/0/104 T7/2/1/105;
+!!UN:T7/3/0/106 T7/3/1/107;
+!!UN:T7/4/0/102 T7/4/1/103;
+
+** conflux
+!!UN:T8/0/0/118 T8/0/1/119; !!MA:U118/119;
+!!UN:T8/1/0/112 T8/1/1/127; !!MA:U112/127;
+!!UN:T8/2/0/115 T8/2/1/123; !!MA:U115/123;
+!!UN:T8/3/0/114 T8/3/1/129; !!MA:U114/129;
+!!UN:T8/4/0/113 T8/4/1/125; !!MA:U113/125;
+!!UN:T8/5/0/120 T8/5/1/121; !!MA:U120/121;
+!!UN:T8/6/0/130 T8/6/1/131; !!MA:U130/131;
+
+** 3rd upgrade
+
+!!UN:T0/0/2/325; !!UN:T0/1/2/228; !!UN:T0/2/2/213; !!UN:T0/3/2/197; !!UN:T0/4/2/169; !!UN:T0/5/2/214; !!UN:T0/6/2/150; 
+!!UN:T1/0/2/291; !!UN:T1/1/2/215; !!UN:T1/2/2/229; !!UN:T1/3/2/231; !!UN:T1/4/2/199; !!UN:T1/5/2/216; !!UN:T1/6/2/151; 
+!!UN:T2/0/2/173; !!UN:T2/1/2/217; !!UN:T2/2/2/116; !!UN:T2/3/2/230; !!UN:T2/4/2/232; !!UN:T2/5/2/240; !!UN:T2/6/2/152; 
+!!UN:T3/0/2/236; !!UN:T3/1/2/237; !!UN:T3/2/2/238; !!UN:T3/3/2/212; !!UN:T3/4/2/209; !!UN:T3/5/2/205; !!UN:T3/6/2/153; 
+!!UN:T4/0/2/218; !!UN:T4/1/2/290; !!UN:T4/2/2/159; !!UN:T4/3/2/226; !!UN:T4/4/2/210; !!UN:T4/5/2/235; !!UN:T4/6/2/154; 
+!!UN:T5/0/2/233; !!UN:T5/1/2/234; !!UN:T5/2/2/198; !!UN:T5/3/2/206; !!UN:T5/4/2/200; !!UN:T5/5/2/242; !!UN:T5/6/2/155; 
+!!UN:T6/0/2/140; !!UN:T6/1/2/220; !!UN:T6/2/2/239; !!UN:T6/3/2/219; !!UN:T6/4/2/207; !!UN:T6/5/2/241; !!UN:T6/6/2/156; 
+!!UN:T7/0/2/211; !!UN:T7/1/2/221; !!UN:T7/2/2/222; !!UN:T7/3/2/203; !!UN:T7/4/2/223; !!UN:T7/5/2/204; !!UN:T7/6/2/157; 
+!!UN:T8/0/2/227; !!UN:T8/1/2/208; !!UN:T8/2/2/224; !!UN:T8/3/2/202; !!UN:T8/4/2/201; !!UN:T8/5/2/225; !!UN:T8/6/2/158; 
+
+** 4rd upgrade
+!!UN:T0/6/3/341; !!UN:T0/5/3/379; !!UN:T0/4/3/285; !!UN:T0/3/3/371; !!UN:T0/2/3/336; !!UN:T0/1/3/344; !!UN:T0/0/3/380;
+!!UN:T1/6/3/272; !!UN:T1/5/3/372; !!UN:T1/4/3/350; !!UN:T1/3/3/378; !!UN:T1/2/3/345; !!UN:T1/1/3/377; !!UN:T1/0/3/192; 
+!!UN:T2/6/3/342; !!UN:T2/5/3/348; !!UN:T2/4/3/349; !!UN:T2/3/3/252; !!UN:T2/2/3/117; !!UN:T2/1/3/370; !!UN:T2/0/3/369;
+!!UN:T3/6/3/343; !!UN:T3/5/3/274; !!UN:T3/4/3/374; !!UN:T3/3/3/262; !!UN:T3/2/3/373; !!UN:T3/1/3/347; !!UN:T3/0/3/346;
+!!UN:T4/6/3/367; !!UN:T4/5/3/354; !!UN:T4/4/3/355; !!UN:T4/3/3/366; !!UN:T4/2/3/288; !!UN:T4/1/3/141; !!UN:T4/0/3/368; 
+!!UN:T5/6/3/271; !!UN:T5/5/3/353; !!UN:T5/4/3/383; !!UN:T5/3/3/382; !!UN:T5/2/3/276; !!UN:T5/1/3/263; !!UN:T5/0/3/381;
+!!UN:T6/6/3/270; !!UN:T6/5/3/352; !!UN:T6/4/3/387; !!UN:T6/3/3/386; !!UN:T6/2/3/385; !!UN:T6/1/3/351; !!UN:T6/0/3/384; 
+!!UN:T7/6/3/329; !!UN:T7/5/3/391; !!UN:T7/4/3/390; !!UN:T7/3/3/289; !!UN:T7/2/3/277; !!UN:T7/1/3/389; !!UN:T7/0/3/388;
+!!UN:T8/6/3/273; !!UN:T8/5/3/375; !!UN:T8/4/3/333; !!UN:T8/3/3/334; !!UN:T8/2/3/335; !!UN:T8/1/3/332; !!UN:T8/0/3/376; 
+
+ [Determine which creature is clicked]
+ [x1=town type, x2=position clicked, x3=town ID]
+!?FU9501; !!FU:E;
+!!CA0/x3:P?y13/?y14/?y15; [Town's position: y13/y14/y15]
+!_!POv9530/v9531/v9532:V3/?y92; get flag for current town
+!!POy13/y14/y15:V3/?y92; get flag for current town
+!!VRy92:&64; test if the bit 7 is set
+!!FU&y92=0:E; Exit if there's no special structure in town
+!!re i/0/6:;
+  !!VRy31:Si +37;  !!VRy32:Si +64;
+  !!CA0/x3:B3/y31; !!CA0/x3&1:B1/y32;
+!!en:; 
+!?FU9501; !_!IF:L^FU9501^; !!FU:E;
+!!VRy1:S-1;  !!VRy2:S-1;
+
+!!VRy1&x2>=115/x2<=121:Sx2 -115; [Garrison creature slot number: y1]
+!!VRy2&x2>=140/x2<=146:Sx2 -140; [Visiting hero creature slot number: y2]
+
+ [Determine creature type: y5]
+!!CA0/x3:H0/?y3 H1/?y4; [Garrison hero: y3, Visiting hero: y4]
+!!HEy3&y3>=0/y1>=0:C0/y1/?y5/d; [Garrison hero creature: y5]
+!!CA0/x3&y3<0/y1>=0:M2/y1/?y5/d; [Garrison creature: y5]
+!!HEy4&y4>=0/y2>=0:C0/y2/?y5/d; [Visiting hero creature: y5]
+
+!!FU&y5<0:E; [Exit if not a creature]
+
+!!MA:Uy5/?y7; [Check for a custom upgrade: y7]
+!_!IF:L^debug %y5 %y7^;
+
+ [Default upgrade for all towns except Conflux]
+!_!VRy6&y7=-1/y5<=111:Sy5 %2; [Remainder of creature number divided by 2: y6]
+!_!VRy7&y7=-1/y5<=111/y6=0:Sy5 +1; [If non-upgraded, upgrade is y7]
+
+ [Default upgrade for Conflux]
+!_!VRy7&y7=-1/y5=112:S127; [Air Elemental]
+!_!VRy7&y7=-1/y5=113:S125; [Earth Elemental]
+!_!VRy7&y7=-1/y5=114:S129; [Fire Elemental]
+!_!VRy7&y7=-1/y5=115:S123; [Water Elemental]
+!_!VRy7&y7=-1/y5=118:S119; [Pixie]
+!_!VRy7&y7=-1/y5=120:S121; [Psychic Elemental]
+!_!VRy7&y7=-1/y5=130:S131; [Firebird]
+
+ [Default upgrade for Dragon Peaks]
+!_!VRy7&y7=-1/y5=168:S327;
+!_!VRy7&y7=-1/y5=134:S293;
+!_!VRy7&y7=-1/y5=133:S338;
+
+!!VRy6:S1; [Initialize y6 to 1]
+!!VRy6&y7>=0:S0; [Set y6 to 0 if y7>=0]
+!_!VRy6|y5=116/y5=169/y5=159/y5>196:S1; Disable 3rd upgrade
+!_!VRy6&y5>=150/y5<=158:S1; Disable 3rd upgrade
+!_!VRy6&y7=290:S0; Enable if mummy servants
+!_!VRy6&y7=291:S0; Enable if centaur archers
+
+!_!VRy6&y5>=132/y5<=135:S0;
+!_!VRy6|y7=293/y7=339:S0; 
+
+!!FU|y6=1/y7=-2:E; [Exit if no upgrade]
+
+!_!MA:Ly5/?y82; [Store creature's level in y82]
+
+
+!!VRy82:S-1; 
+!!VRy97:S-1; !!VRy96:S-1;
+!!VRy98:S-1; !!VRy95:S-1;
+!!re i/0/6; 
+  !!UN:Tx1/i/0/?y95;
+  !!if&y95=y5;
+    !!VRy97:Sy95;
+    !!VRy96:Si;
+    !!VRy82:Si;
+  !!en:;
+!!en;
+
+    
+!!re i/0/6; 
+  !!UN:Tx1/i/1/?y99;
+  !_!IF:L^Y99 = %Y99^;
+  !!if&y99=y5;
+    !!VRy82:Si;
+    !!MA:Uy99/?y98;
+    !_!IF:L^Y98 = %Y98 y82 = %V9502^;
+    !!VRy7&y98>=0:Sy98;
+  !!en;
+!!en;
+
+!_!FU&y97>=0:E;
+!_!FU(reset_town_creatures)&y95<0/y7<0:P;
+
+
+!_!FU(reset_town_creatures)&y82<0:P;
+
+!_!IF&y82<0:L^upgrade problem %X1 %X2 %X3 ... %Y5 %Y7 %Y82^;
+!!FU&y82<0:E;
+
+!!VRy8:S37 +y82; [Upgraded dwelling of this creature's level: y8]
+!!CA0/x3:B3/y8; [Check if town has this upgraded dwelling built: Flag 1 True if yes]
+!!CA0/x3&-1:B3/19; [Check if horde building 1 is built: Flag 1 is true if yes]
+!!CA0/x3&-1:B3/25; [Check if horde building 2 is built: Flag 1 is true if yes]
+
+!!IF&-1:L^no upg dwelling^;
+!!FU&-1:E; [Exit if upgraded dwelling isn't built]
+
+
+!!CA0/x3:P?y13/?y14/?y15; [Town's position: y13/y14/y15]
+!_!POv9530/v9531/v9532:V3/?y92; get flag for current town
+!!POy13/y14/y15:V3/?y92; get flag for current town
+!!VRy92:&64; test if the bit 7 is set
+!!FU&y92=0:E; Exit if there's no special structure in town
+
+!!VRv9500:Sy5; [Store creature number: v9500]
+!!MA:Oy5/?v9501;  [Store creature's town type in v9501]
+!_!FU&v9501<>x1/x1<9:E; [Exit function if creture type is DIFFERENT than town type]
+
+!!VRv9510:Sy7; [Store upgraded creature number: v9510]
+!!MA:Oy7/?v9511;  [Store upgraded creature's town type in v9511]
+!!MA:Ly7/?v9512; [Store upgraded creature's level in v9512]
+
+ [Check & Store creature type and level]
+!!CA0/x3:P?y13/?y14/?y15; [Town's position: y13/y14/y15]
+!_!POy13/y14/y15:B0/?y16 B1/?y17 O?y18; [PO:B0: y16  PO:B1: y17  PO:O: y18]
+!_!VRy9:Sy18 -1; [Subtract 1 from y18 to get real creature level: y9]
+!_!UN&y82<>y9:Tx1/y82/0/?y18; [If this level not stored, get non-upgraded type: y18]
+!_!UN&y82<>y9:Tx1/y82/1/?y19; [If this level not stored, get upgraded type: y19]
+!_!VRy10&y82<>y9:Sy18 +1; [Non-upgraded type +1: y10]
+!_!VRy11&y82<>y9:Sy19 +1; [Upgraded type +1: y11]
+!_!VRy12&y82<>y9:Sy82 +1; [Creature level +1: y12]
+!_!POy13/y14/y15&y82<>y9:B0/y10; [If this level not stored, store non-upgraded type (+1)]
+!_!POy13/y14/y15&y82<>y9:B1/y11; [If this level not stored, store upgraded type (+1)]
+!_!POy13/y14/y15&y82<>y9:Oy12; [If this level not stored, store creature level (+1)]
+
+
+!_!FU(reset_town_creatures):P;
+
+ [Set this town's creature of this level]
+!_!UN:Tx1/y82/0/y5; [Set non-upgraded creature]
+!_!UN:Tx1/y82/1/y7; [Set upgraded creature]
+
+!!IF:L^debug %Y82 %Y5 %Y7 %Y9^;
+!_!CM:R0;
+
+!_!SN:L^new_towns.era^/?y73;
+!_!SN:Ay73/^set_custom_creature_upgrade^/?y74; 
+!_!SN:Ey74/1/y7; 
+------------------------------------------------------------------------------------------------------------------
+
+ [Reset changed town creature types]
+!?FU9502; !!FU:E;
+!!CA-1:P?y1/?y2/?y3; [Town's position: y1/y2/y3]
+
+ [Creature type: y4 (non-upgraded) and y5 (upgraded), y6 (level)]
+!_!POy1/y2/y3:B0/?y4 B1/?y5 O?y6; [PO:B0: y4  PO:B1: y5  PO:O: y6]
+!!VRy4&y4>0:-1; [Subtract 1 from y4 to get non-upgraded creature number]
+!!VRy5&y5>0:-1; [Subtract 1 from y5 to get upgraded creature number]
+!!VRy6&y6>0:-1; [Subtract 1 from y6 to get creature level]
+
+!!UN&y4>=0:Tx1/y6/0/y4; [Reset non-upgraded]
+!!UN&y5>=0:Tx1/y6/1/y5; [Reset upgraded]
+
+!!FU&v9500<0:E; [Exit function if no creature changed]
+
+ [Restore creature: v9500]
+!!MA:Ov9500/v9501;  [Restore creature's town type]
+
+ [Restore upgraded creature: v9510]
+!!MA:Ov9510/v9511;  [Restore upgraded creature's town type]
+
+ [Reset v9500 to -1]
+!!VRv9500:S-1;
+
+
+************************* set new upgrades ***********************************
+
+!?FU(new_up_setup);
+!!UN:P555/?v1; [Check if Extended Creature Upgrades is enabled: v1=1 if Yes]
+
+for unfinished cretures tables search for:
+***no original SE lines to copy from***
+
+fixed and reviewed by Bajker888
+
+
+*Castle*
+
+!!MA&v1=1:U01/325; [Halberdiers -> Heavy Pikeman] ***DONE*** ***Stats OK***
+!!MA&v1=1:U325/380; [Heavy Pikeman -> Hopplite]
+!!MA&v1=1:U03/228; [majaczek] Marksman -> Musketeer ***DONE*** ***Stats OK***
+!!MA&v1=1:U228/344; Musketeer -> Royal Musketeer ***DONE*** ***Stats OK***
+!!MA&v1=1:U05/213; [majaczek] Royal Griffin -> Cesar Griffin ***DONE*** ***Stats OK***
+!!MA&v1=1:U213/336; Cesar Griffin -> Ancient Griffin ***DONE*** ***Stats OK***
+!!MA&v1=1:U07/197; [mod] Crusader -> Fanatic ***DONE*** ***Stats OK***
+!!MA&v1=1:U197/371; [mod] Fanatic -> Inquisitor
+!!MA&v1=1:U09/169; [Zealot -> War Zealot] ***DONE*** ***Stats OK***
+!!MA&v1=1:U169/285; [War Zealots -> Priestess] ***DONE*** ***Stats OK***
+!!MA&v1=1:U11/214; [majaczek] Champion -> Holy Champion ***DONE*** ***Stats OK***
+!!MA&v1=1:U214/379; Holy Champion -> Royal Champion
+!!MA&v1=1:U13/150; [Archangel -> Supreme Archangel] ***DONE*** ***Stats OK***
+!!MA&v1=1:U150/341; Supreme Archangel -> Spectral Archangel ***DONE*** ***Stats OK***
+
+*Rampart*
+
+!!MA&v1=1:U15/291;  [majaczek] Centaur Captain -> Centaur Archer ***DONE*** ***Stats OK***
+!!MA&v1=1:U291/192; [majaczek] Centaur Archer -> Sylvan Centaur ***DONE** ***Stats OK***
+!!MA&v1=1:U17/215; [majaczek] Dwarf -> Dwarf Defender ***DONE*** ***Stats OK***
+!!MA&v1=1:U215/377; [majaczek] Dwarf Defender -> Royal Dwarf
+!!MA&v1=1:U19/229; [majaczek] Grand Elf -> Hunter ***DONE*** ***Stats OK***
+!!MA&v1=1:U229/345; Hunter -> Spectral Hunter ***DONE*** ***Stats OK***
+!!MA&v1=1:U21/231; [majaczek] Silver Pegasusi -> Sacred Elf ***DONE*** ***Stats OK***
+!!MA&v1=1:U231/378; [majaczek] Sacred Elf -> Arcane Elf
+!!MA&v1=1:U23/199; [mod] Dendroid Soldier -> Ancient Dendroid ***DONE*** ***Stats OK***
+!!MA&v1=1:U199/350; Ancient Dendroid -> Eldest Dendroid ***DONE*** ***Stats OK***
+!!MA&v1=1:U25/216; [majaczek] War Unicorn -> Legendary Unicorn ***DONE*** ***Stats OK***
+!!MA&v1=1:U216/372; [majaczek] Legendary Unicorn -> Mythical unicorn ***DONE*** ***Stats OK***
+!!MA&v1=1:U27/151; [Gold Dragon -> Diamond Dragon] ***DONE*** ***Stats OK***
+!!MA&v1=1:U151/272; Diamond Dragon -> Sylvan Dragon ***DONE*** ***Stats OK***
+
+*Tower*
+
+!!MA&v1=1:U29/173; [Master Gremlin -> Santa Gremlin] ***DONE*** ***Stats OK***
+!!MA&v1=1:U173/369; [Santa Gremlin -> Grandmaster Gremlin]
+!!MA&v1=1:U31/217; [majaczek] Obsidian Gargoyle -> Cathedral Gargoyle ***DONE*** ***Stats OK***
+!!MA&v1=1:U217/370; [majaczek] Cathedral Gargoyle -> Marble Gargoyle
+!!MA&v1=1:U33/116; [Iron Golems -> Gold Golem] ***DONE*** ***Stats OK***
+!!MA&v1=1:U116/117; [Gold Golem -> Diamond Golem] ***DONE*** ***Stats OK***
+!!MA&v1=1:U35/230; [majaczek] Arch Mage -> Master Arch Mage ***DONE*** ***Stats OK***
+!!MA&v1=1:U230/252; [majaczek] Master Arch Mage -> Red Wizard ***DONE*** ***Stats OK***
+!!MA&v1=1:U37/232; [majaczek] Master Genie -> Arcane Genie ***DONE*** ***Stats OK***
+!!MA&v1=1:U232/349; Arcane Genie -> Ancient Genie ***DONE*** ***Stats OK***
+!!MA&v1=1:U39/240; [majaczek] Naga Queen -> Spider Queen ***DONE*** ***Stats OK***
+!!MA&v1=1:U240/348; Spider Queen -> Spider Empress ***DONE*** ***Stats OK***
+!!MA&v1=1:U41/152; [Titan -> Lord of Thunder] ***DONE*** ***Stats OK***
+!!MA&v1=1:U152/342; Lord of Thunder -> Lord of Light ***DONE*** ***Stats OK***
+
+*Inferno*
+
+!!MA&v1=1:U43/236; [majaczek] Familiar -> Scamp ***DONE*** ***Stats OK***
+!!MA&v1=1:U236/346; Scamp -> Tainted Scamp ***DONE*** ***Stats OK***
+!!MA&v1=1:U45/237; [majaczek] Magog -> Succubus ***DONE*** ***Stats OK***
+!!MA&v1=1:U237/347; Succubus -> Succubus of Lust ***DONE*** ***Stats OK***
+!!MA&v1=1:U47/238; [majaczek] Cerberus -> Astral Cerberus ***DONE*** ***Stats OK***
+!!MA&v1=1:U238/373; [majaczek] Astral Cerberus -> Hell Cerberus
+!!MA&v1=1:U49/212; [Horned Demon -> Greater Demon] ***DONE*** ***Stats OK***
+!!MA&v1=1:U212/262; [Greater Demon -> Demon Prince] ***DONE*** ***Stats OK***
+!!MA&v1=1:U51/209; [mod] Pit Lord -> Pit Master ***DONE*** ***Stats OK***
+!!MA&v1=1:U209/374; Pit Master -> Pit Warden
+!!MA&v1=1:U53/205; [Efreet Sultan -> Efreet Rajah] ***DONE*** ***Stats OK***
+!!MA&v1=1:U205/274; [Efreet Rajah -> Efreet Khan] ***DONE*** ***Stats OK***
+!!MA&v1=1:U55/153; [Arch Devil -> Hell Baron] ***DONE*** ***Stats OK***
+!!MA&v1=1:U153/343; Hell Baron -> Lord of Kreegans ***DONE*** ***Stats OK***
+
+*Necropolis*
+
+!!MA&v1=1:U57/218; [majaczek] Skeleton Warrior -> Skeleton Archer ***DONE*** ***Stats OK***
+!!MA&v1=1:U218/368; Skeleton Archer -> Shadow Skeleton Archer
+!!MA&v1=1:U59/290; [Zombie -> Mummy Servant] ***DONE*** ***Stats OK***
+!!MA&v1=1:U290/141; [Mummy Servant -> Mummy Priest] ***DONE*** ***Stats OK***
+!!MA&v1=1:U61/159; [Wraith -> Ghost] ***DONE*** ***Stats OK***
+!!MA&v1=1:U159/288; [Ghost -> Elder Ghost] ***DONE*** ***Stats OK***
+!!MA&v1=1:U63/226; [majaczek] Vampire Lord -> Nosferatu ***DONE*** ***Stats OK***
+!!MA&v1=1:U226/366; Nosferatu -> Elder Nosferatu
+!!MA&v1=1:U65/210; [mod] Power Lich -> Ancient Lich ***DONE*** ***Stats OK***
+!!MA&v1=1:U210/355; Ancient Lich -> Lich Lord ***DONE*** ***Stats OK***
+!!MA&v1=1:U67/235; [majaczek] Dread Knight -> Grim Reaper ***DONE*** ***Stats OK***
+!!MA&v1=1:U235/354; Grim Reaper -> Shinigami ***DONE*** ***Stats OK***
+!!MA&v1=1:U69/154; [Ghost Dragon -> Blood Dragon] ***DONE*** ***Stats OK***
+!!MA&v1=1:U154/367; Blood Dragon -> Soul Dragon ***DONE*** ***Stats OK***
+
+*Dungeon*
+
+!!MA&v1=1:U71/233; [majaczek] Infernal Troglodyte -> Phosforous Troglodite ***DONE*** ***Stats OK***
+!!MA&v1=1:U233/381; Phosforous Troglodite -> Cave Troglodite
+!!MA&v1=1:U73/234; [majaczek] Harpy Hag -> Seducing Harpy ***DONE*** ***Stats OK***
+!!MA&v1=1:U234/263; [majaczek] Seducing Harpy -> Harpy Countess ***DONE*** ***Stats OK***
+!!MA&v1=1:U75/198; [mod] Evil Eye -> Monstrous Eyes ***DONE*** ***Stats OK***
+!!MA&v1=1:U198/276; [mod] Monstrous Eyes -> Weird Eye ***DONE*** ***Stats OK***
+!!MA&v1=1:U77/206; [Medusa Queen -> Cesar Medusa] ***DONE*** ***Stats OK***
+!!MA&v1=1:U206/382; Cesar Medusa -> Tainted Medusa
+!!MA&v1=1:U79/200; [Minotaur King -> Blood Minotaur] ***DONE*** ***Stats OK***
+!!MA&v1=1:U200/383; Blood Minotaur -> Tainted Minotaur
+!!MA&v1=1:U81/242; [majaczek] Scorpicore -> Female Warlock ***DONE*** ***Stats OK***
+!!MA&v1=1:U242/353; Female Warlock -> Tainted Warlock ***DONE*** ***Stats OK***
+!!MA&v1=1:U83/155; [Black Dragon -> Darkness Dragon] ***DONE*** ***Stats OK***
+!!MA&v1=1:U155/271; Darkness Dragon -> Magma Dragon ***DONE*** ***Stats OK***
+
+*Stronghold*
+
+!!MA&v1=1:U85/140; [Hobgoblin -> Boar Rider] ***DONE*** ***Stats OK***
+!!MA&v1=1:U140/384; Boar Rider -> Ferocius Wild Boar 
+!!MA&v1=1:U87/220; [majaczek] Wolf Raider -> Dire Wolf ***DONE*** ***Stats OK***
+!!MA&v1=1:U220/351; Dire Wolf -> Golden Wolf ***DONE*** ***Stats OK***
+!!MA&v1=1:U89/239; [majaczek] Orc Chieftain -> Orc Leader ***DONE*** ***Stats OK***
+!!MA&v1=1:U239/385; Orc Leader -> Uruk-hai
+!!MA&v1=1:U91/219; [majaczek] Ogre Magi -> Ogre Warlock ***DONE*** ***Stats OK***
+!!MA&v1=1:U219/386; Ogre Warlock -> Orge shaman
+!!MA&v1=1:U93/207; [mod] Thunderbird -> Stormbird ***DONE*** ***Stats OK***
+!!MA&v1=1:U207/387; Stormbird -> Darkstorm
+!!MA&v1=1:U95/241; [majaczek] Cyclops King -> Centamoth Thrower ***DONE*** ***Stats OK***
+!!MA&v1=1:U241/352; Centamoth Thrower -> Wild Centamoth Thrower ***DONE*** ***Stats OK***
+!!MA&v1=1:U97/156; [Ancient Behemoth -> Ghost Behemoth] ***DONE*** ***Stats OK***
+!!MA&v1=1:U156/270; Ghost Behemoth -> Mantis ***DONE*** ***Stats OK***
+
+*Fortress*
+
+!!MA&v1=1:U99/211; [Gnoll Marauder -> Gnoll Raider] ***DONE*** ***Stats OK***
+!!MA&v1=1:U211/388; [Gnoll Raider -> Gnoll Leader] 
+!!MA&v1=1:U101/221; [majaczek] Lizard Warrior -> Arcane Reptilion ***DONE*** ***Stats OK***
+!!MA&v1=1:U221/389; Arcane Reptilion -> Mist Reptilion
+!!MA&v1=1:U105/222; [majaczek] Dragon Fly -> Blood Hornet ***DONE*** ***Stats OK***
+!!MA&v1=1:U222/277; [majaczek] Blood Hornet -> Deadly Wasp ***DONE*** ***Stats OK***
+!!MA&v1=1:U107/203; [Greater Basilisk -> Ancient Basilisk] ***DONE*** ***Stats OK***
+!!MA&v1=1:U203/289; [Ancient Basilisk -> Prehistoric Basilisk] ***DONE*** ***Stats OK***
+!!MA&v1=1:U103/223; [majaczek] Mighty Gorgon -> Golden Gorgon ***DONE*** ***Stats OK***
+!!MA&v1=1:U223/390; Golden Gorgon -> Acid Gorgon
+!!MA&v1=1:U109/204; [mod] Wyvern Monarch -> Acid Wivern ***DONE*** ***Stats OK***
+!!MA&v1=1:U204/391; Acid Wivern -> Toxic Wyvern
+!!MA&v1=1:U111/157; [Chaos Hydra -> Hell Hydra] ***DONE*** ***Stats OK***
+!!MA&v1=1:U157/329; Hell Hydras -> Tiamath ***DONE*** ***Stats OK***
+
+*Conflux*
+
+!!MA&v1=1:U119/227; [majaczek] Sprite -> Nymph ***DONE*** ***Stats OK***
+!!MA&v1=1:U227/376; Nymph-> Fairy
+!!MA&v1=1:U127/208; [mod] Storm Elemental -> Hurricane Elemental ***DONE*** ***Stats OK***
+!!MA&v1=1:U208/332; [mod] Hurricane Elemental -> Tornado Elemental ***DONE*** ***Stats OK***
+!!MA&v1=1:U123/224; [majaczek] Ice Elemental -> Life Elemental ***DONE*** ***Stats OK***
+!!MA&v1=1:U224/335; [majaczek] Life Elemental -> Mirage Elemental ***DONE*** ***Stats OK***
+!!MA&v1=1:U129/202; [Energy Elemental -> Electricity Elemental] ***DONE*** ***Stats OK***
+!!MA&v1=1:U202/334; [Electricity Elemental -> Magnetism Elemental] ***DONE*** ***Stats OK***
+!!MA&v1=1:U125/201; [Magma Elemental -> Mineral Elemental] ***DONE*** ***Stats OK***
+!!MA&v1=1:U201/333; [Mineral Elemental -> Gem Elemental] ***DONE*** ***Stats OK***
+!!MA&v1=1:U121/225; [majaczek] Magic Elemental -> Void Elemental ***DONE*** ***Stats OK***
+!!MA&v1=1:U225/375; Void Elemental -> Aether Elemental
+!!MA&v1=1:U131/158; [Phoenix -> Sacred Phoenix] ***DONE*** ***Stats OK***
+!!MA&v1=1:U158/273; Sacred Phoenix -> Astral Phoenix ***DONE*** ***Stats OK***
+
+*Dragon Peaks*
+
+!!MA&v1=1:U258/364; Rainbow Snake -> Poisonous Snake ***no original SE lines to copy from*** ***Stats OK***
+!!MA&v1=1:U364/365; Poisonous Snake -> Lilian Snake ***no original SE lines to copy from*** ***Stats OK***
+!!MA&v1=1:U168/327; Green Gorynych -> Red Gorynych ***DONE*** ***Stats OK***
+!!MA&v1=1:U327/328; Red Gorynych -> Gold Gorynych ***DONE*** ***Stats OK***
+!!MA&v1=1:U328/329; Gold Gorynych -> Tiamath ***DONE*** ***Stats OK***
+!!MA&v1=1:U134/293; Faerie Dragon -> Sylfaen Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U293/358; Sylfaen Dragon -> Arcane Dragon ***DONE*** *** STATS OK***
+!!MA&v1=1:U135/362; Rust Dragon -> Acid Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U362/363; Acid Dragon -> Grove Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U133/338; Crystal Dragon -> Emerald Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U338/339; Emerald Dragon -> Saphire Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U132/359; Azure Dragons -> Lilian Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U359/360; Lilian Dragon -> Amarillo Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U360/361; Amarillo Dragon -> Negro Dragon ***DONE*** ***Stats OK***
+!!MA&v1=1:U286/356; Chinese Dragon -> Red Chinese Dragon ***no original SE lines to copy from*** ***Stats OK***
+!!MA&v1=1:U356/357; Red Chinese Dragon -> Wise Chinese Dragon ***no original SE lines to copy from*** ***Stats OK***
+
+*Neutral Units*
+
+!!MA&v1=1:U136/292; Enchanter -> Nicolai ***DONE*** ***Stats OK***
+!!MA&v1=1:U193/287; Sorceress -> Planeswalker ***DONE*** ***Stats OK***
+!!MA&v1=1:U196/255; Dracolich -> Supreme Dracolich ***DONE*** ***Stats OK***
+!!MA&v1=1:U259/281; Young Pirate -> Elder Pirate ***no original SE lines to copy from*** ***Stats OK***
+!!MA&v1=1:U261/260; Rat -> Wererat ***no original SE lines to copy from*** ***Stats OK***
+!!MA&v1=1:U143/337; Rogue -> Assasin ***DONE*** ***Stats OK***
+
+
+
+!?PI;
+!!FU(new_up_setup):P;
+
+!?GM0;
+!!FU(new_up_setup):P;
+
+!?FU(new_up_3rd_slot);
+!!FU:E;
+; x1 - Town ID
+; x2 - Town type
+!!CA0/x1:P?y2/?y3/?y4;
+!!SN:W^Neutral Town %Y2 %Y3 %Y4^/?y6; !!FU&y6<>0:E;
+!!if&x2=0:; castle
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/325/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/228/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/213/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/197/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/169/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/214/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/150/100;
+!!el&x2=1:; rampart
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/291/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/215/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/229/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/231/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/199/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/216/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/151/100;
+!!el&x2=2:; tower
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/173/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/217/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/116/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/230/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/232/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/240/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/152/100;
+!!el&x2=3:; inferno
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/236/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/237/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/238/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/212/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/209/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/205/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/153/100;
+!!el&x2=4:; necropolis
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/218/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/290/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/159/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/226/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/210/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/235/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/154/100;
+!!el&x2=5:; Dungeon
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/233/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/234/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/198/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/206/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/200/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/242/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/155/100;
+!!el&x2=6:; Stronghold
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/140/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/220/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/239/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/219/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/207/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/241/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/156/100;
+!!el&x2=7:; Fortress
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/211/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/221/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/222/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/203/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/223/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/204/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/157/100;
+!!el&x2=8:; Conflux
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/227/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/208/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/224/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/202/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/201/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/225/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/158/100;
+!!el&x2=10:; Dragon Peaks
+  !!FU(dex_SetDwellingSlotByTownId):Px1/0/1/2/365/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/1/1/2/328/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/2/1/2/358/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/3/1/2/363/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/4/1/2/339/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/5/1/2/360/100;
+  !!FU(dex_SetDwellingSlotByTownId):Px1/6/1/2/357/100;
+!!en:;
+!!FU:E;
+
+[aligment changes]
+!_#MA&v1=1:O143/0;  Rogues > Castle
+!#MA&v1=1:O169/0;  War Zealot > Castle
+!#MA&v1=1:O142/0;  Nomad > Castle
+!#MA&v1=1:O197/0;  Fanatyk > Castle
+!#MA&v1=1:O195/1;  Hell Steed > Rampart
+!#MA&v1=1:O199/1;  Prastary Ent > Rampart
+!#MA&v1=1:O173/2;  Santa Gremlin > Tower
+!#MA&v1=1:O116/2;  Gold Golem > Tower
+!#MA&v1=1:O117/2;  Diamond Golem > Tower
+!#MA&v1=1:O209/3;  Biczownik > Inferno
+!#MA&v1=1:O205/3;  Radza > Inferno
+!#MA&v1=1:O159/4;  Ghosts > Necropolis
+!#MA&v1=1:O141/4;  Mummies > Necropolis
+!#MA&v1=1:O210/4;  Krolewski Lisz > Nekropolis
+!#MA&v1=1:O198/5;  Oko > Dungeon
+!#MA&v1=1:O206/5;  Meduza > Dungeon
+!#MA&v1=1:O200/5;  Minotaur > Dungeon
+!#MA&v1=1:O140/6;  Boars > Stronghold
+!#MA&v1=1:O144/6;  Trolls > Stronghold
+!#MA&v1=1:O207/6;  Ptaku burzy > Stronhold
+!#MA&v1=1:O203/7;  Starozytne Baz > Fortress
+!#MA&v1=1:O204/7;  Wiwerna > Fortress
+!#MA&v1=1:O201/8;  Mineral > Conflux
+!#MA&v1=1:O202/8;  Elextric > Conflux
+!#MA&v1=1:O208/8;  Burzownik > Conflux
+
+
+* changing statistics:
+
+
+
+***CASTLE***
+*** nomad - many changes, level 1, half the HP, statistics as upgraded halberdier
+!#MA&v1=1:C142/6/105 A142/6 D142/6 P142/13 S142/6 M142/2 E142/4 N142/0 G142/13 R142/0 I142/200 F142/150 L142/0 X142/17; Nomad
+!#EA142&v1=1:L17500;
+!#EA142&v1=1:F65/?y-5; set level 1 attack
+!#EA142&v1=1:By-5/1/65/43/0/0/1/1/1/1/2/2/2/2/3;
+!#EA142&v1=1:F68/?y-5; set level 1 defense
+!#EA142&v1=1:By-5/1/68/43/0/1/1/1/1/2/2/2/2/3/3;
+!#EA142&v1=1:F77/?y-5; set level 1 max damage
+!#EA142&v1=1:By-5/1/77/43/0/0/0/1/1/1/1/2/2/2/2;
+!#EA142&v1=1:F109/?y-5; set level 1 min damage
+!#EA142&v1=1:By-5/1/109/43/0/0/0/0/1/1/1/1/2/2/2;
+!#EA142&v1=1:F83/?y-5; set pikeman speed
+!#EA142&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/1;
+!#EA142&v1=1:F102/99/?y-5; champion charge at level 4
+!#EA142&v1=1:By-5/1/102/99/0/0/0/0/1/1/1/1/1/1/1;
+!#EA142&v1=1:F102/98/?y-5; strike and return at level 8
+!#EA142&v1=1:By-5/1/102/98/0/0/0/0/0/0/0/0/1/1/1;
+!#EA142&v1=1:F104/66/?y-5; hatred - black knights
+!#EA142&v1=1:By-5/1/104/66/0/0/0/2/2/3/3/4/4/5/6;
+!#EA142&v1=1:F104/67/?y-5; hatred - death knights
+!#EA142&v1=1:By-5/1/104/67/0/0/0/2/2/3/3/4/4/5/6;
+*** war zealot - level 5, growth 3
+!#MA&v1=1:L169/4 G169/3;
+!#EA169&v1=1:F102/68/?y-5;
+!#EA169&v1=1:By-5/0/102/68/0/0/0/0/1/1/1/1/1/1/1;
+!#EA169&v1=1:F104/64/?y-5;
+!#EA169&v1=1:By-5/0/104/64/0/0/0/0/0/0/0/0/0/0/0;
+!#EA169&v1=1:F104/65/?y-5;
+!#EA169&v1=1:By-5/0/104/65/0/0/0/0/0/0/0/0/0/0/0;
+!#EA169&v1=1:F119/109/?y-5; iron will at level 3
+!#EA169&v1=1:By-5/1/119/109/0/0/0/1/1/1/1/1/1/1/1;
+!#EA169&v1=1:F119/78/?y-5; regenerate 50 HP at level 5 (instead of immune to dispell)
+!#EA169&v1=1:By-5/1/114/100/0/0/0/0/0/50/50/50/50/50/50;
+*** supreme archangel - cost increased in gold by 20% (to 12000 gold and 6 gems), speed +1
+!#MA&v1=1:C150/6/12000 C150/5/6 S150/19;
+
+***RAMPART***
+*** sylvan centaur - cost increased by 25 gold
+!#MA&v1=1:C192/6/275;
+!#EA192&v1=1:F119/109/?y-5; iron will at level 7
+!#EA192&v1=1:By-5/1/119/109/0/0/0/0/0/0/0/1/1/1/1;
+*** hurricane - HP 30 (-5) attack 11 (-4), defense 10 (-3), level 4, cost 400 (-200), damage 7-9 (was 10-13), growth 5
+!#MA&v1=1:C208/6/400 P208/30 A208/11 D208/10 M208/7 E208/9 G208/5 L208/3;
+!#EA208&v1=1:L70000;
+!#EA208&v1=1:F65/?y-5; set pegasi attack
+!#EA208&v1=1:By-5/1/65/43/0/0/1/2/2/2/4/4/5/7/7;
+!#EA208&v1=1:F68/?y-5; set pegasi defense
+!#EA208&v1=1:By-5/1/68/43/0/2/2/2/3/3/4/4/5/5/7;
+!#EA208&v1=1:F77/?y-5; set pegasi max damage
+!#EA208&v1=1:By-5/1/77/43/0/0/2/2/2/4/4/4/5/5/5;
+!#EA208&v1=1:F109/?y-5; set pegasi min damage
+!#EA208&v1=1:By-5/1/109/43/0/0/0/1/1/2/2/4/4/5/5;
+!#EA208&v1=1:F83/?y-5; set pegasi speed
+!#EA208&v1=1:By-5/1/83/43/0/0/0/0/1/1/2/2/2/2/3;
+!#EA208&v1=1:F112/65/?y-5; set anti-magic spell
+!#EA208&v1=1:By-5/1/112/34/0/3/6/9/12/15/18/21/24/27/30;
+*** Enchanter growth 4
+!_#MA&v1=1: G208/4;
+
+
+***TOWER***
+*** santa gremlin cost reduced to 120 (-80), level 1
+!#MA&v1=1:C173/6/120 L173/0;
+!#EA173&v1=1:L17500;
+!#EA173&v1=1:F65/?y-5; set level 1 attack
+!#EA173&v1=1:By-5/1/65/43/0/0/1/1/1/1/2/2/2/2/3;
+!#EA173&v1=1:F68/?y-5; set level 1 defense
+!#EA173&v1=1:By-5/1/68/43/0/1/1/1/1/2/2/2/2/3/3;
+!#EA173&v1=1:F77/?y-5; set level 1 max damage
+!#EA173&v1=1:By-5/1/77/43/0/0/0/1/1/1/1/2/2/2/2;
+!#EA173&v1=1:F109/?y-5; set level 1 min damage
+!#EA173&v1=1:By-5/1/109/43/0/0/0/0/1/1/1/1/2/2/2;
+!#EA173&v1=1:F83/?y-5; set gremlin speed
+!#EA173&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/1;
+*** gold golem - level 3, defense 11, damage 6-9 (was 8-10), growth 6 (was 3), HP 40 (-10), cost 310 (-190)
+!#MA&v1=1:C116/6/310 P116/40 M116/6 E116/9 D116/11 G116/6 L116/2;
+!#EA116&v1=1:L52500;
+!#EA116&v1=1:F65/?y-5; set level 3 attack
+!#EA116&v1=1:By-5/1/65/43/0/1/1/2/2/3/3/4/4/5/5;
+!#EA116&v1=1:F68/?y-5; set level 3 defense
+!#EA116&v1=1:By-5/1/68/43/0/1/1/2/2/3/3/4/4/5/5;
+!#EA116&v1=1:F77/?y-5; set level 3 max damage
+!#EA116&v1=1:By-5/1/77/43/0/0/1/1/2/2/3/3/4/4/5;
+!#EA116&v1=1:F109/?y-5; set level 3 min damage
+!#EA116&v1=1:By-5/1/109/43/0/0/1/1/2/2/3/3/4/4/5;
+!#EA116&v1=1:F83/?y-5; set golem speed
+!#EA116&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/1;
+*** Diamond Golem - level 4, growth 6
+!#MA&v1=1:L117/3 G117/6;
+
+*** lord of thunder - cost increased in gold by 25% (to 12500 gold and 5 gems)
+!#MA&v1=1:C152/6/12500 C152/5/5;
+
+***INFERNO***
+*** werewolf - level 4, damage 8-9 (was 6-9), HP 40 (+5), cost 320 (+20)
+!_#MA&v1=1:C194/6/320 L194/3 M194/8 E194/9 P194/40;
+!_#EA194&v1=1:F104/92/?y-5; set prot. from fire (instead of hate rocs)
+!_#EA194&v1=1:By-5/1/115/31/0/1/1/1/1/1/1/2/2/2/2;
+!_#EA194&v1=1:F104/93/?y-5; set fearless at rank 8 (instead of hate thunderbirds)
+!_#EA194&v1=1:By-5/1/102/102/0/0/0/0/0/0/0/0/1/1/1;
+*** myriad - no changes
+*** hell baron - cost increased in gold by 25% (to 11000 gold and 5 mercury), speed +1
+!#MA&v1=1:C153/6/11000 C153/1/5 S153/18;
+
+***NECROPOLIS***
+*** mummy - cost 170 (-130) attack 5 (-2), defense 6 (-1), level 2, damage 3-4 (was 4-5), growth 8, HP 25 (-5)
+!_#MA&v1=1:C141/6/170 A141/5 D141/6 M141/3 E141/4 G141/8 L141/1 P141/25;
+!_#EA141&v1=1:L35000;
+!_#EA141&v1=1:F65/?y-5; set level 2 attack
+!_#EA141&v1=1:By-5/1/65/43/0/0/1/1/2/2/2/3/3/3/4;
+!_#EA141&v1=1:F68/?y-5; set level 2 defense
+!_#EA141&v1=1:By-5/1/68/43/0/1/1/1/2/2/3/3/3/4/4;
+!_#EA141&v1=1:F77/?y-5; set level 2 max damage
+!_#EA141&v1=1:By-5/1/77/43/0/0/1/1/1/2/2/2/3/3/4;
+!_#EA141&v1=1:F109/?y-5; set level 2 min damage
+!_#EA141&v1=1:By-5/1/109/43/0/0/0/1/1/1/2/2/3/3/3;
+!_#EA141&v1=1:F83/?y-5; set zombie speed
+!_#EA141&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/1;
+!#VRz943:Sz199608;
+!#UN&v1=1:G1/141/2/943;
+*** ghost - cost 330 (-170) attack 7 (-4), defense 7 (-1), level 3, damage 3-5 (was 1-2), HP 18 (+13), undead
+!_#MA&v1=1:C159/6/330 A159/7 D159/7 M159/3 E159/5 L159/2 P159/18 X159/394242;
+!#MA:L159/2 X159/394242;
+!#VRz944:Sz199607;
+!#UN&v1=1:G1/159/2/944;
+*** blood dragon - cost increased in gold by 25% (to 7500 gold and 4 mercury), speed +1
+!#MA&v1=1:C154/6/8000 C154/1/4 S154/15;
+*** dracolich - reduce cost to 20000 gold and 10 mercury)
+**#MA&v1=1:C196/6/20000 C196/1/10;
+
+***DUNGEON***
+*** medusa matriarch - no changes
+*** blood minotaur - no changes
+*** darkness dragon - cost increased in gold by 25% (to 10000 gold and 5 sulfur), speed +1
+!#MA&v1=1:C155/6/10000 C155/3/5 S155/16;
+
+***STRONGHOLD***
+*** boar - cost 70 (-80), defense 4 (-1), HP 8 (-7), speed 7 (+1), growth 15, level 1, damage 2-3 (was 2-3)
+*** double strike at some level of exp.
+!#MA&v1=1:C140/6/70 D140/4 M140/2 E140/3 P140/8 S140/7 G140/15 L140/0; Boar
+!_#VRz958:Sz199605;
+!_#VRz959:Sz199606;
+!_#UN&v1=1:G1/140/0/958;
+!_#UN&v1=1:G1/140/1/959;
+!#EA140&v1=1:L17500;
+!#EA140&v1=1:F65/?y-5; set level 1 attack
+!#EA140&v1=1:By-5/1/65/43/0/0/1/1/1/1/2/2/2/2/3;
+!#EA140&v1=1:F68/?y-5; set level 1 defense
+!#EA140&v1=1:By-5/1/68/43/0/1/1/1/1/2/2/2/2/3/3;
+!#EA140&v1=1:F77/?y-5; set level 1 max damage
+!#EA140&v1=1:By-5/1/77/43/0/0/0/1/1/1/1/2/2/2/2;
+!#EA140&v1=1:F109/?y-5; set level 1 min damage
+!#EA140&v1=1:By-5/1/109/43/0/0/0/0/1/1/1/1/2/2/2;
+!#EA140&v1=1:F83/?y-5; set goblin speed
+!#EA140&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/2;
+!#EA140&v1=1:F99/73/?y-5; replace disease with double strike
+!#EA140&v1=1:By-5/1/102/68/0/0/0/0/0/1/1/1/1/1/1;
+*** troll - damage 8-12 (was 10-15), HP 60 (+20), speed 6 (-1), growth 4, level 4, cast mass bloodlust, death blow
+!_#MA&v1=1: M144/8 E144/12 P144/60 S144/6 G144/4 L144/3;
+!_#EA144&v1=1:L70000;
+!_#EA144&v1=1:F65/?y-5; set level 4 attack
+!_#EA144&v1=1:By-5/1/65/43/0/1/2/2/3/4/5/6/6/7/8;
+!_#EA144&v1=1:F68/?y-5; set level 4 defense
+!_#EA144&v1=1:By-5/1/68/43/0/1/2/3/3/4/4/5/6/7/8;
+!_#EA144&v1=1:F77/?y-5; set level 4 max damage
+!_#EA144&v1=1:By-5/1/77/43/0/0/1/1/2/2/3/3/4/4/5;
+!_#EA144&v1=1:F109/?y-5; set level 4 min damage
+!-#EA144&v1=1:By-5/1/109/43/0/0/0/1/2/2/3/3/4/4/4;
+!-#EA144&v1=1:F83/?y-5; set ogre speed
+!-#EA144&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/1;
+!_#EA144&v1=1:F112/?y-5; add mass bloodlust
+!_#EA144&v1=1:By-5/1/112/43/5/7/9/12/15/18/21/24/27/30/35;
+!_#EA144&v1=1:F101/?y-5; add double damage death blow
+!_#EA144&v1=1:By-5/1/101/61/0/0/0/4/8/12/16/20/24/28/35;
+*** ghost behemoth - cost increased in gold by 25% (to 8000 gold and 4 crystal)
+!#MA&v1=1:C156/6/8000 C156/4/4;
+
+***FORTRESS***
+*** rogue - cost 95 (-5) defense 6 (+3), attack 5 (-3), growth 12, level 1, health 9 (-1)
+!_#MA&v1=1:C143/6/95 D143/6 A143/5 G143/12 L143/0 P143/9;
+!_#EA143&v1=1:L17500;
+!_#EA143&v1=1:F65/?y-5; set level 1 attack
+!_#EA143&v1=1:By-5/1/65/43/0/0/1/1/1/1/2/2/2/2/3;
+!_#EA143&v1=1:F68/?y-5; set level 1 defense
+!_#EA143&v1=1:By-5/1/68/43/0/1/1/1/1/2/2/2/2/3/3;
+!_#EA143&v1=1:F77/?y-5; set level 1 max damage
+!_#EA143&v1=1:By-5/1/77/43/0/0/0/1/1/1/1/2/2/2/2;
+!_#EA143&v1=1:F109/?y-5; set level 1 min damage
+!_#EA143&v1=1:By-5/1/109/43/0/0/0/0/1/1/1/1/2/2/2;
+!_#EA143&v1=1:F83/?y-5; set gnoll speed
+!_#EA143&v1=1:By-5/1/83/43/0/0/0/0/1/1/1/1/1/1/1;
+*** lizardman & lizardman warrior - get double strike earlier.
+!#EA100&v1=1:F102/68/?y-5;
+!#EA100&v1=1:By-5/1/102/68/0/0/0/0/1/1/1/1/1/1/1;
+!#EA101&v1=1:F102/68/?y-5;
+!#EA101&v1=1:By-5/1/102/68/0/0/0/0/1/1/1/1/1/1/1;
+*** ancient basilisk - no changes
+*** hell hydra - cost increased in gold by 25% (to 9000 gold and 4 sulfur)
+!#MA&v1=1:C157/6/9000 C157/3/4;
+
+***CONFLUX***
+*** mineral elementals - growth 5
+!_#MA:G201/5;
+*** electricity elementals - growth 4
+!_#MA:G202/4;
+*** sacred phoenix - cost increased in gold by 40% (to 7000 gold and 3 mercury), attack 25 (-3), defense 22 (-6), speed 22 (+1)
+*** damage 40-50 (was 45-60), HP 350 (-50)
+!_#MA&v1=1: C158/6/7000 C158/1/3 P158/350 M158/40 E158/50 A158/25 D158/22 S158/22;
+!#MA&v1=1:  C158/6/7000 C158/1/3;
+
+ [The following can only be upgraded at Hill Forts]
+ [Hill Fort is trigger]
+!?OB35;
+!!UN:P555/?v2; [Check if the script is enabled: v2=1 if Yes]
+!!FU&v2<>1:E; [Exit if script isn't enabled]
+
+ [Post-visit Hill Fort is trigger]
+!$OB35;
+!!FU:E; disabled in amethyst upgrades
+!!UN:P555/?v2; [Check if the script is enabled: v2=1 if Yes]
+!!FU&v2<>1:E; [Exit if script isn't enabled]
+
+!_!MA:U193/-1; [Remove Sorceresses to Enchanters] *Rampart*
+!_!MA:U116/-1; [Remove Gold Golems to Diamond Golems] *Tower*
+!_!MA:U195/-1; [Hell Steed to Nightmare] *neutral*
+
+*****************************************************************************
+********************* Ghosts post-battle reduction **************************
+*****************************************************************************
+
+!#UN:P555/?v9569; [Check if New Upgrades script is enabled: v1=1 if Yes]
+
+
+
+
+
+!?FU9513&v9569=1;
+!!VRvx16:S-1; [Initialize variable vx16 to -1]
+
+*****************************************************************************
+************** the special structure in a town used for upgrading ***********
+*****************************************************************************
+
+!?CM1; (trigger on clicking in town screen) !!FU:E;
+!!UN:P555/?v2; [Check if the script is enabled: v2=1 if Yes]
+!!FU&v2<>1:E; [Exit if script isn't enabled]
+
+
+!!SN:W^Neutral Town %V9530 %V9531 %V9532^/?y98; !_!FU&y98<>0:E;
+******* auto-destructing the special building if there's no vilage hall *****
+* it's up here so as to skip the player/owner check and happens after
+* just any kind of click after destroying the vilage hall (like exiting)
+!!CA-1:B3/10;    check if there's a vilage hall
+!!CA-1&-1:B3/11; check town hall
+!!CA-1&-1:B3/12; check city hall
+!!CA-1&-1:B3/13; check capitol
+* if something is built somewhere a flag +1 had to happen
+!!POv9530/v9531/v9532&-1:V3/?y-2; get flag for current town
+!!VRy-2&-1:&64; test if the bit 7 is set
+!!POv9530/v9531/v9532&-1/y-2=64:V3/?y-3; get flag for current town
+!!VRy-3&y-2=64/-1:&-65; unset bit 7
+!!POv9530/v9531/v9532&-1/y-2=64:V3/y-3; once again set flag
+
+!!CA-1:O?y-2; (owner of the town: y-2)
+!!OW:C?v9540;   (current player: y-3)
+!!FU&y-2<>v9540:E; (Exit if player doesn't own town)
+
+!!CM:S?y1; (Get what type of click)
+!!FU&y1<>14:E; (exit if not right click)
+
+!!CM:I?y1;           (Get what type of click)
+!!FU&y1<10:E;        (abort if not town hall type)
+!!FU&y1>13:E;        (abort if not town hall type)
+
+!!CA-1:T?y2;         (get town type)
+!!CM:R0;             (Disable normal popup)
+!!CA-1:B3/13;        (if capitol built - reenable standard text)
+!!CM&1:R1;
+
+!!VRv4:S0;
+!!VRv5:S0;
+!!VRv6:S0;
+!!CA-1:B3/9;  (ckeck if there's a castle)
+!!VRv4&1:S1;  (set a helping var)
+
+!!CA-1:B3/8;  (check for citadel)
+!!VRv5&1:S1;
+
+!!CA-1:B3/7;  (check for fort)
+!!VRv6&1:S1;
+
+!!CM&v4=0/v5=0/v6=0:R1;   (if no fort, citadel or castle reenable standard text)
+
+!!UN:P4/?y2;     check if town demolition is enabled
+!!CM&y2=1:R0;   if it is not enabled - disable any standard text
+
+************ get current resources *************
+!!OW:Rv9540/6/?v9541;    1 - gold
+!!OW:Rv9540/0/?v9542;    2 - wood
+!!OW:Rv9540/2/?v9543;    3 - ore
+!!OW:Rv9540/1/?v9544;    4 - mercury
+!!OW:Rv9540/3/?v9545;    5 - sulfur
+!!OW:Rv9540/4/?v9546;    6 - crystal
+!!OW:Rv9540/5/?v9547;    7 - gems
+!!OW:Rv9540/7/?v9548;    8 - mithril
+
+************ set texts ********************
+!!VRz946:Sz199601; already build
+!!VRz947:Sz199602; can build
+!!VRz948:Sz199603; not enough resources
+!!VRz949:Sz199604; need to have a castle
+!!VRz945:S^^;
+!!VRz950:S^^;
+!!CA-1:T?y2; check town type
+
+
+*********************** Dragon Peaks ****************************
+!!VRz945&y2=10:Sz199500;                      text before building
+!!VRz950&y2=10:Sz199501;                      text after building
+!!VRz953&y2=10:Sz199502;                      the name of the graphic
+!!VRz952&y2=10:S^../data/p/DragonPK.png^;      path to builging graphics
+!!VRv9551&y2=10:S80000;                       price in gold
+!!VRv9552&y2=10:S99;                          price in crystals
+!!VRv9553&y2=10:S99;                          price in gems
+!!VRv9554&y2=10:Sv9542;                       second resource amount
+!!VRv9555&y2=10:Sv9543;                       third resource amount
+!!VRv9556&y2=10:S0;                           second resource is wood
+!!VRv9557&y2=10:S2;                           third resource is Ore
+
+************************ CONFLUX *****************************
+!!VRz945&y2=8:Sz199500;                      text before building
+!!VRz950&y2=8:Sz199501;                      text after building
+!!VRz953&y2=8:Sz199502;                      the name of the graphic
+!!VRz952&y2=8:S^../data/p/conflux.png^;      path to builging graphics
+!!VRv9551&y2=8:S20000;                       price in gold
+!!VRv9552&y2=8:S30;                          price in crystals
+!!VRv9553&y2=8:S15;                          price in gems
+!!VRv9554&y2=8:Sv9546;                       second resource amount
+!!VRv9555&y2=8:Sv9547;                       third resource amount
+!!VRv9556&y2=8:S4;                           second resource is crystal
+!!VRv9557&y2=8:S5;                           third resource is gems
+
+************************* CASTLE *****************************
+!!VRz945&y2=0:Sz199503;                      text before building
+!!VRz950&y2=0:Sz199504;                      text after building
+!!VRz953&y2=0:Sz199505;                      the name of the graphic
+!!VRz952&y2=0:S^../data/p/castle.png^;       path to builging graphics
+!!VRv9551&y2=0:S22000;                       price in gold
+!!VRv9552&y2=0:S30;                          price in gems
+!!VRv9553&y2=0:S30;                          price in ore
+!!VRv9554&y2=0:Sv9547;                       second resource amount
+!!VRv9555&y2=0:Sv9543;                       third resource amount
+!!VRv9556&y2=0:S5;                           second resource is gems
+!!VRv9557&y2=0:S2;                           third resource is ore
+
+************************ RAMPART ****************************
+!!VRz945&y2=1:Sz199506;                      text before building
+!!VRz950&y2=1:Sz199507;                      text after building
+!!VRz953&y2=1:Sz199508;                      the name of the graphic
+!!VRz952&y2=1:S^../data/p/rampart.png^;      path to builging graphics
+!!VRv9551&y2=1:S20000;                       price in gold
+!!VRv9552&y2=1:S25;                          price in crystals
+!!VRv9553&y2=1:S40;                          price in wood
+!!VRv9554&y2=1:Sv9546;                       second resource amount
+!!VRv9555&y2=1:Sv9542;                       third resource amount
+!!VRv9556&y2=1:S4;                           second resource is crystal
+!!VRv9557&y2=1:S0;                           third resource is wood
+
+************************ TOWER *****************************
+!!VRz945&y2=2:Sz199509;                      text before building
+!!VRz950&y2=2:Sz199510;                      text after building
+!!VRz953&y2=2:Sz199511;                      the name of the graphic
+!!VRz952&y2=2:S^../data/p/tower.png^;        path to builging graphics
+!!VRv9551&y2=2:S25000;                       price in gold
+!!VRv9552&y2=2:S30;                          price in gems
+!!VRv9553&y2=2:S15;                          price in mercury
+!!VRv9554&y2=2:Sv9547;                       second resource amount
+!!VRv9555&y2=2:Sv9544;                       third resource amount
+!!VRv9556&y2=2:S5;                           second resource is gems
+!!VRv9557&y2=2:S1;                           third resource is mercury
+
+************************ INFERNO *****************************
+!!VRz945&y2=3:Sz199512;                      text before building
+!!VRz950&y2=3:Sz199513;                      text after building
+!!VRz953&y2=3:Sz199514;                      the name of the graphic
+!!VRz952&y2=3:S^../data/p/inferno.png^;        path to builging graphics
+!!VRv9551&y2=3:S19000;                       price in gold
+!!VRv9552&y2=3:S30;                          price in mercury
+!!VRv9553&y2=3:S15;                          price in sulfur
+!!VRv9554&y2=3:Sv9544;                       second resource amount
+!!VRv9555&y2=3:Sv9545;                       third resource amount
+!!VRv9556&y2=3:S1;                           second resource is mercury
+!!VRv9557&y2=3:S3;                           third resource is sulfur
+
+************************ NECROPOLIS *****************************
+!!VRz945&y2=4:Sz199515;                      text before building
+!!VRz950&y2=4:Sz199516;                      text after building
+!!VRz953&y2=4:Sz199517;                      the name of the graphic
+!!VRz952&y2=4:S^../data/p/necropol.png^;     path to builging graphics
+!!VRv9551&y2=4:S21000;                       price in gold
+!!VRv9552&y2=4:S25;                          price in mercury
+!!VRv9553&y2=4:S35;                          price in wood
+!!VRv9554&y2=4:Sv9544;                       second resource amount
+!!VRv9555&y2=4:Sv9542;                       third resource amount
+!!VRv9556&y2=4:S1;                           second resource is mercury
+!!VRv9557&y2=4:S0;                           third resource is wood
+
+************************ DUNGEON *****************************
+!!VRz945&y2=5:Sz199521;                      text before building
+!!VRz950&y2=5:Sz199522;                      text after building
+!!VRz953&y2=5:Sz199523;                      the name of the graphic
+!!VRz952&y2=5:S^../data/p/dungeon2.png^;      path to builging graphics
+!!VRv9551&y2=5:S23000;                       price in gold
+!!VRv9552&y2=5:S30;                          price in sulfur
+!!VRv9553&y2=5:S35;                          price in ore
+!!VRv9554&y2=5:Sv9545;                       second resource amount
+!!VRv9555&y2=5:Sv9543;                       third resource amount
+!!VRv9556&y2=5:S3;                           second resource is sulfur
+!!VRv9557&y2=5:S2;                           third resource is ore
+
+************************ STRONGHOLD *****************************
+!!VRz945&y2=6:Sz199524;                      text before building
+!!VRz950&y2=6:Sz199525;                      text after building
+!!VRz953&y2=6:Sz199526;                      the name of the graphic
+!!VRz952&y2=6:S^../data/p/strongho.png^;     path to builging graphics
+!!VRv9551&y2=6:S19000;                       price in gold
+!!VRv9552&y2=6:S60;                          price in crystals
+!!VRv9553&y2=6:S15;                          price in gems
+!!VRv9554&y2=6:Sv9543;                       second resource amount
+!!VRv9555&y2=6:Sv9546;                       third resource amount
+!!VRv9556&y2=6:S2;                           second resource is ore
+!!VRv9557&y2=6:S4;                           third resource is crystal
+
+************************ FORTRESS *****************************
+!!VRz945&y2=7:Sz199527;                      text before building
+!!VRz950&y2=7:Sz199528;                      text after building
+!!VRz953&y2=7:Sz199529;                      the name of the graphic
+!!VRz952&y2=7:S^../data/p/fortress.png^;     path to builging graphics
+!!VRv9551&y2=7:S18000;                       price in gold
+!!VRv9552&y2=7:S50;                          price in wood
+!!VRv9553&y2=7:S20;                          price in sulfur
+!!VRv9554&y2=7:Sv9542;                       second resource amount
+!!VRv9555&y2=7:Sv9545;                       third resource amount
+!!VRv9556&y2=7:S0;                           second resource is wood
+!!VRv9557&y2=7:S3;                           third resource is sulfur
+
+
+********************** check if the building is built ****************
+!!VRv9520:S0;
+!!POv9530/v9531/v9532:V3/?y-2; get flag for current town
+!!VRy-2:&64; test if the bit 7 is set
+!!VRv9520&y-2=64:S1; set a check value for 'yes' on the v9520
+
+!!if&v9520=1:;
+  !!CA-1:U?n T?t;
+  !!FU(new_up_3rd_slot):Pn/t;
+!!en;
+
+********************** handle texts on the town screen ***************
+!!CA-1:R?y3;
+!!VRz945&v9520=0/y3=1:Sz945+z946;
+!!VRz945&v9520=0/y3=0/v4=1/v9554>=v9552/v9541>=v9551/v9555>=v9553:Sz945+z947;
+!!VRz945&v9520=0/y3=0/v4=1/v9541>=v9551/v9554>=v9552/v9555<v9553:Sz945+z948;
+!!VRz945&v9520=0/y3=0/v4=1/v9541>=v9551/v9554<v9552:Sz945+z948;
+!!VRz945&v9520=0/y3=0/v4=1/v9541<v9551:Sz945+z948;
+!!VRz945&v9520=0/y3=0/v4=0:Sz945+z949;
+!!IF&v9520=0:V1/0;
+!!IF&v9520=0/y3=1:M1/945;
+!!IF&v9520=0/y3=0/v4=1/v9541<v9551:Q2/6/v9551/v9556/v9552/v9557/v9553/1/945;
+!!IF&v9520=0/y3=0/v4=1/v9541>=v9551/v9554<v9552:Q2/6/v9551/v9556/v9552/v9557/v9553/1/945;
+!!IF&v9520=0/y3=0/v4=1/v9541>=v9551/v9554>=v9552/v9555<v9553:Q2/6/v9551/v9556/v9552/v9557/v9553/1/945;
+!!IF&v9520=0/y3=0/v4=1/v9541>=v9551/v9554>=v9552/v9555>=v9553:Q1/6/v9551/v9556/v9552/v9557/v9553/2/945;
+!!IF&v9520=0/y3=0/v4=0:M1/945;
+!!FU&v9520=0/-1:E;      (exit if player doesn't build)
+
+******************************* building the special structure procedure *************
+!!VRv9541&v9520=0/1:Sv9541-v9551;   substract 'price' from 'gold'
+!!VRv9554&v9520=0/1:Sv9554-v9552;   substract 'price' from 'second resource amount'
+!!VRv9555&v9520=0/1:Sv9555-v9553;   substract 'price' from 'third resource amount'
+!!OW&v9520=0/1:Rv9540/6/v9541;      set new gold value
+!!OW&v9520=0/1:Rv9540/v9556/v9554;  set new second resource
+!!OW&v9520=0/1:Rv9540/v9557/v9555;  set new third resource
+!!VRz10&v9520=0/1:S^..\data\p\BUILDTWN.WAV^;
+!!SN&v9520=0/1:Pz10; Play the sound of a new building
+!!POv9530/v9531/v9532&v9520=0/1:V3/?y1; get flag for current town
+!!VRy1&v9520=0/1:|64; set the structure to 'built' (set bit 7)
+!!POv9530/v9531/v9532&v9520=0/1:V3/y1; set flag
+!!CA-1&v9520=0/1:R1;    no more building today for this town
+
+!!if&v9520=0/1:;
+   !!VRv9520:S1; set the helping v9520 because I don't want to re-write the entire code :P
+   !!CA-1:U?n T?t;
+   !!FU(new_up_3rd_slot):Pn/t;
+!!en:;
+**************************** text if the structure is built **************
+
+!!IF&v9520=1:D3/950/0/0/952/0/0/0/953/0/0/0/0/0/0/0;
+!!IF&v9520=1:F3/0/0/0/0/0; [disabled cancel button]
+!!IF&v9520=1:E1/3; [Display dialogue box]
+
+
+
+***************************************************************************
+************ AI building the special structure and upgrading **************
+***************************************************************************
+
+!?OB98&-1000; !!FU9504:P; -occur when AI is entering town
+!$OB98&-1000; !!FU9504:P; -occur when AI is leaving town
+
+!?FU9504;
+
+!!UN:P555/?v1; [Check if the script is enabled: v1=1 if Yes]
+!!FU&v1<>1:E; [Exit if not enabled]
+
+***************************** building part ******************************
+
+!!CA998:O?y-2; (owner of the town: y-2)
+!!OW:C?v9540;   (current player: y-3)
+!!FU&y-2<>v9540:E; (Exit if player doesn't own town)
+
+!!VRv4:S0;
+!!CA998:B3/9;  (ckeck if there's a castle)
+!!VRv4&1:S1;  (set a helping var)
+
+;get money
+!!OW:Rv9540/6/?v9541;    1 - gold
+!!OW:Rv9540/0/?v9542;    2 - wood
+!!OW:Rv9540/2/?v9543;    3 - ore
+!!OW:Rv9540/1/?v9544;    4 - mercury
+!!OW:Rv9540/3/?v9545;    5 - sulfur
+!!OW:Rv9540/4/?v9546;    6 - crystal
+!!OW:Rv9540/5/?v9547;    7 - gems
+!!OW:Rv9540/7/?v9548;    8 - mithril
+
+!!CA998:T?y2; check town type
+
+!!SN:W^Neutral Town %V998 %V999 %V1000^/?y98; !_!FU&y98<>0:E;
+
+
+********************** Dragon Peaks ***************************
+!!VRv9551&y2=10:S99000;                       price in gold
+!!VRv9552&y2=10:S99;                          price in wood
+!!VRv9553&y2=10:S99;                          price in ore
+!!VRv9554&y2=10:Sv9542;                       second resource amount
+!!VRv9555&y2=10:Sv9543;                       third resource amount
+!!VRv9556&y2=10:S2;                           second resource is wood
+!!VRv9557&y2=10:S3;                           third resource is ore
+
+************************ CONFLUX *****************************
+!!VRv9551&y2=8:S15000;                       price in gold
+!!VRv9552&y2=8:S30;                          price in crystals
+!!VRv9553&y2=8:S15;                          price in gems
+!!VRv9554&y2=8:Sv9546;                       second resource amount
+!!VRv9555&y2=8:Sv9547;                       third resource amount
+!!VRv9556&y2=8:S4;                           second resource is crystal
+!!VRv9557&y2=8:S5;                           third resource is gems
+
+************************* CASTLE *****************************
+!!VRv9551&y2=0:S16000;                       price in gold
+!!VRv9552&y2=0:S30;                          price in gems
+!!VRv9553&y2=0:S30;                          price in ore
+!!VRv9554&y2=0:Sv9547;                       second resource amount
+!!VRv9555&y2=0:Sv9543;                       third resource amount
+!!VRv9556&y2=0:S5;                           second resource is gems
+!!VRv9557&y2=0:S2;                           third resource is ore
+
+************************ RAMPART ****************************
+!!VRv9551&y2=1:S15000;                       price in gold
+!!VRv9552&y2=1:S25;                          price in crystals
+!!VRv9553&y2=1:S40;                          price in wood
+!!VRv9554&y2=1:Sv9546;                       second resource amount
+!!VRv9555&y2=1:Sv9542;                       third resource amount
+!!VRv9556&y2=1:S4;                           second resource is crystal
+!!VRv9557&y2=1:S0;                           third resource is wood
+
+************************ TOWER *****************************
+!!VRv9551&y2=2:S17000;                       price in gold
+!!VRv9552&y2=2:S30;                          price in gems
+!!VRv9553&y2=2:S15;                          price in mercury
+!!VRv9554&y2=2:Sv9547;                       second resource amount
+!!VRv9555&y2=2:Sv9544;                       third resource amount
+!!VRv9556&y2=2:S5;                           second resource is gems
+!!VRv9557&y2=2:S1;                           third resource is mercury
+
+************************ INFERNO *****************************
+!!VRv9551&y2=3:S14500;                       price in gold
+!!VRv9552&y2=3:S30;                          price in mercury
+!!VRv9553&y2=3:S15;                          price in sulfur
+!!VRv9554&y2=3:Sv9544;                       second resource amount
+!!VRv9555&y2=3:Sv9545;                       third resource amount
+!!VRv9556&y2=3:S1;                           second resource is mercury
+!!VRv9557&y2=3:S3;                           third resource is sulfur
+
+************************ NECROPOLIS *****************************
+!!VRv9551&y2=4:S15500;                       price in gold
+!!VRv9552&y2=4:S25;                          price in mercury
+!!VRv9553&y2=4:S35;                          price in wood
+!!VRv9554&y2=4:Sv9544;                       second resource amount
+!!VRv9555&y2=4:Sv9542;                       third resource amount
+!!VRv9556&y2=4:S1;                           second resource is mercury
+!!VRv9557&y2=4:S0;                           third resource is wood
+
+************************ DUNGEON *****************************
+!!VRv9551&y2=5:S17000;                       price in gold
+!!VRv9552&y2=5:S30;                          price in sulfur
+!!VRv9553&y2=5:S35;                          price in ore
+!!VRv9554&y2=5:Sv9545;                       second resource amount
+!!VRv9555&y2=5:Sv9543;                       third resource amount
+!!VRv9556&y2=5:S3;                           second resource is sulfur
+!!VRv9557&y2=5:S2;                           third resource is ore
+
+************************ STRONGHOLD *****************************
+!!VRv9551&y2=6:S14500;                       price in gold
+!!VRv9552&y2=6:S60;                          price in crystals
+!!VRv9553&y2=6:S15;                          price in gems
+!!VRv9554&y2=6:Sv9543;                       second resource amount
+!!VRv9555&y2=6:Sv9546;                       third resource amount
+!!VRv9556&y2=6:S2;                           second resource is ore
+!!VRv9557&y2=6:S4;                           third resource is crystal
+
+************************ FORTRESS *****************************
+!!VRv9551&y2=7:S14000;                       price in gold
+!!VRv9552&y2=7:S50;                          price in wood
+!!VRv9553&y2=7:S20;                          price in sulfur
+!!VRv9554&y2=7:Sv9542;                       second resource amount
+!!VRv9555&y2=7:Sv9545;                       third resource amount
+!!VRv9556&y2=7:S0;                           second resource is wood
+!!VRv9557&y2=7:S3;                           third resource is sulfur
+
+
+********************** check if the building is built ****************
+!!VRv9520:S0;
+!!CA998:P?v9530/?v9531/?v9532; get position of the town
+!!POv9530/v9531/v9532:V3/?y-2; get flag for current town
+!!VRy-2:&64; test if the bit 7 is set
+!!VRv9520&y-2=64:S1; set a check value for 'yes' on the v9520
+
+
+********************** set a flag if the right conditions are met  ***************
+*** NOTE: to make it easier for the AI, it builds as soon as it gets the right resources,
+*** no matter if AI built in tis turn or not
+
+!!IF&v9520=0/v4=0:V1/0;
+!!IF&v9520=0/v4=1/v9541>=v9551:V1/1;
+!!IF&v9520=0/v4=1/v9541<v9551:V1/0;
+!!FU&v9520=0/-1:E;      (exit if player doesn't build)
+
+******************************* building the special structure procedure **************
+***** NOTE: AI has to have only the right ammount of gold - resources will be substracted
+***** (if not enough resources, then take away what AI has), but the building procedure
+***** for the AI doesn't depend on them - only on gold.
+***** (this is because AI doesn't know it 'needs' the right resources and won't use the
+***** marketplace or won't save resources to get them)
+***************************************************************************************
+***** UPDATE: AI now has to have only about 75% of the gold ammount for human players
+***************************************************************************************
+
+!!VRv9541&v9520=0/1:Sv9541-v9551;                substract 'price' from 'gold'
+!!VRv9554&v9520=0/1/v9554<v9552:S0;              set '0' for 'second resource amount' (if NOT enough)
+!!VRv9554&v9520=0/1/v9554>=v9552:Sv9554-v9552;   substract 'price' from 'second resource amount' (if enough)
+!!VRv9555&v9520=0/1/v9555<v9553:S0;              set '0' for 'third resource amount'  (if NOT enough)
+!!VRv9555&v9520=0/1/v9555>=v9553:Sv9555-v9553;   substract 'price' from 'third resource amount'  (if enough)
+
+!!if&v9520<>v9520:;
+  
+!!OW&v9520=0/1:Rv9540/6/v9541;      set new gold value
+!!OW&v9520=0/1:Rv9540/v9556/v9554;  set new second resource
+!!OW&v9520=0/1:Rv9540/v9557/v9555;  set new third resource
+!!POv9530/v9531/v9532&v9520=0/1:V3/?y1; get flag for current town
+!!VRy1&v9520=0/1:|64; set the structure to 'built' (set bit 7)
+!!POv9530/v9531/v9532&v9520=0/1:V3/y1; set flag
+
+!!en;
+
+***************************** upgrading part *****************************
+
+!!POv9530/v9531/v9532:V3/?y-2; get flag for current town
+!!VRy-2:&64; test if the bit 7 is set
+!!FU&y-2=0:E; Exit if there's no special structure in town
+
+!!HE-1:N?v1; [Hero number: v1]
+!!CA998:T?v2; [Town type: v2]
+
+ [Check each creature in AI hero's army]
+!!DO9503/0/6/1:Pv1/v2;
+!!DO9503/0/6/1:Pv1/v2;
+
+
+ [Check each creature in AI hero's army]
+ [x1=hero number, x2=town type]
+!?FU9503;
+
+!!HEx1:C0/x16/?y1/?y7; [Type of creature: y1, Number: y7]
+
+!!FU|y1<0/y7=0:E; [Exit if creature slot is empty]
+
+!!MA:Oy1/?y2; [Town creature belongs to: y2]
+!!MA:Uy1/?y3; [Creature's upgrade number: y3]
+!_!MA:Ly1/?y4; [Creature's level: y4]
+
+!!VRy4:S0 -1;
+!!re i/0/6:;
+  !!UN:Ty2/i/1/?y99;
+  !!VRy4&y99=y1:Si;
+!!en:;
+
+!!if&y4>=0:; 
+!!VRy6:Sy4 +37; [Upgraded dwelling number in town: y6]
+  !_!CA998:B3/y6; [Check if upgraded dwelling is built: Flag 1 is true if yes]
+  !_!CA998&-1:B3/19; [Check if horde building 1 is built: Flag 1 is true if yes]
+  !_!CA998&-1:B3/25; [Check if horde building 2 is built: Flag 1 is true if yes]
+  !_!FU&-1:E;
+
+  !!VRy6:Sy4 +64;
+  !!CA998:B3/y6; [Check if upgraded dwelling is built: Flag 1 is true if yes]
+  !!FU&-1:E;
+!!el:;
+  !!re i/0/6:;
+    !!UN:Ty2/i/3/?y99;
+    !!VRy4&y99=y1:Si;
+    !!FU&y4<0:E;
+    !!VRy6:Sy4 +64 +7;
+    !!CA998:B3/y6; [Check if upgraded dwelling is built: Flag 1 is true if yes]
+    !!FU&-1:E;
+  !!en:;
+!!en;
+
+ [Exit if NOT native town, creature has no upgrade, creature has default upgrade or upgraded dwelling isn't built]
+!!FU&y4<0:E;
+!!FU&y3=-2:E;
+!!FU&y3=-1:E;
+!!FU&y2<>x2:E;
+!_!FU&-1:E;
+
+* [Default upgrade for all towns except Conflux: y3]
+*!VRy5&y3=-1/y1<=111:Sy1 %2; [Remainder of creature number divided by 2: y5]
+*!VRy3&y3=-1/y1<=111/y5=0:Sy1 +1; [If non-upgraded, upgrade is y3]
+
+* [Default upgrade for Conflux: y3]
+*!VRy3&y3=-1/y1=112:S127; [Air Elemental]
+*!VRy3&y3=-1/y1=113:S125; [Earth Elemental]
+*!VRy3&y3=-1/y1=114:S129; [Fire Elemental]
+*!VRy3&y3=-1/y1=115:S123; [Water Elemental]
+*!VRy3&y3=-1/y1=118:S119; [Pixie]
+*!VRy3&y3=-1/y1=120:S121; [Psychic Elemental]
+*!VRy3&y3=-1/y1=130:S131; [Firebird]
+
+!!VRy5:S1; [Initialize y5 to 1]
+!!VRy5&y3>=0:S0; [Set y5 to 0 if y3>=0]
+!!FU|y5=1:E; [Exit if no upgrade]
+
+!!OW:C?v9540;   (current player: v6540)
+!!OW:Rv9540/6/?v9541;    get gold
+!!HEx1:C0/x16/y1/?v9588; [get number of creatures]
+!!MA:Cy1/6/?v9589; [get cost of creature un-upg]
+!!MA:Cy3/6/?v9590; [get cost of creature upg]
+!!VRv9590:-v9589; [calculate difference in costs]
+!!VRv9590:*v9588; [multiply by creature number to get the real price]
+!!VRv9590::4; [divide by 4 and multiply by 3 to get 75% of the real price]
+!!VRv9590:*3; [divide by 4 and multiply by 3 to get 75% of the real price]
+
+!!HEx1&v9590<=v9541:C0/x16/y3/d; [Upgrade creature]
+!!VRv9591&v9590<=v9541:Sv9541-v9590;   substract 'price' from 'gold'
+!!OW&v9590<=v9541:Rv9540/6/v9591;      set new gold value
+
+*** this was used for bug-catching only :)
+*!IF&v9590<=v9541:M ^AI upgrades creature number %Y1 to %Y3 in a quantity of %V9588 for %V9590 gold. He had %V9541 gold, now he has %V9591^;
+
+
+*poziom jednostek****
+!_#MA:L137/2;  [strzelec level 3]
+!_#MA:L199/4;  [prastary ent level 5]
+!_#MA:L136/3;  [czarodziej level 4]
+!_#MA:L209/4;  [Czarci Stra¿nik level 5]
+!_#MA:L210/4;  [Królewski lisz level 5]
+!_#MA:L198/2;  [Potworne oko level 3]
+!_#MA:L172/4;  [Ptak burzy level 5]
+!_#MA:L204/5;  [Kwasowa wiwerna level 6]
+!_#MA:L208/1;  [Huragan level 2]
+!#MA:L192/0;  [Sylvianski centaur level 1]
+!_#MA:L197/3;  [fanatyk level 4]
+
+*******umiejetnosci*******
+
+
+
+
+!?FU22228;
+!!FU:E; //disabled in amethyst Upgrades
+!!VRx1:-22;
+!!VRy1:S7961304+x1;
+!!UN:Cy1/1/x2;
+
+
+
+!?PI;
+!_!FU22228:P139/6;
+!?GM0;
+!_!FU22228:P139/6;
+
+!#SN:W^Amethyst Upgrades^/1;
+
+!?BF; werewolf fix
+!_!UN:C7762908/4/9999;
+!?PI;
+!_!UN:C7762908/4/9999;
+!?GM0;
+!_!UN:C7762908/4/9999;
+
+!?BF;
+!!SN:W^Amethyst Upgrades^/1;
+
+!?PI;
+!!SN:W^Amethyst Upgrades^/1;

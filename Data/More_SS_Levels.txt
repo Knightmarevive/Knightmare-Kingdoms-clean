@@ -1,0 +1,11 @@
+
+SS_Count=31
+Max_SS_Level=15
+SS_Per_Hero=24
+LevelUpMultiplier=1.13
+
+Diplo_Divider=6
+Diplo_Shift=3
+
+SS_Multiple_Build=10
+

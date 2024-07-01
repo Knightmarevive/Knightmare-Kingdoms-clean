@@ -1,0 +1,22 @@
+0x43d5d0
+0x75e161
+0x76AEDA
+
+begin
+0x76AF17
+
+begin2
+0x7712b0
+
+void PlaceNpc2
+0x75E161 !!!
+
+//Byte* PlaceNpc2 
+int PlaceNPCAtBattleStart2
+??? 0x7712b0
+??? 0x76bfb3 probably this
+??? 0x706d10
+
+Byte* PlaceNpc2 
+??? 0x76b7fe probably this
+

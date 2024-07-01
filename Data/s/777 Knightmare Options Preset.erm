@@ -1,0 +1,59 @@
+ZVSE
+!#UN:P215/1;
+!#UN:P212/1;
+
+!#UN:P103/0;
+!#UN:P216/0;
+!#UN:P218/0;
+!#UN:P201/0;
+!#UN:P204/0;
+!#UN:P206/0; 
+!#UN:P207/0;             
+!#UN:P209/0;
+!#UN:P210/0;
+!#UN:P211/0;
+!#UN:P213/0;
+!#UN:P214/0;
+!#UN:P217/0;
+
+!#UN:P193/0;
+
+!?FU(SET_HERO_LIMIT); [thanks to Igrik]
+!!VRx1|x1<1/x1>8:S8;  [x1 - лимит героев, при значениях вне диапазона 1..8 устанавливается стандартное значение - 8]
+!!UN:C6129162/1/x1 C4864993/1/x1 C6116975/1/x1 C4395921/1/x1 C5417105/1/x1 C6127106/1/x1;  [установка лимита героев]
+
+
+!?PI;
+
+!!SN:L^era.dll^/?y66 Ay66/^PluginExists^/?y77 Ey77/1/^Skirmish^; !!VRy99:Sv1; [majaczek]
+!!if&v1<>0:;
+  !!SN:W^KK_GAME_ADV_HERO_LIMIT^/?y99;
+  !!FU(SET_HERO_LIMIT):Py99;
+  !!IF&y99=0:M^Debug - Zero hero limit fixing to one^;
+  !!FU(SET_HERO_LIMIT)&y99=0:P1;
+  !!FU:E;
+!!en;
+  
+!!VRv5:S16;
+!!VRz1:S^1^;
+!!VRz2:S^2^;
+!!VRz3:S^3^;
+!!VRz4:S^4^;
+!!VRz5:S^5^;  16
+!!VRz6:S^6^;
+!!VRz7:S^7^;  64
+!!VRz8:S^8^; 
+
+!!VRz9:S^What is maximum of Adventure Heroes for this Gameplay ?^;
+!!IF:G1/5/16/9/1/2/3/4/5/6/7/8; result in v5
+!!VRy99&v5=1:S1;  !!VRy99&v5=2:S2;  !!VRy99&v5=4:S3;  !!VRy99&v5=8:S4;
+!!VRy99&v5=16:S5; !!VRy99&v5=32:S6; !!VRy99&v5=64:S7; !!VRy99&v5=128:S8;
+!!SN:W^KK_GAME_ADV_HERO_LIMIT^/y99;
+!!FU(SET_HERO_LIMIT):Py99;
+
+
+!?FU(OnGameEnter);
+!!SN:W^KK_GAME_ADV_HERO_LIMIT^/?y99;
+!!FU(SET_HERO_LIMIT):Py99;
+!!MA:B252/999; !!MA:B230/999; 
+!!MA:N245/999;

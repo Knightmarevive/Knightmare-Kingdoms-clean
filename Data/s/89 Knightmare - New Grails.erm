@@ -1,0 +1,847 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=7.5(May).2016
+
+
+!?TM2;
+!!OW:C?y1; !!OW:Iy1/?y2; !!FU&y2=0:E; exit if human player
+!!UN:U98/-1/?y3; !!VRy4:S0; !!VRv2:S0 -1; !!FU&y3=0:E;
+[:NextTown]
+!!UN:U98/-1/-1/2; !!CAv2/v3/v4:O?y5;
+
+!!VRy9:S0 R999; ** promile dice **
+!!FU6161&y9<144/y1=y5:Pv2/v3/v4/-26/0/0;
+
+!!VRy4:+1; !!SN&y4<y3:G[NextTown];
+
+!?OB98;
+!!CAv998/v999/v1000:T?y2 O?y3;
+!!HE-1:N?y9;
+!!if&y9<0:;
+  !!FU55447:Pv998/v999/v1000/y2/1;
+  !!FU:E;
+!!en:;
+!!HE-1:O?y4; !!FU&y3<>y4:E;
+!!FU55447:Pv998/v999/v1000/y2/1;
+
+!?CM1;
+!!CM:I?y10;
+!_!FU:E;
+!!CA-1:P?y1/?y2/?y3;
+!!CA-1:T?y9;
+!!FU55447:Py1/y2/y3/y9/2/y10;
+
+!?CM1;
+!!CM:I?y8;
+!!FU&y8<>26:E;
+!!CA-1:P?y1/?y2/?y3;
+!!CA-1:T?y9;
+!!FU55447:Py1/y2/y3/y9/3;
+
+
+!?BA0;
+!!SN:W^NewGrails_BR0^/0;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^NewGrails_BR0^/?y1;
+!!VRy1:+1;
+!!SN:W^NewGrails_BR0^/y1;
+
+
+!#TM2:S1/999/1/255;
+!?TM2;
+!!OW:C?y1; check current player
+!!OW:Iy1/?y2; human/AI 0/1
+!_!FU&y2<1:E; exit if human
+!!UN:U98/-1/?y-1; count towns
+!!VRv1:S-1;
+!!DO55448/1/y-1/1:Py1; loop all towns
+!?FU55448;
+;x1 current player
+!!UN:U98/-1/-1/1; town in v1-v3
+!!CA1:O?y1; owner in y1
+!!OW:Iy1/?y9;  human/AI 0/1
+!_!FU&y9<1:E; exit if human
+!_!FU&x1<>y1:E; exit if not current player
+!!CAv1/v2/v3:T?y9;
+!!FU55447:Pv1/v2/v3/y9/4; Call Grail Function
+
+!?FU55447;
+x1, x2, x3 - town position
+x4         - town type
+x5         - access type
+x6         - helper variable
+
+!_!IF&x5<>2:M^Debug %X1 %X2 %X3 %X4 %X5^;
+
+!!OBx1/x2/x3:T?y99;
+!!if&y99<>98/y99<>34:;
+  !!IF:M^Warning FU55447 - not a Town nor Hero^;
+  !!FU:E;
+!!en:;
+
+!!CAx1/x2/x3:B3/26;
+!!FU&-1:E; exit if not built
+!!CAx1/x2/x3:H0/?y5;
+!!CAx1/x2/x3:H1/?y6;
+
+!!CAx1/x2/x3:O?y7;
+!!OW:C?y8; !!OW:Iy7/?y9; human/AI 0/1
+
+!!if&y7=y8/x5=4:; Daily each Grail
+      !!OW:R-1/7/d2; +2 Mithril
+!!en:;
+
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!VRy83:S3; !!VRy83&y88<>0:S15; 
+
+!!if&x4=0:; Castle Grail
+  !!HEy5&y5>=0:S9/y83 M25/1 M38/1 M37/1 M40/1 S26/y83 S6/y83 S4/y83;
+  !!HEy6&y6>=0:S9/y83 M25/1 M38/1 M37/1 M40/1 S26/y83 S6/y83 S4/y83;
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero are Infused by
+>> Shining Glory of Life Magic
+>> All Life Magic Spells
+>> Puryfing Power of Exorcism
+>> Expert Inspiration
+>> Expert Nobility^;
+!!en:;
+
+!!if&x4=1:; Rampart Grail
+  !!HEy5&y5>=0:S8/y83 S4/y83 S7/y83 S21/y83 S13/y83;
+  !!HEy6&y6>=0:S8/y83 S4/y83 S7/y83 S21/y83 S13/y83;
+  !_!SN&y5>=0:W^HE%Y5 Blessed by Spirit Guardian^/1;
+  !_!SN&y6>=0:W^HE%Y6 Blessed by Spirit Guardian^/1;
+  !_!IF&x5<>4/x5<>2:M^Visitor and Garrisoned Hero are Blessed by Spirit Guardian^;
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero Learn
+>> Expert Mysticism
+>> Expert Nobility
+>> Expert Wisdom
+>> Expert Learning
+>> Expert Estates
+  ^;
+!!en:;
+
+!!if&x4=2:; Tower Grail
+   !!HEy5&y5>-1:M0/1;  !!HEy6&y6>-1:M0/1;
+   !!HEy5&y5>-1:M1/1;  !!HEy6&y6>-1:M1/1;
+   !!HEy5&y5>-1:M2/1;  !!HEy6&y6>-1:M2/1;
+   !!HEy5&y5>-1:M3/1;  !!HEy6&y6>-1:M3/1;
+   !!HEy5&y5>-1:M4/1;  !!HEy6&y6>-1:M4/1;
+   !!HEy5&y5>-1:M5/1;  !!HEy6&y6>-1:M5/1;
+   !!HEy5&y5>-1:M6/1;  !!HEy6&y6>-1:M6/1;
+   !!HEy5&y5>-1:M7/1;  !!HEy6&y6>-1:M7/1;
+   !!HEy5&y5>-1:M8/1;  !!HEy6&y6>-1:M8/1;
+   !!HEy5&y5>-1:M9/1;  !!HEy6&y6>-1:M9/1;
+   !!HEy5&y5>-1:S7/y83;  !!HEy6&y6>-1:S7/y83;
+   !!HEy5&y5>-1:S24/y83; !!HEy6&y6>-1:S24/y83;
+   !!HEy5&y5>-1:S25/y83; !!HEy6&y6>-1:S25/y83;
+   !!HEy5&y5>-1:S15/y83; !!HEy6&y6>-1:S15/y83;
+   !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero Learnt all Adventure Spells
+Also they are Infused by Ethernal Gift of Wisdom, Inteligence, Sorcery and Air Magic^;
+!!en:;
+
+!!if&x4=3:; Inferno Grail
+  !_!SN&y5>=0:W^HE%Y5 Blessed by Deity of Fire^/1;
+  !_!SN&y6>=0:W^HE%Y6 Blessed by Deity of Fire^/1;
+  !_!IF&x5<>4/x5<>2:M^Visitor and Garrisoned Hero are Blessed by Deity of Fire^;
+  !!HEy5&y5>=0:S14/y83 M21/1 M22/1 M29/1 M13/1 S7/y83 S25/y83;
+  !!HEy6&y6>=0:S14/y83 M21/1 M22/1 M29/1 M13/1 S7/y83 S25/y83;
+
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero learn
+>> Expert Fire Magic
+>> Fireball and Inferno Spells
+>> Fire Shield and Fire Wall Spells
+>> Expert Wisdom
+>> Expert Sorcery^;
+!!en:;
+
+!!if&x4=4:; Necro Grail
+  !!HEy5&y5>=0:S12/y83 M24/1 M39/1 S25/y83 S24/y83 S17/y83;
+  !!HEy6&y6>=0:S12/y83 M24/1 M39/1 S25/y83 S24/y83 S17/y83;
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero are Infused by Abruptly Dark Powers of Necromancy
+also they get Expert Sorcery, Expert Inteligence and Expert Earth Magic^;
+!!en:;
+
+!!if&x4=5:; Dungeon Grail
+  !!HEy5&y5>=0:S17/y83 S24/y83 S25/y83 S13/y83 S5/y83;
+  !!HEy6&y6>=0:S17/y83 S24/y83 S25/y83 S13/y83 S5/y83;
+  !_!SN&y5>=0:W^HE%Y5 Blessed by Guardian of Earth^/1;
+  !_!SN&y6>=0:W^HE%Y6 Blessed by Guardian of Earth^/1;
+  !_!IF&x5<>4/x5<>2:M^Visitor and Garrisoned Hero are Blessed by Guardian of Earth^;
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero Learn
+>> Expert Earth Magic
+>> Expert Inteligence
+>> Expert Sorcery
+>> Expert Estates
+>> Expert Astromancy^;
+
+!!en:;
+
+!!if&x4=6:; Stronghold Grail
+  !!HEy5&y5>=0:S26/y83 S10/y83 S20/y83 S13/y83 S19/y83;
+  !!HEy6&y6>=0:S26/y83 S10/y83 S20/y83 S13/y83 S19/y83;
+  !_!SN&y5>=0:W^HE%Y5 Blessed by Ancestors^/1;
+  !_!SN&y6>=0:W^HE%Y6 Blessed by Ancestors^/1;
+  !_!IF&x5<>4/x5<>2:M^Visitor and Garrisoned Hero are Blessed by Ancestors^;
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero are Trained with
+>> Expert Machinery
+>> Expert Engineer
+>> Expert Recruitment
+>> Expert Estates
+>> Expert Tactics^;
+!!en:;
+
+!!if&x4=7:; Fortress Grail
+  !_!SN&y5>=0:W^HE%Y5 Blessed by Gaia, Goddess of Nature^/1;
+  !_!SN&y6>=0:W^HE%Y6 Blessed by Gaia, Goddess of Nature^/1;
+
+  !!HEy5&y5>=0:S0/y83 S3/y83 M53/1 M54/1 S2/y83 S16/y83;
+  !!HEy6&y6>=0:S0/y83 S3/y83 M53/1 M54/1 S2/y83 S16/y83;
+
+  !_!IF&x5<>4/x5<>2:M^Visitor and Garrisoned Hero are Blessed by Gaia, Goddess of Nature
+Also They are Infused with Beauty Forces of nature and learn Expert Pathfinding^;
+
+  !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero learn
+>> Expert Pathfinding
+>> Expert Scouting
+>> Slow and Haste Spells
+>> Expert Logistics
+>> Expert Water Magic^;
+!!en:;
+
+!!if&x4=8:; Conflux Grail
+      !!HEy5&y5>=0:M66/1 M67/1 M68/1 M69/1;
+      !!HEy6&y6>=0:M66/1 M67/1 M68/1 M69/1;
+      !!IF&x5<>4/x5<>2/1000:M^Visitor and Garrisoned Hero learn Summon Elemental Spells
+also visiting Hero can Learn Stealth Levels^;
+    
+    !!if&y6>=0;
+      
+      !!SN:W^HE%Y6_Stealth_Level^/?y92;
+      !!HEy6:E?y93/?y94; y94 is real hero level
+
+      !_!VRy95:S0 +y92 +y94; Cost in Gold
+      !!VRy95:Sy94 :10 +y92; Cost in Gold
+      !_!VRy95&y95<5:S5;
+      !_!VRy95:-4;
+      !!VRy95:*2; !!VRy95:*y95;
+      !!VRy95:*50 +1000;     Cost in Gold
+
+      !!VRy96:S1 +y92 :2 +2; Cost in Mithrill
+      !!OW:R-1/6/?y97; Owned Gold
+      !!OW:R-1/7/?y98; Owned Mithrill
+
+    !!en;
+
+  !!if&x5=3:;Human Player
+    !!if&y6<0:;
+      !!IF:M^You need Visiting Hero to Learn from Aurora Borealis^;
+    !!el&x5=3:;
+      !!if|y97<y95/y98<y96:;
+        !!IF:M^You need %Y95 Gold and %Y96 Mithril to Learn from Aurora Borealis (and you don't have enough).^;
+      !!el:;
+         !!IF:Q1^Do You Want to Learn Stealth Level? You need %Y95 Gold and %Y96 Mithril.^;
+         !!if&1:;
+            !!FU55449:Py6; CustomLevelupScreen
+            !!FU55449&y88<>0:Py6; CustomLevelupScreen
+            !!FU55449&y88<>0:Py6; CustomLevelupScreen
+            !_!FU55450:Py6;  Random LevelUp
+            !!VRy97:-y95; !!OW:R-1/6/y97;
+            !!VRy98:-y96; !!OW:R-1/7/y98;
+            !!SN:W^HE%Y6_Stealth_Level^/d1;
+         !!en:;
+       !!en:;
+    !!en:;
+  !!en:;
+
+  !!if&y9=1/y6>=0:; AI Player
+
+    !!VRy96:*2500; !!VRy95:+y96; !!VRy96:S0;
+
+    !!if&y97>=y95/y98>=y96:; Can Pay
+    !!VRy88:S0 R99; Dice
+      !!if&y88<13:;
+         !_!FU55449:Py6; Not dialogue for AI
+         !!FU55450:Py6;  Random LevelUp AI
+         !!FU55450&y88<>0:Py6;  Random LevelUp AI
+         !!FU55450&y88<>0:Py6;  Random LevelUp AI
+         !!VRy97:-y95; !!OW:R-1/6/y97;
+         !!VRy98:-y96; !!OW:R-1/7/y98;
+         !!SN:W^HE%Y6_Stealth_Level^/d1;
+      !!en:;
+    !!en:;
+  !!en:;
+!!en:;
+
+!!UN|x5=2/x5=3:R4/d; Redraw
+
+!_?PI;
+!_?TM2;
+!_!DL336:N^CustomLevelupScreen.txt^;
+
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^NewGrails_BR0^/?y1;
+!!FU&y1<>2:E;
+
+!!BH0:N?y5; !!BH1:N?y6;
+!!VRy7:S0;  !!VRy8:S0;
+
+!!SN&y5>=0:W^HE%Y5 Blessed by Spirit Guardian^/?y7;
+!!SN&y6>=0:W^HE%Y6 Blessed by Spirit Guardian^/?y8;
+!!DO55470/0/41/1&y7>0:P0/1;
+!!DO55470/0/41/1&y8>0:P1/1;
+
+!!VRy7:S0;  !!VRy8:S0;
+!!SN&y5>=0:W^HE%Y5 Blessed by Deity of Fire^/?y7;
+!!SN&y6>=0:W^HE%Y6 Blessed by Deity of Fire^/?y8;
+!!DO55470/0/41/1&y7>0:P0/3;
+!!DO55470/0/41/1&y8>0:P1/3;
+
+!!VRy7:S0;  !!VRy8:S0;
+!!SN&y5>=0:W^HE%Y5 Blessed by Guardian of Earth^/?y7;
+!!SN&y6>=0:W^HE%Y6 Blessed by Guardian of Earth^/?y8;
+!!DO55470/0/41/1&y7>0:P0/5;
+!!DO55470/0/41/1&y8>0:P1/5;
+
+!!VRy7:S0;  !!VRy8:S0;
+!!SN&y5>=0:W^HE%Y5 Blessed by Ancestors^/?y7;
+!!SN&y6>=0:W^HE%Y6 Blessed by Ancestors^/?y8;
+!!DO55470/0/41/1&y7>0:P0/6;
+!!DO55470/0/41/1&y8>0:P1/6;
+
+!!VRy7:S0;  !!VRy8:S0;
+!!SN&y5>=0:W^HE%Y5 Blessed by Gaia, Goddess of Nature^/?y7;
+!!SN&y6>=0:W^HE%Y6 Blessed by Gaia, Goddess of Nature^/?y8;
+!!DO55470/0/41/1&y7>0:P0/7;
+!!DO55470/0/41/1&y8>0:P1/7;
+
+!?FU55470; Routine for Blessing of deity of fire (or other National Blessing)
+x1  - Blessed hero Side
+x2  - Deity ID (Same as Town Type)
+x16 - battle monster
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+!!VRy9: S0 -1 -x16; set y9 for battle experience ID
+
+!!BMx16:I?y7;
+!_!FU&y7<>x1:E;
+
+
+!!if&x2=1:;  Spirit Guardian
+  !!if&y7=x1:; Ally Stack
+
+    !!BMx16:B?y13; !!VRy13:+1; !!VRy13:*3;
+    !!EAy9:F0/?y11;  // Multiple Summon
+    !!EAy9:By11/1/85/199/y13/y13/y13/y13/y13/y13/y13/y13/y13/y13/y13;
+
+  !!el:; Enemy Stack
+
+    !!BMx16:M75/999/3; Cast Age
+
+  !!en:;
+!!en:;
+
+
+!!if&x2=3:;  Deity of Fire (Inferno)
+  !!if&y7=x1:; Ally Stack
+
+    !_!BMx16:G29/99/99; Fire Shield
+
+    !!EAy9:F0/?y11;  //  Fire Shield
+    !!EAy9:By11/1/115/29/3/3/3/3/3/3/3/3/3/3/3;
+
+    !!EAy9:F0/?y11;  // Fire Damage Spells
+    !!EAy9:By11/1/119/79/1/1/1/1/1/1/1/1/1/1/1;
+
+  !!el:; Enemy Stack
+
+    !_!BMx16:G42/99/99; Curse
+
+    !!EAy9:F0/?y11;  //  Curse
+    !!EAy9:By11/1/115/42/3/3/3/3/3/3/3/3/3/3/3;
+
+  !!en:;
+!!en:;
+
+
+
+!!if&x2=5:;  Guardian of Earth (Dungeon)
+  !!if&y7=x1:; Ally Stack
+
+    !!EAy9:F0/?y11;  //  Implosion
+    !!EAy9:By11/1/106/18/99/99/99/99/99/99/99/99/99/99/99;
+
+    !!EAy9:F0/?y11;  //  Implosion
+    !!EAy9:By11/1/107/18/99/99/99/99/99/99/99/99/99/99/99;
+
+  !!el:; Enemy Stack
+
+  !!en:;
+!!en:;
+
+
+
+!!if&x2=6:; Ancestors (Stronghold)
+  !!if&y7=x1:; Ally Stack
+
+    !!EAy9:F0/?y11;  //  Regeneration
+    !!EAy9:By11/1/114/100/99/99/99/99/99/99/99/99/99/99/99;
+
+    !!BMx16:Ad9  Dd9;
+  !!el:; Enemy Stack
+
+    !_!BMx16:Ad-9  Dd-9;
+    !_!BMx16:A?y12 D?y13;
+    !_!BMx16&y12<0:A0;
+    !_!BMx16&y13<0:D0;
+
+  !!en:;
+!!en:;
+
+
+
+!!if&x2=7:; Gaia of Nature (Fortress)
+  !!if&y7=x1:; Ally Stack
+
+    !!EAy9:F0/?y11;  //  Haste
+    !!EAy9:By11/1/115/53/3/3/3/3/3/3/3/3/3/3/3;
+
+  !!el:; Enemy Stack
+
+    !!EAy9:F0/?y11;  //  Slow
+    !!EAy9:By11/1/115/54/3/3/3/3/3/3/3/3/3/3/3;
+
+  !!en:;
+!!en:;
+
+
+
+
+!?FU55450; Random Stealth Levelup
+!!VRy1:Sx1; x1 is number of hero
+!_!SN:W^LastEducatedHero^/y1;
+
+;Primary skill
+!!VRy2:S0 R3;
+!!HE&y2=0:Fd1/d/d/d;
+!!HE&y2=1:Fd/d1/d/d;
+!!HE&y2=2:Fd/d/d1/d;
+!!HE&y2=3:Fd/d/d/d1;
+
+!!VRy3:S0  R30;
+!!VRy4:Sy3 +30;
+!!DO55451/y3/y4/1:Py1;
+
+!?FU55451;
+!!VRy1:Sx1;  x1  is number of hero
+!!VRy2:Sx16; x16 is number of SS (modulo)
+!!VRy2:%30;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!VRy83:S3; !!VRy83&y88<>0:S15; 
+
+!!HEy1:Sy2/?y3;
+!!FU&y3=y83:E; exit if expert
+
+!!HEy1:Sy2/d1; Advance
+!!VRx16:S999;  Kill the Loop
+
+; Custom LevelupScreen based on concept made by
+; gamecreator, Berserker, Master Of Puppets, Valery.
+!?FU55449;
+!!SN:W^more_SS_levels.era^/?y88;
+!!DL336&y88=0:N^CustomLevelupScreen.txt^;
+!!DL336&y88<>0:N^CustomLevelupScreen_15.txt^;
+
+!_!OW:A-1/?y1 C?y90;                   [получить номер текущего героя]
+!_!HE-1&y1=-1:N?y1;                    [если OW:A не получает номер героя, то получаем через HE-1:N]
+!!VRy1:Sx1; x1 is number of hero
+!!SN:W^LastEducatedHero^/y1;
+
+!!SN:W^YNewLevelupScreen_Count^/0; [majaczek]
+!!re i/0/29:;
+  !!VRy99:Si;
+  !!SN:W^YNewLevelupScreen_Locked_%Y99^/0;
+  !!HEy1:Sy99/?y98;
+  !!SN&y98>0:W^YNewLevelupScreen_Count^/d1;
+!!en:;
+
+!!HEy1:B0/?z5;                        [узнать имя героя]
+!!FU55454:Py1/1/2;                    [получить название большого портрета героя в Z2]
+!!HEy1:E?y3/?y4;                      [получить уровень героя]
+!!FU55456:P2/445;                     [получение описания - поднялся на уровень]
+!!VRz91:M1/z100/2/40;                 [скопировать текст без первых двух символов]
+!!VRz6:Sz5 +z91;                      [добавить полученное описание]
+!!FU55456:P2/446;                     [получение описания - теперь на уровне]
+!!VRz100:M6/?y30;                     [получить порядковый номер последнего символа (не пробел)
+!!VRy30:-8;                           [убрать ненужные символы]
+!!VRz92:M1/z100/2/y30;                [скопировать текст без первых двух символов и последних символов]
+!!VRz91:S^ %Y4.^;                     [установить номер уровня в текст]
+!!VRz7:Sz5 +z92 +z91;                 [установить описание достижения на уровень]
+!!HL:S?y89/?y88/?y87;                 [проверить бонусный первичный навык]
+!!SN:W^YNewLevelupSkill_1^/y89;       [запомнить первичный навык]
+!!SN:W^YNewLevelupSkill_2^/-1;        [обнулить выбранный первичный навык]
+!!FU55456:P0/y89;                     [получение описание перв.навыка]
+!!VRz91:S^ +1.^;                      [подготовка окончания описания про перв.навык +1]
+!!VRz4:Sz100 +z91;                    [установка описания увеличения перв.навыка]
+!!VRy88:S94 +y89;
+
+!!DL336:A10/3/z6/1 A13/11/z2/1 A17/3/z7/1 A9/13/y90 Ay88/4/1 A89/3/z4/1;
+; [уровень / портрет / про уровень / цвет подложки / деф перв.нав./ опис.перв.навыков /  текст герой может Изучить]
+
+!!DL336:E30720/0;                     [кнопка ок выключена]
+!!DL336:E30721/0;                     [кнопка ок выключена]
+
+!!DO55453/0/29/1:P;                   [проверка всех втор.навыков и постоение списка]
+!!SN:W^YNewLevelupScreen^/1;          [обнуление]
+!!SN:W^YNewLevelupScreen2^/?y50;      [проверка кол-ва втор.навыков, которые на эксперте]
+!!if&y50>=24:;                        [если их 27]
+  !_!DL336:E30720/1;                   [кнопка ок выключена]
+  !_!DL336:E30721/1;                   [кнопка ок выключена]
+!!en:;
+; подсказки
+!!FU55456:P2/418;                     [узнать текст, для подсказки на окне героя]
+!!VRz10:Sz100;                        [копирование текста]
+!!DL336:H13/z10;                      [установка описания]
+
+; подсказки для всех перв.навыков
+!!FU55456:P0/0;                       [получение описание перв.навыка атака]
+!!VRz91:S^ +1.^;                      [подготовка окончания описания про перв.навык +1]
+!!VRz94:Sz100 +z91;                   [установка описания увеличения перв.навыка]
+!!DL336:H94/z94;                      [установка подсказки атаки +1]
+!!FU55456:P0/1;                       [получение описание перв.навыка защита]
+!!VRz91:S^ +1.^;                      [подготовка окончания описания про перв.навык +1]
+!!VRz95:Sz100 +z91;                   [установка описания увеличения перв.навыка]
+!!DL336:H95/z95;                      [установка подсказки защиты +1]
+!!FU55456:P0/2;                       [получение описание перв.навыка сила магии]
+!!VRz91:S^ +1.^;                      [подготовка окончания описания про перв.навык +1]
+!!VRz96:Sz100 +z91;                   [установка описания увеличения перв.навыка]
+!!DL336:H96/z96;                      [установка подсказки колдовской +1]
+!!FU55456:P0/3;                       [получение описание перв.навыка знания]
+!!VRz91:S^ +1.^;                      [подготовка окончания описания про перв.навык +1]
+!!VRz97:Sz100 +z91;                   [установка описания увеличения перв.навыка]
+!!DL336:H97/z97;                      [установка подсказки знаний +1]
+
+!!SN:W^YNewLevelupScreen_Locked_All^/0; !!VRy94:S0; [majaczek]
+!!re i/0/29:;
+  !!VRy99:Si;
+  !!SN:W^YNewLevelupScreen_Locked_%Y99^/?y98;
+  !!VRy94&y98<>0:+1;
+!!en:;
+!!if&y94>=30:;
+  !!SN:W^YNewLevelupScreen_Locked_All^/1;
+  !!DL336:E30720/1;                   [кнопка ок выключена]
+  !!DL336:E30721/1;                   [кнопка ок выключена]
+!!en;
+
+
+!!DL336:S?v1;                         [вызов диалога]
+!!SN:W^NewLevelupScreenOn^/0;
+
+!?FU55452;                                                      *add Valery
+;x1 hero ID                                                     *add Valery
+!!SN:W^more_SS_levels.era^/?y88;                                *add Majaczek
+!!VRy1:Sx16-120; get skill ID                                   *add Valery
+!!HEx1:Sy1/?y2; Get skill expertise                             *add Valery
+
+!!if&y88=0:;
+  !!DL336&y2<>3:Ax16/4/y2/1;                                      *add Valery
+  !!DL336&y2=3:Ax16/4/4/1;                                        *add igrik
+!!el:;
+  !!DL336&y2<>15:Ax16/4/y2/1;                                      *add Valery
+  !!DL336&y2=15:Ax16/4/16/1;                                        *add igrik
+!!en:;
+
+!?DL&v998=336/v999>9/v999<83/v1000=13;[ЛКМ. Работа со втор.навыками]
+!_!OW:A-1/?y1;                         [получить номер текущего героя]
+!_!HE-1&y1=-1:N?y1;                    [если OW:A не получает номер героя, то получаем через HE-1:N]
+!_!VRy1:Sx1; x1 is number of hero
+!!SN:W^LastEducatedHero^/?y1;
+!!SN:W^more_SS_levels.era^/?y88;                                *add Majaczek
+!!VRy83:S3; !!VRy83&y88<>0:S15;
+
+!!if&v999>49/v999<80:;                [работа со вторичными навыками]
+  !!DO55452/120/149/1:Py1;  initialize all frames to known skill  *add Valery
+  !!VRy2:Sv999+70;  get iteem ID                                  *add Valery
+  !!VRy3:Sy2-120;    get skill clicked                            *add Valery
+
+  !!SN:W^YNewLevelupScreen_Locked_%Y3^/?y98; [majaczek]
+  !!FU&y98<>0:E; !_!IF:M^%Y3 %Y98^;
+
+  !!HEy1:Sy3/?y4; get expertise                                   *add Valery
+  !!VRy4:+1; increment by one visually, if not expert             *add Valery
+
+  !!DL336&y4<4/y88=0:Ay2/4/y4/1;   set                               *add Valery
+  !!DL336&y4<16/y88<>0:Ay2/4/y4/1; set                               *add majaczek
+
+  !!VRy3:Sv999 -50;                   [переход к номеру втор.навыка]
+  !!HEy1:Sy3/?y2;                     [получить уровень вторичного навыка]
+  !!if&y2<>y83;                 [если навык не эсперт, то]
+    !!DL336:E30720/1;                 [включить кнопку ок]
+    !!DL336:E30721/1;                 [включить кнопку ок]
+    !!SN:W^YNewLevelupScreen^/?y99 W^YNewLevelupScreen^/v999;
+
+    !!DL336:Ay99/4/0/1 Av999/4/1/1;   [включить желтую обводку]
+    !!SN:W^YNewLevelupSkill^/y3;      [запомнить выбранный втор.навык]
+  !!el:;                      [если эксперт, то]
+    !!DL336:E30720/0;                 [откл. кнопку ок]
+    !!DL336:E30721/0;                 [откл. кнопку ок]
+    !!SN:W^YNewLevelupScreen^/?y99;   [запомнить номер элемента]
+    !!DL336:Ay99/4/0/1;               [откл. желтую обводку]
+  !!en:;
+!!en:;
+
+!?DL&v998=336/v999>93/v999<98/v1000=13;[ЛКМ. работа с первичн.навыками]
+!_!OW:A-1/?y1;                         [получить номер текущего героя]
+!_!HE-1&y1=-1:N?y1;                    [если OW:A не получает номер героя, то получаем через HE-1:N]
+!_!VRy1:Sx1; x1 is number of hero
+!!SN:W^LastEducatedHero^/?y1;
+!!VRy89:Sv999 -94;                    [переход к номеру перв.навыка]
+!!SN:W^YNewLevelupSkill_2^/y89;       [запомнить выбранный первичный навык]
+!!FU55456:P0/y89;                     [получение описание перв.навыка]
+!!VRz91:S^ +1.^;                      [подготовка окончания описания про перв.навык +1]
+!!VRz4:Sz100 +z91;                    [установка описания увеличения перв.навыка]
+!!DL336:A94/4/0/1 A95/4/0/1 A96/4/0/1 A97/4/0/1 Av999/4/1/1 A89/3/z4/1;
+
+!?DL&v998=336/v999>9/v999<83/v1000=14;[диалог по правой кнопке мыши]
+!_!OW:A-1/?y1;                         [получить номер текущего героя]
+!_!HE-1&y1=-1:N?y1;                    [если OW:A не получает номер героя, то получаем через HE-1:N]
+!_!VRy1:Sx1; x1 is number of hero
+
+!!SN:W^more_SS_levels.era^/?y88;                                *add Majaczek
+!!VRy83:S3; !!VRy83&y88<>0:S15;
+
+!!SN:W^LastEducatedHero^/?y1;
+!!if&v999>49/v999<80:;                [показ описания при ПКМ на втор.навыке]
+  !!VRy2:Sv999 -50;                   [переход к номеру втор.навыка]
+
+  !!SN:W^YNewLevelupScreen_Locked_%Y2^/?y98; [majaczek]
+  
+  !!HEy1:Sy2/?y3;                     [получить уровень вторичного навыка]
+  !!VRy4:Sy3+1;
+;-------------------------------------------------------------------------------
+; Для расширенного описания втор.навыков. Но пока удалить
+  !!UN:N4/z9/y2;
+    !!if&y4<=y83:;                      [если навык не на эксперте]
+       !!FU55456:P2/356;              [получение описания - выучить]
+       !!VRz101:M2/z100/0;            [получить только первое слово]
+       !!VRz101:M4/?y10;              [получить длину текста]
+       !!VRvy10:-1;                   [отнять еденицу текста]
+       !!VRz1:M1/z101/1/y10;          [установить описание]
+       !!FU55456:P1/y3;               [получение описания уровня втор.навыка]
+       !!VRz91:S^ ^;                  [ставим пробел]
+       !!VRz1:+z91 +z100 +z91 +z9;    [создаем текст подсказки]
+    !!el:;                            [если навык на эксперте]
+       !!FU55456:P1/2;                [получение описания уровня втор.навыка]
+       !!VRz91:S^ ^;                  [ставим пробел]
+       !!VRz1:Sz100 +z91 +z9;         [создаем текст подсказки]
+       !!FU55456:P2/355;              [получение описания - уже изучено]
+       !!VRz91:S^
+^;                                    [ставим пробел и переход на другую строку]
+       !!VRz1:+z91 +z100;             [закончить текст подсказки]
+       !!VRy3:S2;                     [для несмещения в кадре дефа]
+       !!VRy3&y88<>0:S14;     
+    !!en:;
+  !!VRy4:Sy2*3 +3 +y3;
+  !!VRy4&y88<>0:Sy2 *16 +16 +y3 +1024 +1;
+  !!IF:Q1/20/y4/1^{%Z1}^;
+  *!SN:E5199168/1/20/y4/1;   5199168    5201209
+!!en:;
+!!SN&v999=13:E5118576/1/y1/1;         [открытие окна героя © MasterOfPuppets номер героя / закрытие диалога при отпускании мыши: 0 - нет, 1 - да.]
+
+!?DL&v998=336/v999=30720/v1000=13;[закрываем диалог если Item number 30720]
+
+!!SN:W^more_SS_levels.era^/?y88;                                *add Majaczek
+!!VRy83:S3; !!VRy83&y88<>0:S15;
+!!VRy84:Sy83 +1;
+
+!!SN:W^YNewLevelupSkill^/?y2;          [узнать выбранный втор.навык
+!!if&y2>=0/y2=<29:;                     [если клик на втор.навыке]
+  !_!OW:A-1/?y1;                        [получить номер текущего героя]
+  !_!HE-1&y1=-1:N?y1;                   [если OW:A не получает номер героя, то получаем через HE-1:N]
+  !!SN:W^LastEducatedHero^/?y1;
+  !_!VRy1:Sx1; x1 is number of hero
+
+  !!HEy1:Sy2/?y3;                      [узнаем уровень навыка]
+  !!VRy3:+1;                           [повышаем уровень]
+  !!HEy1&y3<y84:Sy2/y3;                [установка повышенного уровня втор.навыка]
+!!en:;
+!!SN:W^YNewLevelupSkill_1^/?y11;
+!!SN:W^YNewLevelupSkill_2^/?y12;
+!!if&y12<>-1:; если перв. навык выбирался
+; отобрать автоматически данный навык
+  !!OW:A-1/?y10;                       [получить номер текущего героя]
+  !!HE-1&y10=-1:N?y10;                 [если OW:A не получает номер героя, то получаем через HE-1:N]
+  !!HEy10&y11=0:Fd-1/d/d/d;            [-1 атака]
+  !!HEy10&y11=1:Fd/d-1/d/d;            [-1 защита]
+  !!HEy10&y11=2:Fd/d/d-1/d;            [-1 колдовская]
+  !!HEy10&y11=3:Fd/d/d/d-1;            [-1 знания]
+; и дать выбранный перв.навык
+  !!HEy10&y12=0:Fd1/d/d/d;             [+1 атака]
+  !!HEy10&y12=1:Fd/d1/d/d;             [+1 защита]
+  !!HEy10&y12=2:Fd/d/d1/d;             [+1 колдовская]
+  !!HEy10&y12=3:Fd/d/d/d1;             [+1 знания]
+!!en:;
+!!DL:C1;                               [закрыть диалог]
+!!UN:R1;                               [обновить экран, чтобы видеть увеличенные перв.навыки]
+
+!?FU55453;   [функция построения графики диалога]
+!_!OW:A-1/?y1;                          [получить номер текущего героя]
+!_!HE-1&y1=-1:N?y1;                     [если OW:A не получает номер героя, то получаем через HE-1:N]
+!_!VRy1:Sx1; x1 is number of hero
+!!SN:W^LastEducatedHero^/?y1;
+
+!!SN:W^more_SS_levels.era^/?y88;                                *add Majaczek
+!!VRy83:S3; !!VRy83&y88<>0:S15;
+
+!!HEy1:Sx16/?y2;                       [получить параметр вторичного навыка
+!!VRy3:Sx16 +20;                       [номер навыка +20 (для элемента диалога)
+!!VRy13:Sx16 +50;                      [номер навыка +50 (для элемента обводки диалога)
+!!VRy23:Sx16 +120;                     [для HPbar]
+!!VRy90:Sy2;                           [если 3, то хранит, что навык на эксперте]
+!!if&y88=0:;
+  !!VRy2&y2=3:-1;                        [для постройки отображения]
+  !!VRy5:Sx16 *3 +3 +y2;                 [определение кадра дефа]
+!!el:;
+  !_!VRy2&y2=3:-1;                          *add Majaczek
+  !!VRy5:Sx16 *16 +16 +y2;                  *add Majaczek  
+!!en:;
+
+!!DL336:Ay3/4/y5/1;                    [установка кадра дефа скила]
+!!DL336:Ay13/4/0/1;                    [установка кадра дефа обводки / 0 кадр - без обводки]
+
+!!if&y88=0:;
+  !!VRz80&y90=3:S^YSecSkillN.def^;       [название дефа для пустого места]
+  !!DL336&y90=3:Ay3/9/z80/1 Ay3/4/x16/1; [установка названия дефа и кадра]
+!!el:;
+  !!VRz80&y90=0:S^YSecSkillN.def^;       [название дефа для пустого места]
+  !!DL336&y90=0:Ay3/9/z80/1 Ay3/4/x16/1; [установка названия дефа и кадра]
+!!en:;
+
+
+!!if&y88=0:;
+  !!DL336&y90=3:Ay13/4/2/1;                [установка кадра дефа обводки / 2 кадр - если скил на эксперте]
+  !!DL336:Ay23/4/y90/1;
+  !!DL336&y90=3:Ay23/4/4/1;
+!!el:;
+  !!DL336&y90=15:Ay13/4/2/1;                [установка кадра дефа обводки / 2 кадр - если скил на эксперте]
+  !!DL336:Ay23/4/y90/1;
+  !!DL336&y90=15:Ay23/4/16/1;
+!!en:;
+
+!!SN:W^YNewLevelupScreen_Count^/?y96; [majaczek]
+!!SN&y96>=24/y2=0:W^YNewLevelupScreen_Locked_%X16^/4;
+!!SN&y2>=y83:W^YNewLevelupScreen_Locked_%X16^/2;
+
+!!HEy1:B2/?y15;
+!!if&y15>7/y15<10:;        если некромант
+  *!IF&x16=6:M^%Y15 %X16^;
+  !!DL336&x16=6:Ay13/4/3/1;     запр.лидерство
+  !!VRz80&x16=6:S^YSecSkillN.def^;
+  !!DL336&x16=6:Ay3/9/z80/1 Ay3/4/x16/1;
+  !!SN&x16=6:W^YNewLevelupScreen_Locked_%X16^/3;
+!!el:;                     если не некромант
+  *!IF&x16=12:M^%Y15 %X16^;
+  !!DL336&x16=12:Ay13/4/3;    запр.некромантию
+  !!VRz80&x16=12:S^YSecSkillN.def^;
+  !!DL336&x16=12:Ay3/9/z80/1 Ay3/4/x16/1;
+  !!SN&x16=12:W^YNewLevelupScreen_Locked_%X16^/3;
+!!en:;
+
+
+!!if&y15>=6/y15<=11:;
+  !!DL336&x16=29:Ay13/4/3/1;
+  !!VRz80&x16=29:S^YSecSkillN.def^;
+  !!DL336&x16=29:Ay3/9/z80/1 Ay3/4/x16/1;
+  !!SN&x16=29:W^YNewLevelupScreen_Locked_%X16^/3;
+!!en:;
+!!if&y15>=0/y15<=5:;
+  !!DL336&x16=28:Ay13/4/3/1;
+  !!VRz80&x16=28:S^YSecSkillN.def^;
+  !!DL336&x16=28:Ay3/9/z80/1 Ay3/4/x16/1;
+  !!SN&x16=28:W^YNewLevelupScreen_Locked_%X16^/3;
+!!en:;
+
+!!SN&y90=y83:W^YNewLevelupScreen2^/?y4;  [запоминалка кол-ва втор.навыков]
+!!VRy4&y90=y83:+1;                       [если есть навык эксперт, то +1]
+!!SN&y90=y83:W^YNewLevelupScreen2^/y4;   [записать в запоминалку кол-ва втор.навыков]
+
+; подсказка
+!!UN:N4/z9/x16;                        [получить название втор.навыка]
+!!if&y90<y83:;                         [если навык не на эксперте]
+   !!FU55456:P2/356;                   [получение описания - выучить]
+   !!VRz101:M2/z100/0;                 [получить только первое слово]
+   !!VRz101:M4/?y10;                   [получить длину текста]
+   !!VRvy10:-1;                        [отнять еденицу текста]
+   !!VRzy3:M1/z101/1/y10;              [установить описание]
+   !!FU55456:P1/y2;                    [получение описания уровня втор.навыка]
+   !!VRz91:S^ ^;                       [ставим пробел]
+   !!VRzy3:+z91 +z100 +z91 +z9;        [создаем текст подсказки]
+!!el:;                              [если навык на эксперте]
+   !!FU55456:P1/y2;                    [получение описания уровня втор.навыка]
+   !!VRz91:S^ ^;                       [ставим пробел]
+   !!VRzy3:Sz100 +z91 +z9;             [создаем текст подсказки]
+   !!FU55456:P2/355;                   [получение описания - уже изучено]
+   !!VRzy3:+z91 +z100;                 [закончить текст подсказки]
+!!en:;
+!!DL336:Hy13/zy3;                      [установка описания]
+
+
+!?FU55454; © Master Of Puppets
+; получение назнавния потретета героя
+; x1 - hero number
+; x2 - small portrait to z[number]
+; x3 - large portrait to z[number]
+!!VRx1:*92+8144112;
+!!UN:Cx1/4/?y1;
+!!VRx1:+4;
+!!UN:Cx1/4/?y2;
+!!VRx2:*512+9597416;
+!!VRx3:*512+9597416;
+!!DO55455/1/512/1:Py1/x2 Py2/x3;
+!?FU55455;
+!!UN:Cx1/1/?y1 Cx2/1/y1;
+!!VRx16&y1=0:S600;
+!!VRx1:+1;
+!!VRx2:+1;
+
+!?FU55456;
+; x1 - тип текстовика
+; x2 - номер строки
+!!VRy100&x1=0:S6974556;  [адрес названия первичного навыка]                     PriSkill.txt
+!!VRy100&x1=1:S6979432;  [адрес названия вторичного навыка]                     SkillLev.txt
+!!VRy100&x1=2:S6970820;  [адрес описания что поднялся на уровень навыка]        GENRLTXT.txt
+
+!!SN:W^more_SS_levels.era^/?y88;                                *add Majaczek
+!!if&y88<>0:;
+
+  !!if&x1=1:;
+    !!VRy92:Sx2 +1;
+    !!VRz101:S^Level %Y92^;
+
+    !!VRz100:S^^;
+    !!VRz100:+z101;
+    !!FU:E;
+  !!en:;
+
+!!en:;
+
+; © Master Of Puppets
+!!UN:Cy100/4/?y1;
+!!VRy1:+32;
+!!UN:Cy1/4/?y2;
+!!VRx2:*4+y2;
+!!UN:Cx2/4/?y1;
+!!SN:X?y4 Xy1 X?z101 Xy4;
+!!VRz100:S^^;
+!!VRz100:+z101;

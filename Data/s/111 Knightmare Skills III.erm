@@ -1,0 +1,113 @@
+ZVSE
+
+// Recruiter SS
+!?TM1;
+!!VRy1:S0 Sc;
+!!VRy2:Sy1 %7;
+!!SN:W^Recruiter SS Day^/?y22;
+!!FU|y2<>0/y22>=y1:E;
+!!SN:W^Recruiter SS Day^/y1;
+!!SN:W^more_SS_levels.era^/?y88; 
+!!VRy3:S0;
+
+!!VRy7:S0;
+!!HEy3:S20/?y4;
+!!HEy3:X?y5/?y6/?y75/?y76/?y77/?y78/?y79;  y75-y79 are dummies;
+
+!!HEy3:C0/y7/?y8/?y9;
+!!VRy10:Sy4 *2;
+!!VRy20:Sy4 *2;
+!!VRy30:S0;
+!!if&y88<>0:;
+  !!VRy10:Sy4;     !!VRy10&y4>6:S6;
+  !!VRy20:Sy4 -6;  !!VRy20&y4>6:S6;
+  !!VRy30:Sy4 -12; !!VRy30&y4>6:S6;
+!!en;
+!!if&y8>=0/y9>0:;
+    !!MA:Ly8/?y12;
+    !!HEy3:E?y18/?y19/1;
+    !!VRy16:S0;
+    !!VRy16&y5=0/y6=20:Sy19 *2;
+    !!VRy16:+100;
+    !!VRy13:Sy16 *y9;
+
+    !!VRy23:S0;
+    !!VRy23&y12<y10:S2;
+    !!VRy23&y12<y20:S4;
+    !!VRy23&y12<y30:S6;
+
+    !!VRy13:*y23 :10000;
+    !!HEy3:C0/y7/d/dy13;
+    
+    !_!HEy3&y12<y10:C0/y7/d/y13;
+    !_!HEy3&y12<y20:C0/y7/d/y13;
+    !_!HEy3&y12<y30:C0/y7/d/y13;
+!!en:;
+
+!!VRy7:+1;
+!!SN&y7<7:G8;
+
+!!VRy3:+1;
+!!SN&y3<155:G7;
+
+// Raider SS (Scavenging)
+!?BA52;  Pre battle
+!!BA:H0/?y-11;                              [get attacking hero #]
+!!BA:H1/?y-12;                              [get defending hero #]
+
+!!HEy-11:E?y1; !!VRy2:S1;  !!HEy-12&y-12>=0:E?y2;
+!!SN:W^Attacker PreBattle EXP^/y1;
+!!SN:W^Defender PreBattle EXP^/y2;
+
+!?BA53; post battle trigger
+!!BA:H0/?y-11;                              [get attacking hero #]
+!!BA:H1/?y-12;                              [get defending hero #]
+
+!!SN:W^Attacker PreBattle EXP^/?y1;
+!!SN:W^Defender PreBattle EXP^/?y2;
+!!SN:W^more_SS_levels.era^/?y88; 
+
+
+
+!!HEy-11:E?y3; !!VRy4:S1;  !!HEy-12&y-12>=0:E?y4;
+!!VRy5:Sy3 -y1; !!VRy6:Sy4 -y2;
+
+!!if&y5>0:;
+  !!HEy-11:S11/?y99;
+  !!VRy99&y88=0:*y5 *66 :100; 
+  !!VRy99&y88<>0:*y5 *7 :100; 
+  !!VRy97:S100;
+  
+  !!HEy-11:X?y13/?y14/?y15/?y16/?y17/?y18/?y19 E?y20/?y21/1; y15-y19 are dummies
+  !!VRy97&y13=0/y14=11:Sy21 *5 +100; !!VRy99:*y97 :100;
+
+  !!HEy-11:A2/63/?i/?y71;  !!VRy71:*5;
+  !!HEy-11:A2/64/?i/?y72;  !!VRy72:*10;
+  !!HEy-11:A2/65/?i/?y73;  !!VRy73:*15;
+  !!HEy-11:A2/161/?i/?y75; !!VRy75:*60;
+  !!VRy74:S100 +y71 +y72 +y73 +y75;
+  !!VRy99:*y74 :100;
+
+  !!HEy-11:O?y98;    !!OW:Ry98/6/dy99;
+  !!IF&y99>0/1000:Q1/6/y99/1^You Plundered the Battlefield^;
+!!en:;
+
+!!if&y6>0:;
+  !!HEy-12:S11/?y99; 
+  !!VRy99&y88=0:*y6 *66 :100;
+  !!VRy99&y88<>0:*y6 *7 :100; 
+  !!VRy97:S100;
+
+  !!HEy-12:X?y13/?y14/?y15/?y16/?y17/?y18/?y19 E?y20/?y21/1; y15-y19 are dummies
+  !!VRy97&y13=0/y14=11:Sy21 *5 +100; !!VRy99:*y97 :100;
+
+  !!HEy-12:A2/63/?i/?y71;  !!VRy71:*5;
+  !!HEy-12:A2/64/?i/?y72;  !!VRy72:*10;
+  !!HEy-12:A2/65/?i/?y73;  !!VRy73:*15;
+  !!HEy-12:A2/161/?i/?y75; !!VRy75:*60;
+  !!VRy74:S100 +y71 +y72 +y73 +y75;
+  !!VRy99:*y74 :100;
+
+  !!HEy-12:O?y98;    !!OW:Ry98/6/dy99;
+  !!IF&y99>0/1000:Q1/6/y99/1^You Plundered the Battlefield^;
+!!en:;

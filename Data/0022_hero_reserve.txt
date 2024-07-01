@@ -1,0 +1,61 @@
+													
+													
+	#	22	-1	-1	549	396	57	-1	garrison.pcx	-1
+OK	B	100	88	314	64	32	iok6432.def		
+Cancel	B	101	399	314	64	32	icn6432.def		
+Portrait Of Hero Owner	P	999	28	223	58	64	mopsky.pcx	2048	
+Garrison Army	D	1	92	127	58	64	TwCRPORT.def	0	16	
+	D	2	154	127	58	64	TwCRPORT.def	0	16	
+	D	3	216	127	58	64	TwCRPORT.def	0	16	
+	D	4	278	127	58	64	TwCRPORT.def	0	16	
+	D	5	340	127	58	64	TwCRPORT.def	0	16	
+	D	6	402	127	58	64	TwCRPORT.def	0	16	
+	D	7	464	127	58	64	TwCRPORT.def	0	16	
+Hero Army	D	11	92	223	58	64	TwCRPORT.def	0	16	
+	D	12	154	223	58	64	TwCRPORT.def	0	16	
+	D	13	216	223	58	64	TwCRPORT.def	0	16	
+	D	14	278	223	58	64	TwCRPORT.def	0	16	
+	D	15	340	223	58	64	TwCRPORT.def	0	16	
+	D	16	402	223	58	64	TwCRPORT.def	0	16	
+	D	17	464	223	58	64	TwCRPORT.def	0	16	
+Garrison Army: Number	T	21	90	172	60	20		SmalFont.fnt	1	0	2	8	
+	T	22	152	172	60	20		SmalFont.fnt	1	0	2	8	
+	T	23	214	172	60	20		SmalFont.fnt	1	0	2	8	
+	T	24	276	172	60	20		SmalFont.fnt	1	0	2	8	
+	T	25	338	172	60	20		SmalFont.fnt	1	0	2	8	
+	T	26	400	172	60	20		SmalFont.fnt	1	0	2	8	
+	T	27	462	172	60	20		SmalFont.fnt	1	0	2	8	
+Hero Army: Number	T	31	90	268	60	20		SmalFont.fnt	1	0	2	8	
+	T	32	152	268	60	20		SmalFont.fnt	1	0	2	8	
+	T	33	214	268	60	20		SmalFont.fnt	1	0	2	8	
+	T	34	276	268	60	20		SmalFont.fnt	1	0	2	8	
+	T	35	338	268	60	20		SmalFont.fnt	1	0	2	8	
+	T	36	400	268	60	20		SmalFont.fnt	1	0	2	8	
+	T	37	462	268	60	20		SmalFont.fnt	1	0	2	8	
+Hero Army: Experience	T	51	90	255	60	20		Bigfont.fnt	2	0	2	8	
+	T	52	152	255	60	20		Bigfont.fnt	2	0	2	8	
+	T	53	214	255	60	20		Bigfont.fnt	2	0	2	8	
+	T	54	276	255	60	20		Bigfont.fnt	2	0	2	8	
+	T	55	338	255	60	20		Bigfont.fnt	2	0	2	8	
+	T	56	400	255	60	20		Bigfont.fnt	2	0	2	8	
+	T	57	462	255	60	20		Bigfont.fnt	2	0	2	8	
+Garrison Army	D	61	92	127	58	64	cr_lock_.def	0	16	
+	D	62	154	127	58	64	cr_lock_.def	0	16	
+	D	63	216	127	58	64	cr_lock_.def	0	16	
+	D	64	278	127	58	64	cr_lock_.def	0	16	
+	D	65	340	127	58	64	cr_lock_.def	0	16	
+	D	66	402	127	58	64	cr_lock_.def	0	16	
+	D	67	464	127	58	64	cr_lock_.def	0	16	
+Hero Army	D	71	92	223	58	64	cr_lock_.def	0	16	
+	D	72	154	223	58	64	cr_lock_.def	0	16	
+	D	73	216	223	58	64	cr_lock_.def	0	16	
+	D	74	278	223	58	64	cr_lock_.def	0	16	
+	D	75	340	223	58	64	cr_lock_.def	0	16	
+	D	76	402	223	58	64	cr_lock_.def	0	16	
+	D	77	464	223	58	64	cr_lock_.def	0	16	
+	Def	0	28	127	58	64	TwCRPORT.def	0	16	
+	Text	20	28	172	56	20		SmalFont.fnt	7	0	2	8	
+60	Def	60	28	127	58	64	cr_lock_.def	0	16	
+	Def	997	32	16	82	93	zecsk82.def	336	16	
+	Def	996	440	16	82	93	zecsk82.def	336	16	
+	#

@@ -1,0 +1,37 @@
+ZVSE
+
+//First Money by Alexis Koz
+//Thanks to: Fnord the Wizard who enchanted me
+//Thanks to: All WoG command
+//USED (First Money--see additions):
+//v428-v429
+//Timer 78
+
+!?TM78;
+!!OW:C?v429;
+!!OW:Rv429/6/?v428;
+!!VRv428:+24000;
+!!OW:Rv429/6/v428;
+!!OW:Rv429/0/?v428;
+!!VRv428:+24;
+!!OW:Rv429/0/v428;
+!!OW:Rv429/1/?v428;
+!!VRv428:+12;
+!!OW:Rv429/1/v428;
+!!OW:Rv429/2/?v428;
+!!VRv428:+24;
+!!OW:Rv429/2/v428;
+!!OW:Rv429/3/?v428;
+!!VRv428:+12;
+!!OW:Rv429/3/v428;
+!!OW:Rv429/4/?v428;
+!!VRv428:+24;
+!!OW:Rv429/4/v428;
+!!OW:Rv429/5/?v428;
+!!VRv428:+12;
+!!OW:Rv429/5/v428;
+
+--------------------------Init----------------------------
+!#UN:P40/?v429;
+!#TM78&v429=1:S1/1/999/255;
+

@@ -1,0 +1,167 @@
+ZVSE
+
+!?CM4;
+
+!!VRy99:Sv1;
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.BattleAlchemy^;
+!!VRy77:Sv1;
+
+!!VRv1:Sy99;
+
+!!CM:S?y1;
+!!CM:I?y2;
+
+!!BG:H?y3;
+!!FU&y3<0:E;
+
+!!FU&y2<>y77:E;
+!!FU55733:Py3/4;
+!!FU55739:Py3/4;
+
+!?CM2;
+
+!!VRy99:Sv1;
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.AdventureAlchemy^;
+!!VRy77:Sv1;
+
+!!VRv1:Sy99;
+
+!!CM:S?y1;
+!!CM:I?y2;
+
+!!HE-1:N?y3;
+!!FU&y3<0:E;
+
+!!FU&y2<>y77:E;
+!!FU55733:Py3/2;
+!!FU55739:Py3/2;
+
+
+!?DL; !!FU&v998<>228:E;
+
+!_!FU|v999<4000/v999>4063/v1000<12/v1000>14:E;
+
+!_!VRy16:Sv999 -4000;
+
+!!VRy16:S0 -1;
+!!VRy16&v999>=2000/v999<=2063:Sv999 -2000;
+!!VRy16&v999>=4000/v999<=4063:Sv999 -4000;
+!!VRy16&v999>=7000/v999<=7063:Sv999 -7000;
+!_!FU|y16<0/y16>63:E;
+!!DL|y16<0/y16>63:C1;
+
+
+!!SN:W^Virtual Backpack - Current Page^/?y77;
+!!SN:W^Virtual Backpack - Virtual Backpack Window - Page %Y77 - Slot %Y16^/?y99;
+!!FU|y99=144/y99=145/y99<0:E;
+
+
+!_!IF:M^Debug y99=%Y99^;
+
+!!if&v1000=14:;
+!!SN:W^Artifact %Y99 - Alchemy Mode^/?y55;
+!!SN:W^Virtual Backpack - Alchemy Mode^/?y44;
+
+!!VRz1|y44=y55/y55=99:S^You can Drink this Potion^;
+!!VRz1&y44<>y55/y55<>99:S^You can not Drink this Potion^;
+
+!!IF:Q1/8/y99/4^%Z1^;
+!_!FU:E;
+!!en:;
+
+!_!IF:M^Debug^;
+
+!!if&v1000=13:;
+!!SN:W^Virtual Backpack - Current Hero^/?y88;
+!!SN:W^Artifact %Y99 - Alchemy Mode^/?y55;
+!!SN:W^Virtual Backpack - Alchemy Mode^/?y44;
+!!if&y44<>y55/y55<>99:;
+!!IF&1000:M^Not Possible Here^;
+!!FU:E;
+!!en:;
+!!SN:W^Hero %Y88 - Virtual Backpack - Artifact %Y99^/?y66;
+!!FU&y66<1:E; !!VRy66:-1;
+!!SN:W^Hero %Y88 - Virtual Backpack - Artifact %Y99^/y66;
+!_!HEy88:Ay99;  Don't add used potion to Backpack
+!!FU55738:Py99; Use Potion
+!!SN&y66=0:W^Virtual Backpack - Virtual Backpack Window - Page %Y77 - Slot %Y16^/145;
+!_!SN:W^Virtual Backpack - Real Backpack Window - Slots Used^/d1;
+!!SN:W^Virtual Backpack - Previous Page^/-9;
+!!DL:C1; !!FU:E;
+!!en:;
+
+
+!_!DL&v1000=13:C1;
+!_!DL&v1000=13/v999=30722:C1;
+
+!?FU55733;
+** x1 - Hero
+** x2 - Caller Dialog
+
+
+** Prepare
+!!FU55737:P;
+
+** Cleanup
+!!SN:W^Virtual Backpack - Current Hero^/x1;
+!!SN:W^Virtual Backpack - Current Page^/0;
+!!SN:W^Virtual Backpack - Previous Page^/0;
+!!SN:W^Virtual Backpack - Real Backpack Window - Slots Used^/0;
+!!SN:W^Virtual Backpack - Virtual Backpack Content - Slots Used^/0;
+!!DO55720/0/63/1:P;
+
+!!DO55721/1/1999/1:Px1;
+!!DO55727/300/339/1:Px1;
+
+!_!FU55728:P;
+!!FU55734:Px2;
+
+!?FU55734;
+!_!SN:W^Virtual Backpack - Current Page^/?y15;
+!_!SN:W^Virtual Backpack - Previous Page^/?y15;
+
+!!SN:W^Virtual Backpack - Alchemy Mode^/x1;
+!!DL228:N^0228_AlchemyDlg.txt^;
+!!DO55736/0/63/1:P;
+
+!!DL228:S;
+
+!!SN:W^Virtual Backpack - Current Hero^/?y3;
+!!HEy3:A-144 A-145;
+!_!UN:R3/y3;
+
+!!SN:W^Virtual Backpack - Current Page^/?y17;
+!!SN:W^Virtual Backpack - Previous Page^/?y15;
+
+!_!IF:M^Debug y15=%Y15 y17=%Y17^;
+
+!!FU&y17=y15:E;
+!_!UN:R6/3000;
+!_!IF:M^Debug^;
+!!SN:W^Virtual Backpack - Previous Page^/y17;
+!!FU55734:Px1;
+!_!VRx16&y17=y15:S65536;
+
+!?FU55735;
+!!VRy16:Sx16 +4000;
+!!SN:W^Virtual Backpack - Virtual Backpack Window - Page %X1 - Slot %X16^/?y99;
+
+
+!!SN:W^Virtual Backpack - Current Hero^/?y88;
+!!SN:W^Hero %Y88 - Virtual Backpack - Artifact %Y99^/?y77;
+!!VRz1:S^%Y77^;
+
+!!VRy99&y99>1000:S1;
+!!DL228:Ay16/4/y99/1;
+
+
+!!VRy55:Sx16 +7000;
+!!DL228:Ay55/3/z1/1;
+
+!?FU55736;
+!!SN:W^Virtual Backpack - Current Page^/?y77;
+!!SN:W^Virtual Backpack - Current Hero^/?y88;
+!!DO55735/0/63/1:Py77;
+

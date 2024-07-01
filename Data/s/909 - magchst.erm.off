@@ -1,0 +1,34 @@
+ZVSE
+
+!?PI; keystroke
+!_?TM1; *majaczek*
+!!UN:U101/0/?y60;
+!!DO40745634/2/y60/1:P;
+
+
+!?FU40745634;
+!!UN:U101/0/-1/101;
+!!CHv101/v102/v103:S?y1;
+!!VRz1:S^magechst.def^;
+!!if&y1=1:;
+
+!!UN:C6919480/4/?y15; gamemgr
+!!UN:C6918840/4/?y10; advmgr
+!!VRy11:Sy10 +92;
+!!UN:Cy11/4/?y11; gamemap
+!!SN:E4228816/2/y11/v101/v102/v103;
+!!VRy12:Sv1; mapitem
+
+!!OBv101/v102/v103:T?y30 U?y31 T5 U5;
+!!TRv101/v102/v103:E?y32 E0;
+!!UN:C6781300/4/9597928;
+
+!!SN:E5019216/2/y15/y12;
+
+!!UN:C6781300/4/6782120;
+!!TRv101/v102/v103:Ey32;
+!!OBv101/v102/v103:Ty30 Uy31;
+
+!!el:;
+!!en:;
+

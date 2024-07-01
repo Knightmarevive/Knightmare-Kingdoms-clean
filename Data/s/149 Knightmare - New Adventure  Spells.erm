@@ -1,0 +1,292 @@
+ZVSE
+
+!?TM1;
+!!VRy8:S0;
+
+!!SN:W^HERO %Y8 Elevator^/0;
+!!SN:W^HERO %Y8 Sprint^/0;
+!!SN:W^HERO %Y8 Visions^/0;
+!!SN:W^HERO %Y8 Hiromancy^/0;
+
+!!VRy8:+1;
+!!SN&y8<256:G1;
+
+!?MG0;
+!!VRy1:S4310873;
+[:Elevator]
+!!UN:Cy1/1/144;
+!!VRy1:+1;
+!!SN&y1<4310883:G[Elevator];
+
+!!VRy1:S4311050;
+[:Sprint]
+!!UN:Cy1/1/144;
+!!VRy1:+1;
+!!SN&y1<4311060:G[Sprint];
+
+!!VRy1:S4310660;
+[:ScuttleBoat]
+!!UN:Cy1/1/144;
+!!VRy1:+1;
+!!SN&y1<4310668:G[ScuttleBoat];
+
+
+!?MG1&v997=3; Elevator [view earth]
+!!UN:X?y6/?y7;
+
+!!if&y7=0:;
+  !!IF:M^Elevator cast failed.
+There is solid rock at destination.^;
+  !!FU:E;
+!!en:;
+
+!!UN:P904/1  P905/0; disable error messages
+!_!HE-1:N?y8;
+!!OW:A-1/?y8;
+!!UN:P905/?y88;
+!!VRy8&y88=1:S0 -1;
+!!UN:P904/0  P905/0;
+
+!!if&y8<0:;
+  !!IF:M^Elevator cast failed.
+There is no hero volunteering.^;
+  !!FU:E;
+!!en:;
+
+
+!!SN:W^HERO %Y8 Elevator^/?y93;
+
+!!HEy8:S17/?y51;
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/y51/?y51/d/d/d;
+!!VRy51&y51>3:S3;
+!!SS3:Cy51/?y52;
+!!SS3:Ey51/?y53;
+!!SS3:P?y54;
+!!HEy8:Idy52;
+!!VRy55:S0 -y54;
+!!HEy8:Idy55;
+
+
+!!if&y93>=y53:;
+  !!VRz2:S^%Y53 Times^;
+  !!VRz2&y53=1:S^One Time^;
+  !!IF:M^Elevator cast failed.
+Spell can be armed only %Z2 per day.^;
+  !!FU:E;
+!!en:;
+
+!!HE-1:P?y1/?y2/?y3;
+!!VRy4&y3=0:S1;
+!!VRy4&y3=1:S0;
+!!TRy1/y2/y3:T?y11/?y12/?y13/?y14/?y15/?y16/?y17/?y18;
+!!TRy1/y2/y4:T?y21/?y22/?y23/?y24/?y25/?y26/?y27/?y28;
+!!if&y11=8:;
+  !!IF:M^Elevator cannot be cast at ship.^;
+  !!FU:E;
+!!en:;
+
+!!if&y21=9:;
+  !!IF:M^Elevator cast failed.
+There is solid rock at destination.^;
+  !!FU:E;
+!!en:;
+
+!!HEy8:O?y57;
+!!UN:Sy1/y2/y4/y57/2; show destination
+!!UN:Ly1/y2/y4/3000;
+!!UN:Ly1/y2/y3/500;
+
+!!if&y21=8:;
+  !!IF:M^Elevator cast failed.
+There is pool of water at destination.^;
+  !!FU:E;
+!!en:;
+
+
+!!TRy1/y2/y4:P?y31;
+!!if&y31=0:;
+  !!IF:M^Elevator cast failed.
+The destination is unpassabble.^;
+  !!FU:E;
+!!en:;
+
+!!TRy1/y2/y4:E?y41;
+!!if&y41=0:;
+  !!IF:M^Elevator cast failed.
+The destination is too narrow.
+Perhaps there is some interesting object at te position.^;
+  !!FU:E;
+!!en:;
+
+!!VRz2&y4=1:S^down^;
+!!VRz2&y4=0:S^up^;
+
+!!VRy53:S0 -y52;
+!!HEy8:Idy54;
+!!HEy8:Idy53;
+
+  
+!!SN:W^HERO %Y8 Elevator^/d1;
+
+!!IF:Q10^Elevator cast is armed.
+areyou sure to lift %Z2 ?^;
+
+!!if&10:;
+  !!HEy8:Py1/y2/y4;
+!!el:;
+  !!IF:M^Elevator cast failed.
+The spell is disarmed.^;
+!!en:;
+
+!?MG1&v997=5; Sprint [view air]
+
+!!UN:P904/1  P905/0; disable error messages
+!_!HE-1:N?y8;
+!!OW:A-1/?y8;
+!!UN:P905/?y88;
+!!VRy8&y88=1:S0 -1;
+!!UN:P904/0  P905/0;
+
+!!if&y8<0:;
+  !!IF:M^Sprint cast failed.
+There is no hero volunteering.^;
+  !!FU:E;
+!!en:;
+
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!SN:W^HERO %Y8 Sprint^/?y41;
+!!SS5:P?y42;
+
+!!if&y41>=y42:;
+  !!VRz2:S^%Y42 Times^;
+  !!VRz2&y42=1:S^One Time^;
+  !!IF:M^Sprint cast failed.
+Spell can be cast only %Z2 per day.^;
+  !!FU:E;
+!!en:;
+
+!!SN:W^HERO %Y8 Sprint^/d1;
+
+!!HEy8:G?y11 W?y12 S15/?y13;
+!!FU(SSL_get)&y88<>0:P15/y13/?y13/d/d/d;
+!_!SS5:Ey13/?y14;
+!!VRy14:Sy13 +1 *25;
+!!VRy16:Sy11 *y14 :100;
+!!VRy17:Sy16 :100;
+!!UN:R6/3000;
+!!IF:L^Hero get %Y17 steps (exactly %Y16 Movement Points)^;
+!!VRy16:+y12;
+!!HEy8:Wy16;
+!_!HEy8&y16>y11:Gy16;
+
+
+!?MG1&v997=2; Visions  [visions]
+
+!!UN:P904/1  P905/0; disable error messages
+!_!HE-1:N?y8;
+!!OW:A-1/?y8;
+!!UN:P905/?y88;
+!!VRy8&y88=1:S0 -1;
+!!UN:P904/0  P905/0;
+
+!!if&y8<0:;
+  !!IF:M^Visions cast failed.
+There is no hero volunteering.^;
+  !!FU:E;
+!!en:;
+
+!!HEy8:S15/?y11; 
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/y11/?y11/d/d/d;
+!!VRy11&y11>3:S3;
+!!SS2:Ey11/?y12;
+
+!!HEy8:F?y21/?y22/?y23/?y24;
+!!VRy27:Sy12 +1 *y23;
+!!VRy27&y27<3:S3;
+!!SN:W^HERO %Y8 Visions^/y27;
+
+!?HM-1;
+!!HE-1:N?y8;
+!!SN:W^HERO %Y8 Visions^/?y7;
+!!FU&y7=0:E;
+!!HE-1:P?y1/?y2/?y3 O?y5;
+!!HE-1:F?y11/?y12/?y13/?y14;
+!!VRy9:Sy13 :10 +10;
+!!UN:Sy1/y2/y3/y5/y9;
+
+
+!?MG1&v997=1; Hiromancy [Scuttle Boat]
+
+!!OW:A-1/?y8;
+
+
+!!HEy8:S16/?y61; water magic
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/y61/?y61/d/d/d;
+
+!!HEy8:P?y1/?y2/?y3;
+!!TRy1/y2/y3:T?y11/?y12/?y13/?y14/?y15/?y16/?y17/?y18;
+!!if&y11=8:;
+  !!IF:M^Hiromancy cannot be cast at ship.^;
+  !!FU:E;
+!!en:;
+
+!!HEy8:I?y41;
+
+
+!!HEy8:Fd/d/d/?y9; 
+!!VRy9:*10;
+
+!!SN:W^more_SS_levels.era^/?y88; 
+!!HEy8:S24/?y13; //y13 majaczek fix for Inteligence
+
+!!if&y88=0:;
+!!VRy9&y13=1: *125 :100;  //+25%
+!!VRy9&y13=2: *150 :100;  //+50%
+!!VRy9&y13=3: *200 :100;  //+100%
+!!el:;
+  !!FU(SSL_Max_Mana):Py8/?y9;
+  !_!FU(SSL_get):P24/y13/d/?y19/d/d;
+  !_!IF:L^y19 = %Y19, y9 = %Y9^;
+  !_!VRy19:+10000; !_!VRy9:*y19 :10000;
+!!en:;
+
+!!if&y41<y9:;
+  !!IF:M^Hiromancy cannot be cast because it neeeds clear mind to use. Regenerate your mana.^;
+  !!FU:E;
+!!en;
+
+!!SN:W^HERO %Y8 Hiromancy^/?y93;
+
+!!IF:L^Seeking water veins^;
+!!UN:U49/-1/?y70;
+
+!!if&y70=0:;
+  !!IF:M^Hiromancy cannot be cast because there are no magic wells.^;
+  !!FU:E;
+!!en:;
+
+!!VRy53:S3 +y61;
+
+!!if&y93>=y53:;
+  !!VRz2:S^%Y53 Times^;
+  !!VRz2&y53=1:S^One Time^;
+  !!IF:M^Hiromancy cast failed.
+Spell can be casted only %Z2 per day.^;
+  !!FU:E;
+!!en:;
+
+!!VRy71:Sy70 -1;
+!!VRy72:S1 Ry71;
+!!VRv1:S-1;
+
+!!UN:U49/-1/y72/2;
+!!IF:L^Water vein to a magic well found^;
+
+!!HEy8:Pv2/v3/v4;
+
+
+!!SN:W^HERO %Y8 Hiromancy^/d1;

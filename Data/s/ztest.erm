@@ -1,0 +1,19 @@
+ZVSE2
+
+!?FU(OnBattleStackRegeneration);
+!#VA(stackId:x) (finalValue:x) (stdValue:x);
+!!BM(stackId):T?(monType:y);
+!!BM(stackId):F?(flags:y);
+
+!_!IF:L^%(stackId) %(finalValue) %(stdValue) flags: %(flags)^;
+
+!?FU(OnBattleRegeneratePhase);
+!_!IF:L^OnBattleRegeneratePhase^;
+
+!?FU(OnAdventureMapRightMouseClick);
+!!FU:E;
+!!HE-1:Z?y12;
+!!SN:L^more_SS_levels.era^/?y13;
+!!SN:Ay13/^Market_of_Time^/?y14;
+!!SN:Ey14/1/y12;
+

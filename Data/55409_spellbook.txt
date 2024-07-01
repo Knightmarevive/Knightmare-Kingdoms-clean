@@ -1,0 +1,21 @@
+
+
+
+	#	55409	-1	-1	800	600	16	-1	SpelBk2.bmp	99
+	Button	2999	656	424	48	36	icm005.def	2	Exit
+	Def	1	144	56	78	65	spells.def	1	16	
+	Def	2	264	56	78	65	spells.def	7	16	
+	Def	1001	144	56	78	65	SpLevW.def	0	16	
+	Def	1002	264	56	78	65	SpLevW.def	0	16	
+	Button	2001	160	136	48	36	icm005.def	2	Icy Blizzard
+	Button	2002	280	136	48	36	icm005.def	2	Greater Frost Bolt
+	Text	99	8	544	792	32	Hint	HiScore.fnt	3	0	1	8	
+	Def	3	144	200	78	65	spells.def	3	16	
+	Def	4	264	200	78	65	spells.def	5	16	
+	Button	2003	160	280	48	36	icm005.def	2	Greater Fireballl
+	Button	2004	280	280	48	36	icm005.def	2	Thor's Hammer
+	Def	5	144	328	78	65	spells.def	60	16	
+	Def	6	264	328	78	65	spells.def	59	16	
+	Button	2005	160	408	48	36	icm005.def	2	Knightmare Ring
+	Button	2006	280	408	48	36	icm005.def	2	Scarab Pendant
+	#

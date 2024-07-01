@@ -1,0 +1,128 @@
+ZVSE
+
+!?FU(OnGameEnter);
+!!UN:C6916120/4/1;
+
+!?FU(OnBeforeBattleUniversal);
+!!UN:C6916120/4/1;
+
+!?MM0; !!FU:E;
+!!BA:Q?y99; !!FU&y99=1:E;
+!_!SN:X?y52/?y44/?y94/?y93;
+!!VRy52:Sx1;!!VRy44:Sx2;!!VRy94:Sx3;!!VRy93:Sx4;
+
+!!FU&y52<0:E; !!FU&y52>41:E;
+!!BMy52:I?y88;
+
+!!MM:M?z2; !_!FU:E;
+
+!!VRz2:U^Fly^;   !!FU&1:E; 
+!!VRz2:U^Move^;  !!FU&1:E; 
+!!VRz2:U^only^;  !!FU&1:E; 
+!!VRz2:U^not^;   !!FU&1:E; 
+!!VRz2:U^unsuf^; !!FU&-1;
+
+!_!BA:S?y85;
+!!BA:P?y84/?y83/?y82;
+!!VRy86:S0 -1;
+!!UN:P904/1 P905/0; disable error messages
+!!CAy84/y83/y82:O?y86;
+!!UN:P904/0 P905/0; reenable error messages
+!!OW&y86>=0:Iy86/?y81;
+!!FU&y86>=0/y81=1/y88=1:E;
+
+!!BHy88:N?y87; !!HEy87&y87>=0:O?y81;
+!!OW&y87>=0:Iy81/?y89;
+!_!FU|y87<0/y89=1:E;
+!!FU&y87<0:E;
+!!FU&y87>=0/y89=1:E;
+
+!!OW&y87>=0:Iy86/?y81;
+!_!FU&y86<0/y87<0:E;
+
+!_!FU55407&y44<0:Py52;
+!_!FU&y44<0:E;
+!!VRy77:S9;
+!!BMy44&y44>=0:I?y77;
+
+
+!!FU&y52<0:E; !!FU&y52>41:E;
+!!BMy52:T?y3;
+!_!FU|y22<0/y22>41:E;
+!_!FU55408:P-1;
+
+
+!_!SN:W^AmeCre%Y3 Spell^/?y4;
+!_!FU&y4<1:E;
+!!BMx1:U4/?y4 T?y6 Z?y7; !!UN:Cy7/220/4/?y9;
+!!UN:N1/1/y4; 
+!!VRz1&y4=0:S^Unknown Spell^;
+!!VRz1&y6>=294/y6<=324:S^Special Spell^;
+!!VRz1&y6>=174/y6<=191:S^Special Spell^;
+!!VRz2:S^Cast %Z1 (%Y9 Remaining)^;
+!!MM&y9>0:Mz2;
+
+
+!?MM0; !!FU:E;  !!BA:Q?y99; !!FU&y99=1:E;
+
+!_!IF:L^%X1 %X2 %X3 %X4 %X5 %X6^;
+
+!_!SN:X?y1/?y2/?y3/?y4; Get parameters
+!_!SN:X?y52/?y44/?y94/?y93;
+!!VRy1:Sx1;!!VRy2:Sx2;!!VRy3:Sx3;!!VRy4:Sx4;
+!!VRy42:Sx1;!!VRy44:Sx2;!!VRy94:Sx3;!!VRy93:Sx4;
+
+
+!!BH1:N?y66;
+!!if&y66<0:;
+  !!SN:W^Knightmare Difficulty Wild Monsters Might^/?y99;
+  !!VRy98:S100 - y99;
+  !!VRy3:*y98  :100;
+  !!VRy94:*y98 :100;
+  !_!IF:L^y94 %Y94^;
+!!en;
+
+
+!!FU&y52<0:E; !!FU&y52>41:E;
+
+!!BMy52:I?y88;
+!!FU&y94<1:E;  !!FU&y44<0:E;
+
+**  attacked creatures
+!!BMy44:H?y5 L?y6;   y5 — hitpoints, y6 — lost hitpoints
+!!BMy44:N?y7 T?y17;  y7 — number of creatures  y17 - type of creatures
+
+** owned creatures
+!!BMy52:N?y29 T?y19;
+!!if|y19<0/y29<0:;
+  !!MM:M^error^;
+  !!FU:E;
+!!en;
+
+** damage calculation
+ !!VRy8:Sy5-y6; y8 — health of last remaining troop
+ !!VRy9:Sy3:y5; y9 — Minimum number of killed creatures
+ !!VRy10:Sy3%y5; y10 — damage to top creature
+ !!VRy9&y10>=y8:+1; y9 — minimum kills
+ !!VRy11:Sy4:y5; y11 — maximum kills
+ !!VRy12:Sy4%y5; y12 — damage to top creature
+ !!VRy11&y12>=y8:+1; y11 — maximum killed creatures
+ !!VRy13:Sy5*y7-y6; y13 — total hitpoints
+ !!VRy9&y9>y7:Sy7; y9 — minimum kills
+ !!VRy11&y11>y7:Sy7; y11 — maximum kills
+
+** printing
+
+!!UN:N3/9/y19/1;    !!UN&y29<2:N3/9/y19/1;
+!!VRz8:S^%Y29 %Z9^; !!VRz8&y29<2:S^The %Z9^;
+
+!!UN:N3/7/y17/1;    !!UN&y7<2:N3/7/y17/1;
+!!VRz6:S^%Z7^;      !!VRz6&y7<2:S^the %Z7^;
+
+!!VRz5:S^ will do %Y94 damage^; !!VRz5&y93>y94:S^ will do %Y94-%Y93 damage^;
+!!VRz4:S^ to %Z6^; !!VRz4&y9>0:S^ and will kill {~Red}%Y9{~} %Z6^;
+!!VRz4&y11>y9:S^ and will kill {~Red}%Y9-%Y11{~} %Z6^;
+!!VRz4&y9=y7:S^ and all {~Red}%Y9{~} %Z6 will be {~Yellow}DESTROYED{~}^;
+!!VRz4&y9=y7/y9<2:S^ and %Z6 will be {~Yellow}DESTROYED{~}^;
+!!VRz2:S^%Z8%Z5%Z4.^;
+!!MM:Mz2;

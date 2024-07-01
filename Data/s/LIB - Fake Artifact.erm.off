@@ -1,0 +1,83 @@
+ZVSE
+
+Try this.
+This is adopted from the Nabi Mod.
+Use with hooker.
+
+*******************************************************************
+          ????????????——???? 2014-7-17
+*******************************************************************
+*FU101050-101099??
+*z801-z802 ?????,???????????????.
+**************************???**************************
+*Modifies the internal function<004D9460> that detects whether the hero has any artifacts during the battle.
+*This z801 stores data of this hooker. z802 stores the artifact flags of the heroes in battle.
+*After setting the artifact flags, the hero will have the effects of that particular artifact in battle. (Such as the Prayer of Angelic Alliance)
+*Illegal modifications on z801 will crash the game. Illegal modifications on z802 may cause clashes with other scripts.
+*When setting the artifact flags, make sure the main module is already run.(Which means we only add our lines at the end.)
+*z801(98B3E8),z802(left-98B5E8,right-98B6E8)
+
+!?BA0&1000;[???]
+!!FU101050:P0;
+!!DO101051/10008040/10008551/1:P;
+
+!?BA1&1000;[???]
+!!FU101050:P1;
+
+!?FU101050&x1=0;[????]
+*004D94C9 - e9 1a 1f 4b 00 - jmp 0098b3e8
+*004D94CE - 90  - nop
+*004D94CF - 90  - nop
+!!UN:C5084361/1/233;
+!!UN:C5084362/4/4923162;
+!!UN:C5084366/2/37008;
+*??z801???*
+!!UN:C10007528/4/141921106;
+!!UN:C10007532/1/161;
+!!UN:C10007533/4/6919200;
+!!UN:C10007537/2/37003;
+!!UN:C10007539/4/21452;
+!!UN:C10007543/4/326421049;
+!!UN:C10007547/2/37003;
+!!UN:C10007549/4/21456;
+!!UN:C10007553/4/326421049;
+!!UN:C10007557/4/1583005745;
+!!UN:C10007561/4/311901;
+!!UN:C10007565/1/144;
+!!UN:C10007566/4/2257240113;
+!!UN:C10007570/4/10008040;
+!!UN:C10007574/4/3224439019;
+!!UN:C10007578/2/34442;
+!!UN:C10007580/4/10008296;
+!!UN:C10007584/4/1963063427;
+!!UN:C10007588/4/1566464736;
+!!UN:C10007592/4/2415920322;
+!!UN:C10007596/1/0;
+
+!?FU101050&x1=1;[????????]
+*004D94C9 - 33 c0 - xor eax,eax
+*004D94CB - 5e  - pop esi
+*004D94CC - 5d  - pop ebp
+*004D94CD - c2 04 00 - ret 0004
+!!UN:C5084361/4/1566490675;
+!!UN:C5084365/2/1218;
+!!UN:C5084367/1/0;
+
+!?FU101051;[????]
+!!UN:Cx16/1/0;
+
+!?FU101052;[set or get hero's artifact flag in battle]
+*x1=0left 1right
+*x2=artifact id(1-170)
+*x3=value or return variable (set 1 to work)
+*x4=0set 1get
+!!FU|x1<0/x1>1/x2<1/x2>170/x4<0/x4>1:E;
+!!VRy1:Sx1 *256 +x2 +10008040;
+!!UN&x4=0:Cy1/1/x3;
+!!UN&x4=1:Cy1/1/?x3;
+
+**************************?????**************************
+
+!?BA0&1000; // add artifacts here
+!!FU101055:P; <- we only write our codes here, and it must be after the initialisation
+

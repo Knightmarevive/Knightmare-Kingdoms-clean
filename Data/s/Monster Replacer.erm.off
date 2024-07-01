@@ -1,0 +1,41 @@
+ZVSE
+*Monster Replacer script by Perry R*
+August 2020
+works with ERA 2.9x and ERA 3
+
+Chance to replace:
+Generate Random Creature between 197 and 261. If the creature has the same level it will be replaced
+That makes roughly 7/64=10% to replace, if levels are distributed evenly between the new monsters.
+
+
+****************************************************************************************************
+*Replace Objects when map starts
+!?FU(OnEveryDay);
+
+!!if&x1=1/x3=1:;                        [Run once at day 1]
+  !!UN:U54/-1/?y2;                      [Get the Number of total Monster on the map in y2]
+  !!VRv1:S-1;                           [Search Index]
+  !!DO(TUM_Replace_Monster)/1/y2/1:P;   [Repeat fct y2 times to check every monster]
+!!en:;
+
+
+!?FU(TUM_Replace_Monster);
+
+!!VRv1&x16=1:S-1;                       [Dont know]
+!!UN:U54/-1/-1/1;                       [Get Coordinates of Monster]
+
+!!VRy99:S0T100; !!FU&y99>50:E;          [Additional chance decreaser 50% in that case]
+
+!!OBv1/v2/v3:U?y2;                      [Get Monster ID]
+!!MOv1/v2/v3:G?y3 R?y6/1;               [Check Monster Numbers and agression level]
+!!MA:Ly2/?y4;                           [Check Level 0-6 of old Monster]
+
+!!VRy2:S197R158;                         [Generate new Monster ID between 197 and 291. Write here your new creature IDs]
+!!MA:Ly2/?y5;                           [Check Level 0-6 of new monster ID]
+!!if&y4=y5:;                            [If same level]
+  !!UN:Ov1/v2/v3/1/0;                   [Delete Old Monster without redrawing]
+  !!UN:Iv1/v2/v3/54/y2/54/y2/-1/0;      [Place New Monster with ID y2]
+  !!VRy3&y3>4000:S4000;                 [Monster cannot be more than 4000 units]
+  !!MOv1/v2/v3:Gy3 Ry6;                 [Set Monster numbers max 4000]
+!!en:;
+

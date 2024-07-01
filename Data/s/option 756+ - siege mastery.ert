@@ -1,0 +1,29 @@
+#	Text resource for "option 756 - siege mastery.erm"		
+179247	Engineer		
+179248	{Basic Siegecraft}
+
+{»} Basic Siegecraft gives control of the catapult to the hero during the siege,
+allowing aimed shots with increased damage.
+
+{»} Increases moat and tower damage by {+15%} under siege.
+
+{»} {+1} building daily in town where garrisoned.
+ 		
+179249	{Advanced Siegecraft}
+
+{»} Advanced Siegecraft gives control of the catapult to the hero 
+during the siege, allowing two aimed shots with increased damage."
+
+{»} Increases moat and tower damage by {+30%} under siege.
+
+{»} {+2} building daily in town where garrisoned.
+		
+179250	{Expert Siegecraft}
+
+{»} Expert Siegecraft gives control of the catapult to the hero during the siege, 
+allowing two aimed shots at maximum damage."
+
+{»} Increases moat and tower damage by {+45%} under siege.
+
+{»} {+3} building daily in town where garrisoned.
+		

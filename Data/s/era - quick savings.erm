@@ -1,0 +1,155 @@
+ZVSE
+; New events and corresponding x1-x16 parameters in brackets:
+;  (eqs.OnAutosave) (z-var index with name to use for autosave);
+;  (eqs.OnSave)     (this day save (0) or quick save (1), z-index of savegame name, z-index of message to print in chat)
+
+; New functions:
+;  (eqs.SoundControl) (sound on (1) or off (0), v-index to place sound settings if first argument is 0 or to restore sound settings from if first argument is 1)
+;    Allows to turn off sound and restore full settings later
+;  (eqs.QuietMessage)
+;    Prints z1 contents as chat message (IF:L) without sound notification
+
+!?FU(eqs.SoundControl);
+; Arguments: SoundIsOn: boolean; OldValue: v-index
+!!if&x1=1:;
+  !!VRy4:Svx2;
+  !!VRy1:Sy4%256;
+  !!VRy4::256;
+  !!VRy2:Sy4%256;
+  !!VRy4::256;
+  !!VRy3:Sy4%256;
+  !!UN:C6916016/1/y1 C6916020/1/y2 C6916028/1/y3;
+!!el:;
+  !!UN:C6916016/1/?y1 C6916020/1/?y2 C6916028/1/?y3 C6916016/1/0 C6916020/1/0 C6916028/1/0;
+  !!VRy3:*65536;
+  !!VRy2:*256;
+  !!VRvx2:Sy1+y2+y3;
+!!en:;
+
+!?FU(eqs.QuietMessage);
+; Arguments: Message: z1;
+!!VRy1:Sv2;
+
+!!FU(eqs.SoundControl):P0/2;
+!!IF:Lz1;
+!!FU(eqs.SoundControl):P1/2;
+
+!!VRv2:Sy1;
+
+!?FU(OnChat);
+!!SN&x1=0:W^eqs.InChat^/1;
+!!SN&x1=2:W^eqs.InChat^/0;
+
+!?GM0;
+!!SN:W^eqs.InChat^/0;
+
+!?CM0;
+!!SN:W^eqs.IsAutosave^/0;
+
+!?CM5;
+!!SN:W^eqs.IsAutosave^/0;
+!!CM:I?y1;
+!!FU&y1<>12:E;
+!!SN:W^eqs.IsAutosave^/1;
+
+!?GM1; !!FU:E; //disabled (seems not working in MP)
+!!SN:W^eqs.IsAutosave^/?y1;
+!!FU&y1<>1:E;
+!!SN:W^eqs.IsAutosave^/0;
+
+!!VRy2:Sc-1%7+1; !!VRy31:Sc-1:7%4+1; !!VRy32:Sc-1:28+1;
+!!VRz2:S^%Gc^;
+!!SN:T^eqs.end_turn_autosave_name^/?z3/^day^/y2/^player^/z2/^skirmish^/z999/^week^/y31/^month^/y32;
+!!SN:F^lstrcpyA^/6828940/z3;
+
+!!FU(eqs.OnAutosave):P;
+
+!!SN:Xz3;
+
+!_#TM99&v1=1:S1/999/1/255;
+!?TM99;
+!!SN:W^eqs.SkirmishReady^/?y7;
+!!FU&y7=1:E;
+!!SN:W^eqs.SkirmishReady^/1;
+
+!!VRy3:Sc-1%7+1; !!VRy31:Sc-1:7%4+1; !!VRy32:Sc-1:28+1;
+!!VRz3:S^%Gc^;
+ !_!FU(CreateDir):P^games\%Z999^;
+!!SN:T^eqs.start_savegame_name^/?z-2/^player^/z3/^skirmish^/z999/^week^/y31/^month^/y32;
+!!SN:T^eqs.startsaved_msg^/?z3;
+!!VRz4:S^{~w}%Z3{~}^;
+
+!!FU(eqs.OnSave):P0/2/4;
+
+!!UN:C6919480/4/?y5; y5 - game manager
+!!SN:E4975456/2/y5/z-2/1/0/1/0 F^lstrcpyA^/6828940/z-2;
+
+!!VRz1:Sz4;
+!!FU(eqs.QuietMessage):P;
+!!SN:X?y9/1;
+
+!?TM1; !!SN:W^eqs.version^/0;
+!?FU(OnKeyPressed);
+!!SN:W^eqs.InChat^/?y1;
+!!SN&y1=1:Q;
+
+!!SN:F^GetGameState^/?y10;
+!!FU|y10<>y11/y10<>4205280:E; Adventure Map Dialog only
+
+!!if|x1=83/x1=116:; 'S' or 'F5' pressed
+  !!if&x1=83:; 'S' pressed
+    !!VRy3:Sc-1%7+1; !!VRy31:Sc-1:7%4+1; !!VRy32:Sc-1:28+1; 
+    !!OW:C?y73; 
+    !!SN:W^KK_Royalty_OW%Y73^/?y63;
+    !!VRy73:+1; !!VRz3:S^(%Y73)%Gc^; 
+
+    !!if&y63>=0;
+      !!HEy63:B0/?z3;  
+      !!VRz3:S^(%Y73)%Z3^;
+    !!en;
+
+    !!FU(CreateDir):P^games\%Z999^;
+    !!SN:W^eqs.version^/?y35; !!VRy35:+1; !!SN:W^eqs.version^/y35; 
+    !!VRz5:S^%Y35^; !!VRz5&y35<100:S^0%Y35^; !!VRz5&y35<10:S^00%Y35^;
+    !!SN:T^eqs.this_day_savegame_name^/?z2/^day^/y3/^player^/z3/^skirmish^/z999/^week^/y31/^month^/y32/^version^/z5;
+    
+    !_!IF:Mz2;
+
+    !!SN:T^eqs.saved_msg^/?z5;
+    !!VRz4:S^{~w}%Z5{~}^;
+
+    !!FU(eqs.OnSave):P0/2/4;
+  !!el&x1=116:; 'F5' pressed
+    !!VRy3:Sc-1%7+1; !!VRy31:Sc-1:7%4+1; !!VRy32:Sc-1:28+1;
+    !!VRz3:S^%Gc^;
+    !!SN:T^eqs.quicksave_name^/?z2/^day^/y3/^player^/z3/^skirmish^/z999/^week^/y31/^month^/y32;
+    !!SN:T^eqs.quicksaved_msg^/?z5;
+    !!VRz4:S^{~w}%Z5{~}^;
+
+    !!FU(eqs.OnSave):P1/2/4;
+  !!en:;
+
+  !!SN:T^eqs.lastsave_name^/?z7/^player^/z3/^skirmish^/z999;
+  !!VRz-2:Sz2; !!VRz-3:Sz7;  
+  !!UN:C6919480/4/?y5; y5 - game manager
+  !!SN:E4975456/2/y5/z-2/1/0/1/0;
+  !!SN:E4975456/2/y5/z-3/1/0/1/0;
+  !!SN:F^lstrcpyA^/6828940/z999;
+  !_!SN:E4975456/2/y5/9598440/1/0/1/0 F^lstrcpyA^/6828940/9598440;
+  !_!SN:F^GenerateDebugInfo^; 
+
+  !_!IF:M^%z2  y5= %y5^;
+
+  !!VRz1:Sz4;
+  !!FU(eqs.QuietMessage):P;
+  !!SN:X?y9/1;
+!!en:;
+
+
+!_?FU870520;
+!?BA52; !!FU:E;
+!_!UN:P889/?y1;     !_!FU&y1<>1:E;
+!_!UN:P729/?y1;     !_!FU&y1<>0:E;
+!!OW:C?y2 Iy2/?y3; !!FU&y3<>0:E; 
+!!UN:C6919480/4/?y1;
+!!SN:E4975456/2/y1/^%Z999_BattleSave!^/1/0/1/0;

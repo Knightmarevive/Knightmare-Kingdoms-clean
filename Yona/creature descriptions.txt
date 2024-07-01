@@ -1,0 +1,10 @@
+0="Anti-cavalry: 200%. Ignores cavalry bonus";
+1="Anti-cavalry: 200%. Ignores cavalry bonus";
+2="Aimed shot: 300%";
+3="Aimed shot: 300%. Shoots twice";
+6="Block: 50%";
+7="Block: 50%. Strikes twice";
+10="Cavalry: +20% dmg per hex";
+11="Cavalry: +20% dmg per hex";
+88="Damage depends on distance";
+89="Damage depends on distance";

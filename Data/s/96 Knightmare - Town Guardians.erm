@@ -1,0 +1,766 @@
+ZVSE
+
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ERMS_ScriptDate=6.5(May).2016
+
+!?PI;
+!!VRy1:S243;
+
+!!EAy1:B0/1/65/43///////////;
+!!EAy1:B1/1/68/43///////////;
+!!EAy1:B2/1/77/43///////////;
+!!EAy1:B3/1/109/43///////////;
+!!EAy1:B4/1/72/43///////////;
+!!EAy1:B5/1/83/43///////////;
+!!MA:Cy1/6/32000 Gy1/0;
+
+!!VRy1:+1;
+!!SN&y1<=251:G1;
+
+!_!MA:C243/5/16 C244/4/16 C245/5/16;
+!_!MA:C246/1/16 C247/1/16 C248/3/16;
+!_!MA:C249/4/16 C250/3/16 C251/1/16;
+
+!?GM0;
+!!VRy1:S243;
+
+!!EAy1:B0/1/65/43///////////;
+!!EAy1:B1/1/68/43///////////;
+!!EAy1:B2/1/77/43///////////;
+!!EAy1:B3/1/109/43///////////;
+!!EAy1:B4/1/72/43///////////;
+!!EAy1:B5/1/83/43///////////;
+!!MA:Cy1/6/32000 Gy1/0;
+
+!!VRy1:+1;
+!!SN&y1<=251:G1;
+
+!_!MA:C243/5/16 C244/4/16 C245/5/16;
+!_!MA:C246/1/16 C247/1/16 C248/3/16;
+!_!MA:C249/4/16 C250/3/16 C251/1/16;
+
+!?OB98; // hero enters town
+!!CA998:T?y1 B3/26; !!FU&-1:E;
+!!VRy1:+243;
+!_!CA998:D-26/0/y1/?y2;
+!_!CA998&y2<0:D-26/0/y1/2;
+
+!?CM1; // player clicks town
+!!CA-1:T?y1 B3/26; !!FU&-1:E;
+!!VRy1:+243;
+!_!CA-1:D-26/0/y1/?y2;
+!_!CA-1&y2<0:D-26/0/y1/2;
+
+!?FU(OnEveryDay);
+!!UN:U98/-1/?y9; !!VRy9:-1;
+
+!!re i/0/y9;
+  !!CA0/i:P?y1/?y2/?y3 T?y5;
+  !!SN:W^AmeUpg Guardian %Y1 %Y2 %Y3^/?y4;
+  !!OBy1/y2/y3:T?y6; !!co&y6<>98;
+  !!CAy1/y2/y3:B3/13; !!VRy4&1:S1;
+
+  !_!CAy1/y2/y3|y4>0/y5>8:B6/78;
+!!en;
+
+!!MA:F275/444000 I275/444000;
+
+!?FU(OnStartOrLoad);
+!!UN:U98/-1/?y9; !!VRy9:-1;
+
+!!re i/0/y9;
+  !!CA0/i:P?y1/?y2/?y3 T?y5;
+  !!SN:W^AmeUpg Guardian %Y1 %Y2 %Y3^/?y4;
+  !!OBy1/y2/y3:T?y6; !!co&y6<>98;
+  !!CAy1/y2/y3:B3/13; !!VRy4&1:S1;
+
+  !_!CAy1/y2/y3|y4>0/y5>8:B6/78;
+!!en;
+
+!!MA:F275/444000 I275/444000;
+
+!?FU(OnGameEnter);
+!!SN:L^new_towns.era^/?y3;
+!!SN:Ay3/^SetTownGuardianType^/?y4;
+!!re i/0/9;
+  !!VRy8:S243 +i;
+  !!SN:Ey4/1/i/y8;
+!!en;
+
+!!SN:Ey4/1/10/275;
+!!SN:Ey4/1/11/275;
+
+!!SN:Ay3/^SetTownGuardianSummonArtifact^/?y5;
+!!SN:Ey5/1/170;
+
+!?BA52;
+!!SN:W^TG_BR0^/0;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^TG_BR0^/?y1;
+!!VRy1:+1;
+!!SN:W^TG_BR0^/y1;
+
+!?BA52;
+!!VRy1:S243;
+!!SN:W^Battle_Guardian BH0 %Y1^/0;
+!!SN:W^Battle_Guardian BH1 %Y1^/0;
+!!SN:W^Battle_Guardian Summon^/0;
+!!VRy1:+1;
+!!SN&y1=<251:G1;
+
+
+!_?FU77006; before first action
+!?FU(OnCombatRound)&v997=1;
+!!SN:W^Battle_Guardian Summon^/?y99;
+!!FU&y99<>0:E;
+!!VRy1:S0;
+!!BMy1:T?y2;
+!!if&y2=251:;
+  !!BMy1:I?y3 N?y4; // side
+  !!VRy22:S66 R3;
+  !!FU55418:Py22/100/225/y4/y3;
+!!en:;
+!!VRy1:+1;
+!!SN&y1<42:G3;
+
+
+!!FU&997/998/-999:E;
+!!SN:W^Battle_Guardian Summon^/1;
+
+!_?BR;
+!?BG0;
+!!FU&v997<>0:E;
+!!VRy1:S0;
+!!BMy1:T?y2;
+!!if&y2>=243/y2<=251:;
+  !!VRy4:Sy2 -243; // aligment
+  !!BMy1:I?y3; // side
+  //check if already applied
+  !!SN:W^Battle_Guardian BH%Y3 %Y2^/?y5;
+  //apply Guardian Crexpo
+  !!DO55412/0/41/1&y5=0:Py3/y4;
+  !!SN:W^Battle_Guardian BH%Y3 %Y2^/1;
+!!en:;
+!!VRy1:+1;
+!!SN&y1<42:G2;
+
+!?HM-1;
+!!HE-1:N?y1;
+!!FU&y1<0:E;
+!!HEy1:A2/161/?y3/?y4;
+!!FU&y4<1:E; Helmet of Vision
+!!HEy1:Uv998/v999/17; 17 Scouting Radius
+!!HEy1:Ed22; 22 experience per step
+
+!?BG; // Lock spellcaster if too many creatures
+!!BG:Q?y7;
+
+  !!DO55446/0/41/1:P; //count monsters
+  !!SN&y7=0:W^KNIGHTMARE_MON_ATTACKER^/?y99;
+  !!SN&y7=1:W^KNIGHTMARE_MON_DEFENDER^/?y99;
+
+!!VRy8:S0;
+!!BG:A?y9 S?y10 N?y11;
+!!VRy8&y9=1/y10=65:S1;
+!!if&y9=10:;
+!!BMy11:U4/?y13;
+!!VRy8&y13=65:S1;
+!!en:;
+
+!!BG&y99>=20/y8>0:A12;
+
+!?FU55446; // count monsters
+x16 - BM id
+!!SN&x16=0:W^KNIGHTMARE_MON_ATTACKER^/0;
+!!SN&x16=0:W^KNIGHTMARE_MON_DEFENDER^/0;
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!SN&y5<0:Q;
+!!SN&y5>500:Q;
+!!SN&y6<1:Q;
+
+!!BMx16:I?y7; check side
+
+!!SN&y7=0:W^KNIGHTMARE_MON_ATTACKER^/d1;
+!!SN&y7=1:W^KNIGHTMARE_MON_DEFENDER^/d1;
+
+!!SN:Q; // don't  run other functions with same number
+
+*?FU55445; reserved for creature specialists
+
+
+
+
+!?FU55442; initialization
+
+!!UN:C7661053/4/255; disable magic wand effect
+
+; 126 Orb of Inhibition (artifact)
+!!VRy1:S2;  number of art (x<128)
+; Grail means Disabled
+!!UN:C4323947/1/y1;
+!!UN:C4323975/1/y1;
+!!UN:C4324250/1/y1;
+!!UN:C4324275/1/y1;
+!!UN:C4328726/1/y1;
+!!UN:C4328750/1/y1;
+!!UN:C4330554/1/y1;
+!!UN:C4330579/1/y1;
+!!UN:C4337706/1/y1;
+!!UN:C4337731/1/y1;
+!!UN:C4341604/1/y1;
+!!UN:C4341739/1/y1;
+!!UN:C4792396/1/y1;
+!!UN:C5403247/1/y1;
+!!UN:C5893338/1/y1;
+!!VRy1:*32;
+!!UN:C5893500/4/y1;
+
+; 83 Recanter's Cloak (artifact)
+!!VRy1:S2; number of art  (x<128)
+; Grail means Disabled
+!!UN:C4348936/1/y1;
+!!UN:C4348962/1/y1;
+!!UN:C4441266/1/y1;
+!!UN:C4441203/1/y1;
+!!UN:C5405343/1/y1;
+!!UN:C5932058/1/y1;
+!!UN:C5932079/1/y1;
+!!UN:C5893758/1/y1;
+!!VRy1:*32;
+!!UN:C5893843/4/y1;
+
+
+!!if&v1>v1:; it only disables Grail Building
+         ; I want it Blank :(
+; Grail Building from Conflux
+!!VRy1:S99; number of town  (x<128)
+!!UN:C6022390/1/y1;
+!!UN:C6088735/1/y1;
+!!UN:C6088214/1/y1;
+!!UN:C6124606/1/y1;
+
+; Grail Building from Inferno
+!!VRy1:S99; number of town  (x<128)
+!!UN:C5680014/1/y1;
+!!UN:C5680295/1/y1;
+!!UN:C6020842/1/y1;
+!!UN:C6129967/1/y1;
+
+; Grail Building from Tower
+!!VRy1:S99; number of town  (x<128)
+!_!UN:C/1/y1;
+!_!UN:C/1/y1;
+!_!UN:C/1/y1;
+!_!UN:C/1/y1;
+
+; Grail Building from Conflux
+!!VRy1:S99; number of town  (x<128)
+!_!UN:C6022390/1/y1;
+!_!UN:C6088735/1/y1;
+!_!UN:C6088214/1/y1;
+!_!UN:C6124606/1/y1;
+; Under - Probably Town numbers addresses for 8 (Conflux)
+!_!UN:C5237349/1/99; 0x4FEA65 bad guess
+!_!UN:C4311727/1/99; 0x41CAAF
+!_!UN:C4314007/1/99; 0x41D397 Probably good but not enough
+!_!UN:C4314017/1/99; 0x41D3A1
+!_!UN:C5684884/1/99; 0x56BE94
+!_!UN:C6124606/1/99; 0x5D743E
+!_!UN:C4253651/1/99; 0x40E7D3  Probably good but not enough
+
+!!en:;
+
+
+---Blanking-Grails---
+; grail inferno bonus
+!_!UN:C5015000/1/99; number of town 0x4C85D8
+
+; bonus grail Tower (open map)
+!__!UN:C5005757/4/0;  radius open map on the X size map (restore orig code = 6783944)
+!_!UN:C5005753/1/235; change JZ to JMP 0x4C61B9
+
+
+!_!UN:C5012022/1/99;  number of town for AI (orig = 2) 0x4C7A36
+; Inside ommited block there is a Call 0x0049CDD0
+
+!_!UN:C6026512/1/99;  number of building (orig = 26) 0x5BF510
+
+; Grail Bonus Conflux
+!_!UN:C6022390/1/99;  0x5BE4F6 Disable: Aurora really learns all spells 
+!_!UN:C6088735/1/99;  0x5CE81F Disable: "The Aurora makes all spells availible" Info
+!_!UN:C6088214/1/99;  0x5CE616 Disable: Hiding Spell Infobar's Info
+!_!UN:C6124606/1/99;  0x5D743E Disable: Hiding Spell Pictures
+
+!?PI;
+!_!IF:M^96 Knightmare - Town Guardians.erm^;
+!!SN:W^96 Knightmare - Town Guardians.erm^/1;
+!!FU55442:P;
+
+!?GM0;
+!_!IF:M^96 Knightmare - Town Guardians.erm^;
+!!FU55442:P;
+
+!?FU55415;
+!!FU:E;
+x1 x2 x3 - castle position
+
+!_!CA-1:P?x1/?x2/?x3; get castle position to x1 x2 x3
+
+!_!IF:M^%X1 %X2 %X3^;
+
+!!VRy7:S0; !!CAx1/x2/x3:B3/13; !!VRy7&1:S1; check if capitol is built
+!!CAx1/x2/x3:T?y99;
+
+
+
+!!if&y7>0:;
+   !!FU55411:P-1/y99; !_!CAx1/x2/x3:B6/78;
+   !_!IF:M^Capital City has Town Guardian for free.^;
+   !!FU:E;
+!!en:;
+
+!!SN:W^AmeUpg Guardian %X1 %X2 %X3^/?y1;
+!!if&y1>0:;
+   !_!IF:M^This Town already has its own Town Guardian.^;
+   !!FU55411:P-1/y99;
+   !!FU:E;
+!!en:;
+
+!!FU:E;
+
+!!OW:C?y10;
+!!OW:Ry10/6/?y11; gold to y11
+!!OW:Ry10/7/?y12; mithril to y12
+
+!!VRy21:Sc :28 *24000 +64000; cost in gold
+!!VRy22:Sc :28 *2 +22; cost in mithril
+
+
+
+!!if|y21>y11/y22>y12:;
+  !!IF:M^You have not enough resources to hire Town Guardian (%Y21 Gold and %Y22 Mithril)^;
+  !!FU:E;
+!!en:;
+
+!_!CM:R0;
+
+!!IF:Q2^Do you want to hire Town Guardian for %Y21 gold and %Y22 Mithril?^;
+!!VRy99:S0; !!VRy99&-2:S1;
+
+!!if&y99>0:;
+    !!IF:M^You feel sorry for not hiring Town Guardian... maybe another time... ^;
+    !!FU:E;
+!!en:;
+
+!!VRy11:-y21; !!VRy12:-y22; paying price
+!!OW:Ry10/6/y11; gold from y11
+!!OW:Ry10/7/y12; mithril from y12
+
+!!SN:W^AmeUpg Guardian %X1 %X2 %X3^/1;
+!!IF:M^You just hired Town Guadian^;
+
+
+!?CM1;
+
+!!CM:F?y2;
+!!FU&y2<>512:E;
+exit if not right  mouse click
+
+!!CM:I?y1;
+!!FU&y1<>9:E;
+exit if not castle
+
+
+!!CM:R0;
+
+!!CA-1:P?y7/?y8/?y9;
+!!FU55415:Py7/y8/y9;
+
+!!CM:R1;
+
+!_!FU55415:P;
+
+!?FU55412;
+x1  - battle side
+x2  - battle aligment
+x16 - BM id
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>999:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!BMx16:F?y20;     Flags
+!!VRy21:Sy20 &64;  War Machine
+
+!!VRy9: S0 -1 -x16; set y9 for battle experience ID
+
+// todo
+!!EAy9:D?y91; !!EAy9&y91=0:Oy5;
+
+Commander
+!!if&y5>=174/y5<=191:;
+    !_!BMx16:M34/99/3; expert antimagic
+!!en:;
+
+!!if|y5=243/y5=244:; Castle or Rampart Guardian
+    !!VRy66:Sy6 *5;
+    !_!BMx16:G38/1/y66;
+!!en:;
+
+!!if&x2=0:; Castle
+     !!BMx16:M48/99/3; expert Prayer
+
+     !_!EAy9:F82/?y11;  //More Retailations (if not ammo cart)
+     !_!EAy9&y5<>148:By11/1/82/61/99/99/99/99/99/99/99/99/99/99/99;
+     !_!BMx16&y5<>148:R5000;
+
+     !!BMx16&y21=0:R5000; //More Retailations (if not war machine)
+!!en:;
+!!if&x2=1:; Rampart
+     !!BMx16:M48/99/3; expert Prayer
+
+     !!FU&y5>=174/y5<=191:E; exit if commander
+
+     !_!EAy9:F0/?y11;  //Strike and Return (if not ammo cart)
+     !_!EAy9&y5<>148:By11/1/102/98/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F0/?y11;  //Strike and Return (if not war machine)
+     !!EAy9&y21=0:By11/1/102/98/1/1/1/1/1/1/1/1/1/1/1;
+!!en:;
+!!if&x2=2:; Tower
+     !_!EAy9:F0/?y11;  //immune to hostile Air Spells
+     !_!EAy9:By11/1/119/65/1/1/1/1/1/1/1/1/1/1/1;
+
+     !_!EAy9:F0/?y11;  //immune to Lightning Spells
+     !_!EAy9:By11/1/119/76/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F0/?y11;  //Reduce Casting Cost
+     !!EAy9:By11/1/67/43/1/1/1/1/2/2/2/3/3/3/4;
+!!en:;
+!!if&x2=3:; Inferno
+     !!BMx16:M29/99/3; expert Fire Shield
+
+     !_!EAy9:F0/?y11;  //immune to hostile Fire Spells
+     !_!EAy9:By11/1/119/70/1/1/1/1/1/1/1/1/1/1/1;
+
+     !_!EAy9:F0/?y11;  //immune to Fire Damage Spells
+     !_!EAy9:By11/1/119/79/1/1/1/1/1/1/1/1/1/1/1;
+!!en:;
+!!if&x2=4:; Necropolis
+     !!BMx16:M28/99/3; expert Air Shield
+
+     !_!EAy9:F0/?y11;  //immune to hostile Air Spells
+     !_!EAy9:By11/1/119/65/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F0/?y11;  //cast death ripple before attack
+     !!EAy9:By11/1/112/24/10/10/20/20/30/30/40/40/50/50/50;
+!!en:;
+!!if&x2=5:; Dungeon
+
+     !_!EAy9:F0/?y11;  //immune to hostile Earth Spells
+     !_!EAy9:By11/1/119/69/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F0/?y11;  //immune to Meteor Shower
+     !!EAy9:By11/1/119/77/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F0/?y11;  //No Retailation  (if not war machine)
+     !!EAy9&y21=0:By11/1/102/82/1/1/1/1/1/1/1/1/1/1/1;
+!!en:;
+!!if&x2=6:; Stronghold
+     !_!BMx16:M34/99/3; expert antimagic
+
+     !!BMx16:M30/99/1; basic protection from Air
+     !!BMx16:M31/99/1; basic protection from Fire
+     !!BMx16:M32/99/1; basic protection from Water
+     !!BMx16:M33/99/1; basic protection from Earth
+
+     !!FU&y5>=174/y5<=191:E; exit if commander
+
+     !!EAy9:F0/?y11;  //Champion Charge (if not war machine)
+     !!EAy9&y21=0:By11/1/102/99/1/1/1/1/1/1/1/1/1/1/1;
+!!en:;
+!!if&x2=7:; Fortress
+
+     !_!EAy9:F0/?y11;  //immune to hostile Earth Spells
+     !_!EAy9:By11/1/119/69/1/1/1/1/1/1/1/1/1/1/1;
+
+     !_!EAy9:F0/?y11;  //immune to hostile Water Spells
+     !_!EAy9:By11/1/119/70/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!FU&y5>=174/y5<=191:E; exit if commander
+
+     !_!EAy9:F0/?y11;  //Regeneration
+     !_!EAy9:By11/1/114/100/50/60/70/80/90/100/110/120/130/140/150;
+
+     !!EAy9:F0/?y11;  //cast Cure before attack
+     !!EAy9:By11/1/112/37/10/10/20/20/30/30/40/40/50/50/50;
+
+     !!EAy9:F0/?y11;  //summon clone  (if not war machine)
+     !!EAy9&y21=0:By11/1/108/y5/10/10/20/20/30/30/40/40/50/50/50;
+
+!!en:;
+
+!!if&x2=8:; Conflux
+     !_!EAy9:F0/?y11;  //immune to hostile Earth Spells
+     !_!EAy9:By11/1/119/69/1/1/1/1/1/1/1/1/1/1/1;
+
+     !_!EAy9:F0/?y11;  //immune to hostile Air Spells
+     !_!EAy9:By11/1/119/65/1/1/1/1/1/1/1/1/1/1/1;
+!!en:;
+
+!!if&x2=101:; Temple (With Town Guardians)
+     !!FU:E; //disabled
+
+     !!EAy9:F0/?y11;  //immune to Direct Damage Spells
+     !!EAy9:By11/1/119/68/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F0/?y11;  //Regeneration          (if not war machine)
+     !!EAy9&y21=0:By11/1/114/100/50/60/70/80/90/100/110/120/130/140/150;
+
+     !!EAy9:F0/?y11;  //No Retailation        (if not war machine)
+     !!EAy9&y21=0:By11/1/102/82/1/1/1/1/1/1/1/1/1/1/1;
+
+     !!EAy9:F82/?y11;  //More Retailations    (if not war machine)
+     !!EAy9&y21=0:By11/1/82/61/99/99/99/99/99/99/99/99/99/99/99;
+!!en:;
+
+!?FU55411;  summons Town Guardian
+x1 - battle side
+x2 - battle aligment
+!!FU:E;
+
+!!VRy1:S243 +x2;  set y1 to guardian creature id
+!!VRy1&x2=10:S275;  
+
+!!if&y1<>y1;
+!!VRy2:Sc :28 +2; set y2 to month +2 (1st day is month 0)
+!!VRy3:Sy2*y2;  !!VRy4:Sy3*y2; !!VRy5:Sy3*y4;
+!!VRy4:*100; !!VRy3:*10000; !!VRy9:Sy3 +y4 -y5;
+!!VRy9:*177 :1000000;  set y9 to number of Guardians
+!!VRy9&y2>18:Sy2 -4 *37; fix for late months
+!!en;
+
+!!if|x1=0/x1=1:;
+!_!BU&x1=0:Sy1/y9/139/x1/-1/1;
+
+!!BU&x1=1:E149/?y19;
+!!if&x1=1/y19>=0/y19<42/y19<>y19:;
+  !!BMy19:N?y29; !!VRy29:+y9; !!BMy19:Ny29 By29;
+!!en:;
+!_!BU&x1=1/y19<0:Sy1/y9/149/x1/-1/1;
+
+!_!DO55412/0/41/1:Px1/x2;  TODO
+
+!!BU:R;
+!!el:;
+  !!CA-1:U?y76;
+
+  !!SN:L^new_towns.era^/?y23; !_!FU(reset_town_creatures):P;
+  !!SN:Ay23/^get_TG_Count^/?y24/y76; !!SN:Ey24/1/?y9;
+  !!IF:M^Town Guardians already serves this town.
+
+Already %Y9 of Guardians is availible in case of siege.^;
+!!en:;
+
+
+
+!_?BA52;
+!_?BF;
+
+!?BR; !!FU:E;
+!!FU&v997<>0:E;
+!!SN:W^TG_BR0^/?y1;
+!!FU&y1<>1:E;
+
+!!FU55445:P; handle creature specialists
+
+!_!BA:P?y1/?y2/?y3;
+
+//horn of summoning attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/170/0/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !!FU55411&y12>0:P0/y13;
+!!en:;
+
+//horn of summoning defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/170/0/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !!FU55411&y12>0:P1/y13;
+!!en:;
+
+exit if not siege
+!!BA:S?y4; !!FU&y4<1:E;
+
+!!VRy3:S0;
+!!BA:P?y1/?y2/?y3;  !!VRy3:Sv1000;
+!_!CA-1:P?y1/?y2/?y3;
+
+!_!IF:M^%Y1 %Y2 %Y3^;
+
+
+check if Town has Guardian structure
+!!SN:W^AmeUpg Guardian %Y1 %Y2 %Y3^/?y7;
+
+!_!FU&y7=0:E; exit if it is not built
+
+!!CAy1/y2/y3:B3/13 T?y77;
+!_!CA-1:B3/13;
+!!VRy7&1:S1; check if capitol is built
+
+!!VRy7&y77>8:S1; if Unique town give it for free
+
+!!SN:W^AmeUpg Guardian %Y1 %Y2 %Y3^/y7; if capitol is built give TG for free
+
+!!CAy1/y2/y3:T?y8; !_!CA-1:T?y8; check alignment
+
+!!FU55411&y7>0:P1/y8;
+
+!!if&y7>0:;
+!!BH0:N?y11;
+!!HEy11:O?y12;
+!!OW:Iy12/?y13;
+!!OW&y13=1:Ry12/6/d5000;
+!!en:;
+
+===============================================================================
+
+!#TM2:S1/999/1/255;
+!?TM2;
+!!OW:C?y1; check current player
+!!OW:Iy1/?y2; human/AI 0/1
+!_!FU&y2<1:E; exit if human
+!!UN:U98/-1/?y-1; count towns
+!!VRv1:S-1;
+!!DO55413/1/y-1/1:Py1; loop all towns
+
+!?FU55413;
+;x1 current player
+!!UN:U98/-1/-1/1; town in v1-v3
+!!CA1:O?y1; owner in y1
+!!OW:Iy1/?y9;  human/AI 0/1
+!_!FU&y9<1:E; exit if human
+!_!FU&x1<>y1:E; exit if not current player
+!!CA1:H0/?y3 H1/?y4;
+!!FU|y3>-1/y4>-1:E; exit if any hero in town or garrison
+!!SN:W^AmeUpg Town Empty^/1;
+!!DO55414/0/6/1:Pv1/v2/v3; loop garrison slots
+!!SN:W^AmeUpg Town Empty^/?y8;
+!_!CAv1/v2/v3&y8=1:M2/1/139/1; set to one peasant if garrison empty
+
+!?FU55414;
+!!CAx1/x2/x3:M2/x16/?y1/?y2;
+!_!CAx1/x2/x3&y1<0:M2/x16/139/1; set to one peasant if slot empty
+!!SN&y1>=0:W^AmeUpg Town Empty^/0;
+
+!?BA1;
+!!BA:S?y3; !!FU&y3<3:E; Exit if no castle siege
+!!SN:W^AmeUpg Guardian %V998 %V999 %V1000^/?y7; Check if Town has a Guardian
+!!FU&y7=0:E; exit if not
+
+!!SN:W^AmeUpg Town Empty^/1;
+!!DO55414/0/6/1:Pv998/v999/v1000; loop garrison slots
+!!SN:W^AmeUpg Town Empty^/?y8;
+!!CAv998/v999/v1000&y8=1:M2/1/139/1; set to one peasant if garrison empty
+
+
+================================================================================
+** Grail recruitment **
+================================================================================
+!?CM1; !!FU:E;
+; exit if not grail clicked or not mouse key is down
+!!CM:F?y99 I?y98 S?y97; !!FU|y99<>0/y98<>26/y97<>12:E;
+
+!!CA-1:U?y1; y1 - town ID
+!!SN:W^RecruitDlgType^/^grail^; mark next recruit dialog as ours
+
+!!RD:Oy1/-1/0/y1; source - current town, destination - current town harrison
+!_!RD:O-1/-1/0/y1;
+
+!?FU(OnOpenRecruitDlg); !!FU:E;
+!!SN:W^RecruitDlgType^/?z2 W^RecruitDlgType^/^^;
+!!VRz3:S^grail^;
+!!FU&z2<>z3:E; it's not our dialog
+!!CA-1:U?y1 T?y95; y1 - town id
+!!SN:W^town%Y1.numGrailMons^/?y2; y2 - number of monsters in new dwelling
+
+!!VRy94:Sy95 +243;
+!!VRy94&y95=10:S275;
+!!RD:C0/y94/y2/10000; Let it be 1 slot of monsters, custom source with ID 10000
+!!RD:M^RecruitDlgType^/^grail^; remember dialog type in dialog memory
+!_!SN:W^RecruitDlgType^/^grail^; remember dialog type in dialog memory
+
+
+!?FU(OnCloseRecruitDlg); !!FU:E;
+!!RD:M^RecruitDlgType^/?z2;
+!_!SN:W^RecruitDlgType^/?z2 W^RecruitDlgType^/^^;
+!!VRz3:S^grail^;
+!!FU&z2<>z3:E; it's not our dialog
+!!RD:C0/?t/?y1; y1 - number of creatures left
+!!CA-1:U?y2; y1 - town id
+!!SN:W^town%Y2.numGrailMons^/y1; save new number of creatures
+
+
+!?TM1;
+!!SN:W^GrailOnce^/?y9;
+!!FU&y9<>0:E;
+
+
+!!VRy2:S0; !!UN:U98/-1/?y3;
+[:LoopTowns]
+!_!CA0/y2:D-26/0/?y6/?y7;
+!_!CA0/y2&y6>=0:D-26/0/y6/1;
+
+!_!CA0/y2:B3/26;
+!!SN&1:W^town%Y2.numGrailMons^/d1;
+
+!!VRy2:+1;
+!!SN&y2<y3:G[LoopTowns];
+
+
+!!SN:W^GrailOnce^/1;
+
+
+!?TM1;
+!!VRy1:Sc %28;
+!!FU&y1<>1:E;
+!!SN:W^GrailMonthly^/?y9;
+!!VRy8:Sc; !!FU&y8=y9:E;
+!!VRy2:S0; !!UN:U98/-1/?y3;
+[:LoopTowns]
+!_!CA0/y2:D-26/0/?y6/?y7;
+!_!CA0/y2&y6>=0:D-26/0/y6/d3;
+
+!!CA0/y2:B3/26;
+!!SN&1:W^town%Y2.numGrailMons^/d3;
+
+!!VRy2:+1;
+!!SN&y2<y3:G[LoopTowns];
+
+!!VRy9:Sc;
+!!SN:W^GrailMonthly^/y9;
+
+
+!?MF1;     [before stack takes physical damage]
+!!MF:F?y1 N?y2; !!BMy2:T?y3;
+!!UN:C42149568/4/?y10;    Get Physical Damage type
+!!FU&y10<>4460149:E;      Only Death Stare    
+
+!!MF&y3>=243/y3<=251:E0;  Town Guardians are immune to death stare
+!!MF&y3=275:E0;           The Luggage     is immune to death stare

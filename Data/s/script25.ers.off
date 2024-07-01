@@ -1,0 +1,18 @@
+	79 wog - igrik.erm	0	1	-1	0	0	889	Autosave before battle	Automatic create save game before the battle.	AUTOSAVE BEFORE BATTLE.
+
+Option 889 by igrik (script 79-wog) 
+
+Automatic create save game before the battle.
+The save file is called "BattleSave!"
+	79 wog - igrik.erm	0	2	-1	0	0	890	All creatures without WoG abilities	Disable WoG abilities of creatures from experience.	ALL CREATURES WITHOUT WOG ABILITIES.
+
+Option 890 by igrik (script 79-wog) 
+
+The script disables all WoG abilities received by creatures of the experience
+(except: attack, defense, damage, speed, health).
+	79 wog - igrik.erm	2	3	-1	1	1	891	Disable free cost diplomacy	Disable free cost diplomacy (only for money)	DISABLE FREE COST DIPLOMACY.
+
+Option 891 by igrik (script 79-wog) 
+
+The script disables the free cost joining of neutral creatures.
+When the script is enabled, joining is possible only for money.

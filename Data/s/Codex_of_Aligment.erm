@@ -1,0 +1,30 @@
+ZVSE
+
+!?FU(codex_unlearn);
+x1 - hero number
+
+!!HEx1:B2/?y1; hero type
+!!VRy2:Sy1 :6; hero aligment
+
+!!if&y2=0:; good aligment
+  !!HEx1:S12/0; Dark Magic
+!!en;
+
+!!if&y2=1:; bad aligment
+  !!HEx1:S26/0; Exorcism
+  
+!!en;
+
+!!if|y1=8/y1=9:; Necropolis
+  !!HEx1:S9/0;  Life Magic
+  !!HEx1:S18/0; Monasticism
+!!en;
+
+!_!if|y1=0/y1=1:; Castle
+  !_!HEx1&x1<>13:S11/0; Scavenging
+!_!en;
+
+!?FU(OnEveryDay);
+!!re i/0/155:;
+  !!FU(codex_unlearn):Pi;
+!!en:;

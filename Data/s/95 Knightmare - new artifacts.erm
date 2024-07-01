@@ -1,0 +1,968 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+
+
+!?FU(OnBeforeBattleUniversal);
+!!SN:W^ART_BR0^/0;
+
+!?BR;
+!!BU:T?y3; !!FU&y3=1:E;
+
+!!FU&v997<>0:E;
+!!SN:W^ART_BR0^/?y1;
+!!VRy1:+1;
+!!SN:W^ART_BR0^/y1;
+
+!?GM0; !!SN:W^ArtsRefreshed^/0;
+!_!UN:C7546045/4/1000; UN:A support for Emerald
+!?PI;  !!SN:W^ArtsRefreshed^/0;
+!_!UN:C7546045/4/1000; UN:A support for Emerald
+
+
+!?PI; storing DD Data
+!!SS8:E0/?y10 E1/?y11 E2/?y12 E3/?y13;
+!!SN:W^Spell8 Effect0^/y10;
+!!SN:W^Spell8 Effect1^/y11;
+!!SN:W^Spell8 Effect2^/y12;
+!!SN:W^Spell8 Effect3^/y13;
+
+!?MG1; restoring DD Data
+!!SN:W^Spell8 Effect0^/?y10;
+!!SN:W^Spell8 Effect1^/?y11;
+!!SN:W^Spell8 Effect2^/?y12;
+!!SN:W^Spell8 Effect3^/?y13;
+!!SS8:E0/y10 E1/y11 E2/y12 E3/y13;
+
+!?MG0; Blitz Cloak (420) Routine
+!_!HE-1:N?y1;
+!!OW:A-1/?y1;
+!!FU&y1<0:E;
+!!HEy1:A2/420/?y3/?y4; !!FU&y4=0:E;
+!!SS8:E0/3 E1/6 E2/9 E3/13;
+
+!?BA0;
+!_!FU55481:P;
+!?HM-1;
+!_!FU55481:P;
+!?AE1;
+!_!FU55481:P;
+!?FU77004;
+!_!FU55481:P;
+!?FU77010;
+!_!FU55481:P;
+!?CM0;
+!_!FU55481:P;
+!?CM5;
+!_!FU55481:P;
+
+!?FU99001;
+!!FU55481:P;
+
+!#TM2:S1/999/1/255;
+!?TM2; every day
+!_!FU55481:P;
+!!DO55441/0/155/1:P; every hero
+
+!?FU55441; hero loop
+x16 - Hero ID
+!!HEx16:O?y1;
+!!OW:C?y2;
+!!FU&y1<>y2:E; exit if not  current player's hero
+
+//broach routine
+!!HEx16:A2/166/0/?y12;
+!!if&y12>0:;
+!!OW:Ry1/7/d3; +3 mithril
+!!OW:Ry1/0/d9; +9 wood
+!!OW:Ry1/2/d9; +9 ore
+!!OW:Ry1/6/d7500; +7500 gold
+!!en:;
+
+
+!!FU:E;
+// Books and Ethernal Gem routine
+!!VRy14:S1; !!VRy15:S0;
+!!HEx16:A2/156/0/?y12; !!VRy13:Sy12 *y14; !!VRy15:+y13; !!VRy14:*7;
+!!HEx16:A2/470/0/?y12; !!VRy13:Sy12 *y14; !!VRy15:+y13; !!VRy14:*7;
+!!HEx16:A2/502/0/?y12; !!VRy13:Sy12 *y14; !!VRy15:+y13; !!VRy14:*7;
+!!HEx16:A2/471/0/?y12; !!VRy13:Sy12 *y14; !!VRy15:+y13; !!VRy14:*7;
+!!HEx16:A2/483/0/?y12; !!VRy13:Sy12 *y14; !!VRy15:+y13; !!VRy14:*7;
+!!VRy15:*25; !!HEx16:Edy15;
+
+
+!?FU55440; 168 surcoat loop
+x1  - battle side
+x16 - BM id
+
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!VRy9: S0 -1 -x16; set y9 for battle experience ID
+
+!!BMx16:M30/99/3 M31/99/3 M32/99/3 M33/99/3; // protection of elements from all 4 spheres
+!!BMx16:M27/99/3 M28/99/3 M29/99/3 M36/99/3; //all shields plus magic mirror
+
+
+  !!EAy9:F0/?y11;  //deflect 50% chance of 50% damage
+  !!EAy9:By11/1/76/50/50/50/50/50/50/50/50/50/50/50/50;
+
+!?FU55417;   boots 169 loop
+x1  - battle side
+x16 - BM id
+
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!VRy9:S0 -1 -x16; set y9 for battle experience ID
+
+  
+  !!SN:L^amethyst2_4.dll^/?y73;
+  !!SN:Ay73/^ChangeCreatureTable^/?y75;
+
+  !!BMx16:E?y33;
+  !_!EAy9:F0/?y11;  //Rebirth
+  !_!EAy9:By11/1/102/114/1/1/1/1/1/1/1/1/1/1/1;
+  !_!SN&y33<99:Ey75/1/y9/^Self-resurrection=1.0^;
+  !_!SN&y33>98:Ey75/1/y9/^Self-resurrection=0.2^;
+
+  !_!EAy9:F0/?y11;  //Spells
+  !_!EAy9:By11/1/80/43/3/3/3/3/3/3/3/3/3/3/3;
+
+  !!SN:Ey75/1/y9/^MovesTwice=1^;
+
+!?FU55416;   ring 165 loop
+x1  - battle side
+x16 - BM id
+
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!VRy9:S0 -1 -x16; set y9 for battle experience ID
+      
+  !!SN:L^amethyst2_4.dll^/?y73;
+  !!SN:Ay73/^ChangeCreatureTable^/?y75;
+
+  !_!EAy9:F0/?y11;  //Strike and Return
+  !_!EAy9:By11/1/102/98/1/1/1/1/1/1/1/1/1/1/1;
+  !!SN:Ey75/1/y9/^StrikeAndReturn=1^;
+
+  !_!EAy9:F0/?y11;  //No Retaliation
+  !_!EAy9:By11/1/102/82/1/1/1/1/1/1/1/1/1/1/1;
+  !!BMx16:F?y77; !!VRy77:|65536; !!BMx16:Fy77;
+
+  !_!EAy9:F82/?y11;  //More Retaliations
+  !_!EAy9:By11/1/82/61/99/99/99/99/99/99/99/99/99/99/99;
+  !!SN:Ey75/1/y9/^Retaliations=99^;
+
+!_?BF;
+
+!?FU55459; //Pendant of Fanatical Courage
+x1  - battle side (owner of artifact)
+x16 - BM id
+
+** y1 is opponent side **
+!!VRy1&x1=0:S1;
+!!VRy1&x1=1:S0;
+
+!!BHy1:N?y2;
+!_!FU&y2<0:E;
+!!HEy2&y2>-1:R0/-3 R1/-3;
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>999:E;
+!!FU&y6<1:E;
+
+!!BMx16:I?y7; Check side
+!!if&y7=x1:; Same side
+!!BMx16:M49/99/3 M51/99/3; //Mirth and Fortune
+!!el:; Another side
+!!BMx16:M50/99/3 M52/99/3; //Sorrow and Misfortune
+!!en:; end
+
+
+!?FU55458; Dragon Soul Orb (126) loop
+x1  - battle side
+x16 - BM id
+
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!VRy9: S0 -1 -x16; set y9 for battle experience ID
+
+  !!BMx16:F?y77;
+
+  !!VRy77:|2;
+  !_!EAy9:F0/?y11;  //Fly
+  !_!EAy9:By11/1/102/70/1/1/1/1/1/1/1/1/1/1/1;
+
+  !!VRy77:|-2147483648;
+  !_!EAy9:F0/?y11;  //Dragon Nature
+  !_!EAy9:By11/1/102/71/1/1/1/1/1/1/1/1/1/1/1;
+
+  !!VRy77:|16384;
+  !_!EAy9:F0/?y11;  //Immune to Fire
+  !_!EAy9:By11/1/102/73/1/1/1/1/1/1/1/1/1/1/1;
+
+  !!BMx16:Fy77;
+
+  !_!EAy9:F0/?y11;  //Advanced Inferno After Attack
+  !_!EAy9:By11/1/75/22/100/100/100/100/100/100/100/100/100/100/100;
+
+  !!SN:L^amethyst2_4.dll^/?y73;
+  !!SN:Ay73/^ChangeCreatureTable^/?y75;
+
+  !!SN:Ey75/1/y9/^AfterMeleeSpell=22^;
+  !!SN:Ey75/1/y9/^AfterShootSpell=22^;
+
+!_?BF;
+
+!?BF;
+
+//boots 169 attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/169/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55417/0/41/1&y12>0:P0;
+!!en:;
+
+//boots 169 defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/169/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55417/0/41/1&y12>0:P1;
+!!en:;
+
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^ART_BR0^/?y1;
+!!FU&y1<>1:E;
+!!SN:W^ART_BR0^/2;
+
+!_!BA:P?y1/?y2/?y3;
+
+!_!IF:M^debug ART_BR0^;
+
+//Dracopedia (485) Attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/485/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55458/0/41/1&y12>0:P0;
+!!en:;
+
+//Dracopedia (485) defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/485/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55458/0/41/1&y12>0:P1;
+!!en:;
+
+
+//Pendant of Fanatical Courage (108) attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/108/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55459/0/41/1&y12>0:P0;
+      !_!FU55459&y12>0:P0;
+!!en:;
+
+//Pendant of Fanatical Courage (108) defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/108/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55459/0/41/1&y12>0:P1;
+      !_!FU55459&y12>0:P1;
+!!en:;
+
+
+
+//ring 165 attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/165/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55416/0/41/1&y12>0:P0;
+!!en:;
+
+//ring 165 defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/165/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55416/0/41/1&y12>0:P1;
+!!en:;
+
+
+
+
+
+
+
+//surcoat of lloth 168 attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/168/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55440/0/41/1&y12>0:P0;
+!!en:;
+
+//surcoat of lloth 168 defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/168/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55440/0/41/1&y12>0:P1;
+!!en:;
+
+
+
+
+
+//armor of witchcraft 167 attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/167/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55444/0/41/1&y12>0:P0;
+!!en:;
+
+//armor of witchcraft 167 defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/167/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55444/0/41/1&y12>0:P1;
+!!en:;
+
+
+
+// Sword of Deepest Knightmare 162 attacker
+!!BH0:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/162/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P0/y13;
+      !!DO55443/0/41/1&y12>0:P0;
+!!en:;
+
+// Sword of Deepest Knightmare 162 defender
+!!BH1:N?y11;
+!!if&y11>=0:;
+      !!HEy11:A2/162/?y98/?y12;
+      !!HEy11:B2/?y13;
+      !!VRy13: :2;
+      !_!FU55411&y12>0:P1/y13;
+      !!DO55443/0/41/1&y12>0:P1;
+!!en:;
+
+
+
+
+!?FU55444; 167 Armor of Witchcraft
+x1  - battle side
+x16 - BM id
+
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!VRy9:S0 -1 -x16; set y9 for battle experience ID
+
+!!BMx16:F?y12;
+!!VRy12:|524288; Attack All Enemies Around
+!!VRy12:|65536;  No Enemy Retaliation
+!!BMx16:Fy12;
+
+  !_!EAy9:F0/?y11;  //Fearless
+  !_!EAy9:By11/1/102/102/1/1/1/1/1/1/1/1/1/1/1;
+
+
+  !!SN:L^amethyst2_4.dll^/?y73;
+  !!SN:Ay73/^ChangeCreatureTable^/?y75;
+
+  !!SN:Ey75/1/y9/^Fearless=1^;
+
+!?FU55443; 162 Sword of Deepest Knightmare
+x1  - battle side
+x16 - BM id
+
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>500:E;
+!!FU&y6<1:E;
+
+// if another side leave
+!!BMx16:I?y7;
+!!FU&y7<>x1:E;
+
+!!VRy9: S0 -1 -x16; set y9 for battle experience ID
+
+
+  !!EAy9:F0/?y11;  //immune to Direct Damage spells
+  !!EAy9:By11/1/119/68/1/1/1/1/1/1/1/1/1/1/1;
+
+
+  !_!EAy9:F0/?y11;  //Spells
+  !_!EAy9:By11/1/80/43/13/13/13/13/13/13/13/13/13/13/13;
+
+  !!DO55446/0/41/1:P; //count monsters
+  !!SN&y7=0:W^KNIGHTMARE_MON_ATTACKER^/?y99;
+  !!SN&y7=1:W^KNIGHTMARE_MON_DEFENDER^/?y99;
+
+
+
+  !!BMx16:P?y22 F?y23; !!VRy24:Sy23 &8388608; //y24>0 if clone
+  !_!BMx16&y24=0:C65/y22/3/3/1;
+  !!BHx1:N?y25 M0; !!HEy25:I?y26;
+  !!BHx1&y24=0/y99<20:C65/y22/3/0;
+  !!HEy25:Iy26;
+
+
+!?AE1&v998=156; Equip Warlords Banner
+!!HE-1:A2/156/?y2/?y3;
+!!FU&y3<5:E;
+!!IF:M^You equipped 6 warlords banners
+ It condenses to one {Ancient Book} #470 Tier One^;
+
+!!HE-1:N?y5;
+!!SN:W^He%Y5 artifact condenser source^/156;
+!!SN:W^He%Y5 artifact condenser result^/470;
+
+
+!?AE1&v998=470; Equip
+!!HE-1:A2/470/?y2/?y3;
+!!FU&y3<5:E;
+!!IF:M^You equipped 6 {Ancient Books} #470 Tier One
+ It condenses to one {Ancient Book} #502 Tier Two^;
+
+!!HE-1:N?y5;
+!!SN:W^He%Y5 artifact condenser source^/470;
+!!SN:W^He%Y5 artifact condenser result^/502;
+
+!?AE1&v998=502; Equip
+!!HE-1:A2/502/?y2/?y3;
+!!FU&y3<5:E;
+!!IF:M^You equipped 6 {Ancient Books} #502 Tier Two
+ It condenses to one {Ancient Book} #471 Tier Three^;
+
+!!HE-1:N?y5;
+!!SN:W^He%Y5 artifact condenser source^/502;
+!!SN:W^He%Y5 artifact condenser result^/471;
+
+!?AE1&v998=471; Equip
+!!HE-1:A2/471/?y2/?y3;
+!!FU&y3<5:E;
+!!IF:M^You equipped 6 {Ancient Books} #471 Tier Three
+ It condenses to one {Ethernal Gem} #483 Tier Max^;
+
+!!HE-1:N?y5;
+!!SN:W^He%Y5 artifact condenser source^/471;
+!!SN:W^He%Y5 artifact condenser result^/483;
+
+
+
+
+!?AE1&v998=483; Equip Ethernal Gem
+!_!SN:W^Art156 Condensed^/?y1;
+!_!HE-1&y1>0:A3/156/1/1;
+!_!HE-1&y1>0:A1/483/12;
+!_!SN:W^Art156 Condensed^/0;
+
+
+!?HM-1;
+!!HE-1:N?y1;
+!!FU55482:Py1;
+!?FU77004;
+!!HE-1:N?y1;
+!!FU55482:Py1;
+!?CM2;
+!!HE-1:N?y1;
+!!FU55482:Py1;
+!!UN:R3/y1;
+!?CM3;
+!_!FU55483:P;
+
+!?FU55483;
+loop through hero number
+!!DO55482/0/155/1:P;
+
+!?FU55482; Artfact Condenser
+x1 - hero   number
+
+; check for Emerald
+!!UN:C7546045/4/?y1;
+!!FU&y1<999:E;
+
+!!FU|x1<0/x1>155:E;
+
+!!SN:W^He%X1 artifact condenser source^/?y2;
+!!SN:W^He%X1 artifact condenser result^/?y3;
+!!FU|y2<7/y2>999:E;
+!!FU|y3<7/y3>999:E;
+
+!!HEx1:A3/y2/6/1 A4/y3;
+
+!!SN:W^He%X1 artifact condenser source^/0;
+!!SN:W^He%X1 artifact condenser result^/0;
+
+!?PI;
+!!VRy1:S129;
+!!UN:Ay1/1/?y2;
+!!VRy3:Sy2 *2;
+!!UN:Ay1/1/y3;
+!!VRy1:+1;
+!!SN&y1<=140:G1;
+
+!!VRy1:S158;
+!!UN:Ay1/1/?y2;
+!!VRy3:Sy2 *2;
+!!UN:Ay1/1/y3;
+
+!?FU55481; setting up artifacts
+; function doubled for purporse
+
+; check for Emerald
+!_!UN:C7546045/4/?y1;
+!_!FU&y1<999:E;
+
+!_!FU:E; debug
+
+!!SN:W^ArtsRefreshed^/?y1;
+!_!FU&y1=1:E; already refreshed
+
+!_!UN:C7700594/4/1000; //combo fix ? 0x758072  bad
+!_!UN:C5096280/4/1000; //combo fix ? 0x4DC358  MoP said 160 not 1000
+!_!UN:C7434361/4/1000; //combo fix ? 0x717079 - BuildUpCombo
+
+!!UN:A171/1/4000 A172/1/4000 A173/1/4000 A174/1/4000;
+
+!_!UN:A18/141/175/174/173;
+Magic Wand(141) or Crimson shield of retribution (157)
+ is combined from art175 art174 art173 art172
+!_!UN:A174/2/6 A406/2/6 A414/2/1 A438/2/5;
+!_!UN:A18/174/406/414/438;
+
+!_!UN:A13/483/156/156/156/156/156/156;
+
+!!UN:A175/2/9 A176/2/9 A177/2/9 A178/2/9 A179/2/9 A180/2/9;
+SuperScrolls are of MISC type
+
+!!UN:A156/2/9 A156/3/4 A470/3/8 A470/2/9 A502/3/16 A502/2/9 A471/3/1 A471/2/9 A483/2/9 A483/3/1;
+Ethernal Gem is Condensed from 6x6x6x6 Warlords banners
+
+!!UN:A14/574/91/142/157 A574/2/9 A574/3/1;
+Enchanted Bow is combined from Golden Bow, Gold Tower Arrow, Shield of Retribution
+!!UN:A91/1/?y81 A142/1/?y82 A157/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A574/1/y99;
+
+!!UN:A155/2/7; Ring of Slava is wearable
+!!UN:A491/2/7; Ring of Knightmare is wearable
+!!UN:A491/3/1;
+!!UN:A16/491/126/141/155;
+Ring of Knightmare is combined from Orb of Inhibition, Magic Wand, Ring of Slava
+!!UN:A126/1/?y81 A141/1/?y82 A155/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A491/1/y99;
+
+!!UN:A17/420/72/90 A420/2/2 A420/3/1;
+The Blitz Cloak is combined from Angel Wings and Boots of Levitation
+Equestrian Gloves - nope
+pendant of negativity - nope
+!!UN:A72/1/?y81 A90/1/?y82; !!VRy99:Sy81 +y82 *2; !!UN:A420/1/y99;
+
+!!UN:A18/486/66/67/68 A486/2/2 A486/3/1;
+The Bard's Mandola is combined from Statesman Medal, Diplomat's ring, Ambassador sash
+!!UN:A66/1/?y81 A67/1/?y82 A68/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A486/1/y99;
+
+!!UN:A19/543/100/101/102/105/107 A543/2/9 A543/3/1;
+Eclipse shield (172) - free
+Scarab Pendant (543) is combined from pendats of
+Disspassion, second sight, holiness, free will, total recall
+!!UN:A100/1/?y81 A101/1/?y82 A102/1/?y83 A105/1/?y84 A107/1/?y85;
+!!VRy99:Sy81 +y82 +y83 +y84 +y85 *2; !!UN:A543/1/y99;
+
+!!UN:A20/415/7/13/19/25; !!UN:A415/2/2;
+The Garb of the Forest Lord (83) - free
+The Garb of the Forest Lord (415) is combined from Centaur Axe, Sield of Dwarven Lords, Helm of Albaster Unicorn, Breastplate of Pertified Wood
+!!UN:A7/1/?y81 A13/1/?y82 A19/1/?y83 A25/1/?y84; !!VRy99:Sy81 +y82 +y83 +y84 *2; !!UN:A415/1/y99;
+
+!!UN:A21/485/127/159/153; !!UN:A485/3/1; !!UN:A485/2/9; !!UN:A153/2/7; !_!UN:A126/3/1;
+Dragon Soul Orb (126) - free - It's no longer replacement for Orb of Inhibition
+Dracopedia (485) is combined from Vial of Dragon Blood, Dragonheart, Dragon Eye Ring
+!!UN:A127/1/?y81 A159/1/?y82 A153/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A485/1/y99;
+
+
+!!UN:A22/108/46/47/48/49/50/51; !!UN:A108/3/1;
+Pendant of Fanatical Courage (108) is combined from all +1 luck and +1 morale artifacts
+!!UN:A46/1/?y81 A47/1/?y82 A48/1/?y83 A49/1/?y84 A50/1/?y85 A51/1/?y86;
+!!VRy99:Sy81 +y82 +y83 +y84 +y85 +y86 *2; !!UN:A108/1/y99;
+
+!!UN:A23/164/57/58/59;
+Horned Ring (164) combo is combined from Garniture of Interference, Surcoat of Counterpoise, Boots of Polarity
+!!UN:A57/1/?y81 A58/1/?y82 A59/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A164/1/y99;
+
+!!UN:A24/161/52/53/63/64/65;
+Helmet of Vision (161) combo is combined from Speculum, Spyglass, Bird of Perception, Stoic Watchman, Emblem of Cognizance
+!!UN:A52/1/?y81 A53/1/?y82 A63/1/?y83 A64/1/?y84 A65/1/?y85; !!VRy99:Sy81 +y82 +y83 +y84 +y85 *2; !!UN:A161/1/y99;
+
+!!UN:A25/162/93/124/128; !!UN:A162/3/1;
+Sword of Deepest Knightmare (162) combo is combined from Orb of Vulnnerability and Spellbinder's Hat and Armageddon's Blade
+!!UN:A93/1/?y81 A124/1/?y82 A128/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A162/1/y99;
+
+!!UN:A26/167/9/15/21/27;
+Armor of Witchcraft (167) combo is combined from Greater Gnoll's Flail and Buckler of the Gnoll King and Helm of Chaos and Scales of the Greater Basilisk
+!!UN:A9/1/?y81 A15/1/?y82 A21/1/?y83 A27/1/?y84; !!VRy99:Sy81 +y82 +y83 +y84 *2; !!UN:A167/1/y99;
+
+!!UN:A27/168/79/80/81/82;
+Lloth Surcoat (168) is combined by using four element spheres
+!!UN:A79/1/?y81 A80/1/?y82 A81/1/?y83 A82/1/?y84; !!VRy99:Sy81 +y82 +y83 +y84 *2; !!UN:A168/1/y99;
+
+!!UN:A28/166/115/116/117/112/114;
+Broach of Wealth (166) combo is combined from all 3 sacks and all 2 carts
+!!UN:A115/1/?y81 A116/1/?y82 A117/1/?y83 A112/1/?y84 A114/1/?y85; !!VRy99:Sy81 +y82 +y83 +y84 +y85 *2; !!UN:A166/1/y99;
+
+!!UN:A29/169/69/97/98/99/70;
+Boots of Rincewind (169) combo is combined from Ring of the wayfayer, boots of speed, Cape of Velocity, Equestrian Gloves , Necklace of Swiftness
+!!UN:A69/1/?y81 A97/1/?y82 A98/1/?y83 A99/1/?y84 A70/1/?y85;
+!!VRy99:Sy81 +y82 +y83 +y84 +y85 *2; !!UN:A169/1/y99;
+
+
+!!UN:A30/165/84/85/125;
+Ring of Slavery (165) combo is combined from Spirit of Oppression, Hourglass of the Evil Hour and shackles of war
+!!UN:A84/1/?y81 A85/1/?y82 A125/1/?y83; !!VRy99:Sy81 +y82 +y83 *2; !!UN:A165/1/y99;
+
+!!UN:A31/170/86/87/88/89;
+Horn of Summoning is combined from all 4 spell tomes
+!!UN:A86/1/?y81 A87/1/?y82 A88/1/?y83 A89/1/?y84; !!VRy99:Sy81 +y82 +y83 +y84 *2; !!UN:A170/1/y99;
+
+
+!!UN:A32/181/171/172/173/174; !!UN:A181/2/6 A181/3/16;
+!!UN:A171/1/?y81 A172/1/?y82 A173/1/?y83 A174/1/?y84; !!VRy99:Sy81 +y82 +y83 +y84 *2; !!UN:A181/1/y99;
+
+!!UN:A182/2/3  A183/2/3 A184/2/3  A185/2/3 A186/2/3;
+!!UN:A182/3/16 A183/3/8 A184/3/16 A185/3/8 A186/3/16;
+
+!_!VRz180:S^Broach of Wealth^;
+!_!VRz181:S^{Broach of Wealth}
+
+Gives 3 mithril and 9 ore and 9 wood and 7500 gold daily.^;
+!_!UN:A166/9/z180; !_!UN:A166/10/z181;
+
+
+
+!_!VRz182:S^Surcoat of Lloth^;
+!_!VRz183:S^{Surcoat of Lloth}
+
+Gives each owned creature:
+>> all shield spells
+>> all protection from elements
+>> magic mirror
+>> 50% chance for 50% deflect^;
+!_!UN:A168/9/z182; !_!UN:A168/10/z183;
+
+
+
+!_!VRz184:S^Horn of Summoning^;
+!_!VRz185:S^{Horn of Summoning}
+
+Summons mighty Town Guardians to protect hero, even if not in siege^;
+!_!UN:A170/9/z184; !_!UN:A170/10/z185;
+
+!_!VRz398:S^{Boots of Rincewind (169)}
+
+Gives all your creatures chance to rebirth and gives 3 additional spells for caster creatures.^;
+!_!VRz187:S^{Ring of Slavery (165)}
+
+Gives all your creatures:
+>> Strike and Return
+>> No Retailation
+>> More Retailations^;
+!_!UN:A169/10/z398;
+!_!UN:A165/10/z187;
+
+
+
+!_!VRz188:S^Armor of Witchcraft^;
+!_!VRz399:S^{Armor of Witchcraft}
+
+Gives all your creatures:
+>> Attack All Around
+>> No Enemy Retaliation
+>> Fearless^;
+!_!UN:A167/9/z188; !_!UN:A167/10/z399;
+
+
+!_!VRz384:S^Sword of Deepest Knightmare^;
+!_!VRz385:S^{Sword of Deepest Knightmare}
+
+Gives all your creatures:
+>> Immune to Direct Damage spells
+>> 13 additional spells for caster creatures
+>> Clone (each creature once at beggining of battle)^;
+!_!UN:A162/9/z384; !_!UN:A162/10/z385;
+
+!_!VRz386:S^Helmet of Vision (161)^;
+!_!VRz387:S^{Helmet of Vision (161)}
+
+>> Gives additional 9 Scouting Radius
+>> Gives 22 Experience per step
+>> Doubles Scouting Encounter Chance^;
+!_!UN:A161/9/z386; !_!UN:A161/10/z387;
+
+!_!VRz388:S^Dracopedia^;
+!_!VRz389:S^{Dracopedia}
+
+Gives All Your Creatures:
+>> Fly
+>> Dragon Nature
+>> Immune to Fire
+>> Advanced Inferno After Attack^;
+!_!UN:A485/9/z388; !_!UN:A485/10/z389;
+
+!_!VRz394:S^Pendant of Fanatical Courage^;
+!_!VRz395:S^{Pendant of Fanatical Courage}
+
+>> Gives Max Morale And Luck
+>> Mind Spell Immunity
+>> Deepest Sorrow and Misfortune to your enemies
+>> Doubles Your Inspiration Bonus^;
+!_!UN:A108/9/z394; !_!UN:A108/10/z395;
+
+
+
+!_!VRz396:S^The Garb of the Forest Lord^;
+!_!VRz393:S^{The Garb of the Forest Lord}
+
+Gives 2 Sylvan Dragons, 0 Sylfaen Dragon each week
+Gives Something Else.^;
+!_!UN:A415/9/z396; !_!UN:A415/10/z393;
+
+!_!VRz407:S^{Horned Ring}
+Triples efficiency of exorcism.^;
+!_!UN:A164/10/z407;
+
+!_!VRz397:S^{Bard's Mandola}
+
+Reduces Monster Aggression by 5 Altogether.
+Gives Something Else.^;
+!_!UN:A486/10/z397;
+
+!_!SN:W^ArtsRefreshed^/1;
+
+**==============================================================================
+** Author orig.  : Jim Vogan
+** Name          : Buckler of Beelzebub
+** Name rus.     : Щит Вельзевула
+** Changes rus.  : [Algor] вынос опции в отдельный erm-файл для мода ERA
+**               : [Algor] вынос текстов в ert-файл
+**               : [Algor] перенумерация переменных (w95->w94)
+** Options       : 281
+** Dialogs       : -
+** Variables     : w94, z180-181
+** Tmp variables : -
+** Timers        : -
+** Functions     : FU10939
+** PO-values     : -
+
+// changed by majaczek
+// uses P281, FU10939, w95, z177-178, combo artifact #15, and artifact #163
+// gives Teleport and DD Spell. Teleport is for free.
+
+!?PI;
+!?FU99001;
+!_!UN:P281/?y1; check ERM Options flag
+!_!FU&y1=0:E;
+!!UN:A15/163/11/17/23/29; new combo #15 is formed of Sword of Hellfire (11), Shield of the Damned (17), Hellstorm Helmet (23), and Breastplate of Brimstone (29), and represented by shield #163
+!!UN:A11/1/?y81 A17/1/?y82 A23/1/?y83 A29/1/?y84; !!VRy99:Sy81 +y82 +y83 +y84 *2; !!UN:A163/1/y99;
+!!VRz177:S^Buckler of Beelzebub^;
+!!VRz178:S^{Buckler of Beelzebub}
+
+Held with the left hand, the Buckler of Beelzebub gives the wearer a devil's power to teleport and avoid retaliation, and increases all attributes by 2.^;
+!!UN:A163/9/177;
+!!UN:A163/10/178;
+!!DO10939/0/155/1&v2=1:P;
+
+!?FU99001; !!FU:E;
+!!SS8:C0/?y10 C1/?y11 C2/?y12 C3/?y13; **majaczek**
+!!SN:W^Beelzebub's Teleport C0^/y10;
+!!SN:W^Beelzebub's Teleport C1^/y11;
+!!SN:W^Beelzebub's Teleport C2^/y12;
+!!SN:W^Beelzebub's Teleport C3^/y13;
+
+** Function to reset variable w94 at start
+!?FU10939;
+!!SN:W^Buckler of Beelzebub once^/?y99;
+!!FU&y99>0:E; !!IF:Wx16; !!VRw95:S0;
+!!SN:W^Buckler of Beelzebub once^/1;
+
+!?AE1&v998=163; artifact #163 put on !!FU:E;
+!_!UN:P281/?y1; check ERM Options flag
+!_!FU&y1<1:E; disable this script if option disabled
+** increase primary skills by 2 if v998=163
+!!HE-1:Fd2/d2/d2/d2;
+!!HE-1:M63/?v1; check for spell known (1) or unknown (0)
+!!HE-1&v1=0:M63/1;  **majaczek**
+!_!IF:W-1;
+!_!VRw95:S1+v1;
+!!VRy95:S1+v1;
+!!HE-1:N?y99;
+!!SN:W^HE%Y99 ART163 SPELL63^/y95;
+
+!!HE-1:M8/?v1; check for spell known (1) or unknown (0)
+!!HE-1&v1=0:M8/1;  **majaczek**
+!!VRy95:S1+v1;
+!!HE-1:N?y99;
+!!SN:W^HE%Y99 ART420 SPELL8^/?y97;
+!!VRy95&y97=1:S1;
+!!SN:W^HE%Y99 ART163 SPELL8^/y95;
+
+
+!?AE0&v998=163; artifact #163 taken off !!FU:E;
+!_!UN:P281/?y1; check ERM Options flag
+!_!FU&y1<1:E; disable this script if option disabled
+** decrease primary skills by 2 if v998=163
+!!HE-1:Fd-2/d-2/d-2/d-2;
+
+!!HE-1:N?y99;
+!!SN:W^HE%Y99 ART163 SPELL63^/?y95;
+!_!IF:W-1;
+!_!HE-1&w95=1:M63/0;  **majaczek**
+!_!VRw95:S0;
+!!HE-1&y95=1:M63/0;  **majaczek**
+!!SN:W^HE%Y99 ART163 SPELL63^/0;
+
+!!SN:W^HE%Y99 ART163 SPELL8^/?y95;
+!!HE-1&y95=1:M8/0;  **majaczek**
+!!SN:W^HE%Y99 ART163 SPELL8^/0;
+
+!?BG0;
+!!FU:E;
+!!SN:W^Knightmare_Skills^/?y99; !!FU&y99>0:E;
+!!SN:W^Beelzebub's Teleport C0^/?y10;
+!!SN:W^Beelzebub's Teleport C1^/?y11;
+!!SN:W^Beelzebub's Teleport C2^/?y12;
+!!SN:W^Beelzebub's Teleport C3^/?y13;
+!!SS8:C0/y10 C1/y11 C2/y12 C3/y13; **majaczek**
+
+!?BG0;
+!_!UN:P281/?y1; check ERM Options flag
+!_!FU&y1<1:E; disable this script if option disabled
+!!BG:H?v1 N?v2;
+!!IF&v1<>-1:Wv1;
+!!BMv2&v1<>-1/w95>0:F?v3;
+!!VRv3&v1<>-1/w95>0:|65536;
+!!BMv2&v1<>-1/w95>0:Fv3;
+!_!FU:E;
+
+!!SN:W^Knightmare_Skills^/?y99; !!FU&y99>0:E;
+!!SS8&v1<>-1/w95>0:C0/0 C1/0 C2/0 C3/0; **majaczek**
+** end
+**==============================================================================
+
+
+!?AE1&v998=420; artifact #420 put on !!FU:E;
+!_!UN:P281/?y1; check ERM Options flag
+!_!FU&y1<1:E; disable this script if option disabled
+** increase primary skills by 2 if v998=420
+!!HE-1:Fd/d/d4/d4;
+!!HE-1:M5/?v1; check for spell known (1) or unknown (0)
+!!HE-1&v1=0:M5/1;  **majaczek**
+!!VRy95:S1+v1;
+!!HE-1:N?y99;
+!!SN:W^HE%Y99 ART420 SPELL5^/y95;
+
+!!HE-1:M8/?v1; check for spell known (1) or unknown (0)
+!!HE-1&v1=0:M8/1;  **majaczek**
+!!VRy95:S1+v1;
+!!HE-1:N?y99;
+!!SN:W^HE%Y99 ART163 SPELL8^/?y97;
+!!VRy95&y97=1:S1;
+!!SN:W^HE%Y99 ART420 SPELL8^/y95;
+
+
+!?AE0&v998=420; artifact #420 taken off !!FU:E;
+!_!UN:P281/?y1; check ERM Options flag
+!_!FU&y1<1:E; disable this script if option disabled
+** decrease primary skills by 2 if v998=420
+!!HE-1:Fd/d/d-4/d-4;
+
+!!HE-1:N?y99;
+!!SN:W^HE%Y99 ART420 SPELL5^/?y95;
+!!HE-1&y95=1:M5/0;  **majaczek**
+!!SN:W^HE%Y99 ART420 SPELL5^/0;
+
+!!SN:W^HE%Y99 ART163 SPELL8^/?y95;
+!!HE-1&y95=1:M8/0;  **majaczek**
+!!SN:W^HE%Y99 ART420 SPELL8^/0;

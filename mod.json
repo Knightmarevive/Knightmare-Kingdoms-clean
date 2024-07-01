@@ -1,0 +1,34 @@
+{
+	"caption": {
+		"en_US": "Knightmare Kingdoms",
+		"ru_RU": ""
+	},
+	"description": {
+		"full": {
+			"en_US": "Readme.txt",
+			"ru_RU": ""
+		},
+		"short": {
+			"en_US": "",
+			"ru_RU": ""
+		}
+	},
+	"author": "majaczek, fandor",
+	"homepage": "",
+	"icon": {
+		"file": "penrose_64.ico",
+		"index": 0
+	},
+	"mod_version": "2024.06.30",
+	"priority": 3,
+	"compatibility": {
+		"class": "default",
+		"entries": {
+			"WoG": true
+		}
+	},
+	"platform": "era",
+	"info_version": "1.0",
+	"plugins": {},
+	"category": "Platform"
+}

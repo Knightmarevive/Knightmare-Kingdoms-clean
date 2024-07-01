@@ -1,0 +1,1273 @@
+ZVSE
+ERMS_ScriptDate=7.1(January).2015
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+
+* Updated: September 12, 2004 by Hermann the Weird
+* Updated: Febrary 26, 2012 by rennyo
+* Further Updated: September 15, 2004 by Timothy to change local y variables
+* used in triggers to y- variables.
+
+*War Machine script 0.9 by Overlord
+*Reserved: TM41, v591, v2000-v2074, FU900-FU927, w81-83
+*Temporary: z1-z4
+*
+*ballista "base on ballista level" upgrades in towns
+*x(#)*damage, target loose speed, att/def bonuses, increases hit
+*
+*ammo cart "base on ammo cart level" upgrades in town
+*spell points every combat turn, def bonuses, increases hit
+*
+*first aid tent "base on first aid level" upgrades in town
+*additional healing with resurrection, increases hit
+*
+*catapult "base on herolevel and ballistics skill"
+*increases hit, with ballistics: shoot ability with 2,4 or 8 shoots
+*
+************************ before action combat screen ***************************
+
+!#UN:P54/?v591; [Check if script is enabled: v591=1 if yes]
+
+
+!?PI;
+!!VRy1:S303;
+
+!!EAy1:B0/1/65/43///////////;
+!!EAy1:B1/1/68/43///////////;
+!!EAy1:B2/1/77/43///////////;
+!!EAy1:B3/1/109/43///////////;
+!!EAy1:B4/1/72/43///////////;
+!!EAy1:B5/1/83/43///////////;
+
+!!VRy1:+1;
+!!SN&y1<=324:G1;
+
+
+!?GM0;
+!!VRy1:S303;
+
+!!EAy1:B0/1/65/43///////////;
+!!EAy1:B1/1/68/43///////////;
+!!EAy1:B2/1/77/43///////////;
+!!EAy1:B3/1/109/43///////////;
+!!EAy1:B4/1/72/43///////////;
+!!EAy1:B5/1/83/43///////////;
+
+!!VRy1:+1;
+!!SN&y1<=324:G1;
+
+!?BA0;
+!!FU:E;
+
+!?BR&v997=0;
+!!FU:E;
+
+!?BG&v591=1; get before action
+!!FU900:P;
+
+!?FU900&v591=1;
+!!BG:N?y1;
+!!FU|y1<0/y1>41:E; exit if no stack
+
+!!BG:E?y3;
+!!BG:D?y4 H?y5 Q?y6 A?y7;
+
+!!BMy1:T?y2; !!BMy1:N?y9; !!VRy99:Sy2;
+!!FU|y2<0/y9<1:E;
+!!BMy1:I?y8; !!BMy1:L?y10;
+
+!_!BMy1:F?y-1; y-1 - monster flags (132165 = catapult if not siege)
+*
+
+
+
+!!FU:E; disable temporary
+!!VRy2&y2=303:S147; !!VRy2&y2>305/y2<314:S147;
+!!VRy2&y2=314:S147; !!VRy2&y2>316/y2<324:S147;
+!_!BMy1&y2=147:U4/37 E99;
+*
+* first aid tent actions *
+!_!FU919&y2=173/v2056=1:P2/y7/y1; first aid other action
+!!FU919&y2=147/v2056=1:P2/y7/y1; first aid other action
+!!FU922&y2=147/v2056=0/y7=11:P0/y3;
+!!FU922&y2=147/v2056=0/y7=10:P0/y3;
+
+** majaczek **
+
+!?FU55476; random target
+x1 - side
+x2 - allow War machine
+x3 - allow only x3 fraction (-1 any)
+!!VRy10:S0 R41;
+!!BMy10:N?y99;
+!_!FU55476&y99<0:Px1/x2/x3; !!SN&y99<0:G0;
+!!BMy10:T?y11;
+!_!FU55476&y11<0:Px1/x2/x3; !!SN&y11<0:G0;
+!!BMy10:F?y12;
+!!VRy13:Sy12 &64;
+!_!FU55476&y13>0/x2<=0:Px1/x2/x3;     !!SN&y13>0/x2<=0:G0;
+!!BMy10:I?y14;
+!!FU55476&y14><x1:Px1/x2/x3;
+!!MA:Oy11/?y15;
+!_!FU55476&y15<>x3/x3>=0:Px1/x2/x3;   !!SN&y15<>x3/x3>=0:G0;
+
+!!SN:W^FU55476 - target^/y10;
+
+
+!?FU901&v591=1; catapult action * magog *
+
+!!FU:E; *majaczek* hack
+
+!?FU981&v1=55/v591=1; catapult
+
+!!FU:E; *majaczek* hack
+
+
+
+!?FU919&v591=1;
+* 1
+!_!BMx4&x1=0:T147;
+!!BMx4&x1=0:T?y99;
+!_!UN&x1=0:G1/173/0/0 G1/173/1/0;
+!_!UN&x1=0:G1/y99/0/0 G1/y99/1/0;
+!!VRv2056&x1=0:S0;
+!_!FU906&x1=0:P147/x2/x3/x4;
+!!FU906&x1=0:Py99/x2/x3/x4;
+* 2
+!_!BMv2057&x1=1:T147;
+!_!UN&x1=1:G1/173/0/0 G1/173/1/0;
+!!VRv2056&x1=1:S0;
+* 3
+!!FU&x1<2:E; exit if no x1
+!_!FU|x2<4/x2>8/x2=6/x2=7:E;       exit if action is not right
+!_!FU|x2<4/x2>10/x2=6/x2=7/x2=9:E; exit if action is not right
+!_!BMx3:T147;
+!!VRv2056:S0;
+
+!?FU903&v591=1;
+!!HEx2:S27/?y1; !!COx2:T?y2 D?y3;  !!BH0:N?y99;
+!_!FU&y1=0/y2<>1:E; exit if no first aid skill and no Hierophant
+!_!FU&y1=0/y3<>0:E; exit if no first aid skill and commander is dead
+!!VRy1:+1;
+
+
+!_!FU&v1=0:E; exit if no creature to resurrect
+!_!VRv2056:S1; there is a creature to resurrect
+
+!_!BMx3:T173; change to santa gremlin
+!_!BMx3:T?y99; !_!BMx3:Ty99;
+
+!!BG:N?y92 E?y95;
+!!BMy92:T?y93 N?y94;
+!!BMy95&y95>=0:T?y96 N?y97;
+---ToDo---
+!!FU55478:Py92/y93/y94/y95/y96/y97;
+
+!!VRv2057:Sx3;
+!_!BG:A0;
+
+!?FU904&v591=1;
+
+!?FU902&v591=1;
+
+!?FU920&v591=1;
+
+!!FU:E; disable temporary
+!!BG:H?y1;
+!!FU&y1<>x2:E; exit if different hero
+!!FU&x5=x6:E; exit if maximum creature founded
+!!CM:R0;
+!!VRx5:+1; add +1 creature
+!!BMx7:Lx3 Nx5; set hitpoints to 0
+!!BG:N?y1 Ex7 Dx8; get first aid tent
+!_!BMy1:T147;
+!_!UN:G1/173/0/0 G1/173/1/0;
+!!VRv2056:S0;
+!_!BG:A11; call resurrection
+
+!?FU925&v591=1; check catapults avaiabitity
+
+!!FU:E;  *majaczek* hack
+
+!?FU926&v591=1;
+!!BU:Ex2/?y1;
+!!FU&y1=-1:E;
+!!BMy1:I?y2;
+!!VRv2074&y2<>x1:S1;
+
+!_!VRv2074:S1; *majaczek* hack
+
+************************* after action combat screen ***************************
+
+!?BG0&v591=1; get before action
+
+*majaczek* custom tents
+!!BG:N?y1;   !!FU&y1<0:E; !!FU&y1>41:E;
+!!BMy1:T?y2; !!FU&y2<0:E; !!FU&y2>999:E;
+
+!_!IF:L^debug_2^;
+!!BG:A?y3;   !_!FU&y3>0/y3<9:E;
+!_!IF:L^debug_3^;
+!!BG:H?y4;   !!FU&y4<0:E;
+!_!IF:L^debug_4^;
+
+!!SN:W^HE%Y4 Has First Aid Tent^/?y5;
+!!BG:E?y6 D?y7;
+!_!FU&y6<0:E;
+
+!!BG:Q?y8;
+
+!!BMy6&y6>=0:T?y86; !!VRy96:S3; !!BMy6&y6>=0/y86>=0:I?y96;
+
+!!VRy99:S0; !!VRy99&y2=303:S1; !!VRy99&y2>=306/y2<=314:S1; !!VRy99&y2>=317/y2<=324:S1;
+!!if&y99=2:;
+  !!IF&y3>12:M^Tent Huge BeforeAction^;
+  !!IF&y3=12:M^Tent No BeforeAction^;
+  !!IF&y3=11:M^Tent Heal BeforeAction^;
+  !_!IF&y3=10:M^Tent Cast BeforeAction %Y6^;
+  !!IF&y3=9:M^Tent Catapult BeforeAction^;
+
+  !!IF&y3<0:M^Tent Minus BeforeAction^;
+  !!IF&y3=0:M^Tent Cancel BeforeAction^;
+  !!IF&y3=2:M^Tent Walk BeforeAction^;
+  !!IF&y3=6:M^Tent Walk an Attack BeforeAction^;
+  !_!IF&y3=7:M^Tent Shoot BeforeAction^;
+!!en:;
+!_!FU&y3>=0/y3<9:E;
+
+!!FU&y96=3:E;
+!_!BM&y99=1/y3=7:F1029;
+
+!!FU:E; // now suported by Amethyst
+
+!!if|y2=310/y2=321:;
+      !_!IF:L^Stronghold Tent^;
+
+      !!if&y96<>y8:;
+           !!BG:A7; !!FU:E;
+      !!en:;
+
+      cast animation
+      !!BMy6:V82;
+
+      !!BMy6:M49/127/3; Mirth
+      !!BMy6:M51/127/3; Fortune
+!!en:;
+
+!!if|y1=309/y1=320:;
+      !_!IF:L^Dungeon Tent^;
+
+      !!if&y96<>y8:;
+           !!BG:A7; !!FU:E;
+      !!en:;
+
+      cast animation
+      !!BMy6:V82;
+
+      add protection from 4 elements
+      !!BMy6:M30/127/3;
+      !!BMy6:M31/127/3;
+      !!BMy6:M32/127/3;
+      !!BMy6:M33/127/3;
+!!en:;
+
+!!if|y2=307/y2=318:;
+      !_!IF:L^Tower Tent^;
+
+      !!if&y96<>y8:;
+           !!BG:A7; !!FU:E;
+      !!en:;
+
+      cast animation
+      !_!BMy6:V82;
+
+      increase number of spells when applicable
+      !!MA:By86/?y66;
+      !!BMy6&y66>0:Ed1;
+
+      in another case:
+      !!if&y66<=0:;
+            !!BMy6:L0 R?y56;
+            !!BMy6&y56<3:R3;
+      !!en:;
+
+!!en:;
+
+
+!!if|y2=312/y2=323:;
+      !_!IF:L^Conflux Tent - Action %Y3 - Destination %Y7 - target %Y6^;
+
+      !!if&y96<>y8:;
+           !!BG:A7; !!FU:E;
+      !!en:;
+
+      !!VRy20:S66 R3;
+      !!VRy44:Sy5 :4;
+      !!FU55418&y44>0:Py20/100/-1/y44/-1; Summon Elemental
+!!en:;
+
+!!if|y2=306/y2=317:;
+      !_!IF:L^Inferno Tent^;
+
+      !!if&y96<>y8:;
+           !!BG:A7; !!FU:E;
+      !!en:;
+
+      cast animation
+      !!BMy6:V82;
+
+
+      !_!BMy6&y6>=0:V11;
+      !!VRy9:S0; !!VRy9&y2=317:S1;
+      !_!FU55476:Py9/0/3; !_!SN:W^FU55476 - target^/?y10; !_!BMy10:T?y11;
+      !_!FU55476|y11=177/y11=186/y11=297:Py9/0/3;
+
+      !_!SN:W^FU55476 - target^/?y10;
+      !!VRy10:Sy6;
+
+      !!BMy10:T?y11;
+      !!FU|y11=177/y11=186/y11=297:E;
+
+      !!FU:E;
+      todo: implement gating
+      !!BMy10:H?y33;
+      !!VRy44:Sy5 *15 :y33;
+      !!BMy10:Bdy44 Ndy44;
+      !!BMy10:V52;
+
+!!en:;
+
+
+!?BG1&v591=1; get after action
+!_!FU922&v2056=2:P1;
+
+*majaczek* custom tents
+!!BG:N?y1;   !!FU&y1<0:E; !!FU&y1>41:E;
+!!BMy1:T?y2; !!FU&y2<0:E; !!FU&y2>999:E;
+
+!_!IF:L^debug_2^;
+!!BG:A?y3;   !_!FU&y3>0/y3<9:E;
+!_!IF:L^debug_3^;
+!!BG:H?y4;   !!FU&y4<0:E;
+!_!IF:L^debug_4^;
+
+!!SN:W^HE%Y4 Has First Aid Tent^/?y5;
+!!BG:E?y6 D?y7;
+!_!FU&y6<0:E;
+
+!!BG:Q?y8;
+
+!!BMy6&y6>=0:T?y86; !!VRy96:S3; !!BMy6&y6>=0/y86>=0:I?y96;
+
+!!VRy99:S0; !!VRy99&y2=303:S1; !!VRy99&y2>=306/y2<=314:S1; !!VRy99&y2>=317/y2<=324:S1;
+!!if&y99=2:;
+  !!IF&y3>12:M^Tent Huge AfterAction^;
+  !!IF&y3=12:M^Tent No AfterAction^;
+  !!IF&y3=11:M^Tent Heal AfterAction^;
+  !!IF&y3=10:M^Tent Cast AfterAction^;
+  !!IF&y3=9:M^Tent Catapult AfterAction^;
+
+  !!IF&y3<0:M^Tent Minus AfterAction^;
+  !!IF&y3=0:M^Tent Cancel AfterAction^;
+  !!IF&y3=2:M^Tent Walk AfterAction^;
+  !!IF&y3=6:M^Tent Walk an Attack AfterAction^;
+!!en:;
+!_!FU&y3>=0/y3<9:E;
+
+!!FU&y96=3:E;
+!!BM&y99=1/y3=7:F1093;
+
+!!if|y2=312/y2=323:;
+      !_!IF:L^Conflux Tent - Action %Y3 - Destination %Y7 - target %Y6^;
+      !!VRy20:S66 R3;
+      !!VRy44:Sy5 :4;
+      !_!FU55418&y44>0:Py20/100/-1/y44/-1; Summon Elemental
+!!en:;
+
+
+!!if|y2=307/y2=318:;
+      !_!IF:L^Tower Tent^;
+!!en:;
+
+!!if|y2=310/y2=321:;
+      !_!IF:L^Stronghold Tent^;
+!!en:;
+
+!?FU922&v591=1;
+
+!!FU:E; disable temporary
+* 1
+!!VRv2056&x1=0:S2;
+!!VRv2057&x1=0:Sx2;
+!!BMv2057&x1=0:L?v2058; get before heal
+* 2
+!!FU&x1<1:E; exit
+!!VRv2056:S0;
+!!BMv2057:Lv2058 I?y2; restore old and get index.
+!!BHy2:N?y3; get hero
+!!HEy3:S27/?y11;
+!!VRy11:+1;
+!!IF:Wy3;
+!!VRy6:Sw82 +1;
+!_!SN:W^HE%Y3 Has First Aid Tent^/?y6;
+
+
+!!VRy7:Sy11 +y6 *20 +80; first aid + level * 20, +80
+* set healing points *
+!!VRy1&y11=0:S25; !!VRy1&y11=1:S50; !!VRy1&y11=2:S75; !!VRy1&y11=3:S100;
+!!VRy1:*y7 :100; get quantity to heal
+!!FU923:Pv2057/y1/y11;
+
+!?FU923&v591=1;
+!!BMx1:B?y1 N?y2 H?y3 L?y4 L?y5; get information
+!!VRy4:-x2;
+!!BMx1&y4>-1:Ly4; all or partial healing
+!!FU&y4>-1:E; stop if completed
+!!BMx1&y4<0:L0;
+!!FU&y1=y2:E; stop if maximum creature
+!!FU&x3=0:E; stop if no first aid skills
+!!VRx2:-y5;
+!!VRy2:+1;
+!!BMx1:Ny2 Ly3;
+!!FU923:Pv2057/x2; recuring
+
+************************* MOUSE CLICK combat screen ****************************
+
+!?CM4&v591=1;
+!!CM:D?v2048 F?v2049;
+
+!?FU905&v591=1;
+!!FU:E; //should be disabled
+
+
+
+
+!?FU906&v591=1; x1 = machine , x2 = hero
+
+!!FU:E; temporary disable
+!!IF:Wx2; set W var for hero
+
+
+!!VRy99:Sx1;
+!!VRx1&x1=303:S147; !!VRx1&x1>305/x1<314:S147;
+!!VRx1&x1=314:S147; !!VRx1&x1>316/x1<324:S147;
+
+
+!_!VRx1&x1=304:S145;
+
+!!VRy5:Sx1 -65;
+!!VRy5|x1=145/x1=304:S0 -1;
+
+!!SN:W^HE%X2 Has Ballista^/?y91; w81 majaczek
+!!SN:W^HE%X2 Has Ammo Cart^/?y92; w83
+!!SN:W^HE%X2 Has First Aid Tent^/?y93; w82
+!!VRy6:S1;
+!!VRy6&y91>0/y5=81:Sy91;
+!!VRy6&y92>0/y5=83:Sy92;
+!!VRy6&y93>0/y5=82:Sy93;
+
+!_!VRy6:S1;
+!_!VRy6&y5>=0:Swy5 +1; y6 = level of machine
+
+!_!VRx1&x1=145:S304;
+
+!!VRy12&x4<21:Sv2070;
+!!VRy12&x4>20:Sv2071;
+!!VRy13&x4<21:Sv2072;
+!!VRy13&x4>20:Sv2073;
+!!VRz1&x1=146:Sz154004;
+!!VRz1&x1=148:Sz154005;
+
+
+
+!!VRz1&x1=147:Sz154006;
+!!VRz1&x3>1:Sz154007;
+!!VRz1:Sz154008;
+
+!!VRz1&x1=304:Sz154009;
+!!VRz1&x1=304/x3>1:Sz154010;
+!!VRz1&x1=304/y12=1:Sz154011;
+!!VRz1&x1=304/y12=2:Sz154012;
+!!VRz1&x1=304/y12=3:Sz154013;
+!!VRz1&x1=304/x3>1:Sz154014;
+
+!!VRz1&x1=145:Sz154009;
+!!VRz1&x1=145/x3>1:Sz154010;
+!!VRz1&x1=145/y12=1:Sz154011;
+!!VRz1&x1=145/y12=2:Sz154012;
+!!VRz1&x1=145/y12=3:Sz154013;
+!!VRz1&x1=145/x3>1:Sz154014;
+
+!_!UN:G1/x1/1/1 G1/x1/0/1;
+!!UN:G1/y99/1/1 G1/y99/0/1;
+* hit points
+
+!!VRy9&x1=145/y12=0:S500;
+!!VRy9&x1=145/y12>0:Sy12 *50 *y12 +550;
+!!VRy10&x1=145:Sy13 *50 +y9 -50;
+
+!!VRy9&x1=304/y12=0:S500;
+!!VRy9&x1=304/y12>0:Sy12 *50 *y12 +550;
+!!VRy10&x1=304:Sy13 *50 +y9 -50;
+
+!!VRy10&x1=146:Sy6 *50 +200;
+!!VRy10&x1=147:Sy6 *25 + 125;
+!!VRy10&x1=148:Sy6 *10 +90;
+!!BMx4:Hy10 I?y11;
+!_!MA:Px1/y10;
+!!MA:Py99/y10;
+* calculate shots for catapult *
+!_!FU&v2052=98:E; exit if siege
+!!VRy12:S2068 +y11;
+!!VRy11:Svy12;
+
+!!MA|x1=145/x1=304:N304/y11;
+
+
+!_!VRx1&x1=145:S304;
+*********************** Pre-Post Combat and ammo cart **************************
+
+!?BA0&v591=1;
+!!BA:H0/?y-1; attacking hero #
+!!IP:Wy-1/81/83; sending w wars
+!!BA:H1/?y-1; defending hero #
+!!IP:Wy-1/81/83; sending w vars
+!!IP:V2000/2074; sending script vars
+
+!?BA52&v591=1;
+
+**[function  without bugs]
+
+
+
+
+!!VRv1:Sv998;   [updated by rennyo 26..02.2012]
+!!VRv2:Sv999;   [updated by rennyo 26..02.2012]
+!!VRv3:Sv1000;  [updated by rennyo 26..02.2012]
+
+!!OBv1/v2/v3:T?v2052;
+!!CAv1/v2/v3&v2052=98:U?v7; town number
+ [Count number of towns - store in y22]
+* fix by majaczek y22  instea of y-2
+!!UN&v2052=34:U98/-1/?y22;
+!!DO927/1/y22/1&v2052=34/y22>0:P;  check if attacked hero in any town
+
+**kill enabler code
+!_!FU915:P0/0;
+!_!FU915:P1/0;
+store enabler
+
+!!FU917:P;
+change stats
+
+**
+!?FU927&v591=1; check if attacked hero in this town
+!!UN:U98/-1/x16/4;
+!!FU&v1<>v4|v2<>v5/v3<>v6:E;
+ [process only if attacked hero visiting town]
+!!CAv1/v2/v3:U?v7 H0/?y11; store town number & check if hero in town harrison
+!!VRv2052&y11=-1:S98; it is a siege if only 1 hero in town
+*fixed by majaczek y-1 to y11
+
+**
+!?FU917&v591=1;
+!!CA0/v7&v2052=98:B3/7; check if town has fort
+!!CA0/v7&v2052=98/-1:B3/8; check if town has citadel
+!!CA0/v7&v2052=98/-1:B3/9; check if town has castle
+!!VRv2052&v2052=98/-1:S0; town without fort
+!_!MA&v2052<>98:X145/132165 M145/0 E145/200 N145/8; not town or no fort
+!_!MA&v2052=98:X145/132197 M145/0 E145/200 N145/8; town with fort
+
+!!MA:X304/132165 M304/0 E304/200 N304/8; battle catapult
+!!MA:X145/132197 M145/0 E145/200; town with fort and normal catapult
+
+!_!FU918&v2052<>98:P0 P1;
+!!FU918:P0 P1; should work even if siege
+
+
+!?FU918&v591=1;
+!!BA:Hx1/?y1;
+!!FU&y1<0:E;
+!!HEy1:S10/?y2;
+!!VRy3:S2068 +x1;
+
+!!VRvy3&y2=1:S2;
+!!VRvy3&y2=2:S4;
+!!VRvy3&y2=3:S8;
+
+!?BR&v591=1; set mana for ammo cart
+!!FU:E; disabled to be done with plugin
+!!DO907/0/41/1&v997>0:P1;
+
+!?BF&v591=1; set machines attributes
+!!FU924:P; check siege mode AGAIN, if AI don't GET IT!
+
+!_!FU909&v2052<>98:P0/119 P1/135; call if no siege battle
+!!FU909&v2052<>98:P0/119; call if no siege battle
+!!FU909:P1/135; call even if siege battle
+
+
+!?FU924&v591=1;
+
+!_!VRv2052:S0; better not :(
+!_!FU:E; *majaczek*
+
+!!BU:E119/?x1;
+!!VRv2052&x1>-1:S98; if catapult found its a siege mode, set v2052 = 98
+!_!MA&x1>-1:X145/132197 M145/0 E145/0;
+
+!?BA53&v591=1; after battle check & re-set enabler
+!!FU912:P1/0 P1/1;
+
+!_!FU915:P0/1;
+!_!FU915:P1/1;
+
+!!VRv2048:C0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0; v2048-v2063
+!!VRv2064:C0/0/0/0/0/0/0/0/0/0; v2064 - v2073
+
+!?FU907&v591=1;
+!!BMx16:T?y1 I?y2 N?y12; //y12 - majaczek fix for multiple ammo carts
+!!FU&y1<>148/y1<>330/y1<>331:E; exit
+!!BHy2:N?y3;
+!!IF:Wy3;
+!!SN:W^HE%Y3 Has Ammo Cart^/?y6;  majaczek
+!_!IF:L^y6 = %Y6, y12 = %Y12^;
+
+!!VRy6:*y12; multiply by number of carts
+!!HEy3:I?y7/1; get current spell points
+
+!!VRy6&y6>0::7 +1; rebalance mana gain
+
+!_!VRy8:S2066 +y2; get current side index
+!_!VRy9:Svy8 *10; get knowledge power * 10
+
+!!VRy9:S0;
+!!HEy3&y3>=0:Fd/d/d/?y9; 
+!!VRy9:*10;
+
+!!SN:W^more_SS_levels.era^/?y88; 
+!!HEy3:S24/?y13; //y13 majaczek fix for Inteligence
+
+!!if&y88=0:;
+!!VRy9&y13=1: *125 :100;  //+25%
+!!VRy9&y13=2: *150 :100;  //+50%
+!!VRy9&y13=3: *200 :100;  //+100%
+!!el:;
+  !!FU(SSL_get):P24/y13/d/?y19/d/d;
+  !_!IF:L^y19 = %Y19, y9 = %Y9^;
+  !!VRy19:+10000; !!VRy9:*y19 :10000;
+!!en:;
+
+!_!IF:L^max mana %Y9^; //debug line (off)
+
+!!FU&y7=>y9:E; exit if spell already enough
+!!VRy6:+y7; set additioanl spell
+!!VRy6&y6>y9:Sy9; set max if y6 > y9
+!!HEy3:Iy6/1;
+
+!?FU908&v591=1;
+!!BMx16:T?x6 I?x7;
+
+!!VRy99:Sx6;
+
+
+!?FU909&v591=1;
+* place real catapults *
+!!BA:Hx1/?y1;
+!!FU&y1<0:E; exit if no hero found
+!!HEy1:S10/?y11; get ballistics secondary skills
+!!HEy1:E?y21/?y22;   *majaczek*
+!!VRy23:Sy22 :7 +1; //one catapult per 7 levels *majaczek*
+!!FU912:P6/x2/x1/1;
+
+!_!BU&y11>0/v1=0:S145/1/x2/x1/-1/0;
+!_!BU&y11>0/v1=0:S145/y23/x2/x1/-1/0; *majaczek*
+!!BU&y11>0/v1=0:S304/y23/x2/x1/-1/0; *majaczek* place battle catapults
+!_!BU&y11>0/v1=0:S304/y23/x2/x1/-1/0; *majaczek* place normal catapults
+
+!?FU915&v591=1;
+!!BA:Hx1/?y1;
+!!FU&y1<0:E;
+
+
+!!FU55242:P88/y1;
+!!FU55242:P1/y1;
+!!FU55242:P3/y1;
+
+!!HEy1&x1=0/x2=0:A2/4/d/?v2060 A2/5/d/?v2061 A2/6/d/?v2062 Fd/d/d/?v2066 S10/?v2070 Ed/?v2072;
+!!HEy1&x1=1/x2=0:A2/4/d/?v2063 A2/5/d/?v2064 A2/6/d/?v2065 Fd/d/d/?v2067 S10/?v2071 Ed/?v2073;
+
+
+!!SN:W^MachinesRefreshed^/?y99;
+!!if&y99>0/x2=0/1000:;
+  !!if&x1=0:;
+    !!SN:W^HE%Y1 Has Ballista^/?v2060;
+    !!SN:W^HE%Y1 Has Ammo Cart^/?v2061;
+    !!SN:W^HE%Y1 Has First Aid Tent^/?v2062;
+  !!el:;
+    !!SN:W^HE%Y1 Has Ballista^/?v2063;
+    !!SN:W^HE%Y1 Has Ammo Cart^/?v2064;
+    !!SN:W^HE%Y1 Has First Aid Tent^/?v2065;
+  !!en:;
+!!en:;
+
+** kill enabler
+!_!FU912:P6/y1/4/2 P6/y1/5/3 P6/y1/6/4; call enabler
+
+
+!_!HEy1&v2=1/x2=0:A-4;
+!_!HEy1&v3=1/x2=0:A-5; * majaczek * disabled remover
+!_!HEy1&v4=1/x2=0:A-6;
+
+!!HEy1&v2=1/x1=0/x2=1/v2060>0:A1/4/13;
+!!HEy1&v3=1/x1=0/x2=1/v2061>0:A1/5/14;
+!!HEy1&v4=1/x1=0/x2=1/v2062>0:A1/6/15;
+!!HEy1&v2=1/x1=1/x2=1/v2063>0:A1/4/13;
+!!HEy1&v3=1/x1=1/x2=1/v2064>0:A1/5/14;
+!!HEy1&v4=1/x1=1/x2=1/v2065>0:A1/6/15;
+
+****************************** Adventure Map ***********************************
+
+!#TM41&v591=1:S1/999/1/255;
+
+!?TM41&v591=1; * reset towns *
+!!VRv2000:C0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0; v2000-v2015
+!!VRv2016:C0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0; v2016-v2031
+!!VRv2032:C0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0; v2032-v2047
+
+!?OB98&-1000/v591=1; town - ai check only
+!!HE-1:N?v2048;
+!!FU912:P1/v2048;
+
+!?OB106&v591=1; war machine factory, entrance!
+!!HE-1:N?v2048;
+!!UN:A4/10/0 A4/9/0 A5/10/0 A5/9/0 A6/10/0 A6/9/0; restore desc
+!!FU912:P2/v2048;
+
+!?CM1&v591=1; inside town
+!!FU:E;
+!_!CM:R1 F?v2048 I?v2049 A?v2051/?v2050;
+!_!FU910&v2048=0/v2050<375:Pv2051/v2050/0/0/v2049/0;
+
+!?CM2&v591=1; inside hero screen
+!!CM:H?v2048/?y-1 F?v2050 I?v2049 A?v2051/?v2052;
+!!FU911&v2049>14/v2049<19/v2052>28/v2052<165/v2051<653/v2051>562:Pv2049/0/v2048/1/v2050/v2051/v2052;
+!!FU914&v2049=19/v2050=512:Pv2048/0;
+
+!?CM3&v591=1; inside trade screen
+!!CM:H?v2049/?v2050 F?v2048 I?v2051;
+!!FU911&v2051>39/v2051<44:Pv2051/0/v2049/v2048/1;
+!!FU911&v2051>58/v2051<63:Pv2051/0/v2050/v2048/1;
+!!FU914&v2051=44:Pv2049/1;
+!!FU914&v2051=63:Pv2050/1;
+
+!?FU910&v591=1;
+
+
+!?FU911&v591=1;
+!_!FU:E; 2020-04-10
+
+!!VRx1&x1>58:-44; trade right hero fix
+!!VRx1&x1>39:-25; trade left hero fix
+!!VRx1&x1=15:S146;
+!!VRx1&x1=16:S148;
+!!VRx1&x1=17:S147;
+!!VRx1&x1=18:S145;
+!!VRx2&x1=145:S3; !!VRx2&x1=146:S4;
+!!VRx2&x1=147:S6; !!VRx2&x1=148:S5;
+!!HEx3:A2/x2/d/?y1 S10/?y12 B0/?z7 R2/?y19;
+!!VRy1&x5=0/x6<609/x1<>146:S0; no ballista x-
+!!VRy1&x5=0/x1=145/x7<121:S0; catapult y-
+!!VRy1&x5=0/x1=146/x6>606:S0; ballista x+
+!!VRy1&x5=0/x1=146/x7>72:S0; ballista y+
+!!VRy1&x5=0/x1=148/x7>72:S0; ammo cart y+
+!!VRy1&x5=0/x1=147/x7>118:S0; first aid y+
+!!VRy1&x5=0/x1=147/x7<75:S0; first aid y-
+!!FU&y1=0:E; exit if no found
+
+!_!FU55242:P1/x3;
+!_!CM:R0;
+
+!!IF:Wx3; set W var for hero
+!!FU55242:P1/x3; *majaczek*
+!!VRy5:Sx1 -65;
+!_!VRy6:Swy5 +1;
+
+!!SN&y5=81:W^HE%X3 Has Ballista^/?y6; w81
+!!SN&y5=83:W^HE%X3 Has Ammo Cart^/?y6; w83
+!!SN&y5=82:W^HE%X3 Has First Aid Tent^/?y6; w82
+
+!!FU913&x5>0:Px1/x2/x3/y6; get stats
+*
+!!VRz1&x2=3/y12=0:Sz154021;
+!!VRz1&x2=3/y12=1:Sz154022;
+!!VRz1&x2=3/y12=2:Sz154023;
+!!VRz1&x2=3/y12=3:Sz154024;
+
+
+!!VRy94:S925 +y6;
+!!VRy95:S850 +y6;
+!!VRy96:S775 +y6;
+
+
+!!VRz1|x2=4/x2=y94:Sz154025;
+!!VRz1|x2=5/x2=y95:Sz154026;
+!!VRz1|x2=6/x2=y96:Sz154027;
+
+!!VRz6:S^^;
+!_!UN:Ax2/9/6;
+!_!UN:Ax2/9/0;
+!!VRz2&x2=3:Sz154028;
+!!VRz2|x2=4/x2=y94:Sz154029;
+!!VRz2|x2=5/x2=y95:Sz154030;
+!!VRz2|x2=6/x2=y96:Sz154031;
+
+!!VRz2&x4=0:Sz154032;
+!!IF&x5>0:Q1/8/x2/4^%Z1
+
+%Z2^;
+!_!UN:Ax2/10/0;
+!_!UN:Ax2/10/0;
+!!VRk:S0; !!VRk&x2>=4/x2<=6:S1; !!VRk|x2=y94/x2=y95/x2=y96:S1;
+!_!UN&k>0:Ax2/9/1 Ax2/10/2;
+
+!!FU912&x5=0:P6/x3/x2/1;
+!!VRz4&x5=0/v1=0:Sz154033;
+!!VRz4&x5=0/v1=1:Sz154034;
+!!VRz5&x5=0/v1=0:Sz154035;
+!!VRz5&x5=0/v1=1:Sz154036;
+!_!UN:Ax2/10/0;
+!!VRz8&y19=0:Sz154037;
+!!VRz8&y19=1:Sz154038;
+!_!IF&x5=0:Q1/8/x2/2/z154039;
+
+!!FU912&x5=0/1:P7/x3/x2/v1;
+!!FU&x5<>0:E; exit if not x5
+
+!_!FU:E; *majaczek* never disable
+
+!!FU&-1:E; exit if choosed no
+!!VRz2&x2=3:Sz154040;
+!!VRz2&x2=4:Sz154041;
+!!VRz2&x2=5:Sz154042;
+!!VRz2&x2=6:Sz154043;
+!!VRz4&x5=0/v1=1:Sz154044;
+!!VRz4&x5=0/v1=0:Sz154045;
+!!IF:Q1/8/x2/1/z154046;
+
+!?FU916&v591=1;
+
+********************************* Functions ************************************
+
+!?GM0; !!SN:W^MachinesRefreshed^/0;
+!_!UN:C7546045/4/1000; UN:A support for Emerald
+!?PI;  !!SN:W^MachinesRefreshed^/0;
+!_!UN:C7546045/4/1000; UN:A support for Emerald
+
+
+
+!?FU55481; setting up machines
+; function doubled for purporse
+
+!!SN:W^MachinesRefreshed^/?y3;
+!!FU&y3>0:E;
+
+!_!FU:E; disabling for debug
+
+!!FU55240:P;
+
+!_!SN:W^MachinesRefreshed^/1;
+
+!?FU77004; heroes screen open
+!!FU55240:P;
+!!FU:E;
+
+
+!?FU77005; heroes window close
+!!HE-1:N?y77;
+!_!FU55240:P;
+
+!?AE0; Remove Artifact
+!!FU:E;
+!!VRy1:S45 *3;
+!!VRy2:S1000 -y1;
+!!FU&v998>6/v998<y2:E;
+!!HE-1:N?y77;
+!!FU55240:P;
+!!FU55242:P2/y77;
+
+!?AE1; wear War Machine
+!!FU:E;
+!!FU55240:P;
+
+!!HE-1:N?y77;
+!!FU55242:P3/y77;
+
+!!HE-1:N?y77;
+!_!FU55242:P1/y77;
+
+!?CM2;
+!!FU:E;
+
+!?FU55240&1000; //init new machines
+* 1000 - only human
+
+; check for Emerald
+!!UN:C7546045/4/?y1;
+!!FU&y1<999:E;
+
+!_!VRz355:Sz154004;
+!_!VRz359:Sz154005;
+!_!VRz367:Sz154006;
+
+!!DO55477/775/999/1:P;
+!_!DO55241/1/74/1:P666/1;
+!_!DO55241/1/74/1:P666/2;
+!_!DO55241/1/74/1:P666/3;
+
+
+!_!FU55242:P1/x1;
+
+!!SN:W^MachinesRefreshed^/1;
+
+
+!?FU55241; *majaczek* new function
+!!FU:E; temporary disable
+
+!!FU&x16>74:E; War Machine level
+!!if&x1<666:;
+  !!FU|x1<0/x1>155:E; Hero
+!!en:;
+!_!FU|x2<1/x2>3:E;    War Machine type
+
+!!FU&x2<1:E;
+!!if&x2<303:;
+!!FU&x2>3:E;    War Machine type
+!!en:;
+!!if&x2<325:;
+!!FU&x2>302:E;    War Machine type
+!!en:;
+
+; check for Emerald
+!!UN:C7546045/4/?y1;
+!!FU&y1<999:E;
+
+!!VRy9:S75 *x2; !!VRy8:S1000 -y9 +x16;
+
+!!if&x1=666:;
+  !!FU&x16<=0:E;
+
+  !_!DO55477/1/3/1:Px1/x2/x16;
+  !_!DO55477/303/324/1:Px1/x2/x16;
+  !_!DO55477/775/999/1:Px1/x2/x16;
+  !!FU:E;
+!!en:;
+
+
+!!if&x1>151:;
+  !!VRx2&x2=303:S3; Tent
+  !!VRx2&x2>305/x2<314:S3; Tent
+  !!VRx2&x2>316/x2<325:S3; Tent
+
+  !_!VRx2|x2=304/x2=315:S145; Catapult
+  !!VRx2|x2=305/x2=316:S1; Cannon (Balista)
+!!en:;
+  !!FU|x2=304/x2=315:E;
+
+
+!!VRy9:S75 *x2; !!VRy8:S1000 -y9 +x16;
+
+
+!_!SN&x2=1/x16=0:W^HE%X1 Has Ballista^/0;
+!_!SN&x2=2/x16=0:W^HE%X1 Has Ammo Cart^/0;
+!_!SN&x2=3/x16=0:W^HE%X1 Has First Aid Tent^/0;
+
+!!FU&x16=0:E;
+
+!_!FU|y8=925/y8=850/y8=775:E;
+
+!_!IF:M^War Machine %X2 level %X16^;
+
+!_!IF:M^Do we Have %Y8 ???^;
+
+!_!IF:M^a %Y8 %X16^;
+!!HEx1:A2/y8/?y21/?y22;
+!_!IF:M^b %Y22 %X16^;
+
+!!FU&y22=0:E;
+
+!_!IF:M^War Machine %X2 level %X16^;
+
+!!VRx16:S1000;
+
+
+
+!?FU55242&1000; *majaczek* new function
+* x1 - action
+* x2 - hero
+* -1000 - AI turn
+*  1000 - Player turn
+!!FU|x2<0/x2>155:E;
+
+!?FU912&v591=1;
+* Ai get's upgrades - x1 = 1 *
+!!IF&x1>0/x1<4:Wx2;
+!_!HEx2&x1>0/x1<4:A2/4/d/?y1 A2/5/d/?y2 A2/6/d/?y3 Ed/?y4/1;
+* y1-Ballista,y2=Ammo Cart,y3=Aid Tent,y4=hero level
+!!if&x1>0/x1<4/1000:;
+*** 1000 means player not AI, I am almost sure to place it above
+  !!HEx2:Ed/?y4/1;
+
+  !!FU55242:P3/x2;
+
+  !!SN:W^MachinesRefreshed^/?y99;
+  !!if&y99>0:;
+
+    !_!DO55241/0/75/1:Px2/1;
+    !_!DO55241/0/75/1:Px2/2;
+    !_!DO55241/0/75/1:Px2/3;
+    !!FU55242:P99/x2;
+
+    !!SN:W^HE%X2 Has Ballista^/?y1;
+    !!SN:W^HE%X2 Has Ammo Cart^/?y2;
+    !!SN:W^HE%X2 Has First Aid Tent^/?y3;
+  !!el:;
+    !!HEx2:A2/4/d/?y1 A2/5/d/?y2 A2/6/d/?y3;
+  !!en:;
+
+!_!VRw81&x1=1/y1>0/w81<y4/y4<74:+1; add 1 level ballista
+!_!VRw82&x1=1/y3>0/w82<y4/y4<74:+1; add 1 level first aid
+!_!VRw83&x1=1/y2>0/w83<y4/y4<74:+1; add 1 level ammo cart
+!_!SN&x1=2/y1>0:W^HE%X2 Has Ballista^/d1; w81 majaczek
+!_!SN&x1=2/y2>0:W^HE%X2 Has Ammo Cart^/d1; w83
+!_!SN&x1=2/y3>0:W^HE%X2 Has First Aid Tent^/d1; w82
+
+
+!_!FU55242&x1=1:P1/x2; *majaczek*
+
+* Erase Quantity - x2 = 2 *
+!_!VRw81&x1=2/y1=0:S0; zero if no ballista
+!_!VRw83&x1=2/y2=0:S0; zero if no ammo
+!_!VRw82&x1=2/y3=0:S0; zero if no tent
+!_!SN&x1=2/y1=0:W^HE%X2 Has Ballista^/0; w81 majaczek
+!_!SN&x1=2/y2=0:W^HE%X2 Has Ammo Cart^/0; w83
+!_!SN&x1=2/y3=0:W^HE%X2 Has First Aid Tent^/0; w82
+
+
+
+!_!FU55242&x1=2:P2/x2; *majaczek*
+
+!!en:;
+
+* Reset w81-w83 every hero *
+!!if&x1=3:;
+!!IF&x1=3:Wx16;
+!_!VRw81&x1=3:S0;
+!_!VRw82&x1=3:S0;
+!_!VRw83&x1=3:S0;
+!_!SN:W^HE%X16 Has Ballista^/0; w81 majaczek
+!_!SN:W^HE%X16 Has Ammo Cart^/0; w83
+!_!SN:W^HE%X16 Has First Aid Tent^/0; w82
+
+  !!FU55242:P3/x16;
+!!en:;
+
+* get quantity of spells *
+!!HEx2&x1=4:Mx16/?y1;
+!!VRvx3&x1=4/y1=1:+1;
+
+* get spells
+!!HEx2&x1=5:Mx16/?y1;
+!!VRvx3&x1=5/y1=1:Sx16;
+!!VRx3&x1=5/y1=1:+1;
+
+
+!!FU:E; Kill enabler code
+
+!#DO912/0/155/1&v591=1:P3;
+************************** Get Z-var for warmachines ***************************
+
+!?FU913&v591=1;
+!!FU:E; temporary disable
+!!HEx3:S27/?y10 S20/?y11 S10/?y12 Ed/?y13/1;
+!!VRy10:+1; !!VRy11:+1; !!VRy12:+1; !!VRy13:+1;
+* catapult
+!!VRy9&x2=3/y12=0:S500;
+!!VRy9&x2=3/y12>0:Sy12 *50 *y12 +550;
+!!VRy8&x2=3:Sy13 *50 +y9 -50;
+!!VRy10&x2=3/y12=1:S2;
+!!VRy10&x2=3/y12=2:S4;
+!!VRy10&x2=3/y12=3:S8;
+!!VRy10&x2=3/y12=3:S12;
+!!VRz3&x2=3/y12=0:S^^;
+!!VRz3&x2=3/y12>0:Sz154047;
+!!VRz5&x2=3:Sz154048;
+* first aid tent
+!!VRy99&x2=6:S6;
+!!VRy99&x2>775/x2<850:S6;
+
+!!VRy8&y99=6:Sx4 *25 +125;
+!!VRy7&y99=6:Sy10 +x4 *20 +80; first aid + level * 20, +80
+!!VRz6&y99=6/y10=0:S^^;
+!!VRz6&y99=6/y10>0:Sz154049;
+!!VRz5&y99=6:Sz154050;
+* ammo cart
+!!VRy99&x2=5:S5;
+!!VRy99&x2>850/x2<925:S5;
+
+!!VRy8&y99=5:Sx4 *10 +90;
+!!VRz4&y99=5/x4=1:S^^;
+!!VRz4&y99=5/x4>1:Sz154051;
+!!VRz5&y99=5:Sz154052;
+* ballista
+!!VRy99&x2=4:S4;
+!!VRy99&x2>925/x2<1000:S4;
+
+!!VRy8&y99=4:Sx4 *50 +200;
+!!VRy7&y99=4:Sy11 +x4 *20 +80; artillery + level * 20, +80
+!!VRz6&y99=4/y11=0:S^^;
+!!VRz6&y99=4/y11>0:Sz154053;
+!!VRz5&y99=4:Sz154054;
+
+******************************** Spell Book ************************************
+
+!?FU914&v591=1;
+!!HEx1:A2/1000/d/?y1 B0/?z3;
+!!FU&y1=0:E;
+!!CM:R0;
+!!VRv1:S0;
+!!DO912/0/69/1:P4/x1/1;
+!!VRz2&v1=0:Sz154055;
+!!VRz2&v1>3:Sz154056;
+!!VRz2&v1=70:Sz154057;
+!!UN:A0/9/2;
+!!VRz1&x2=0:Sz154058;
+!!VRz1&x2=1:Sz154059;
+!!IF&v1=0|v1>3:Q1/8/0/4^%Z1^;
+!!DO912/0/69/1&v1>0/v1<4:P5/x1/2;
+!!VRz2:S^^;
+!!VRz2&v1>1:Sz154060;
+!!VRz1:Sz154061;
+!!IF&v1=1:Q1/9/v2/4^%Z1^;
+!!IF&v1=2:Q1/9/v2/9/v3/4^%Z1^;
+!!IF&v1=3:Q1/9/v2/9/v3/9/v4/4^%Z1^;
+!!UN:A0/9/0 A0/9/10;
+
+********************************************************************************
+
+!?FU55479;
+!!BMx16:T?y1; !!VRy2:S0 -1;
+!!VRy16:S0 -1 -x16;
+
+!!SS99:F17 S0; reset spell 99
+!_!BMx16|y1=318/y1=307:U4/99 F1093; tower tent
+!_!BMx16|y1=303/y1=314:U4/39 F1093; necro tent
+!_!BMx16|y1=306/y1=317:U4/99 F1093; inferno tent
+!_!BMx16|y1=312/y1=323:U4/99 F1093; conflux tent
+!_!BMx16|y1=311/y1=322:U4/65 F1093; Fortress tent
+!_!BMx16|y1=309/y1=320:U4/37 F1093; dungeon tent
+
+!_!BMx16|y1=310/y1=321:U4/36 F1093; Stronghold tent
+
+!_!BMx16|y1=308/y1=319:U4/38; Rampart tent
+!_!BMx16|y1=313/y1=324:U4/38; Castle tent
+!_!BMx16|y1=308/y1=319:F1093; Rampart tent
+!_!BMx16|y1=313/y1=324:F1093; Castle tent
+
+** all new machines on round 0
+!!EAy16&v997=0/y1>=303/y1<=324:F0/?y17 By17/1/102/115/1/1/1/1/1/1/1/1/1/1/1;
+
+!!FU:E;
+!!VRy2&y1=303:S147; !!VRy2&y1>305/y1<314:S147;
+!!VRy2&y1=314:S147; !!VRy2&y1>316/y1<324:S147;
+
+!!if&y2>=0:;
+  !!BMx16:Ty2;
+  !!UN:R6/100;
+  !!BMx16:Ty1;
+!!en:;
+
+!?BR;
+!!DO55479/0/41/1:P;
+
+!?FU55478;
+x1 - current stack
+x2 - machine MonsterID
+x3 - machine count
+x4 - destination stack
+x5 - destination MonsterID
+x6 - destination count
+
+
+!?FU55477;
+
+
+  !_!VRy9:S75 *x2;
+  !_!VRy8:S1000 -y9 +x3;
+
+  !!VRy1:S0 -1;
+  !!VRy98:S0 -1;
+
+  !!if&x16>=925/x16<1000:; //ballista
+    !_!UN&x16>=925/x16<1000:Ax16/10/z355 Ax16/9/z355;
+    !!VRy1:Sx16 -925; !!VRy99:S10; !!VRy98:S146;
+  !!en:;
+
+  !!if&x16>=850/x16<925:; //ammo cart
+    !_!UN&x16>=850/x16<925:Ax16/10/z359 Ax16/9/z359;
+    !!VRy1:Sx16 -850; !!VRy99:S11; !!VRy98:S148;
+  !!en:;
+
+  !!if&x16>=775/x16<850:; //tent
+    !_!UN&x16>=775/x16<850:Ax16/10/z367 Ax16/9/z367;
+    !!VRy1:Sx16 -775; !!VRy99:S12; !!VRy98:S147;
+  !!en:;
+
+  !_!UN&x16=1/y8>6/x16<775:Ay8/10/z355 Ay8/9/z355;
+  !_!UN&x16=2/y8>6/x16<775:Ay8/10/z359 Ay8/9/z359;
+  !_!UN&x16=3/y8>6/x16<775:Ay8/10/z367 Ay8/9/z367;
+
+  !_!UN:Ay8/3/32; type - war machine
+  !!UN&x16>=775:Ax16/3/32;
+
+  !_!VRy99:S9 +x2; calculate slot
+  !_!UN:Ay8/2/y99; set slot
+
+  !!UN&x16>=775:Ax16/2/y99; set slot
+
+  !_!FU&x3>=74:E;
+
+  !_!VRy98:S146 +x2; calculate creature
+
+  !_!VRy98:S0 -1;
+
+
+
+  !!FU&y98<0:E;
+
+  !!MA:Cy98/6/?y7; y7 = gold cost
+  !_!SN:W^War Machine %X2 level 1 Cost^/y7;
+  !_!SN&x16>1:W^War Machine %X2 level %X3 Cost^/?y6;
+  !_!VRy5:Sx16 +1; !!VRy5:Sy1 +1; !!VRy9:Sy7; !!VRy10:Sy5 *y5 -1;
+  !!VRy7:*y10 :10 +y9; gold cost is machine + level * level * machine / 10
+  !!VRy7|x16=775/x16=850/x16=925:S0;
+  !_!VRy66:Sy6 +y7;
+  !_!SN&y5>1:W^War Machine %X2 level %Y5 Cost^/y66;
+  !_!UN:Ay8/1/y66;
+  !!UN&x16>=775:Ax16/1/y7;
+
+
+  !_!IF&x16=70:M^War Machine %X2 level %Y5 Cost %Y66^;
+
+!?PI;
+!!DO55477/775/999/1:P;
+!?GM0;
+!_!DO55477/775/999/1:P;
+!?GM1;
+!_!DO55477/775/999/1:P;
+!?OB98;
+!!DO55477/775/999/1:P;
+!?OB7;
+!!DO55477/775/999/1:P;
+!?TH0;
+!!DO55477/775/999/1:P;

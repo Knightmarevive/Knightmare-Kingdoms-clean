@@ -1,0 +1,150 @@
+					
+					
+	#	336	-1	-1	400	580	99	-1		2048
+
+изменение цвета окна
+	Def	9	0	0	400	580	DIALGBOX.DEF	16	 	 
+
+подсказка
+	T	2048	10	555	400	20	  	smalfont.fnt	1	0	1	8	
+
+	Pcx	8	308	504	69	36	YSecSkill4.pcx	16	 
+Enter	Button	30720	310	506	64	37	IOKAY32.def	28	 
+
+
+Настройка окна в верхней части
+	Pcx	15	29	21	342	26	YSecSkill3.pcx	16		 
+	Text	10	50	25	300	18		medfont.fnt	1	0	1	1	 
+
+	Pcx	14	167	57	68	74	YSecSkill2.pcx	16	 
+	Pcx	13	172	63	58	64	YSecSkill1.pcx	16	
+
+	Pcx	14	55	58	68	74	YSecSkill2.pcx	16	 
+	Pcx	11	57	60	64	70	YSecSkill1.pcx	16	 
+	Pcx	14	280	58	68	74	YSecSkill2.pcx	16	 
+	Pcx	12	282	60	64	70	YSecSkill1.pcx	16	 
+
+Полоса с уровнем героя
+	Pcx	16	29	146	342	26	YSecSkill3.pcx	16	 
+	Text	17	50	150	300	18		medfont.fnt	1	0	1	1	 
+
+окно с получением первичных навыков
+	Pcx	80	71	181	46	46	YSecSkill5.pcx	16	 
+	Pcx	81	141	181	46	46	YSecSkill5.pcx	16	 
+	Pcx	82	211	181	46	46	YSecSkill5.pcx	16	 
+	Pcx	83	281	181	46	46	YSecSkill5.pcx	16	 
+
+	Def	90	73	183	42	42	PSKIL42.def	0	16	
+	Def	91	143	183	42	42	PSKIL42.def	1	16	
+	Def	92	213	183	42	42	PSKIL42.def	2	16	
+	Def	93	283	183	42	42	PSKIL42.def	5	16	
+
+	Def	94	72	182	44	44	YSecSkillLV.def	0	16	
+	Def	95	142	182	44	44	YSecSkillLV.def	0	16	
+	Def	96	212	182	44	44	YSecSkillLV.def	0	16	
+	Def	97	282	182	44	44	YSecSkillLV.def	0	16	
+
+	Pcx	16	29	239	342	26	YSecSkill3.pcx	16	 
+	Text	89	50	243	300	18		medfont.fnt	1	0	1	1	 
+
+
+Координаты  120...147  
+1	Def	142	14	276	44	57	Y_HPbar.def	0	16	
+	Def	143	68	276	44	57	Y_HPbar.def	0	16	
+	Def	121	122	276	44	57	Y_HPbar.def	0	16	
+	Def	140	176	276	44	57	Y_HPbar.def	0	16	
+	Def	130	230	276	44	57	Y_HPbar.def	0	16	
+	Def	147	284	276	44	57	Y_HPbar.def	0	16	
+	Def	139	338	276	44	57	Y_HPbar.def	0	16	
+
+2	Def	127	14	333	44	44	Y_HPbar.def	0	16	
+	Def	144	68	333	44	44	Y_HPbar.def	0	16	
+	Def	145	122	333	44	44	Y_HPbar.def	0	16	
+	Def	134	176	333	44	44	Y_HPbar.def	0	16	
+	Def	135	230	333	44	44	Y_HPbar.def	0	16	
+	Def	136	284	333	44	44	Y_HPbar.def	0	16	
+	Def	137	338	333	44	44	Y_HPbar.def	0	16	
+
+3	Def	128	14	389	44	44	Y_HPbar.def	0	16	
+	Def	131	68	389	44	44	Y_HPbar.def	0	16	
+	Def	138	122	389	44	44	Y_HPbar.def	0	16	
+	Def	141	176	389	44	44	Y_HPbar.def	0	16	
+	Def	133	230	389	44	44	Y_HPbar.def	0	16	
+	Def	124	284	389	44	44	Y_HPbar.def	0	16	
+	Def	132	338	389	44	44	Y_HPbar.def	0	16	
+
+4	Def	120	14	445	44	44	Y_HPbar.def	0	16	
+	Def	122	68	445	44	44	Y_HPbar.def	0	16	
+	Def	125	122	445	44	44	Y_HPbar.def	0	16	
+	Def	123	176	445	44	44	Y_HPbar.def	0	16	
+	Def	146	230	445	44	44	Y_HPbar.def	0	16	
+	Def	129	284	445	44	44	Y_HPbar.def	0	16	
+	Def	126	338	445	44	44	Y_HPbar.def	0	16	
+
+Координаты вторичных навыков 20 ... 47 Secskill
+1	Def	42	16	277	44	44	Secskill.def	0	16	
+	Def	43	70	277	44	44	Secskill.def	0	16	
+	Def	21	124	277	44	44	Secskill.def	0	16	
+	Def	40	178	277	44	44	Secskill.def	0	16	
+	Def	30	232	277	44	44	Secskill.def	0	16	
+	Def	47	286	277	44	44	Secskill.def	0	16	
+	Def	39	340	277	44	44	Secskill.def	0	16	
+
+2	Def	27	16	333	44	44	Secskill.def	0	16	
+	Def	44	70	333	44	44	Secskill.def	0	16	
+	Def	45	124	333	44	44	Secskill.def	0	16	
+	Def	34	178	333	44	44	Secskill.def	0	16	
+	Def	35	232	333	44	44	Secskill.def	0	16	
+	Def	36	286	333	44	44	Secskill.def	0	16	
+	Def	37	340	333	44	44	Secskill.def	0	16	
+
+3	Def	28	16	389	44	44	Secskill.def	0	16	
+	Def	31	70	389	44	44	Secskill.def	0	16	
+	Def	38	124	389	44	44	Secskill.def	0	16	
+	Def	41	178	389	44	44	Secskill.def	0	16	
+	Def	33	232	389	44	44	Secskill.def	0	16	
+	Def	24	286	389	44	44	Secskill.def	0	16	
+	Def	32	340	389	44	44	Secskill.def	0	16	
+
+4	Def	20	16	445	44	44	Secskill.def	0	16	
+	Def	22	70	445	44	44	Secskill.def	0	16	
+	Def	25	124	445	44	44	Secskill.def	0	16	
+	Def	23	178	445	44	44	Secskill.def	0	16	
+	Def	46	232	445	44	44	Secskill.def	0	16	
+	Def	29	286	445	44	44	Secskill.def	0	16	
+	Def	26	340	445	44	44	Secskill.def	0	16	
+
+
+Координаты кнопки подсветки 50 ... 77 Secskill
+1	Def	72	16	277	44	44	YSecSkillLV.def	0	16	
+	Def	73	70	277	44	44	YSecSkillLV.def	0	16	
+	Def	51	124	277	44	44	YSecSkillLV.def	0	16	
+	Def	70	178	277	44	44	YSecSkillLV.def	0	16	
+	Def	60	232	277	44	44	YSecSkillLV.def	0	16	
+	Def	77	286	277	44	44	YSecSkillLV.def	0	16	
+	Def	69	340	277	44	44	YSecSkillLV.def	0	16	
+
+2	Def	57	16	333	44	44	YSecSkillLV.def	0	16	
+	Def	74	70	333	44	44	YSecSkillLV.def	0	16	
+	Def	75	124	333	44	44	YSecSkillLV.def	0	16	
+	Def	64	178	333	44	44	YSecSkillLV.def	0	16	
+	Def	65	232	333	44	44	YSecSkillLV.def	0	16	
+	Def	66	286	333	44	44	YSecSkillLV.def	0	16	
+	Def	67	340	333	44	44	YSecSkillLV.def	0	16	
+
+3	Def	58	16	389	44	44	YSecSkillLV.def	0	16	
+	Def	61	70	389	44	44	YSecSkillLV.def	0	16	
+	Def	68	124	389	44	44	YSecSkillLV.def	0	16	
+	Def	71	178	389	44	44	YSecSkillLV.def	0	16	
+	Def	63	232	389	44	44	YSecSkillLV.def	0	16	
+	Def	54	286	389	44	44	YSecSkillLV.def	0	16	
+	Def	62	340	389	44	44	YSecSkillLV.def	0	16	
+
+4	Def	50	16	445	44	44	YSecSkillLV.def	0	16	
+	Def	52	70	445	44	44	YSecSkillLV.def	0	16	
+	Def	55	124	445	44	44	YSecSkillLV.def	0	16	
+	Def	53	178	445	44	44	YSecSkillLV.def	0	16	
+	Def	76	232	445	44	44	YSecSkillLV.def	0	16	
+	Def	59	286	445	44	44	YSecSkillLV.def	0	16	
+	Def	56	340	445	44	44	YSecSkillLV.def	0	16	
+

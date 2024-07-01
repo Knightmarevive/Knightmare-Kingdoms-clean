@@ -1,0 +1,198 @@
+													
+													
+	#	228	-1	-1	424	478	194	-1		11
+	D	999	0	0	64	64	DIALGBOX.DEF	0	16	
+	T	995	0	18	424	40	Alchemical Potions	medfont.fnt	2	0	1	8	
+	P	2000	20	50	48	48	MiscSlot5.pcx	2048	
+	P	2001	68	50	48	48	MiscSlot5.pcx	2048	
+	P	2002	116	50	48	48	MiscSlot5.pcx	2048	
+	P	2003	164	50	48	48	MiscSlot5.pcx	2048	
+	P	2004	212	50	48	48	MiscSlot5.pcx	2048	
+	P	2005	260	50	48	48	MiscSlot5.pcx	2048	
+	P	2006	308	50	48	48	MiscSlot5.pcx	2048	
+	P	2007	356	50	48	48	MiscSlot5.pcx	2048	
+	P	2008	20	98	48	48	MiscSlot5.pcx	2048	
+	P	2009	68	98	48	48	MiscSlot5.pcx	2048	
+	P	2010	116	98	48	48	MiscSlot5.pcx	2048	
+	P	2011	164	98	48	48	MiscSlot5.pcx	2048	
+	P	2012	212	98	48	48	MiscSlot5.pcx	2048	
+	P	2013	260	98	48	48	MiscSlot5.pcx	2048	
+	P	2014	308	98	48	48	MiscSlot5.pcx	2048	
+	P	2015	356	98	48	48	MiscSlot5.pcx	2048	
+	P	2016	20	146	48	48	MiscSlot5.pcx	2048	
+	P	2017	68	146	48	48	MiscSlot5.pcx	2048	
+	P	2018	116	146	48	48	MiscSlot5.pcx	2048	
+	P	2019	164	146	48	48	MiscSlot5.pcx	2048	
+	P	2020	212	146	48	48	MiscSlot5.pcx	2048	
+	P	2021	260	146	48	48	MiscSlot5.pcx	2048	
+	P	2022	308	146	48	48	MiscSlot5.pcx	2048	
+	P	2023	356	146	48	48	MiscSlot5.pcx	2048	
+	P	2024	20	194	48	48	MiscSlot5.pcx	2048	
+	P	2025	68	194	48	48	MiscSlot5.pcx	2048	
+	P	2026	116	194	48	48	MiscSlot5.pcx	2048	
+	P	2027	164	194	48	48	MiscSlot5.pcx	2048	
+	P	2028	212	194	48	48	MiscSlot5.pcx	2048	
+	P	2029	260	194	48	48	MiscSlot5.pcx	2048	
+	P	2030	308	194	48	48	MiscSlot5.pcx	2048	
+	P	2031	356	194	48	48	MiscSlot5.pcx	2048	
+	P	2032	20	242	48	48	MiscSlot5.pcx	2048	
+	P	2033	68	242	48	48	MiscSlot5.pcx	2048	
+	P	2034	116	242	48	48	MiscSlot5.pcx	2048	
+	P	2035	164	242	48	48	MiscSlot5.pcx	2048	
+	P	2036	212	242	48	48	MiscSlot5.pcx	2048	
+	P	2037	260	242	48	48	MiscSlot5.pcx	2048	
+	P	2038	308	242	48	48	MiscSlot5.pcx	2048	
+	P	2039	356	242	48	48	MiscSlot5.pcx	2048	
+	P	2040	20	290	48	48	MiscSlot5.pcx	2048	
+	P	2041	68	290	48	48	MiscSlot5.pcx	2048	
+	P	2042	116	290	48	48	MiscSlot5.pcx	2048	
+	P	2043	164	290	48	48	MiscSlot5.pcx	2048	
+	P	2044	212	290	48	48	MiscSlot5.pcx	2048	
+	P	2045	260	290	48	48	MiscSlot5.pcx	2048	
+	P	2046	308	290	48	48	MiscSlot5.pcx	2048	
+	P	2047	356	290	48	48	MiscSlot5.pcx	2048	
+	P	2048	20	338	48	48	MiscSlot5.pcx	2048	
+	P	2049	68	338	48	48	MiscSlot5.pcx	2048	
+	P	2050	116	338	48	48	MiscSlot5.pcx	2048	
+	P	2051	164	338	48	48	MiscSlot5.pcx	2048	
+	P	2052	212	338	48	48	MiscSlot5.pcx	2048	
+	P	2053	260	338	48	48	MiscSlot5.pcx	2048	
+	P	2054	308	338	48	48	MiscSlot5.pcx	2048	
+	P	2055	356	338	48	48	MiscSlot5.pcx	2048	
+	P	2056	20	386	48	48	MiscSlot5.pcx	2048	
+	P	2057	68	386	48	48	MiscSlot5.pcx	2048	
+	P	2058	116	386	48	48	MiscSlot5.pcx	2048	
+	P	2059	164	386	48	48	MiscSlot5.pcx	2048	
+	P	2060	212	386	48	48	MiscSlot5.pcx	2048	
+	P	2061	260	386	48	48	MiscSlot5.pcx	2048	
+	P	2062	308	386	48	48	MiscSlot5.pcx	2048	
+	P	2063	356	386	48	48	MiscSlot5.pcx	2048	
+	D	4000	22	52	44	44	artifact.def	0	16	
+	D	4001	70	52	44	44	artifact.def	0	16	
+	D	4002	118	52	44	44	artifact.def	0	16	
+	D	4003	166	52	44	44	artifact.def	0	16	
+	D	4004	214	52	44	44	artifact.def	0	16	
+	D	4005	262	52	44	44	artifact.def	0	16	
+	D	4006	310	52	44	44	artifact.def	0	16	
+	D	4007	358	52	44	44	artifact.def	0	16	
+	D	4008	22	100	44	44	artifact.def	0	16	
+	D	4009	70	100	44	44	artifact.def	0	16	
+	D	4010	118	100	44	44	artifact.def	0	16	
+	D	4011	166	100	44	44	artifact.def	0	16	
+	D	4012	214	100	44	44	artifact.def	0	16	
+	D	4013	262	100	44	44	artifact.def	0	16	
+	D	4014	310	100	44	44	artifact.def	0	16	
+	D	4015	358	100	44	44	artifact.def	0	16	
+	D	4016	22	148	44	44	artifact.def	0	16	
+	D	4017	70	148	44	44	artifact.def	0	16	
+	D	4018	118	148	44	44	artifact.def	0	16	
+	D	4019	166	148	44	44	artifact.def	0	16	
+	D	4020	214	148	44	44	artifact.def	0	16	
+	D	4021	262	148	44	44	artifact.def	0	16	
+	D	4022	310	148	44	44	artifact.def	0	16	
+	D	4023	358	148	44	44	artifact.def	0	16	
+	D	4024	22	196	44	44	artifact.def	0	16	
+	D	4025	70	196	44	44	artifact.def	0	16	
+	D	4026	118	196	44	44	artifact.def	0	16	
+	D	4027	166	196	44	44	artifact.def	0	16	
+	D	4028	214	196	44	44	artifact.def	0	16	
+	D	4029	262	196	44	44	artifact.def	0	16	
+	D	4030	310	196	44	44	artifact.def	0	16	
+	D	4031	358	196	44	44	artifact.def	0	16	
+	D	4032	22	244	44	44	artifact.def	0	16	
+	D	4033	70	244	44	44	artifact.def	0	16	
+	D	4034	118	244	44	44	artifact.def	0	16	
+	D	4035	166	244	44	44	artifact.def	0	16	
+	D	4036	214	244	44	44	artifact.def	0	16	
+	D	4037	262	244	44	44	artifact.def	0	16	
+	D	4038	310	244	44	44	artifact.def	0	16	
+	D	4039	358	244	44	44	artifact.def	0	16	
+	D	4040	22	292	44	44	artifact.def	0	16	
+	D	4041	70	292	44	44	artifact.def	0	16	
+	D	4042	118	292	44	44	artifact.def	0	16	
+	D	4043	166	292	44	44	artifact.def	0	16	
+	D	4044	214	292	44	44	artifact.def	0	16	
+	D	4045	262	292	44	44	artifact.def	0	16	
+	D	4046	310	292	44	44	artifact.def	0	16	
+	D	4047	358	292	44	44	artifact.def	0	16	
+	D	4048	22	340	44	44	artifact.def	0	16	
+	D	4049	70	340	44	44	artifact.def	0	16	
+	D	4050	118	340	44	44	artifact.def	0	16	
+	D	4051	166	340	44	44	artifact.def	0	16	
+	D	4052	214	340	44	44	artifact.def	0	16	
+	D	4053	262	340	44	44	artifact.def	0	16	
+	D	4054	310	340	44	44	artifact.def	0	16	
+	D	4055	358	340	44	44	artifact.def	0	16	
+	D	4056	22	388	44	44	artifact.def	0	16	
+	D	4057	70	388	44	44	artifact.def	0	16	
+	D	4058	118	388	44	44	artifact.def	0	16	
+	D	4059	166	388	44	44	artifact.def	0	16	
+	D	4060	214	388	44	44	artifact.def	0	16	
+	D	4061	262	388	44	44	artifact.def	0	16	
+	D	4062	310	388	44	44	artifact.def	0	16	
+	D	4063	358	388	44	44	artifact.def	0	16	
+	Text	7000	24	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7001	72	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7002	120	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7003	168	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7004	216	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7005	264	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7006	312	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7007	360	80	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7008	24	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7009	72	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7010	120	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7011	168	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7012	216	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7013	264	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7014	312	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7015	360	128	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7016	24	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7017	72	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7018	120	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7019	168	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7020	216	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7021	264	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7022	312	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7023	360	176	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7024	24	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7025	72	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7026	120	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7027	168	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7028	216	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7029	264	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7030	312	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7031	360	224	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7032	24	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7033	72	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7034	120	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7035	168	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7036	216	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7037	264	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7038	312	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7039	360	272	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7040	24	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7041	72	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7042	120	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7043	168	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7044	216	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7045	264	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7046	312	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7047	360	320	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7048	24	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7049	72	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7050	120	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7051	168	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7052	216	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7053	264	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7054	312	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7055	360	368	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7056	24	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7057	72	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7058	120	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7059	168	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7060	216	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7061	264	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7062	312	416	40	16		SmalFont.fnt	7	0	1	8	
+	Text	7063	360	416	40	16		SmalFont.fnt	7	0	1	8	
+	#

@@ -1,0 +1,89 @@
+ZVSE
+
+!?FU55102;
+!!SN:W^more_SS_levels.era^/?y88; 
+!!HE-1&y88=0:S18/3 S7/3; //learn expert scholar and expert wisdom
+!_!HE-1&y88<>0:S18/15 S7/15; //learn lvl15 scholar and lvl15 wisdom
+
+!!if&y88=0:;
+  !!HE-1:E?y20/?y21/1; !!VRy25:Sy21 %5; !!FU&y25<>0:E; exit on levels non dividable by 5
+  !!VRy33:S0 T8; !!VRy34:S0;
+!!el:;
+  !!HE-1:S7/?y7;   !!VRy7&y7<5:S4; 
+  !!HE-1:S18/?y18; !!VRy18&y18<5:S4; 
+
+  !!HE-1:N?y2;
+  !!SN:W^Specialist HE%Y2^/?y94;  !!VRy94:+1;
+  !!SN:W^Specialist HE%Y2^/y94;   !!VRy94:%12;
+  !!HE-1:S7/y7;   !!HE-1:S18/y18; !!FU&y94<>1:E;
+  !!VRy7:+1;  !!VRy7&y7>=15:S15;
+  !!VRy18:+1; !!VRy18&y18>=15:S15;
+  !!HE-1:S7/y7;   !!HE-1:S18/y18;
+
+  !!VRy33:S0 T8; !!VRy34:S0;
+!!en:;
+
+!_!HE-1:M6/?y40;    fly
+!_!HE-1:M8/?y41;    DD
+!_!HE-1:M18/?y42;   Implosion
+!_!HE-1:M36/?y43;   Magic Mirror
+!_!HE-1:M40/?y44;   Sacrifice
+
+!!HE-1:M8/?y40;
+!!HE-1:M9/?y41;
+!!HE-1:M18/?y42;
+!!HE-1:M26/?y43;
+!!HE-1:M48/?y44;
+!!HE-1:M59/?y45;
+!!HE-1:M60/?y46;
+
+
+elementals
+!_!HE-1:M66/?y45;
+!_!HE-1:M67/?y46;
+!_!HE-1:M68/?y47;
+!_!HE-1:M69/?y48;
+!!HE-1:M66/?y47;
+!!HE-1:M67/?y48;
+
+!!HE-1:M4/?y49;
+
+!!VRy34&y34=0/y40=0/y33=0:S8;  !!VRy33&y34=0/y40=1/y33=0:+1;
+!!VRy34&y34=0/y41=0/y33=1:S9;  !!VRy33&y34=0/y41=1/y33=1:+1;
+!!VRy34&y34=0/y42=0/y33=2:S18; !!VRy33&y34=0/y42=1/y33=2:+1;
+!!VRy34&y34=0/y43=0/y33=3:S26; !!VRy33&y34=0/y43=1/y33=3:+1;
+!!VRy34&y34=0/y44=0/y33=4:S48; !!VRy33&y34=0/y44=1/y33=4:+1;
+!!VRy34&y34=0/y45=0/y33=5:S59; !!VRy33&y34=0/y45=1/y33=5:+1;
+!!VRy34&y34=0/y46=0/y33=6:S60; !!VRy33&y34=0/y46=1/y33=6:+1;
+!!VRy34&y34=0/y47=0/y33=7:S66; !!VRy33&y34=0/y47=1/y33=7:+1;
+!!VRy34&y34=0/y48=0/y33=9:S67; !!VRy33&y34=0/y48=1/y33=9:+1;
+
+!!VRy34&y34=0/y49=0/y33=10:S4; !!VRy33&y34=0/y49=1/y33=10:S0;
+
+
+!!VRy34&y34=0/y40=0/y33=0:S8;  !!VRy33&y34=0/y40=1/y33=0:+1;
+!!VRy34&y34=0/y41=0/y33=1:S9;  !!VRy33&y34=0/y41=1/y33=1:+1;
+!!VRy34&y34=0/y42=0/y33=2:S18; !!VRy33&y34=0/y42=1/y33=2:+1;
+!!VRy34&y34=0/y43=0/y33=3:S26; !!VRy33&y34=0/y43=1/y33=3:+1;
+!!VRy34&y34=0/y44=0/y33=4:S48; !!VRy33&y34=0/y44=1/y33=4:+1;
+!!VRy34&y34=0/y45=0/y33=5:S59; !!VRy33&y34=0/y45=1/y33=5:+1;
+!!VRy34&y34=0/y46=0/y33=6:S60; !!VRy33&y34=0/y46=1/y33=6:+1;
+!!VRy34&y34=0/y47=0/y33=7:S66; !!VRy33&y34=0/y47=1/y33=7:+1;
+!!VRy34&y34=0/y48=0/y33=8:S67; !!VRy33&y34=0/y48=1/y33=8:+1;
+!!VRy34&y34=0/y49=0/y33=9:S4;  !!VRy33&y34=0/y49=1/y33=9:S10;
+!!VRy34&y34=0/y33=10:S57;
+
+
+!!if&y88=0:;
+  !!VRz1:S^Reading books for ages you learn a 5th level spell^;
+  !!IF&1000:N9/y34/20/59/20/26 N1/1;
+!!el:;
+  !!VRy97:S7  *16 +16 +y7  +1024;
+  !!VRy98:S18 *16 +16 +y18 +1024;
+  !!VRz1:S^Reading books for ages you learn a 5th level spell and some skills^;
+  !!IF&1000:N9/y34/20/y98/20/y97 N1/1;
+!!en:;
+!_!IF&1000:N9/y34/20/59/20/26 N^Reading books for ages you learn a 5th level spell^;
+!!HE-1:My34/1;
+
+!!SN:Q;

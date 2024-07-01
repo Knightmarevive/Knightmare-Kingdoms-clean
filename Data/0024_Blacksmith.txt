@@ -1,0 +1,23 @@
+
+
+
+	#Blacksmith	24	-1	-1	288	400	18	-1		-1
+	D	999	0	0	64	64	dialgbox.def	0	16	
+	DCart	1014	32	144	44	44	artifact.def	850	16	
+	DBall	1013	120	144	44	44	artifact.def	925	16	
+	DTent	1015	208	144	44	44	artifact.def	775	16	
+	DTent	2015	208	48	44	44	artifact.def	776	16	
+	DBall	2013	120	48	44	44	artifact.def	926	16	
+	DCart	2014	32	48	44	44	artifact.def	851	16	
+	BCart	3014	24	104	64	32	icrbtns.def	2	
+	BBall	3013	112	104	64	32	icrbtns.def	2	
+	BTent	3015	200	104	64	32	icrbtns.def	2	
+	BExit	30721	200	328	64	32	iCANCEL.def	2	
+	Text	4014	16	296	80	24	0	MedFont.fnt	7	0	1	8	
+	Text	4013	104	296	80	24	0	MedFont.fnt	7	0	1	8	
+	Text	4015	192	296	80	24	0	MedFont.fnt	7	0	1	8	
+	DGold	1	104	200	82	93	Resour82.def	6	16	
+	DGold	2	16	200	82	93	Resour82.def	6	16	
+	DGold	3	192	200	82	93	Resour82.def	6	16	
+	Text	4	64	16	176	32	Blacksmith	BigFont.fnt	7	0	1	8	
+	#

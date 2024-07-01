@@ -1,0 +1,120 @@
+35184372088831
+--------------------------------------
+!!VRy2:S4;  Name PTR offset
+!!VRy3:S56; Type Offset
+!!VRy4:S60; Subtype Offset
+!!VRy5:S20; Bits1 Offset
+!!VRy6:S28; Bits2 Offset
+!!VRy7:S36; Bits3 Offset
+!!VRy8:S44; EnterMask Offset
+!!VRy9:S68; Length in bytes of _Types_ structure
+--------------------------------------
+AVXprmd0.def
+string
+65f0a01 number hex
+010a5f06 code hex
+
+_types_ of AVXprmd0.def (ptr)
+6984108  number hex
+08419806 Code hex
+
+_types_ of AVXprmd0.def (dump)
+06 F0 AD BA 01 0A 5F 06 0C 00 00 00 1F 00 00 00
+02 02 AD BA 00 00 00 00 C0 C0 00 00 FF FF FF FF
+FF 3F 00 00 00 00 00 00 40 C0 00 00 00 00 00 00
+00 80 00 00 02 00 00 00 3F 00 00 00 00 00 00 00
+00 F0 FF FF
+
+Pointed nowhere :(
+
+
+looks like a stack - maybe +68?
+698414C  number hex
+4c419806 Code Hex
+pointed by 066d008c only (in memory map)
+
+Guessed to be part of _Main_ structure
+here is structure pattern
+
+struct _Main_{
+  Dword   _u1a; struct  _Types_       *Tp0,*Tp1,*_u2a;   // +00
+  Dword   _u1b; struct  _Position_    *Pp0,*Pp1,*_u2b;   // +10
+  Dword   _u1c[4]; // DEFû                               // +20
+  Dword   _u1d; struct  _ArtRes_      *Ap0,*Ap1,*_u2d;   // +30
+  Dword   _u1e; struct  _Monster_     *Mp0,*Mp1,*_u2e;   // +40
+  Dword   _u1f; struct  _Event_       *Ep0,*Ep1,*_u2f;   // +50
+  Dword   _u1g[4];                                       // +60
+  Dword   _u1h[4];                                       // +70
+  Dword   _u1i; struct  _GlbEvent_    *GEp0,*GEp1,*_u2i; // +80
+  Dword   _u1j; struct  _CastleEvent_ *CEp0,*CEp1,*_u2j; // +90
+  Dword   _u1k[4];                                       // +A0
+  Dword   _u1l[4];                                       // +B0
+  Dword   _u1m[4];                                       // +C0
+  struct _MapItem_ *MIp0; Dword MapSize; Dword _u1n[2];  // +D0
+};
+
+is 066d008c a main+4 or main+8 or main+12?
+066d008c is 8c006d06 code :)
+
+guessed +8 from the symetry
+
+066d008c - 8 = 66D0084 number
+code 84006d06
+
+Can't find _Main_ address ... hopefully it is statically addressed.
+
+Yeah
+  __asm{
+    mov  eax,BASE
+    mov  eax,[eax]
+    add  eax,0x1FB70
+    mov  Main,eax
+  }
+  
+#define BASE         0x699538
+
+-------------------------------------
+
+Next Try
+Base Ptr 0x699538
+Base 0x06900048
+Main 0x06900048 + 0x1FB70 = 0x691FBB8
+Adresses interesting: 0x0E011C60 0x0E016170 0x0E018206
+
+----------------------------------------------------------
+  __asm{
+    mov    ebx,BASE
+    mov    ebx,[ebx]
+    add    ebx,0x1FB74
+    mov    eax,[ebx]
+    mov    tps,eax
+    mov    eax,[ebx+4]
+    mov    tpe,eax
+  }
+  num=tpe-tps;
+  //from WoG Sources - FindEnterShift
+  //exactly what I want - tps
+----------------------------------------------------------
+Junk Info
+
+!!VRy70:S6919480; 0x699538 (BASE from WoG Sources)
+
+    mov  eax,BASE
+    mov  eax,[eax]
+    add  eax,0x1FB70
+    mov  Main,eax
+
+!!UN:Cy70/4/?y71; [Base]
+!!VRy72:Sy71 +129904; Main
+
+!!if&v1>v1:; Old algorithm
+!!VRy99:Sy72 +4;
+!_!VRy99:S107806860; 0x066d008c
+; _Main_ + 8 ? something other ? Hope it works
+
+!!UN:Cy99/4/?y98; y98 is a bottom of stack of _Types_
+!_!VRy98:S110641484; 0x698414C
+
+!!VRy1:Sy98; -y9; Hopefully
+; Offset of _Types_ for AVXprmd0.def 63/0
+!!en:;

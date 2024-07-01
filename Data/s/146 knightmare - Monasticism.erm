@@ -1,0 +1,326 @@
+ZVSE
+!?CM2; click in hero screen
+!!HE-1:N?y1;
+!!CM:S?y2; !!FU&y2<>14:E;
+!!CM:I?y3; !!VRy4:S0;
+!!VRy4|y3=20/y3=18:S1;
+!!VRy4&y3>10/y3<15:S1;
+!!FU&y4=0:E; exit if wrong artifat slot
+!!FU55711:Py1;
+
+!?FU55711;
+!!HEx1:S18/?y5; !!FU&y5=0:E; check scholar level
+
+!!DO55701/1/2000/1:Px1;
+
+!?FU55701;  !!VRy1:S0;
+** x1  current hero
+** x16 current artifact
+
+!!VRy1&x16>1000/x16<1071:S1; Scrolls
+
+!!VRy1&x16=470:S3; Learning book tome 1
+!!VRy1&x16=502:S4; Learning book tome 2
+!!VRy1&x16=471:S5; Learning book tome 3
+
+!!VRy1&x16>=86/x16<=89:S7; Elemental Books
+
+!!VRy1&x16=485:S9; Dracopedia
+
+!!FU&y1=0:E;
+
+!!HEx1:A2/x16/?y2/?y3;
+!!FU&y3=0:E; exit if hero doesn't have it
+
+
+!!if&y1=1:;
+!!VRy4:S0; !!VRy5:S0;
+!!VRy15:Sx16 -1001;
+!!SSy15:L?y16; !!VRy16:-1;
+!!VRy4:Sy16 *y16 + 1 *1000;
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1>2/y1<6:;
+!!VRy4:S0; !!VRy5:S0;
+
+!!VRy4:Sy1 *y1 *y1 -22 *1000;
+!!VRy5:Sy1 *y1 -3;
+
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1=7:;
+!!VRy4:S22000; !!VRy5:S22;
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1=9:;
+!!VRy4:S256000; !!VRy5:S77;
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1=99:;
+!!VRy4:S0; !!VRy5:S0;
+
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+!?FU55702;
+** x1  current hero
+** x2  current artifact (scripture)
+** x3  copying level
+** x4  gold cost
+** x5  mithril cost
+
+!!HEx1:O?y1; !!OW:Ry1/6/?y4 Ry1/7/?y5;
+!_!UN:Ax2/9/?z2; store art name to z2
+
+!!VRy33:S8; !!VRy22:Sx2;
+
+!!if&x2>1000/x2<1071:;
+!!VRy33:S9;
+!!VRy22:Sx2 -1001;
+!!en:;
+
+
+!!if|y5<x5/y4<x4:;
+!!IF:Q1/y33/y22/6/x4/7/x5/1^You cannot copy the scripture because you need more resources.^;
+!!FU:E;
+!!en:;
+
+!!IF:Q1/y33/y22/6/x4/7/x5/2^Do You want to copy the scripture for %X4 Gold an %X5 Mithrill ?^;
+!!FU&-1:E;
+
+
+!!VRy4:-x4; !!VRy5:-x5;
+!!OW:Ry1/6/y4 Ry1/7/y5;
+!!HEx1:Ax2; !!IF:M^Scripture Copied !^;
+
+**==============================================================================================
+
+** arts 340-399 reserved as herbs
+**** red    340-359 (340-344 A-Grade, 345-349 B-Grade, 350-354 C-Grade, 355-359 D-Grade)
+**** blue   360-379 (360-364 A-Grade, 365-369 B-Grade, 370-374 C-Grade, 375-379 D-Grade)
+**** yellow 380-399 (380-384 A-Grade, 385-389 B-Grade, 390-394 C-Grade, 395-399 D-Grade)
+** arts 300-339 reserved as potions
+** first seven potions (300-306) :
+**** red, blue, yellow, purple, green, orange, gray
+** layered potions (307-318) :
+**** red/orange    (307), red/purple    (308), red/green    (309)
+**** blue/orange   (310), blue/purple   (311), blue/green   (312)
+**** yellow/orange (313), yellow/purple (314), yellow/green (315)
+**** purple/orange (316), purple/green  (317), orange/green (318)
+** White Potions (320-329), Black Potions (330-339)
+
+!?FU55704;
+** x1 - hero
+** x2 - artifact ID
+** x3 - Color   of Herb
+** x4 - grade   of Herb
+** x5 - subtype of Herb
+
+!!VRy3:Sx3 *20; !!VRy4:Sx4 *5;
+!!VRy10:Sy3 +y4 +340; first herb ID
+!!VRy11:Sy10 +1; !!VRy12:Sy10 +2;
+!!VRy13:Sy10 +3; !!VRy14:Sy10 +4;
+
+!_!IF:M^Herb Color %X3, Herb Grade %X4,
+Herb Range %Y10 to %Y14, Herb Subtype %X5.^;
+
+!!HEx1:A2/y10/?y19/?y20;
+!!HEx1:A2/y11/?y19/?y21;
+!!HEx1:A2/y12/?y19/?y22;
+!!HEx1:A2/y13/?y19/?y23;
+!!HEx1:A2/y14/?y19/?y24;
+
+!!FU|y20=0/y21=0/y22=0/y23=0/y24=0:E;
+!!VRz1:S^Z^; !!VRz1&x4=0:S^A^; !!VRz1&x4=1:S^B^;
+             !!VRz1&x4=2:S^C^; !!VRz1&x4=3:S^D^;
+!!IF&x3=0:M^Brewing Red Potions from %Z1-Grade ingredients^;
+!!IF&x3=1:M^Brewing Blue Potions from %Z1-Grade ingredients^;
+!!IF&x3=2:M^Brewing Yellow Potions from %Z1-Grade ingredients^;
+
+!!HEx1:A3/y10/1/1 A3/y11/1/1 A3/y12/1/1 A3/y13/1/1 A3/y14/1/1;
+** removed Herbs
+
+!!VRy22:S300 +x3;
+!!HEx1:S18/?y31;
+!!VRy33:Sy31 +2;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!VRy30:S7 -x4 *y33; Percentage of success
+!!VRy30&y88=0:*3;
+!!VRy40:S0 R99; !!HEx1&y30>y40:A4/y22; !!HEx1&y30<=y40:A4/306; first  trial
+!!VRy40:S0 R99; !!HEx1&y30>y40:A4/y22; !!HEx1&y30<=y40:A4/306; second trial
+!!VRy40:S0 R99; !!HEx1&y30>y40:A4/y22; !!HEx1&y30<=y40:A4/306; third  trial
+!!VRy40:S0 R99; !!HEx1&y30>y40:A4/y22; !!HEx1&y30<=y40:A4/306; fourth trial
+!!VRy40:S0 R99; !!HEx1&y30>y40:A4/y22; !!HEx1&y30<=y40:A4/306; fifth  trial
+
+!?CM2; click in hero screen
+!!VRy99:Sv1;
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.ProcessAlchemy^;
+!!VRy77:Sv1;
+
+!!VRv1:Sy99;
+
+!!HE-1:N?y1;
+!!CM:S?y2; !!FU&y2<>13:E;
+!!CM:I?y3; !!VRy4:S0;
+
+!_!VRy4|y3=20/y3=18:S1;
+!_!VRy4&y3>10/y3<15:S1;
+!_!FU&y4=0:E; exit if wrong artifat slot
+!!FU&y3<>y77:E; exit if wrong Button
+
+
+!!HE-1:N?y1;
+!_!FU|v998<300/v998>399:E;
+!!FU55712:Py1;
+
+!?FU55712;
+!!DO55705/340/395/5:Px1;
+!!DO55705/300/339/1:Px1;
+
+!!DO55709/300/339/1:P;
+!!DO55708/300/329/1:Px1/300/329;
+
+
+!?FU55705;
+!!if&x16>339/x16<400:;    Herb
+!!VRy90:Sx16 -340 :20;    Color
+!!VRy91:Sx16 -340 %20 :5; Grade
+!!VRy92:Sx16 -340 %5;     Subtype
+!!FU55704:Px1/x16/y90/y91/y92;
+!!FU:E;
+!!en:;
+
+!?FU55709;
+!!SN:W^Mixing Potions %X16^/0;
+
+!?FU55708; !!SN:W^Mixing Potions^/0;
+!!DO55707/x2/x3/1:Px1/x2/x3/x16;
+
+!?FU55707;
+!!DO55706/x2/x3/1:Px1/x4/x16;
+
+!?FU55706;
+** x1 - Hero
+** x2 - First Potion
+** x3 - Second potion
+
+!!HEx1:S18/?y5; !!FU&y5=0:E; check scholar level
+!!HEx1:A2/x2/?y66/?y72 A2/x3/?y66/?y73;
+!!FU|y72=0/y73=0:E;
+
+!!VRy99:S0;
+
+** purple
+!!VRy99&x2=300/x3=301:S303;
+!_!VRy99&x2=301/x3=300:S303;
+
+** green
+!!VRy99&x2=301/x3=302:S304;
+!_!VRy99&x2=302/x3=301:S304;
+
+** orange
+!!VRy99&x2=300/x3=302:S305;
+!_!VRy99&x2=302/x3=300:S305;
+
+**** red/orange    (307), red/purple    (308), red/green    (309)
+!!VRy99&x2=300/x3=305:S307;
+!!VRy99&x2=300/x3=303:S308;
+!!VRy99&x2=300/x3=304:S309;
+
+**** blue/orange   (310), blue/purple   (311), blue/green   (312)
+!!VRy99&x2=301/x3=305:S310;
+!!VRy99&x2=301/x3=303:S311;
+!!VRy99&x2=301/x3=304:S312;
+
+**** yellow/orange (313), yellow/purple (314), yellow/green (315)
+!!VRy99&x2=302/x3=305:S313;
+!!VRy99&x2=302/x3=303:S314;
+!!VRy99&x2=302/x3=304:S315;
+
+**** purple/orange (316), purple/green  (317), orange/green (318)
+!!VRy99&x2=303/x3=305:S316;
+!!VRy99&x2=303/x3=304:S317;
+!!VRy99&x2=305/x3=304:S318;
+
+**** Orange White (320-322) ****
+!!VRy99&x2=307/x3=310:S320;
+!!VRy99&x2=307/x3=313:S321;
+!!VRy99&x2=310/x3=313:S322;
+
+**** Purple White (323-325) ****
+!!VRy99&x2=308/x3=311:S323;
+!!VRy99&x2=308/x3=314:S324;
+!!VRy99&x2=311/x3=314:S325;
+
+**** Green  White (326-328) ****
+!!VRy99&x2=309/x3=312:S326;
+!!VRy99&x2=309/x3=315:S327;
+!!VRy99&x2=312/x3=315:S328;
+
+**** Pure   White (329-329) ****
+!!VRy99&x2=304/x3=316:S329;
+!!VRy99&x2=305/x3=317:S329;
+!!VRy99&x2=303/x3=318:S329;
+
+**** black (330-335) ****
+**** black (336-339) ****
+
+!!FU&y99>306/y99<319/y5<2:E; Layered Potions need Advanced Scholar
+!!FU&y99>319/y99<330/y5<2:E; White   Potions need Advanced Scholar
+!!FU&y99>329/y99<340/y5<3:E; Black   Potions need Expert   Scholar
+
+!!SN:W^Mixing Potions %Y99^/?y88;
+!!FU|y99=0/y88>0:E;
+!!IF:Q1/8/x2/8/y99/8/x3/2^Do You Want Mix The Potions ?^;
+!!SN&-1:W^Mixing Potions %Y99^/1; !!FU&-1:E;
+
+!!HEx1:A3/x2/1/1 A3/x3/1/1;
+!_!HEx1:A4/y99 A4/y99;
+!!HEx1:A4/y99; by mixing potions you get one potion
+
+
+!?HM-1;
+!!HE-1:N?y1;
+
+!!HEy1:S18/?y5; !!FU&y5=0:E; check scholar level
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!VRy7:Sy5 *3; !!VRy7&y88=0:*3; 
+!!VRy8:S1 R999; !!FU&y8>y7:E;
+
+!!DO55710/1/17/1:Py1;
+
+!!IF&1000:L^Found some Herbs^;
+
+!?FU55710; x1 - active hero
+
+!!VRy9:S340 R59;
+
+!!SN:W^Virtual Backpack - Script Enabled^/?y21;
+!!if&y21=0:;
+!!HEx1:Ay9;
+!!el:;
+!!SN:W^Hero %X1 - Virtual Backpack - Artifact %Y9^/d1;
+!!en:;
+
+
+!?FU55703; !!VRy1:S1;
+!!VRy1&x16>339/x16<400:S2;  Herbs
+!!VRy1&x16>299/x16<307:S2;  One color potions
+!!VRy1&x16>306/x16<319:S4;  Layered potions
+!!VRy1&x16>318/x16<330:S8;  White potions
+!!VRy1&x16>329/x16<340:S16; Black potions
+!!UN:Ax16/2/9 Ax16/0 Ax16/3/y1;
+
+!?FU99001;
+!!DO55703/300/399/1:P;

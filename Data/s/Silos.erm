@@ -1,0 +1,186 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=2.1(January).2016
+
+;Upgradable silos
+;Author: Valery
+;28/4/2015
+;Each town silo produces 1 ore & 1 wood + 1 of the special resource asked for level 7 creature
+;Each silo can be upgraded every week, and will produce +1 of the special resource
+;Each silo can be right or left clicked for different hints.
+;vars used: v2-v10 (quick)
+
+!#TM2:S1/999/1/255; timer 2, every day, all players
+
+!?FU(silos_13461244);
+!!UN:Ux1/-1/-1/1; town in v1/v2/v3
+!!SN:W^SilosU_%V1_%V2_%V3^/1; flag that town to produce 1 of each from start
+
+
+!?FU(silos_13461245);
+;x1 town
+;x2 current player
+;x3 day of the game
+!!UN:Ux1/-1/-1/1; town in v1/v2/v3
+!!CA1:O?y1; get owner
+!!FU&y1<>x2:E; exit if not owned by current player
+!!CA1:T?y2; get type
+!!SN:W^SilosU_%V1_%V2_%V3^/?y5; get silo upgrade
+!!CA1:B3/15; get in flag 1 if silo is build
+ !!if&1:;    if flag 1 is true
+ !!VRv4:C5/4/5/1/1/3/4/3/1; index table to resources per town
+ !!VRy6:Sy2+4;
+ !!VRy3:Svy6;
+ !!OW:Rx2/y3/dy5;
+ !!OW&y2<>0/y2<>4/y2<>6/y2<>7:Rx2/0/d1; give 1 ore&1 wood to towns except c/n/s/f
+ !!OW&y2<>0/y2<>4/y2<>6/y2<>7:Rx2/2/d1;
+ ;correction, remove original income
+ 
+ !!VRy2:%9;
+
+ !!OW&y2=1:Rx2/4/d-1; rampart
+ !!OW&y2=2:Rx2/5/d-1; tower
+ !!OW&y2=3:Rx2/1/d-1; inferno
+ !!OW&y2=5:Rx2/3/d-1; dungeon
+ !!OW&y2=8:Rx2/1/d-1; conflux
+ 
+ !_!SN&x3=1:W^SilosS_%V1_%V2_%V3^/0; set silo state as not upgraded this week
+ !!SN:W^SilosS_%V1_%V2_%V3^/0; set silo state as not upgraded today
+
+ !!en:;
+
+   !_!if&x3=1:; if day one of the week
+   !_!SN:W^SilosS_%V1_%V2_%V3^/0; set silo state to ready for new upgrade
+   !_!en:;
+
+   !!FU:E;
+   ;modification by majaczek
+ !!CA1:B3/22;
+ !!if&1/y2=6:;
+   ;ballista yard produces mithril
+   !!VRy1:Sc %7;  2 weekly
+   !!OW&y1=1:Ry1/7/d2;
+ !!en:;
+
+
+!?CM1; town screen
+!!CM:I?y60 F?y61;  15/0 15/512
+!!CA-1:P?y1/?y2/?y3 T?y4; get town position and type
+
+!!VRy4:%9;
+
+!!SN:W^SilosU_%Y1_%Y2_%Y3^/?y5; get silo upgrade
+!!SN:W^SilosS_%Y1_%Y2_%Y3^/?y6; get silo state for this week (has been or not)
+!!if&y60=15/y61=0:; left mouse click on resource silo
+!!VRv4:C5/4/5/1/1/3/4/3/1; index table to resources per town
+!!VRy7:Sy4+4;
+!!VRy8:Svy7;
+  !!if&y6>0:; already upgraded
+  !!VRy30:Sy4+22; get town pic
+  !!IF:Q1/y30/15/4^RESOURCES SILO
+
+Already upgraded for today^;
+  !!CM:R0; prohibit action
+  !!en:;
+    !!if&y6<1:; ready for upgrade
+    !!DL1095:N^silo.txt^;
+    !!DL1095:A4/4/y4/1; set town type silo
+    !!DL1095:A8/4/y8/1; set resource
+    !!VRz1:S^%Y5^;
+    !!DL1095:A9/3/z1/1; set special resource income
+
+    !!VRy91:Sy5 -1 *750 +5000; !!VRy92:Sy5 -1 +5;
+    !!VRz2:S^Do you want to upgrade the resource silo for %Y91 gold and %Y92 ore?^;
+    !!DL1095:A5/3/z2/1; set question
+    
+    !_!SN:W^silox_%Y1^/?y1;
+    !_!SN:W^silox_%Y2^/?y2; 
+    !_!SN:W^silox_%Y3^/?y3; get coordinates of silo
+    !!CA-1:P?y1/?y2/?y3;
+
+    !!DL1095:S1;
+    !!en:;
+!!en:;
+
+!!if&y60=15/y61=512:; right click on silo
+!!DL1095:N^silo.txt^;
+!!VRv4:C5/4/5/1/1/3/4/3/1; index table to resources per town
+!!VRy7:Sy4+4;
+!!VRy8:Svy7;
+!!DL1095:A4/4/y4/1; set town type silo
+!!VRz1:S^%Y5^;;
+!!DL1095:A8/4/y8/1; set resource
+!!DL1095:A9/3/z1/1; set special resource income
+!!VRz2:S^^;
+!!DL1095:A5/3/z2/1; set question
+!!DL1095:E20/0 E21/0; disable buttons
+!!FU(silos_13461246):P1095;
+!!CM:R0;
+!!en:;
+
+
+!?DL&v998=1095/v999=20/v1000=13; click on upgrade button
+
+!_!SN:W^silox_%Y1^/?y1;
+!_!SN:W^silox_%Y2^/?y2; 
+!_!SN:W^silox_%Y3^/?y3; get coordinates of silo
+!!CA-1:P?y1/?y2/?y3;
+
+!!SN:W^SilosU_%Y1_%Y2_%Y3^/?y5; get silo upgrade
+!!VRy91:Sy5 -1 *750 +5000; !!VRy92:Sy5 -1 +5;
+
+!!OW:R-1/6/?y11 R-1/2/?y12; get resources
+!!IF|y11<y91/y12<y92:Q1/6/y91/2/y92/1^You don't have enough resources for the upgrade.^;
+!!FU|y11<y91/y12<y92:E;
+
+!!VRy71:Sy11 -y91;
+!!VRy72:Sy12 -y92; calculate new resource amount
+
+!_!OW:R-1/6/d-y91;
+!_!OW:R-1/2/d-y92; remove resources
+
+!!OW:R-1/6/y71;
+!!OW:R-1/2/y72; remove resources
+
+
+
+!!VRy5:+1; increment
+!!SN:W^SilosU_%Y1_%Y2_%Y3^/y5; set new value
+!!SN:W^SilosS_%Y1_%Y2_%Y3^/1; set silo to upgraded for this week
+!!DL:C1;
+!!CM:R0;
+!!UN:R2; redraw resources line
+
+!?DL&v998=1095/v999=21/v1000=13; close dialog in cancel button is pressed
+!!DL:C1;
+!!CM:R0;
+
+!?FU(silos_13461246); open dialog on right click
+!!VRy1:Sv1;
+!!SN:E7510739/1/x1;                   [find HDlg -> v1]
+!!VRy2:Sv1;                           [v2 = HDlg]
+!!if&y2<>0:;
+  !!SN:E5864096/1;                    [stop animation]
+  !!UN:Cy2/4/?v1;                     [v1 = dialog]
+  !!SN:E6245264/2/v1;                 [show while holding mouse button]
+  !!SN:E5864272/1;                    [continue animation]
+  !!SN:E7518240/2/y2;                 [destroy HDlg]
+!!en:;
+!!VRv1:Sy1;
+
+
+!?TM2;
+!!VRy1:Sc0;
+!!SN:W^one_time^/?y2;
+ !!if&y1=1/y2<1:;
+ !!UN:U98/-1/?y-1;
+ !!VRv1:S-1;
+ !!DO(silos_13461244)/1/y-1/1&y-1>0:P98;
+ !!SN:W^one_time^/1;
+ !!en:;
+!!VRy1:Sc%7; get day of the week
+!!OW:C?y2; get current player
+!!UN:U98/-1/?y-1;
+!!VRv1:S-1;
+!!DO(silos_13461245)/1/y-1/1&y-1>0:P98/y2/y1;

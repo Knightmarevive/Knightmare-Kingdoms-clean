@@ -1,0 +1,76 @@
+ZVSE
+
+!?FU(OnEveryDay);
+!!SN:W^Unfreeze_Battles__Minutes_since_Last_Battle^/0;
+!?FU(OnAfterBattleUniversal);
+!!SN:W^Unfreeze_Battles__Minutes_since_Last_Battle^/0;
+
+!?BF;
+!!SN:W^Unfreeze_Battles__Battle_Turn^/0;
+!!SN:W^Unfreeze_Battles__Minutes_since_Last_Battle^/0;
+
+!?BR&-1000;
+
+!!SN:W^Unfreeze_Battles^/0;
+!!BU:T?y99; 
+!!FU&y99=1:E; Exit if Tactics Phase;
+
+
+!!SN:W^Unfreeze_Battles__Battle_Turn^/?y77;
+!!VRy97:Sy77 %16; !_!VRy97:S0;
+!_!IF&y77>0/y97=0:L^Warning! Battle lasts already %Y77 turns.^;
+!_!SN&y77>0/y97=0:P^../data/p/clock2.wav^;
+!!VRy77:+1; !!SN:W^Unfreeze_Battles__Battle_Turn^/y77;
+
+!?BG0;
+!!SN:W^Unfreeze_Battles__Battle_Turn^/?y97;
+!!FU&y97<256:E; exit if too early
+
+!!BA:H0/?y1 H1/?y2;
+!!HEy1:O?y3; !!OW:Iy3/?y4;
+
+!!FU&y4=0:E; exit if Human Attacker
+!!BG:Q?y7; 
+
+!!if&y2=-2/y7=0:; AI Player vs Neutral Troops
+
+  !!SN:W^Unfreeze_Battles^/1;
+  !_!IF:L^Break from endless Battle.^;
+  !!BG:A4; Flee from Battle
+!!en;
+
+!?FU(OnEveryMinute);
+!!SN:W^Unfreeze_Battles__Minutes_since_Last_Battle^/d1;
+!!SN:W^Unfreeze_Battles__Minutes_since_Last_Battle^/?y1;
+
+!!OW:C?y9; !!OW:Iy9/?y8; !!FU&y8=0:E;
+!_!IF&y1>1:L^Warning! Already %Y1 minutes from begin of last battle.^;
+!!SN&y1>1:P^../data/p/clock.wav^;
+
+!!if&y1>5; end turn if no battle
+  !!UN:C6919480/4/?y99;
+
+  !_!UN:C6919200/4/?y98;
+  !_!SN:E4609040/2/y98;
+  !_!VRv1:&255;
+  !_!SN&v1>0:E5008544/2/y99;
+
+  !!SN:F^GetGameState^;
+  !!SN&v1=4205280:E5008544/2/y99;
+!!en;
+
+!?BG0;
+!!BA:H0/?y1 H1/?y2;
+!!HEy1:O?y3; !!OW:Iy3/?y4;
+
+!!FU&y4=0:E; exit if Human Attacker
+!!BG:Q?y7; 
+
+!!SN:W^Unfreeze_Battles__Minutes_since_Last_Battle^/?y91;
+
+!!if&y2=-2/y7=0/y91>4:; AI Player vs Neutral Troops
+
+  !!SN:W^Unfreeze_Battles^/1;
+  !_!IF:L^Break from endless Battle.^;
+  !!BG:A4; Flee from Battle
+!!en;

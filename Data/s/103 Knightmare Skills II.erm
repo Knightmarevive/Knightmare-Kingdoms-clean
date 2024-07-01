@@ -1,0 +1,178 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=23.4(April).2016
+
+!?BA0;
+!!SN:W^KS2_BR0^/0;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^KS2_BR0^/?y1;
+!!VRy1:+1;
+!!SN:W^KS2_BR0^/y1;
+
+
+
+!?BA53;        //at end of battle
+!!HE-1:N?y2; !!FU&y2<0:E; //exit if no active hero
+!!HE-1:S0/?y1; //basing on pathfinding
+!_!IF:M^pathfinding %Y1^;
+!!SN:W^more_SS_levels.era^/?y88; 
+!!VRy1&y88=0:*150;   //200 * SS level
+!!VRy1&y88<>0:*15;   //20 * SS level
+!!HE-1:X?y3/?y4/?y5/?y6/?y7/?y8/?y9;  y5-y9 are dummies
+!!HE-1:E?y12/?y13/1;   !!VRy15:Sy13 *5;
+!!VRy1&y3=0/y4=0:+y15; //specialists boost
+!!HE-1&y1>0:Wdy1;   //give calculated free Movement Points
+!!IF&y1>0/1000:M^While using Pathfinding, you found shortcut out of battlefield (%Y1 Points)^;
+
+!?HM-1;
+!!SN:W^more_SS_levels.era^/?y88; 
+!!HE-1:N?y2; !!FU&y2<0:E; //exit if no active hero
+!!HE-1:S0/?y1; //basing on pathfinding
+!!HE-1:X?y3/?y4/?y5/?y6/?y7/?y8/?y9 E?y20/?y21/1; y5-y9 are dummies
+!!FU|y3<>0/y4<>0:E; Exit if not Pathfinding Specialist
+!!VRy1: *7 +y21 +y21;
+!!HE-1:Edy1;
+!_!IF:M^%Y1^;
+
+!?HL-1;
+!!HE-1:N?y2; !!FU&y2<0:E; //exit if no active hero
+!!HE-1:X?y3/?y4/?y5/?y6/?y7/?y8/?y9 E?y20/?y21/1; y5-y9 are dummies
+!!FU|y3<>0/y4<>7:E; Exit if not Wisdom Specialist
+!_!VRy25:Sy21 %2; !_!FU&y25=1:E; exit on odd levels
+!!SN:W^more_SS_levels.era^/?y88;
+!!if&y88=0:;
+  !!HE-1:Fd/d/d1/d; Give 1 Spell power
+  !!HE-1:S7/3;
+  !!IF:N33/1/20/26; !!VRz1:S^Wise hero learns^; !!IF&1000:N1/1;
+!!el:;
+  !_!HE-1:Fd/d/d1/d; Give 1 Spell power
+  !!HE-1:S7/?y95; !!VRy95&y95<5:S4; 
+  !!SN:W^Specialist HE%Y2^/?y94; !!VRy94:+1;
+  !!SN:W^Specialist HE%Y2^/y94;  !!VRy94:%6;
+  !!FU&y94<>1:E;
+  !!VRy95:+1; !!VRy95&y95>=15:S15; !!HE-1:S7/y95;
+  !!VRy93:S16 *7 +16 +1024 +y95;
+  !!HE-1:Fd/d/d1/d; Give 1 Spell power
+  !!IF:N33/1/20/y93; !!VRz1:S^Wise hero learns^; !!IF&1000:N1/1;
+!!en:;
+
+!?HL-1;
+!!HE-1:N?y2; !!FU&y2<0:E; //exit if no active hero
+!!HE-1:X?y3/?y4/?y5/?y6/?y7/?y8/?y9 E?y20/?y21/1; y5-y9 are dummies
+!!FU|y3<>0/y4<>18:E; Exit if not Scholar Specialist
+!!FU55102:P;
+
+!?FU55102;
+!!SN:W^more_SS_levels.era^/?y88; 
+!!HE-1&y88=0:S18/3 S7/3; //learn expert scholar and expert wisdom
+!_!HE-1&y88<>0:S18/15 S7/15; //learn lvl15 scholar and lvl15 wisdom
+
+!!if&y88=0:;
+!!HE-1:E?y20/?y21/1; !!VRy25:Sy21 %5; !!FU&y25<>0:E; exit on levels non dividable by 5
+!!VRy33:S0 T8; !!VRy34:S0;
+!!el:;
+  !!HE-1:S7/?y7;   !!VRy7&y7<5:S4; 
+  !!HE-1:S18/?y18; !!VRy18&y18<5:S4; 
+
+  !!HE-1:N?y2;
+  !!SN:W^Specialist HE%Y2^/?y94;  !!VRy94:+1;
+  !!SN:W^Specialist HE%Y2^/y94;   !!VRy94:%12;
+  !!HE-1:S7/y7;   !!HE-1:S18/y18; !!FU&y94<>1:E;
+  !!VRy7:+1;  !!VRy7&y7>=15:S15;
+  !!VRy18:+1; !!VRy18&y18>=15:S15;
+  !!HE-1:S7/y7;   !!HE-1:S18/y18;
+
+  !!VRy33:S0 T8; !!VRy34:S0;
+!!en:;
+
+!!HE-1:M6/?y40;    fly
+!!HE-1:M8/?y41;    DD
+!!HE-1:M18/?y42;   Implosion
+!!HE-1:M36/?y43;   Magic Mirror
+!!HE-1:M40/?y44;   Sacrifice
+
+elementals
+!!HE-1:M66/?y45;
+!!HE-1:M67/?y46;
+!!HE-1:M68/?y47;
+!!HE-1:M69/?y48;
+
+!!VRy34&y34=0/y40=0/y33=0:S6;  !!VRy33&y34=0/y40=1/y33=0:+1;
+!!VRy34&y34=0/y41=0/y33=1:S8;  !!VRy33&y34=0/y41=1/y33=1:+1;
+!!VRy34&y34=0/y42=0/y33=2:S18; !!VRy33&y34=0/y42=1/y33=2:+1;
+!!VRy34&y34=0/y43=0/y33=3:S36; !!VRy33&y34=0/y43=1/y33=3:+1;
+!!VRy34&y34=0/y44=0/y33=4:S40; !!VRy33&y34=0/y44=1/y33=4:+1;
+!!VRy34&y34=0/y45=0/y33=5:S66; !!VRy33&y34=0/y45=1/y33=5:+1;
+!!VRy34&y34=0/y46=0/y33=6:S67; !!VRy33&y34=0/y46=1/y33=6:+1;
+!!VRy34&y34=0/y47=0/y33=7:S68; !!VRy33&y34=0/y47=1/y33=7:+1;
+!!VRy34&y34=0/y48=0/y33=8:S69; !!VRy33&y34=0/y48=1/y33=8:S0;
+
+
+!!VRy34&y34=0/y40=0/y33=0:S6;  !!VRy33&y34=0/y40=1/y33=0:+1;
+!!VRy34&y34=0/y41=0/y33=1:S8;  !!VRy33&y34=0/y41=1/y33=1:+1;
+!!VRy34&y34=0/y42=0/y33=2:S18; !!VRy33&y34=0/y42=1/y33=2:+1;
+!!VRy34&y34=0/y43=0/y33=3:S36; !!VRy33&y34=0/y43=1/y33=3:+1;
+!!VRy34&y34=0/y44=0/y33=4:S40; !!VRy33&y34=0/y44=1/y33=4:+1;
+!!VRy34&y34=0/y45=0/y33=5:S66; !!VRy33&y34=0/y45=1/y33=5:+1;
+!!VRy34&y34=0/y46=0/y33=6:S67; !!VRy33&y34=0/y46=1/y33=6:+1;
+!!VRy34&y34=0/y47=0/y33=7:S68; !!VRy33&y34=0/y47=1/y33=7:+1;
+!!VRy34&y34=0/y48=0/y33=8:S69; !!VRy33&y34=0/y48=1/y33=8:S9;
+!!VRy34&y34=0/y33=9:S57;
+
+!!if&y88=0:;
+  !!VRz1:S^Reading books for ages you learn a 5th level spell^;
+  !!IF&1000:N9/y34/20/59/20/26 N1/1;
+!!el:;
+  !!VRy97:S7  *16 +16 +y7  +1024;
+  !!VRy98:S18 *16 +16 +y18 +1024;
+  !!VRz1:S^Reading books for ages you learn a 5th level spell and some skills^;
+  !!IF&1000:N9/y34/20/y98/20/y97 N1/1;
+!!en:;
+
+!!HE-1:My34/1;
+
+!?FU55124; Inspirations' Speed
+x16 - Battle monster
+!!BMx16:I?y1; y1 - monster side
+!!BHy1:N?y2; y2 - number of hero
+!!FU&y2<0:E; exit if no hero
+!!HEy2:S6/?y44; y44 - level of Leadership/Inspiration
+!!SN:W^more_SS_levels.era^/?y88; 
+!!VRy44&y88=0:*2; !!VRy44&y44=6/y88=0:+1; !!VRy4&y88=0:Sy44;
+
+!!if&y88<>0:;
+  !!VRy4&y44>0:S1;
+  !!VRy4&y44>2:S2;
+  !!VRy4&y44>4:S3;
+  !!VRy4&y44>9:S4;
+  !!VRy4&y44>14:S5;
+!!en;
+
+!_!HEy2:A2/161/?y7/?y9;
+!!HEy2:A2/108/?y7/?y9;
+!!VRy4&y9>0:*2;
+
+!!BMx16:F?y12;
+!!VRy12:&64; siege weapons
+!!BMx16&y12=0:Sdy4;
+
+!?GM0; !!FU55998:P3/0/5  P3/1/6  P3/2/8  P3/3/10;
+!?PI;  !!FU55998:P3/0/5  P3/1/6  P3/2/8  P3/3/10;
+!?HM-1;  increase scouting radius
+!!FU:E; // handled elsewhere
+!!HE-1:A2/161/?y11/?y12;
+!!FU&y12=0:E; !!OW:C?y9;
+!!HE-1:P?y1/?y2/?y3;
+!!HE-1:S3/?y8;
+!!VRy8&y8>0:*2 -1;
+!!VRy7:Sy8 +5 +9;
+!!UN:Sy1/y2/y3/y9/y7;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^KS2_BR0^/?y1;
+!!FU&y1<>1:E;
+!!DO55124/0/41/1:P;

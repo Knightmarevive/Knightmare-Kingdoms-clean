@@ -1,0 +1,299 @@
+ZVSE
+
+!?FU(reset_town_creatures);
+
+!!UN:T10/0/0/258; !!UN:T10/1/0/168; !!UN:T10/6/0/286; 
+!!UN:T10/0/1/364; !!UN:T10/1/1/327; !!UN:T10/6/1/356; 
+!!UN:T10/0/2/365; !!UN:T10/1/2/328; !!UN:T10/6/2/357; 
+
+!!UN:T10/2/0/134; !!UN:T10/3/0/135; !!UN:T10/4/0/133; !!UN:T10/5/0/132;
+!!UN:T10/2/1/293; !!UN:T10/3/1/362; !!UN:T10/4/1/338; !!UN:T10/5/1/359;
+!!UN:T10/2/2/358; !!UN:T10/3/2/363; !!UN:T10/4/2/339; !!UN:T10/5/2/360;
+
+
+!!UN:T11/0/0/138; !!UN:T11/0/1/394;
+!!UN:T11/1/0/137; !!UN:T11/1/1/170;
+!!UN:T11/2/0/136; !!UN:T11/2/1/292;
+!!UN:T11/3/0/392; !!UN:T11/3/1/395;
+!!UN:T11/4/0/393; !!UN:T11/4/1/396;
+!!UN:T11/5/0/397; !!UN:T11/5/1/398;
+!!UN:T11/6/0/399; !!UN:T11/6/1/400;
+
+!?FU(load_custom_towns);
+!!SN:L^new_towns.era^/?y3; !_!FU(reset_town_creatures):P;
+
+!!SN:Ay3/^set_town_background^/?y4; 
+!!SN:Ey4/1/10/^JVrm^; !!SN:Ey4/1/11/^JVTW^;
+
+!!SN:Ay3/^set_town_adventure_look^/?y5; 
+!!SN:Ey5/1/10/^JVCramp4.def^/^JVCramp4.def^/^JVCramp4.def^;
+!!SN:Ey5/1/11/^avctowr4.def^/^avctowr4.def^/^avctowr4.def^;
+
+!!SN:Ay3/^set_town_building_def^/?y6;
+ !!SN:Ey6/1/10/26/^JVrmGRL0^; Grail
+ !!SN:Ey6/1/11/26/^JVTWGRL0^; Grail
+
+ !!SN:Ey6/1/10/27/^void^; junk building
+ !!SN:Ey6/1/10/28/^void^; junk building
+ !!SN:Ey6/1/10/29/^void^; junk building
+ !!SN:Ey6/1/10/23/^void^; junk building
+
+ !!SN:Ey6/1/11/27/^void^; junk building
+ !!SN:Ey6/1/11/28/^void^; junk building
+ !!SN:Ey6/1/11/29/^void^; junk building
+
+ !!SN:Ey6/1/11/21/^JVTWLIB^; 
+ !!SN:Ey6/1/11/22/^JVTWLIB^; 
+ !!SN:Ey6/1/11/23/^JVTWLIB^; 
+
+
+ !!SN:Ey6/1/10/30/^JVrmDW_0^; !!SN:Ey6/1/10/37/^JVrmDW_0^;
+ !!SN:Ey6/1/10/31/^JVrmDW_1^; !!SN:Ey6/1/10/38/^JVrmDW_1^; 
+ !!SN:Ey6/1/10/18/^JVrmDW_1^; !!SN:Ey6/1/10/19/^JVrmDW_1^;
+ !!SN:Ey6/1/10/32/^JVrmDW_2^; !!SN:Ey6/1/10/39/^JVrmDW_2^;
+ !!SN:Ey6/1/10/33/^JVrmDW_3^; !!SN:Ey6/1/10/40/^JVrmDW_3^;
+ !!SN:Ey6/1/10/34/^JVrmDW_4^; !!SN:Ey6/1/10/41/^JVrmDW_4^;
+ !!SN:Ey6/1/10/24/^JVrmDW_4^; !!SN:Ey6/1/10/25/^JVrmDW_4^;
+ !!SN:Ey6/1/10/35/^JVrmDW_5^; !!SN:Ey6/1/10/42/^JVrmDW_5^;
+ !!SN:Ey6/1/10/36/^JVrmDW_6^; !!SN:Ey6/1/10/43/^JVrmDW_6^;
+
+
+ !!SN:Ey6/1/11/30/^JVTWDW_0^; !!SN:Ey6/1/11/37/^JVTWDW_0^;
+ !!SN:Ey6/1/11/31/^JVTWDW_1^; !!SN:Ey6/1/11/38/^JVTWDW_1^; 
+ !!SN:Ey6/1/11/18/^JVTWDW_1^; !!SN:Ey6/1/11/19/^JVTWDW_1^;
+ !!SN:Ey6/1/11/32/^JVTWDW_2^; !!SN:Ey6/1/11/39/^JVTWDW_2^;
+ !!SN:Ey6/1/11/33/^JVTWDW_3^; !!SN:Ey6/1/11/40/^JVTWDW_3^;
+ !!SN:Ey6/1/11/34/^JVTWDW_4^; !!SN:Ey6/1/11/41/^JVTWDW_4^;
+ !!SN:Ey6/1/11/24/^JVTWDW_4^; !!SN:Ey6/1/11/25/^JVTWDW_4^;
+ !!SN:Ey6/1/11/35/^JVTWDW_5^; !!SN:Ey6/1/11/42/^JVTWDW_5^;
+ !!SN:Ey6/1/11/36/^JVTWDW_6^; !!SN:Ey6/1/11/43/^JVTWDW_6^;
+
+
+!!SN:Ay3/^set_town_building_outline^/?y7;
+!!SN:Ey7/1/10/26/^MCuni64^; Grail
+
+ !_!SN:Ey7/1/10/27/^zzvoid^; junk building
+ !_!SN:Ey7/1/10/28/^zzvoid^; junk building
+ !_!SN:Ey7/1/10/29/^zzvoid^; junk building
+
+ !!SN:Ey7/1/10/30/^MCuni64^; !!SN:Ey7/1/10/37/^MCuni64^;
+ !!SN:Ey7/1/10/31/^MCuni64^; !!SN:Ey7/1/10/38/^MCuni64^;
+ !!SN:Ey7/1/10/18/^MCuni64^; !!SN:Ey7/1/10/19/^MCuni64^;
+ !!SN:Ey7/1/10/32/^JVrELF1^; !!SN:Ey7/1/10/39/^JVrELF1^;
+ !!SN:Ey7/1/10/33/^JVrpeg1a^; !!SN:Ey7/1/10/40/^JVrpeg1a^;
+ !!SN:Ey7/1/10/34/^JVrTRE1^; !!SN:Ey7/1/10/41/^JVrTRE1^;
+ !!SN:Ey7/1/10/24/^JVrTRE1^; !!SN:Ey7/1/10/25/^JVrTRE1^;
+ !!SN:Ey7/1/10/35/^JVrDr1aa^; !!SN:Ey7/1/10/42/^JVrDr1aa^;
+ !!SN:Ey7/1/10/36/^MCuni64^; !!SN:Ey7/1/10/43/^MCuni64^;
+
+ 
+ !!SN:Ey7/1/11/21/^MCuni64^; 
+ !!SN:Ey7/1/11/22/^MCuni64^; 
+ !!SN:Ey7/1/11/23/^MCuni64^; 
+ !!re i/30/43:;
+    !!SN:Ey7/1/11/i/^MCuni64^; 
+ !!en:;
+
+!!SN:Ay3/^set_town_building_position^/?y99;
+!!re i/0/4; mage guild
+   !!SN:Ey6/1/10/i/^zmage^; 
+   !!SN:Ey7/1/10/i/^MCuni64^;
+   !!SN:Ey99/1/10/i/400/300;
+
+   !!SN:Ey6/1/11/i/^JVTWLIB^; 
+   !!SN:Ey7/1/11/i/^MCuni64^;
+   !!SN:Ey99/1/11/i/400/300;
+ !!en;
+
+!!re i/7/13;
+  !!SN&i<10:Ey6/1/11/i/^z_dofort^; 
+  !!SN&i<10:Ey6/1/10/i/^z_dpfort^; 
+  !!SN&i<10:Ey99/1/10/i/555/133;
+  !!SN&i<10:Ey99/1/11/i/77/133;
+
+  !!SN&i>9:Ey6/1/11/i/^jvtwhal2^;   
+  !!SN&i>9:Ey6/1/10/i/^gtwnhall^; 
+  !!SN&i>9:Ey99/1/10/i/560/200;
+  !!SN&i>9:Ey99/1/11/i/32/200;
+  
+  !!SN:Ey7/1/10/i/^MCuni128^;       
+  !!SN:Ey7/1/11/i/^MCuni128^;
+!!en;
+
+!!SN:Ey99/1/10/16/330/257;  Blacksmith
+!!SN:Ey6/1/10/16/^DP_Smith^; !!SN:Ey7/1/10/16/^MCuni64^;
+!!SN:Ey6/1/11/16/^JVTWblak^; !!SN:Ey7/1/11/16/^MCuni64^; !!SN:Ey99/1/11/16/32/256;
+
+!!SN:Ay3/^set_town_type_name^/?y8; 
+!!SN:Ey8/1/10/^Dragon Peaks^;
+!!SN:Ey8/1/11/^Divine Observatory^;
+
+!!SN:Ay3/^set_town_dwelling_names^/?y9;
+
+!!SN:Ey9/1/10/0/0/^Snake Pit^; !!SN:Ey9/1/10/0/1/^Upg. Snake Pit^;
+!!SN:Ey9/1/10/1/0/^Gorynych Lair^; !!SN:Ey9/1/10/1/1/^Upg. Gorynych Lair^;
+!!SN:Ey9/1/10/2/0/^Fae^; !!SN:Ey9/1/10/2/1/^Sylph^;
+!!SN:Ey9/1/10/3/0/^Acid Pool^; !!SN:Ey9/1/10/3/1/^Upg. Acid Pool^;
+!!SN:Ey9/1/10/4/0/^Living Crystal^; !!SN:Ey9/1/10/4/1/^Upg. Living Crystal^;
+!!SN:Ey9/1/10/5/0/^Azure Lake^; !!SN:Ey9/1/10/5/1/^Upg. Azure Lake^;
+!!SN:Ey9/1/10/6/0/^Chinese Lantern^; !!SN:Ey9/1/10/6/1/^Upg. Chinese Lantern^;
+
+!!SN:Ay3/^set_town_dwelling_cost^/?y10;
+!!SN:Ey10/1/10/0/0/2/1/2/1/1/1/1000; !!SN:Ey10/1/10/0/1/2/1/2/1/1/1/1000;
+!!SN:Ey10/1/10/1/0/5/3/5/3/3/3/5000; !!SN:Ey10/1/10/1/1/5/3/5/3/3/3/5000;
+!!SN:Ey10/1/10/2/0/9/3/9/3/3/3/9000; !!SN:Ey10/1/10/2/1/9/3/9/3/3/3/9000;
+!!SN:Ey10/1/10/3/0/5/3/5/3/3/3/13000; !!SN:Ey10/1/10/3/1/5/3/5/3/3/3/13000;
+!!SN:Ey10/1/10/4/0/5/3/5/3/3/3/27000; !!SN:Ey10/1/10/4/1/5/3/5/3/3/3/27000;
+!!SN:Ey10/1/10/5/0/5/3/5/3/3/3/36000; !!SN:Ey10/1/10/5/1/5/3/5/3/3/3/36000;
+!!SN:Ey10/1/10/6/0/5/3/5/3/3/3/77000; !!SN:Ey10/1/10/6/1/5/3/5/3/3/3/77000;
+
+!!SN:Ay3/^set_town_mp3^/?y11; !!SN:Ey11/1/10/^DragonPeaks^;
+
+!!SN:Ay3/^ChangeSiegeTowerCreature^/?y13; !!SN:Ey13/1/10/254/^shot254.def^;
+
+!!SN:Ay3/^change_hall_def^/?y15;
+!!SN:Ey15/1/10/^HALLDRAG.def^;
+!!SN:Ey15/1/11/^HALLDOBS.def^;
+
+!?FU(refresh_towns);
+
+!!UN:U98/-1/?y1;
+!!re i/1/y1;
+  !!UN:U98/-1/i/2;
+  !_!IF:M^Town %V2 %V3 %V4^;
+  !!CAv2/v3/v4:T?y9;
+  !!OBv2/v3/v4:Uy9;
+  !!CAv2/v3/v4:I0;
+!!en:;
+
+!?FU(fix_town_starting_armies);
+!!FU:E;
+!!UN:U98/-1/?y9; !!VRy9:-1;
+
+!!re i/0/y9;
+  !!CA0/i:P?y1/?y2/?y3 T?y5;
+  !!CA0/i&y5=10:M2/6/132/32;
+
+!!en;
+
+!?FU(replace_towns);
+!!UN:C4893167/2/?y77;
+!!UN:C4893167/2/24555;
+
+!!if&2<1:;
+ !!UN:U25/0/?y2;
+ !!re i/1/y2;
+   !!UN:U25/0/i/2;
+   !!VRy4:S0 R999;
+   !!UN:U98/-1/?y1;
+   !!if&y4<64/y1<48;
+     !!UN:Ov2/v3/v4;
+     !!VRv2:+1; 
+     !!UN:Iv2/v3/v4/98/10/98/1;
+
+     !!VRv2:-3; !!VRv3:+1; 
+     !!re i/1/3;;
+       !_!UN:Iv2/v3/v4/91/0; test marker
+       !!TRv2/v3/v4:T?y91/?y92/?y93/?y94/?y95/?y96/?y97/?y98;
+       !!TRv2/v3/v4&y91=9:T6/y92/y93/y94/y95/y96/y97/y98;
+       !!TRv2/v3/v4:P?y99; !!TRv2/v3/v4&y99=0:P1; !!VRv2:+1; 
+     !!en;
+   !!en;
+ !!en:;  
+!!en;
+
+!!UN:U98/-1/?y1;
+!!re i/1/y1;
+  !!UN:U98/-1/i/2;
+  !_!IF:M^Town %V2 %V3 %V4^;
+  !!CAv2/v3/v4:O?y3;
+  !!VRy4:S0 R999;
+  !!CAv2/v3/v4&y3<0/y4<192:T10;
+!!en:;
+!_!IF:M^Towns Replaced^;
+
+!!UN:C4893167/2/y77;
+
+!_!FU(fix_town_starting_armies):P;
+
+!?FU(limit_custom_towns);
+!!FU:E;
+!!UN:U98/-1/?y1;
+!!re i/1/y1;
+  !!UN:U98/-1/i/2;
+  !!CAv2/v3/v4:T?y5;
+  !!if&y5=10;
+    !!CAv2/v3/v4:B2/17 B2/18 B2/19 B2/21 B2/22 B2/24 B2/25;
+    !!CAv2/v3/v4:B5/17 B5/18 B5/19 B5/21 B5/22 B5/24 B5/25;
+  !!en;
+!!en:;
+
+!?TM1; !!FU:E;
+!!VRy1:Sc; !!FU&y1<>1:E;
+!!OW:C?y2; !!FU&y2<>0:E;
+!!FU(replace_towns):P;
+
+
+!?PI; !!FU:E; // todo
+!!FU(replace_towns):P;
+
+
+!?TM2; !!VRy1:Sc; 
+!_!UN:U98/-1/?y2; 
+!!FU(refresh_towns):P;
+!!FU(limit_custom_towns):P;
+!!FU(fix_town_starting_armies)&y1=1:P;
+
+!?FU(OnOpenTownScreen);
+!!FU(load_custom_towns):P;
+!!FU(limit_custom_towns):P;
+
+!?FU(OnAfterLoadGame);
+!!FU(load_custom_towns):P;
+!!FU(reset_town_creatures):P;
+
+!?FU(OnAfterErmInstructions);
+!!FU(load_custom_towns):P;
+!!FU(reset_town_creatures):P;
+
+!?FU(OnAdventureMapLeftMouseClick);
+!!FU:E; disable this cheat
+
+!!CM:I?y2; !!FU&y2<>37:E;
+!!CM:F?y3; !!FU&y3<>32:E;
+!!CM:S?y1; !!CM&y1<>13:R0; !!FU&y1<>13:E;
+
+!!CM:P?y4/?y5/?y6; !!OBy4/y5/y6:T?y9; !!FU&y9<>98:E;
+
+!_!OBy4/y5/y6:U?y19; 
+!!CAy4/y5/y6:T?y19;
+
+!!VRy19:+1;
+!!VRy19:%27; 
+!!CM:R0;
+
+
+!!CAy4/y5/y6:U?y16;
+!_!OBy4/y5/y6:Uy19;
+!!CAy4/y5/y6:Ty19;
+!_!CA0/y16:Ty19;
+!!OBy4/y5/y6:Uy19;
+!!UN:R1; 
+!_!CAy4/y5/y6:I0;
+
+!!UN:R1; !!IF:L^town ID: %Y19^;
+!_!UN:R6/250;
+
+!!CAy4/y5/y6:I1 I0;
+
+!_?OB98;
+
+!?FU(OnPostTownScreen);
+!!FU:E;
+!!CA-1:T?y1; !_!IF:L^town ID: %Y1^;
+!_!CA-1:U?y3; !!CA-1:Ty1;
+
+
+
+!?PI; !!FU:E;
+!!FU(replace_towns):P;

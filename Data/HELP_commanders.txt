@@ -1,0 +1,148 @@
+
+Horrible Wounds
+
+The Commander may gain this extra skill if he or she has
+Attack and Defense Master skills
+
+Commander get Reduce Enemy Defense by 50% and Age Enemy
+
+It is marked with [D] in Commander info during a battle.
+
+
+Legendary
+
+The Commander may gain this extra skill if he or she has
+Attack and Hit Points Master skills
+
+It is marked with [O] in Commander info during a battle.
+
+Causes fear. Fearless. Dragon Slayer.
+
+
+Crushing Damage
+
+The Commander may gain this extra skill if he or she has
+Attack and Damage Master skills
+
+Commander gets Maximum Damage Always, and 33% chance to Death Blow
+
+It is marked with [M] in Commander info during a battle.
+
+
+Stings
+
+The Commander may gain this extra skill if he or she has
+Attack and Magic Power Master skills
+
+Commander gets No Enemy Retaliation and Poisonous.
+
+It is marked with [N] in Commander info during a battle.
+
+
+Flash Swing
+
+The Commander may gain this extra skill if he or she has
+Attack and Speed Master skills
+
+Commander Swings his or her blade so fast, that it have a chance to produce some Lightning
+The chance is (12 + 2 * Commander level) percent for each strike. Additionally commander get Attack and Return
+
+It is marked with [S] in Commander info during a battle.
+
+
+Vigor
+
+The Commander may gain this extra skill if he or she has
+Defense and Hit Points Master skills
+
+It is marked with [E] in Commander info during a battle.
+
+Strike back every attack, and always positive morale and luck.
+
+
+Strike all Enemies around
+
+The Commander may gain this extra skill if he or she has
+Defense and Damage Master skills
+
+It is marked with [A] in Commander info during a battle.
+
+
+Magic Armor
+
+The Commander may gain this extra skill if he or she has
+Defense and Magic Power Master skills
+
+It is marked with [I] in Commander info during a battle.
+
+Starts Every battle with Permanent Fire Shield, Advanced Shield, and Advanced Air Shield
+
+
+30% chance to Block any Physical Damage
+
+The Commander may gain this extra skill if he or she has
+Defense and Speed Master skills
+
+It is marked with [B] in Commander info during a battle.
+
+
+Attack twice
+
+The Commander may gain this extra skill if he or she has
+Hit Points and Damage Master skills
+
+It is marked with [2] in Commander info during a battle.
+
+
+Commander Rebirths
+
+The Commander may gain this extra skill if he or she has
+Hit Points and Magic Power Master skills
+
+It is marked with [P] in Commander info during a battle.
+
+Every Death has possibility to Rebirth if only some casts are left.
+
+
+Regeneration 250 HP every turn
+
+The Commander may gain this extra skill if he or she has
+Hit Points and Speed Master skills
+
+It is marked with [R] in Commander info during a battle.
+
+Every turn (in the beginning) regenerates 250 Hit Points
+
+
+DeathStare
+
+The Commander may gain this extra skill if he or she has
+Damage and Magic Power Master skills
+
+It is marked with [G] in Commander info during a battle.
+
+Every attack has the Death Stare
+Kills (Commander Level)/(Creature Level)
+creatures in the stack
+where Creature Level is from 1 to 7
+
+
+Champion Distance Bonus
+
+The Commander may gain this extra skill if he or she has
+Damage and Speed Master skills
+
+It is marked with [C] in Commander info during a battle.
+
+Damage grows for 5% per square
+Immune to Champion charge
+
+
+Aircraft
+
+The Commander may gain this extra skill if he or she has
+Magic Power and Speed Master skills
+
+Commander can Fly and have Permanent Magic Mirror
+
+It is marked with [F] in Commander info during a battle.

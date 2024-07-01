@@ -1,0 +1,117 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=4.5(May).2016
+
+!?FU55468;
+
+!!FU:E;
+!!IF:M^FU55468 Function disabled it is not ready^; !!FU:E;
+
+For Blockmap
+!!VRy31:S4294967295 S-1; !!VRy32:S8191;
+000111111111111111111111111111111111111111111111
+From objects txt
+
+!!VRy35:S4294967295 S-1; !!VRy36:S24351;
+010111110001111111111111111111111111111111111111
+From objects txt
+
+!!VRy50:S4294967295 S-1; !!VRy51:S7967;
+000111110001111111111111111111111111111111111111
+From objects txt
+
+
+For entries
+!!VRy38:S0; !!VRy39:S16384;
+010000000000000000000000000000000000000000000000
+From objects txt
+
+
+!!DO55467/0/9999/1:P63/69/y31/y32/y38/y39;
+!!DO55467/0/9999/1:P63/70/y31/y32/y38/y39;
+!!DO55467/0/9999/1:P63/71/y31/y32/y38/y39;
+!!DO55467/0/9999/1:P63/72/y31/y32/y38/y39;
+
+!_#FU55468:P;
+
+!?FU55467;
+x1/x2 - type/subtype (use only existing ones)
+x3/x4 - Bits3
+x5/x6 - EnterMask
+x16   - Search Index
+
+!!SN:W^Broken DEF patcher^/?y1; !!FU&y1>0:E;
+
+  __asm{
+    mov    ebx,BASE
+    mov    ebx,[ebx]
+    add    ebx,0x1FB74
+    mov    eax,[ebx]
+    mov    tps,eax
+    mov    eax,[ebx+4]
+    mov    tpe,eax
+  }
+  num=tpe-tps;
+  //from WoG Sources - FindEnterShift
+
+!!VRy70:S6919480; 0x699538 (BASE from WoG Sources)
+!!UN:Cy70/4/?y71; [Base]
+!!VRy73:Sy71 +129908; + 0x1FB74
+!!UN:Cy73/4/?y74;  y74 is tps
+!!VRy75:Sy73 +4;
+!!UN:Cy75/4/?y76;  y76 is tpe
+!!VRy77:Sy76 -y74; y77 is num
+
+!!VRy1:Sy74;
+
+!!IF&x16=y77:M^Def Sprite for Object %X1/%X2 not Found^;
+!!FU&x16>=y77:E;
+
+!!VRy2:S4;  Name PTR offset
+!!VRy3:S56; Type Offset
+!!VRy4:S60; Subtype Offset
+!!VRy5:S20; Bits1 Offset
+!!VRy6:S28; Bits2 Offset
+!!VRy7:S36; Bits3 Offset
+!!VRy8:S44; EnterMask Offset
+!!VRy9:S68; Length in bytes of _Types_ structure
+
+
+
+!!VRy21:Sy1 +y3; +y9;
+!!VRy22:Sy1 +y4; +y9;
+!!UN:Cy21/4/?y23;
+!!UN:Cy22/4/?y24;
+
+  !!if|y23<>71/y24<>0:;
+     !!IF:M^Cannot apply memory patch!
+Address Don't Match! expected 71/0 got %Y23/%Y24
+Pointer to structure is %Y1^;
+     !!SN:W^Broken DEF patcher^/666;
+     !!FU:E;
+  !!en:;
+
+!!VRy44:Sy9 *x16;
+!!VRy50:Sy1 +y7 +y44; !!VRy51:Sy50 +4;
+!!VRy55:Sy1 +y8 +y44; !!VRy56:Sy55 +4;
+
+
+!!VRy21:Sy1 +y44 +y3;
+!!VRy22:Sy1 +y44 +y4;
+
+!!UN:Cy21/4/?y23;
+!!UN:Cy22/4/?y24;
+
+!_!IF:M^Pause^;
+
+!!FU|x1<>y23/x2<>y24:E;
+
+!_!IF:M^Sprite DEF %X1/%X2 Patched^;
+
+!!UN:Cy50/4/x3; !!UN:Cy51/4/x4;
+!!UN:Cy55/4/x5; !!UN:Cy56/4/x6;
+
+!!VRx16:S999999;
+!!FU:E;
+

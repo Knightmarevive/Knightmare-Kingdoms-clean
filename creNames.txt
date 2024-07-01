@@ -1,0 +1,56 @@
+197	Fanatic	Fanatics
+198	Monstrous Eyes	Monstrous Eyes
+199	Ancient Dendroid	Ancient Dendroids
+200	Blood Minotaur	Blood Minotaurs
+201	Mineral Elemental	Mineral Elementals
+202	Electricity Elemental	Electricity Elementals
+203	Ancient Basilisk	Ancient Basilisks
+204	Acid Wivern	Acid Wiverns
+205	Efreet Rajah	Efreet Rajahs
+206	Cesar Medusa	Cesar Medusas
+207	Stormbird	Stormbirds
+208	Hurricane Elemental	Hurricane Elementals
+209	Pit Master	Pit Master
+210	Ancient Lich	Ancient Liches
+211	Gnoll Raider	Gnoll Raiders
+212	Greater Demon	Greater Demons
+213	Cesar Griffin	Cesar Griffins
+214	Holy Champion	Holy Champions
+215	Dwarf Defender	Dwarf Defenders
+216	Legendary Unicorn	Legendary Unicorns
+217	Cathedral Gargoyle	Cathedral Gargoyles
+218	Skeleton Archer	Skeleton Archers
+219	Ogre Warlock	Ogre Warlocks
+220	Dire Wolf	Dire Wolfs
+221	Arcane Reptilion	Arcane Reptilions
+222	Blood Hornet	Blood Hornets
+223	Golden Gorgon	Golden Gorgons
+224	Life Elemental	Life Elementals
+225	Void Elemental	Void Elementals
+226	Nosferatu	Nosferatus
+227	Nymph	Nymphs
+228	Musketeer	Musketeers
+229	Hunter	Hunters
+230	Master Archmage	Master Archmages
+231	Sacred Elf	Sacred Elves
+232	Arcane Genies	Arcane Genies
+233	Phosforous Troglodite	Phosforous Troglodytes
+234	Seducing Harpy	Seducing Harpies
+235	Grim Reaper	Grim Reapers
+236	Scamp	Scamps
+237	Succubus	Succubusses
+238	Astral Cerberus	Astral Cerberus
+239	Orc Leader	Orc Leaders
+240	Spider Queen	Spider Queens
+241	Centamoth Thrower	Centamoth Throwers
+242	Female Warlock	Female Warlocks
+	Castle Guardian	Castle Guardians
+	Rampart Guardian	Rampart Guardians
+	Tower Guardian	Tower Guardians
+	Inferno Guardian	Inferno Guardians
+	Necro Guardian	Necro Guardians
+	Dungeon Guardian	Dungeon Guardian
+	Stronghold Guardian	Stronghold Guardians
+	Fortress Guardian	Fortress Guardians
+	Conflux Guardian	Conflux Guardians
+

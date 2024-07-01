@@ -1,0 +1,19 @@
+
+
+
+	#	1095	-1	-1	328	344	14	-1		-1
+	Def	12	207	270	66	33	silo_small.def	0	16	
+	Def	11	55	270	66	33	silo_small.def	0	16	
+	Text	1	40	24	240	40	RESOURCES SILO	HiScore.fnt	7	0	1	8	
+	Button	20	56	272	64	30	iOKAY.def	2	
+	Button	21	208	272	64	30	iCANCEL1.def	2	
+	Def	4	85	72	150	70	Silo_b.def	0	16	
+	Text	5	56	224	216	40	Do you want to upgrade the resource silo for 5000 gold and 5 ore?	SmalFont.fnt	7	0	1	8	
+	Def	2	88	160	32	32	Resource.def	0	16	
+	Def	3	144	160	32	32	Resource.def	2	16	
+	Text	6	90	192	32	16	1	SmalFont.fnt	7	0	1	8	
+	Text	7	144	192	32	16	1	SmalFont.fnt	7	0	1	8	
+	Def	8	200	160	32	32	Resource.def	5	16	
+	Text	9	192	192	48	16	99	SmalFont.fnt	7	0	1	8	
+	Def	10	81	68	158	78	silo_big.def	0	16	
+	#
