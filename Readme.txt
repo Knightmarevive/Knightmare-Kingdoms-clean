@@ -7,6 +7,7 @@ Mod aimed to be biggest platform modification
 * New Creature Banks
 * New mithril thingies
 * Modified/Replaced Secondary Skills
+* Some new Spells and some replaced ones
 * New Concepts
 * And much more
 
