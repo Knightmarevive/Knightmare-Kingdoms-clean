@@ -1,0 +1,19 @@
+ZVSE
+
+!?CM2;
+!!SN:W^Virtual Backpack - Script Enabled^/1;
+
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.Backpack.PutIntoVirtual^;    !!VRy77:Sv1;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.Backpack.PutIntoReal^;       !!VRy78:Sv1;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.Backpack.PutAllIntoVirtual^; !!VRy67:Sv1;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.Backpack.PutManyIntoReal^;   !!VRy68:Sv1;
+
+!!CM:S?y1;
+!!FU&y1<>13:E; Must be leftclick release
+!!HE-1:N?y3; !!CM:I?y2; !!HEy3:Z?y9;
+!!FU&y2<>y77/y2<>y78/y2<>y67/y2<>y68:E;
+
+!!SN:L^BackPack.era^/?y11;
+!!SN&y2=y77:Ay11/^CallReal2Virtual^/?y12 Ey12/1/y9;
+!!SN&y2=y78:Ay11/^CallVirtual2Real^/?y12 Ey12/1/y9;
