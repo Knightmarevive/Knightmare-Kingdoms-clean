@@ -164,7 +164,8 @@ ERMS_ScriptDate=9.9(September).2012
 * grail, spell book and scroll
 * highlighted slot and lock
 * blank WoG artifacts
-!!UN:J6/30/?y1;
+* combo artifacts (majaczek)
+!!UN:J6/30/?y1; !!UN:Ay1/4/?y2; !!SN&y2>=0:G0;
 !!SN:W^Market %X1/%X2/%X3 item %X16^/y1;
 
 !?FU671088653;                          Generate random creatures
