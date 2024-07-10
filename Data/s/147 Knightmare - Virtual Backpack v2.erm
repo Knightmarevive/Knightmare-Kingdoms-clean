@@ -25,3 +25,20 @@ ZVSE
 !!SN&y2=y56:Ay11/^CallAlchemyWindow^/?y12 Ey12/1/y9/0;
 
 !!UN:R3/-1;
+
+
+!?CM4;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.BattleAlchemy^;
+!!VRy77:Sv1;
+
+!_!IF:L^Alchemy Hit^;
+
+!!CM:S?y1;
+!!FU&y1<>13:E; Must be leftclick release
+!!HE-1:N?y3; !!CM:I?y2; !!HEy3:Z?y9;
+
+!!FU&y2<>y77:E;
+
+
+!!SN:L^Alchemy.era^/?y11;
+!!SN:Ay11/^CallAlchemyWindow^/?y12 Ey12/1/y9/1;
