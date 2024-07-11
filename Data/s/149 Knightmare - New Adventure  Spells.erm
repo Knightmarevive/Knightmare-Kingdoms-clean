@@ -169,11 +169,12 @@ Spell can be cast only %Z2 per day.^;
 
 !!SN:W^HERO %Y8 Sprint^/d1;
 
-!!HEy8:G?y11 W?y12 S15/?y13;
+!!HEy8:G?y11 W?y12 S15/?y13 F?y21/?y22/?y23/?y24;
 !!FU(SSL_get)&y88<>0:P15/y13/?y13/d/d/d;
-!_!SS5:Ey13/?y14;
-!!VRy14:Sy13 +1 *25;
-!!VRy16:Sy11 *y14 :100;
+!!SS5:Ey13/?y14;
+!_!VRy14:Sy13 +1 *25;
+!_!VRy16:Sy11 *y14 :100;
+!!VRy16:Sy13 +2 *y23 *12 +700;
 !!VRy17:Sy16 :100;
 !!UN:R6/3000;
 !!IF:L^Hero get %Y17 steps (exactly %Y16 Movement Points)^;
