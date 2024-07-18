@@ -1,0 +1,5 @@
+!!VRv3:+v3; 
+!!HEv2:Idv3;
+
+!!IF:M^Restored %V3 Mana.^;
+
