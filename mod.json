@@ -19,7 +19,7 @@
 		"file": "penrose_64.ico",
 		"index": 0
 	},
-	"mod_version": "2.0.1",
+	"mod_version": "2.0.2",
 	"priority": 3,
 	"compatibility": {
 		"class": "default",
