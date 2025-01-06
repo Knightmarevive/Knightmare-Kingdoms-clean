@@ -1,0 +1,52 @@
+{
+	"RMG": {
+		"objectGeneration": {
+			"101": {
+				"0": {
+					"density": 80,
+					"value": 1000
+				},
+				"1": {
+					"density": 80,
+					"value": 1000
+				},
+				"2": {
+					"density": 80,
+					"value": 1000
+				},
+				"3": {
+					"density": 80,
+					"value": 10000
+				},
+				"4": {
+					"density": 80,
+					"value": 1000
+				},
+				"5": {
+					"density": 80,
+					"value": 1000
+				},
+				"6": {
+					"density": 80,
+					"value": 1000
+				},
+				"7": {
+					"density": 80,
+					"value": 10000
+				},
+				"8": {
+					"density": 80,
+					"value": 1000
+				},
+				"9": {
+					"density": 80,
+					"value": 1000
+				},
+				"10": {
+					"density": 80,
+					"value": 1000
+				}
+			}
+		}
+	}
+}
