@@ -3,16 +3,40 @@
 		"objectGeneration": {
 			"25": {
 				"1": {
-					"density": 80,
-					"value": 1500
+					"density": 100,
+					"value": 15000
 				},
 				"2": {
 					"density": 100,
-					"value": 1000
+					"value": 15000
 				},
 				"3": {
-					"density": 50,
+					"density": 100,
 					"value": 15000
+				},
+				"5": {
+					"density": 100,
+					"value": 12000
+				},
+				"6": {
+					"density": 100,
+					"value": 12000
+				},
+				"7": {
+					"density": 100,
+					"value": 12000
+				},
+				"8": {
+					"density": 100,
+					"value": 12000
+				},
+				"9": {
+					"density": 100,
+					"value": 6000
+				},
+				"10": {
+					"density": 100,
+					"value": 6000
 				}
 			}
 		}
