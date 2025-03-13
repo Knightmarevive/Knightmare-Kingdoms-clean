@@ -112,9 +112,9 @@ This Mithril Smelter already belongs to you^;
 !!PO300:N?y5;  check which player owns the object (again, seems v5 gets lost in the way)
 !!FU&y4<>y5:E; only on current player turn
 !!UN:J2/?y2; get difficulty level
-!!VRv9613&y2<3:S3; adjust smelter production
-!!VRv9613&y2=3:S2;
-!!VRv9613&y2=4:S1;
+!_!VRv9613&y2<3:S3; adjust smelter production
+!_!VRv9613&y2=3:S2;
+!_!VRv9613&y2=4:S1;
 
 !!VRy99:S0 +c %7; y99 is day of week (0 to 6)
 !!OW&y99=1:Ry4/7/dv9613; if same, give mithril
