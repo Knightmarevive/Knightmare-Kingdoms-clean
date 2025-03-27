@@ -50,7 +50,7 @@ ZVSE2
 !!if&(visited)<>0;
   !!IF:M1/^The place is abandoned.^;
 !!el;
-  !!IF:Q3/21/247/2/^Do you want a deadly battle ?^;
+  !!IF:Q3/21/255/2/^Do you want a deadly battle ?^;
   !!if&3;
     !!VRi^WOG_70_BattleRound^:S-2;
 
@@ -70,7 +70,7 @@ ZVSE2
     !!en;
     !_!UN:P(WOG_OPT_NEW_BATTLE_FIELDS)/?(battlefields:y) P(WOG_OPT_NEW_BATTLE_FIELDS)/0; 
 
-    !!HE-1:Tv998/v999/v1000/247/1 O?(owner:y); **Trigger battle with the Lich King
+    !!HE-1:Tv998/v999/v1000/255/1 O?(owner:y); **Trigger battle with the Lich King
     !_!UN:P(WOG_OPT_NEW_BATTLE_FIELDS)/?(battlefields:y); 
 
     !!if&(owner)<>(NO_OWNER);
