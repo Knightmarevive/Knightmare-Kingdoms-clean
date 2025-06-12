@@ -13,13 +13,13 @@
 			"ru_RU": ""
 		}
 	},
-	"author": "majaczek, fandor",
+	"author": "majaczek",
 	"homepage": "",
 	"icon": {
 		"file": "penrose_64.ico",
 		"index": 0
 	},
-	"mod_version": "2.0.62",
+	"mod_version": "2.0.66",
 	"priority": 3,
 	"compatibility": {
 		"class": "default",

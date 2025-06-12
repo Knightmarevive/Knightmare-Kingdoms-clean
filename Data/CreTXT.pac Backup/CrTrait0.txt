@@ -1,0 +1,507 @@
+Name		Cost															Damage				Adv. Map			
+Singular	Plural	Wood	Mercury	Ore	Sulfur	Crystal	Gems	Gold	Fight Value	AI Value	Growth	Horde Growth	Hit Points	Speed	Attack	Defense	Low	High	Shots	Spells	Low	High	Ability Text	"Attributes (Reference only, do not change these values)"
+Pikeman	Pikemen	0	0	0	0	0	0	60	100	80	14	0	10	4	4	5	1	3	0	0	20	50	Immune to Champion charge bonus.	U0 | 
+Halberdier	Halberdiers	0	0	0	0	0	0	75	115	115	14	0	10	5	6	5	2	3	0	0	20	30	Immune to Champion charge bonus.	U1 | 
+Archer	Archers	0	0	0	0	0	0	100	115	126	9	0	10	4	6	3	2	3	12	0	16	30	Shooter.	U2 | SHOOTING_ARMY
+Marksman	Marksmen	0	0	0	0	0	0	150	115	184	9	0	10	6	6	3	2	3	24	0	16	25	Shoots twice.	U3 | const_two_attacks | SHOOTING_ARMY
+Griffin	Griffins	0	0	0	0	0	0	200	324	351	7	3	25	6	8	8	3	6	0	0	12	25	Flying.Retaliates twice.	U4 | DOUBLE_WIDE | FLYING_ARMY
+Royal Griffin	Royal Griffins	0	0	0	0	0	0	240	364	448	7	3	25	9	9	9	3	6	0	0	12	20	Flying.Unlimited retaliations.	U5 | DOUBLE_WIDE|FLYING_ARMY
+Swordsman	Swordsmen	0	0	0	0	0	0	300	445	445	4	0	35	5	10	12	6	9	0	0	10	20		U6 | 
+Crusader	Crusaders	0	0	0	0	0	0	400	588	588	4	0	35	6	12	12	7	10	0	0	10	16	Strikes twice.	U7 | const_two_attacks
+Monk	Monks	0	0	0	0	0	0	400	485	485	3	0	30	5	12	7	10	12	12	0	8	16	Shooter.	U8 | SHOOTING_ARMY
+Zealot	Zealots	0	0	0	0	0	0	450	500	750	3	0	30	7	12	10	10	12	24	0	8	12	Shooter, No melee penalty.	U9 | SHOOTING_ARMY | const_no_melee_penalty
+Cavalier	Cavaliers	0	0	0	0	0	0	1000	1668	1946	2	0	100	7	15	15	15	25	0	0	5	12	Jousting bonus.	U10 | DOUBLE_WIDE | const_jousting
+Champion	Champions	0	0	0	0	0	0	1200	1800	2100	2	0	100	9	16	16	20	25	0	0	5	10	Jousting bonus.	U11 | DOUBLE_WIDE | const_jousting
+Angel	Angels	0	0	0	0	0	1	3000	3585	5019	1	0	200	12	20	20	50	50	0	0	4	10	Flying.Hates Devils.	U12 | FLYING_ARMY | const_raises_morale | KING_2
+Archangel	Archangels	0	0	0	0	0	3	5000	6033	8776	1	0	250	18	30	30	50	50	0	5	3	8	Flying.+1 morale.Hates Devils.Resurrects allies.	U13 | DOUBLE_WIDE | FLYING_ARMY | const_raises_morale | KING_2
+																								
+																								
+																								
+Centaur	Centaurs	0	0	0	0	0	0	70	100	100	14	0	8	6	5	3	2	3	12	0	20	50		U14 | DOUBLE_WIDE
+Centaur Captain	Centaur Captains	0	0	0	0	0	0	90	115	138	14	0	10	8	6	3	2	3	12	0	20	30		U15 | DOUBLE_WIDE
+Dwarf	Dwarves	0	0	0	0	0	0	120	194	138	8	4	20	3	6	7	2	4	0	0	16	30	20% magic resistance.	U16 | 
+Battle Dwarf	Battle Dwarves	0	0	0	0	0	0	150	209	209	8	4	20	5	7	7	2	4	0	0	16	25	40% magic resistance.	U17 | 
+Wood Elf	Wood Elves	0	0	0	0	0	0	200	195	234	7	0	15	6	9	5	3	5	24	0	12	25	Shooter.	U18 | SHOOTING_ARMY
+Grand Elf	Grand Elves	0	0	0	0	0	0	225	195	331	7	0	15	7	9	5	3	5	24	0	12	20	Shoots twice.	U19 | SHOOTING_ARMY | const_two_attacks
+Pegasus	Pegasi	0	0	0	0	0	0	250	407	518	5	0	30	8	9	8	5	9	0	0	10	20	Magic damper.	U20 | DOUBLE_WIDE | FLYING_ARMY
+Silver Pegasus	Silver Pegasi	0	0	0	0	0	0	275	418	532	5	0	30	12	9	10	5	9	0	0	10	16	Magic damper.	U21 | DOUBLE_WIDE | FLYING_ARMY
+Dendroid Guard	Dendroid Guards	0	0	0	0	0	0	350	690	517	3	2	55	3	9	12	10	14	0	0	8	16	Binds enemies in place.	U22 | 
+Dendroid Soldier	Dendroid Soldiers	0	0	0	0	0	0	425	765	803	3	2	65	4	9	12	10	14	0	0	8	12	Binds enemies in place.	U23 | 
+Unicorn	Unicorns	0	0	0	0	0	0	850	1548	1806	2	0	90	7	15	14	18	22	0	0	5	12	Aura of magic resistance.  Blinding attack.	U24 | DOUBLE_WIDE
+War Unicorn	War Unicorns	0	0	0	0	0	0	950	1740	2030	2	0	110	9	15	14	18	22	0	0	5	10	Aura of magic resistance. Blinding attack.	U25 | DOUBLE_WIDE
+Green Dragon	Green Dragons	0	0	0	0	1	0	2400	3654	4872	1	0	180	10	18	18	40	50	0	0	4	10	Immune to spell levels 1-3.	U26 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Gold Dragon	Gold Dragons	0	0	0	0	2	0	4000	6220	8613	1	0	250	16	27	27	40	50	0	0	3	8	Immune to spell levels 1-4.	U27 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+																								
+																								
+																								
+Gremlin	Gremlins	0	0	0	0	0	0	30	55	44	16	0	4	4	3	3	1	2	0	127	20	50		U28 | 
+Master Gremlin	Master Gremlins	0	0	0	0	0	0	40	55	66	16	0	4	5	4	4	1	2	8	127	20	30	Shooter.	U29 | SHOOTING_ARMY
+Stone Gargoyle	Stone Gargoyles	0	0	0	0	0	0	130	150	165	9	4	16	6	6	6	2	3	0	0	16	30		U30 | FLYING_ARMY
+Obsidian Gargoyle	Obsidian Gargoyles	0	0	0	0	0	0	160	155	201	9	4	16	9	7	7	2	3	0	0	16	25		U31 | FLYING_ARMY
+Stone Golem	Stone Golems	0	0	0	0	0	0	150	339	250	6	0	30	3	7	10	4	5	0	0	12	25	Damage from spells reduced 50%.	U32 | 
+Iron Golem	Iron Golems	0	0	0	0	0	0	200	412	412	6	0	35	5	9	10	4	5	0	0	12	20	Damage from spells reduced 75%.	U33 | 
+Mage	Magi	0	0	0	0	0	0	350	418	570	4	0	25	5	11	8	7	9	24	0	10	20	Shooter. No melee penalty.
+Hero spells cost less.	U34 | SHOOTING_ARMY | const_no_melee_penalty
+Arch Mage	Arch Magi	0	0	0	0	0	0	450	467	680	4	0	30	7	12	9	7	9	24	0	10	16	Shooter. No melee penalty.
+Hero spells cost less.	U35 | SHOOTING_ARMY | const_no_melee_penalty | const_no_wall_penalty
+Genie	Genies	0	0	0	0	0	0	550	680	884	3	0	40	7	12	12	13	16	0	0	8	16	Hates Efreet.	U36 | FLYING_ARMY
+Master Genie	Master Genies	0	0	0	0	0	0	600	748	942	3	0	40	11	12	12	13	16	0	3	8	12	Casts Random beneficial spell.
+Hates Efreet.	U37 | FLYING_ARMY
+Naga	Nagas	0	0	0	0	0	0	1100	2016	2016	2	0	110	5	16	13	20	20	0	0	5	12	No enemy retaliation.	U38 | DOUBLE_WIDE
+Naga Queen	Naga Queens	0	0	0	0	0	0	1600	2485	2840	2	0	110	7	16	13	30	30	0	0	5	10	No enemy retaliation.	U39 | DOUBLE_WIDE
+Giant	Giants	0	0	0	0	0	1	2000	3146	3718	1	0	150	7	19	16	40	60	0	0	4	10	Mind spell immunity	U40 | KING_3
+Titan	Titans	0	0	0	0	0	2	5000	5000	7500	1	0	300	11	24	24	40	60	24	0	3	8	No melee penalty. Mind spell immunity.  Hates Black Dragons.	U41 | SHOOTING_ARMY | const_no_melee_penalty | KING_3
+                                   																								
+																								
+																								
+Imp	Imps	0	0	0	0	0	0	50	50	50	15	8	4	5	2	3	1	2	0	0	20	50		U42 | 
+Familiar	Familiars	0	0	0	0	0	0	60	60	60	15	8	4	7	4	4	1	2	0	0	20	30	Magic channel.	U43 | 
+Gog	Gogs	0	0	0	0	0	0	125	145	159	8	0	13	4	6	4	2	4	12	0	16	30	Stooter.	U44 | SHOOTING_ARMY
+Magog	Magogs	0	0	0	0	0	0	175	210	240	8	0	13	6	7	4	2	4	24	0	16	25	Shooter. Fireball attack.	U45 | SHOOTING_ARMY
+Hell Hound	Hell Hounds	0	0	0	0	0	0	200	275	357	5	3	25	7	10	6	2	7	0	0	12	25		U46 | DOUBLE_WIDE | FLYING_ARMY
+Cerberus	Cerberi	0	0	0	0	0	0	250	308	392	5	3	25	8	10	8	2	7	0	0	12	20	3-headed attack.
+Enemies cannot retaliate.	U47 | DOUBLE_WIDE | FLYING_ARMY
+Demon	Demons	0	0	0	0	0	0	250	445	445	4	0	35	5	10	10	7	9	0	0	10	20		U48 | 
+Horned Demon	Horned Demons	0	0	0	0	0	0	270	480	480	4	0	40	6	10	10	7	9	0	0	10	16		U49 | 
+Pit Fiend	Pit Fiends	0	0	0	0	0	0	500	765	765	3	0	45	6	13	13	13	17	0	0	8	16		U50 | 
+Pit Lord	Pit Lords	0	0	0	0	0	0	700	1071	1224	3	0	45	7	13	13	13	17	0	1	8	12	Summon demons from
+a dead ally.	U51 | 
+Efreet	Efreets	0	0	0	0	0	0	900	1413	1670	2	0	90	9	16	12	16	24	0	0	5	12	Immune to fire.  Hates Genies.	U52 | 
+Efreet Sultan	Efreet Sultans	0	0	0	0	0	0	1100	1584	1848	2	0	90	13	16	14	16	24	0	0	5	10	Fire shield.  Immune to fire.  Hates Genies.	U53 | 
+Devil	Devils	0	1	0	0	0	0	2700	3759	5101	1	0	160	11	19	21	30	40	0	0	4	10	-1 enemy luck. No enemy retaliation. Hates Angels.	U54 | FLYING_ARMY | KING_2
+Arch Devil	Arch Devils	0	2	0	0	0	0	4500	5243	7115	1	0	200	17	26	28	30	40	0	0	3	8	-1 enemy luck. No enemy retaliation. Hates Angels.	U55 | FLYING_ARMY | KING_2
+																								
+																								
+																								
+Skeleton	Skeletons	0	0	0	0	0	0	60	75	60	12	6	6	4	5	4	1	3	0	0	20	50	Undead.	U56 | IS_UNDEAD
+Skeleton Warrior	Skeleton Warriors	0	0	0	0	0	0	70	85	85	12	6	6	5	6	6	1	3	0	0	20	30	Undead.	U57 | IS_UNDEAD
+Walking Dead	Walking Dead	0	0	0	0	0	0	100	140	98	8	0	15	3	5	5	2	3	0	0	16	30	Undead.	U58 | IS_UNDEAD
+Zombie	Zombies	0	0	0	0	0	0	125	160	128	8	0	20	4	5	5	2	3	0	0	16	25	Undead.
+Disease.	U59 | IS_UNDEAD
+Wight	Wights	0	0	0	0	0	0	200	231	252	7	0	18	5	7	7	3	5	0	0	12	25	Undead.  Regenerating.	U60 | FLYING_ARMY | IS_UNDEAD
+Wraith	Wraiths	0	0	0	0	0	0	230	252	315	7	0	18	7	7	7	3	5	0	0	12	20	Undead.  Regenerating.
+Drains enemy mana.	U61 | FLYING_ARMY | IS_UNDEAD
+Vampire	Vampires	0	0	0	0	0	0	360	518	555	4	0	30	6	10	9	5	8	0	0	10	20	Undead.
+No enemy retaliation.	U62 | FLYING_ARMY | IS_UNDEAD
+Vampire Lord	Vampire Lords	0	0	0	0	0	0	500	652	783	4	0	40	9	10	10	5	8	0	0	10	16	Undead. Drains life.
+No enemy retaliation.	U63 | FLYING_ARMY | IS_UNDEAD
+Lich	Liches	0	0	0	0	0	0	550	742	848	3	0	30	6	13	10	11	13	12	0	8	16	Undead. Shooter. 
+Death cloud attack.	U64 | SHOOTING_ARMY | IS_UNDEAD
+Power Lich	Power Liches	0	0	0	0	0	0	600	889	1079	3	0	40	7	13	10	11	15	24	0	8	12	Undead. Shooter. 
+Death cloud attack.	U65 | SHOOTING_ARMY | IS_UNDEAD
+Black Knight	Black Knights	0	0	0	0	0	0	1200	1753	2087	2	0	120	7	16	16	15	30	0	0	5	12	Undead.  Curses enemies.	U66 | DOUBLE_WIDE | IS_UNDEAD
+Dread Knight	Dread Knights	0	0	0	0	0	0	1500	2029	2382	2	0	120	9	18	18	15	30	0	0	5	10	Undead.  Curses enemies.  
+Death Blow attack.	U67 | DOUBLE_WIDE | IS_UNDEAD
+Bone Dragon	Bone Dragons	0	0	0	0	0	0	1800	2420	3388	1	0	150	9	17	15	25	50	0	0	4	10	Undead.  -1 to enemy morale.	U68 | DOUBLE_WIDE | IS_UNDEAD | const_lowers_morale | FLYING_ARMY | KING_1
+Ghost Dragon	Ghost Dragons	0	1	0	0	0	0	3000	3228	4696	1	0	200	14	19	17	25	50	0	0	3	8	Undead.  -1 to enemy morale.  Attack ages enemies.	U69 | DOUBLE_WIDE | IS_UNDEAD | const_lowers_morale | FLYING_ARMY | KING_1
+																								
+																								
+																								
+Troglodyte	Troglodytes	0	0	0	0	0	0	50	73	59	14	7	5	4	4	3	1	3	0	0	20	50	Immune to Blinding.	U70 | 
+Infernal Troglodyte	Infernal Troglodytes	0	0	0	0	0	0	65	84	84	14	7	6	5	5	4	1	3	0	0	20	30	Immune to Blinding.	U71 | 
+Harpy	Harpies	0	0	0	0	0	0	130	140	154	8	0	14	6	6	5	1	4	0	0	16	30	Strike and return.	U72 | FLYING_ARMY
+Harpy Hag	Harpy Hags	0	0	0	0	0	0	170	196	238	8	0	14	9	6	6	1	4	0	0	16	25	Strike and return.
+No enemy retaliation.	U73 | FLYING_ARMY
+Beholder	Beholders	0	0	0	0	0	0	250	240	336	7	0	22	5	9	7	3	5	12	0	12	25	Shooter. No melee penalty.	U74 | SHOOTING_ARMY | const_no_melee_penalty
+Evil Eye	Evil Eyes	0	0	0	0	0	0	280	245	367	7	0	22	7	10	8	3	5	24	0	12	20	Shooter. No melee penalty.	U75 | SHOOTING_ARMY | const_no_melee_penalty
+Medusa	Medusas	0	0	0	0	0	0	300	379	517	4	0	25	5	9	9	6	8	4	0	10	20	Shooter. No melee penalty.
+Stone gaze.	U76 | DOUBLE_WIDE | SHOOTING_ARMY | const_no_melee_penalty
+Medusa Queen	Medusa Queens	0	0	0	0	0	0	330	423	577	4	0	30	6	10	10	6	8	8	0	10	16	Shooter. No melee penalty.
+Stone gaze.	U77 | DOUBLE_WIDE | SHOOTING_ARMY | const_no_melee_penalty
+Minotaur	Minotaurs	0	0	0	0	0	0	500	835	835	3	0	50	6	14	12	12	20	0	0	8	16	Good morale.	U78 | 
+Minotaur King	Minotaur Kings	0	0	0	0	0	0	575	890	1068	3	0	50	8	15	15	12	20	0	0	8	12	Good morale.	U79 | 
+Manticore	Manticores	0	0	0	0	0	0	850	1215	1547	2	0	80	7	15	13	14	20	0	0	5	12		U80 | DOUBLE_WIDE | FLYING_ARMY
+Scorpicore	Scorpicores	0	0	0	0	0	0	1050	1248	1589	2	0	80	11	16	14	14	20	0	0	5	10	Paralyzing venom.	U81 | DOUBLE_WIDE | FLYING_ARMY
+Red Dragon	Red Dragons	0	0	0	1	0	0	2500	3762	4702	1	0	180	11	19	19	40	50	0	0	4	10	Immune to spell levels 1-3.	U82 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Black Dragon	Black Dragons	0	0	0	2	0	0	4000	6783	8721	1	0	300	15	25	25	40	50	0	0	3	8	Immune to all spells.	U83 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+																								
+																								
+																								
+Goblin	Goblins	0	0	0	0	0	0	40	60	60	15	8	5	5	4	2	1	2	0	0	20	50		U84 | 
+Hobgoblin	Hobgoblins	0	0	0	0	0	0	50	65	78	15	8	5	7	5	3	1	2	0	0	20	30		U85 | 
+Wolf Rider	Wolf Riders	0	0	0	0	0	0	100	130	130	9	0	10	6	7	5	2	4	0	0	16	30		U86 | DOUBLE_WIDE
+Wolf Raider	Wolf Raiders	0	0	0	0	0	0	140	174	203	9	0	10	8	8	5	3	4	0	0	16	25	Strikes twice	U87 | DOUBLE_WIDE
+Orc	Orcs	0	0	0	0	0	0	150	175	192	7	0	15	4	8	4	2	5	12	0	12	25	Shooter.	U88 | SHOOTING_ARMY
+Orc Chieftain	Orc Chieftains	0	0	0	0	0	0	165	200	240	7	0	20	5	8	4	2	5	24	0	12	20	Shooter.	U89 | SHOOTING_ARMY
+Ogre	Ogres	0	0	0	0	0	0	300	520	416	4	0	40	4	13	7	6	12	0	0	10	20		U90 | 
+Ogre Mage	Ogre Magi	0	0	0	0	0	0	400	672	672	4	0	60	5	13	7	6	12	0	3	10	16	Casts Bloodlust.	U91 | 
+Roc	Rocs	0	0	0	0	0	0	600	790	1027	3	0	60	7	13	11	11	15	0	0	8	16		U92 | FLYING_ARMY | DOUBLE_WIDE
+Thunderbird	Thunderbirds	0	0	0	0	0	0	700	869	1106	3	0	60	11	13	11	11	15	0	0	8	12	Lightning strike.	U93 | FLYING_ARMY | DOUBLE_WIDE
+Cyclops	Cyclopes	0	0	0	0	0	0	750	1055	1266	2	0	70	6	15	12	16	20	16	0	5	12	Shooter. Attacks siege walls.	U94 | SHOOTING_ARMY | CATAPULT
+Cyclops King	Cyclops Kings	0	0	0	0	0	0	1100	1110	1443	2	0	70	8	17	13	16	20	24	0	5	10	Shooter. Attacks siege walls.	U95 | SHOOTING_ARMY | CATAPULT
+Behemoth	Behemoths	0	0	0	0	0	0	1500	3162	3162	1	0	160	6	17	17	30	50	0	0	4	10	Target enemy's defense is reduced 40%.	U96 | DOUBLE_WIDE | KING_1
+Ancient Behemoth	Ancient Behemoths	0	0	0	0	1	0	3000	5397	6168	1	0	300	9	19	19	30	50	0	0	3	8	Target enemy's defense is reduced 80%.	U97 | DOUBLE_WIDE | KING_1
+																								
+																								
+																								
+Gnoll	Gnolls	0	0	0	0	0	0	50	70	56	12	6	6	4	3	5	2	3	0	0	20	50		U98 | 
+Gnoll Marauder	Gnoll Marauders	0	0	0	0	0	0	70	90	90	12	6	6	5	4	6	2	3	0	0	20	30		U99 | 
+Lizardman	Lizardmen	0	0	0	0	0	0	110	115	126	9	0	14	4	5	6	2	3	12	0	16	30	Shooter.	U100 | SHOOTING_ARMY
+Lizard Warrior	Lizard Warriors	0	0	0	0	0	0	140	130	156	9	0	15	5	6	8	2	5	24	0	16	25	Shooter	U101 | SHOOTING_ARMY
+Gorgon	Gorgons	0	0	0	0	0	0	525	890	890	3	0	70	5	10	14	12	16	0	0	12	25		U102 | DOUBLE_WIDE
+Mighty Gorgon	Mighty Gorgons	0	0	0	0	0	0	600	1028	1028	3	0	70	6	11	16	12	16	0	0	12	20	Death stare.	U103 | DOUBLE_WIDE
+Serpent Fly	Serpent Flies	0	0	0	0	0	0	220	215	268	8	0	20	9	7	9	2	5	0	0	10	20	Dispels beneficial spells.	U104 | FLYING_ARMY
+Dragon Fly	Dragon Flies	0	0	0	0	0	0	240	250	312	8	0	20	13	8	10	2	5	0	0	10	16	Dispels beneficial spells.  Weakens enemies.	U105 | FLYING_ARMY
+Basilisk	Basilisks	0	0	0	0	0	0	325	506	552	4	0	35	5	11	11	6	10	0	0	8	16	Petrifying attack.	U106 | DOUBLE_WIDE
+Greater Basilisk	Greater Basilisks	0	0	0	0	0	0	400	561	714	4	0	40	7	12	12	6	10	0	0	8	12	Petrifying attack.	U107 | DOUBLE_WIDE
+Wyvern	Wyverns	0	0	0	0	0	0	800	1050	1350	2	0	70	7	14	14	14	18	0	0	5	12		U108 | DOUBLE_WIDE | FLYING_ARMY
+Wyvern Monarch	Wyvern Monarchs	0	0	0	0	0	0	1100	1181	1518	2	0	70	11	14	14	18	22	0	0	5	10	Poisonous.	U109 | DOUBLE_WIDE | FLYING_ARMY
+Hydra	Hydras	0	0	0	0	0	0	2200	4120	4120	1	0	175	5	16	18	25	45	0	0	4	10	Attacks all adjacent enemies.  Enemies cannot retaliate.	U110 | DOUBLE_WIDE | KING_1
+Chaos Hydra	Chaos Hydras	0	0	0	1	0	0	3500	5272	5931	1	0	250	7	18	20	25	45	0	0	3	8	Attacks all adjacent enemies.  Enemies cannot retaliate.	U111 | DOUBLE_WIDE | KING_1
+																								
+																								
+																								
+Air Elemental	Air Elementals	0	0	0	0	0	0	250	324	356	6	0	25	7	9	9	2	8	0	0	8	12	Lightning and firestorm vulnerability.	U112 | 
+Earth Elemental	Earth Elementals	0	0	0	0	0	0	400	415	330	4	0	40	4	10	10	4	8	0	0	16	30	Meteor shower vulnerability.	U113 | 
+Fire Elemental	Fire Elementals	0	0	0	0	0	0	350	345	345	5	0	35	6	10	8	4	6	0	0	16	25	Immune to fire.
+Vulnerable to ice.	U114 | 
+Water Elemental	Water Elementals	0	0	0	0	0	0	300	315	315	6	0	30	5	8	10	3	7	0	0	12	25	Immune to ice.
+Vulnerable to fire.	U115 | 
+Gold Golem	Gold Golems	0	0	0	0	0	0	376	730	685	6	0	60	5	12	13	9	9	0	0	9	16	Damage from spells reduced 85%.	U116 | 
+Diamond Golem	Diamond Golems	0	0	0	0	0	0	707	1293	1139	6	0	104	6	16	17	16	16	0	0	7	13	Damage from spells reduced 95%.	U117 | 
+																								
+																								
+																								
+Pixie	Pixies	0	0	0	0	0	0	25	40	55	20	10	3	7	2	2	1	2	0	0	20	50		U118 | FLYING_ARMY
+Sprite	Sprites	0	0	0	0	0	0	30	70	95	20	10	3	9	2	2	1	3	0	0	20	30	No enemy retaliation.	U119 | FLYING_ARMY | const_free_attack
+Psychic Elemental	Psychic Elementals	0	0	0	0	0	0	750	1431	1669	2	0	75	7	15	13	10	20	0	0	8	16	Attacks all adjacent enemies w/o retaliation. Mind spell immunity.	U120 | IMMUNE_TO_MIND_SPELLS | DOUBLE_WIDE | const_free_attack | MULTI_HEADED
+Magic Elemental	Magic Elementals	0	0	0	0	0	0	800	1724	2012	2	0	80	9	15	13	15	25	0	0	8	12	Attacks all adjacent enemies w/o retaliation. Spell immunity.	U121 | IMMUNE_TO_MIND_SPELLS | DOUBLE_WIDE | const_free_attack | MULTI_HEADED
+Lord of Water	Lord of Water	0	0	0	0	0	0	30000 	56315	78845	1	0	1000	19	50	50	70	80	0	0	1	3		U122 |
+Ice Elemental	Ice Elementals	0	0	0	0	0	0	375	315	380	6	0	30	6	8	10	3	7	24	3	12	20	Shooter.Mind spell immunity. 
+Ice immunity. Fire vulnerability.	U123 | IMMUNE_TO_MIND_SPELLS | SHOOTING_ARMY
+Lord of Earth	Lord of Earth	0	0	0	0	0	0	30000 	56315	78845	1	0	1000	19	50	50	70	80	0	0	1	3		U124 |
+Magma Elemental	Magma Elementals	0	0	0	0	0	0	500	490	490	4	0	40	6	11	11	6	10	0	3	16	25	Mind spell immunity.  Casts protection from Earth.	U125 | IMMUNE_TO_MIND_SPELLS
+Lord of Air	Lord of Air	0	0	0	0	0	0	30000 	56315	78845	1	0	1000	19	50	50	70	80	0	0	1	3		U126 |
+Storm Elemental	Storm Elementals	0	0	0	0	0	0	275	324	486	6	0	25	8	9	9	2	8	24	3	6	12	Shooter.No melee penalty.
+Lightning and firestorm vulnerability.	U127 | IMMUNE_TO_MIND_SPELLS | SHOOTING_ARMY
+Lord of Fire	Lord of Fire	0	0	0	0	0	0	30000 	56315	78845	1	0	1000	19	50	50	70	80	0	0	1	3		U128 |
+Energy Elemental	Energy Elementals	0	0	0	0	0	0	400	360	470	5	0	35	8	12	8	4	6	0	3	12	25	Casts Protect from Fire. Mind & fire immunity, cold vulnerability.	U129 | IMMUNE_TO_MIND_SPELLS | IMMUNE_TO_FIRE_SPELLS | FLYING_ARMY
+Firebird	Firebirds	0	0	0	0	0	0	1500	3248	4547	2	0	150	15	18	18	30	40	0	0	4	10	Flying.Breath attack.Fire spell immunity.	U130 |IMMUNE_TO_FIRE_SPELLS | DOUBLE_WIDE | FLYING_ARMY | KING_1 | HAS_EXTENDED_ATTACK
+Phoenix	Phoenixes	0	1	0	0	0	0	2000	4929	6721	2	0	200	21	21	18	30	40	0	1	4	10	Flying.Breath attack.Fire spell immunity.Rebirth.	U131 | IMMUNE_TO_FIRE_SPELLS | DOUBLE_WIDE | FLYING_ARMY | KING_1 | HAS_EXTENDED_ATTACK
+																								
+																								
+																								
+Azure Dragon	Azure Dragons	0	10	0	0	0	0	30000 	56315	78845	1	0	1000	19	50	50	70	80	0	0	1	3	Fear.	U132 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Crystal Dragon	Crystal Dragons	0	0	0	0	7	0	20000 	30260	39338	1	0	800	16	40	40	60	75	0	0	1	3	Crystal generation.	U133 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Faerie Dragon	Faerie Dragons	0	0	0	0	0	5	10000	16317	19580	1	0	500	15	20	20	20	30	0	5	1	3	Offensive spell caster.	U134 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Rust Dragon	Rust Dragons	0	0	0	7	0	0	15000	24030	26433	1	0	750	17	30	30	50	50	0	0	1	3	Spits acid.	U135 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Enchanter	Enchanters	0	0	0	0	0	0	1872	3400	4643	2	0	132	13	21	20	28	51	32	5	6	8	No melee penalty.
+Group spell casters.	U136 | SHOOTING_ARMY | const_no_melee_penalty
+Sharpshooter	Sharpshooters	0	0	0	0	0	0	729	612	915	7	0	34	8	15	10	8	14	32	0	7	13	Shooter.
+No Range or Barrier penalties.	U137 | SHOOTING_ARMY
+Halfling	Halflings	0	0	0	0	0	0	40	60	75	15	0	4	5	4	2	1	3	24	0	20	50	Shooter. Positive luck.	U138 | SHOOTING_ARMY
+Peasant	Peasants	0	0	0	0	0	0	10	15	15	25	0	1	3	1	1	1	1	0	0	20	50		U139 | 
+Boar Rider	Boar Riders	0	0	0	0	0	0	90	115	130	15	8	8	8	7	4	2	3	0	0	16	24		U140 | 
+Mummy Priest	Mummy Priests	0	0	0	0	0	0	405	502	354	8	0	45	5	8	10	5	9	0	0	10	17	Curse.	U141 | 
+Nomad	Nomads	0	0	0	0	0	0	117	128	180	15	8	8	10	7	5	2	4	0	0	15	20	Sandwalkers.	U142 | 
+Rogue	Rogues	0	0	0	0	0	0	135	204	191	14	0	15	6	8	7	3	5	0	0	16	24	Spying.	U143 | 
+Troll	Trolls	0	0	0	0	0	0	936	1325	1551	4	0	99	7	19	11	11	24	0	0	7	10	Regenerating.	U144 | 
+																								
+																								
+																								
+Catapult	Catapults	0	0	0	0	0	0	1	10	500	0	0	1000	0	10	10	0	0	24	0	0	0	Attacks siege walls.	U145 | DOUBLE_WIDE | SHOOTING_ARMY | CATAPULT | SIEGE_WEAPON
+Ballista	Ballistas	0	0	0	0	0	0	2500	650	600	0	0	250	0	10	10	2	3	24	0	0	0		U146 | DOUBLE_WIDE | SHOOTING_ARMY | SIEGE_WEAPON
+First Aid Tent	First Aid Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	0	0	0	0	Heals troops.	U147 | DOUBLE_WIDE | SIEGE_WEAPON
+Ammo Cart	Ammo Carts	0	0	0	0	0	0	1000	5	400	0	0	100	0	0	5	0	0	0	0	0	0	Unlimited ammunition.	U148 | SIEGE_WEAPON
+Arrow Tower	Arrow Towers	0	0	0	0	0	0	1000	5	400	0	0	100	0	10	5	2	4	99	0	0	0	Unlimited ammunition.	U149 | SIEGE_WEAPON
+Supreme Archangel	Supreme Archangels	0	0	0	0	0	4	10000	18250	26300	1	0	500	18	40	40	75	75	0	13	2	5	+1(+2) morale. Resurrects twice.
+No fear. No enemy retaliation.	U150 | DOUBLE_WIDE | FLYING_ARMY | const_raises_morale | KING_2 | const_free_attack
+Diamond Dragon	Diamond Dragons	0	0	0	0	3	0	8000	18750	25500	1	0	500	16	36	36	60	75	0	0	2	5	Immune to all spells. No fear.
+Can blind. +1 Gem daily.	U151 | DOUBLE_WIDE | FLYING_ARMY | KING_1 | HAS_EXTENDED_ATTACK
+Lord of Thunder	Lords of Thunder	0	0	0	0	0	3	10000	15000	22500	1	0	600	12	32	32	60	75	24	24	2	5	Shoot twice. No melee penalty.
+No fear. Thunderclap. Air shield.	U152 | SHOOTING_ARMY | const_no_melee_penalty | KING_3
+Hell Baron	Hell Barons	0	3	0	0	0	0	9000	19250	25700	1	0	400	17	35	37	45	60	0	0	2	5	-1(-2) enemy luck. No fear.
+Takes Soul. No enemy retaliation.	U153 | FLYING_ARMY | KING_2
+Blood Dragon	Blood Dragons	0	3	0	0	0	0	6000	12000	15000	1	0	400	14	25	23	38	75	0	0	2	5	Undead. -1(-2) enemy morale.
+Sucks blood. Ages enemy.	U154 | DOUBLE_WIDE | IS_UNDEAD | const_lowers_morale | FLYING_ARMY | KING_1
+Darkness Dragon	Darkness Dragons	0	0	0	3	0	0	8000	20000	26000	1	0	600	15	33	33	60	75	0	0	2	5	Immune to all spells. Fearsome.
+Gets back. No fear. Darkness.	U155 | DOUBLE_WIDE | FLYING_ARMY | KING_1 | HAS_EXTENDED_ATTACK | const_free_attack
+Ghost Behemoth	Ghost Behemoths	0	0	0	0	3	0	6000	16250	18250	1	0	600	11	25	25	45	75	0	0	2	5	+1(+2) luck. Ignores defence.
+Answers twice. Ignores obstacles.	U156 | DOUBLE_WIDE | KING_1
+Hell Hydra	Hell Hydras	0	0	0	3	0	0	7000	15750	17750	1	0	500	10	25	27	38	68	0	0	2	5	Acid attack. Can regenerate.
+No fear. No enemy retaliation.	U157 | DOUBLE_WIDE | KING_1 | MULTI_HEADED | const_free_attack
+Sacred Phoenix	Sacred Phoenixes	0	3	0	0	0	0	5000	17750	23000	2	0	400	21	28	28	45	60	0	1	2	5	Fire spell Immunity. Slayer.
+Rebirth always. Fire Shield.	U158 | IMMUNE_TO_FIRE_SPELLS | DOUBLE_WIDE | FLYING_ARMY | KING_1 | HAS_EXTENDED_ATTACK
+Ghost	Ghosts	0	0	0	0	0	0	414	447	524	7	0	27	8	9	10	5	9	0	0	9	16	Attract dead souls.	U159 | IS_UNDEAD | IS_GHOST | FLYING_ARMY
+Emissary of War	Emissaries of War	0	0	0	0	0	0	30000	10	20000	0	0	2000	4	0	10	0	0	0	0	0	0	Increases Hero's Attack Skill by 1-3 per week	U160 | 
+Emissary of Peace	Emissaries of Peace	0	0	0	0	0	0	30000	10	20000	0	0	2000	4	0	10	0	0	0	0	0	0	Increase Hero's Defense Skill by 1-3 per week	U161 | 
+Emissary of Mana	Emissaries of Mana	0	0	0	0	0	0	30000	10	20000	0	0	2000	4	0	10	0	0	0	0	0	0	Increase Hero's Spell Power by 1-3 per week	U162 | 
+Emissary of Lore	Emissaries of Lore	0	0	0	0	0	0	30000	10	20000	0	0	2000	4	0	10	0	0	0	0	0	0	Increase Hero's Knowledge by 1-3 per week	U163 | 
+Fire Messenger	Fire Messengers	0	0	0	0	0	0	936	710	1085	5	0	58	11	17	12	7	12	0	5	9	16	Protected against fire spells.
+No fear.	U164 | 
+Earth Messenger	Earth Messengers	0	0	0	0	0	0	1170	966	1131	4	0	66	9	16	17	11	20	0	5	12	16	Protected against earth spells.
+No fear.	U165 | 
+Air Messenger	Air Messengers	0	0	0	0	0	0	644	639	1122	7	0	41	11	13	14	4	16	0	5	4	8	Protected against air spells.
+No fear.	U166 | 
+Water Messenger	Water Messengers	0	0	0	0	0	0	878	621	877	6	0	50	9	11	15	6	14	0	5	9	13	Protected against water spells.
+No fear.	U167 | 
+Gorynych	Gorynyches	0	0	0	0	0	0	3500	5272	5931	1	0	250	8	20	20	25	45	0	0	2	5	Attacks all adjacent enemies.
+No fear. No Enemy retaliation.	U168 | DOUBLE_WIDE | KING_1 | MULTI_HEADED
+War Zealot	War Zealots	0	0	0	0	0	0	810	886	1247	3	0	45	8	16	14	16	20	36	0	6	10	Shooter.Protected by Magic Mirror.
+No fear. No melee penalty.	U169 | SHOOTING_ARMY | const_no_melee_penalty
+Arctic Sharpshooter	Arctic Sharpshooters	0	0	0	0	0	0	875	612	915	7	0	45	8	18	8	16	16	32	0	7	13	Shoter.No walls or range penalty.
+No fear. Air shield.	U170 | SHOOTING_ARMY | const_no_wall_penalty
+Lava Sharpshooter	Lava Sharpshooters	0	0	0	0	0	0	875	612	915	7	0	45	8	16	10	16	16	32	0	7	13	Shooter.No walls or range penalty,
+No fear, Fire shield.	U171 | SHOOTING_ARMY | const_no_wall_penalty
+Nightmare	Nightmares	0	0	0	0	0	0	2890	3820	6503	2	0	200	17	24	24	38	54	0	0	4	5	Extended Death stare. No fear.
+Mind spell immunity.	U172 | DOUBLE_WIDE
+Santa Gremlin	Santa Gremlins	0	0	0	0	0	0	72	97	110	16	0	6	6	5	6	3	4	16	127	16	24	Ice Bolt attack, Summons guards.	U173 | 
+Paladin	Paladins	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U174 | SHOOTING_ARMY
+Hierophant	Hierophants	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U175 | SHOOTING_ARMY
+Temple Guardian	Temple Guardians	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U176 | SHOOTING_ARMY
+Succubus	Succubuses	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U177 | SHOOTING_ARMY
+Soul Eater	Soul Eaters	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U178 | SHOOTING_ARMY
+Brute	Brutes	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U179 | SHOOTING_ARMY
+Ogre Leader	Ogre Leaders	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U180 | SHOOTING_ARMY
+Shaman	Shamans	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U181 | SHOOTING_ARMY
+Astral Spirit	Astral Spirits	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U182 | SHOOTING_ARMY
+Paladin	Paladins	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U183 | SHOOTING_ARMY
+Hierophant	Hierophants	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U184 | SHOOTING_ARMY
+Temple Guardian	Temple Guardians	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U185 | SHOOTING_ARMY
+Succubus	Succubuses	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U186 | SHOOTING_ARMY
+Soul Eater	Soul Eaters	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U187 | SHOOTING_ARMY
+Brute	Brutes	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U188 | SHOOTING_ARMY
+Ogre Leader	Ogre Leaders	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U189 | SHOOTING_ARMY
+Shaman	Shamans	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U190 | SHOOTING_ARMY
+Astral Spirit	Astral Spirits	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U191 | SHOOTING_ARMY
+Sylvan Centaur	Sylvan Centaurs	0	0	0	0	0	0	211	227	318	14	0	17	11	9	5	4	6	36	0	15	20	Shoots twice.
+Merry.	U192 | SHOOTING_ARMY | const_two_attacks
+Sorceress	Sorceresses	0	0	0	0	0	0	2457	2461	3667	2	0	132	16	23	22	26	41	64	5	4	7	Ranged spell caster.	U193 | SHOOTING_ARMY
+Werewolf	Werewolves	0	0	0	0	0	0	328	343	469	9	0	17	11	11	8	6	8	0	0	12	16	Lycanthropy (x2 if full moon).
+Berserk if full moon: days 14-16	U194 | 
+Hell Steed	Hell Steeds	0	0	0	0	0	0	2223	3432	4685	2	0	182	13	21	22	33	45	0	0	4	7	Fire Shield. Fire Wall.
+Immune to Fire Magic.	U195 | DOUBLE_WIDE
+Dracolich	Dracoliches	0	6	0	0	0	0	12600	38400	48000	1	1	800	15	35	35	57	113	5	0	1	3	Undead.Shooter.-1 to enemy morale.
+20% Magic Resist. 20% Block.	U196 | DOUBLE_WIDE
+Fanatic	Fanatics	0	0	0	0	0	0	720	1042	978	4	0	53	7	16	17	11	17	0	0	8	13	Attacks twice, Magic immune, Always positive morale, Dragon Slayer	U197 | 
+Monstrous Eyes	Monstrous Eyes	0	0	0	0	0	0	504	434	610	7	0	33	8	13	11	5	9	32	16	9	16	Shoots twice, No Melee penalty	U198 | SHOOTING_ARMY
+Ancient Dendroid	Ancient Dendroids	0	0	0	0	0	0	765	1355	1335	3	2	98	4	12	17	16	24	0	0	6	10	Binds enemies.	U199 | 
+Blood Minotaur	Blood Minotaurs	0	0	0	0	0	0	1035	1577	1776	3	0	75	9	20	21	19	34	0	0	6	10	No Morale Penalty, Mind and Fire spells immunity.	U200 | 
+Mineral Elemental	Mineral Elementals	0	0	0	0	0	0	900	868	815	4	0	60	7	14	15	10	17	0	5	12	20	Immune to Mind, Fire and Air spells, No Morale Penalty,	U201 | IMMUNE_TO_MIND_SPELLS
+Electricity Elemental	Electricity Elementals	0	0	0	0	0	0	720	638	782	5	0	53	9	16	11	6	10	0	5	9	20	Mind and Watter spell immunity,Vounrable to Fire, No Morale penalty.	U202 | IMMUNE_TO_MIND_SPELLS | IMMUNE_TO_FIRE_SPELLS | FLYING_ARMY
+Ancient Basilisk	Ancient Basilisks	0	0	0	0	0	0	720	994	1187	4	0	60	8	16	17	10	17	0	0	6	10	Mind and Fire Spell immunity, No Morale Penalty, Petrifying attack.	U203 | DOUBLE_WIDE
+Acid Wivern	Acid Wiverns	0	0	0	0	0	0	1980	2093	2524	2	0	105	12	18	20	29	37	0	0	4	8	Flying, Mind spell immunity, No Enemy Retaliation, Acid Breath, Dragon.	U204 | DOUBLE_WIDE | KING_1 | MULTI_HEADED
+Efreet Rajah	Efreet Rajahs	0	0	0	0	0	0	1980	2807	3073	2	0	135	14	21	20	26	41	0	0	4	8	Fire Immune, Hates Genies, No Enemy Retaliation.	U205 | 
+Cesar Medusa	Cesar Medusas	0	0	0	0	0	0	594	749	959	4	0	45	7	13	14	10	14	12	0	8	13	Shooter, No Meelee and Range Penalty, Stone Gaze. Fire Shield.	U206 | DOUBLE_WIDE | SHOOTING_ARMY | const_no_melee_penalty
+Stormbird	Stormbirds	0	0	0	0	0	0	1260	1540	1839	3	0	90	12	17	15	18	26	0	0	6	10	Lighting Strike, Deathstare	U207 | DOUBLE_WIDE, CHECK please
+Hurricane Elemental	Hurricane Elementals	0	0	0	0	0	0	495	574	808	7	0	38	9	12	13	3	14	36	5	5	10	Shoots twice, Caster: Air Spells	U208 | SHOOTING_ARMY, CHECK please
+Pit Master	Pit Master	0	0	0	0	0	0	1260	1898	2035	3	0	68	8	17	18	21	29	0	5	6	10	Fire Shield. Firewall.
+Fire Protection. twohex attack	U209 | DOUBLE_WIDE,  CHECK please
+Ancient Lich	Ancient Liches	0	0	0	0	0	0	1080	1575	1794	3	0	60	8	17	14	18	26	32	0	6	10	Undead. -1 enemy morale., 20% chance to block 	U210 | DOUBLE_WIDE, CHECK please
+Gnoll Raider	Gnoll Raiders	0	0	0	0	0	0	126	159	150	12	6	9	6	5	8	3	5	0	0	16	24		U211 | DOUBLE_WIDE
+Greater Demon	Greater Demons	0	0	0	0	0	0	486	850	798	4	0	60	7	13	14	11	15	0	0	8	13		U212 | 
+Cesar Griffin	Cesar Griffins	0	0	0	0	0	0	432	645	745	7	3	38	10	12	13	5	10	0	0	9	16	Flying.Unlimited retaliations.	U213 | DOUBLE_WIDE|FLYING_ARMY
+Holy Champion	Holy Champions	0	0	0	0	0	0	2160	3189	3492	2	0	150	10	21	22	32	43	0	0	4	8	Jousting bonus.	U214 | DOUBLE_WIDE | const_jousting | to FIX
+Dwarf Defender	Dwarf Defenders	0	0	0	0	0	0	270	370	348	8	4	30	6	9	10	3	7	0	0	12	20	40% Dwarf Resisance	U215 | 
+Legendary Unicorn	Legendary Unicorns	0	0	0	0	0	0	1710	3083	3376	2	0	165	10	20	20	29	37	0	0	4	8	Blinding attack.	U216 | Check AURA of magic resistance To FIX
+Cathedral Gargoyle	Cathedral Gargoyles	0	0	0	0	0	0	288	275	334	9	4	24	10	9	10	3	5	0	0	12	20		U217 | 
+Skeleton Archer	Skeleton Archers	0	0	0	0	0	0	126	151	141	12	6	9	6	8	8	2	5	10	0	16	24	Undead, Shooter,  Mind spell immunity, No Morale Penalty.	U218 | 
+Ogre Warlock	Ogre Warlocks	0	0	0	0	0	0	720	1191	1117	4	0	90	6	17	10	10	20	0	5	8	13	Casts Prayer.	U219 | 
+Dire Wolf	Dire Wolfs	0	0	0	0	0	0	252	308	338	9	0	15	9	10	7	5	7	0	0	12	20	Attack Twice.	U220 | 
+Arcane Reptilion	Arcane Reptilions	0	0	0	0	0	0	252	230	259	9	0	23	6	8	11	3	9	36	64	12	20	Flying, Shooter, 	U221 | 
+Blood Hornet	Blood Hornets	0	0	0	0	0	0	432	443	519	8	0	30	14	10	14	3	9	0	0	8	13	Flying, Drains Life.	U222 | 
+Golden Gorgon	Golden Gorgons	0	0	0	0	0	0	1080	1821	1709	3	0	105	7	14	22	19	27	0	0	9	16	Death stare.	U223 | 
+Life Elemental	Life Elementals	0	0	0	0	0	0	675	558	632	6	0	45	7	10	14	5	12	36	5	9	16	Shooter, Mind and Fire spell immunity, No Morale Penalty, Casts Cure.	U224 | 
+Void Elemental	Void Elementals	0	0	0	0	0	0	1440	3055	3346	2	0	120	10	20	18	24	43	0	5	6	10	Flying, Mind Spell immunity,Attacks all adjacent enemies w/o retaliation, No Morale Penalty Casts Summon Elementals	U225 | to FIX (spell)
+Nosferatu	Nosferatus	0	0	0	0	0	0	900	1155	1302	4	0	60	10	13	14	8	14	0	0	8	13	Undedad, Flying, Minds spell immunity, No Enemy Retaliation, No Morale Penalty, Drains Life	U226 | 
+Nymph	Nymphs	0	0	0	0	0	0	54	124	158	20	10	5	10	3	3	2	5	0	0	16	24	Flying.No Enemy Retaliation.	U227 | 
+Musketeer	Musketeers	0	0	0	0	0	0	270	204	306	9	0	15	7	8	4	3	5	36	0	12	20	Shooter	U228 | 
+Hunter	Hunters	0	0	0	0	0	0	405	346	550	7	0	23	8	12	7	5	9	36	0	9	16	Shooter, Attacks twice	U229 | 
+Master Arch Mage	Master Arch Mages	0	0	0	0	0	0	810	827	1131	4	0	45	8	16	13	11	15	36	0	8	13	Shooter, No melee penalty, Hero spells cost less, Summons Guards.	U230 | 
+Sacred Elf	Sacred Elves	0	0	0	0	0	0	495	741	885	5	0	45	13	12	14	8	15	0	1	8	13	Flying, Casts Ressurection	U231 | 
+Arcane Genie	Arcane Genies	0	0	0	0	0	0	1080	1325	1566	3	0	60	12	16	17	21	27	0	6	6	10	Flying, Casts Random Frendly Spell	U232 | 
+Phosforous Troglodite	Phosforous Troglodytes	0	0	0	0	0	0	117	149	140	14	7	9	6	7	6	2	5	0	0	16	24	Immune to Blinding.	U233 | Fix no melle penaty
+Seducing Harpy	Seducing Harpies	0	0	0	0	0	0	306	347	396	8	0	21	10	8	8	2	7	0	0	12	20	Flying, Strike and Return,  No Enemy Retalation	U234 | 
+Grim Reaper	Grim Reapers	0	0	0	0	0	0	2700	3595	3961	2	0	180	10	23	25	24	51	0	0	4	8	Undead, Mind spell immunity, No Enemy Retaliation, Death stare.	U235 | DOUBLE_WIDE
+Scamp	Scamps	0	0	0	0	0	0	108	106	100	15	8	6	8	5	6	2	3	0	0	16	24	 	U236 | 
+Succubus	Succubusses	0	0	0	0	0	0	315	372	399	8	0	20	7	9	6	3	7	36	0	12	20	Shooter, Fireball Attack.	U237 | 
+Astral Cerberus	Astral Cerberus	0	0	0	0	0	0	450	546	652	5	3	38	9	13	11	3	12	0	0	9	16	3-headed attack, 
+Enemies cannot retaliate.	U238 | DOUBLE_WIDE
+Orc Leader	Orc Leaders	0	0	0	0	0	0	297	354	399	7	0	30	6	10	6	3	9	36	0	9	16	Shooter.	U239 | 
+Spider Queen	Spider Queens	0	0	0	0	0	0	2880	4403	4722	2	0	165	8	21	18	48	51	0	64	4	8	No Enemy Retaliation, Offensive spell caster.	U240 | DOUBLE_WIDE
+Centamoth Thrower	Centamoth Throwers	0	0	0	0	0	0	1980	1967	2399	2	0	105	9	22	18	26	34	36	0	4	8	Shooter, Attacks siege walls.	U241 | DOUBLE_WIDE
+Female Warlock	Female Warlocks	0	0	0	0	0	0	1890	2211	2642	2	0	120	12	21	20	22	34	64	5	4	8	Flying, Shooter, Fearless, Offensive spell caster	U242 | 
+Castle Guardian	Castle Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Flying, Fearless, Casts Resurrection.	U243 | DOUBLE_WIDE, add description from script later 
+Rampart Guardian	Rampart Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Fearless, Casts Resurrection.	U244 | DOUBLE_WIDE, add description from script later 
+Tower Guardian	Tower Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Mind Spell immunity, Fearless, Group spell caster, Casts Chain Lightning.	U245 | add description from script later 
+Inferno Guardian	Inferno Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Fearless, Casts Inferno	U246 | DOUBLE_WIDE, add description from script later 
+Necro Guardian	Necro Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	1000	1000	1	3	Undead, Shooter, No Melee Penalty, Casts: Animate Dead.	U247 | add description from script later 
+Dungeon Guardian	Dungeon Guardian	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Flying, Dragon Breath, Fearless, Spying , Casts Meteor Shower.	U248 | DOUBLE_WIDE, add description from script later 
+Stronghold Guardian	Stronghold Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Fearless, Damage from spells reduced 50%, Casts Cure.	U249 | DOUBLE_WIDE, add description from script later 
+Fortress Guardian	Fortress Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	Fearless, Casts Clone.	U250 | DOUBLE_WIDE, add description from script later 
+Conflux Guardian	Conflux Guardians	0	0	0	0	0	0	65000	60000	77500	1	1	1000	20	77	77	100	100	0	1000	1	3	No Morale Penalty, Fearless, 20% Dwarf magic resistance, Casts Prayer	U251 | DOUBLE_WIDE, add description from script later 
+Red Wizard	Red Wizards	0	0	0	0	0	0	1458	1466	1880	4	0	68	8	20	18	18	26	48	0	6	11	Shooter, No melee penalty, Hero spells cost less, No obsticle Penalty, Summons Guards.	U252 | 
+Templar	Templars	0	0	0	0	0	0	936	1160	1357	4	0	58	9	17	18	13	20	0	64	7	10	Mind Spell Immunity, Attacks twice, No Morale Penalty, Imune to Magic, Casts Cure.	U253 | 
+Druid	Druids	0	0	0	0	0	0	600	700	1000	2	0	144	12	17	13	12	16	24	64	6	10	Shoots twice, No Melee penalty,Casts Cure.	U254 | SHOOTING_ARMY | const_no_melee_penalty
+Supreme Dracolich	Supreme Dracoliches	0	12	0	0	0	0	26460	122880	153600	1	1	1600	17	49	52	86	169	10	64	1	2	Undead, Shooter, Dragon Breath, No Melee Penalty, Fearless, 25% Block chance,  Casts Animate Dead	U255 | DOUBLE_WIDE
+Anubis Knight	Anubis Knights	0	0	0	0	0	0	3510	4002	5497	2	0	198	13	26	28	28	61	0	0	4	7	Mind Spell immunity, No Enemy Retaliation,  Damage from spells reduced 50%.	U256 | DOUBLE_WIDE
+Elephant Balista	Elephant Balistas	0	0	0	0	0	0	500	500	700	3	0	360	9	12	11	13	17	32	0	8	12	Shooter, No melee penalty, Fear, No range penalty, Shoots even in close combat.	U257 | DOUBLE_WIDE
+Rainbow Snake	Rainbow Snakes	0	0	0	0	0	0	175	200	200	8	0	25	5	6	6	3	4	0	0	12	25	 Mind spell immunity.	U258 | DOUBLE_WIDE
+Young Pirate	Young Pirates	0	0	0	0	0	0	340	300	500	7	0	30	7	12	10	4	8	32	0	12	20	 	U259 | Missing creature file, To FIX
+Wererat	Wererats	0	0	0	0	0	0	228	223	278	8	0	75	7	7	7	3	5	32	0	12	20	 	U260 | Missing creature file, To FIX
+Rat	Rats	0	0	0	0	0	0	175	200	200	8	0	35	5	6	6	3	4	0	0	12	25	 	U261 | Missing creature file, To FIX
+Demon Prince	Demon Princes	0	0	0	0	0	0	875	1507	1327	4	0	90	7	17	20	18	26	0	0	6	11	Immune to Fire spells.	U262 | Check SS tables, it has protection to fire, in unit fila is immmune to fire
+Harpy Countess	Harpy Countesses	0	0	0	0	0	0	551	615	658	8	0	32	11	10	12	3	12	0	0	10	17	Attacks twice.Attack and return.	U263 | DOUBLE_WIDE
+Darkness Acoilte	Darkness Acolytes	0	0	0	0	0	0	750	805	1210	2	0	144	9	17	12	21	21	32	16	5	12	Undedad.Attacks all adjacent enemies.Attacks twice.Casts Curse.	U264 | SS table is missing.
+Ice Acolite	Ice Acolytes	0	0	0	0	0	0	750	805	1210	2	0	144	9	17	12	21	21	32	16	5	12	Shooter.Mind spell immunity. Casts random damaging spell.	U265 | SHOOTING_ARMY | SS table missing
+Fire Acolite	Fire Acolytes	0	0	0	0	0	0	750	805	1210	2	0	144	9	17	12	21	21	32	16	5	12	Shooter.Mind spell immunity. Casts random damaging spell.	U266 | SHOOTING_ARMY | SS table missing
+War Priest	War Priests	0	0	0	0	0	0	520	654	816	4	0	175	8	13	13	16	24	0	16	10	13	Shooter.Mind spell immunity.	U267 | SHOOTING_ARMY | SS table missing
+Raido	Raido	0	0	0	0	0	0	750	805	1210	2	0	144	9	17	12	21	21	32	16	5	12	Shooter.Mind spell immunity. Casts random damaging spell.	U268 | SHOOTING_ARMY | SS table missing
+Coulubrine	Coulubrines	0	0	0	0	0	8	21000	48000	72000	1	0	600	13	45	48	90	113	48	0	1	3		U269 | Unit file missing | SS table missing  | To FIX
+Mantis	Mantis	0	0	0	0	6	0	14700	50400	56800	1	0	1000	11	35	41	57	102	0	0	1	3	Flying.Attacks twice.Attacks before Enemy.No Enemy Retaliation.Fearless.	U270 | DOUBLE_WIDE | KING_1
+
+Magma Dragon	Magma Dragons	0	0	0	8	0	0	16800	64000	83200	1	0	1200	17	46	50	90	113	99	0	1	3	Flying.Shooter.Dragon breath attack.No meleepenalty.Attacks twice.Immune to all spells.	U271 | DOUBLE_WIDE | FLYING_ARMY | KING_1 | To fix 
+Sylvan Dragon	Sylvan Dragons	0	0	0	0	6	0	16800	60000	81600	1	0	1200	18	50	54	90	113	99	0	1	3	Flying.Shooter.Dragon breath attack.Attacks sige walls.No Melee penalty. No Enemy retaliation. Attacks twice.Immune to all spells.	U272 | DOUBLE_WIDE | FLYING_ARMY | KING_1 | 
+Astral Phoenix	Astral Phoenixes	0	6	0	0	0	0	10500	56800	73600	2	0	800	23	39	42	68	90	0	1	1	3	Flying.Mind spell immunity.No Enemy retaliation. Fearless. Immune to spells levels 1-3.
+Rebirth always. Fire Shield.	U273 | DOUBLE_WIDE | FLYING_ARMY | 
+Efreet Khan	Efreet Khans	0	0	0	0	0	0	3564	4973	5110	2	0	203	16	27	27	41	69	0	0	3	7	Immune to Fire spells. Hates Genies.	U274 | 
+The Luggage	The Luggage	0	0	0	0	0	6	32000	128000	128000	1	0	3200	20	56	60	113	113	0	0	1	3	Mind spell immuninty.No Enemy retaliation.Spell absorption 50%.	U275 | DOUBLE_WIDE | SS table missing
+Weird Eye	Weird Eyes	0	0	0	0	0	0	907	769	1015	7	0	50	8	17	16	8	14	48	0	7	13	Shoots twice. 	U276 | SHOOTING_ARMY
+Deadly Wasp	Deadly Wasps	
+0
+
+	0	0	0	0	0	778	785	863	8	0	45	16	14	20	5	14	0	0	6	11	Flying. Death stare.	U277 | 
+Cleric	Clerics	0	0	0	0	0	0	400	588	588	4	0	35	6	12	12	14	20	0	9	10	16	Flying.Mind spell immunity.No melee penalty.Attacks twice. Casts Cure.	U278 | SS table missing.To  FIX
+Ghost Princess	Ghost Princesses	0	0	0	0	0	0	969	881	1209	7	0	45	11	13	25	9	17	0	0	7	11	Undedad.Flaying.Mind spell immunity.No Enemy Retaliation.No Morale Penalty.Attract dead souls.	U279 | SS table missing.To  FIX
+Beelzebub	Beelzebub	0	6	0	0	0	0	18900	61600	82240	1	1	800	19	49	56	68	90	5	5	1	3	 	U280 | No creature file, SS table missing, To FIX
+Elder Pirate	Elder Pirates	0	0	0	0	0	0	442	334	694	7	0	44	9	13	11	5	10	0	0	12	16	 	U281 | No creature file, SS table missing, To FIX
+Dark Elf Swordsman	Dark Elf Swordsmen	0	0	0	0	0	0	644	824	1228	5	0	77	17	13	15	9	18	0	1	7	10	 	U282 | No creature file, SS table missing, To FIX
+Satyr	Satyrs	0	0	0	0	0	0	400	588	588	4	0	77	6	12	12	14	20	0	0	10	16	 	U283 | No creature file, SS table missing, To FIX
+Amazon Bowman	Amazon Bowmen	0	0	0	0	0	0	500	500	700	3	0	77	9	12	11	13	17	32	0	8	12	Shoots twice.No sige wall penalties.	U284 | SHOOTING_ARMY | const_no_wall_penalty | no SS table | To FIX
+Priestess	Priestesses	0	0	0	0	0	0	1053	986	1731	3	0	144	10	17	15	18	24	48	0	6	8	Shoots twice..Mind spell immunity.No Melee Penalty.Spying.	U285 | SHOOTING_ARMY | const_no_melee_penalty
+Chinese Dragon	Chinese Dragons	0	0	0	0	8	0	18900	76000	91600	1	0	1400	20	66	66	88	128	0	0	1	3	Flying.Dragon Breath Attack.No Enemy Retaliation.Dragon.Immune to all Spells.	U286 | DOUBLE_WIDE | FLYING_ARMY | KING_1 | SS Table Missing | To FIX
+Planeswalker	Planeswalkers	0	0	0	0	0	0	3333	3333	4444	2	0	144	20	25	28	33	44	24	0	5	12	Shoots twice.Mind spell immunity. No Melee Penalty.	U287 | SHOOTING_ARMY , check "is Sorcerer - no spell defined" To FIX
+Elder Ghost	Elder Ghosts	0	0	0	0	0	0	745	791	871	7	0	41	8	12	14	8	14	0	0	7	13	Unded.Flying.Mind spell immunity.No Melee penalty.No Morale penalty.Attract dead souls.	U288 | IS_UNDEAD | IS_GHOST | FLYING_ARMY
+Prehistoric Basilisk	Prehistoric Basilisks	0	0	0	0	0	0	1296	1761	1974	4	0	90	8	20	24	15	29	0	0	5	8	Mind and Fire Spell immunity, No Morale Penalty, Petrifying attack.	U289 | DOUBLE_WIDE
+Mummy Servant	Mummy Servants	0	0	0	0	0	0	225	283	213	8	0	30	4	7	7	3	5	0	0	12	20	Undead. Minde spell immunity. No Morale Penalty.	U290 | 
+Centaur Archer	Centaur Archers	0	0	0	0	0	0	162	204	229	14	0	15	9	8	4	3	5	24	0	16	24	Shoots twice.No Melee penalty.	U291 | SHOOTING_ARMY | const_two_attacks
+Nicolai	Nicolai	0	0	0	0	0	0	2434	3785	6445	2	0	144	17	24	22	32	61	32	0	6	6	Shoots twice.Mind spells imunity.No Melee penalty.Group spell caster.	U292 | SHOOTING_ARMY | const_no_melee_penalty
+Sylfaen Dragon
+	Sylfaen Dragons	0	0	0	0	0	10	21000	52214	62656	1	0	1000	17	28	30	30	45	0	64	1	2	Flying.Dragon breath attack.Mind spell immunity.Attacks all adjacent enemies.Dragon.Offensive spell caster.Spell absorption 150%	U293 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Paladin	Paladins	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U294 | Commander - Castle - neutral army
+Hierophant	Hierophants	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U295 | Commander - Rampart - neutral army
+Temple Guardian	Temple Guardians	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U296 | Commander - Tower - neutral army
+Succubus	Succubuses	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U297 | Commander - Inferno - neutral army
+Soul Eater	Soul Eaters	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U298 | Commander - Necropolis - neutral army
+Brute	Brutes	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U299 | Commander - Dungeon - neutral army
+Ogre Leader	Ogre Leaders	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U300 | Commander - Stronghold - neutral army
+Shaman	Shamans	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U301 | Commander - Fortess - neutral army
+Astral Spirit	Astral Spirits	0	0	0	0	0	0	140	130	156	9	0	50	5	5	5	10	10	24	0	16	25		U302 | Comander - Conflux - neutral army
+Necro Tent	Necro Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter. Casts Raise Undead.	U303 | DOUBLE_WIDE | SIEGE_WEAPON
+Catapult	Catapults	0	0	0	0	0	0	1	10	500	0	0	1000	0	10	10	0	0	24	0	0	0	Attacks siege walls.	U304 | DOUBLE_WIDE | SHOOTING_ARMY | CATAPULT | SIEGE_WEAPON
+Cannon	Cannons	0	0	0	0	0	0	2500	650	600	0	0	250	0	10	10	2	3	24	0	0	0	Shooter.Attack sige walls.	U305 | DOUBLE_WIDE | SHOOTING_ARMY | SIEGE_WEAPON
+Hell Tent	Hell Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Gates Inferno units (with overflow).	U306 | DOUBLE_WIDE | SIEGE_WEAPON
+Blue Tent	Blue Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter. Enchants units.Casts Frost Bolt after shooting.
+Group spellcaster.	U307 | DOUBLE_WIDE | SIEGE_WEAPON
+Rampart Tent	Rampart Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Casts Ressurection.	U308 | DOUBLE_WIDE | SIEGE_WEAPON
+Dungeon Tent	Dungeon Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Casts Random beneficial spell.Casts Implosion after shooting.	U309 | DOUBLE_WIDE | SIEGE_WEAPON
+Stronghold Tent	Stronghold Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Rushes frendly units.	U310 | DOUBLE_WIDE | SIEGE_WEAPON
+Fortress Tent	Fortress Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Clones firendly units.	U311 | DOUBLE_WIDE | SIEGE_WEAPON
+Conflux Tent	Conflux Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Summons random elementals.	U312 | DOUBLE_WIDE | SIEGE_WEAPON
+Castle Tent	Castle Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Casts Ressurection.	U313 | DOUBLE_WIDE | SIEGE_WEAPON
+Necro Tent	Necro Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter. Casts Raise Undead.	U314 | DOUBLE_WIDE | SIEGE_WEAPON
+Catapult	Catapults	0	0	0	0	0	0	1	10	500	0	0	1000	0	10	10	0	0	24	0	0	0	Attacks siege walls.	U315 | DOUBLE_WIDE | SHOOTING_ARMY | CATAPULT | SIEGE_WEAPON
+Cannon	Cannons	0	0	0	0	0	0	2500	650	600	0	0	250	0	10	10	2	3	24	0	0	0	Shooter.Attack sige walls.	U316 | DOUBLE_WIDE | SHOOTING_ARMY | SIEGE_WEAPON
+Hell Tent	Hell Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Gates Inferno units (with overflow).	U317 | DOUBLE_WIDE | SIEGE_WEAPON
+Blue Tent	Blue Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter. Enchants units.Casts Frost Bolt after shooting.
+Group spellcaster.	U318 | DOUBLE_WIDE | SIEGE_WEAPON
+Rampart Tent	Rampart Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Casts Ressurection.	U319 | DOUBLE_WIDE | SIEGE_WEAPON
+Dungeon Tent	Dungeon Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Casts Random beneficial spell.Casts Implosion after shooting.	U320 | DOUBLE_WIDE | SIEGE_WEAPON
+Stronghold Tent	Stronghold Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Rushes frendly units.	U321 | DOUBLE_WIDE | SIEGE_WEAPON
+Fortress Tent	Fortress Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Clones firendly units.	U322 | DOUBLE_WIDE | SIEGE_WEAPON
+Conflux Tent	Conflux Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Summons random elementals.	U323 | DOUBLE_WIDE | SIEGE_WEAPON
+Castle Tent	Castle Tents	0	0	0	0	0	0	750	10	300	0	0	75	0	0	0	0	0	999	999	0	0	Shooter.Casts Ressurection.	U324 | DOUBLE_WIDE | SIEGE_WEAPON
+Heavy Pikeman	Heavy Pikemen	0	0	0	0	0	0	120	194	138	14	0	20	3	6	7	2	4	0	0	20	30	Attacks over two cells.Mind spell immunity.No Enemy Retaliation.Fearless.Immune to Champion charge bonus.	U325 | TWO CELLS ATTACK.
+Lord of Void	Lord of Void	0	0	0	0	0	0	15
+0000 	281575	394225	1	0	5000	22	77	77	350	400	0	0	1	3	Flying.Fearless.	U326 | 
+Red Gorynych	Red Gorynyches	0	0	0	0	0	0	5000	8000	9000	1	0	500	10	22	22	40	65	0	0	2	5	Flying.No Enemy retaliation.Attacks all adjacent enemies.Fearless
+	U327 | DOUBLE_WIDE | KING_1 | MULTI_HEADED
+Gold Gorynych	Gold Gorynyches	0	0	0	0	0	0	7500	16000	18000	1	0	750	12	25	25	50	75	0	0	2	5	Flying.No Enemy retaliation.Attacks all adjacent enemies.Fearless	U328 | DOUBLE_WIDE | KING_1 | MULTI_HEADED (328)
+Tiamath	Tiamaths	0	0	0	5	0	0	12000	18000	19000	1	0	1000	13	32	36	85	125	0	0	2	5	Flying.Attacks twice.No Enemy retaliation.Attacks all adjacent enemies.Fearless.Acid attack.	U329 | DOUBLE_WIDE 
+Ammo Cart	Ammo Carts	0	0	0	0	0	0	1000	5	400	0	0	100	0	0	5	0	0	0	0	0	0	Unlimited ammunition.	U330 | 
+Ammo Cart	Ammo Carts	0	0	0	0	0	0	1000	5	400	0	0	100	0	0	5	0	0	0	0	0	0	Unlimited ammunition.	U331 | 
+Tornado Elemental	Tornado Elementals	0	0	0	0	0	0	520	574	808	7	0	45	11	12	13	5	16	36	5	5	10	Flying.Shoots twice.Ferless Casts Prayer.	U332 | 
+Gem Elemental	Gem Elementals	0	0	0	0	0	0	925	868	815	4	0	68	9	14	15	12	19	0	5	12	20	Mind spell immunity.No morale Penalty.Attacks all adjacent enemies.Fearless.Lighting Immune.30% Dwarf magic resistance.Immune to Armageddon.Immune to Earth spells.Casts Magic Mirror.	U333 | 
+Magnetism Elemental	Magnetism Elementals	0	0	0	0	0	0	745	638	782	5	0	60	11	16	11	8	12	0	5	9	20	Mind spell immunity.No morale Penalty.Attacks all adjacent enemies.Hits first.Immune to Lighting and Water.Vulnerable to Fire.Casts Clone.	U334 | 
+Mirage Elemental	Mirage Elementals	0	0	0	0	0	0	700	558	632	6	0	55	9	10	14	7	14	36	5	9	16	Shooter.Mind spell immunity.No Melee Penalty.Retalites ranged attack.Vulnerable to Ice.Casts Clone.	U335 |  DOUBLE_WIDE 
+Ancient Griffin	Ancient Griffins	0	0	0	0	0	0	632	845	945	7	3	53	11	14	13	6	10	0	0	9	16	Flying.Fearless.	U336 |  DOUBLE_WIDE 
+Assasin	Assassins	0	0	0	0	0	0	150	250	250	14	0	37	13	11	7	7	11	0	0	16	30	Shooter.Spying.Fearless.No Range or Barrier penalties.	U337 | 
+Emerald Dragon	Emerald Dragons	0	0	0	0	15	0	30000	50260	59338	1	0	850	16	50	55	70	80	0	0	1	3	Fearless.Damage from spells reduced 85%.	U338 | DOUBLE_WIDE
+Saphire Dragon	Saphire Dragons	0	0	0	0	25	0	40000	80260	89338	1	0	1000	18	70	80	85	95	0	0	1	2	Fearless.Damage from spells reduced 85%.	U339 | DOUBLE_WIDE 
+Ancient Holy Relic	Ancient Holy Relics	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Flying.Fearless	U340 | DOUBLE_WIDE 
+Spectral Archangel	Spectral Archangels	0	0	0	0	0	8	15000	36500	52600	1	0	750	20	45	45	85	85	0	3	1	2	Flying.Fearless. Casts Resurrection	U341 | DOUBLE_WIDE
+Lord of Light	Lords of Light	0	0	0	0	0	7	15000	34000	55000	1	0	750	15	40	45	65	80	24	1	1	2	Shoots twice.Fearless.Ranged attack Retaliation.Hates Darkness Dragon.	U342 | 
+Lord of Kreegans	Lords of Kreegans	0	7	0	0	0	0	12000	38500	51400	1	0	650	19	40	40	55	65	0	0	1	2	Flying.Fear.Fearless.	U343 | DOUBLE_WIDE 
+Royal Musketeer	Royal Musketeers	0	0	0	0	0	0	370	549	750	4	0	35	8	10	10	6	8	16	0	10	16	Shots twice.No Range or Barrier penalties.Retaliates ranged attack.	U344 | 
+Spectral Hunter	Spectral Hunters	0	0	0	0	0	0	500	518	666	7	0	35	9	13	11	7	11	39	3	10	20	Shots twice.Spying.No Range or Barrier penalties..Retaliates ranged attack.	U345 | 
+Tainted Scamp	Tainted Scamps	0	0	0	0	0	0	150	190	190	8	0	17	8	10	5	4	6	0	0	16	30	 	U346 | 
+Succubus of Lust	Succubi of Lust	0	0	0	0	0	0	400	600	623	4	0	30	11	12	9	5	10	8	0	10	20	Shooter.Fireball attack.	U347 | 
+Spider Empress	Spider Empresses	0	0	0	0	0	0	3200	5555	5555	2	0	200	11	24	21	64	64	0	64	4	10	No Enemy Retaliation.Offensive spell caster.	U348 | DOUBLE_WIDE
+Ancient Genie	Ancient Genies	0	0	0	0	0	0	1580	2248	2589	2	0	110	13	20	16	24	33	0	9	5	10	Flying.Casts Random beneficial spell.Hates Genies.	U349 | 
+Eldest Dendroid	Eldest Dendroids	0	0	0	0	0	0	1100	1181	1518	2	0	115	7	14	19	18	24	0	0	5	10	Binds enemies.	U350 | 
+Golden Wolf	Golden Wolves	0	0	0	0	0	0	320	356	356	9	0	20	10	12	12	9	9	0	0	16	25	Attacks twice.	U351 | DOUBLE_WIDE
+Wild Centamoth Thrower	Wild Centamoths Thrower	0	0	0	0	0	0	2000	3050	2950	1	0	200	9	16	19	40	50	40	0	4	10	Shoots twice.Attacks siege walls.	U352 | DOUBLE_WIDE
+Tainted Warlock	Tainted Warlocks	0	0	0	0	0	0	2100	2233	2828	2	0	150	14	22	22	33	44	64	12	5	12	Flying.Shooter.Summons Guards.Fearless.Offensive spell caster.	U353 | 
+Shinigami	Shinigamis	0	0	0	0	0	0	3000	4444	4444	2	0	220	11	25	27	30	55	0	0	4	10	Undead.Mind spell immunity.No Morale penalty.Jousting bonus.Death stare.	U354 | DOUBLE_WIDE
+Lich Lord	Lich Lords	0	0	0	0	0	0	1280	1800	1900	3	0	80	10	17	14	20	30	32	0	6	10	Undead.Shooter.Mind spell immunity.No Melee penalty.Attacks all adjacent enemies.Death Cloud attack.	U355 | 
+Red Chinese Dragon	Red Chinese Dragons	0	0	0	0	11	0	20000
+	100000	120000	1	0	1660	20	66	66	92	144	0	0	1	3	Flying.Dragon Breath attack.No Enemy Retaliation.Fear.Fearless.Immune to magic.	U356 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Wise Chinese Dragon	Wise Chinese Dragons	0	0	0	0	14	0	25000	144000
+	188000	1	0	2000	20	66	66	99	180	0	0	1	3	Flying.Dragon Breath attack.No Enemy Retaliation.Fear.Fearless.Spell absorption 25%.	U357 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Arcane Dragon	Arcane Dragons	0	0	0	0	0	15	32000	69000	69000
+	1	0	1500	19	30	32	45	60	0	64	1	2	Flying.Dragon Breath attack.Mind spell immunity.Attacks all adjacent enemies.Fearless.Offensive spell caster.Spell absorption 100%.	U358 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Lilian Dragon	Lilian Dragons	0	13	0	0	0	0	36000	77777	92000
+	1	0	1200	19	50	50	90	110	0	0	1	3	Flying.Dragon Breath attack.Fear.Fearless.Damage from spells reduced 50%.	U359 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Amarillo Dragon	Amarillo Dragons	0	16	0	0	0	0	44000	88888	144000
+	1	0	1400	21	50	50	110	130	0	0	1	3	Flying.Dragon Breath attack.Fear.Fearless.Damage from spells reduced 50%.	U360 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Negro Dragon	Negro Dragons	0	19	0	0	0	0	55000	99999	155000
+	1	0	1600	22	50	50	130	150	0	0	1	3	Flying.Dragon Breath attack.Fear.Fearless.Damage from spells reduced 95%.	U361 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Acid Dragon	Acid Dragons	0	0	0	9	0	0	20000	27000	26433	1	0	1000	23	30	30	75	75	0	0	1	3	Flying.Dragon Breath attack.Fear.Fearless.40% Dwarf magic resistance.Damage from spells reduced 40%.Acid attack.	U362 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Grove Dragon	Grove Dragons	0	0	0	11	0	0	25000	29000	26433	1	0	1250	21	30	30	100	100	0	0	1	3	Flying.Dragon Breath attack.Always positive morale and Luck.Fear.Fearless.60% Dwarf magic resistance.Damage from spells reduced 75%.Acid attack.	U363 | DOUBLE_WIDE | FLYING_ARMY | KING_1
+Poisonous Snake	Poisonous Snakes	0	0	0	0	0	0	200	300	300	8	0	50	5	6	6	4	5	0	0	12	25	Mind spell immunity.Always positive Luck.Poisonous.	U364 | DOUBLE_WIDE
+Lilian Snake	Lilian Snakes	0	0	0	0	0	0	250	400	400	8	0	75	5	6	6	5	6	0	0	12	25	Mind spell immunity.Always positive Morale and Luck. Drains life.	U365 | DOUBLE_WIDE
+Elder Nosferatu	Elder Nosferatu	0	0	0	0	0	0	1600	2000	2300	4	0	80	12	15	15	10	16	0	0	8	13	Undedad. Flying.Minds spell immunity.No Enemy Retaliation.No Morale Penalty.Drains Life	U366 | 
+Soul Dragon	Soul Dragon	0	5	0	0	0	0	9000	16000	20000	1	0	666	16	27	27	44	85	0	0	2	5	Undead. -1(-2) enemy morale.
+Sucks blood. Ages enemy.	U367 | DOUBLE_WIDE | IS_UNDEAD | const_lowers_morale | FLYING_ARMY | KING_1
+Shadow Skeleton Archer	Shadow Skeleton Archer	0	0	0	0	0	0	256	256	256	12	6	12	8	9	9	4	7	13	0	16	24	Undead.Shooter.Mind spell immunity.No Morale Penalty.	U368 | 
+Grandmaster Gremlin	Grandmaster Gremlins	0	0	0	0	0	0	86	111	123	16	0	12	7	7	7	6	7	19	127	16	24	Ice Bolt attack.Summons guards.	U369 | 
+Marble Gargoyle	Marble Gargoyle	0	0	0	0	0	0	333	333	345	9	4	33	12	12	12	6	8	0	0	12	20		U370 | 
+Inquisitor	Inquisitor	0	0	0	0	0	0	777	1234	1234	4	0	66	9	18	18	13	21	0	0	8	13	Attacks twice.Magic immune.Always positive morale.Dragon Slayer.	U371 | 
+Mythical unicorn	Mythical unicorn	0	0	0	0	0	0	2000	5000	5000	2	0	200	13	25	25	36	44	0	0	4	8	Blinding attack.	U372 | Check AURA of magic resistance To FIX
+Hell Cerberus	Hell Cerberus	0	0	0	0	0	0	666	777	777	5	3	44	11	15	15	6	18	0	0	9	16	3-headed attack, 
+Enemies cannot retaliate.	U373 | DOUBLE_WIDE
+Pit Warden	Pit Warden	0	0	0	0	0	0	1666	2222	2222	3	0	76	9	19	19	27	35	0	9	6	10	Fire Shield. Firewall.
+Fire Protection. twohex attack	U374 | DOUBLE_WIDE,  CHECK please
+Aether Elemental	Aether Elementals	0	0	0	0	0	0	1980	6666	6666	2	0	150	13	22	22	33	66	0	5	6	10	Flying, Mind Spell immunity,Attacks all adjacent enemies w/o retaliation, No Morale Penalty Casts Summon Elementals	U375 | to FIX (spell)
+Fairy	Fairy	0	0	0	0	0	0	77	256	256	20	10	11	13	6	6	5	8	0	0	16	24	Flying, No Enemy Retaliation.	U376 | 
+Royal Dwarf	Royal Dwarfs	0	0	0	0	0	0	333	444	444	8	4	45	9	11	11	6	9	0	0	12	20	40% Dwarf Resisance	U377 | 
+Arcane Elf	Arcane Elf	0	0	0	0	0	0	555	999	999	5	0	60	16	16	16	15	32	0	7	8	13	Flying.Casts Ressurection	U378 | 
+Royal Champion	Royal Champion	0	0	0	0	0	0	3200	3444	3567	2	0	175	12	24	24	44	55	0	0	4	8	Jousting bonus.	U379 | DOUBLE_WIDE | const_jousting | to FIX
+Hopplite	Hopplite	0	0	0	0	0	0	240	555	555	14	0	40	6	9	9	5	7	0	0	20	30	Attacks over two cells.Mind spell immunity.No Enemy Retaliation.Fearless.Immune to Champion charge bonus.	U380 | TWO CELLS ATTACK.
+Cave Troglodite	Cave Troglodite	0	0	0	0	0	0	240	555	555	14	7	21	7	9	9	4	7	0	0	16	24	Immune to Blinding.	U381 | Fix no melle penaty
+Tainted Medusa	Tainted Medusa	0	0	0	0	0	0	756	777	1300	4	0	60	9	17	17	14	19	17	0	8	13	Shooter, No Meelee and Range Penalty, Stone Gaze. Fire Shield.	U382 | DOUBLE_WIDE | SHOOTING_ARMY | const_no_melee_penalty
+Tainted Minotaur	Tainted Minotaur	0	0	0	0	0	0	1256	2222	2222	3	0	100	12	24	24	32	50	0	0	6	10	No Morale Penalty, Mind and Fire spells immunity.	U383 | 
+Ferocius Wild Boar 	Ferocius Wild Boar 	0	0	0	0	0	0	144	144	144	15	8	12	9	12	5	3	9	0	0	16	24		U384 | 
+Uruk-hai	Uruk-hai	0	0	0	0	0	0	444	444	444	7	0	45	9	17	11	9	12	36	0	9	16	Shooter.	U385 | 
+Orge shaman	Orge shaman	0	0	0	0	0	0	900	2222	2222	4	0	180	13	19	14	20	40	0	9	8	13	Casts Prayer.	U386 | 
+Darkstorm	Darkstorm	0	0	0	0	0	0	1555	1777	2222	3	0	180	17	19	19	22	33	0	0	6	10	Lighting Strike.Deathstare.	U387 | DOUBLE_WIDE, CHECK please
+Gnoll Leader	Gnoll Leader	0	0	0	0	0	0	256	266	266	12	6	18	12	9	9	7	9	0	0	16	24		U388 | DOUBLE_WIDE
+Mist Reptilion	Mist Reptilion	0	0	0	0	0	0	333	444	444	9	0	44	9	13	13	6	18	64	64	12	20	Flying.Shooter.	U389 | 
+Acid Gorgon	Acid Gorgon	0	0	0	0	0	0	2222	2222	2222	3	0	222	9	16	27	24	33	0	0	9	16	Death stare.	U390 | 
+Toxic Wyvern	Toxic Wyvern	0	0	0	0	0	0	3333	3333	3333	2	0	240	17	22	22	36	44	0	0	4	8	Flying.Mind spell immunity.No Enemy Retaliation.Acid Breath.	U391 | DOUBLE_WIDE | KING_1 | MULTI_HEADED
+Fire Knight	Fire Knight
+s	0	0	0	0	0	0	1872	3400	4643	2	0	132	13	21	20	28	51	32	5	6	8		U392
+Ice Knight	Ice Knights	0	0	0	0	0	0	1872	3400	4643	2	0	132	13	21	20	28	51	32	5	6	8		U393
+Hobbit	Hobbits	0	0	0	0	0	0	80	120	150	15	0	8	7	8	4	2	6	32	0	20	50		U394
+Fire Pakadin	Fire Pakadins	0	0	0	0	0	0	2434	3785	6445	2	0	144	17	24	22	32	61	32	0	6	6		U395
+Ice Pakadin	Ice Pakadins	0	0	0	0	0	0	2434	3785	6445	2	0	144	17	24	22	32	61	32	0	6	6		U396
+Star Priest	Star Priests	0	0	0	0	0	0	1872	3400	4643	2	0	132	13	21	20	28	51	32	5	6	8		U397
+Star Bishop	Star Bishops	0	0	0	0	0	0	2434	3785	6445	2	0	144	17	24	22	32	61	32	0	6	6		U398
+Anubis Avatar	Anubis Avatars	0	0	0	0	0	0	1872	3400	4643	2	0	132	13	21	20	28	51	32	5	6	8		U399
+Anubis Incarnation	Anubis Incarnations	0	0	0	0	0	0	2434	3785	6445	2	0	144	17	24	22	32	61	32	0	6	6		U400
+
+
+
+
+
+
