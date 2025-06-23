@@ -22,3 +22,5 @@ Note: you need to disable:
 Note: Required mods:
 * Wog Base
 * Era Erm Framework
+
+Note: if you set your modlist wrong do not worry, we will reset it for you :)
