@@ -28,9 +28,9 @@ ZVSE
 !!SN:L^era.dll^/?y66 Ay66/^PluginExists^/?y77 Ey77/1/^Skirmish^; !!VRy99:Sv1; [majaczek]
 !!if&v1<>0:;
   !!SN:W^KK_GAME_ADV_HERO_LIMIT^/?y99;
-  !!FU(SET_HERO_LIMIT):Py99;
-  !!IF&y99=0:M^Debug - Zero hero limit fixing to one^;
-  !!FU(SET_HERO_LIMIT)&y99=0:P1;
+  !_!FU(SET_HERO_LIMIT):Py99;
+  !_!IF&y99=0:M^Debug - Zero hero limit fixing to one^;
+  !_!FU(SET_HERO_LIMIT)&y99=0:P1;
   !!FU:E;
 !!en;
   
@@ -54,6 +54,6 @@ ZVSE
 
 !?FU(OnGameEnter);
 !!SN:W^KK_GAME_ADV_HERO_LIMIT^/?y99;
-!!FU(SET_HERO_LIMIT):Py99;
+!_!FU(SET_HERO_LIMIT):Py99;
 !!MA:B252/999; !!MA:B230/999; 
 !!MA:N245/999;
