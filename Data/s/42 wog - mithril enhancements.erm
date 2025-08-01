@@ -641,21 +641,27 @@ This dwelling cannot be further enhanced because the creatures here are already 
 !!VRy8&y2=121:S225;
 !!VRy8&y2=131:S158;
 
-!!IF|y2=116/y2=117/y2>131:Q1/21/y2/7/0/1^{Mithril Enhancements}
+!!VRy77:S0; !!DWv4/v5/v6:L?y77; !!VRy6:S5 +y77 +y77; majaczek begin
+!!IF&y77>=3:Q1/21/y2/7/0/1^{Mithril Enhancements} #%Y77
 
 This dwelling cannot be enhanced because the creatures here cannot be upgraded further.^;
-!!FU|y2=116/y2=117/y2>131:E; (abort if non-upgradeable creature)
+!!FU&y77>=3:E; majaczek end
+
+!_!IF|y2=116/y2=117/y2>131:Q1/21/y2/7/0/1^{Mithril Enhancements}
+
+This dwelling cannot be enhanced because the creatures here cannot be upgraded further.^;
+!_!FU|y2=116/y2=117/y2>131:E; (abort if non-upgradeable creature)
 !!OW:R-1/7/?y7;              (get amount of mithril)
-!!IF&y7<y6:Q1/21/y2/7/y6/1^{Mithril Enhancements}
+!!IF&y7<y6:Q1/21/y2/7/y6/1^{Mithril Enhancements} #%Y77
 
 This dwelling requires %Y6 bars of mithril to upgrade. Sadly, you do not have enough.^;
 !!FU&y7<y6:E;                (check if has enough mithril)
-!!VRy8&y2<112:Sy2;
-!!VRy8&y2<112:+1;
+!_!VRy8&y2<112:Sy2;
+!_!VRy8&y2<112:+1;
 !!MA&y4=1/y2<112:Uy2/?y8; !!VRy8&y8<0:S-1;
 !_!IF:M^y8=%Y8^;
-!!FU&y8=-1:E;                (abort if no creature selected)
-!!UN:N3/z1/y8/1;             (Get new creature name- plural)
+!_!FU&y8=-1:E;                (abort if no creature selected)
+!_!UN:N3/z1/y8/1;             (Get new creature name- plural)
 !!UN:N3/z2/y2/1;             (Get old creature name- plural)
 !!UN:N3/z3/y2/0;             (Get old creature name- singular)
 !!CM:R0;                     (disable standard popup)
@@ -668,8 +674,9 @@ This dwelling requires %Y6 bars of mithril to upgrade. Sadly, you do not have en
 !!FU&-1:E;
 !!VRy6:*-1;
 !!OW:R-1/7/dy6;               (take Mithril)
-!!DWv4/v5/v6&y2<112:M0/y8/y3; (Upgrade dwelling if non-conflux)
-!!DWv4/v5/v6&y2>111:M0/y8/y3; (Upgrade dwelling if conflux)
+!_!DWv4/v5/v6&y2<112:M0/y8/y3; (Upgrade dwelling if non-conflux)
+!_!DWv4/v5/v6&y2>111:M0/y8/y3; (Upgrade dwelling if conflux)
+!!DWv4/v5/v6:Ld1;
 
 !?FU8171;
 !!VRy1:S-1;
