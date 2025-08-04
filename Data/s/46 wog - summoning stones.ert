@@ -1,12 +1,6 @@
-132000	{VERSION OUT-OF-DATE WARNING} 
- 
-Sorry, your versions of WoG and/or ERM 
-are too old to use the 
-{Summoning Stones version 1.0 script.} 
- 
-Please update your files.	String type = <!#M>	08.06.2003
-132001	Summoning Stones (Not Visited)	String type = <!#S>	08.06.2003
-132002	Summoning Stones (Visited)	String type = <!#S>	08.06.2003
+132000		String type = <!#M>	08.06.2003
+132001		String type = <!#S>	08.06.2003
+132002		String type = <!#S>	08.06.2003
 132003	{Summoning Stones} 
  
 The Summoning Stones stand silent, their power spent. Try visiting again tomorrow.	String type = <!!M>	08.06.2003

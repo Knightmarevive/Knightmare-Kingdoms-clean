@@ -1,0 +1,243 @@
+ZVSE
+;right click on monsters stack to get split
+
+
+!#SN:L^era.dll^/?y1 Ay1/^ReadStrFromIni^/?y2;
+!#SN:Ey2/1/^Monster^/^Player settings^/^\Neutrals.ini^/?z2;
+!#VRv2:Vz2;
+!#SN:W^Neutrals_management_state^/v2;
+
+!#SN:W^Neutrals_management_state^/1; Force Colors
+
+!?CM0;
+!!CM:P?y2/?y3/?y4; get location of click
+!!OBy2/y3/y4:T?y5 U?y6;
+!!FU&y5<>54:E;
+!!MOy2/y3/y4:G?y7 R?y98/1 U?y99; get growth, state and escape ability
+!!MA:Iy6/?y8;
+!!VRy9:Sy7*y8; get AI value for stack
+!!OW:A-1/?y1;
+!!FU&y1<0:E;
+!!VRv7:S0; initialize v7
+
+!!SN:W^HERO %Y1 Visions^/?y71;
+!!FU&y71<=0:E; !!VRy71:+5;
+!!HEy1:P?y82/?y83/?y84;
+!!VRy82:-y2; !!VRy82&y82<0:*-1;
+!!VRy83:-y3; !!VRy83&y83<0:*-1;
+!!VRy84:-y4; !!FU&y84<>0:E;
+!!VRy73:S0 +y82 +y83;
+!!FU&y73>y71:E;
+!_!FU|y82>y71/y83>y71:E;
+
+!!VRv7:S0; initialize v7
+!!DO135892/0/6/1:Py1;
+!!VRy10:Sv7*100:y9;
+!!VRy11:S1550811371;
+!!VRy12:S-935900487;
+!!VRy13:S1943276003;
+!!VRy14:S-1120346418;
+!!VRy15:Sy11*y2;
+!!VRy16:Sy12*y3;
+!!VRy17:Sy13*y4;
+!!VRy18:Sy15+y16+y17+y14;
+!!VRy19:Sy18:65536;
+!!VRy20:Sy19%32768;
+!!VRy20&y20<0:+32767;
+!!VRy21:Sy20%100+1;
+!!VRy22&y10<50:S7;
+!!VRy22&y10>=50/y10<67:S6;[read table]
+!!VRy22&y10>=67/y10<100:S5;
+!!VRy22&y10>=100/y10<150:S4;
+!!VRy22&y10>=150/y10<200:S3;
+!!VRy22&y10>=200:S2;
+!!VRy22&y21<=20:-1; [R4 correction]
+!!VRy22&y21>=80/y22<7:+1; [if less than 7, add 1]
+!!VRy23:Sy7-y22; [subtract splits # from neutral #]
+!!VRy22&y23<0:Sy7; [set splits # to monster # if result <0 ]
+;y22 holds now # splits
+!*IF:Q1/21/y6/4^%Y22 stacks^;
+; get upgrade
+!!VRy25:S196143423*y2;
+!!VRy26:S928924629*y3;
+!!VRy27:S348991063*y4;
+!!VRv2:Sy25+y26+y27+2148842073;
+!!VRv3:Sv2:65536;
+!!VRv4:Sv3%32768;
+!!VRv4&v4<0:+32767;
+!!VRv5:Sv4%100;
+!*IF&v5<50:M^These neutrals have upgraded stack^; [display result]
+!!FU138893:Pv5/y6/y7/y22/y98/y99;
+!!CM:R0;
+
+!?FU138893;
+;x1 upgraded, x2 ID, %Y7 #, x4 stacks
+;x5 join or not
+;x6 escape
+!!MA:Ox2/?y1 Lx2/?y2; check town and level
+!!if&y1<8:; if castle-fortress-neutral
+!!UN&y1>-1:Ty1/y2/1/?y3; get upgrade, if x2=y3 creature is already upgraded!
+!!VRy3&x2>149/x2<158:Sx2; match if 8th level monsters y3=x2
+!!VRy3|x2=192/x2=196:Sx2; set y3 to x2 if dracolich/sylvains
+!!VRy3&y1<0:Sx2; set y3 to x2 if neutral
+!!VRy4:Sx2+2; found the frame in CPRSMALL.def
+!!en:;
+  !!if&y1=8:; if conflux
+  !!UN:T8/y2/1/?y3; get upgrade, if x2=y3 creature is already upgraded!
+  !!VRv6:C120/114/117/116/115/122/132; index table to conflux unupgrades frames v6-v12 (+6)
+  !!VRv13:C121/129/125/131/127/123/133; index table to conflux upgrades frames v13-v19 (+13)
+  !!VRy5&x2<>y3:Sy2+6; creature is not upgraded
+  !!VRy5&x2=y3:Sy2+13; creature is upgraded
+  !!VRy54:Sy2+13;
+  !!VRy4:Svy5; set y4 to index v6-v19, found frame in CPRSMALL.def
+  !!VRy55&x2<>y3/x1<50:Svy54; y55 holds upgraded frame for conflux
+  !!VRy3&x2=158:Sx2; set y3 to x2 if phoenix
+  !!VRy4&x2=158:S160; set to frame 160 if sacred phoenix
+  !!en:;
+!!if&x4=1:; ONE STACK
+!!DL560:N^split.txt^;
+!!SN:W^Neutrals_management_state^/?y10;
+!!VRz2:S^%X3^; set text to monsters #
+!!VRz2&y10>0/x5=0:S^{~Chartreuse}%X3{~}^;
+!!VRz2&y10>0/x5>0/x6=1:S^{~Red}%X3{~}^;
+!!DL560:A1/4/y4/1;
+!!DL560:A2/3/z2/1;
+!!FU903007:P560; display dialog
+!!en:;
+  !!if&x4=2:; TWO STACKS
+  !!VRy11:Sy7:2; get half
+  !!VRy12:Sy7-y11;
+  !!DL561:N^split.txt^;
+  !!DL561:A5/4/y4/1;
+  !!DL561:A6/4/y4/1;
+  !!VRy4&x2<>y3/x1<50:+1;
+  !!DL561&x2<>y3/x1<50/y1<8:A6/4/y4/1;
+  !!DL561&x2<>y3/x1<50/y1=8:A6/4/y55/1;
+  !!VRy11:Sx3:2; !!VRy12:Sx3-y11;
+  !!VRz2:S^%Y12^; !!VRz3:S^%Y11^;
+  !!SN:W^Neutrals_management_state^/?y10;
+  !!VRz2&y10>0/x5=0:S^{~Chartreuse}%Y12{~}^; !!VRz3&y10>0/x5=0:S^{~Chartreuse}%Y11{~}^;
+  !!VRz2&y10>0/x5>0/x6=1:S^{~Red}%Y12{~}^; !!VRz3&y10>0/x5>0/x6=1:S^{~Red}%Y11{~}^;
+  !!DL561:A1/3/z2/1; !!DL561:A2/3/z3/1; set text
+  !!FU903007:P561; display dialog
+  !!en:;
+     !!if&x4=3:; THREE STACKS
+     !!DL562:N^split.txt^;
+     !!DL562:A6/4/y4/1;
+     !!DL562:A7/4/y4/1;
+     !!DL562:A8/4/y4/1;
+     !!VRy4&x2<>y3/x1<50:+1;
+     !!DL562&x2<>y3/x1<50/y1<8:A7/4/y4/1;
+     !!DL562&x2<>y3/x1<50/y1=8:A7/4/y55/1;
+     !!VRy11:Sx3%3;  a
+     !!VRy12:Sx3:3; b
+     !!DO903008/21/23/1:Py11/y12/562/x5;
+     !!FU903007:P562; display dialog
+     !!en:;
+        !!if&x4=4:; FOUR STACKS
+        !!DL563:N^split.txt^;
+        !!DL563:A7/4/y4/1;
+        !!DL563:A8/4/y4/1;
+        !!DL563:A9/4/y4/1;
+        !!DL563:A10/4/y4/1;
+        !!VRy4&x2<>y3/x1<50:+1;
+        !!DL563&x2<>y3/x1<50/y1<8:A9/4/y4/1;
+        !!DL563&x2<>y3/x1<50/y1=8:A9/4/y55/1;
+        !!VRy11:Sx3%4;  a
+        !!VRy12:Sx3:4; b
+        !!DO903008/21/24/1:Py11/y12/563/x5;
+        !!FU903007:P563; display dialog
+        !!en:;
+            !!if&x4=5:; FIVE STACKS
+            !!DL564:N^split.txt^;
+            !!DL564:A8/4/y4/1;
+            !!DL564:A9/4/y4/1;
+            !!DL564:A10/4/y4/1;
+            !!DL564:A11/4/y4/1;
+            !!DL564:A12/4/y4/1;
+            !!VRy4&x2<>y3/x1<50:+1;
+            !!DL564&x2<>y3/x1<50/y1<8:A10/4/y4/1;
+            !!DL564&x2<>y3/x1<50/y1=8:A10/4/y55/1;
+            !!VRy11:Sx3%5;  a
+            !!VRy12:Sx3:5; b
+            !!DO903008/21/25/1:Py11/y12/564/x5;
+            !!FU903007:P564; display dialog
+            !!en:;
+                 !!if&x4=6:; SIX STACKS
+                 !!DL565:N^split.txt^;
+                 !!DL565:A9/4/y4/1;
+                 !!DL565:A10/4/y4/1;
+                 !!DL565:A11/4/y4/1;
+                 !!DL565:A12/4/y4/1;
+                 !!DL565:A13/4/y4/1;
+                 !!DL565:A14/4/y4/1;
+                 !!VRy4&x2<>y3/x1<50:+1;
+                 !!DL565&x2<>y3/x1<50/y1<8:A12/4/y4/1;
+                 !!DL565&x2<>y3/x1<50/y1=8:A12/4/y55/1;
+                 !!VRy11:Sx3%6;  a
+                 !!VRy12:Sx3:6; b
+                 !!DO903008/21/26/1:Py11/y12/565/x5;
+                 !!FU903007:P565; display dialog
+                 !!en:;
+                      !!if&x4=7:; SEVEN STACKS
+                      !!DL566:N^split.txt^;
+                      !!DL566:A10/4/y4/1;
+                      !!DL566:A11/4/y4/1;
+                      !!DL566:A12/4/y4/1;
+                      !!DL566:A13/4/y4/1;
+                      !!DL566:A14/4/y4/1;
+                      !!DL566:A15/4/y4/1;
+                      !!DL566:A16/4/y4/1;
+                      !!VRy4&x2<>y3/x1<50:+1;
+                      !!DL566&x2<>y3/x1<50/y1<8:A13/4/y4/1;
+                      !!DL566&x2<>y3/x1<50/y1=8:A13/4/y55/1;
+                      !!VRy11:Sx3%7;  a
+                      !!VRy12:Sx3:7; b
+                      !!DO903008/21/27/1:Py11/y12/566/x5;
+                      !!FU903007:P566; display dialog
+                      !!en:;
+
+
+!?FU903008;
+!!SN:W^Neutrals_management_state^/?y10;
+!!if&x1<1:;
+!!VRz2:S^%X2^;
+!!VRz2&y10>0/x4=0:S^{~Chartreuse}%X2{~}^;
+!!VRz2&y10>0/x5>0/x6=1:S^{~Red}%X2{~}^;
+!!DLx3:Ax16/3/z2/1;
+!!en:;
+!!if&x1>0:;
+!!VRy1:Sx2+1; b+1
+!!VRz2:S^%Y1^;
+!!VRz2&y10>0/x4=0:S^{~Chartreuse}%Y1{~}^;
+!!VRz2&y10>0/x5>0/x6=1:S^{~Red}%Y1{~}^;
+!!DLx3:Ax16/3/z2/1;
+!!VRx1:Sx1-1;
+!!el:;
+!!VRz2:S^%X2^;
+!!VRz2&y10>0/x4=0:S^{~Chartreuse}%X2{~}^;
+!!VRz2&y10>0/x5>0/x6=1:S^{~Red}%X2{~}^;
+!!DLx3:Ax16/3/z2/1;
+!!en:;
+
+
+!?FU903007;
+!!VRy1:Sv1;
+!!SN:E7510739/1/x1;                   [find HDlg -> v1]
+!!VRy2:Sv1;                           [v2 = HDlg]
+!!if&y2<>0:;
+  !!SN:E5864096/1;                    [stop animation]
+  !!UN:Cy2/4/?v1;                     [v1 = dialog]
+  !!SN:E6245264/2/v1;                 [show while holding mouse button]
+  !!SN:E5864272/1;                    [continue animation]
+  !!SN:E7518240/2/y2;                 [destroy HDlg]
+!!en:;
+!!VRv1:Sy1;
+
+
+!?FU135892;
+!!HEx1:C0/x16/?y1/?y2;
+!!FU&y1<0:E;
+!!MA:Iy1/?y3; get AI value
+!!VRy4:Sy2*y3;
+!!VRv7:+y4;

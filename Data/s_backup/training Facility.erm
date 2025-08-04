@@ -1,0 +1,145 @@
+ZVSE
+
+* TroopSchool, JHV, Dec. 11, 2012
+* Fnord/Salamandre Troop Training School of War
+
+*Salamandre: use any object you like, just trigger FU509 after visit and build your mod on..
+*It has no check for experience option, maybe should be added. [check]
+*I tried to open hero window first (in tew is triggered from custom button in hero screen)
+*with special era event FU77004 but can't make it work.
+*Would be better if it opens hero window before action. [Not possible in OB trigger except by custom DL.]
+*Important:  was for custom map so it may conflict with free wogification.
+
+* uses v300-v307 temporarily during visit, FU507-FU510 [all OK per WoG 3.58f List of Claimed]
+* added use of v1413--claimed by script37 but actually not used
+
+!?OB107&1000; pre-visit School of War
+!!UN:P900/?y1; stack exp. option
+!!FU&y1<>1:E; exit if stack exp. not enabled
+ [Display intro text first time visited]
+!!IF&v1413<>2:M^{Ginko's Training Facility}
+
+When you enter the admissions building you note the exquisitely crafted door handles, expensive furniture and finely woven tapestries on the wall, as well as a display case filled with various awards and trophies.
+
+A bright and boisterous young man sitting at a mahogany desk leaps to his feet when you enter, and effortlessly bounds towards you, grabbing your hand and pumping it vigorously.  He's dressed very well, impeccably groomed and his teeth are so white they're almost blinding.
+
+"Welcome to Ginko's Training Facility.  Baloba's the name, Ginko Baloba--I'm the director of this world renowned educational institution--{world} {renowned} I say!  We offer fast and complete training with hand-picked instructors from the far corners of the land, complete with a money-back guarantee if you're not {completely} satisified--100% guaranteed, I assure you!"
+
+"My facility has trained literally millions of soliders of all races, forms, shapes and sizes--millions I tell you!  We have an incredible 128% success rate (independently verified) and can teach your young men (and women) combat tricks they've never even dreamed of in a million years--a million years I say!"
+
+Well, it all sounds a bit too good to be true but you {have} actually heard positive things about the place.  The director's obviously a bit of a twerp but since you're here now you might as well give the training a go--god knows, in this war you can use every little advantage you can get.^;
+!!VRv1413:S2; [Set v1413 so intro message won't repeat]
+!!FU509:P;
+!!OB998:C?y1; get control word (number)
+!!HE-1:V9/y1/?y2; School of War (#1=9, see HE:V)
+!!OB998&y2<>0:S; disable normal "go away" message if visited
+
+!$OB107&1000; post-visit
+!!OB998:R; re-enable normal messages for non-visited Heroes
+
+!?OB107&-1000; AI visit
+!!UN:P900/?y1; stack exp. option
+!!FU&y1<>1:E; exit if stack exp. not enabled
+!!FU509:P;
+
+!?FU509;
+!!VRv300:C-1/-1/-1/-1/-1/-1/-1/0; JHV
+!!DO507/0/6/1:P300; [Build text strings for dialogue box]
+!!OW:R-1/6/?y1;
+!!VRz-1:S^Select a stack to train to the next rank. Available gold: %Y1^;
+!!VRz-2:S^I'll  do it  later.^;
+!!VRz8:S^Train all to next level for %V307  gold.^;  JHV
+!!VRz8&v307<1:S^^; JHV
+!!IF&1000:G1/1/256/-1/1/2/3/4/5/6/7/8/-2/0/0/0; [Display dialogue box] JHV
+!!FU&1000/v1=256:E; [Exit if player chose to come back later] JHV
+
+!!VRy-10&v1=1:S0; [Stack 0 selected: y-10]
+!!VRy-10&v1=2:S1; [Stack 1 selected: y-10]
+!!VRy-10&v1=4:S2; [Stack 2 selected: y-10]
+!!VRy-10&v1=8:S3; [Stack 3 selected: y-10]
+!!VRy-10&v1=16:S4; [Stack 4 selected: y-10]
+!!VRy-10&v1=32:S5; [Stack 5 selected: y-10]
+!!VRy-10&v1=64:S6; [Stack 6 selected: y-10]
+!!IF&1000/v1=128/y1<v307:Q1/6/y-8/1^Not enough gold!^;
+!!DO510/y-10/y-10/1&1000/v1<>128:P300;   JHV
+!!DO510/0/6/1&1000/v1=128/y1>=v307:P300;  JHV
+!!DO510/0/6/1&-1000:P300;  AI gets 1 free upgrade to all troops--JHV
+!!FU&-1000:E;
+!!FU509:P;
+
+!?FU510; x16=troop slot
+!!VRy1:Sx1+x16; index to prices        JHV
+!!VRy-8:Svy1; get price for troop x16  JHV
+!!FU&y-8<0:E; exit if priceless        JHV
+!!HE-1:C0/x16/?v2/?v3/?v4/2; [v2=type, v3=number, v4=exp]
+
+!!UN&v3=1:N3/8/v2/0; [Monster name (singular): z8]
+!!UN&v3>1:N3/8/v2/1; [Monster name (plural): z8]
+!!MA:Lv2/?y-6; [Monster level (0..6): y-6]
+!!VRy-6:+1; [Add 1 to monster level: y-6]
+!!FU508:Py-6/v4/v2; [Get rank: y-20]
+!!VRy-5:Sy-20 +1; [Next rank to train creatures to: y-5]
+!!VRy-7:Sy-6; [Copy of monster level: y-7]
+!!VRy-9:Sv2 :2 *2; [Check if monster is upgraded: y-9]
+!!VRy-7&y-9<>v2/v2<=131:+1; [Add 1 more level if monster is upgraded: y-7]
+!!VRy-7&v2>=150/v2<=158|x3=196:+2; [Add 2 more if monster is level 8: y-7]
+
+!!OW:R-1/6/?y-11; [Player's gold: y-11]
+!!IF&1000/y-11<y-8:Q1/6/y-8/1^Not enough gold!^;
+!!FU&1000/y-11<y-8:E; [Exit if player doesn't have enough gold]
+
+!!IF&1000:Q1/21/v2/6/y-8/17/y-5/1^DONE!^;
+!!VRy-13:Sy-11 -y-8; [Player's new gold: y-13]
+!!OW&1000:R-1/6/y-13; [Set player's new gold: y-13]
+
+[Set new rank for troops: y-5=new rank]
+!!HE-1:C0/x16/d/d/y-5/12;
+
+
+[Build text strings for dialogue box]
+!?FU507; x1=start of price table, price-->v[x1+x16], sum of prices-->v[x1+7]
+!!HE-1:C0/x16/?y1/?y2/?y3/2; [y1=type, y2=number, y3=experience]
+!!VRy4:Sx16 +1; [Index for z variable to store text strings (z1..z7)]
+!!VRzy4:S^^; [Initialize z variables to empty strings]
+!!FU|y1<0/y2<1:E; [Skip if no monster in this slot]
+
+!!UN&y2=1:N3/8/y1/0; [Monster name (singular): z8]
+!!UN&y2>1:N3/8/y1/1; [Monster name (plural): z8]
+!!MA:Ly1/?y6; [Monster level (0..6): y6]
+!!VRy6:+1; [Add 1 to monster level: y6]
+!!FU508:Py6/y3/y1; [Get rank: y-20]
+!!VRy5:Sy-20 +1; [Next rank to train creatures to: y5]
+!!FU&y5>10:E; [Skip if stack is already at rank 10]
+
+!!VRy7:Sy6; [Copy of monster level: y7]
+!!VRy9:Sy1 :2 *2; [Check if monster is upgraded: y9]
+!!VRy7&y9<>y1/y1<=131:+1; [Add 1 more to monster level if upgraded: y7]
+!!VRy7&y1>=150/y1<=158:+2; [Add 2 more if monster is level 8: y7]
+!!VRy7&y1>=132/y1<=135:+2; [Add 2 more if monster is level 8: y7]
+!!VRy8:Sy2 *y5 *y6 *y7:2; [Calculate cost: y8]
+**VRy8&v1975=4::2; estates specialists
+!!VRzy4:S^Train  %Y2  %Z8  to  Rank  %Y5  for  %Y8  gold.^;
+!!VRy9:Sx1+x16; index to price table JHV
+!!VRvy9:Sy8;                         JHV
+!!VRy10:Sx1+7; index to total price  JHV
+!!VRvy10:+y8;                        JHV
+
+[Get rank of stack: y-20]
+[x1=monster level (1..7), x2=current experience, x3=monster number]
+!?FU508;
+!!VRe1:S2 :5 +8; [e1=8.4]
+!!VRx1&x1<1:S1; div0 fix by majaczek
+!!VRy1:Sx2 :x1; [Base experience for level 1..7 creatures: y1]
+!!VRy1&x3>=150/x3<=163:Sx2 :e1; [Base exp. for level 8 creatures: y1]
+!!VRy1&x3>=132/x3<=135|x3=196:Sx2 :e1; [Base exp. for level 8 creatures: y1]
+!!VRy-20&y1<1000:S0; [Rank 0]
+!!VRy-20&y1>=1000/y1<2000:S1; [Rank 1]
+!!VRy-20&y1>=2000/y1<3200:S2; [Rank 2]
+!!VRy-20&y1>=3200/y1<4600:S3; [Rank 3]
+!!VRy-20&y1>=4600/y1<6200:S4; [Rank 4]
+!!VRy-20&y1>=6200/y1<8000:S5; [Rank 5]
+!!VRy-20&y1>=8000/y1<10000:S6; [Rank 6]
+!!VRy-20&y1>=10000/y1<12200:S7; [Rank 7]
+!!VRy-20&y1>=12200/y1<14700:S8; [Rank 8]
+!!VRy-20&y1>=14700/y1<17500:S9; [Rank 9]
+!!VRy-20&y1>=17500:S10; [Rank 10]

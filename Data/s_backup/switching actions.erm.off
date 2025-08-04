@@ -1,0 +1,86 @@
+ZVSE
+
+射手更改攻击方式为肉搏后弹药变为零，导致：
+1. AI判定时误认为是近战部队。
+2. AI的射手被玩家蛊惑后更改攻击方式为肉搏后，AI不会自动调回射击模式。
+此脚本使射手以非射击方式行动时自动返还弹药，即调回射击模式。
+若以强制射击的方式进行主动射击（现在没有这种方式，半兽人已改为增加行动机会），
+则需要在FU16016强制生物远程攻击函数中增加相关处理。
+
+施放攻击性魔法的生物(如大恶魔)更改攻击方式为不施法时，
+原程序会自动存储当前施法次数，并在下次玩家开启施法时还原。
+对于每回合增加施法次数的设定，会造成施法次数冲突，还原的施法次数会无视增加的次数。
+此脚本使法师以非施法方式行动时自动返还施法次数，即调回施法模式。
+需要注意与施法再动脚本的兼容。点击模拟施法后必须减少X_HIDE_AMMO_CASTS。
+
+2020-03-22
+*增加快捷切换射击和切换施法功能，
+
+
+!#SN:W^RETURN_SHOTSCASTS_ON^/1;
+
+!?BF;
+!!SN:W^X_HIDE_AMMO_SHOTS^/0;
+!!SN:W^X_HIDE_AMMO_CASTS^/0;
+!!SN:W^X_HIDE_AMMO_STACK^/-1;
+
+!?FU77006;[必须在CastMove之后]
+!!SN:X?y1/?y2; //即将行动方和单位编号
+!!VRy3:Sy1 *21 +y2; //即将行动的单位
+!!BMy3:U3/?y9 E?y10;[记录即将行动的单位的弹药数和施法次数]
+
+!!SN:W^X_HIDE_AMMO_STACK^/y3;
+
+!!SN:W^X_Cast_Move_Old^/?y1;[需要和施法再动的施法次数一样]
+!!VRy10&y1>0:Sv786;[施法再动隐藏的施法次数=v786]
+
+!!SN:W^X_Cast_Move_New^/?y1;[需要和施法再动的施法次数一样]
+!!SN:W^Casts_Left_Stack_%Y3^/?y2;
+!!VRy10&y1>0:Sy2;[施法再动隐藏的施法次数]
+
+!!SN:W^X_HIDE_AMMO_SHOTS^/y9;[当前的弹药数]
+!!SN:W^X_HIDE_AMMO_CASTS^/y10;[隐藏的施法次数]
+! !IF:M^hidden shots/casts set to %Y9/%Y10^;
+
+!?BG0;[选定动作后返还弹药数和施法次数]
+!!BG:A?y6;
+!!FU|y6<=1:E;[重选动作和英雄施法不返还]
+
+!!SN:W^X_HIDE_AMMO_SHOTS^/?y9;
+!!SN:W^X_HIDE_AMMO_CASTS^/?y10;
+!!SN:W^X_HIDE_AMMO_STACK^/?y11;
+!!SN:W^X_HIDE_AMMO_STACK^/-1;[行动开始后重置，使行动进行时不可切换射击和切换施法]
+! !IF:M^hidden shots/casts/stack = %Y9/%Y10/%Y11 action=%Y6^;
+!!BMy11:T?y7 F?y8 U3/?y3 E?y4;
+!!VRy8:&4;
+!!BMy11&y6<>7/y9>0/y3=0:U3/y9;[非射击行动时返还弹药数]
+!!BMy11&y6<>10/y10>0/y4=0:Ey10;[非施法行动时返还施法次数]
+[y3y4>0说明没有隐藏次数，y7=v7507说明没死（一般77006到BG0间不会死）]
+
+--------------------------------------
+*增加快捷切换射击和切换施法功能，
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetGameState^/?y2 Ey2/0/?y10;
+! !IF:L^Game State=%Y10 %Y11^;
+!!FU|y10<>4205280/y11<>4662240:E;
+
+!?FU77003; //switch test mode
+!!SN:W^X_HIDE_AMMO_STACK^/?y11;
+!!FU&y11<0:E;
+
+!!SN:X?y1;
+!!if&y1=49:; //数字1键，关闭射击和施法
+!!BMy11:U3/0 E0;
+!!en:;
+!!if&y1=50:; //数字2键，打开射击，关闭施法
+!!SN:W^X_HIDE_AMMO_SHOTS^/?y9;
+!!BMy11:U3/y9 E0;
+!!en:;
+!!if&y1=51:; //数字3键，打开施法
+!!SN:W^X_HIDE_AMMO_CASTS^/?y10;
+!!BMy11:Ey10;
+!!en:;
+
+
+End of Script
+

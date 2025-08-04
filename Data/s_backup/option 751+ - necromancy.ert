@@ -1,0 +1,13 @@
+#	Text resource for "option 751 - necromancy.erm"		
+179264	{Basic Necromancy}
+
+Basic Necromancy skill allows to rise up to {15%%}
+own killed creatures as undead after battle.		
+179265	{Advanced Necromancy}
+
+Basic Necromancy skill allows to rise up to {30%%}
+own killed creatures as undead after battle.		
+179266	{Expert Necromancy}
+
+Basic Necromancy skill allows to rise up to {50%%}
+own killed creatures as undead after battle.		

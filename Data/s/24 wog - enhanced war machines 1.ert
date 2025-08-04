@@ -26,10 +26,7 @@ Not enough money.	<!!S>	01.08.2004
 154018	
 
 %Z3's level is to low.	<!!S>	01.08.2004
-154019	
-
-Usable only twelve times per day.
-Come back tomorrow.	<!!S>	01.08.2004
+154019		<!!S>	01.08.2004
 154020	{%Z1}
 
 Upgrade %Z3's 
@@ -87,19 +84,19 @@ Do you wish to {%Z5}?	<!!Q>	01.08.2004
 
 %Z7's %Z2
 is now {%Z4}.	<!!Q>	01.08.2004
-154047	Allows {%Y10} shots in combat.
+154047	Allows {%Y10} shots
 	<!!S>	01.08.2004
-154048	%Z3 Currently it has {%Y8} Hit Points.	<!!S>	01.08.2004
+154048	%Z3and has {%Y8} Hit Points.	<!!S>	01.08.2004
 154049	{Resurrection} ability.
 	<!!S>	01.08.2004
-154050	%Z6 Gives {%Y7}%% Healing Points
+154050	%Z6Gives {%Y7}%% Healing Points
 and has {%Y8} Hit Points.	<!!S>	01.08.2004
 154051	s	<!!S>	01.08.2004
 154052	Gives {%X4} Spell Point%Z4 every turn
 and has {%Y8} Hit Points.	<!!S>	01.08.2004
 154053	Target loses {%Y11} speed.
 	<!!S>	01.08.2004
-154054	%Z6 Does {%Y7}%% damage
+154054	%Z6Does {%Y7}%% damage
 and has {%Y8} Hit Points.	<!!S>	01.08.2004
 154055	{%Z3}
 empty book.	<!!S>	01.08.2004
@@ -122,4 +119,3 @@ This item can't be traded.	<!!S>	01.08.2004
 
 {%Z3's} Spell Book
 contains {%V1} spell%Z2.	<!!S>	01.08.2004
-154063	Choose War Machine to upgrade:	<!!S>	12.09.2014

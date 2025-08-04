@@ -1,0 +1,296 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=5.5(May).2016
+
+!?FU(zRND);
+!!IF:M^FU(zRND) is deprecated^;
+!!FU:E;
+!!SN:E6390828/1;
+!!VRy1:Sv1;
+!!VRy2:Sx2 +1;
+!!VRy1:%y2;
+!!VRx3:Sx1 +y1;
+
+***Hide Tactics***
+!?BA52;  Pre battle
+!_!FU:E; temporary disabled for debug
+!!FU:E;
+
+!!BA:H0/?y11;                              [get attacking hero #]
+!!BA:H1/?y12;                              [get defending hero #]
+
+!!VRy-14:S0; !!VRy-16:S0; reset defender Variables
+
+!!HEy-11:S19/?y-13 R4/?y-15;                [get attackers tactics level, tactics status]
+!!HEy-12&y-12>=0:S19/?y-14 R4/?y-16;        [get defenders tactics, tactics status - if any]
+
+!!SN:W^Attacker Tactics^/y-13;
+!!SN:W^Defender Tactics^/y-14;
+
+!_!BU:T0; 
+!_!FU:E; // disable tactics phase
+
+// flag 800 - death chamber
+!!if&800;:
+  !!HEy11:S19/0; set tactics to none
+  !!HEy12&y12>=0:S19/0;
+!!el:;
+  !!HEy11:S19/0; set tactics to none (was basic)
+  !_!HEy-12&y-12>=0:S19/1;
+  !!HEy12&y12>=0:S19/0;
+!!en:;
+
+!?BA53; post battle trigger
+!?BR; !!FU:E;
+!!FU&v997<>0:E;
+!!BA:H0/?y11;                              [get attacking hero #]
+!!BA:H1/?y12;                              [get defending hero #]
+
+!!SN:W^Attacker Tactics^/?y13;
+!!SN:W^Defender Tactics^/?y14;
+
+!!HEy11:S19/y13; Restore Tactics
+!!HEy12&y12>=0:S19/y14;
+
+!?BG0; !!FU:E;
+!!BG:A?y99;
+!!FU&y99<>4/y99<>5:E;
+!!BA:H0/?y11;                              [get attacking hero #]
+!!BA:H1/?y12;                              [get defending hero #]
+
+!!SN:W^Attacker Tactics^/?y13;
+!!SN:W^Defender Tactics^/?y14;
+
+!!HEy11:S19/y13; Restore Tactics
+!!HEy12&y12>=0:S19/y14;
+
+***New Tactics Effect***
+
+!?FU55120; [extra_metee_attack]
+!!SN:X?y1/1;[edi]
+!!SN:W^007.AttackA.Times^/?y30;
+!!SN:W^007.AttackA.Times^/0;
+!!FU&y30<1:E;
+!!UN:Cy1/4/?y10;[y10=A_STACK]
+!!VRy2:Sy1+8;
+!!UN:Cy2/4/?y3; [y3=ebp]
+!!VRy4:Sy3+8; [ebp+8]
+!!UN:Cy4/4/?y5; y5=[ebp+08]
+!!VRy6:Sy1+4;
+!!UN:Cy6/4/?y20;[y20=D_STACK]10#
+!!VRy11:Sy10+52; 11#
+!!VRy12:Sy10+76;
+!!VRy13:Sy10+656;
+!!VRy14:Sy10+688;
+!!VRy15:Sy10+704;
+!!VRy21:Sy20+52;
+!!VRy22:Sy20+76;
+!!UN:Cy11/4/?y31; 18#
+!!UN:Cy12/4/?y32;
+!!UN:Cy13/4/?y33;
+!!UN:Cy14/4/?y34;
+!!UN:Cy15/4/?y35;
+!!UN:Cy21/4/?y41;
+!!UN:Cy22/4/?y42;
+!!FU|y31<0/y32<1/y41<0/y42<1/y33>0/y34>0/y35>0:E;
+!!SN:E4461360/2/y10/y20/y5;
+!!VRy30:-1;
+!!SN&y30>0:G18;
+
+!?FU55121; [extra_shoot]
+!!FU:E;
+!!SN:X?y1/1;[edi]
+!!SN:W^007.ShootA.Times^/?y30;
+!!SN:W^007.ShootA.Times^/0;
+!!FU&y30<1:E;
+!!VRy2:Sy1+4; esi
+!!UN:Cy2/4/?y10;[A_STACK]
+!!VRy3:Sy1+16; ebx
+!!UN:Cy3/4/?y20;[D_STACK]
+!!VRy11:Sy10+52;[8#]
+!!VRy12:Sy10+76;
+!!VRy13:Sy10+656;
+!!VRy14:Sy10+688;
+!!VRy15:Sy10+704;
+!!VRy16:Sy10+216;
+!!VRy21:Sy20+52;
+!!VRy22:Sy20+76;
+!!UN:Cy11/4/?y31;[BM:T]16#
+!!UN:Cy12/4/?y32;[BM:N]
+!!UN:Cy13/4/?y33;[BM:G62]
+!!UN:Cy14/4/?y34;[BM:G70]
+!!UN:Cy15/4/?y35;[BM:G74]
+!!UN:Cy16/4/?y36;[BM:U3]
+!!UN:Cy21/4/?y41;[BM:T]
+!!UN:Cy22/4/?y42;[BM:N]
+!!FU|y31<0/y32<1/y41<0/y42<1/y33>0/y34>0/y35>0/y36<1:E;
+!!SN:E4453920/2/y10/y20;
+!!VRy30:-1;
+!!SN&y30>0:G16;
+
+********************HOOK_CODE******************************
+!?BA0&1000;
+!!FU:E; temporary disabled for debug
+!!SN:L^EraPlugins\erm_hooker.era^/?y1 Ay1/^SetHook^/?y2;
+!!SN:Ey2/1/7381311/55120; [hook at <after metee_attack>]
+!!SN:Ey2/1/4456346/55121; [hook at <after shoot>]
+!?BA1&1000;
+!!FU:E; temporary disabled for debug
+!!SN:L^EraPlugins\erm_hooker.era^/?y1 Ay1/^UnsetHook^/?y2;
+!!SN:Ey2/1/7381311;
+!!SN:Ey2/1/4456346;
+
+*******************reset_variables************************
+
+!?BG0;[example]
+!!SN:W^007.AttackA.Times^/0;[reset flag](or reset it at BG1)
+!!SN:W^007.ShootA.Times^/0;[reset flag](or reset it at BG1)
+
+!!BG:A?y1 N?y2 E?y3 Q?y9;
+!!FU&y2<0:E; !!FU&y2>41:E;
+!!BMy2:T?y4;
+!!if&y1=6:;
+   example
+   !_!SN&y4=132:W^007.AttackA.Times^/2;[AzureDragon has 2 extra_attack_times]
+!!en:;
+!!if&y1=7:;
+   example
+   !_!SN&y4=196:W^007.ShootA.Times^/2;[Dracolich has 2 extra_shoot_times]
+!!en:;
+
+!!FU55123:Py9/y1/y4/y2;
+x1 - current side
+x2 - battle action
+x3 - creature number
+x4 - current stack
+
+!?FU55123; [Tactics Chance]
+!_!FU&x2<>6/x2<>7:E; exit if not attack/shoot
+
+!!SN:W^007.AttackA.Times^/?y11;
+!!SN:W^007.ShootA.Times^/?y12; read variables
+
+!!SN&x1=0:W^Attacker Tactics^/?y15;
+!!SN&x1=1:W^Defender Tactics^/?y15;
+
+!!if&x2<>6/x2<>7:;
+  !!SN:W^007.AttackA.Times^/0;
+  !!SN:W^007.ShootA.Times^/0; write variables
+  !!FU:E;
+!!en:;
+
+!!BMx4:F?y66; !!VRy66:&64; !_!FU&y66<>0:E;
+!!if&y66<>0:; 
+  !!SN:W^007.AttackA.Times^/0;
+  !!SN:W^007.ShootA.Times^/0; write variables
+  !!FU:E;
+!!en:;
+
+!!FU&x3>=174/x3<=191:E;
+!!FU&x3>=294/x3<=302:E;
+
+!!BHx1:N?y70; !!VRy73:S-1; !!VRy74:S-1;
+!!HEy70&y70>=0:E?y71/?y72 X?y73/?y74/?y75/?y76/?y77/?y78/?y79;
+
+
+!!rei/0/15/1:;
+  !!VRy17:S0 R999;
+  !_!FU(zRND):P0/999/?y17;
+
+  !!if&y15>i/y17<17:;
+    !!VRy11:+1; !!VRy12:+1;
+    !!if&y73=0/y74=19:;
+      !_!VRy11:+1;
+      !_!VRy12:+1;
+    !!en:;
+    !!VRz1:S^Tactics gives additional attack^;
+    !!MM:Sz1;
+  !!en:;
+!!en:;
+
+
+!!rei/0/y15/1:;
+  !!if&y73=0/y74=19:; Tactics Specialist
+    
+    !!VRy17:S0 R999;
+    !_!FU(zRND):P0/999/?y17;
+
+    !_!VRy12&y17<y72:+1;
+    !!if&y17<y72:;
+      !!VRy11:+1;
+      !!VRy12:+1;
+    !!en:;
+    !!VRz1:S^Tactics Specialist gives additional attack^;
+    !!MM&y17<y72:Sz1;
+  !!en:;
+!!en:;
+
+** archery **
+!!VRy15:S0; !!HEy70&y70>=0:S1/?y15;
+
+!!rei/0/15/1:;
+
+  !!VRy17:S0 R999;
+  !_!FU(zRND):P0/999/?y17;
+
+  !!if&y15>i/y17<13/x2=7:;
+    !_!VRy11:+1; 
+    !!VRy12:+1;
+    !!if&y73=0/y74=19:;
+      !_!VRy12:+1;
+    !!en:;
+    !!VRz1:S^Archery gives additional attack^;
+    !!MM:Sz1;
+  !!en:;
+!!en:;
+
+
+!!rei/0/y15/1:;
+  !!if&y73=0/y74=1/x2=7:; Archery Specialist
+    !!VRy17:S0 R999;
+    !_!FU(zRND):P0/999/?y17;
+
+    !!VRy12&y17<y72:+1;
+    !!VRz1:S^Archery Specialist gives additional attack^;
+    !!MM&y17<y72:Sz1;
+  !!en:;
+!!en:;
+
+** Offence **
+!!VRy15:S0; !!HEy70&y70>=0:S22/?y15;
+
+
+!!rei/0/15/1:;
+  !!VRy17:S0 R999;
+  !_!FU(zRND):P0/999/?y17;
+
+  !!if&y15>i/y17<9:;
+    !!VRy11:+1; 
+    !_!VRy12:+1;
+    !!if&y73=0/y74=19:;
+      !_!VRy11:+1;
+    !!en:;
+    !!if&x2=6:;
+      !!VRz1:S^Offence gives additional attack^;
+      !!MM:Sz1;
+    !!en:;
+  !!en:;
+!!en:;
+
+
+!!rei/0/y15/1:;
+  !!if&y73=0/y74=22/x2=6:; Offense Specialist
+    !!VRy17:S0 R999;
+    !_!FU(zRND):P0/999/?y17;
+
+    !!VRy11&y17<y72:+1;
+    !!if&x2=6:;
+      !!VRz1:S^Offence Specialist gives additional attack^;
+      !!MM&y17<y72:Sz1;
+    !!en:;
+  !!en:;
+!!en:;
+
+!!SN:W^007.AttackA.Times^/y11;
+!!SN:W^007.ShootA.Times^/y12; write variables

@@ -1,0 +1,2 @@
+	-1	7	0	-1	1	1	283	Dress Code	Saves/ restores sets of equipped artifacts so a player can easily switch between resource artifacts and combat artifacts. (Right-click for more info.)	Saves/ restores two sets of equipped artifacts ("night" set and "day" set) so a player can easily switch between resource-generating artifacts and combat artifacts.
+To save the equipped set or restore a previously-saved set, open the Hero screen and right-click on the Hero's portrait in the right-side scroll list.  Only the active Hero can be clicked.

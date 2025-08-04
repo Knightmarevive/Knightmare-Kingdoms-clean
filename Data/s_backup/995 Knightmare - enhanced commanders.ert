@@ -1,0 +1,63 @@
+#	Text resource for "script51.erm" document		
+151000	Horrible Wounds	<!!S>	01.08.2004
+151001	Fearsome	<!!S>	01.08.2004
+151002	Crushing Damage	<!!S>	01.08.2004
+151003	No Retaliation	<!!S>	01.08.2004
+151004	Flash Swing	<!!S>	01.08.2004
+151005	Vigor	<!!S>	01.08.2004
+151006	Radius Attack	<!!S>	01.08.2004
+151007	Magic Armor	<!!S>	01.08.2004
+151008	Blocking	<!!S>	01.08.2004
+151009	Strike Twice	<!!S>	01.08.2004
+151010	Rebirth	<!!S>	01.08.2004
+151011	Regeneration	<!!S>	01.08.2004
+151012	Death Stare	<!!S>	01.08.2004
+151013	Charge Attack	<!!S>	01.08.2004
+151014	Flying	<!!S>	01.08.2004
+151015	The Opal has infused %Z1 with its energy.
+
+Gained {%Z2} ability	<!!M>	01.08.2004
+151016	The Opal has no effect upon %Z1.	<!!M>	01.08.2004
+151017	The Ruby has infused %Z1 with its energy.
+
++1 to {Damage} Skill level	<!!M>	01.08.2004
+151018	The Ruby has infused %Z1 with its energy.
+
++1 to {Attack} Skill level	<!!M>	01.08.2004
+151019	The Ruby has infused %Z1 with its energy.
+
++1 to {Damage} Skill level	<!!M>	01.08.2004
+151020	The Ruby has infused %Z1 with its energy.
+
++1 to {Attack} Skill level	<!!M>	01.08.2004
+151021	The Ruby has no effect upon %Z1.	<!!M>	01.08.2004
+151022	The Sapphire has infused %Z1 with its energy.
+
++1 to {Hit Points} Skill level	<!!M>	01.08.2004
+151023	The Sapphire has infused %Z1 with its energy.
+
++1 to {Defense} Skill level	<!!M>	01.08.2004
+151024	The Sapphire has infused %Z1 with its energy.
+
++1 to {Hit Points} Skill level	<!!M>	01.08.2004
+151025	The Sapphire has infused %Z1 with its energy.
+
++1 to {Defense} Skill level	<!!M>	01.08.2004
+151026	The Sapphire has no effect upon %Z1.	<!!M>	01.08.2004
+151027	The Emerald has infused %Z1 with its energy.
+
++1 to {Speed} Skill level	<!!M>	01.08.2004
+151028	The Emerald has infused %Z1 with its energy.
+
++1 to {Magic Power} Skill level	<!!M>	01.08.2004
+151029	The Emerald has infused %Z1 with its energy.
+
++1 to {Speed} Skill level	<!!M>	01.08.2004
+151030	The Emerald has infused %Z1 with its energy.
+
++1 to {Magic Power} Skill level	<!!M>	01.08.2004
+151031	The Emerald has no effect upon %Z1.	<!!M>	01.08.2004
+151032	The %Z2 helps %Z1' to learn faster.
+It gives %Y-9 experience. 	add XP instead of nothing	Doom3d
+151033	The %Z3 has no influence on %Z2, but helps %Z1' to learn faster.
+It gives %Y-9 experience. 	same for opal	

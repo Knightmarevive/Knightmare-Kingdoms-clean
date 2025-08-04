@@ -1,0 +1,522 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=5.5(May).2016
+
+**** Если будут использоваться данные из SPTRAITS.txt, следующие строки нужно удалить
+**
+!#VRz304:S^Reinforcements^;
+!#VRz305:S^Reinforcements^;
+!#VRz306:S^Reinforcements
+
+{None:} Hero can summon to army {1st} tier creatures from {closest} town garrison.
+Basic: Hero can summon to army {1st-3rd} tier creatures from {closest} town garrison.
+Advanced: Hero can summon to army {1st-5th} tier creatures from {any} town garrison.
+Expert: Hero can summon to army {any} tier creatures from {any} town garrison.
+^;
+!#VRz307:S^Reinforcements
+
+None: Hero can summon to army {1st} tier creatures from {closest} town garrison.
+{Basic:} Hero can summon to army {1st-3rd} tier creatures from {closest} town garrison.
+Advanced: Hero can summon to army {1st-5th} tier creatures from {any} town garrison.
+Expert: Hero can summon to army {any} tier creatures from {any} town garrison.
+^;
+!#VRz308:S^Reinforcements
+
+None: Hero can summon to army {1st} tier creatures from {closest} town garrison.
+Basic: Hero can summon to army {1st-3rd} tier creatures from {closest} town garrison.
+{Advanced:} Hero can summon to army {1st-5th} tier creatures from {any} town garrison.
+Expert: Hero can summon to army {any} tier creatures from {any} town garrison.
+^;
+!#VRz309:S^Reinforcements
+
+None: Hero can summon to army {1st} tier creatures from {closest} town garrison.
+Basic: Hero can summon to army {1st-3rd} tier creatures from {closest} town garrison.
+Advanced: Hero can summon to army {1st-5th} tier creatures from {any} town garrison.
+{Expert:} Hero can summon to army {any} tier creatures from {any} town garrison.
+^;
+
+!#SS4:S2 L3 C0/15 C1/12 C2/12 C3/12; [Школа, Уровень, стоимости заклинания для разных уровней Школы]
+!#SS4:N304 A305 D0/306 D1/307 D2/308 D3/309; [Название, Сокращенное название, описания для разных уровней Школы]
+**
+****
+
+**** ИИ
+** попытка призыва подкреплений для каждого героя, знающего заклинание, если это стоит не более 1/3 его текущей маны
+** призываются только существа, имеющиеся в текущей армии
+** призываются НЕВЫКУПЛЕННЫЕ существа из БЛИЖАЙШЕГО города
+** существа призываются БЕСПЛАТНО
+!#TM1:S1/999/1/255;                             [переопределение стандартного триггера]
+!#SN:W^ReinforcementsAI^/-1;                    [номер прошлого ИИ-игрока]
+!#SN:W^ReinforcementsAIDebug^/1;                [DEBUG-режим для ИИ (для отключения поставить 0 или закоментарить строку)]
+
+!?TM1;
+!!SN:W^ReinforcementsAI^/?y1;                   [y1 - номер прошлого ИИ-игрока]
+!!OW:C?y2 Iy2/?y3;                              [y2/y3 - номер/ИИ-статус текущего игрока]
+!!VRy2&y3=0:S-1;                                [y2=-1, если игрок - человек]
+!!SN:W^ReinforcementsAI^/y2;                    [сохраняем номер текущего игрока]
+!!FU&y1=-1:E;                                   [выход, если прошлый игрок не ИИ]
+!!OW:Iy1/?y2/?y3;                               [y2/y3 - ИИ-статус/существование прошлого игрока]
+!!FU|y2=0/y3=1:E;                               [выход, если прошлый игрок не ИИ или мертв]
+!!OW:Hy1/1/0;                                   [y2 - количество героев у прошлого игрока]
+!!VRy2:Sv1;                                     [...]
+!!DO29110/1/y2/1:Py1;                           [для каждого героя прошлого игрока пытаемся вызвать подкрепления]
+
+!?FU29110;                                      [вызов подкреплений для x16-го героя x1-го игрока]
+!!SN:W^more_SS_levels.era^/?y88;
+!!OW:Hx1/1/x16;                                 [y1 - номер героя]
+!!VRy1:Sv1;                                     [...]
+!!HEy1:M4/?y2 I?y3/1 S14/?y4;                   [y2/y3/y4 - Наличие заклинания/Количество маны/уровень Магии Огня у героя]
+!!FU(SSL_get)&y88<>0:P14/y4/?y94/d/d/d;  !!VRy4&y88<>0:Sy94; !!VRy4&y94>3/y88<>0:S3;
+!!SS4:Cy4/?y5;                                  [y5 - стоимость заклинания]
+!!VRy6:Sy5 *3;                                  [y6 - мин. количество маны для каста (утроенная стоимость заклинания)]
+!!FU|y2=0/y3<y6:E;                              [выход, если заклинание герою неизвестно или маны не достаточно много]
+!!HEy1:P?y7/?y8/?v28;                             [y7/y8 - координаты героя]
+!!UN:U98/-1/?y9;                                [v6-v8 - координаты ближайшего города]
+!!VRv1:S-2;                                     [...]
+!!VRv6:S-1;                                     [...]
+!!DO29103/1/y9/1:Py7/y8/x1;                     [...]
+!!FU&v6=-1:E;                                   [выход, если городов нет]
+!!VRy10:Sy4;                                    [y10 - макс. уровень призываемых существ]
+!!VRy10&y10=2:S3;                               [...]
+!!VRy10&y10=3:S5;                               [...]
+!!VRv10:S-1;                                    [инициализация v10]
+!!DO29111/0/6/1:Py1/y10;                        [попытка пополнить армию из ближайшего города]
+!!VRy5:*-1;                                     [уменьшение маны героя, если был успешный призыв]
+!!HEy1&v10=1:Idy5/1;                            [...]
+
+!?FU29111;                                      [вызов существ в армию героя x1 из города v6/v7/v8 уровнем не выше x2]
+!!HEx1:C0/x16/?y1/?y2;                          [y1/y2 - тип/количество существ в слоте]
+!!FU|y1=-1/y2<1:E;                              [выход, если слот пуст]
+!!CA6:T?y3;                                     [y3 - тип города]
+!!MA:Oy1/?y4 Ly1/?y5;                           [y4/y5 - город/уровень существа]
+!!FU|y3<>y4/y5>x2:E;                            [выход, город не родной для существа или существо слишком высокого уровня для призыва]
+!!UN:Ty3/y5/0/?y6 Ty3/y5/1/?y7;                 [y6/y7 неулучш./улучш. существа в городе]
+!!FU&y6<>y1/y7<>y1:E;                           [выход, если типы не совпадают (доп. проверка)]
+!!CA6:M1/y5/0/?y11 M1/y5/1/?y12;                [y11/y12 - количество неулучш./улучш. существ в городе]
+!!FU&y11<1:E;                                   [выход, если существ для призыва нет]
+!!HEx1&y6=y1/y11>0:C0/x16/d/dy11/0/0;           [добавление существ герою]
+!!HEx1&y7=y1/y12>0:C0/x16/d/dy12/0/0;           [...]
+!!CA6:M1/y5/0/0 M1/y5/1/0;                      [обнуление неулучш./улучш. существ в городе]
+!!VRv10:S1;                                     [установка признака "заклинание сработало"]
+
+**** Человек
+
+!?MG1&v997=4;
+!!OW:A-1/?v25;
+!!HEv25:S14/?v3 P?y-1/?y-2/?y-3 C0/0/d/?y1 C0/1/d/?y2 C0/2/d/?y3 C0/3/d/?y4 C0/4/d/?y5 C0/5/d/?y6 C0/6/d/?y7;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/v3/?v9/d/d/d; !!VRv3&y88<>0:Sv9; !!VRv3&v9>3/y88<>0:S3;
+
+!!VRm:Sy1+y2+y3+y4+y5+y6+y7;
+!!SS4:Cv3/?y7;
+!!HEv25:Idy7;
+!!if&v3<2;
+!!UN:U98/-1/?y7;
+!!VRv1:S-2;
+!!VRv6:S-1;
+!!DO29103/1/y7/1:Py-1/y-2;
+!!IF&v6=-1:M^You don't have any towns^;
+!!FU&v6=-1:E;
+!!DL20:N^MoPDlg020.txt^;
+!!FU29106:Pv25/1/1;
+!!DL20:A998/11/z1;
+!!CA6:H0/?v26 N?z1;
+!!VRz1:S^%Z1 town garrison^;
+!!DL20:A1986/3/z1;
+!!FU29106&v26>-1:Pv26/1/1;
+!!DL20&v26>-1:A999/11/z1;
+!!DO29105/0/6/1:P10/0;
+!!DO29104/0/6/1:P;
+!!DL20:S;
+!!if&v1=1;
+!!HEv25:S14/?v3 C0/0/d/?y1 C0/1/d/?y2 C0/2/d/?y3 C0/3/d/?y4 C0/4/d/?y5 C0/5/d/?y6 C0/6/d/?y7;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/v3/?v9/d/d/d; !!VRv3&y88<>0:Sv9; !!VRv3&v9>3/y88<>0:S3;
+
+!!VRy1:+y2+y3+y4+y5+y6+y7;
+!!FU&y1=m:E;
+!!SS4:Cv3/?v28;
+!!VRv28:*-1;
+!!HEv25:Idv28;
+!!el;
+!!DO29105/0/6/1:P10/1;
+!!en;
+!!en;
+!!if&v3>1;
+!!DL19:N^MoPDlg019.txt^ E100/0;
+!!UN:U98/-1/?y7;
+!!VRv1:S-2;
+!!VRv6:S-1;
+!!DO29103/1/y7/1:Py-1/y-2;
+!!IF&v6=-1:M^You don't have any towns^;
+!!FU&v6=-1:E;
+!!VRv1:S-1;
+!!DO29102/1/100/1:P9602536;
+!!VRv762:C-1/-1/-1/-1/-1/-1/-1/-1/-1;
+!!DO29101/1/y7/1:P1/9602536/762;
+!!VRv27:S-1;
+!!VRv28:S-1;
+!!VRv29:S9602536;
+!!DL19:S;
+!!if&v1=1;
+!!CA0/v27:P?v6/?v7/?v8;
+!!DL20:N^MoPDlg020.txt^;
+!!FU29106:Pv25/1/1;
+!!DL20:A998/11/z1;
+!!CA6:H0/?v26 N?z1;
+!!VRz1:S^%Z1 town garrison^;
+!!DL20:A1986/3/z1;
+!!FU29106&v26>-1:Pv26/1/1;
+!!DL20&v26>-1:A999/11/z1;
+!!DO29105/0/6/1:P10/0;
+!!DO29104/0/6/1:P;
+!!DL20:S=100;
+!!if&1;
+!!HEv25:S14/?v3 C0/0/d/?y1 C0/1/d/?y2 C0/2/d/?y3 C0/3/d/?y4 C0/4/d/?y5 C0/5/d/?y6 C0/6/d/?y7;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/v3/?v9/d/d/d; !!VRv3&y88<>0:Sv9; !!VRv3&v9>3/y88<>0:S3;
+
+!!VRy1:+y2+y3+y4+y5+y6+y7;
+!!FU&y1=m:E;
+!!SS4:Cv3/?v28;
+!!VRv28:*-1;
+!!HEv25:Idv28;
+!!el;
+!!DO29105/0/6/1:P10/1;
+!!en;
+!!en;
+!!UN:R1;
+
+!?DL&v998=19/v999>10/v999<20/v1000=12;
+!!VRy1:S751+v999;
+!!FU&vy1=-1:E;
+!!VRz1:S^tpgates.pcx^;
+!!DL19:Av999/11/z1 E100/1;
+!!if&v28>-1/v28<>v999;
+!!VRz1:S^mopsky.pcx^;
+!!DL19:Av28/11/z1;
+!!en;
+!!VRv28:Sv999;
+!!VRy1:S751+v999;
+!!VRv27:Svy1;
+
+!?DL&v998=19;
+!!if&v1000=12;
+!!DL19&v999=666:Av999/4/1;
+!!DL19&v999=667:Av999/4/3;
+!!en;
+!!FU&v1000<>13:E;
+!!DL19&v999=666:Av999/4/0;
+!!DL19&v999=667:Av999/4/2;
+!!if&v999=666;
+!!VRy1:Sv29-1;
+!!FU&y1<9602536:E;
+!!VRv29:-1;
+!!DO29100/1/9/1:Pv29/762;
+!!if&v28>-1;
+!!VRz1:S^mopsky.pcx^;
+!!DL19:Av28/11/z1;
+!!VRv28:+1;
+!!VRz1:S^tpgates.pcx^;
+!!DL19:Av28/11/z1;
+!!en;
+!!en;
+!!if&v999=667;
+!!VRy1:Sv29+9;
+!!UN:Cy1/1/?y2;
+!!FU&y2=100:E;
+!!VRv29:+1;
+!!DO29100/1/9/1:Pv29/762;
+!!if&v27>-1;
+!!VRz1:S^mopsky.pcx^;
+!!DL19:Av28/11/z1;
+!!VRv28:-1;
+!!VRz1:S^tpgates.pcx^;
+!!DL19:Av28/11/z1;
+!!en;
+!!en;
+
+!?FU29100;
+!!UN:Cx1/1/?y2;
+!!VRvx2:Sy2;
+!!CA0/y2:N?z1;
+!!DL19:Ax16/3/z1;
+!!VRx1:+1;
+!!VRx2:+1;
+
+!?FU29101;
+!!UN:U98/-1/-1/1;
+!!OW:C?y10;
+!!CA1:O=y10;
+!!FU&-1:E;
+!!CA1:N?z1 U?y1;
+!!UN:Cx2/1/y1;
+!!VRvx3&x1<10:Sy1;
+!!DL19&x1<10:Ax1/3/z1;
+!!VRx1:+1;
+!!VRx2:+1;
+!!VRx3:+1;
+
+!?FU29102;
+!!UN:Cx1/1/100;
+!!VRx1:+1;
+
+!?FU29103;
+!!VRv4&x16=1:S2147483647;
+!!UN:U98/-1/-2/1;
+!!OW:C?y10;
+!!CA1:O=y10;
+!!FU&-1:E;
+!!VRy1:Sv1-x1;
+!!VRy1:*y1;
+!!VRv10:Sv2-x2;
+!!VRv10:*v10+y1;
+!!if&v10<v4;
+!!VRv4:Sv10;
+!!VRv6:Sv1;
+!!VRv7:Sv2;
+!!VRv8:Sv3;
+!!en;
+
+!?FU29104;
+!!CA6&v26<0:M2/x16/?y1/?y2;
+!!HEv26&v26>-1:C0/x16/?y1/?y2;
+!!VRy3:Sx16+1;
+!!VRy4:Sy1+2;
+!!VRz1:S^twcrport.def^;
+!!DL20&y2>0:Ay3/9/z1 Ay3/4/y4;
+!!CA6&v26<0:M2/x16/?y1/?y2;
+!!HEv26&v26>-1:C0/x16/?y1/?y2;
+!!VRy3:Sx16+21;
+!!VRz1&y2>0:S^%Y2^;
+!!VRz1&y2<1:S^^;
+!!DL20:Ay3/3/z1;
+!!VRy21:S41+x16;
+!!CA6&v26<0:M2/x16/?y1/?y2;
+!!HEv26&v26>-1:C0/x16/?y1/?y2 C0/x16/d/d/?y3/12;
+!!if&v26<0;
+!!EXv6/v7/v8/x16/2:E?y4;
+!!DO29108/0/155/1:P;
+!!HEv24:C0/v27/y1/y2/y4/2 C0/v27/d/d/?y3/12;
+!!EXv24/v27:E0 R-1/-1;
+!!HEv24:C0/v27/-1/0;
+!!en;
+!!VRy3:+19;
+!!VRz1|y3=19/y2<1:S^^;
+!!UN&y3>19/y3<25/y2>0:C9597928/2/y3;
+!!if&y3>24/y2>0;
+!!UN:C9597928/1/24;
+!!VRy3:-5;
+!!VRy1:S9597928+1;
+!!UN:Cy1/2/y3;
+!!en;
+!!DL20:Ay21/3/z1;
+!!HEv25:C0/x16/?y1/?y2;
+!!VRy22:Sx16+11;
+!!VRy23:Sy1+2;
+!!VRz1:S^twcrport.def^;
+!!DL20&y2>0:Ay22/9/z1 Ay22/4/y23;
+!!HEv25:C0/x16/?y1/?y2;
+!!VRy21:Sx16+31;
+!!VRz1&y2>0:S^%Y2^;
+!!VRz1&y2<1:S^^;
+!!DL20:Ay21/3/z1;
+!!VRy21:S51+x16;
+!!HEv25:C0/x16/?y1/?y2/?y3/12;
+!!VRy3:+19;
+!!VRz1|y3=19/y2<1:S^^;
+!!UN&y3>19/y3<25/y2>0:C9597928/2/y3;
+!!if&y3>24/y2>0;
+!!UN:C9597928/1/24;
+!!VRy3:-5;
+!!VRy1:S9597928+1;
+!!UN:Cy1/2/y3;
+!!en;
+!!DL20:Ay21/3/z1;
+!!VRv27:S-1;
+
+!?DL&v998=20/v999>60/v999<68/v1000=12;
+!!HEv25:S14/?y3;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/y3/?y93/d/d/d; !!VRy3&y88<>0:Sy93;
+
+!!VRy4:Sv999-61;
+!!CA6&v26<0:M2/y4/?y1/?y2;
+!!HEv26&v26>-1:C0/y4/?y1/?y2;
+!!FU&y1<0:E;
+!!MA:Ly1/?y5;
+!!FU&y3=0/y5>0:E;
+!!FU&y3=1/y5>2:E;
+!!FU&y3=2/y5>4:E;
+!!VRz1:S^twcrport.def^;
+!!DL20:Av999/9/z1 Av999/4/1;
+!!if&v27>-1/v27<>y4;
+!!VRv27:+61;
+!!VRz1:S^Mopsky.def^;
+!!DL20:Av27/9/z1 Av27/4/0;
+!!en;
+!!VRv27:Sy4;
+
+!?DL&v998=20/v999>70/v999<78/v1000=12/v27>-1;
+!!HEv25:S14/?y3;
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!FU(SSL_get)&y88<>0:P14/y3/?y93/d/d/d; !!VRy3&y88<>0:Sy93;
+
+!!CA6&v26<0:M2/v27/?y1/?y2;
+!!HEv26&v26>-1:C0/v27/?y1/?y2;
+!!FU&y3=0/y5>0:E;
+!!FU&y3=1/y5>2:E;
+!!FU&y3=2/y5>4:E;
+!!VRy4:Sv999-71;
+!!HEv25:C0/y4/?y5/?y6;
+!!FU&y5<>y1/y6>0:E;
+!!EXv25/y4&v26<0/y6>0:C2/v6/v7/v8/v27;
+!!EXv25/y4&v26>-1/y6>0:C0/v26/v27;
+!!if&y6<1;
+!!EXv6/v7/v8/v27/2&v26<0:A?y10/?y11/?y12 R?y13/?y14/?y15/?y16;
+!!EXv26/v27&v26>-1:A?y10/?y11/?y12 R?y13/?y14/?y15/?y16;
+!!HEv25:C0/y4/y1/y2;
+!!EXv25/y4:Ay10/y11/y12 Ry13/y14/y15/y16;
+!!CA6&v26<0:M2/v27/-1/0;
+!!EXv6/v7/v8/v27/2&v26<0:A-1/0/0 R-1/-1;
+!!HEv26&v26>-1:C0/v27/-1/0;
+!!EXv26/v27&v26>-1:E0 R-1/-1;
+!!en;
+!!VRv27:+1;
+!!VRz1:S^Mopsky.def^;
+!!DL20:Av27/9/z1 Av27/4/0;
+!!VRv27:+60;
+!!DL20:Av27/9/z1 Av27/4/0;
+!!DO29104/0/6/1:P;
+
+!?FU29105&x2=0;
+!!VRy1&x16=0:Sx1*512+9597416;
+!!VRy2&x16=0:Sy1+126;
+!!HEv25:C0/x16/?y3/?y4;
+!!UN:Cy1/2/y3;
+!!VRy1:+2;
+!!UN:Cy1/2/y4;
+!!VRy1:+2;
+!!EXv25/x16:A?y10/?y11/?y12 R?y13/?y14/?y15/?y16;
+!!UN:Cy1/2/y10;
+!!VRy1:+2;
+!!UN:Cy1/2/y11;
+!!VRy1:+2;
+!!UN:Cy1/2/y12;
+!!VRy1:+2;
+!!UN:Cy1/2/y13;
+!!VRy1:+2;
+!!UN:Cy1/2/y14;
+!!VRy1:+2;
+!!UN:Cy1/2/y15;
+!!VRy1:+2;
+!!UN:Cy1/2/y16;
+!!VRy1:+2;
+!!HEv26&v26>-1:C0/x16/?y3/?y4;
+!!CA6&v26<0:M2/x16/?y3/?y4;
+!!UN:Cy2/2/y3;
+!!VRy2:+2;
+!!UN:Cy2/2/y4;
+!!VRy2:+2;
+!!EXv6/v7/v8/x16/2&v26<0:A?y10/?y11/?y12 R?y13/?y14/?y15/?y16;
+!!EXv26/x16&v26>-1:A?y10/?y11/?y12 R?y13/?y14/?y15/?y16;
+!!UN:Cy2/2/y10;
+!!VRy2:+2;
+!!UN:Cy2/2/y11;
+!!VRy2:+2;
+!!UN:Cy2/2/y12;
+!!VRy2:+2;
+!!UN:Cy2/2/y13;
+!!VRy2:+2;
+!!UN:Cy2/2/y14;
+!!VRy2:+2;
+!!UN:Cy2/2/y15;
+!!VRy2:+2;
+!!UN:Cy2/2/y16;
+!!VRy2:+2;
+
+!?FU29105&x2=1;
+!!VRy1&x16=0:Sx1*512+9597416;
+!!VRy2&x16=0:Sy1+126;
+!!UN:Cy1/2/?y3;
+!!VRy1:+2;
+!!UN:Cy1/2/?y4;
+!!VRy1:+2;
+!!HEv25:C0/x16/y3/y4;
+!!UN:Cy1/2/?y10;
+!!VRy1:+2;
+!!UN:Cy1/2/?y11;
+!!VRy1:+2;
+!!UN:Cy1/2/?y12;
+!!VRy1:+2;
+!!UN:Cy1/2/?y13;
+!!VRy1:+2;
+!!UN:Cy1/2/?y14;
+!!VRy1:+2;
+!!UN:Cy1/2/?y15;
+!!VRy1:+2;
+!!UN:Cy1/2/?y16;
+!!VRy1:+2;
+!!EXv25/x16:Ay10/y11/y12 Ry13/y14/y15/y16;
+!!UN:Cy2/2/?y3;
+!!VRy2:+2;
+!!UN:Cy2/2/?y4;
+!!VRy2:+2;
+!!HEv26&v26>-1:C0/x16/y3/y4;
+!!CA6&v26<0:M2/x16/y3/y4;
+!!UN:Cy2/2/?y10;
+!!VRy2:+2;
+!!UN:Cy2/2/?y11;
+!!VRy2:+2;
+!!UN:Cy2/2/?y12;
+!!VRy2:+2;
+!!UN:Cy2/2/?y13;
+!!VRy2:+2;
+!!UN:Cy2/2/?y14;
+!!VRy2:+2;
+!!UN:Cy2/2/?y15;
+!!VRy2:+2;
+!!UN:Cy2/2/?y16;
+!!VRy2:+2;
+!!EXv6/v7/v8/x16/2&v26<0:Ay10/y11/y12 Ry13/y14/y15/y16;
+!!EXv26/x16&v26>-1:Ay10/y11/y12 Ry13/y14/y15/y16;
+
+!?FU29106;
+!!VRx1:*92+8144112;
+!!UN:Cx1/4/?y1;
+!!VRx1:+4;
+!!UN:Cx1/4/?y2;
+!!VRx2:*512+9597416;
+!!VRx3:*512+9597416;
+!!DO29107/1/512/1:Py1/x2 Py2/x3;
+
+!?FU29107;
+!!UN:Cx1/1/?y1;
+!!if&y1=0;
+!!UN:Cx2/1/0;
+!!VRx16:S600;
+!!FU:E;
+!!en;
+!!UN:Cx2/1/y1;
+!!VRx1:+1;
+!!VRx2:+1;
+
+!?FU29108;
+!!HEx16:N?v24;
+!!DO29109/0/6/1:P?y1;
+!!VRx16&y1<0/v24<>v25:S200;
+
+!?FU29109;
+!!HEv24:C0/x16/?x1/?y2;
+!!VRv27&x1<0:Sx16;
+!!VRx16&x1<0/v24<>v25:S10;
+
+!?DL&v998>=19/v998<=20/v999>=100/v999<=101;
+!!VRv1:Sv999 -101 *-1;
+!!DL:C1;

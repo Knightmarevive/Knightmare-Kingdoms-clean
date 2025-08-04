@@ -1,0 +1,121 @@
+ZVSE
+
+!?PI;
+!!UN:B7/1;!!UN:B8/1;!!UN:B9/1;!!UN:B10/1;
+
+!?FU(OnAfterLoadGame);
+!!UN:B7/1;!!UN:B8/1;!!UN:B9/1;!!UN:B10/1;
+
+****below all cloned from wogmod ****
+**  object trigger - opal
+!?OB101/7;
+!!HE-1:N?y-1;
+!!VRy-4:S0 T14;                                  [random roll 0-14]
+!!VRz2&y-4=0:Sz151000;                           [set string]
+!!VRz2&y-4=1:Sz151001;                           [set string]
+!!VRz2&y-4=2:Sz151002;                           [set string]
+!!VRz2&y-4=3:Sz151003;                           [set string]
+!!VRz2&y-4=4:Sz151004;                           [set string]
+!!VRz2&y-4=5:Sz151005;                           [set string]
+!!VRz2&y-4=6:Sz151006;                           [set string]
+!!VRz2&y-4=7:Sz151007;                           [set string]
+!!VRz2&y-4=8:Sz151008;                           [set string]
+!!VRz2&y-4=9:Sz151009;                           [set string]
+!!VRz2&y-4=10:Sz151010;                          [set string]
+!!VRz2&y-4=11:Sz151011;                          [set string]
+!!VRz2&y-4=12:Sz151012;                          [set string]
+!!VRz2&y-4=13:Sz151013;                          [set string]
+!!VRz2&y-4=14:Sz151014;                          [set string]
+
+!!COy-1:B1/y-4/?y-5 D?y-6 E?y-7 N?z1 X2/?y-8;               [check if commander has skill, is alive, is enabled, get name]
+!!OB998&y-6=0/y-7=1:T101 U6;                                [set to chest 6 if commander is alive, enabled]
+!!COy-1&y-5=0/y-6=0/y-7=1:B1/y-4/1;                         [give skill if commander doesn't have it and is alive, enabled]
+
+!!IF&y-5=0/y-6=0/y-7=1/1000:M1/z151015;
+
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz3:S^Opal^;
+!!IF:V1/0;
+!!IF&y-5=1:V1/1; ?xp
+!!COy-1&1:X1/dy-9;      add xp
+
+!!IF&1/1000:M1/z151033;
+
+** end of object trigger
+
+
+**  object trigger - ruby
+!?OB101/8;
+!!HE-1:N?y-1;
+!!COy-1:S0/?y-2 S3/?y-3 D?y-6 E?y-7 N?z1 X2/?y-8;            [get Attack / Damage levels, check if alive, enabled, get name]
+!!OB998&y-6=0/y-7=1:T101 U6;                                 [set to chest 6 if commander is alive, enabled]
+!!COy-1&y-6=0/y-7=1/y-2>y-3:S3/d1;                           [if Attack > Damage add 1 to Damage level]
+!!COy-1&y-6=0/y-7=1/y-2<y-3:S0/d1;                           [if Attack < Damage add 1 to Attack level]
+!!VRy-4:S0 T99;                    [percentage roll]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:S3/d1;              [if Attack = Damage and < 6 and roll is < 50 add 1 to Damage level]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:S0/d1;              [if Attack = Damage and < 6 and roll is < 50 add 1 to Attack level]
+
+!!IF&1000/y-6=0/y-7=1/y-2>y-3:M1/z151017;
+!!IF&1000/y-6=0/y-7=1/y-2<y-3:M1/z151018;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:M1/z151019;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:M1/z151020;
+
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz2:S^Ruby^;
+!!IF:V1/0;
+!!IF&y-6=0/y-7=1/y-2=y-3/y-2>4:V1/1; ?xp
+!!COy-1&1:X1/dy-9;      add xp
+
+!!IF&1/1000:M1/z151032;
+
+** end of object trigger
+
+
+**  object trigger - sapphire  *Z added exp instead of no effect
+!?OB101/9;
+!!HE-1:N?y-1;
+!!COy-1:S1/?y-2 S2/?y-3 D?y-6 E?y-7 N?z1 X2/?y-8;            [get Defense / Hit Points levels, check if alive, enabled, get name]
+!!OB998&y-6=0/y-7=1:T101 U6;                                 [set to chest 6 if commander is alive, enabled]
+!!COy-1&y-6=0/y-7=1/y-2>y-3:S2/d1;                           [if Defense > Hit Points add 1 to Hit Points level]
+!!COy-1&y-6=0/y-7=1/y-2<y-3:S1/d1;                           [if Defense < Hit Points add 1 to Defense level]
+!!VRy-4:S0 T99;                    [percentage roll]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:S2/d1;              [if Defense = Hit Points and < 6 and roll is < 50 add 1 to Hit Points level]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:S1/d1;              [if Defense = Hit Points and < 6 and roll is < 50 add 1 to Defense level]
+
+!!IF&1000/y-6=0/y-7=1/y-2>y-3:M1/z151022;
+!!IF&1000/y-6=0/y-7=1/y-2<y-3:M1/z151023;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:M1/z151024;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:M1/z151025;
+
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz2:S^Sapphire^;
+!!IF:V1/0;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2>4:V1/1; ?xp
+!!COy-1&1:X1/dy-9;      add xp
+
+!!IF&1/1000:M1/z151032;
+** end of object trigger
+
+
+**  object trigger - emerald
+!?OB101/10;
+!!HE-1:N?y-1;
+
+*Z clean up CO:B6 bug: speed or experience for emerald. y-8:exp ->z2
+
+!!COy-1:S4/?y-2 S5/?y-3 D?y-6 E?y-7 N?z1 X2/?y-8;     [get Magic Power / Speed levels, check if alive, enabled get name]
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz2:S^Emerald^;
+!!IF:V1/0;
+!!IF&y-6=0/y-7=1/y-3<5:V1/1;    welcome to speed limit..
+
+!!OB998&y-6=0/y-7=1:T101 U6;                                 [set to chest 6 if commander is alive, enabled]
+
+
+!!COy-1&1:S5/d1;              [add +1 to Speed level if below max]
+!!COy-1&-1:X1/dy-9;      add xp
+
+*display text
+!!IF&1/1000:M1/z151027;
+!!IF&-1/1000:M1/z151032;
+** end of object trigger

@@ -1,0 +1,21 @@
+ZVSE
+
+** Creature Recruitment Window
+
+!?FU250040;
+; x1    - number hero
+; x2/x3 - mon 1 type/quantity   (necessarily)
+; x4/x5 - mon 2 type/quantity   (or -1/0)
+; x6/x7 - mon 3 type/quantity   (or -1/0)
+; x8/x9 - mon 4 type/quantity   (or -1/0)
+; x10   - mon (1) or  War machins (2)
+!!SN:E6386834/1/188; !!VRy17:Sv1;
+!!SN:E7411341/1/x1;  !!VRy1:Sv1; !!VRy1&x10=1:+145;
+!!VRy10:S10*4 +8943204;
+!!VRy20:Sy10; !!VRy21:Sy10 +4; !!VRy22:Sy10 +8; !!VRy23:Sy10 +12;
+!!VRv10:Sx3;  !!VRv11:Sx5;     !!VRv12:Sx7;     !!VRv13:Sx9;
+!!UN:C6918832/4/?y8; !!SN:E5298096/2/y8/0;
+!!SN&x10=1:E5576528/2/y17/y1/0/x2/y20/x4/y21/x6/y22/x8/y23;
+!!SN&x10=2:E5576800/2/y17/y1/x2/y20/x4/y21/x6/y22/x8/y23;
+!!VRy11:Sv1; !!UN:C6919504/4/?y1; !!SN:E4917104/2/y1/y11;
+

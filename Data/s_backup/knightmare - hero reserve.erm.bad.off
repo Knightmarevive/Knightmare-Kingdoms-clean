@@ -1,0 +1,298 @@
+ZVSE
+
+reserve army
+
+!?FU(reserve_clean);
+!!SN:W^reserve_row^/0;
+!!SN:W^reserve_column^/0;
+!!SN:W^reserve_hero^/?y1;
+
+
+!!re i/0/7:;
+  !!VRy9:Si; 
+  !!VRz1:S^^;
+
+  !!VRy6:S60 +i; frame
+
+  !_!VRz2:S^%Y2^; 
+  !!DL22:Ay6/4/2;
+
+  !!SN:W^reserve_hero%Y1_slot%Y9_count6^/?y21;
+  !!VRy5:S20 +i; number 
+  !!DL22&y21=0:Ay5/3/z1;
+!!en:;
+
+
+!!SN:W^more_SS_levels.era^/?y93;
+!!if&y93<>0:;
+!!HEy1:S20/?y95; !!VRy95:+1 :2; unlocked
+!!el:;
+!!HEy1:S20/?y95; !!VRy95:+1 *2;
+!!en:;
+!!SN:W^reserve_unlocked^/y95;
+
+!!re i/0/7:;
+  !!VRy6:S60 +i; frame
+  !!DL22&i<y95:Ay6/4/0;
+!!en:;
+
+
+!!re i/0/6:;
+  !!VRy6:S71 +i; frame
+
+ !_!VRz2:S^%Y2^; 
+ !!DL22:Ay6/4/0;
+
+  !!SN:W^reserve_hero%Y1_slot%Y9_count7^/?y31;
+  !!VRy5:S31 +i; number 
+  !!DL22&y31=0:Ay5/3/z1;
+
+!!en:;
+
+!?FU(reserve_prepare_dialog);
+x1 - hero number
+
+!!SN:W^reserve_hero^/x1;
+
+!!FU(reserve_clean):P;
+
+
+!!re i/0/6:;
+  !!HEx1:C0/i/?y1/?y2/?y3/0; !!VRy9:Si; 
+  !!VRy1&y1<0:S0; !!VRy2&y2<=0:S0; !!VRy3&y3<0:S0;
+  !!SN:W^reserve_hero%X1_slot%Y9_type7^/y1;
+  !!SN:W^reserve_hero%X1_slot%Y9_count7^/y2;
+  !!SN:W^reserve_hero%X1_slot%Y9_exp7^/y3;
+  
+  !!VRy4:S11 +i; picture
+  !!VRy5:S31 +i; number
+  !!VRz2:S^%Y2^; 
+  !!VRy1&y1<0:S0; !!VRy2&y2<=0:S0; !!VRy3&y3<0:S0;
+  !!VRy1:+2; !!DL22&y2>0:Ay4/4/y1 Ay5/3/z2;
+!!en:;
+
+!!re i/0/7:;
+  !!VRy9:Si;
+  !!SN:W^reserve_hero%X1_slot%Y9_type6^/?y1;
+  !!SN:W^reserve_hero%X1_slot%Y9_count6^/?y2;
+  !!SN:W^reserve_hero%X1_slot%Y9_exp6^/?y3;
+  !!VRy4:Si;  picture
+  !!VRy5:S20 +i; number
+  
+  !!VRy1&y1<0:S0; !!VRy2&y2<=0:S0; !!VRy3&y3<0:S0;
+  !!VRy1:+2; !!DL22&y2>0:Ay4/4/y1 Ay5/3/z2;
+ 
+!!en:;
+
+
+!!SN:W^reserve_row^/0;
+!!SN:W^reserve_column^/0;
+!_!SN:W^reserve_hero^/x1;
+
+!!FU(reserve_clean):P;
+
+!?CM2;
+!!HE-1:N?y99;
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.Reserve^;
+
+!!CM:S?y1;
+!!FU&y1<>13:E; Must be leftclick release
+!_!FU&y1<>13/y1<>12:E; Must be leftclick release or leftclick
+!!HE-1:N?y3; !!CM:I?y2;
+!!FU&y2<>v1:E;
+!_!IF:M^test reserve^;
+
+
+!!DL22:N^0022_hero_reserve.txt^;
+
+!_!FU29106:Py99/1/1;
+!_!HEy99:L5/?z1/0;
+!_!DL22:A999/11/z1/0/1;
+!!FU(Fun_GetHeroPortrait):Py99/1/9;
+!!DL22:A999/11/z9/1; !!HEy99:S20/?y98;
+
+!!SN:W^more_SS_levels.era^/?y93;
+!!if&y93<>0:;
+!!VRy98:+336; !!DL22:A997/4/y98 A996/4/y98;
+!!en:;
+
+!!FU(reserve_prepare_dialog):Py99;
+!!DL22:S;
+
+!?DL&v998=22/v999=101/v1000=13;
+!!SN:W^reserve_row^/0;
+!!SN:W^reserve_column^/0;
+!!FU(reserve_clean):P;
+!!FU:E;
+
+!!re i/60/67:;
+  !!DL22:Ai/4/0;
+!!en:;
+!!re i/71/77:;
+  !!DL22:Ai/4/0;
+!!en:;
+
+
+!?DL&v998=22/v999=100/v1000=13;
+!!DL:C1; !!UN:R3/-1;
+
+
+!?DL&v998=22/v999>70/v999<78/v1000=12;
+!!SN:W^reserve_row^/?y1;
+!!SN:W^reserve_column^/?y2;
+!!SN:W^reserve_hero^/?y3;
+
+!!if&y1=0:;
+  !!DL22:Av999/4/1;
+  !!SN:W^reserve_row^/7;
+  !!VRy2:Sv999 -71;
+  !!SN:W^reserve_column^/y2;
+
+  !_!FU(reserve_clean):P;
+  !!FU:E;
+!!en;
+
+!!if&y1=7:;
+  !!re i/71/77:;
+    !!DL22:Ai/4/0;
+  !!en:;
+  !!DL22:Av999/4/1;
+  
+  !_!FU(reserve_clean):P;
+  !!FU:E;
+!!en:;
+!!if&y1=6:;
+  
+  !!VRy10:Sy2; !!VRy11:Sv999 -71;
+  !!HEy3:C0/y11/?y92/?y93/?y94/0; 
+  !!VRy93&y93<0:S0; !!VRy94&y94<=0:S0; !!VRy95&y95<0:S0;
+  !_!FU|y93=0/y92<0:E;
+
+  !!VRy12:Sy10;
+  !!VRy13:Sy10 +20; 
+  
+  !!VRy22:Sy11 +11;
+  !!VRy23:Sy11 +31; 
+
+
+  !!SN:W^reserve_hero%Y3_slot%Y11_count7^/?y64; 
+    !!if&y64>0:; !!FU(reserve_clean):P; !!FU:E; !!en:;
+
+  !!SN:W^reserve_hero%Y3_slot%Y10_type6^/?y71;
+  !!SN:W^reserve_hero%Y3_slot%Y10_count6^/?y72;
+  !!SN:W^reserve_hero%Y3_slot%Y10_exp6^/?y73;  
+
+  !!SN:W^reserve_hero%Y3_slot%Y11_type7^/y71;
+  !!SN:W^reserve_hero%Y3_slot%Y11_count7^/y72;
+  !!SN:W^reserve_hero%Y3_slot%Y11_exp7^/y73;
+
+  !!HEy3:C0/y2/y71/y72/y73/0; !!VRz2:S^%Y72^;
+  !!VRy61:Sy71 +2;   !_!VRy63:Sy11 +31;
+  !!DL22:Ay22/4/y61; !!DL22:Ay23/3/z2;
+  !!DL22:Av999/4/1;
+
+
+  !!SN:W^reserve_hero%Y3_slot%Y10_type6^/-1;
+  !!SN:W^reserve_hero%Y3_slot%Y10_count6^/0;
+  !!SN:W^reserve_hero%Y3_slot%Y10_exp6^/0; 
+
+  !!VRz1:S^^;
+  !!DL22:Ay12/4/0 Ay13/3/z1; 
+
+  !!SN:W^reserve_row^/7;
+  !!SN:W^reserve_column^/y11;
+
+
+  !!FU(reserve_clean):P;
+  
+
+  !!VRy99:Sy2 +60; !!DL22:Ay99/4/0 Av999/4/1;
+!!en:;
+
+!?DL&v998=22/v999>=60/v999<68/v1000=12;
+!!SN:W^reserve_row^/?y1;
+!!SN:W^reserve_column^/?y2;
+!!SN:W^reserve_hero^/?y3;
+!!SN:W^reserve_unlocked^/?y95;
+!!VRy96:Sv999 -60; 
+
+!!if&y95<=y96:;
+  !!FU(reserve_clean):P;
+  !!SN:W^reserve_column^/0;
+  !!SN:W^reserve_row^/0;
+  !!FU:E;
+!!en:;
+
+!!if&y1=0:;
+  !!DL22:Av999/4/1;
+  !!SN:W^reserve_row^/6;
+  !!VRy2:Sv999 -60;
+  !!SN:W^reserve_column^/y2;
+
+  !!FU:E;
+!!en;
+
+
+!!if&y1=6:;
+  !!re i/60/67:;
+    !!DL22:Ai/4/0;
+  !!en:;
+  !!VRy93:S60 +y95;
+  !!re i/y93/67:;
+    !!DL22:Ai/4/2;
+  !!en:;
+  
+  !!DL22:Av999/4/1;
+  !_!FU(reserve_clean):P;
+  
+
+  !!FU:E;
+!!en:;
+
+!!if&y1=7:;
+  !!VRy10:Sy2; !!VRy11:Sv999 -60; 
+  !!HEy3:C0/y10/?y92/?y93/?y94/0; 
+  !!VRy93&y93<0:S0; !!VRy94&y94<=0:S0; !!VRy95&y95<0:S0;
+  !_!FU|y93=0/y92<0:E;
+
+  !!VRy12:Sy10 +11;
+  !!VRy13:Sy10 +31;
+
+  !!VRy22:Sy11;
+  !!VRy23:Sy11 +20;
+
+
+  !!SN:W^reserve_hero%Y3_slot%Y11_count6^/?y64; 
+    !!if&y64>0:; !!FU(reserve_clean):P; !!FU:E; !!en:;
+  
+
+  !!SN:W^reserve_hero%Y3_slot%Y10_type7^/?y71;
+  !!SN:W^reserve_hero%Y3_slot%Y10_count7^/?y72;
+  !!SN:W^reserve_hero%Y3_slot%Y10_exp7^/?y73;
+
+  !_!FU|y71>=0/y72>0:E;
+
+  !!SN:W^reserve_hero%Y3_slot%Y11_type6^/y92;
+  !!SN:W^reserve_hero%Y3_slot%Y11_count6^/y93;
+  !!SN:W^reserve_hero%Y3_slot%Y11_exp6^/y94;
+
+  !!SN:W^reserve_hero%Y3_slot%Y10_type7^/-1;
+  !!SN:W^reserve_hero%Y3_slot%Y10_count7^/0;
+  !!SN:W^reserve_hero%Y3_slot%Y10_exp7^/0;
+
+  !!VRy61:Sy92 +2; !!VRz3:S^%Y93^;
+  !!DL22:Ay22/4/y61 Ay23/3/z3;
+  !!HEy3:C0/y10/-1/0; !!VRz2:S^^;
+
+  !!VRz2:S^^;
+  !!DL22:Ay12/4/0 Ay13/3/z2; 
+
+  !!SN:W^reserve_row^/6;
+  !!SN:W^reserve_column^/y11;
+
+  !!FU(reserve_clean):P;
+  
+  !!VRy99:Sy2 +71; !!DL22:Ay99/4/0 Av999/4/1;
+
+!!en;

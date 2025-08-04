@@ -1,0 +1,239 @@
+ZV_SE
+
+
+********************************************************************************
+   Build Twice a Day in Towns (Human players only, AI gets free builds instead)
+   Modified by majaczek to support Ballistics Builder
+********************************************************************************
+
+Functions used: FU54-FU56
+ERM Numbers: 228
+Variables used: v2-v5
+
+--------------------------------------------------------------------------------
+
+ [Build Twice a Day in Towns for Human Players]
+ [AI can't build twice but gets free builds to compensate]
+
+  [Daily Timer for all players]
+!?TM1;
+!!UN:P228/?y-1; [Check if Build Twice a Day option is enabled: y-1=1 if Yes]
+!_!FU&y-1<>1:E; [Exit if option not enabled]
+
+!!UN:U98/-1/?y-2; [Number of towns on map: y-2]
+!!VRy-3:Sc0; [Current day: y-3]
+!!UN:J2/?y-4; [Game difficulty chosen by player: y-4]
+
+!!SN:W^Knightmare Difficulty AI Free Build Frequency^/?y-5;
+!!VRy-5&y-4=0/y-5=0:S4; [Easy difficulty - free AI build every 4 days: y-5]
+!!VRy-5&y-4=1/y-5=0:S3; [Normal difficulty - free AI build every 3 days: y-5]
+!!VRy-5&y-4=2/y-5=0:S2; [Hard difficulty - free AI build every 2 days: y-5]
+!!VRy-5&y-4=3/y-5=0:S1; [Expert difficulty - free AI build every day: y-5]
+!!VRy-5&y-4=4/y-5=0:S1; [Impossible difficulty - 2 free AI builds every day: y-5]
+
+!!VRy-6:Sy-3 :y-5 *y-5; [AI free build frequency check: y-6]
+!!VRv2:S-1; [Initialize v2 to -1 to work with new faster UN:U syntax]
+!!DO54/1/y-2/1&y-2>0:P; [Loop through all towns to reset "daily builds number"]
+
+ [Loop through all towns to reset "daily builds number"]
+!?FU54;
+!!UN:U98/-1/-1/2; [Store coordinates of next town in v2/v3/v4]
+!!UN:P228/?y-1; [Check if Build Twice a Day option is enabled: y-1=1 if Yes]
+
+!!SN:W^Town Marked at %V2 %V3 %V4^/?y21;
+!!SN:W^Neutral Town %V2 %V3 %V4^/?y11;
+!!if|y21>0/y11>0:;
+  !!PO2:S0;
+  !_!CA2:R1;
+  !!FU:E;
+!!en:;
+
+!!SN:W^Knightmare Difficulty Level^/?y7;
+!!PO2:S1;       [Reset to 1 for all towns if build twice is not set]
+!!PO2&y-1=1:S2; [Reset PO:S to 2 for all towns if build twice is set]
+!!PO2&y7=1:Sd1; [Reset PO:S to 2 for all towns if build twice is set]
+
+!!SN:W^more_SS_levels.era^/?y66;
+** get Ballistics/Engineer level for garrisoned hero **
+!!CA2:H0/?y77; !!VRy88:S0;
+!!HEy77&y77>=0:S10/?y88; !!VRy88&y66<>0:+1 :2;
+!!HEy77&y77>=0:X?y89/?y90/?y91/?y92/?y93/?y94/?y95;
+** increase PO:S with builder level **
+!!PO2:Sdy88;
+
+
+!!VRy97:S1; !!SN:W^Knightmare Difficulty Enabled^/?y98;
+!!SN&y98>0:W^Knightmare Difficulty AI Free Build Count^/?y97;
+!!CA2&$AI$=1:O?y1; [Get owner of town if AI turn: y1]
+!!FU55&$AI$=1/y1=$color$/y-6=y-3/y-1=1/y97>0:P; [If AI town on AI turn, call "Free Build" Function if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y-6=y-3/y-1=1/y97>1:P; [If AI town on AI turn, call "Free Build" Function if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y-6=y-3/y-1=1/y97>2:P; [If AI town on AI turn, call "Free Build" Function if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y-6=y-3/y-1=1/y97>3:P; [If AI town on AI turn, call "Free Build" Function if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y-6=y-3/y-1=1/y97>4:P; [If AI town on AI turn, call "Free Build" Function if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y-6=y-3/y-1=1/y97>5:P; [If AI town on AI turn, call "Free Build" Function if build twice is set]
+
+!!FU55&$AI$=1/y1=$color$/y-4=4/y-1=1:P;   [Impossible Difficulty extra "Free Build" for AI if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y88>1/y-1=1:P;   [garrisoned hero extra "Free Build" for AI if build twice is set]
+!!FU55&$AI$=1/y1=$color$/y88>2/y-1=0:P;   [garrisoned hero extra "Free Build" for AI if build twice is not set]
+!!FU55&$AI$=1/y1=$color$/y89=0/y90=10:P;  [garrisoned hero extra "Free Build" for AI if specialist]
+!!FU55&$AI$=0/y1=$color$/y89=0/y90=10:P;  [garrisoned hero extra "Free Build" for PC if specialist]
+
+ [Post Town-Hall Trigger]
+!?TH1;
+!!UN:P228/?y-1; [Check if Build Twice a Day option is enabled: y-1=1 if Yes]
+!!FU&y-1<>1:E; [Exit if option not enabled]
+
+!!CA-1:P?y-4/?y-5/?y-6; [Town's location: y-4/y-5/y-6]
+!!POy-4/y-5/y-6:S?y-1; [Read PO:S number for town: y-1]
+!!CA-1:R?y-2; [Read build flag value for town: y-2]
+!!VRy-3&y-2=1:Sy-1 -1; [Increment PO:S number by 1 for each build: y-3]
+!!VRy-3|y-3<0/y-3>200:S0; **majaczek**
+!!POy-4/y-5/y-6&y-2=1/y-1<100:Sy-3; [Store new PO:S number: y-3]
+!!CA-1&y-2=1/y-3>0:R0; [Reenable building in town if two builds or less]
+!!UN:R4; [Redraw town screen]
+
+
+ [Free Build Function for AI Towns]
+!?FU55;
+!!VRv5:S0; [Initialize v5 to 0]
+
+!!VRy99:S0 R99;
+!!DO56/1/7/1&v5=0/y99<44:P64/65/66/67/68/69/70; [P values=Build order]
+!!DO56/1/7/1&v5=0/y99<44:P71/72/73/74/75/76/77; [P values=Build order]
+
+!!DO56/1/15/1&v5=0:P10/5/11/14/16/0/12/7/1/2/8/9/30/31/32; [P values=Build order]
+!!DO56/1/15/1&v5=0:P18/33/34/24/35/36/3/37/38/39/19/21/17/22/23; [P values=Build order]
+!!DO56/1/8/1&v5=0:P40/41/25/42/43/4/15/13; [P values=Build order]
+
+!!DO56/1/7/1&v5=0:P64/65/66/67/68/69/70; [P values=Build order]
+!!DO56/1/7/1&v5=0:P71/72/73/74/75/76/77; [P values=Build order]
+
+ [Free Building for AI Towns]
+!?FU56;
+!!VRy1:Sxx16; [Building number to check and/or build: y1]
+!!CA2:T?y2; [Get town type: y2]
+!!VRy3:Sy1 -1; [Building # that's one before building being built: y3]
+!!VRy7:Sy1 +1; [Building # that's one after building being built: y7]
+!!VRy8:Sy1 +2; [Building # that's two after building being built: y8]
+!!VRy9:Sy1 +3; [Building # that's three after building being built: y9]
+!!VRy10:Sy1 +4; [Building # that's four after building being built: y10]
+
+!!IF:V1/0 V2/0 V3/0; [Initialize Flags 1, 2 and 3 to False]
+
+!!if&y1<44:;
+  
+!!CA2:B3/y1; [Check if structure is already built: Flag 1=True if built]
+
+ [Check if higher levels of Mage Guild built: Flag 1=True if built]
+!!CA2&-1/y1>=0/y1<=3:B3/y7; [Check level+1]
+!!CA2&-1/y1>=0/y1<=2:B3/y8; [Check level+2]
+!!CA2&-1/y1>=0/y1<=1:B3/y9; [Check level+3]
+!!CA2&-1/y1=0:B3/y10;       [Check level+4]
+
+ [Check if higher levels of Fort structure built: Flag 1=True if built]
+!!CA2&-1/y1>=7/y1<=8:B3/y7; [Check level+1]
+!!CA2&-1/y1=7:B3/y8;        [Check level+2]
+
+ [Check if higher levels of Hall is built: Flag 1=True if built]
+!!CA2&-1/y1>=10/y1<=12:B3/y7; [Check level+1]
+!!CA2&-1/y1>=10/y1<=11:B3/y8; [Check level+2]
+!!CA2&-1/y1=10:B3/y9;         [Check level+3]
+
+ [If Mystic Pond, check if Fountain of Fortune is built: Flag 1=True if built]
+!!CA2&-1/y1=17/y2=1:B3/21; [Don't build Mystic Pond if Fountain is built]
+
+ [If Fountain of Fortune, check if Mystic Pond is built: Flag 1=True if built]
+!!CA2&-1/y1=21/y2=1:B3/17; [Check if Mystic Pond is built]
+!!IF&-1/y1=21/y2=1:V3/0; [Don't build Fountain if Mystic Pond isn't is built: Flag 3 set to True]
+!!IF&1/y1=21/y2=1:V1/0; [Build Fountain if Mystic Pond is built: Flag 1 reset to False]
+
+!!VRy4&y1>=30/y1<=36:Sy1 +7; [Upgraded Dwelling number to check: y4]
+!!CA2&-1/y1>=30/y1<=36:B3/y4; [Also check for upgraded dwelling: Flag 1=True if built]
+
+!!VRy11:S0; [Initialize y11 to 0]
+!!VRy11&y2>=3:S1; [Level 1 creature that uses Horde buildings 18 and 19]
+!!VRy11|y2=1/y2=2:S2; [Level 2 creature that uses Horde buildings 18 and 19]
+!!VRy11&y2=0:S3; [Level 3 creature that uses Horde buildings 18 and 19]
+!!VRy12:S0; [Initialize y12 to 0]
+!!VRy12&y2=3:S3; [Level 3 creature that uses Horde buildings 24 and 25]
+!!VRy12&y2=1:S5; [Level 5 creature that uses Horde buildings 24 and 25]
+
+!!CA2&-1/y1=30/y11=1:B3/18; [If Level 1 Non-upgraded Dwelling, check for Non-upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=30/y11=1:B3/19; [If Level 1 Non-upgraded Dwelling, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=37/y11=1:B3/19; [If Level 1 Upgraded Dwelling, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=31/y11=2:B3/18; [If Level 2 Non-upgraded Dwelling, check for Non-upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=31/y11=2:B3/19; [If Level 2 Non-upgraded Dwelling, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=38/y11=2:B3/19; [If Level 2 Upgraded Dwelling, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=32/y11=3:B3/18; [If Level 3 Non-upgraded Dwelling, check for Non-upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=32/y11=3:B3/19; [If Level 3 Non-upgraded Dwelling, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=39/y11=3:B3/19; [If Level 3 Upgraded Dwelling, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=32/y12=3:B3/24; [If Level 3 Non-upgraded Dwelling, check for Non-upgraded 2nd Horde built: Flag 1=True if built]
+!!CA2&-1/y1=32/y12=3:B3/25; [If Level 3 Non-upgraded Dwelling, check for Upgraded 2nd Horde built: Flag 1=True if built]
+!!CA2&-1/y1=39/y12=3:B3/25; [If Level 3 Upgraded Dwelling, check for Upgraded 2nd Horde built: Flag 1=True if built]
+!!CA2&-1/y1=34/y12=5:B3/24; [If Level 5 Non-upgraded Dwelling, check for Non-upgraded 2nd Horde built: Flag 1=True if built]
+!!CA2&-1/y1=34/y12=5:B3/25; [If Level 5 Non-upgraded Dwelling, check for Upgraded 2nd Horde built: Flag 1=True if built]
+!!CA2&-1/y1=41/y12=5:B3/25; [If Level 5 Upgraded Dwelling, check for Upgraded 2nd Horde built: Flag 1=True if built]
+
+!!CA2&-1/y1=18:B3/19; [If Non-upgraded Horde building, check for Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=19:B3/18; [If Upgraded Horde building, check for Non-upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=24:B3/25; [If Non-upgraded 2nd Horde building, check for 2nd Upgraded Horde built: Flag 1=True if built]
+!!CA2&-1/y1=25:B3/24; [If Upgraded 2nd Horde building, check for 2nd Non-upgraded Horde built: Flag 1=True if built]
+
+ [Skip buildings that don't exist for this town type]
+!!IF&y1=3/y2=6:V2/1; [Set Flag 2 to True if Level 4 Mage Guild and Stronghold]
+!!IF&y1=3/y2=7:V2/1; [Set Flag 2 to True if Level 4 Mage Guild and Fortress]
+!!IF&y1=4/y2=0:V2/1; [Set Flag 2 to True if Level 5 Mage Guild and Castle]
+!!IF&y1=4/y2=6:V2/1; [Set Flag 2 to True if Level 5 Mage Guild and Stronghold]
+!!IF&y1=4/y2=7:V2/1; [Set Flag 2 to True if Level 5 Mage Guild and Fortress]
+!!IF&y1=17/y2=0:V2/1; [Set Flag 2 to True if Building 17 (Lighthouse) and Castle town type]
+!!IF&y1>=24/y1<=25/y2=0:V2/1; [Set Flag 2 to True if 2nd Horde Building inappropriate for town type]
+!!IF&y1>=24/y1<=25/y2=2:V2/1; [Set Flag 2 to True if 2nd Horde Building inappropriate for town type]
+!!IF&y1>=24/y1<=25/y2>=4:V2/1; [Set Flag 2 to True if 2nd Horde Building inappropriate for town type]
+!!IF&y1=17/y2=3:V2/1; [Set Flag 2 to True if Special Building 17 and Inferno]
+!!IF&y1=22/y2=8:V2/1; [Set Flag 2 to True if Special Building 22 and Conflux]
+!!IF&y1=23/y2=0:V2/1; [Set Flag 2 to True if Special Building 23 and Castle]
+!!IF&y1=23/y2=1:V2/1; [Set Flag 2 to True if Special Building 23 and Rampart]
+!!IF&y1=23/y2=4:V2/1; [Set Flag 2 to True if Special Building 23 and Necropolis]
+!!IF&y1=23/y2=7:V2/1; [Set Flag 2 to True if Special Building 23 and Fortress]
+!!IF&y1=23/y2=8:V2/1; [Set Flag 2 to True if Special Building 23 and Conflux]
+
+!!en;
+
+!!if&y1<44:;
+  !!FU|1/2/3:E; [Skip loop number if already built or if inappropriate for town type]
+!!en;
+
+!!FU&y1>=44/y1<64:E;
+!!CA2:B3/y1; [Check if structure is already built: Flag 1=True if built]
+!!FU&1:E;
+
+
+!!if&y1>=64/y1<71:;
+  !!VRy97:Sy1 -64;
+  !!UN:Ty2/y97/2/?y99;
+  !!FU&y99<0:E;
+  !!VRy97:+37;
+  !!CA2:B3/y97;
+  !!FU&-1:E;
+!!en;
+
+!!if&y1>=71/y1<78:;
+  !!VRy97:Sy1 -71;
+  !!UN:Ty2/y97/3/?y99;
+  !!FU&y99<0:E;
+  !!VRy97:+64;
+  !!CA2:B3/y97;
+  !!FU&-1:E;
+!!en;
+
+!!FU&y1>=78:E;
+
+
+!!VRv5:S1; [Set v5 to 1 to show a build was done]
+!!VRx16:S999; [Set x16 to 999 to exit loop]
+
+!!CA2:B6/y1; [Build Structure in AI Town: y1]
+
+--------------------------------------------------------------------------------
+
+ [End of Build Twice in Towns]

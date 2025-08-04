@@ -1,0 +1,151 @@
+ZVSE
+
+!?CM4;
+!!CM:F?y1 I?y2;
+!!CM:R1;
+!!FU|y1<>512/y2<>2009:E; wait button
+!!BG:Q?y3 H?y4; !!BHy3:M?y7;
+!!FU|y4<0/y7=1:E;
+
+!!BG:Q?y3; !!BHy3:N?y5; !!FU&y5<0:E;
+
+!!DL55499:N^55499_spellbook.txt^ S;
+
+!!CM:R0;
+
+!?DL;
+!!FU&v998<>55499:E;
+
+!!VRy66:S0; !!VRy65:S0;
+
+!!if&v1000=13:;
+!!DL55499&v999=2999:C1;
+!!FU&v999=2999:E;
+
+!!BG:H?y11; !!FU&y11<0:E;
+!!HEy11:S8/?y55 O?y44;
+!!BG:N?y80; !!BMy80:T?y81;
+!!MA:Ly81/?y82;
+
+!!OW:Ry44/0/?y10 Ry44/1/?y11 Ry44/2/?y12 Ry44/3/?y13;
+!!OW:Ry44/4/?y14 Ry44/5/?y15 Ry44/6/?y16 Ry44/7/?y17;
+
+!!VRy99:S0;
+!!if&v999>2000&v999<2777:;
+!!VRy99:Sv999 -2000;
+
+!!if&y99=1:; Rune Haste
+!!VRy66|y10<2/y12<2:S1;
+!!IF:Q1/0/2/2/2/2^Do You want to craft the rune?^;
+!!VRy99&-1:S0; !!OW&1/y65=0/y66=0:Ry44/0/d-2 Ry44/2/d-2;
+!!en:;
+
+!!if&y99=2:; Rune Spike
+!!VRy66|y11<5/y13<5:S1;
+!!VRy65&y81>=174/y81<=191:S1;
+!!IF:Q1/1/5/3/5/2^Do You want to craft the rune?^;
+!!VRy99&-1:S0; !!OW&1/y65=0/y66=0:Ry44/1/d-5 Ry44/3/d-5;
+!!en:;
+
+!!if&y99=3:; Rune Heal
+!!VRy66|y14<3/y15<3:S1;
+!!VRy65&y81>=174/y81<=191:S1;
+!!IF:Q1/4/3/5/3/2^Do You want to craft the rune?^;
+!!VRy99&-1:S0; !!OW&1/y65=0/y66=0:Ry44/4/d-3 Ry44/5/d-3;
+
+!!en:;
+
+!!if&y99=4:; Rune Mirage
+!!VRy66&y16<1000:S1;
+!!VRy65&y82>1/y55<1:S1;
+!!VRy65&y82>3/y55<2:S1;
+!!VRy65&y82>5/y55<3:S1;
+!!VRy65&y81>=174/y81<=191:S1;
+!!VRy65&y81>=243/y81<=251:S1;
+
+!!IF:Q1/6/1000/7/0/2^Do You want to craft the rune?^;
+!!VRy99&-1:S0; !!OW&1/y65=0/y66=0:Ry44/6/d-1000;
+
+!!en:;
+
+!!if&y99=5:; Rune Gate
+!!VRy66|y16<2500/y17<1:S1;
+!!VRy65&y82>1/y55<1:S1;
+!!VRy65&y82>3/y55<2:S1;
+!!VRy65&y82>5/y55<3:S1;
+!!VRy65&y81>=174/y81<=191:S1;
+!!VRy65&y81>=243/y81<=251:S1;
+
+!!IF:Q1/6/2500/7/1/2^Do You want to craft the rune?^;
+!!VRy99&-1:S0; !!OW&1/y65=0/y66=0:Ry44/6/d-2500 Ry44/7/d-1;
+!!en:;
+
+!!if&y99=6:;
+!!VRy66:S1;
+!!VRy65:S1;
+!!en:;
+
+
+
+!!en:;
+
+!!DL55499&y99>0:C1;
+!!FU55499&y99>0/y66=0/y65=0:Py99/y55;
+!!IF&y66>0:M^Not Enough Resources^;
+!!IF&y65>0:M^Too Weak Runecraft^;
+!!en:;
+
+!!FU:E;
+
+!?FU55499;
+!_!IF:M^Used Runestone %X1^;
+
+!!BG:N?y77;
+!!BMy77:P?y88;
+
+!!if&x1=1:;
+!!VRy33:S1+x2;
+!!BMy77:S?y44;
+!!VRy44:+y33;
+!!BMy77:Sy44;
+!!en:;
+
+!!if&x1=2:;
+!!BMy77:U1/?y12 U2/?y13;
+!!VRy33:S25 *x2 +125;
+!!VRy12:*y33 :100 + 5;
+!!VRy13:*y33 :100 + 5;
+!!BMy77:U1/y12 U2/y13;
+!!en:;
+
+!!if&x1=3:;
+!!BMy77:T?y66;
+!_!MA:Py66/?y55;
+!!BMy77:H?y55;
+!!VRy44:S0 -y55;
+!!VRy33:S25 *x2 +100;
+!!VRy44:*y33 :100 +y55;
+!!BMy77:Ly44;
+!_!BMy77:Ly55;
+!_!BMy77:L0;
+
+!!en:;
+
+!!if&x1=4:;
+!!BMy77:C65/y88/3/3/1;
+!!BG:Ny77;
+!!en:;
+
+!!if&x1=5:;
+!!BMy77:T?y66 N?y55;
+
+!!VRy55:*25 :100 +10;
+!!VRy44:S10 *x2  +10;
+!!VRy33:S66 R3;
+
+!!FU55418:Py33/y44/y66/y55/-1;
+!!en:;
+
+!!if&x1=6:;
+!!en:;
+

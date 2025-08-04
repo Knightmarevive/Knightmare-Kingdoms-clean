@@ -1,0 +1,73 @@
+ZVSE
+
+!?PI;
+!!re i/0/143:;
+  !!HEi:O?y1; !!VRy2:Si;
+  !!if&y1>=0:;
+    !!SN:W^Hero Starter %Y1^/i;
+    !!SN:W^Hero Locked %Y2^/1;    
+  !!en;
+!!en:;
+
+
+!?TM2;
+!!VRy1:Sc; 
+!_!IF:M^day %Y1^; 
+!!FU&y1<>2:E;
+!!re i/-1/143:;
+  !!VRy2:Si; !!SN:W^Hero Locked %Y2^/0; 
+!!en:;
+
+!?TM2;
+!!VRy1:Sc; 
+!_!IF:M^day %Y1^; 
+!!FU&y1<>1:E;
+
+!!OW:C?y2;
+!!OW:Wy2/0/?y3;
+
+!_!CA0/y3:T?y4;
+!!SN:W^Hero Starter %Y2^/?y7;
+!!HEy7:B2/?y4; !!VRy4::2;
+
+!!VRy5:Sy4 *16;
+
+!!OW:Vy2/?y13/?y23;
+
+!!HEy13&y13>=0:B2/?y15; !!VRy15::2;
+!!VRy17:S0;
+!!if|y13<0/y15<>y4:;
+  !!re i/0/99:;
+    !!if&y17=0:;
+      !!VRy11:Sy5 R15;
+      !!SN:W^Hero Locked %Y11^/?y12;
+      !!if&y12=0:;
+        !!VRy13:Sy11; !!VRy17:S1;
+        !!SN:W^Hero Locked %Y11^/1;
+      !!en;   
+    !!en;
+  !!en:;
+!!el:;
+  !!SN:W^Hero Locked %Y13^/1;
+!!en;
+
+
+!!HEy23&y23>=0:B2/?y25; !!VRy25::2;
+!!VRy27:S0;
+!!if|y23<0/y25<>y4:;
+  !!re i/0/99:;
+    !!if&y27=0:;
+      !!VRy21:Sy5 R15;
+      !!SN:W^Hero Locked %Y21^/?y22;
+      !!if&y22=0:;
+        !!VRy23:Sy21; !!VRy27:S1;
+        !!SN:W^Hero Locked %Y21^/1;
+      !!en;   
+    !!en;
+  !!en:;
+!!el:;
+  !!SN:W^Hero Locked %Y23^/1;
+!!en;
+
+
+!!OW:Vy2/y13/y23;

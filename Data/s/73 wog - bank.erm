@@ -23,14 +23,14 @@ ZVSE2
 ** Main click routine **
 
 
-!?FU(OnTownMouseClick)&999/i^mouse_action^<>(MOUSE_LMB_RELEASED);
+!?FU(OnTownMouseClick)&999/i^mouse_action^=(MOUSE_LMB_PRESSED);
 !!if&i^mouse_x^>=163/i^mouse_x^<=226/i^mouse_y^>407/i^mouse_y^<433|i^mouse_item^=160;
   !!CA-1:B3/14 O?(owner:y);             [Check if Marketplace is built]
   !!UN:P105/?(isBankEnabled:y);         [Check for bank enabled]
 
   !!if&(owner)<>i^timerOwner^;
     !!VRt:Si^mouse_action^ -12 *2 F(MSG_TYPE_MES)/(MSG_TYPE_POPUP);
-    !!IF:Q1/(PIC_TYPE_LUCK_NEGATIVE)/1/t/^%T(wog.105.no_owner)^;
+    *!IF:Q1/(PIC_TYPE_LUCK_NEGATIVE)/1/t/^%T(wog.105.no_owner)^; - Disable by Archer30 since it is not H3 style - should be silent as the ally's Market
     !!FU:E;
   !!en;
 
@@ -47,10 +47,19 @@ ZVSE2
       !!IF:Q1/(PIC_TYPE_LUCK_NEGATIVE)/1/(MSG_TYPE_MES)/^%T(wog.105.transfer.name)%T(wog.endl)%T(wog.endl)%T(wog.105.transfer.no_resources)^;
     !!el;
       !!FU(RadioDlg_Reset):P;
-      !!FU(RadioDlg_SetTitle):P^%T(wog.105.greeting)^;
-      !!FU(RadioDlg_AddItem)&(isBankEnabled):P^%T(wog.105.borrow)^/10/^^;
-      !!FU(RadioDlg_AddItems)&s:P^%T(wog.105.transfer_one)^/1/^^/^%T(wog.105.transfer_all)^/7/^^;
-      !!FU(RadioDlg_AddItem):P^%T(wog.105.cancel)^/-1;/^cancel^;
+      !!VR(msg:z):S^%T(wog.105.greeting)^;
+      !!FU(RadioDlg_SetTitle):P(msg:z);
+      !!if&(isBankEnabled);
+        !!VR(msg:z):S^%T(wog.105.borrow)^;
+        !!FU(RadioDlg_AddItem):P(msg:z)/10/^^;
+      !!en;
+      !!if&s;
+        !!VR(oneText:z):S^%T(wog.105.transfer_one)^;
+        !!VR(allText:z):S^%T(wog.105.transfer_all)^;
+        !!FU(RadioDlg_AddItems):P(oneText:z)/1/^^/(allText:z)/7/^^;
+      !!en;
+      !!VR(cancelText:z):S^%T(wog.105.cancel)^;
+      !!FU(RadioDlg_AddItem):P(cancelText:z)/-1;/^cancel^;
       !!FU(RadioDlg_SelectItemByValue):P-1;
       !!FU(RadioDlg_Show):Pd/?(value:y);
     !!en;
@@ -63,7 +72,8 @@ ZVSE2
     !!el&(value)=10;
       !!if&i^WOG_105_player_%i(timerOwner)_debt^;
         !!FU(UnpackUnion):Pi^WOG_105_player_%i(timerOwner)_debt^/?(chosenRes:y)/8/?(amount:y)/24;
-        !!FU(WOG_105_LeaveMarketMessage):P^%T(wog.105.loan.name)%T(wog.105.loan.debt)^/(chosenRes)/(amount);
+        !!VR(cancelText:z):S^%T(wog.105.loan.name)%T(wog.105.loan.debt)^;
+        !!FU(WOG_105_LeaveMarketMessage):P(cancelText:z)/(chosenRes)/(amount);
       !!el;
         !!FU(WOG_105_LoanResourceDlg):P;
       !!en;
@@ -82,7 +92,8 @@ ZVSE2
   !!VR(header:z):S^%T(wog.105.transfer.name)%T(wog.endl)%T(wog.endl)^;
 
   !!if&(resources)>1;
-    !!FU(WOG_SetupMultiResDlg):P^%(header)%T(wog.105.transfer.select)^/i^timerOwner^/?(chosenPicture:y)/?(chosenRes:y);
+    !!VR(text:z):S^%(header)%T(wog.105.transfer.select)^;
+    !!FU(WOG_SetupMultiResDlg):P(text:z)/i^timerOwner^/?(chosenPicture:y)/?(chosenRes:y);
     !!VR(baseRes:y):S(chosenRes);
   !!el;
     !!re i/0/(RES_LAST_WOG);
@@ -95,20 +106,23 @@ ZVSE2
     !!en;
   !!en;
 
+  !!VR(cancelText:z):S^%(header)%T(wog.105.transfer.cancel)^;
 
   !!if&(chosenPicture)<>(NO_RES);
     !!FU(WOG_GetResourceName):P(chosenRes)/?(resName:z);
     !!SN:T^wog.105.transfer.to^/?(text:z)/^resource^/(resName);
-    !!FU(WOG_SetupMultiPlayerDlg):P^%(header)%(text)^/0/?(chosenPicture:y)/?(newOwner:y);
+    !!VR(msg:z):S^%(header)%(text)^;
+    !!FU(WOG_SetupMultiPlayerDlg):P(msg:z)/0/?(chosenPicture:y)/?(newOwner:y);
     !!if&(chosenPicture)<>(NO_PLAYER);/(newOwner)<>i^timerOwner^;
 
       !!OW:R-1/(chosenRes)/?(maxRes:y);
-      !!SN:T^wog.105.transfer.input^/?(msg:z)/^resource^/(resName)/^max^/(maxRes);
+      !!SN:T^wog.105.transfer.input^/?(msg:z)/^resource^/(resName)/^max^/(maxRes) T^wog.105.transfer.name^/?(title:z);
       !!re i;
 
-        !!FU(WOG_105_InputValue):P(msg)/?(answer:y)/?(amount:y);
+        !!FU(WOG_105_InputValue):P(title)/(msg)/?(answer:y)/?(amount:y);
         !!if&(answer)=-1;
-          !!FU(WOG_105_LeaveMarketMessage):P^%(header)%T(wog.105.transfer.cancel)^;
+
+          !!FU(WOG_105_LeaveMarketMessage):P(cancelText:z);
           !!br;
         !!el&(amount)>0;
           !!VR(amount):Fd/(maxRes);
@@ -125,16 +139,16 @@ ZVSE2
       !!en;
 
     !!el;
-      !!FU(WOG_105_LeaveMarketMessage):P^%(header)%T(wog.105.transfer.cancel)^;
+      !!FU(WOG_105_LeaveMarketMessage):P(cancelText:z);
     !!en;
   !!el;
-    !!FU(WOG_105_LeaveMarketMessage):P^%(header)%T(wog.105.transfer.cancel)^;
+    !!FU(WOG_105_LeaveMarketMessage):P(cancelText:z);
   !!en;
 
 !?FU(WOG_105_TransferAllDlg);
   !!VR(header:z):S^%T(wog.105.transfer.name)%T(wog.endl)%T(wog.endl)^;
-
-  !!FU(WOG_SetupMultiPlayerDlg):P^%(header)%T(wog.105.transfer.all)^/0/?(chosenPicture:y)/?(newOwner:y);
+  !!VR(text:z):S^%(header)%T(wog.105.transfer.all)^;
+  !!FU(WOG_SetupMultiPlayerDlg):P(text:z)/0/?(chosenPicture:y)/?(newOwner:y);
   !!if&(chosenPicture)<>(NO_PLAYER);
     !!re i/(RES_FIRST)/(RES_LAST_WOG);
       !!OW:R-1/i/?(value:y) R-1/i/0 R(newOwner)/i/d(value);
@@ -144,7 +158,8 @@ ZVSE2
     !!SN:T^wog.105.transfer.confirm_all^/?(msg:z)/^name^/(name);
     !!IF:Q1/(PIC_TYPE_FLAG)/(newOwner)/(MSG_TYPE_MES)/^%(header)%(msg)^;
   !!el;
-    !!FU(WOG_105_LeaveMarketMessage):P^%(header)%T(wog.105.transfer.cancel)^;
+    !!VR(cancelText:z):S^%(header)%T(wog.105.transfer.cancel)^;
+    !!FU(WOG_105_LeaveMarketMessage):P(cancelText:z);
   !!en;
 
 !?FU(WOG_105_LeaveMarketMessage);
@@ -175,7 +190,7 @@ ZVSE2
     !!VRf:+1;
   !!en;
   !!SN:M(resources)/12/(RES_GOLD) M(resources)/13/(maxGold);
-  !!FU(WOG_SetupMultiPicDlg):P(resources);
+  !!FU(PrepareMultiPicDialog):P(resources);
   !!VR(header:z):S^%T(wog.105.loan.name)%T(wog.endl)^;
   !!IF:N(MSG_TYPE_CHOOSE_PIC_OR_CANCEL)/^%(header)%T(wog.105.loan.choice)^/?(chosenRes:y);
   !!FU(WOG_GetResourceName):P(chosenRes)/?(resName:z);
@@ -186,13 +201,14 @@ ZVSE2
     !!VR(lim:z):S^%(maxRes) {~>smalres.def:0:%(chosenRes)}^;
     !!SN:T^wog.105.loan.offer^/?(msg:z)/^max^/(lim)^resource^/(resName);
     !!IF:Q1/(chosenRes)/(maxRes)/(MSG_TYPE_MES)/^%(header)%(msg)^;
-    !!SN:T^wog.105.loan.input^/?(msg:z)/^resource^/(resName)/^max^/(maxRes);
+    !!SN:T^wog.105.loan.input^/?(msg:z)/^resource^/(resName)/^max^/(maxRes) T^wog.105.loan.name^/?(title:z);
 
     !!re i;
-      !!FU(WOG_105_InputValue):P(msg)/?(answer:y)/?(amount:y);
+      !!FU(WOG_105_InputValue):P(title)/(msg)/?(answer:y)/?(amount:y);
 
       !!if&(answer)=-1;
-        !!FU(WOG_105_LeaveMarketMessage):P^%(header)%T(wog.105.loan.cancel)^;
+        !!VR(msg:z):S^%(header)%T(wog.105.loan.cancel)^;
+        !!FU(WOG_105_LeaveMarketMessage):P(msg:z);
         !!br;
       !!el&(amount)>0/(amount)<=(maxRes);
         !!VR(debt:y):S(amount) *30 :100 +(amount);
@@ -210,17 +226,18 @@ ZVSE2
   !!en;
 --------------------------------------------------------------------------------
 !?FU(WOG_105_InputValue);
-  !#VA(text:x) (answer:x) (value:x); 
+  !#VA(title:x) (text:x) (answer:x) (value:x); 
   !!VRz2:Sz(text);
-  !!VRz1:S^^;
-  !!IF:D4/1/2/0/0/0/0/0/0/0/0/0/0/0/0/0; [Set up input box]
-  !!IF:F4/////1;
+  !!VRz1:Sz(title);
+  !!IF:D4/1/2/^^/^^/^^/^^/^^/^^/^^/^^/^^/^^/^^/^^/^^; [Set up input box]
+  !!IF:F4/^^/^^/^^/^^/(TRUE);
   !!IF:E3/4;
   !!VR(answer):Sv3;
   !!VR(value):Vz1;                     [convert string to integer]
 
 ** Mouse over hint text **
 !?FU(OnTownMouseHint)&i^mouse_x^>=163/i^mouse_x^<=226/i^mouse_y^>407/i^mouse_y^<433|i^mouse_item^=160;
+  ; Note: The small area &i^mouse_x^>=163/i^mouse_x^<=226/i^mouse_y^>407/i^mouse_y^<433 does not show hint correclty for some reasons
   !!VR(msg:z):S^%T(wog.105.transfer.hint)^;
   !!UN:P105/?y-1; [Check for bank enabled]
   !!if&y-1;

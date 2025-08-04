@@ -1,0 +1,155 @@
+ZVSE
+
+!?FU(RB_Max_Mana);
+!!SN:L^emerald3_3.era^/?y73;
+!!SN:Ay73/^get_max_mana^/?y75;
+!!HEx1:Z?y77;
+!!SN:Ey75/1/y77;
+!!VRx2:Sv1;
+
+!?FU(disable_auto_battle);
+!!BA:Q0;
+!!VRv580&x1=0:S4;  
+!!UN:C6919200/4/?y11;
+!!UN:Cy11/78532/4/0;
+!_!CM:R0; !!UN:R6/100;
+!_!IF:L^debug^;
+!!BG:A0;
+!!VRv580&x1=1:S-1;
+
+!?CM4; quick battle button
+!!CM:F?y1 I?y2;
+!!FU|y1<>0/y2<>2004:E;
+!!VRv580:S-1;
+
+!_!IF:Q1^{Resolve Battle}
+
+Resolve battle instantly?^;
+!!VRz2:S^{Resolve Battle ?}^;
+!!VRz3:S^Yes, Instantly !^; 
+!!VRz4:S^Yes, with Preview.^;
+!!VRz5:S^Yes, but preserve Mana.^;
+!!VRz6:S^Not this Time (Cancel)^;
+!!IF:G1/7/1/2/3/4/5/6;
+
+!!if&v7=1:;
+  !!CM:R0;
+  !!BA:Q1;
+  !!VRv580:S1;  
+!!en;
+!!FU&v7=2:E;
+
+!!if&v7=4:;
+  !!VRv580:S3;
+  !!BA:H0/?y21 H1/?y22; 
+  !!VRy31:S0; !!VRy32:S0; !!OW:C?y99;
+  !!VRy91:S-1; !!VRy92:S-1;
+  !!HEy21&y21>=0:I?y31 O?y91;
+  !!HEy22&y22>=0:I?y32 O?y92;
+  !!VRy31&y91<>y99:S0; !!VRy32&y92<>y99:S0; 
+  !!SN:W^Mana Before Battle Attacker^/y31;
+  !!SN:W^Mana Before Battle Defender^/y32;
+  !!HEy21&y21>=0/y91=y99:I0; 
+  !!HEy22&y22>=0/y92=y99:I0; 
+  
+  !!CM:R0;
+  !!BA:Q1;
+!!en;
+
+!!if&v7=8:;
+  !!FU(disable_auto_battle):P;
+!!en;
+
+!!FU:E;
+
+!!CM&1:R0;
+!!FU&-1:E;
+!!BA:Q1;
+!!VRv580:S1;
+
+!?FU(OnAfterBattleUniversal);
+  !!BA:H0/?y21 H1/?y22; 
+  !!VRy31:S0; !!VRy32:S0;
+  !!HEy21&y21>=0:I?y31;
+  !!HEy22&y22>=0:I?y32;
+
+  !!SN:W^Mana Before Battle Attacker^/?y41;
+  !!SN:W^Mana Before Battle Defender^/?y42;
+
+  !!if&y41>0:;
+
+    !!FU(RB_Max_Mana):Py21/?y9;
+    !!if&y9<y41:;
+      !!HEy21:Iy41;
+    !!el;
+      !!HEy21:Idy41; !!HEy21:I?y51;
+      !!HEy21&y51>y9:Iy9; 
+    !!en;
+    
+  !!en;
+
+  !!if&y42>0:;
+  
+    !!FU(RB_Max_Mana):Py22/?y9;
+    !!if&y9<y42:;
+      !!HEy22:Iy42;
+    !!el;
+      !!HEy22:Idy42; !!HEy22:I?y52;
+      !!HEy22&y52>y9:Iy9; 
+    !!en;
+
+  !!en;
+  
+!?BA1; after battle end 
+!!BA:Q0; !!FU:E;
+!!BA&v580=1:Q0; turn auto combat off
+!!BA&v580=2:Q1; restore auto combat
+!!BA&v580=4:Q0; turn auto combat off
+!!VRv580&v580=1:S-1;
+
+** changed by majaczek **
+!?BA0; Before Battle
+!!BA:Q?y2;
+!!BA:Q0;
+!!VRv580&y2=1:S2;
+
+!?BG0;
+!!FU(disable_auto_battle)&v580=4:P0;
+
+!?BG1;
+!!FU(disable_auto_battle)&v580=4:P1;
+
+!?BR;
+!!FU&v997<>-1:E;
+!_!FU:E;
+!_!FU(disable_auto_battle)&v580=4:P;
+!!FU&v580<>2:E;
+!!BU:T?y3;
+!!FU&y3=0:E;
+
+!!BA:Q1;
+!!VRv580:S-1;
+
+
+!?BR;  !!FU:E;
+!!FU&v997<>0:E;
+!_!FU:E;
+!!FU&v580<>2:E;
+!!BA:Q1;
+!!VRv580:S-1;
+
+
+!?BG0; !!FU:E;
+!!FU&v997<>0:E;
+!!BG:Q?y4;
+!!FU&y4=1:E;
+!!FU&v580<>2:E;
+!!BA:Q1;
+!!VRv580:S-1;
+
+!?FU77006;
+!!SN:X?y4/?y6;
+!!FU&y4=1:E;
+!!FU&v580<>2:E;
+!!BA:Q1;
+!!VRv580:S-1;

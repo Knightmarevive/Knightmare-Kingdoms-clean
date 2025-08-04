@@ -1,0 +1,477 @@
+ZVSE
+ERMS_ScriptDate=18.8(August).2004
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
+***DEATH CHAMBER 9.0**** (by Rich Reed a.k.a. "Space8999")
+
+***UPDATED:  August 18, 2004
+
+
+**This script allows for heroes to visit the new WoG structure in the Castle
+**Objects in the Map Editor that resembles a pile of skulls (it is the 7th
+**object in the very first column underneath the CASTLE town).  When a hero
+**visits it, he/she has a choice of fighting an "Undead King", which is a stack
+**of Power Liches.  Dread Knights, Wraiths, and Ghosts are
+**also summoned onto the battlefield to aid the King in battle.
+
+**Upon defeating the King, the hero is awarded lots of gold, Mithril,
+**and Ghosts attempt to join the hero's army.
+
+**This structure works similar to the other creature banks, such as the Medusa Stores,
+**Imp Cache, Transylvanian Tavern, Naga Bank, Cyclops Stockpile, etc.
+
+*
+*MAJOR THANKS TO TIM PULVER (a.k.a. "Fnord"), STEVE HANNA, ARSTAHD, AND TO ANYONE ELSE
+*WHO HELPED ME IN MAKING THIS SCRIPT POSSIBLE!
+*
+
+
+**========================================
+**FLAGS AND VARIABLES USED IN THIS SCRIPT
+**========================================
+
+**Flags
+*-------------------------------------------------------------------------------
+*FLAG 3 is used to ask the player if he/she wants to fight the Death Chamber
+*FLAGS 800 and 801 are used solely for the Death Chamber battles
+*-------------------------------------------------------------------------------
+
+**Variables
+**------------------------------------------------------------------------------
+*z890 and z891 keeps the hint text for the Death Chamber structures
+*z849 gets the name of the hero fighting the Power Liches
+*z850 allows "Power Lich King" to be displayed when "Death Ripple" is cast
+*v805 keeps the value of the visited Death Chamber's square
+*v806 is used to store whether the script is enabled or not
+*v807, v808, v809, v810, v811, v812 used for Power Lich King's spellcasting
+*v820 used for summoning of Wraiths
+**------------------------------------------------------------------------------
+
+**Set up Death Chamber structure
+
+!#UN:P70/?v806; ** Store 1 in v806 if script enabled, 0 if disabled
+
+!#VRv805&v806=1:S0; **Store 0 in the variable v805
+
+!#VRz890&v806=1:Sz170000;
+!#HT63/15&v806=1:P0/890;
+
+!#VRz891&v806=1:Sz170001;
+!#HT63/15&v806=1:P1/891;
+
+**------------------------------------------------------------------------------
+
+!?OB63/15&1000/v806=1;  *Triggers when any "Death Chamber" is visited
+
+!!PO998:N?v805; **Check PO:N value of Death Chamber square
+!!IF&v805=1:M1/z170002;
+
+
+!?OB63/15&v805=0/1000/v806=1;  *Triggers when any "Death Chamber" is visited
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+
+!!IF&y22=0:Q3/21/65/2/z170003;
+!!IF&y22<>0:Q3/21/247/2/z170003;
+
+!!IF&3:V800/1;       **Sets FLAG 800 to TRUE if OK is pressed
+
+!!HE-1&3/v805=0/y22=0:Tv998/v999/v1000/65/1; **Trigger battle with the Lich King
+!!HE-1&3/v805=0/y22<>0:Tv998/v999/v1000/247/1; **Trigger battle with the Master Necromancer
+
+
+*===============================================================================
+**Set up the special "Death Chamber" battlefields and Power Liches
+*===============================================================================
+!?BA0&800/v806=1;
+!!BA:B20;  **Evil Fog
+
+!?BF&800/v806=1; **Sets up special battlefield
+!!BF:C; **Clear the battlefield
+
+!_!BFO65/59;  **Place 4 huge Crypts onto center of battlefield
+!_!BFO65/127;
+!_!BFO65/89;
+!_!BFO65/97;
+
+!!BFO34/3;   **Place spooky trees onto top and bottom of battlefield
+!!BFO34/5;
+!!BFO34/7;
+!!BFO34/9;
+!!BFO34/11;
+!!BFO34/13;
+!!BFO34/173;
+!!BFO34/175;
+!!BFO34/177;
+!!BFO34/179;
+!!BFO34/181;
+!!BFO34/183;
+
+!!BFO62/21;   **Place 8 Gravemarkers and 2 crosses onto the battlefield
+!!BFO62/24;
+!!BFO62/26;
+!!BFO62/27;
+!!BFO62/30;
+!!BFO62/157;
+!!BFO62/160;
+!!BFO62/162;
+!!BFO62/163;
+!!BFO62/166;
+
+**Place 4 tombstones to close up area in middle of battlefield
+
+!!BFO61/75;
+!!BFO61/79;
+!!BFO61/109;
+!!BFO61/113;
+
+
+**Code for attributes for the Lich King stacks
+
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!BM21:S50;  **Lich King has 50 speed for duration of combat
+!!BM21:S75;  **Master Necromancer has 75 speed for duration of combat
+
+!!VRy98:Sv998 +v999 %144;
+!!if&y22=0:;
+  !!BM21&y98<36:H600; **Lich King has 600 health if "x" position on map is less than 36
+  !!BM21&y98>35/y98<72:H800; **Lich King has 800 health if "x" position on map is between 36 and 71
+  !!BM21&y98>71/y98<108:H1000; **Lich King has 1000 health if "x" position on map is between 72 and 107
+  !!BM21&y98>107:H1200; **Lich King has 1200 health if "x" position on map is greater than 107
+!!el:;
+  !!BM21&y98<36:H1200; **Master Necromancer has 1200 health if "x" position on map is less than 36
+  !!BM21&y98>35/y98<72:H1600; **Master Necromancer has 1600 health if "x" position on map is between 36 and 71
+  !!BM21&y98>71/y98<108:H2000; **Master Necromancer has 2000 health if "x" position on map is between 72 and 107
+  !!BM21&y98>107:H2400; **Master Necromancer has 2400 health if "x" position on map is greater than 107
+!!en:;
+
+!!BM21:R5000;  **Lich King has endless retaliations each round
+
+!!MA:X65/?i;
+!!VRi:+32768;
+!!BM21:Fi;
+
+!?BG&800/v806=1;
+!!BU:G4;  **Evil Fog effect
+
+*===================================================================================
+**Begin In-battle code for battle with Power Lich King
+*===================================================================================
+!?BR&800/v806=1;
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!VRz850:S^Master Necromancer^;
+!!VRz850&y22=0:Sz170004;
+
+!!VRy98:Sv998 +v999 %144;
+!!VRy88:Sc :7 +1;
+
+!!BG&v997>0:N?v807;  **Get current stack number into "v807"
+!!BMv807&v997>0:P?i;  **Get position of current stack number into "i"
+
+!!HE-1:B0/?z849;  **Get name of the hero
+!!HE-1&v807<21:B0/z850;  **Change hero's name to "Lich King" temporarily each round
+
+!!BM21&v997>0/v807<21/y98<36:C24/i/1/1/0; **Power Lich King casts "Death Ripple"
+
+!!BM21&v997>0/v807<21/y98>35/y98<72:C24/i/1/1/0;
+!!BM21&v997>0/v807<21/y98>35/y98<72:C24/i/2/2/0; **Power Lich King casts "Death Ripple" twice
+
+!!BM21&v997>0/v807<21/y98>71/y98<108:C24/i/1/1/0;
+!!BM21&v997>0/v807<21/y98>71/y98<108:C24/i/2/2/0;
+!!BM21&v997>0/v807<21/y98>71/y98<108:C24/i/2/2/0; **Power Lich King casts "Death Ripple" three times
+
+!!BM21&v997>0/v807<21/y98>107:C24/i/1/1/0;
+!!BM21&v997>0/v807<21/y98>107:C24/i/2/2/0;
+!!BM21&v997>0/v807<21/y98>107:C24/i/1/1/0;
+!!BM21&v997>0/v807<21/y98>107:C24/i/2/2/0; **Power Lich King casts "Death Ripple" four times
+
+**Lich King removes the 4 huge Crypts closing up the battlefield
+!_!BM21&v997=1:C64/59/3/3/0;
+!_!BM21&v997=1:C64/127/3/3/0;
+!_!BM21&v997=1:C64/89/3/3/0;
+!_!BM21&v997=1:C64/97/3/3/0;
+
+!!HE-1:B0/z849;  **Reset name of the hero
+
+**Code to summon additional Lich stacks onto battlefield during second round
+!_!VRk:S1 T10;
+!!VRk:S3 *y88 T7;
+!!BU&v997=1:S64/k/59/1/-1/1;
+!!BU&v997=1:S64/k/127/1/-1/1;
+!!BU&v997=1:S64/k/89/1/-1/1;
+!!BU&v997=1:S64/k/97/1/-1/1;
+
+**The "Age" spell applied to hero's troops during THIRD ROUND of combat and beyond
+!!BM0&v997>=2:M75/5/3;
+!!BM1&v997>=2:M75/5/3;
+!!BM2&v997>=2:M75/5/3;
+!!BM3&v997>=2:M75/5/3;
+!!BM4&v997>=2:M75/5/3;
+!!BM5&v997>=2:M75/5/3;
+!!BM6&v997>=2:M75/5/3;
+!!BM7&v997>=2:M75/5/3;
+!!BM8&v997>=2:M75/5/3;
+!!BM9&v997>=2:M75/5/3;
+!!BM10&v997>=2:M75/5/3;
+!!BM11&v997>=2:M75/5/3;
+!!BM12&v997>=2:M75/5/3;
+!!BM13&v997>=2:M75/5/3;
+!!BM14&v997>=2:M75/5/3;
+!!BM15&v997>=2:M75/5/3;
+!!BM16&v997>=2:M75/5/3;
+!!BM17&v997>=2:M75/5/3;
+!!BM18&v997>=2:M75/5/3;
+!!BM19&v997>=2:M75/5/3;
+!!BM20&v997>=2:M75/5/3;
+
+*===============================================================================
+**Code to summon Dread Knights onto battlefield at beginning of combat
+
+
+!!VRv817&y98<36:S2 *y88;
+*2 Dread Knights per stack summoned if x position of Death Chamber is less than 36
+!!VRv817&y98>35/y98<72:S3  *y88;
+*3 Dread Knights per stack summoned if x position of Death Chamber is between 35 and 72
+!!VRv817&y98>71/y98<108:S4  *y88;
+*4 Dread Knights per stack summoned if x position of Death Chamber is between 71 and 108
+!!VRv817&y98>107:S5  *y88;
+*5 Dread Knights per stack summoned if x position of Death Chamber is greater than 108
+
+!!VRy67:S67; !!VRy67&y22<>0:S235; //if Amethyst Upgrades -> Grim Reapers 
+
+!!BU&v997=0:Sy67/v817/41/1/-1/0;
+!!BU&v997=0:Sy67/v817/47/1/-1/0;
+!!BU&v997=0:Sy67/v817/143/1/-1/0;
+!!BU&v997=0:Sy67/v817/149/1/-1/0;
+
+*==================================================================================
+
+***********************************************************************************
+*3 Wraiths per stack summoned if x position less than 36
+!_!BU&v997=0/y98<36:S61/3/6/1/-1/0;
+!_!BU&v997=0/y98<36:S61/3/8/1/-1/0;
+!_!BU&v997=0/y98<36:S61/3/10/1/-1/0;
+!_!BU&v997=0/y98<36:S61/3/176/1/-1/0;
+!_!BU&v997=0/y98<36:S61/3/178/1/-1/0;
+!_!BU&v997=0/y98<36:S61/3/180/1/-1/0;
+
+*5 Wraiths per stack summoned if x position greater than 107
+!_!BU&v997=0/y98>107:S61/5/6/1/-1/0;
+!_!BU&v997=0/y98>107:S61/5/8/1/-1/0;
+!_!BU&v997=0/y98>107:S61/5/10/1/-1/0;
+!_!BU&v997=0/y98>107:S61/5/176/1/-1/0;
+!_!BU&v997=0/y98>107:S61/5/178/1/-1/0;
+!_!BU&v997=0/y98>107:S61/5/180/1/-1/0;
+
+*7 Wraiths per stack summoned if x position of Death Chamber is between 36 and 72
+!_!BU&v997=0/y98>35/y98<72:S61/7/6/1/-1/0;
+!_!BU&v997=0/y98>35/y98<72:S61/7/8/1/-1/0;
+!_!BU&v997=0/y98>35/y98<72:S61/7/10/1/-1/0;
+!_!BU&v997=0/y98>35/y98<72:S61/7/176/1/-1/0;
+!_!BU&v997=0/y98>35/y98<72:S61/7/178/1/-1/0;
+!_!BU&v997=0/y98>35/y98<72:S61/7/180/1/-1/0;
+
+*9 Wraiths per stack summoned if x position of Death Chamber is between 72 and 108
+!_!BU&v997=0/y98>71/y98<108:S61/9/6/1/-1/0;
+!_!BU&v997=0/y98>71/y98<108:S61/9/8/1/-1/0;
+!_!BU&v997=0/y98>71/y98<108:S61/9/10/1/-1/0;
+!_!BU&v997=0/y98>71/y98<108:S61/9/176/1/-1/0;
+!_!BU&v997=0/y98>71/y98<108:S61/9/178/1/-1/0;
+!_!BU&v997=0/y98>71/y98<108:S61/9/180/1/-1/0;
+
+!!VRy87&v997=0/y98<36:S3 *y88;
+!!VRy87&v997=0/y98>107:S5 *y88;
+!!VRy87&v997=0/y98>35/y98<72:S7 *y88;
+!!VRy87&v997=0/y98>71/y98<108:S9 *y88;
+
+!!BU&v997=0:S61/y87/6/1/-1/0;
+!!BU&v997=0:S61/y87/8/1/-1/0;
+!!BU&v997=0:S61/y87/10/1/-1/0;
+!!BU&v997=0:S61/y87/176/1/-1/0;
+!!BU&v997=0:S61/y87/178/1/-1/0;
+!!BU&v997=0:S61/y87/180/1/-1/0;
+
+************************************************************************************
+
+**Additional Lich stack summoned between the crypts depending upon x position
+!_!BU&v997=0/y98<36:S64/10/94/1/-1/0;
+!_!BU&v997=0/y98>35/y98<72:S64/20/94/1/-1/0;
+!_!BU&v997=0/y98>71/y98<108:S64/30/94/1/-1/0;
+!_!BU&v997=0/y98>107:S64/40/94/1/-1/0;
+
+!!VRy86&v997=0/y98<36:S5 *y86 +5;
+!!VRy86&v997=0/y98>35/y98<72:S8 *y86 +12;
+!!VRy86&v997=0/y98>71/y98<108:S13 *y86 +17;
+!!VRy86&v997=0/y98>107:S21 *y86 +19; 
+
+!!BU&v997=0:S64/y86/94/1/-1/0;
+************************************************************************************
+
+**Ghosts now summoned inbetween trees during the third round and beyond!
+
+!!HE-1:E?p/?q;  **Get hero's current level into "q"
+
+!!VRr&y98<36:S5 *y88 +3 *q;   **Summon 8x hero level of ghosts per stack
+!!VRr&y98<36:+v997;   **Add ghosts depending upon round number
+
+!!VRr&y98>35/y98<72:S7 *y88 +5 *q;   **Summon 12x hero level of ghosts per stack
+!!VRr&y98>35/y98<72:+v997;  **Add ghosts depending upon round number
+
+!!VRr&y98>71/y98<108:S11 *y88 +4 *q;   **Summon 16x hero level of ghosts per stack
+!!VRr&y98>71/y98<108:+v997;  **Add ghosts depending upon round number
+
+!!VRr&y98>107:S17 *y88 +7 *q;   **Summon 24x hero level of ghosts per stack
+!!VRr&y98>107:+v997;   **Add ghosts depending upon round number
+
+
+!!VRy59:S159; !!VRy59&y22<>0:S288;
+**Ghosts summoned inbetween trees
+!!BU&v997>=2/y98<36:Sy59/r/4/1/-1/1;
+!!BU&v997>=2/y98<36:Sy59/r/12/1/-1/1;
+!!BU&v997>=2/y98<36:Sy59/r/174/1/-1/1;
+!!BU&v997>=2/y98<36:Sy59/r/182/1/-1/1;
+
+!!BU&v997>=2/y98>35/y98<72:Sy59/r/4/1/-1/1;
+!!BU&v997>=2/y98>35/y98<72:Sy59/r/12/1/-1/1;
+!!BU&v997>=2/y98>35/y98<72:Sy59/r/174/1/-1/1;
+!!BU&v997>=2/y98>35/y98<72:Sy59/r/182/1/-1/1;
+
+!!BU&v997>=2/y98>71/y98<108:Sy59/r/4/1/-1/1;
+!!BU&v997>=2/y98>71/y98<108:Sy59/r/12/1/-1/1;
+!!BU&v997>=2/y98>71/y98<108:Sy59/r/174/1/-1/1;
+!!BU&v997>=2/y98>71/y98<108:Sy59/r/182/1/-1/1;
+
+!!BU&v997>=2/y98>107:Sy59/r/4/1/-1/1;
+!!BU&v997>=2/y98>107:Sy59/r/12/1/-1/1;
+!!BU&v997>=2/y98>107:Sy59/r/174/1/-1/1;
+!!BU&v997>=2/y98>107:Sy59/r/182/1/-1/1;
+
+*========================================================================================
+**Triggers for Power Lich King's spellcasting
+
+!?BG&800/v806=1;
+
+!?BG&800/v806=1;
+!!BG&v997=1:N?v808 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997>=0:G29/?v810/?v811;  **Get FIRE SHIELD info from current stack
+!!BMv808&v997>=0:P?j;  **Get position of current stack number into "j"
+!!BM21&v997>=0/v808>=21/v810=0/v812=1:C29/j/1/1/0;**Power Lich King casts BASIC FIRE SHIELD
+
+!!BG&v997=1:N?v808 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997>=0:G58/?v810/?v811;  **Get COUNTERSTRIKE info from current stack
+!!BMv808&v997>=0:P?j;  **Get position of current stack number into "j"
+!!BM21&v997>=0/v808>=21/v810=0/v812=1:C58/j/1/1/0;**Power Lich King casts BASIC COUNTERSTRIKE
+
+*-------------------------------------------------------------------------------------------------------
+
+!?BG&800/v806=1;
+!!VRy98:Sv998 +v999 %144;
+
+!!if&y98<36:;
+!!BG&v997=1:N?v807 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997=1:G21/?v810/?v811;  **Get MISFORTUNE info from current stack
+!!BMv808&v997=1:P?j;  **Get position of current stack number into "j"
+!!BM21&v997=1/v807<21/v810=0/v812=0:C52/j/1/1/0;**Power Lich King casts BASIC MISFORTUNE
+!!el&y98>35/y98<72:;
+!_?BG&800/v998>35/v998<72/v806=1;
+!!BG&v997=1:N?v807 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997=1:G21/?v810/?v811;  **Get DISRUPTING RAY info from current stack
+!!BMv808&v997=1:P?j;  **Get position of current stack number into "j"
+!!BM21&v997=1/v807<21/v810=0/v812=0:C47/j/1/1/0;**Power Lich King casts BASIC DISRUPTING RAY
+!!el&y98>71/y98<108:;
+!_?BG&800/v998>71/v998<108/v806=1;
+!!BG&v997=1:N?v807 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997=1:G45/?v810/?v811;  **Get WEAKNESS info from current stack
+!!BMv808&v997=1:P?j;  **Get position of current stack number into "j"
+!!BM21&v997=1/v807<21/v810=0/v812=0:C45/j/1/1/0;  **Power Lich King casts BASIC WEAKNESS
+!!el:;
+!_?BG&800/v998>107/v806=1;
+!!BG&v997=1:N?v807 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997=1:G22/?v810/?v811;  **Get SORROW info from current stack
+!!BMv808&v997=1:P?j;  **Get position of current stack number into "j"
+!!BM21&v997=1/v807<21/v810=0/v812=0:C50/j/1/1/0; **Power Lich King casts BASIC SORROW
+!!en:;
+
+!?BG&800/v806=1;
+!!BG&v997=1:N?v807 Q?v812;  **Get current stack number and attacking side
+!!BMv808&v997=1:G21/?v810/?v811;  **Get FIREBALL info from current stack
+!!BMv808&v997=1:P?j;  **Get position of current stack number into "j"
+!!BM21&v997=1/v807<21/v810=0/v812=0:C21/j/1/1/0; **Power Lich King casts BASIC FIREBALL
+
+
+
+**==============================================================================
+**BEGIN THE POST-BATTLE TRIGGER AND COMMANDS (Power Liches)
+**==============================================================================
+
+**Post-battle trigger (modified by majaczek)
+
+!?BA1&800/v806=1; **Do the following while FLAG 800 is still TRUE
+
+!!HE-1:O?t;
+
+!!VRy88:Sc :7 +1 *2 +2;
+!!VRy87:Sc :7 +1 *3 +3;
+!!VRy86:Sc :7 +1 *5 +3;
+!!VRy85:Sc :7 +1 *7 +3;
+
+!!VRy77:Sc :7 *1000 +8000;
+!!VRy76:Sc :7 *2000 +10000;
+!!VRy75:Sc :7 *3000 +12000;
+!!VRy74:Sc :7 *5000 +16000;
+
+!!VRy66:S30;
+!!VRy65:S40;
+!!VRy64:S50;
+!!VRy63:S60;
+
+!!VRy33:S159; Ghosts
+!!SN:W^Amethyst Upgrades^/?y22; check if Amethyst Upgrades is present
+!!VRy33&y22<>0:S288; Elder Ghosts
+!!VRy98:Sv998 +v999 %144;
+
+!!if&y22<>0:;
+  !!VRy88:*2;  !!VRy87:*2;  !!VRy86:*2;  !!VRy85:*2;
+  !!VRy77:*2;  !!VRy76:*2;  !!VRy75:*2;  !!VRy74:*2;
+  !!VRy66:*2;  !!VRy65:*2;  !!VRy64:*2;  !!VRy63:*2;
+!!en:;
+
+!!IF&t>=0/y98<38:Q3/6/y77/7/y88/21/y33/1/z170005;
+!!IF&t>=0/y98>37/y98<72:Q3/6/y76/7/y87/21/y33/1/z170006;
+!!IF&t>=0/y98>71/y98<108:Q3/6/y75/7/y86/21/y33/1/z170007;
+!!IF&t>=0/y98>107:Q3/6/y74/7/y85/21/y33/1/z170008;
+
+!!OW&t>=0/y98<36:R-1/6/dy77; **Give 8000 gold to current player
+!!OW&t>=0/y98<36:R-1/7/dy88; **Give 4 Mithril to current player
+!!HE-1&t>=0/y98<36:C2/y33/y66/1;  **Give 30 Ghosts to current hero
+
+!!OW&t>=0/y98>35/y98<72:R-1/6/dy76; **Give 10000 gold to current player
+!!OW&t>=0/y98>35/y98<72:R-1/7/dy87; **Give 6 Mithril to current player
+!!HE-1&t>=0/y98>35/y98<72:C2/y33/y65/1;  **Give 40 Ghosts to current hero
+
+!!OW&t>=0/y98>71/y98<108:R-1/6/dy75; **Give 12000 gold to current player
+!!OW&t>=0/y98>71/y98<108:R-1/7/dy86; **Give 8 Mithril to current player
+!!HE-1&t>=0/y98>71/y98<108:C2/y33/y64/1;  **Give 50 Ghosts to current hero
+
+!!OW&t>=0/y98>107:R-1/6/dy74; **Give 16000 gold to current player
+!!OW&t>=0/y98>107:R-1/7/dy85; **Give 10 Mithril to current player
+!!HE-1&t>=0/y98>107:C2/y33/y63/1;  **Give 60 Ghosts to current hero
+
+!!PO998&t>=0:N1; **If hero is owned, value of Death Chamber position square is 1
+
+!!IF:V800/0;  **Clear FLAG 800
+
+!!PO998&t=-1:N0;
+**If hero is unowned, value of Death Chamber position is 0 and another hero
+**can visit the structure
+
+**Variables cleared
+!!VRv805:S0;
+!!VRv807:S0;
+!!VRv808:S0;
+!!VRv809:S0;
+!!VRv810:S0;
+!!VRv811:S0;
+!!VRv812:S0;
+!!VRv820:S0;
+
+**End post-battle trigger

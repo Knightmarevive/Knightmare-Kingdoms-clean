@@ -1,21 +1,22 @@
-ZVSE
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2004.5.12.945
-ERMS_ScriptDate=15.6(June).2004
+ZVSE2
 
 ** WoG Cheat Menu 0.7 by Timothy Pulver
 ** Script77.erm
 ** Updated June 15, 2004
+** Updated May 2022 by Archer30
 
 ** Variables Used: v9002-v9007, (v1)
 ** Flags: (1..9)
 ** z variaables: (z1..z9)
 ** Functions: FU22300..FU22343
-** ERM Options: 77
+** ERM Options: 77 - this option is to indentify whether the cheat menu is currently acivated in the game. It doesn't appear in WoG Options menu.
 
-!#VRv9004:S-1; [Initialize v9004 to -1]
-!#UN:P903/?v1; [Check if Disable Cheat Codes and Menus enabled: v1]
-!#VRv9004&v1=1:S999; [Set v9004 to 999 if Disable Cheat Codes and Menus enabled]
+
+!?FU(OnGameEnter);
+!!VRv9004:S-1; [Initialize v9004 to -1]
+!!UN:P(WOG_OPT_DISABLE_CHEATING)/?(disableCheating:y); [Check if Disable Cheat Codes and Menus enabled: v1]
+!!UN:V?t/?t/?t/?(isNetworkGame:y)/?t;
+!!VRv9004|(disableCheating)/(isNetworkGame):S999; [Set v9004 to 999 if Disable Cheat Codes and Menus enabled]
 
  [Trigger is Right Mouse-click on Adventure Map]
 !?CM0&v9004<>999;
@@ -1515,7 +1516,12 @@ ERMS_ScriptDate=15.6(June).2004
 !!VRv9004&5:+1; [Increment v9004 if any cheat option selected: v9004]
 !!FU&5:E; [Exit if building built in town]
 !!VRz-10:Sz177216; [Set z-10 to all]
-!!DO22343/0/43/1&z3=z-10:Py2; [Build or remove all town buildings]
+
+!!if&z3=z-10;
+  !!FU(WOG_903_BuildOrRemoveBuildings):Py-5/y-15/y2; [fixed crash of building all - Archer]
+  !!FU:E;
+!!en;
+
 !!IF:V2/0; [Initialize Flag 2 to False]
 !!DO22341/0/43/1:Py2; [Check for matching building name if no number entered]
 !!DO22342/0/43/1&-2:Py2; [Check for substring of building name if no exact match found]
@@ -1551,11 +1557,37 @@ ERMS_ScriptDate=15.6(June).2004
 !!IF&1:V2/1; [Set Flag 2 to True if there's a match]
 
  [Build or remove all buildings in town]
- [x1=1 to build, x1=0 to remove]
-!?FU22343;
-!!VRy1:S43 -x16; [Remove in Reverse order: y1]
-!!CA0/y-5&x1=1:B6/x16; [Build all buildings]
-!!CA0/y-5&x1=0:B2/y1; [Remove all buildings]
-!!CA0/y-5:I0; [Synchronize town to match internal town buildings]
-!!VRv9004:+1; [Increment v9004 if any cheat option selected: v9004]
-
+ [x3=1 to build, x3=0 to remove]
+!?FU(WOG_903_BuildOrRemoveBuildings);      [by Archer30]
+!#VA(townId:x) (townType:x);
+!#VA(isBuild:x);                        [Boolean. If True, build all building for the targeted town. Otherwise demolish all]
+
+!!FU(WOG_Town_IsPossibleToBuildBuilding)|(townType)=(TOWN_CASTLE)/(townType)=(TOWN_NECROPOLIS)/(townType)=(TOWN_FORTRESS)/(townType)=(TOWN_CONFLUX):P(townId)/6/?(canBuildShipyard:y);
+
+!!re i/0/43;
+  !!VR(flag:y):S(TRUE);
+  !!VR(flag)&i=3/(townType)>=(TOWN_STRONGHOLD)/(townType)<=(TOWN_FORTRESS):S(FALSE); [Mage guild 4]
+
+  !!if&i=4;                             [Mage guild 5]
+    !!VR(flag)&(townType)>=(TOWN_STRONGHOLD)/(townType)<=(TOWN_FORTRESS)|(townType)=(TOWN_CASTLE):S(FALSE);
+  !!en;
+
+  !!if&(canBuildShipyard)=(FALSE);
+    !!VR(flag)&i=6:S(FALSE); [Shipyard]
+    !!VR(flag)&i=17/(townType)=(TOWN_CASTLE):S(FALSE); [Lighthouse]
+  !!en;
+
+  !!VR(flag)&i=20:S(FALSE);             [void]
+  !!VR(flag)&i=22/(townType)=(TOWN_CONFLUX):S(FALSE);
+  !!VR(flag)&i=23/(townType)<=(TOWN_RAMPART)/(townType)>=(TOWN_FORTRESS):S(FALSE);
+  !!VR(flag)&i=23/(townType)=(TOWN_NECROPOLIS):S(FALSE); [Second horde building]
+  !!VR(flag)&i>=24/i<=25/(townType)<>(TOWN_RAMPART)/(townType)<>(TOWN_INFERNO):S(FALSE); [Upgraded second horde building]
+  !!VR(flag)&i>=27/i<=29:S(FALSE);
+  !!co&(flag)=(FALSE);
+
+  !!CA0/(townId)&(isBuild):B6/i;
+  !!CA0/(townId)&(isBuild)<>(TRUE):B2/i;
+!!en;
+
+!!CA0/(townId)&(isBuild)=(FALSE):B6/10; [Make sure the town has village hall even if demolishing]
+!!CA0/(townId):I0;                      [Update how the town looks on the map]

@@ -1,0 +1,912 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ERMS_ScriptDate=5.5(May).2016
+
+!#SN:W^Temple_SunMoon Enabled^/1;
+
+!#TM1:S1/999/1/255;   triggers every color every day
+!#TM2:S1/999/1/255;   same but triggers only *after* all calculations from TM1 are done
+!#TM19:S1/1/1/255;    [timer day one for all players]
+
+
+!_?FU55442; initialization (called from Knightmare - Town Guardians
+!?TM1;
+!!VRy88:Sc; !!FU&y88>1:E;
+!?PI;
+!_!FU55468:P;
+!!FU55466:P;
+
+!?TM2; Replace objects with Temples
+
+!!VRy88:Sc; !!FU&y88>1:E;
+!_!FU55466:P;
+!!SN:H^object^/25/1/^Temple of Moon^;
+!!SN:H^object^/25/2/^Temple of Sun^;
+!!SN:H^object^/25/3/^Temple of Stars^;
+!!SN:H^object^/25/4/^Temple of Greed^;
+
+!!SN:H^object^/25/5/^Dimension of Air^;
+!!SN:H^object^/25/6/^Dimension of Earth^;
+!!SN:H^object^/25/7/^Dimension of Fire^;
+!!SN:H^object^/25/8/^Dimension of Water^;
+
+!!SN:H^object^/25/9/^Ancient Hungry Treant^;
+
+!!SN:H^object^/25/10/^Temple of Wisdom^;
+
+!?FU55466;
+
+!!UN:U63/-1/?y44; !!IF&y44=0:M^WARNING 
+No WoG objects on the map !!!^;
+
+** Convertable Always
+!!FU55463:P25/4/25/1/25/1/100/2/1/0;
+!!FU55463:P63/75/25/10/25/10/100/0/2/0;
+!!FU55463:P63/76/25/0/25/0/100/0/1/0;
+!!FU55463:P63/77/25/1/25/1/100/2/1/0;
+!!FU55463:P63/78/25/5/25/5/100/3/0/0;
+
+!!UN:U25/-1/?y44; !!IF&y44=0:M^WARNING 
+No Utopias on the map !!!^;
+
+!!if&y44>0:;
+  !!UN:U25/0/?y45;
+  !!UN:U25/1/?y46;
+  !!UN:U25/2/?y47;
+  !!UN:U25/3/?y48;
+  !!VRy49:Sy46 +y47 + y48;
+
+  !!UN:U25/5/?y55;
+  !!UN:U25/6/?y56;
+  !!UN:U25/7/?y57;
+  !!UN:U25/8/?y58;
+  !!VRy59:Sy55 +y56 +y57 + y58;
+  
+  !!UN:U25/9/?y65;
+  !!UN:U25/10/?y66;
+  
+  !!IF:M^there are %Y45 Common Dragon Utopias, %Y49 Alignment Temples, %Y59 Monks of Elements, %Y65 Hungry Treants and %Y66 Temples of wisdom currently on the map.^;
+!!en;
+
+!!UN:P195/?y21; [Check if Replace Objects is enabled: y21=1 if yes]
+!!FU&y21=0:E;
+
+!!FU:E; disabled
+
+** New Banks
+!!FU55463:P16/0/25/9/25/9/16/0/1/0;  Dwarven Treasuries
+!!FU55463:P213/-1/25/9/25/9/36/0/1/0; Freelancers Guilds
+!!FU55463:P4/-1/25/9/25/9/16/0/1/0; Arenas
+!!FU55463:P84/-1/25/9/25/9/16/0/1/0; Crypts
+
+
+** Temples
+!_!FU55463:P16/1/25/1/25/1/36/2/1/0;
+!!FU55463:P16/0/25/1/25/1/36/2/1/0;   Dwarven Treasuries
+!!FU55463:P213/-1/25/1/25/1/66/2/1/0; Freelancers Guilds
+!!FU55463:P4/-1/25/1/25/1/36/2/1/0;   Arenas
+!!FU55463:P84/-1/25/1/25/1/36/2/1/0;  Crypts
+
+!!FU55463:P17/47/25/1/25/1/100/2/1/0; Elemental Confluxes
+!!FU55463:P17/7/25/1/25/1/100/2/1/0; Elemental Confluxes
+!!FU55463:P17/13/25/1/25/1/100/2/1/0; Elemental Confluxes
+!!FU55463:P17/16/25/1/25/1/100/2/1/0; Elemental Confluxes
+
+
+!_!FU55463:P16/1/25/0/63/54/100/2/1/0; Test
+!_!FU55463:P16/1/25/0/63/69/100/2/1/0; Test
+!_!FU55463:P16/1/25/2/-1/-1/100/2/1/0; Test
+
+
+** Monks of Elements
+!!FU55463:P38/0/25/5/25/5/100/3/0/0; Idol of fortune
+!!FU55463:P38/1/25/5/25/5/100/3/0/0; Idol of fortune (snow)
+!!FU55463:P30/0/25/5/25/5/100/3/0/0; Fountain of fortune
+!!FU55463:P47/0/25/5/25/5/50/3/0/0; School of magic
+!!FU55463:P100/0/25/5/25/5/18/3/0/0; Learning Stone
+!!FU55463:P100/1/25/5/25/5/18/3/0/0; Learning Stone (snow)
+!!FU55463:P58/0/25/5/25/5/25/3/0/0; Redwood Observatory
+!!FU55463:P60/0/25/5/25/5/25/3/0/0; Pillar of Fire
+!!FU55463:P61/0/25/5/25/5/25/3/0/0; Star Axis
+!!FU55463:P32/0/25/5/25/5/50/3/0/0; Garden of Revelation
+!!FU55463:P112/0/25/5/25/5/32/3/0/0; Windmill
+!!FU55463:P113/-1/25/5/25/5/32/3/0/0; Witch Hut
+!!FU55463:P16/6/25/5/25/5/16/3/0/0; Dragon Fly Hives
+
+
+  !_!IF:M^This Mod adds pillageable Temples^;
+  !_!UN:R6/250;
+
+** replace shrines with monks of elements
+!!FU55463:P88/-1/25/5/25/5/100/3/0/0;
+!!FU55463:P89/-1/25/5/25/5/100/3/0/0;
+!!FU55463:P90/-1/25/5/25/5/100/3/0/0;
+
+
+!?FU55463;
+x1, x2  - Type and Subtype of Replaced object
+x3, x4  - Type and Subtype of New Object
+x5, x6  - Apperance of New Object
+x7      - Percentage chance
+x8      - Additional Dice
+x9, x10 - Entry Shift
+
+!!UN:C4893167/2/?y77;
+!!UN:C4893167/2/24555;
+
+!!UN:Ux1/x2/?y55;  [objects number]
+
+!!FU&y55<1:E; exit if < 2 objects
+!_!VRy55:-2;
+
+!!VRv2:S-1;
+!!DO55464/1/y55/1:Px1/x2/x3/x4/x5/x6/x7/x8/x9/x10;
+
+!!UN:C4893167/2/y77;
+
+
+!?FU55464; Internal for FU55463
+
+!_!UN:Ux1/x2/?y55;  [objects number]
+!_!FU&y55<1:E; exit if no objects
+
+
+!!UN:Ux1/x2/-1/2; [get x/y/l of yellow square of object into v2-v4]
+
+!_!IF:M^Try Replacing^;
+
+!!VRy77:S0 R99; Dice
+
+!!VRy99:S0 Rx8;
+!!VRy44:Sx4;
+!!VRy44&x4=x6:+y99;
+!!VRy66:Sx6 +y99;
+
+!!if&y77<x7:;
+  !_!UN:R6/50;
+  !_!VRx16:+1;
+  !_!IF:M^Replacing %X1 %X2 with %X3 %Y66^;
+  !!UN:Ov2/v3/v4;
+  !!if|x5<0/x6<0:;
+    !!UN:Iv2/v3/v4/x3/y66;
+    !!SN:W^Knightmare CreBank %V2 %V3 %V4^/y66;
+    !_!FU55457:Px3/y66/v2/v3/v4; //todo
+  !!el:;
+    !!VRy99:S99;
+    !!if&x3=25/y99>0:;
+      !!VRy99:S25;
+
+      !_!SN:W^Knightmare CreBank %V2 %V3 %V4^/y66;
+
+      !!VRy77:Sv2 +x9;
+      !!VRy88:Sv3 +x10;
+
+      !!UN:Iy77/y88/v4/25/y44/x5/y66;
+      !!SN:W^Knightmare CreBank %V2 %V3 %V4^/y66;
+      !!POv2/v3/v4:S28; [Set PO:S number for Creature Bank square to 28]
+
+      !_!UN:Iv2/v3/v4/x5/y66;
+      !_!OBv2/v3/v4:Ux4;
+
+      !!VRy92:Sv3  -1;
+      !!VRy82:Sv3  -2;
+      !!VRy72:Sv3  -3;
+
+      !!VRy12:Sv3  +1;
+      !!VRy22:Sv3  +2;
+      !!VRy32:Sv3  +3;
+
+      !!VRy91:Sv2  -1;
+      !!VRy81:Sv2  -2;
+      !!VRy71:Sv2  -3;
+
+      !!VRy11:Sv2  +1;
+      !!VRy21:Sv2  +2;
+      !!VRy31:Sv2  +3;
+
+      !_!SN:W^Debug Marker %V2 %V3 %V4^/x4;
+      !_!SN:W^Debug Marker %Y91 %Y92 %V3^/666;
+      !_!SN:W^Debug Marker %Y91 %V2 %V3^/777;
+
+      !_!SN:W^Knightmare CreBank %Y91 %Y92 %V3^/x4;
+
+      !_!SN:W^Knightmare CreBank %V2 %V3 %V4^/y66;
+      !_!FU55457:P25/y66/v2/v3/v4; //todo
+
+
+      !_!OBv2/v3/v4:T25;
+      !_!OBv2/v3/v4:Uy44;
+
+      !_!UN:R6/50;
+
+      !_!FU55457:P25/y44/v2/v3/v4;
+
+      !_!OBv2/v3/v4:T?y95 U?y96;
+      !_!IF:M^Type %Y95 Subtype %Y96^;
+
+
+    !!en:;
+    !!UN&y99=99:Iy77/y88/v4/x3/y44/x5/y66;
+  !!en:;
+  !_!IF&x3=25/x4>0:M^Replaced %X1 %X2 with new CreBank^;
+!!en:;
+
+
+
+!_#TM81:S1/1/1/255; Once
+
+!_?TM81; Fix new Creature Banks
+!_?HM-1;
+!_?TM2;
+!?TM19;
+!!SN:W^Temple_SunMoon initialized^/?y1;
+!!FU55465&y1=0:P;
+!!SN&y1<9:W^Temple_SunMoon initialized^/d1;
+
+!!FU:E;
+!!SN:W^Debug Marker %V998 %V999 %V1000^/?y4;
+!!IF&y4>0:M^Debug Marker %Y4^;
+
+!?FU55465;
+
+
+!!UN:U25/-1/?y11;  [Dragon Utopias number]
+!!VRv2:S-1;
+!!DO55457/1/y11/1&y11>0:P25/-1; [run through]
+
+!!FU:E; [don't run code below]
+
+
+!!UN:U16/-1/?y11;  [creature banks number]
+!!VRv2:S-1;
+!!DO55457/1/y11/1&y11>1:P16/-1; [run through]
+
+
+!!UN:U63/-1/?y11;  [WoG Objects number]
+!!VRv2:S-1;
+!!DO55457/1/y11/1&y11>1:P25/-1; [run through]
+
+!_?OB16;
+!_!FU:E;
+!_!OBv998/v999/v1000:U?y1;
+!_!SN:W^Last Creature Bank Subtype^/y1;
+!_!OBv998/v999/v1000&y1>20:U0;
+
+!_$OB16/0;
+!_!FU:E;
+!_!SN:W^Last Creature Bank Subtype^/?y1;
+!_!OBv998/v999/v1000:Uy1;
+
+
+!?OB25;
+!_!VRy92:Sv999  +1;
+!_!VRy91:Sv998  +1;
+!!OBv998/v999/v1000:T?y1;
+!!OBv998/v999/v1000:U?y2;
+!_!SN:W^Knightmare CreBank %Y91 %Y92 %V1000^/?y77;
+!!SN:W^Knightmare CreBank %V998 %V999 %V1000^/?y77;
+!!VRy7:S0; !!VRy7&y2>0:Sy2; !!VRy7&y77>0:Sy77; !!VRy77:Sy7;
+
+!!SN:W^Knightmare CreBank %V998 %V999 %V1000 Visited^/?y66;
+!!VRy65:Sc; !!VRy64:Sy65;
+!!SN:W^Knightmare CreBank %V998 %V999 %V1000 Visited^/y65;
+
+!_!IF:M^Debug %Y65 %Y66^;
+
+!!CBv998/v999/v1000:T?y88 G0/?y89/?y90 G1/?y89/?y91 G2/?y89/?y92 G3/?y89/?y93 G4/?y89/?y94 G5/?y89/?y95 G6/?y89/?y96;    //todo
+!_!FU55457&y77>0/y88=0/y66<y65:P25/y77/v998/v999/v1000;
+!_!FU55457&y88=0/y66<y65:P25/y77/v998/v999/v1000;
+!_!FU55457&y88=0/y90=0/y91=0/y92=0/y93=0/y94=0/y95=0/y96=0:P25/y77/v998/v999/v1000;
+
+!!FU55457:P25/y77/v998/v999/v1000;
+
+!!SN:W^Last Dragon Utopia Subtype^/y7;
+
+!!UN:C4857411/1/185;
+!!UN:C4857412/4/9597928;
+!!UN:C4857416/1/144;
+
+!!UN:C4857331/1/185;
+!!UN:C4857332/4/9598440;
+!!UN:C4857336/1/144;
+
+!_!IF&y7=0/1000:M^You are on Entrance to Dragon Utopia.^;
+!!VRz1&y7=0:S^You are on Entrance to Dragon Utopia.
+
+Do you wish to fight the Dragons ?^;
+!!VRz2&y7=0:S^You are on Entrance to Dragon Utopia. 
+It is long deseted^;
+
+!_!IF&y7=1/1000:M^You are on Entrance to Temple of Moon.^;
+!!VRz1&y7=1:S^You are on Entrance to Temple of Moon.
+
+Do you wish to fight the guardians and plunder the Temple ?^;
+!!VRz2&y7=1:S^You are on Entrance to Temple of Moon. 
+It is long deseted^;
+!!SN&y7=1/y88=1:H^object^/v998/v999/v1000/^Temple of Moon (visited)^;
+!!SN&y7=1/y88=0:H^object^/v998/v999/v1000/^Temple of Moon (not visited)^;
+
+!_!IF&y7=2/1000:M^You are on Entrance to Temple of Sun.^;
+!!VRz1&y7=2:S^You are on Entrance to Temple of Sun.
+
+Do you wish to fight the guardians and plunder the Temple ?^;
+!!VRz2&y7=2:S^You are on Entrance to Temple of Sun. 
+It is long deseted^;
+!!SN&y7=2/y88=1:H^object^/v998/v999/v1000/^Temple of Sun (visited)^;
+!!SN&y7=2/y88=0:H^object^/v998/v999/v1000/^Temple of Sun (not visited)^;
+
+!_!IF&y7=3/1000:M^You are on Entrance to Temple of Stars.^;
+!!VRz1&y7=3:S^You are on Entrance to Temple of Stars.
+
+Do you wish to fight the guardians and plunder the Temple ?^;
+!!VRz2&y7=3:S^You are on Entrance to Temple of Stars. 
+It is long deseted^;
+!!SN&y7=3/y88=1:H^object^/v998/v999/v1000/^Temple of Stars (visited)^;
+!!SN&y7=3/y88=0:H^object^/v998/v999/v1000/^Temple of Stars (not visited)^;
+
+!_!IF&y7=4/1000:M^You are on Entrance to Temple of Greed.^;
+!!VRz1&y7=4:S^You are on Entrance to Temple of Greed.
+
+Do you wish to fight the guardians and plunder the Temple ?^;
+!!VRz2&y7=4:S^You are on Entrance to Temple of Greed. 
+It is long deseted^;
+!!SN&y7=4/y88=1:H^object^/v998/v999/v1000/^Temple of Greed (visited)^;
+!!SN&y7=4/y88=0:H^object^/v998/v999/v1000/^Temple of Greed (not visited)^;
+
+!_!IF&y7=5/1000:M^You found Monk of Air. He can teleport you to Dimension of Air.^;
+!!VRz1&y7=5:S^You found Monk of Air.
+ He can teleport you to Dimension of Air.
+ Do you wish to take Elemental Trial ?^;;
+!!VRz2&y7=5:S^You found Monk of Air. 
+He can teleport you to Dimension of Air.
+Sadly the Lord is not there.^;
+!!SN&y7=5/y88=1:H^object^/v998/v999/v1000/^Dimension of Air (visited)^;
+!!SN&y7=5/y88=0:H^object^/v998/v999/v1000/^Dimension of Air (not visited)^;
+
+!_!IF&y7=6/1000:M^You found Monk of Earth. He can teleport you to Dimension of Earth.^;
+!!VRz1&y7=6:S^You found Monk of Earth. 
+He can teleport you to Dimension of Earth.
+ Do you wish to take Elemental Trial ?^;
+!!VRz2&y7=6:S^You found Monk of Earth. 
+He can teleport you to Dimension of Earth.
+Sadly the Lord is not there.^;
+!!SN&y7=6/y88=1:H^object^/v998/v999/v1000/^Dimension of Earth (visited)^;
+!!SN&y7=6/y88=0:H^object^/v998/v999/v1000/^Dimension of Earth (not visited)^;
+
+!_!IF&y7=7/1000:M^You found Monk of Fire. He can teleport you to Dimension of Fire.^;
+!!VRz1&y7=7:S^You found Monk of Fire.
+ He can teleport you to Dimension of Fire.
+ Do you wish to take Elemental Trial ?^;
+!!VRz2&y7=7:S^You found Monk of Fire.
+ He can teleport you to Dimension of Fire.
+Sadly the Lord is not there.^;
+!!SN&y7=7/y88=1:H^object^/v998/v999/v1000/^Dimension of Fire (visited)^;
+!!SN&y7=7/y88=0:H^object^/v998/v999/v1000/^Dimension of Fire (not visited)^;
+
+!_!IF&y7=8/1000:M^You found Monk of Water. He can teleport you to Dimension of Water.^;
+!!VRz1&y7=8:S^You found Monk of Water.
+ He can teleport you to Dimension of Water.
+ Do you wish to take Elemental Trial ?^;
+!!VRz2&y7=8:S^You found Monk of Water.
+He can teleport you to Dimension of Water.
+Sadly the Lord is not there.^;
+!!SN&y7=8/y88=1:H^object^/v998/v999/v1000/^Dimension of Water (visited)^;
+!!SN&y7=8/y88=0:H^object^/v998/v999/v1000/^Dimension of Water (not visited)^;
+
+!!VRz1&y7=9:S^You found Ancient Treant.
+ He looks hungry.
+ Do you wish to enter ?^;
+!!VRz2&y7=9:S^You found Ancient Treant.
+He looks hungry.
+Sadly it looks very dead too.^;
+!!SN&y7=9/y88=1:H^object^/v998/v999/v1000/^Ancient Hungry Treant (visited)^;
+!!SN&y7=9/y88=0:H^object^/v998/v999/v1000/^Ancient Hungry Treant (not visited)^;
+
+!!VRz1&y7=10:S^You found Temple of Wisdom.
+ It is Heavily Guarding its Secrets.
+ Do you wish to enter ?^;
+!!VRz2&y7=10:S^You found Temple of Wisdom.
+
+Sadly it is already Plundered.^;
+!!SN&y7=10/y88=1:H^object^/v998/v999/v1000/^Temple of Wisdom (visited)^;
+!!SN&y7=10/y88=0:H^object^/v998/v999/v1000/^Temple of Wisdom (not visited)^;
+
+
+!_!IF&y7>8/1000:M^You are on Entrance to ...^;
+!!VRz1&y7>10:S^You are on Entrance to ...^;
+!!VRz2&y7>10:S^You are on Entrance to ...^;
+
+!_!UN:R6/2000;
+
+!_!IF:M^Dragon Utopia (%Y1/%Y2 Hidden: %Y77) at %V998/%V999/%V1000^;
+!!FU:E;
+!!HE-1:N?y9;
+!!DO55460/0/6/1:Py9;
+
+!?FU(KK_Refresh_CreBank_isVisited);
+!!OBx1/x2/x3:U?y7;
+
+!_!SN&y7=0:H^object^/x1/x2/x3/^Dragon Utopia (not visited)^;
+
+!!SN&y7=1:H^object^/x1/x2/x3/^Temple of Moon (not visited)^;
+!!SN&y7=2:H^object^/x1/x2/x3/^Temple of Sun (not visited)^;
+!!SN&y7=3:H^object^/x1/x2/x3/^Temple of Stars (not visited)^;
+
+!!SN&y7=5:H^object^/x1/x2/x3/^Dimension of Air (not visited)^;
+!!SN&y7=6:H^object^/x1/x2/x3/^Dimension of Earth (not visited)^;
+!!SN&y7=7:H^object^/x1/x2/x3/^Dimension of Fire (not visited)^;
+!!SN&y7=8:H^object^/x1/x2/x3/^Dimension of Water (not visited)^;
+
+!!SN&y7=9:H^object^/x1/x2/x3/^Ancient Hungry Treant (not visited)^;
+!!SN&y7=10:H^object^/x1/x2/x3/^Temple of Wisdom (not visited)^;
+
+!$OB25;
+!!OBv998/v999/v1000:T?y1;
+!!OBv998/v999/v1000:U?y2;
+!_!SN:W^Knightmare CreBank %Y91 %Y92 %V1000^/?y77;
+!!SN:W^Knightmare CreBank %V998 %V999 %V1000^/?y77;
+!!VRy7:S0; !!VRy7&y2>0:Sy2; !!VRy7&y77>0:Sy77; !!VRy77:Sy7;
+
+!!SN:W^Knightmare CreBank %V998 %V999 %V1000 Visited^/?y66;
+!!VRy65:Sc; !!VRy64:Sy65;
+!!SN:W^Knightmare CreBank %V998 %V999 %V1000 Visited^/y65;
+
+!_!IF:M^Debug %Y65 %Y66^;
+
+!!CBv998/v999/v1000:T?y88;
+
+!!SN:W^Last Dragon Utopia Subtype^/y7;
+
+!_!IF&y7=0/1000:M^You are on Entrance to Dragon Utopia.^;
+
+!_!IF&y7=1/1000:M^You are on Entrance to Temple of Moon.^;
+!!SN&y7=1/y88=1:H^object^/v998/v999/v1000/^Temple of Moon (visited)^;
+!!SN&y7=1/y88=0:H^object^/v998/v999/v1000/^Temple of Moon (not visited)^;
+
+!_!IF&y7=2/1000:M^You are on Entrance to Temple of Sun.^;
+!!SN&y7=2/y88=1:H^object^/v998/v999/v1000/^Temple of Sun (visited)^;
+!!SN&y7=2/y88=0:H^object^/v998/v999/v1000/^Temple of Sun (not visited)^;
+
+!_!IF&y7=3/1000:M^You are on Entrance to Temple of Stars.^;
+!!SN&y7=3/y88=1:H^object^/v998/v999/v1000/^Temple of Stars (visited)^;
+!!SN&y7=3/y88=0:H^object^/v998/v999/v1000/^Temple of Stars (not visited)^;
+
+!_!IF&y7=4/1000:M^You are on Entrance to Temple of Greed.^;
+!!SN&y7=4/y88=1:H^object^/v998/v999/v1000/^Temple of Greed (visited)^;
+!!SN&y7=4/y88=0:H^object^/v998/v999/v1000/^Temple of Greed (not visited)^;
+
+!_!IF&y7=5/1000:M^You found Monk of Air. He can teleport you to Dimension of Air.^;
+!!SN&y7=5/y88=1:H^object^/v998/v999/v1000/^Dimension of Air (visited)^;
+!!SN&y7=5/y88=0:H^object^/v998/v999/v1000/^Dimension of Air (not visited)^;
+
+!_!IF&y7=6/1000:M^You found Monk of Earth. He can teleport you to Dimension of Earth.^;
+!!SN&y7=6/y88=1:H^object^/v998/v999/v1000/^Dimension of Earth (visited)^;
+!!SN&y7=6/y88=0:H^object^/v998/v999/v1000/^Dimension of Earth (not visited)^;
+
+!_!IF&y7=7/1000:M^You found Monk of Fire. He can teleport you to Dimension of Fire.^;
+!!SN&y7=7/y88=1:H^object^/v998/v999/v1000/^Dimension of Fire (visited)^;
+!!SN&y7=7/y88=0:H^object^/v998/v999/v1000/^Dimension of Fire (not visited)^;
+
+!_!IF&y7=8/1000:M^You found Monk of Water. He can teleport you to Dimension of Water.^;
+!!SN&y7=8/y88=1:H^object^/v998/v999/v1000/^Dimension of Water (visited)^;
+!!SN&y7=8/y88=0:H^object^/v998/v999/v1000/^Dimension of Water (not visited)^;
+
+!!SN&y7=9/y88=1:H^object^/v998/v999/v1000/^Ancient Hungry Treant (visited)^;
+!!SN&y7=9/y88=0:H^object^/v998/v999/v1000/^Ancient Hungry Treant (not visited)^;
+
+!_!IF&y7>9/1000:M^You are on Entrance to ...^;
+
+!$OB25/0;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/1;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/2;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/3;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/4;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/5;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/6;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/7;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/8;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/9;  !!SN:W^Last Dragon Utopia Subtype^/-1;
+!$OB25/10; !!SN:W^Last Dragon Utopia Subtype^/-1;
+
+!?BF;
+!!SN:W^Last Dragon Utopia Subtype^/?y9;
+!_!DO55412/0/41/1&y9>0/y9<4:P1/101;
+
+!?CM0;
+!!CM:I?y99; !!FU&y99<>37:E;
+!!CM:P?y1/?y2/?y3;
+!!SN:W^Knightmare CreBank %Y1 %Y2 %Y3^/?y77;
+!_!IF&y77>0:M^Here is Crebank Marker No %Y77 at %V998/%V999/%V1000^;
+
+
+!?FU55462; Add Prize
+x1/x2/x3 - Position of Crbank
+x4       - Type of prize
+           0 relic non-combo
+           1 small combo
+           2 big   combo
+           3 huge  combo
+           4 grail
+
+
+!!CBx1/x2/x3&x4=4:A3/2;
+
+!!if&x4=3:;
+  !!VRy1:S0 R99; Dice
+
+  !!CBx1/x2/x3&y1>=0 /y1<5 :A3/162; Sword of Deepest Knightmare
+  !!CBx1/x2/x3&y1>=5 /y1<10:A3/134; Power of the Dragon Father
+  !!CBx1/x2/x3&y1>=10/y1<15:A3/129; Angelic Aliance
+  !!CBx1/x2/x3&y1>=15/y1<25:A3/133; Legion
+  !!CBx1/x2/x3&y1>=25/y1<35:A3/485; Dracopedia
+  !!CBx1/x2/x3&y1>=35/y1<45:A3/420; The Blitz Cloak
+  !!CBx1/x2/x3&y1>=45/y1<55:A3/108; Fanatic Courage
+  !!CBx1/x2/x3&y1>=55/y1<65:A3/161; Helm of Vision
+  !!CBx1/x2/x3&y1>=65/y1<70:A3/135; Titan's Thunder
+  !!CBx1/x2/x3&y1>=70/y1<80:A3/491; Ring of Knightmare
+  !!CBx1/x2/x3&y1>=80/y1<95:A3/471; Book Tier3 #471
+  !!FU&y1>=95/y1<100:Px1/x2/x3/3 Px1/x2/x3/2;
+!!en:;
+
+!!if&x4=2:;
+  !!VRy1:S0 R199; Dice
+
+  !!CBx1/x2/x3&y1>=0  /y1<5  :A3/170; Horn of summoning
+  !!CBx1/x2/x3&y1>=5  /y1<10 :A3/168; Lloth's Surcoat
+  !!CBx1/x2/x3&y1>=10 /y1<15 :A3/163; Shield of Beelzebub
+  !!CBx1/x2/x3&y1>=15 /y1<20 :A3/158; Barbarian Axe of Ferocity
+  !!CBx1/x2/x3&y1>=20 /y1<30 :A3/543; Scarab Pendant
+  !!CBx1/x2/x3&y1>=30 /y1<40 :A3/486; The Bard's Mandola
+  !!CBx1/x2/x3&y1>=40 /y1<50 :A3/166; Broach of Wealth
+  !!CBx1/x2/x3&y1>=50 /y1<60 :A3/169; Boots of Rincewind
+  !!CBx1/x2/x3&y1>=60 /y1<75 :A3/140; Cornucopia
+  !!CBx1/x2/x3&y1>=75 /y1<95 :A3/131; Elixir of life
+  !!CBx1/x2/x3&y1>=115/y1<135:A3/130; Cloak of the Undead King
+  !!CBx1/x2/x3&y1>=135/y1<160:A3/574; Enchanted Bow
+  !!CBx1/x2/x3&y1>=160/y1<190:A3/502; Book Tier2 #502
+  !!FU&y1>=190/y1<200:Px1/x2/x3/2 Px1/x2/x3/1;
+!!en:;
+
+
+!!if&x4=1:;
+  !!VRy1:S0 R49; Dice
+
+  !!CBx1/x2/x3&y1>=0 /y1<5 :A3/167;  Armor of Witchcraft
+  !!CBx1/x2/x3&y1>=5 /y1<10:A3/165;  Ring of Slavery
+  !!CBx1/x2/x3&y1>=10/y1<15:A3/164;  Horned Ring
+  !!CBx1/x2/x3&y1>=15/y1<20:A3/139;  Ring of the magi
+  !!CBx1/x2/x3&y1>=20/y1<25:A3/138;  Wizard's well
+  !!CBx1/x2/x3&y1>=25/y1<30:A3/137;  Bow of the Sharpshooter
+  !!CBx1/x2/x3&y1>=30/y1<35:A3/136;  Admiral's Hat
+  !!CBx1/x2/x3&y1>=35/y1<40:A3/132;  Armor of Damned
+  !!CBx1/x2/x3&y1>=40/y1<45:A3/415;  Garb of the Forest Lord
+  
+  *** Book Tier One Twice ***
+  !!CBx1/x2/x3&y1>=45/y1<50:A3/470;  Book Tier1 #470
+  !!CBx1/x2/x3&y1>=45/y1<50:A3/470;  Book Tier1 #470
+
+  !_!VRy7:Sy1 %5;
+  !_!FU55462&y7=0:Px1/x2/x3/1;
+  !_!FU55462&y7=0:Px1/x2/x3/1; extra bonus
+  !_!CBx1/x2/x3&y7=1:A3/156 A3/156 A3/156;
+
+!!en:;
+
+!!if&x4=0:;
+  [:relic_reroll]
+  !!UN:J6/16/?y1;
+  !!UN:Ay1/4/?y2;
+  !!CBx1/x2/x3&y2<0:A3/y1;
+  !!SN&y2>=0:G[relic_reroll];
+!!en:;
+
+!?FU55461; Clean
+x1/x2/x3 - Position of Crbank
+
+!!CBx1/x2/x3:A1/?y1;
+!!VRy1:-1;
+!!CBx1/x2/x3&y1>=0:A4/y1;
+
+!!if&x16=1:;
+!!CBx1/x2/x3:G0/-1/0 G1/-1/0 G2/-1/0 G3/-1/0 G4/-1/0 G5/-1/0;
+!!CBx1/x2/x3:G6/-1/0 G7/-1/0; Clean Guards Slots
+!!CBx1/x2/x3:M-1/0; Clean Monster Prize
+!!CBx1/x2/x3:R0/0 R1/0 R2/0 R3/0 R4/0 R5/0 R6/0;
+!!en:;
+
+!?FU55460;
+x1  - Checked hero
+x16 - Creature slot
+
+!!FU&x1<0:E;
+!!HEx1:C0/x16/?y1/?y2;
+!!HEx1&y1>=243/y1<=251:C0/x16/-1/0;
+
+!?FU55457;
+x1 =  Object type
+x2 <  0 Default
+x2 >= 0 Custom
+
+!!VRy3:S0;
+
+
+!!if&x2<0:;
+  !!UN:Ux1/-1/-1/2;  [Creature Bank coordinates in v2/v3/v4]
+  !!OBv2/v3/v4:U?y2; [subtype]
+  !_!IF:M^Custom Utopia/CreBank %X1/%Y2^;
+!!en:;
+
+!!if&x2>=0:;
+  !_!IF:M^Custom Utopia/CreBank %X1/%X2^;
+  !!VRv2:Cx3/x4/x5;  [Creature Bank coordinates in v2/v3/v4]
+  !!VRy2:Sx2;
+!!en:;
+
+
+!!OBv2/v3/v4:T?y54;
+!_!FU&y54<>25:E;
+
+!_!OBv2/v3/v4&y2>20:U10; If new Creature Bank set type to Dragon Utopia
+
+!!SN:W^Knightmare CreBank %V2 %V3 %V4^/?y77;
+!_!IF&y77>0:M^Marked new CreBank %Y77^;
+
+!_!FU:E; Debug Exit
+
+!!if&x1=16:; Any new type CRBANK
+  !!if&y2>20:;
+    !!VRy3:Sy2 -20;
+  !!el:;
+    !!VRy3:S0;
+  !!en:;
+!!en:;
+
+!!if&y2>0/x1=25:;
+  !!VRy3:Sy2;
+!!en:;
+
+!!VRy3&y77>0/y3=0:Sy77;
+
+!_!IF:M^y2=%Y2 y3=%Y3 y77=%Y77^;
+!_!IF&y3<>y77/y77>0:M^y2=%Y2 y3=%Y3 y77=%Y77^;
+!_!IF&y77>0:M^y2=%Y2 y3=%Y3 y77=%Y77^;
+
+!!FU&y3<0:E;
+
+
+!!SN:W^Knightmare Skirmish Income Multiplier^/?y55;
+!!if&y55=0:;
+  !!VRy55:S100;  !!SN:W^Knightmare Skirmish Income Multiplier^/y55;
+!!en; !!VRy55:*10;
+
+!!VRy97:Sc :28 +2;
+
+!!if&y3=0:; Classic dragon Utopia
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+
+!!VRy87:Sy97 *7 :5;
+!!CBv2/v3/v4:G0/293/y87 G1/286/y87 G2/272/y87 G3/271/y87;
+!!CBv2/v3/v4:G4/135/y87 G5/132/y87; G6//2; Set Guards
+
+!!re i/0/0:;
+  !!FU55462:Pv2/v3/v4/1; //add "easy" combo  
+!!en:;
+!!re i/0/3:;
+  !!UN:J6/12/?y5;  
+  !!CBv2/v3/v4:A3/y5;
+  !!FU55462:Pv2/v3/v4/0;
+!!en:;
+!!CBv2/v3/v4:A3/470 A3/502;
+
+!_!UN:J6/12/?y5 J6/24/?y6 J6/28/?y7 J6/16/?y8 J6/16/?y9;
+!_!CBv2/v3/v4:A3/y5 A3/y6 A3/y7 A3/y8 A3/y9;
+!_!CBv2/v3/v4:A3/156 A3/156 A3/156;
+
+!_!VRy77:Sc :7 +3;
+!_!CBv2/v3/v4:M286/y77;
+
+!_!FU:E;
+!!en:;
+
+
+!!VRy99:S0 R135; Artifact Reward Dice
+
+
+!!VRy93:S64 *y97 +96; !!VRy92:S3 *y97 :2; !!VRy98:S7 *y97;
+
+!!if&y3=5:; Air
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+!!CBv2/v3/v4:G0/112/y93 G1/127/y93 G2/208/y93 G3/332/y93; Guards
+!!CBv2/v3/v4:G5/166/y93 G6/126/1 G7/126/1;
+
+!!VRy33:S10 R15 *y55;
+!!CBv2/v3/v4:M126/y92 R6/y33 A3/470 A3/470; Reward  (3 Lords of Air + some gold)
+
+!!en:;
+
+
+
+!!if&y3=6:; Earth
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+!!CBv2/v3/v4:G0/113/y93 G1/125/y93 G2/201/y93 G3/333/y93; Guards
+!!CBv2/v3/v4:G5/165/y93 G6/124/1 G7/124/1;
+
+!!VRy33:S10 R15 *y55;
+!!CBv2/v3/v4:M124/y92 R6/y33 A3/470 A3/470; Reward  (3 Lords of Earth + some gold)
+
+!!en:;
+
+
+
+!!if&y3=7:; Fire
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+!!CBv2/v3/v4:G0/114/y93 G1/129/y93 G2/202/y93 G3/334/y93; Guards
+!!CBv2/v3/v4:G5/164/y93 G6/128/1 G7/128/1;
+
+!!VRy33:S10 R15 *y55;
+!!CBv2/v3/v4:M128/y92 R6/y33 A3/470 A3/470; Reward  (3 Lords of Fire + some gold)
+
+!!en:;
+
+
+
+
+!!if&y3=8:; Water
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+!!CBv2/v3/v4:G0/115/y93 G1/123/y93 G2/224/y93 G3/335/y93; Guards
+!!CBv2/v3/v4:G5/167/y93 G6/122/1 G7/122/1;
+
+!!VRy33:S10 R15 *y55;
+!!CBv2/v3/v4:M122/y92 R6/y33 A3/470 A3/470; Reward  (3 Lords of Water + some gold)
+
+!!en:;
+
+
+!!if&y3=9:; Hungry Treant
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+!!CBv2/v3/v4:G0/22/y98 G1/23/y98;
+!!CBv2/v3/v4:G2/199/y98 G3/350/y98; Guards
+!!CBv2/v3/v4:G5/350/y98 G6/199/y98; G7/122/1;
+
+
+!!VRy33:S7 R7 *y55; !!CBv2/v3/v4:R6/y33;
+!!CBv2/v3/v4:M151/y97 R6/y33; Reward  (some Diamond Dragons + 7k gold)
+
+!!en:;
+
+!!VRy96:Sy97 *3;
+!!VRy95:Sy97 *11;
+
+!!VRy99:S0 R135; Artifact Reward Dice
+
+!!if&y3=1:; Temple of Moon
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+
+!!CBv2/v3/v4:G0/246/y96   G1/247/y96  G2/248/y96; First 3 slots of Guards
+!!CBv2/v3/v4:G3/153/y95   G4/154/y95  G5/155/y95; Next 3 slots of Lv7++
+!_!CBv2/v3/v4:G6/235/9 ; G7/242/25; Next 2 slots of Powerul Minions
+
+
+!!re i/0/2:;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  ***
+  !!FU55462&y99>=64 /y99<96 :Pv2/v3/v4/2;
+  !!FU55462&y99>=96 /y99<120:Pv2/v3/v4/3;
+  !!FU55462&y99>=120/y99<136:Pv2/v3/v4/4;
+!!en:;
+!!VRy33:S20 R20 *y55; !!CBv2/v3/v4:R6/y33;
+
+!!en:;
+
+
+
+!!if&y3=2:; Temple of Sun
+
+!_!IF&y77>0:M^Artificial Sun^;
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+
+!!CBv2/v3/v4:G0/243/y96   G1/244/y96  G2/245/y96; First 3 slots of Guards
+!!CBv2/v3/v4:G3/150/y95   G4/151/y95  G5/152/y95; Next 3 slots of Lv7++
+!_!CBv2/v3/v4:G6/253/9;  G7/240/25; Next 2 slots of Powerul Minions
+
+
+!!re i/0/2:;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  ***
+  !!FU55462&y99>=64 /y99<96 :Pv2/v3/v4/2;
+  !!FU55462&y99>=96 /y99<120:Pv2/v3/v4/3;
+  !!FU55462&y99>=120/y99<136:Pv2/v3/v4/4;
+!!en:;
+!!VRy33:S20 R20 *y55; !!CBv2/v3/v4:R6/y33;
+
+!!en:;
+
+
+
+!!if&y3=3:; Temple of Stars
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+
+!!CBv2/v3/v4:G0/249/y96   G1/250/y96  G2/251/y96; First 3 slots of Guards
+!!CBv2/v3/v4:G3/156/y95   G4/157/y95  G5/158/y95; Next 3 slots of Lv7++
+!_!CBv2/v3/v4:G6/241/9;  G7/254/17; Next 2 slots of Powerul Minions
+
+!!re i/0/2:;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  ***
+  !!FU55462&y99>=64 /y99<96 :Pv2/v3/v4/2;
+  !!FU55462&y99>=96 /y99<120:Pv2/v3/v4/3;
+  !!FU55462&y99>=120/y99<136:Pv2/v3/v4/4;
+!!en:;
+!!VRy33:S20 R20 *y55; !!CBv2/v3/v4:R6/y33;
+
+!!en:;
+
+
+
+
+!!if&y3=4:; Greed
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+
+!_!CBv2/v3/v4:G0/134/77 G1/135/77 G2/132/77; First 3 slots of Dragons
+!_!CBv2/v3/v4:G3/151/77 G4/155/77 G5/154/77; Next 3 slots of Dragons
+!_!CBv2/v3/v4:G6/196/99; Next 1 slot of Dracoliches
+
+!!CBv2/v3/v4:G0/281/255 G1/284/255 G2/260/255; First 3 slots of Renegades
+!!CBv2/v3/v4:G3/261/255 G4/283/255 G5/259/255; Next 3 slots of renegades
+!_!CBv2/v3/v4:G6/196/255; Next 1 slot of Dracoliches
+
+!!re i/0/2:;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  !!FU55462&y99>=0  /y99<64 :Pv2/v3/v4/1;
+  ***
+  !!FU55462&y99>=64 /y99<96 :Pv2/v3/v4/2;
+  !!FU55462&y99>=96 /y99<120:Pv2/v3/v4/3;
+  !!FU55462&y99>=120/y99<136:Pv2/v3/v4/4;
+!!en:;
+
+
+!!CBv2/v3/v4:R6/144000; M143/100;
+!!en:;
+
+
+!!if&y3=10:; Temple of Wisdom
+
+!!DO55461/1/99/1:Pv2/v3/v4; Clean Creature Bank
+!!CBv2/v3/v4:G0/169/y98 G1/230/y98;
+!!CBv2/v3/v4:G2/231/y98 G3/378/y98; Guards
+!!CBv2/v3/v4:G5/232/y98 G6/292/y98; G7/122/1;
+
+!_!VRy33:S7 R7 *y55; !_!CBv2/v3/v4:R6/y33;
+!_!CBv2/v3/v4:M151/y97 R6/y33; Reward  (some Diamond Dragons + 7k gold)
+
+!!VRy36:S0 R30;
+!!CBv2/v3/v4&y36=0:A3/86;
+!!CBv2/v3/v4&y36=1:A3/87;
+!!CBv2/v3/v4&y36=2:A3/88;
+!!CBv2/v3/v4&y36=3:A3/89;
+
+!!CBv2/v3/v4&y36=4:A3/175;
+!!CBv2/v3/v4&y36=5:A3/176;
+!!CBv2/v3/v4&y36=6:A3/177;
+!!CBv2/v3/v4&y36=7:A3/178;
+!!CBv2/v3/v4&y36=8:A3/179;
+!!CBv2/v3/v4&y36=9:A3/180;
+
+!!CBv2/v3/v4&y36>=10/y36<=16:A3/470 A3/470 A3/470;
+!!CBv2/v3/v4&y36>=17/y36<=23:A3/502 A3/502;
+!!CBv2/v3/v4&y36>=24/y36<=30:A3/471;
+
+!!en:;

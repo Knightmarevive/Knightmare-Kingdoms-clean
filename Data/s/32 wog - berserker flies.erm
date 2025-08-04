@@ -1,50 +1,94 @@
-ZVSE
-ERMS_ScriptDate=1.5(May).2004
+ZV_SE2
 
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
-** Berserker Fly script by Timothy Pulver
-** Version 2.1 for WoG 3.58
-** Variables used: v295-v296, z940-z941
-** Updated: May 1, 2004
+** BERSERKER FLIES
+** ЗМИИ-БЕРСЕРКЕРЫ
 
---------------------------------------------------------------------------------
+** Option 046 by Timothy Pulver
+** Rewritten by Archer30 (Oct 2022)
 
-!#UN:P46/?v295; [Check if Berserker Fly script is active: v295]
+* Dragon Flies gain the ability to attack without retaliation,
+* cast Berserk on their target, and return after attacking.
 
-!?PI&v295=1;
-!!SN:H^monname^/105/0/z146000;   [Set Dragon Fly name (singular) to "Berserker Fly"]
-!!SN:H^monname^/105/1/z146001;   [Set Dragon Fly name (plural) to "Berserker Flies"]
-!!SN:H^monname^/105/2/z146002;   [Set new description for Berserker Flies ]
-!!UN:P900/?v296; [Check if Stack Experience is enabled: v296]
-!!UN:P900/1; [Enable Stack Experience]
-!!EA105:F102/82/?v2; [Check for No Retaliation/next available bonus line: v2]
-!!EA105&v2>=0:Bv2/1/102/82/1/1/1/1/1/1/1/1/1/1/1; [Give Dragon Flies No Retaliation]
-!!EA105:F102/98/?v2; [Check for Strike & Return/next available bonus line: v2]
-!!EA105&v2>=0:Bv2/1/102/98/1/1/1/1/1/1/1/1/1/1/1; [Give Dragon Flies Strike & Return]
-!!EA105:F99/59/?v2; [Check for Berserk casting/next available bonus line: v2]
-!!EA105&v2>=0:Bv2/1/99/59/100/100/100/100/100/100/100/100/100/100/100; [Give Dragon Flies Berserk Casting]
-!!UN:P900/v296; [Restore Stack Experience status: v296]
-!!UN&v296=0:P906/1; [Disable gaining of Stack Experience from battles if Stack Experience is disabled]
+** Attention! The script works if the troops experience is enabled
 
---------------------------------------------------------------------------------
 
- [Start of Battle]
-!?BA0&v295=1;
-!!UN:P900/1; [Enable Stack Experience]
+!#DC(WOG_OPT_BERSERKER_FLIES) = 46;     
 
-!?BA50&v295=1;
-!!UN:P900/1; [Enable Stack Experience]
+// Initialization (set No Retaliation flag)
+!?FU(OnAfterErmInited);
+!!UN:P(WOG_OPT_BERSERKER_FLIES)/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
 
---------------------------------------------------------------------------------
+!!SN:H^monname^/(MON_DRAGON_FLY)/0/^%T(wog.46.singular)^;  
+!!SN:H^monname^/(MON_DRAGON_FLY)/1/^%T(wog.46.plural)^; 
+!!SN:H^monname^/(MON_DRAGON_FLY)/2/?(description:z);
+!!SN:H^monname^/(MON_DRAGON_FLY)/2/^%(description)%T(wog.46.description)^;
 
- [End of Battle]
-!?BA1&v295=1;
-!!UN:P900/v296; [Restore Stack Experience status]
+!!MA:X(MON_DRAGON_FLY)/d|(MON_FLAG_NO_RETALIATION); 
 
-!?BA51&v295=1;
-!!UN:P900/v296; [Restore Stack Experience status]
+; Check if Strike and Return value has been modified by the other sources. Skip this feature if positive
+!!UN:C7725152/(UNC_INT8)/?(patch:y);
+; The initial value of i^wog_46_patch^ is 0. If the address does not return a proper value, i^wog_46_patch^ will still be 0
+!!VRi^wog_46_patch^&(patch)=(MON_HARPY_HAG):S(patch);
 
---------------------------------------------------------------------------------
+// Give Strike and Return with the address of Harpy Hag's ability
+!?FU(OnBattleStackObtainsTurn)&i^wog_46_patch^;
+!!UN:C7725152/(UNC_INT8)/i^wog_46_patch^;
+
+!!BMi^battle_current_stack^:T?(mon:y);
+!!FU(WOG_46_CheckIfMonIsEligible):P(mon)/?(result:y);
+!!UN&(result):C7725152/(UNC_INT8)/(mon);
+
+// Restore Strike and Return modification
+!?FU(OnBeforeBattleUniversal)&i^wog_46_patch^;
+!!UN:C7725152/(UNC_INT8)/i^wog_46_patch^;
+
+!?FU(OnSetupBattlefield)&i^wog_46_patch^;
+!!UN:C7725152/(UNC_INT8)/i^wog_46_patch^;
+
+!?FU(OnAfterBattleUniversal)&i^wog_46_patch^;
+!!UN:C7725152/(UNC_INT8)/i^wog_46_patch^;
+
+!?FU(OnGameLeave)&i^wog_46_patch^;
+!!UN:C7725152/(UNC_INT8)/i^wog_46_patch^;
+
+// Execute Berserk cast after attack (and retaliation)
+!?FU(WOG_OnAfterMelee);
+!#VA(atkStack:x) (defStack:x);
+
+!!UN:P(WOG_OPT_BERSERKER_FLIES)/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
+
+!!BM(defStack):N?(num:y);
+
+!!if&(num)>0;
+  !!BM(atkStack):T?(atkMon:y);
+  ; Check if the attacker has Berserk casting
+  !!FU(WOG_46_CheckIfMonIsEligible):P(atkMon)/?(canCastBerserk:y);
+
+  ; 20% to cast Berserk with Dragon Flies' melee attack
+  !!if&(canCastBerserk);
+    !!VR(random:y):R0/0/99;
+
+    ; Check the defender's resistance to Berserk
+    !!if&(random)<20;
+      !!BM(atkStack):I?(atkSide:y);
+      !!FU(WOG_Battle_CanStackBeAffectedBySpell):P(defStack)/(SPELL_BERSERK)/(atkSide)/?(result:y);
+
+      ; Cast the spell if lucky
+      !!if&(result);
+        !!BM(defStack):P?(pos:y);
+        !!BM(atkStack):C(SPELL_BERSERK)/(pos)/(SKILL_NOT_LEARNED)/255/(TRUE);
+      !!en;
+    !!en;
+  !!en;
+!!en;
+
+// Funciton to check if the targeted monster is eligible for Strike and Return and Berserk cast
+!?FU(WOG_46_CheckIfMonIsEligible);
+!#VA(mon:x) (result:x);
+
+!!VR(result):S(FALSE);
+!!VR(result)&(mon)=(MON_DRAGON_FLY):S(TRUE);
 
 ** End of Script **

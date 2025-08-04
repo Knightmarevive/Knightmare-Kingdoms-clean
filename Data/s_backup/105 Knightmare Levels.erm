@@ -1,0 +1,539 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=7.1(January).2016
+
+
+!?BA0;
+!!SN:W^KL_BR0^/0;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^KL_BR0^/?y1;
+!!VRy1:+1;
+!!SN:W^KL_BR0^/y1;
+
+
+
+!?FU55430;
+x1  - battle side
+x16 - BM id
+
+//if there is no hero leave
+!!BHx1:N?y1;
+!!FU&y1<0:E;
+
+
+// if there is no stack leave
+!!BMx16:T?y25 N?y26;
+!!FU&y25<0:E;
+!!FU&y25>500:E;
+!!FU&y26<1:E;
+
+
+// if another side leave
+!!BMx16:I?y27;
+!!FU&y27<>x1:E;
+
+
+!!HEy1:E?y2/?y3 X?y5/?y6/?y7/?y8/?y9/?y10/?y11;
+!!HEy1:B2/?y13; !!VRy13::2; y13 = hero faction
+
+!!VRy99:S0; // y99 internal speciality ID
+
+!!IF:Wy1; w varaibles for currrent hero
+
+!!SN:W^Amethyst Upgrades^/?y90;
+!!VRy91:Sy3 *5  +100;
+!!VRy92:Sy3 *10 +100;
+!!VRy93:Sy3 *15 +100;
+!!VRy94:Sy3 *20 +100;
+
+!!VRy99&y5=3/y6=19:S1;
+!!VRy99&y5=3/y6=17:S1;
+!!VRy99&y5=3/y6=57:S1; Lighting Spells
+
+!!VRy99&y5=0/y6=5:S2; Astromancy
+!!VRy99&y5=0/y6=9:S3; Life Magic
+!!VRy99&y5=0/y6=11:S4; Eagle Eye
+
+
+!!VRy99&y5=3/y6=66:S5;
+!!VRy99&y5=3/y6=67:S5;
+!!VRy99&y5=3/y6=68:S5;
+!!VRy99&y5=3/y6=69:S5; Elemental Summoning Spells
+
+
+!!VRy99&y5=3/y6=26:S6; Armageddon Specialist
+
+!!VRy99&y5=3/y6=65:S7; Clone Specialist
+
+!!VRy99&y5=3/y6=59:S8; Berserk Specialist
+
+!!VRy99&y5=0/y6=18:S9; Scholar Specialist
+
+!!VRy99&y5=0/y6=7:S10; Wisdom Specialist
+
+!!VRy99&y5=3/y6=18:S11; Implosion Specialist
+
+!!VRy99&y5=3/y6=48:S12; Prayer Specialist
+
+!!VRy99&y5=3/y6=16:S13; Ice Bolt Specialist
+
+!!VRy99&y5=3/y6=23:S14; Meteor Shower Specialist
+
+!!VRy99&y5=3/y6=20:S15; Frost Ring Specialist
+
+
+!!VRy99&y5=0/y6=25:S16; Sorcery Specialist
+
+!!VRy29: S0 -1 -x16; set y29 for battle experience ID
+
+!!if&y3>=20:;
+     !!EAy29:F0/?y21;
+     !_!EAy29|y99=1/y99=2:By21/1/119/76/1/1/1/1/1/1/1/1/1/1/1; //immune to Lighting Spells
+     !_!EAy29&y99=14:By21/1/119/77/1/1/1/1/1/1/1/1/1/1/1; //immune to Meteor Shower
+     !_!EAy29|y99=13/y99=15:By21/1/119/67/1/1/1/1/1/1/1/1/1/1/1; //immune to Ice Spells
+     !!EAy29&y99=4:By21/1/102/99/1/1/1/1/1/1/1/1/1/1/1; //Champion Charge
+     !_!EAy29&y99=9:By21/1/119/75/1/1/1/1/1/1/1/1/1/1/1; //immune to Berserk
+     !_!FU55418&y90>0/y99=5:Py6/y91/-1/-1/-1; Summon Elementals
+     !!BMx16|y99=9/y99=10:M36/99/2; Advanced Magic Mirror
+
+     !!if&y99=3:; Life Magic
+        !!VRw28:S37;
+        !!VRw29:S2;
+        !!if|y25<174/y25>191:;
+           !!EAy29&y3<35:By21/1/114/100/15/15/20/25/30/35/40/45/50/55/60;
+        !!en:;
+     !!en:;
+
+     !!if&y99=2:; Astromancy
+        !!VRw28:S17;
+        !!VRw29:S12;
+     !!en:;
+
+     !!if&y99=6:; Armageddon
+        !!VRw28:S29;
+        !!VRw29:S8;
+     !!en:;
+
+
+     !!if&y99=7:; Clone
+        !!VRw28:S65;
+        !!VRw29:S20;
+     !!en:;
+
+     !!if&y99=8:; Berserk
+        !!VRw28:S59;
+        !!VRw29:S9;
+     !!en:;
+
+     !!if&y99=11:; Implosion
+        !!VRw28:S18;
+        !!VRw29:S20;
+     !!en:;
+
+     !!if|y99=10/y99=9:; Wisdom or Scholar
+        !!VRw28:S15;
+        !!VRw29:S5;
+     !!en:;
+
+     !!if&y99=12:; Prayer
+        !!VRw28:S48;
+        !!VRw29:S12;
+        !!BMx16:M41/99/3;
+     !!en:;
+
+     !!if&y99=13:; Ice Bolt
+        !!VRw28:S16;
+        !!VRw29:S10;
+     !!en:;
+!!en:;
+
+
+!!if&y3>=35:;
+     !!EAy29:F0/?y21;
+     !_!EAy29|y99=1/y99=2:By21/1/119/65/1/1/1/1/1/1/1/1/1/1/1; //immune to hostile Air Spells
+     !_!EAy29&y99=6:By21/1/119/82/1/1/1/1/1/1/1/1/1/1/1; //immune to Armageddon
+     !!EAy29&y99=8:By21/1/119/70/1/1/1/1/1/1/1/1/1/1/1; //immune to Hostile Fire spells
+     !!EAy29&y99=14:By21/1/119/69/1/1/1/1/1/1/1/1/1/1/1; //immune to Hostile Earth spells
+     !_!EAy29|y99=15/y99=13/y99=12:By21/1/119/87/1/1/1/1/1/1/1/1/1/1/1; //immune to Hostile water spells
+     !!EAy29&y99=12:By21/1/119/87/1/1/1/1/1/1/1/1/1/1/1; //immune to Hostile water spells
+
+     !!EAy29&y99=4:By21/1/102/98/1/1/1/1/1/1/1/1/1/1/1; //Strike and Return
+     !_!FU55418&y90>0/y99=5:Py6/y91/-1/-1/-1; Summon Elementals
+     !_!BMx16|y99=9/y99=10:M34/99/1; Basic Antimagic
+
+     !!if&y99=3:; Life Magic
+       !!if|y25<174/y25>191:;
+          !!EAy29&y3<50:By21/1/114/100/22/22/29/36/43/50/57/64/71/78/85;
+       !!en:;
+     !!en:;
+
+
+     !!if&y99=1/y6=19:; Chain Lighting
+        !!VRw28:S17;
+        !!VRw29:S9;
+     !!en:;
+
+     !!if&y99=2:; Astromancy
+        !!VRw28:S17;
+        !!VRw29:S9;
+     !!en:;
+
+     !!if&y99=6:; Armageddon
+        !!VRw28:S29;
+        !!VRw29:S5;
+     !!en:;
+
+
+     !!if&y99=7:; Clone
+        !!VRw28:S65;
+        !!VRw29:S13;
+     !!en:;
+
+     !!if&y99=8:; Berserk
+        !!VRw28:S59;
+        !!VRw29:S5;
+     !!en:;
+
+     !!if&y99=11:; Implosion
+        !!VRw28:S18;
+        !!VRw29:S12;
+     !!en:;
+
+     !!if|y99=10/y99=9:; Wisdom or Scholar
+        !!VRw28:S15;
+        !!VRw29:S2;
+     !!en:;
+
+     !!if&y99=12:; Prayer
+        !!VRw28:S48;
+        !!VRw29:S7;
+     !!en:;
+
+     !!if&y99=13:; Ice Bolt
+        !!VRw28:S16;
+        !!VRw29:S7;
+     !!en:;
+
+     !!if&y99=14:; Meteor Shower
+        !!VRw28:S23;
+        !!VRw29:S12;
+        !!VRw32:S17;
+     !!en:;
+!!en:;
+
+
+!!if&y3>=50:;
+     !!EAy29:F0/?y21;
+     !!EAy29&y99=6:By21/1/119/70/1/1/1/1/1/1/1/1/1/1/1; //immune to Hostile fire spells
+     !_!EAy29|y99=9/y99=10/y99=2/y99=3:By21/1/119/53/1/1/1/1/1/1/1/1/1/1/1; //immune to All Hostile Spells
+
+     !!EAy29&y99=4:By21/1/102/82/1/1/1/1/1/1/1/1/1/1/1; //No Retailation
+     !_!FU55418&y90>0/y99=5:Py6/y91/-1/-1/-1; Summon Elementals
+
+     !!if&y99=3:; Life Magic
+        !!if|y25<174/y25>191:;
+           !!EAy29:By21/1/114/100/36/36/44/52/60/68/76/84/92/100/108;
+        !!en:;
+     !!en:;
+
+
+     !!if&y99=1/y6=19:; Chain Lighting
+        !!VRw28:S19;
+        !!VRw29:S9;
+     !!en:;
+
+     !!if&y99=2:; Astromancy
+        !!VRw28:S17;
+        !!VRw29:S5;
+     !!en:;
+
+     !!if&y99=6:; Armageddon
+        !!VRw28:S29;
+        !!VRw29:S3;
+     !!en:;
+
+     !!if&y99=7:; Clone
+        !!VRw28:S65;
+        !!VRw29:S7;
+     !!en:;
+
+     !!if&y99=8:; Berserk
+        !!VRw28:S59;
+        !!VRw29:S3;
+     !!en:;
+
+     !!if&y99=11:; Implosion
+        !!VRw28:S18;
+        !!VRw29:S5;
+     !!en:;
+
+     !!if&y99=12:; Prayer
+        !!VRw28:S48;
+        !!VRw29:S3;
+     !!en:;
+
+     !!if&y99=13:; Ice Bolt
+        !!VRw28:S16;
+        !!VRw29:S3;
+     !!en:;
+
+     !!if&y99=14:; Meteor Shower
+        !!VRw28:S23;
+        !!VRw29:S5;
+        !!VRw32:S17;
+     !!en:;
+!!en:;
+
+!_?BF;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^KL_BR0^/?y1;
+!!FU&y1<>2:E;
+
+!!DO55430/0/20/1:P0;
+!!DO55430/21/41/1:P1;
+
+!?HL-1;  estates
+!!HE-1:E?y2/?y3 X?y5/?y6/?y7/?y8/?y9/?y10/?y11;
+!!FU|y5<>0/y6<>13:E; !!HE-1:O?y13;
+
+!!SN:W^KK_Estates_Helper^/?y77;
+!!SN:W^KK_Estates_Helper^/d1;
+!!VRy77:%3; !!FU&y77<>0:E;
+
+!!VRy15:Sy3 -5 :5;
+!_!VRy15:*3;
+!!OW:Ry13/7/?y17;
+!!VRy17:+y15;
+!!OW:Ry13/7/y17;
+!!IF&y15>0:M^Trained Merchant get profit in metals. You earned %Y15 Mithril.^;
+
+
+!?CM2;
+!!CM:I?y1; !!FU&y1<>118:E;
+!!CM:F?y1; !!FU&y1<>0:E;
+
+------------------------------
+
+
+!!HE-1:E?y2/?y3 X?y5/?y6/?y7/?y8/?y9/?y10/?y11;
+!!HE-1:B2/?y13; !!VRy13::2; y13 = hero faction
+
+!!VRy99:S0; // y99 internal speciality ID
+
+
+!!SN:W^Amethyst Upgrades^/?y90;
+!!VRy91:Sy3 *5  +100;
+!!VRy92:Sy3 *10 +100;
+!!VRy93:Sy3 *15 +100;
+!!VRy94:Sy3 *20 +100;
+
+!!VRy99&y5=3/y6=19:S1;
+!!VRy99&y5=3/y6=17:S1;
+!!VRy99&y5=3/y6=57:S1; Lighting Spells
+
+!!VRy99&y5=0/y6=5:S2; Astromancy
+!!VRy99&y5=0/y6=9:S3; Life Magic
+!!VRy99&y5=0/y6=11:S4; Eagle Eye
+
+
+!!VRy99&y5=3/y6=66:S5;
+!!VRy99&y5=3/y6=67:S5;
+!!VRy99&y5=3/y6=68:S5;
+!!VRy99&y5=3/y6=69:S5; Elemental Summoning Spells
+
+
+!!VRy99&y5=3/y6=26:S6; Armageddon Specialist
+
+!!VRy99&y5=3/y6=65:S7; Clone Specialist
+
+!!VRy99&y5=3/y6=59:S8; Berserk Specialist
+
+!!VRy99&y5=0/y6=18:S9; Scholar Specialist
+
+!!VRy99&y5=0/y6=7:S10; Wisdom Specialist
+
+!!VRy99&y5=3/y6=18:S11; Implosion Specialist
+
+!!VRy99&y5=3/y6=48:S12; Prayer Specialist
+
+!!VRy99&y5=3/y6=16:S13; Ice Bolt Specialist
+
+!!VRy99&y5=3/y6=23:S14; Meteor Shower Specialist
+
+!!VRy99&y5=3/y6=20:S15; Frost Ring Specialist
+
+
+!!VRy99&y5=0/y6=25:S16; Sorcery Specialist
+
+!!HE-1:N?y88;
+!!VRy99&y88=153:S-1; Mutare Drake
+
+!!FU&y99=0:E; !!VRz1:S^ ^; !!VRz2:S^ ^; !!VRz3:S^ ^;
+!!if&y3>=15:;
+    !!VRz1|y99=1/y99=2:S^Pendant of Negativity^;
+    !_!VRz1&y99=14:S^immune to Meteor Shower^;
+    !!VRz1|y99=14/y99=11:S^Gem of Geomancy^;
+    !_!VRz1|y99=13/y99=15:S^immune to Ice Spells^;
+    !!VRz1|y99=13/y99=15:S^Snowflake of Lord Kelvin^;
+    !!VRz1&y99=4:S^units have Champion Charge^;
+    !_!VRz1&y99=9:S^immune to Berserk^;
+    !!VRz1&y99=9:S^Pendant of Dispassion^;
+    !_!VRz1&y99=5:S^something with elementals^;
+    !!VRz1|y99=9/y99=10:S^units have Advanced Magic Mirror^;
+
+    !!VRz1&y99=16:S^Orb of Vulnerability^;
+
+   !!VRz1&y88=153:S^Dragon Heart^;    
+!!en:;
+
+
+!!if&y3>=30:;
+
+    !_!VRz2|y99=1/y99=2:S^immune to hostile Air Spells^;
+    !_!VRz2|y99=1/y99=2/y99=10/y99=11:S^Void Paladin Armour^;
+    !_!VRz2|y99=15/y99=14/y99=13:S^Void Paladin Armour^;
+
+    !!VRz2&y99=1:S^Supreme Pendant of Negativity^;
+    !!VRz2|y99=11/y99=14:S^Supreme Gem of Geomancy^;
+    !!VRz2|y99=13/y99=15:S^Supreme Snowflake of Lord Kelvin^;
+
+    !!VRz2&y99=16:S^Armour of Damned^;
+
+    !_!VRz2&y99=6:S^immune to Armageddon^;
+    !!VRz2&y99=6:S^Armageddon's Blade^;
+    !_!VRz2&y99=14:S^immune to Hostile Earth spells^;
+    !!VRz2&y99=8:S^immune to Hostile Fire spells^;
+    !_!VRz2|y99=15/y99=13/y99=12:S^immune to Hostile Water spells^;
+    !!VRz2&y99=4:S^units have strike and return^;
+    !_!VRz2|y99=9/y99=10:S^units have Basic Antimagic^;
+    !_!VRz2&y99=5:S^something with elementals^;
+!!en:;
+
+!!if&y3>=45:;
+    !!VRz3&y99=6:S^immune to Hostile Fire spells^;
+    !_!VRz3|y99=9/y99=10/y99=2/y99=3:S^immune to All Hostile Spells^;
+    !!VRz3&y99=4:S^units have No Retailation^;
+
+    !!VRz3|y99=9/y99=10/y99=2:S^Void Paladin Armour^;
+    !!VRz3|y99=1/y99=2/y99=10/y99=11:S^Void Paladin Armour^;
+    !!VRz3|y99=15/y99=14/y99=13:S^Void Paladin Armour^;
+
+    !!VRz3|y99=15/y99=14/y99=16:S^Void Paladin Armour^;
+    !_!VRz3&y99=5:S^something with elementals^;
+
+   !!VRz3&y88=153:S^Dracopedia^; 
+!!en:;
+
+!!IF:M^
+{Hidden speciality effect}
+there is an effect at levels 15/30/45
+
+%Z1
+%Z2
+%Z3
+^;
+
+!?FU(give_hero_leveled_artifact);
+
+!!HEx1:E?y2/?y3 X?y5/?y6/?y7/?y8/?y9/?y10/?y11;
+!!HEx1:B2/?y13; !!VRy13::2; y13 = hero faction
+
+!!VRy99:S0; // y99 internal speciality ID
+
+
+!!SN:W^Amethyst Upgrades^/?y90;
+!!VRy91:Sy3 *5  +100;
+!!VRy92:Sy3 *10 +100;
+!!VRy93:Sy3 *15 +100;
+!!VRy94:Sy3 *20 +100;
+
+!!VRy99&y5=3/y6=19:S1;
+!!VRy99&y5=3/y6=17:S1;
+!!VRy99&y5=3/y6=57:S1; Lighting Spells
+
+!!VRy99&y5=0/y6=5:S2; Astromancy
+!!VRy99&y5=0/y6=9:S3; Life Magic
+!!VRy99&y5=0/y6=11:S4; Eagle Eye
+
+
+!!VRy99&y5=3/y6=66:S5;
+!!VRy99&y5=3/y6=67:S5;
+!!VRy99&y5=3/y6=68:S5;
+!!VRy99&y5=3/y6=69:S5; Elemental Summoning Spells
+
+
+!!VRy99&y5=3/y6=26:S6; Armageddon Specialist
+
+!!VRy99&y5=3/y6=65:S7; Clone Specialist
+
+!!VRy99&y5=3/y6=59:S8; Berserk Specialist
+
+!!VRy99&y5=0/y6=18:S9; Scholar Specialist
+
+!!VRy99&y5=0/y6=7:S10; Wisdom Specialist
+
+!!VRy99&y5=3/y6=18:S11; Implosion Specialist
+
+!!VRy99&y5=3/y6=48:S12; Prayer Specialist
+
+!!VRy99&y5=3/y6=16:S13; Ice Bolt Specialist
+
+!!VRy99&y5=3/y6=23:S14; Meteor Shower Specialist
+
+!!VRy99&y5=3/y6=20:S15; Frost Ring Specialist
+
+!!VRy99&y5=0/y6=25:S16; Sorcery Specialist
+
+!!SN:L^emerald3_3.era^/?y83;
+!!SN:Ay83/^SoulBind_many_ARTs^/?y84;
+
+!!if&y99=1/y3>=15:;
+  !!SN:Ey84/1/x1/106/77;
+  !!SN&y3>=35:Ey84/1/x1/182/77;
+  !!SN&y3>=50:Ey84/1/x1/181/77;
+!!en;
+
+!!if&y3>=15;
+  !!SN|y99=11/y99=14:Ey84/1/x1/185/77;
+  !!SN|y99=13/y99=15:Ey84/1/x1/183/77;
+  !!SN&y99=9:Ey84/1/x1/100/77;
+!!en;
+
+!!if&y3>=30;
+  !!SN|y99=11/y99=14:Ey84/1/x1/186/77;
+  !!SN|y99=13/y99=15:Ey84/1/x1/184/77;
+  !!SN&y99=16:Ey84/1/x1/132/77;
+!!en;
+
+!!if|y99=15/y99=14/y99=13/y99=11/y99=10/y99=2/y99=9/y99=16;
+  !!SN&y3>=45:Ey84/1/x1/181/77;
+!!en;
+
+!!SN&y3>=30/y99=6:Ey84/1/x1/128/77;
+!!SN&y3>=15/y99=16:Ey84/1/x1/93/77;
+
+mutare drake dragon heart
+!!SN&y3>=15/x1=153:Ey84/1/x1/159/77;
+mutare drake dracopedia
+!!SN&y3>=45/x1=153:Ey84/1/x1/485/77;
+
+mutare drake and mutare vial of dragon blood
+!!SN|x1=151/x1=153:Ey84/1/x1/127/77;
+
+!?FU(OnBeforeBattleUniversal);
+!_!FU:E;
+
+!!BA:H0/?y1 H1/?y2; !!HEy1&y1<0:N?y1;
+!!FU(give_hero_leveled_artifact):Py1;
+!!FU(give_hero_leveled_artifact)&y2>-2:Py2;
+
+!?FU(OnHeroGainLevel);
+
+!?FU(OnHeroScreenMouseClick);
+!!HE-1:N?y1;
+!!FU(give_hero_leveled_artifact):Py1;

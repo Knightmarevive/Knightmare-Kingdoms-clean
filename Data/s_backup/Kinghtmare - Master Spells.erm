@@ -1,0 +1,113 @@
+ZV_SE
+
+!?FU(KKMS_level);
+!!VRx3:S0;
+!!HEx2:S14/?y14; Fire
+!!HEx2:S15/?y15; air
+!!HEx2:S16/?y16; water
+!!HEx2:S17/?y17; earth
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!if&y88<>0:;
+  !!FU(SSL_get):P14/y14/?y14/d/d/d;
+  !!FU(SSL_get):P15/y15/?y15/d/d/d;
+  !!FU(SSL_get):P16/y16/?y16/d/d/d;
+  !!FU(SSL_get):P17/y17/?y17/d/d/d;
+!!en:;
+
+!!VRy34:Sx1 &2; Fire
+!!VRy35:Sx1 &1; Air
+!!VRy36:Sx1 &4; water 
+!!VRy37:Sx1 &8; earth
+
+!!VRx3&x3<y14/y34<>0:Sy14;
+!!VRx3&x3<y15/y35<>0:Sy15;
+!!VRx3&x3<y16/y36<>0:Sy16;
+!!VRx3&x3<y17/y37<>0:Sy17;
+
+!?FU(KKMS_set_magic_arts);
+
+!!HEx1:S2/?y2; logistics
+!!HEx1:S5/?y5; Navigation
+!!HEx1:S7/?y7; wisdom
+!!HEx1:S8/?y8; mysticism
+
+!!HEx1:S14/?y14; Fire
+!!HEx1:S15/?y15; air
+!!HEx1:S16/?y16; water
+!!HEx1:S17/?y17; earth
+
+!!HEx1:S25/?y25; Sorcery
+
+!!SN:W^more_SS_levels.era^/?y88;
+!!if&y88<>0:;
+  !_!FU(SSL_get):P2/y2/?y2/d/d/d;
+  !!FU(SSL_get):P7/y7/?y7/d/d/d;
+
+  !!FU(SSL_get):P14/y14/?y14/d/d/d;
+  !!FU(SSL_get):P15/y15/?y15/d/d/d;
+  !!FU(SSL_get):P16/y16/?y16/d/d/d;
+  !!FU(SSL_get):P17/y17/?y17/d/d/d;
+
+  !_!FU(SSL_get):P25/y25/?y25/d/d/d;
+!!en:;
+
+!!SN:L^emerald3_3.era^/?y92; 
+!!SN:Ay92/^SoulBind_ART^/?y93; 
+
+!!FU:E;
+
+!!SN&y7=5/y14=5/y15=5/y16=5/y17=5:Ey93/1/x1/180;  
+!!SN&y7=5/y14=5/y15=5/y16=5/y17=5:Ey93/1/x1/93;
+!!SN&y7=5/y14=5:Ey93/1/x1/81 Ey93/1/x1/128;  
+!!SN&y7=5/y15=5:Ey93/1/x1/79 Ey93/1/x1/106;  
+!!SN&y7=5/y16=5:Ey93/1/x1/82 Ey93/1/x1/90;  
+!!SN&y7=5/y17=5:Ey93/1/x1/80 Ey93/1/x1/92;  
+!!SN&y2=15/y5=15/y7=5/y25=15:Ey93/1/x1/420;  
+!!SN&y8=15/y7=5/y25=15:Ey93/1/x1/138;  
+
+!?FU(OnOpenHeroScreen);
+!!HE-1:N?y1;
+!!FU(KKMS_set_magic_arts):Py1;
+
+
+!?BA53; 
+!!BA:H0/?y10 H1/?y11;
+!!FU(KKMS_set_magic_arts):Py10;
+!!FU(KKMS_set_magic_arts)&y11>=0:Py11;
+
+!?HM-1; !!FU:E;
+!!HE-1:N?y1;
+!!FU(KKMS_set_magic_arts):Py1;
+
+!?BG0; 
+
+!!SN:W^KKMS_last_spell^/0;
+!!BG:A?y1; !!FU&y1<>1:E;
+!!BG:S?y2; !!SSy2:S?y3; !!BG:H?y4;
+!!FU(KKMS_level):Py3/y4/?y5;
+
+!!SN:W^KKMS_last_spell^/y2;
+!!FU:E; // no debug message
+
+!!IF&y5=0:L^Novice^;
+!!IF&y5=1:L^Basic^;
+!!IF&y5=2:L^Advanced^;
+!!IF&y5=3:L^Expert^;
+!!IF&y5=4:L^Master^;
+!!IF&y5=5:L^GrandMaster^;
+
+!?BG1; !!BG:A?y1; 
+!_!FU&y1<>1:E; !_!BG:S?y2; 
+
+!!SN:W^KKMS_last_spell^/?y2; !!FU&y2=0:E;
+!!SSy2:S?y3; !!BG:H?y4;
+!!FU(KKMS_level):Py3/y4/?y5;
+
+!!FU:E; // no debug message
+!!IF&y5=0:L^Novice^;
+!!IF&y5=1:L^Basic^;
+!!IF&y5=2:L^Advanced^;
+!!IF&y5=3:L^Expert^;
+!!IF&y5=4:L^Master^;
+!!IF&y5=5:L^GrandMaster^;

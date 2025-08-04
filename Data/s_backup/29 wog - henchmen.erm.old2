@@ -1,0 +1,507 @@
+ZVSE2
+; Author:   Archer30 & igrik
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Era Erm Framework
+
+; A powerful stack that can be leveled up after wining battles
+; w117 - henchman experience
+; w118 - type of henchman: (-1 no, -2 don't ask again, others: creature no.)
+; w119 - 0: dead, 1: alive
+
+
+!#UN:P49/?i^hench_enabled^;
+
+; Initialise variables
+!?FU(OnAfterErmInstructions)&i^hench_enabled^;
+!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+  !!IF:Wi;
+  !!VRw117:S0;
+  !!VRw118:S(NO_MON);
+!!en;
+
+; Pops up dialogue when clicking on player's flag on the hero screen
+!?FU(OnHeroScreenMouseClick)&i^mouse_item^=141/i^hench_enabled^;
+!!CM:H?(hero:y)/?(secHero:y);
+
+!!if&i^mouse_action^=(MOUSE_LMB_PRESSED)/i^key_ctrl^=(FALSE);
+  !!VR(canInteract:y):S(FALSE);
+  !!HE(hero):O?(owner:y);               [Get owner of the hero in order to decide whether to offer to choose a henchman in FU(hench_ShowHenchInfo)]
+  !!VR(canInteract)&999/(owner)>(NO_PLAYER):S(TRUE);
+  !!FU(hench_CheckIfHenchEligible):P(hero)/?(isEligible:y);
+  !!IF:W(hero);
+
+  !!if&w118>(NO_MON);
+    !!FU(hench_ShowHenchInfo):P(hero)/(canInteract); [Show hero's henchman main dialogue if henchman is available]
+  !!el;
+    !!if&(canInteract)/(isEligible);
+      !!FU(hench_ChooseHench):P(hero);  [Offer to choose a henchman]
+      !!UN:R3/(CURRENT_HERO);
+    !!el;
+      !!IF:Mz149009;
+    !!en;
+  !!en;
+!!el&i^mouse_action^=(MOUSE_RMB_PRESSED);
+  !!IF:Mz149000;
+!!en;
+
+; Resurrect the henchamn when visting a town
+!?OB(OBJ_TOWN)&i^hench_enabled^;
+!!OW:I(CURRENT_PLAYER)/?(isAi:y);
+!!FU&(isAi):E;                          [exit if the visitng player is AI]
+
+!!HE(CURRENT_HERO):N?(hero:y);
+!!IF:W(hero);
+!!FU(hench_ResurrectHench)&w118>(NO_MON)/w119<>(TRUE):P(hero); [Offer to resurrect the henchman if henchman is avaliable and dead]
+
+; Ask to get a henchman for human player or give one for AI player
+!?FU(OnBeforeBattleUniversal)&i^hench_enabled^;
+!!FU(hench_GetHenchBeforeBattle):P(BATTLE_LEFT);
+!!FU(hench_GetHenchBeforeBattle):P(BATTLE_RIGHT);
+
+; Set up henchmen on the battlefield
+; Note: timing is different in PVP battle!
+!?FU(OnBeforeBattlefieldVisible)&i^hench_enabled^/i^battle_humanOnly^;
+!!IP:Di^battle_owner_1^ Wi^battle_hero_0^/117/119; [Pass henchman to the defender's PC]
+
+!?FU(OnSetupBattlefield)&i^hench_enabled^/i^battle_humanOnly^=(FALSE);
+!!FU(hench_SetUpHenchStack):P(BATTLE_LEFT);
+!!FU(hench_SetUpHenchStack):P(BATTLE_RIGHT);
+
+!?FU(OnBattleRound)&i^battle_round^=0/i^hench_enabled^/i^battle_humanOnly^;
+!!FU(hench_SetUpHenchStack):P(BATTLE_LEFT);
+!!FU(hench_SetUpHenchStack):P(BATTLE_RIGHT);
+
+!?FU(hench_SetUpHenchStack);
+!#VA(side:x);
+
+!!VRi^hench_stack_%(side)^:S(NO_STACK);
+!!VRi^heroExpBefore_%(side)^:S0;        [Get heros' exp before the battle in order to calculate how many exp was earned after battle]
+
+!!VR(hero:y):Si^battle_hero_%(side)^;
+
+!!if&(hero)>(NO_HERO);
+  !!HE(hero):O?(owner:y);
+  !!OW:I(owner)/?(isAi:y);
+  !!FU(hench_ChooseAiHench)|(owner)=(NO_PLAYER)/(isAi):P(hero)/(side); [owner = no player with Random Hero optino]
+  !!IF:W(hero);
+
+  ; Place the henchman stack
+  !!if&w118>(NO_MON)/w119;
+    !!FU(hench_GetHenchPosition):P(side)/w118/?(henchPos:y);
+    !!BU:Sw118/1/(henchPos)/(side)/-1/(FALSE); [Place]
+    !!BU:E(henchPos)/?i^hench_stack_%(side)^; [Store stack id]
+    !!FU(hench_ManageHenchStats):Pi^hench_stack_%(side)^/(side)/(hero); [Manage stats]
+  !!en;
+!!en;
+
+!?FU(hench_GetHenchPosition);
+!#VA(side:x) (mon:x) (position:x);
+
+!!if&(side)=(BATTLE_LEFT);
+  ; Check whether the battle happens in a creature bank to decide the position for placeing henchman
+  !!BU:E2/?(stackPos2:y);
+
+  !!if&(stackPos2)<=(BATTLE_ATTACKER_STACK_LAST); [Position in regular battle]
+    !!VR(position):S20;
+  !!el;                                   [Position in creature bank]
+    !!VR(position):S25;
+  !!en;
+!!el;
+  ; Check whether the battle is a siege and the henchman is double wide, move to right if positive
+  !!BA:S?(battleType:y);
+  !!MA:X(mon)/?(monFlag:y);
+  !!VR(monFlag):&(MON_FLAG_WIDE);
+
+  !!if&(battleType)>0/(monFlag)<>0;
+    !!VR(position):S31;
+  !!el;
+    !!VR(position):S30;
+  !!en;
+!!en;
+
+; Fix exessive henchman quantity/Manage Dead or Alive
+!?FU(OnAfterBattleAction)&i^hench_enabled^;
+!!FU(hench_ManageDeadOrAlive):Pi^hench_stack_0^/(BATTLE_LEFT);
+!!FU(hench_ManageDeadOrAlive):Pi^hench_stack_1^/(BATTLE_RIGHT);
+
+!?FU(hench_ManageDeadOrAlive);
+!#VA(stack:x) (side:x);
+
+!!if&(stack)>(NO_STACK);
+  !!BM(stack):N?(qty:y) T?(mon:y);
+
+  !!if&(qty)<=0;
+    !!BM(stack):K100000000;    [prevent resurrecting henchman in battle]
+    !!FU(hench_ManageHenchLiving):P(side)/(FALSE);
+  !!el&(qty)>1/(mon)<>(MON_GHOST);
+    !!BM(stack):N1 L0;
+    !!FU(hench_ManageHenchLiving):P(side)/(TRUE);
+    !!SN:D;
+  !!en;
+!!en;
+
+!?FU(hench_ManageHenchStats);
+!#VA(stack:x) (side:x) (hero:x);
+
+!!BM(stack):T?(mon:y);
+!!FU&(mon)<=(NO_MON):E;
+
+!!FU(hench_GetHenchExpEachLevel):P(mon);
+!!VR(expPerLv:y):Si^hench_expPerLevel^;
+!!IF:W(hero);
+!!HE(hero):E?(heroExp:y)/?(heroLv:y)/(TRUE);
+
+!!VR(dailyHenchExp:y):Si^timerDay^ -1;
+!!VR(henchExp:y):S(heroLv) -1 *10 +(dailyHenchExp) +w117;
+
+!!VRi^hench_level_0^&(side)=(BATTLE_LEFT):S(henchExp) :(expPerLv) +1; [level of attacker's henchman]
+!!VRi^hench_level_1^&(side)=(BATTLE_RIGHT):S(henchExp) :(expPerLv) +1; [level of defender's henchman]
+
+!!MA:S(mon)/?(monSpeed:y);
+!!VR(speedFactor1:y):S(henchExp) :50 +100;
+!!VR(speedFactor2:y):S(henchExp) :1000;
+!!VR(bonusSpeed:y):S(monSpeed) +(speedFactor2) *(speedFactor1) :100 -(monSpeed);
+!!BM(stack):Sd(bonusSpeed);
+
+!!VR(dmgHpFactor:y):S(henchExp) *100 :(expPerLv) +100;
+!!BM(stack):U1/d1 U1/?(minDmg:y) U2/d2 U2/?(maxDmg:y);
+!!VR(minDmg):*(dmgHpFactor) :100;
+!!VR(maxDmg):*(dmgHpFactor) :100;
+!!BM(stack):U1/(minDmg) U2/(maxDmg);
+!!BM(stack):H?(hp:y);
+!!VR(hpNew:y):S(hp) *(dmgHpFactor) :100 + 50;
+!!BM(stack):H(hpNew);
+
+!!VR(aDFactor1:y):S(henchExp) :25 +100;
+!!VR(aDFactor2:y):S(henchExp) :250;
+!!MA:A(mon)/?(atk:y) D(mon)/?(def:y);
+!!VR(atkBonus:y):S(atk) +(aDFactor2) *(aDFactor1) :100 -(atk);
+!!VR(defBonus:y):S(def) +(aDFactor2) *(aDFactor1) :100 -(def);
+!!BM(stack):Ad(atkBonus) Dd(defBonus);
+
+!!BM(stack):N1 B1;
+!!BM(stack):M(SPELL_DISGUISE)/1000/(SKILL_NOT_LEARNED);
+!!FU(hench_ManageHenchShooterFlag):P(stack);
+
+; Manage tactic enhancement
+!!UN:P218/?(tacticEnchOn:y);
+
+!!if&(tacticEnchOn);
+  !!VR(atkTactic:y):S(SKILL_NOT_LEARNED);
+  !!VR(defTactic:y):S(SKILL_NOT_LEARNED);
+  !!BH0:N?(atkHero:y);
+  !!BH1:N?(defHero:y);
+  !!HE(atkHero)&(atkHero)>(NO_HERO):S(SKILL_TACTICS)/?(atkTactic);
+  !!HE(defHero)&(defHero)>(NO_HERO):S(SKILL_TACTICS)/?(defTactic);
+  !!FU&(atkTactic)=(defTactic):E;
+  !!FU&(atkTactic)<(defTactic)/(side)=(BATTLE_LEFT):E;
+  !!FU&(atkTactic)>(defTactic)/(side)=(BATTLE_RIGHT):E;
+
+  !!VR(bonusSpeed)&(atkTactic)>(defTactic)/(side)=(BATTLE_LEFT):S(atkTactic) -(defTactic);
+  !!VR(bonusSpeed)&(atkTactic)<(defTactic)/(side)=(BATTLE_RIGHT):S(defTactic) -(atkTactic);
+  !!BM(stack):Sd(bonusSpeed);
+!!en;
+
+!?FU(hench_ChooseHench);
+!#VA(hero:x);
+
+!!VRz1:Sz149002;
+!!FU(hench_GetCandidateNames):P(hero);
+!!IF:W(hero);
+
+!!if&w118>(NO_MON);
+  !!VRz9:Sz149003;          [Don't display DIMISS HENCHMAN if no henchman]
+!!el;
+  !!VRz9:S^^;
+!!en;
+
+!!VRz10:Sz149004;
+!!IF:G1/1/256/1/2/3/4/5/6/7/8/9/10;
+!!FU(IntLog2):Pv1/?(choice:y);
+
+!!if&(choice)<7;
+  !!HE(hero):C0/(choice)/?(mon:y)/?(qty:y)/?(stackExp:y);
+  !!EX(hero)/(choice):R?(art:y)/?(artOpt:y);
+  !!HE(hero)&(qty)=1/(art)=(ART_WARLORDS_BANNER):A(ART_WARLORDS_BANNER); [return banner to the hero if the creature set as henchman is the last]
+  !!HE(hero):C0/(choice)/?(mon)/d-1;
+  !!VRw117:S0;
+  !!VRw118:S(mon);
+  !!VRw119:S(TRUE);
+!!el&(choice)=7;
+  !!VRw117:S0;
+  !!VRw118:S-2;
+!!en;
+
+; Get the names of creatures in the hero's army as candidates of the henchman
+!?FU(hench_GetCandidateNames);
+!#VA(hero:x);
+
+!!re (zIndex:y)/2/8;
+  !!VRz(zIndex):S^^;
+!!en;
+
+!!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+  !!HE(hero):C0/i/?(mon:y)/?(qty:y);
+  !!co|(mon)<=(NO_MON)/(qty)<=0/(mon)=(MON_EMISSARY_OF_WAR)/(mon)=(MON_EMISSARY_OF_PEACE)/(mon)=(MON_EMISSARY_OF_MANA)/(mon)=(MON_EMISSARY_OF_LORE);
+
+  ; store names of monsters at z vars
+  !!VR(zIndex):Si +2;
+  !!SN:H^monname^/(mon)/0/?z(zIndex);
+!!en;
+
+; Calculate exp of each henchman level by fight value
+!?FU(hench_GetHenchExpEachLevel);
+!#VA(mon:x);
+
+!!MA:F(mon)/?(fv:y);
+!!VRi^hench_expPerLevel^:S(fv) *8 :100 F3/(INT_MAX);   [i^hench_expPerLevel^ - exp of each level, min at 3]
+
+!?FU(hench_ShowHenchInfo);
+!#VA(hero:x) (canInteract:x);
+
+!!IF:W(hero);
+!!VRz1:S^^;
+!!VRz1&w119<>(TRUE):+z149005 +^
+^;
+!!FU(hench_GetHenchExpEachLevel)&w118>(NO_MON):Pw118;
+
+!!HE(hero):E?y1/?y2/1;
+!!VRy2:-1 *10 +i^timerDay^ -1;
+!!VRy11:Sw117 +y2;
+!!VRy99:Sy11 *100 :i^hench_expPerLevel^ + 100;
+!!VRy3:Sy11 :i^hench_expPerLevel^ +1;
+
+!!if&w118>(NO_MON);
+  !!VRy4:Sy11 %i^hench_expPerLevel^ -i^hench_expPerLevel^ *-1;
+  !!MA:Aw118/?y5;
+  !!VRy60:Sy11 :25 +100;
+  !!VRy61:Sy11 :250;
+  !!VRy5:+y61 *y60 :100;
+
+  !!MA:Dw118/?y6;
+  !!VRy60:Sy11 :25+100;
+  !!VRy61:Sy11 :250;
+  !!VRy6:+y61 *y60 :100;
+
+  !!MA:Pw118/?y1;
+  !!VRy7:Sy1 *y99 :100 +50;+10
+  !!MA:Mw118/?y1;
+  !!VRy8:Sy1+1 *y99 :100;
+  !!MA:Ew118/?y1;
+  !!VRy9:Sy1+2 *y99 :100;
+
+  !!MA:Sw118/?y10;
+  !!VRy60:Sy11:50+100;
+  !!VRy61:Sy11:1000;
+  !!VRy10:+y61 *y60:100;
+!!en;
+
+!!VRz2:Sz149006;
+
+!!if&(canInteract)>0;                              [Allow selection only when hero is with an owner/on interacting player's turn]
+  !!VRz2:+^
+^ +^{%z149002}^;
+  !!IF:Q2/(PIC_TYPE_MONSTER)/w118/(MSG_TYPE_QUESTION)/z2;
+  !!FU(hench_ChooseHench)&2:P(hero);
+!!el;
+  !!IF:Q2/(PIC_TYPE_MONSTER)/w118/(MSG_TYPE_MES)/z2;
+!!en;
+
+!?FU(hench_ManageHenchLiving);
+!#VA(side:x) (isAlive:x);
+
+!!BA:H(side)/?(hero:y);
+!!IF&(hero)>(NO_HERO):W(hero);
+!!VRw119:S(isAlive);
+
+; Offer to resurrect the henchman
+!?FU(hench_ResurrectHench);
+!#VA(hero:x);
+
+!!IF:W(hero);
+!!FU(hench_GetHenchExpEachLevel)&w118>(NO_MON):Pw118;           [get exp of each henchman level i^hench_expPerLevel^]
+!!HE(hero):E?y6/?y7/(TRUE);
+!!VRy9:Si^timerDay^ -1;
+!!VRy10:Sy7 -1 *10 +w117 +y9;
+!!VRy3:Sy10 :i^hench_expPerLevel^ +1;
+!!MA:Cw118/(RES_GOLD)/?y8;
+!!VRy4:Sy8 *y3 :5;
+!!IF:Q2/(PIC_TYPE_MONSTER)/w118/(MSG_TYPE_QUESTION)/z149007;
+
+!!if&2;
+  !!OW:R(CURRENT_PLAYER)/(RES_GOLD)/?y5;
+
+  !!if&y5>=y4;
+    !!VRy8:Sy5 -y4;
+    !!OW:R(CURRENT_PLAYER)/(RES_GOLD)/y8;
+    !!VRw119:S(TRUE);
+  !!el;
+    !!IF&y5<y4:M1/z149008;
+  !!en;
+!!en;
+
+; Ask to get a henchman if the human hero didn't get one
+!?FU(hench_GetHenchBeforeBattle);
+!#VA(side:x);
+
+!!BA:H(side)/?(hero:y);
+!!FU&(hero)<=(NO_HERO):E;
+
+!!HE(hero):O?(owner:y);
+!!OW:I(owner)/?(isAi:y) Cd/?(thisPcOwner:y);
+
+!!if&(isAi)=(FALSE);
+  !!FU|(side)=(BATTLE_RIGHT)/(thisPcOwner)<>(owner):E;
+!!en;
+
+!!FU(hench_CheckIfHenchEligible):P(hero)/?(isEligible:y);
+!!FU&(isEligible)=(FALSE):E;
+
+!!IF&(hero)>(NO_HERO):W(hero);
+
+!!if&(side)=(BATTLE_LEFT)/(isAi)=(FALSE)/w118=(NO_MON);
+  !!IF:Q2/10/(owner)/2/z149001;
+  !!VRi^hench_transfering^&i^battle_humanOnly^:S(FALSE);
+
+  !!if&2;
+    !!FU(hench_ChooseHench):P(hero);
+    !!VRi^hench_transfering^&i^battle_humanOnly^:S(TRUE);
+  !!el;
+    !!VRw118:S-2;
+  !!en;
+!!en;
+
+; Choose a henchman for AI hero before the battle (shooters with high priority)
+!?FU(hench_ChooseAiHench);
+!#VA(hero:x) (side:x);
+
+!!IF(hero):W(hero);
+!!VRw118:S(NO_MON);
+!!VR(henchMon:y):S(NO_MON);              [creature id]
+!!VR(henchShots:y):S0;                   [shots]
+!!VR(henchFv:y):S0;                      [fight value]
+
+!!if&(side)=(BATTLE_LEFT);
+  !!VR(stackFirst:y):S(BATTLE_ATTACKER_STACK_FIRST);
+  !!VR(stackLast:y):S(BATTLE_ATTACKER_STACK_LAST);
+!!el;
+  !!VR(stackFirst):S(BATTLE_DEFENDER_STACK_FIRST);
+  !!VR(stackLast):S(BATTLE_DEFENDER_STACK_LAST);
+!!en;
+
+!!re i/(stackFirst)/(stackLast);
+  !!BMi:T?(mon:y) N?(qty:y);
+  !!VR(flag:y):S(TRUE);                 [Skip not used creatures]
+  !!VR(flag)|(mon)<=(NO_MON)/(qty)<=0:S(FALSE);
+  !!VR(flag)&(mon)>=(MON_CATAPULT)/(mon)<=(MON_ARROW_TOWERS):S(FALSE);
+  !!VR(flag)&(mon)>=(MON_EMISSARY_OF_WAR)/(mon)<=(MON_EMISSARY_OF_LORE):S(FALSE);
+  !!VR(flag)&(mon)>=(MON_COMMANDER_FIRST_A)/(mon)<=(MON_COMMANDER_LAST_D):S(FALSE);
+  !!co&(flag)=(FALSE);
+
+  !!MA:N(mon)/?(shots:y) F(mon)/?(fv:y);
+
+  !!if&(shots)>(henchShots);             [more shots]
+    !!VR(henchMon):S(mon);
+    !!VR(henchShots):S(shots);
+    !!VR(henchFv):S(fv);
+  !!el&(shots)=(henchShots)/(fv)>(henchFv);[same shots but more fight value]
+    !!VR(henchMon):S(mon);
+    !!VR(henchFv):S(fv);
+  !!en;
+!!en;
+
+!!IF(hero):W(hero);
+!!VRw118:S(henchMon);
+!!VRw119:S(TRUE);
+
+; Restore the henchman in battle replay
+!?FU(OnBeforeBattleUniversal)&i^hench_enabled^;
+!!SN:W^henchmen_side_0^/(FALSE)  W^henchmen_side_1^/(FALSE);
+!!BA:H0/?(atkHero:y) H1/?(defHero:y);
+
+!!if&(atkHero)>(NO_HERO);
+  !!IF:W(atkHero);
+  !!SN:W^henchmen_side_0^/w119;
+!!en;
+
+!!if&(defHero)>(NO_HERO);
+  !!IF:W(defHero);
+  !!SN:W^henchmen_side_1^/w119;
+!!en;
+
+!?FU(OnBattleReplay)&i^hench_enabled^;
+!!BA:H0/?(atkHero:y) H1/?(defHero:y);
+
+!!if&(atkHero)>(NO_HERO);
+  !!IF:W(atkHero);
+  !!VRw119&i^henchmen_side_0^:S(TRUE);
+!!en;
+
+!!if&(defHero)>(NO_HERO);
+  !!IF:W(defHero);
+  !!VRw119&i^henchmen_side_1^:S(TRUE);
+!!en;
+
+; Reward the henchman exp if won the battle
+!?FU(OnAfterBattleUniversal)&i^hench_enabled^;
+!!BA:H0/?(atkHero:y) H1/?(defHero:y);
+!!FU(hench_GiveExpAfterBattle)&(atkHero)>(NO_HERO):P(atkHero);
+!!FU(hench_GiveExpAfterBattle)&(defHero)>(NO_HERO):P(defHero);
+
+!?FU(hench_GiveExpAfterBattle);
+!#VA(hero:x);
+
+!!IF:W(hero);
+!!VRw117&w118>(NO_MON)/w119:+6 R4;
+
+; Remove the shooting flag if the henchman can shoot but with no ammo (centaurs)
+!?FU(hench_ManageHenchShooterFlag);
+!#VA(stack:x);
+
+!!BM(stack):F?(flag:y) U3/?(shots:y);
+!!VR(flag):&(MON_FLAG_SHOOTER);
+
+!!if&(flag)=(MON_FLAG_SHOOTER)/(shots)<1:S(TRUE);
+  !!BM(stack):F?(flag);
+  !!VR(flag):|(MON_FLAG_SHOOTER) -(MON_FLAG_SHOOTER);
+  !!BM(stack):F(flag);
+!!en;
+
+; Check if the hero has only one creature in the army
+; Emissaries don't count as creatures
+!?FU(hench_CheckIfHenchEligible);
+!#VA(hero:x) (result:x);
+
+!!VR(result):S(FALSE);
+!!VR(patchOn:y):S(FALSE);
+!!VR(hasEmissary:y):S(FALSE);
+!!VR(totalMon:y):S0;
+
+; Check if either dismiss/transfer last stack is enabled. Exit thte function if positive
+!!UN:C5102718/4/?(dismissLast:y);       [Dismiss last stack]
+!!UN:C5968130/4/?(tranferLast:y);       [Transfer last stack]
+
+!!VR(patchOn)|(dismissLast)<>2114058371/(tranferLast)<>14844943:S(TRUE);
+
+; Loop through the hero's army. Note: Emissaries can't be set as a henchmen.
+!!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+  !!HE(hero):C0/i/?(mon:y)/?(qty:y);
+  !!co|(mon)<=(NO_MON)/(qty)<=0;
+
+  ; Set flag if the creature is an emissary
+  !!if&(mon)>=(MON_EMISSARY_OF_WAR)/(mon)<=(MON_EMISSARY_OF_LORE);
+    !!VR(hasEmissary):S(TRUE);
+  !!el;
+    ; Add up quantity if normal creature
+    !!VR(totalMon):+(qty);
+  !!en;
+!!en;
+
+; Summary whether the hero is eligible to have a henchman
+!!if|(hasEmissary)/(patchOn);
+  !!VR(result)&(totalMon)>0:S(TRUE);
+!!el;
+  !!VR(result)&(totalMon)>1:S(TRUE);
+!!en;
+
+*** end script ***

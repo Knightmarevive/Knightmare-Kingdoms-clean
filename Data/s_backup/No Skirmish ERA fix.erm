@@ -1,0 +1,28 @@
+ZVSE
+!?PI;
+!!SN:L^era.dll^/?y66 Ay66/^PluginExists^/?y77 Ey77/1/^Skirmish^; !!VRy99:Sv1; [majaczek]
+!!FU&v1<>0:E; 
+
+!!re i/0/10;
+!!VRz1:S^Choose Skirmish Name^;
+
+!!VRz9:S^Skirmish^; !!VRz2:S^^;
+!!IF:D99/0/1/0/0/0/0/0/0/0/0/0/0/0/0/0;
+!!IF:F99/////0; !!IF:E1/99; !!VRz999:Sz1;
+
+!!IF&z1=z2:M^Skirmish name cannot be empty !!!^;
+  !!VRi&z1=z2:S0; !!br&z1<>z2:;
+!!en;
+
+
+!?CM5;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.SkirmishName^;
+!!CM:I?y99; !!FU&v1<>y99:E;
+
+!!VRz1:S^Choose Skirmish Name^;
+
+!!VRz9:S^Skirmish^; !!VRz2:S^^;
+!!IF:D99/0/1/0/0/0/0/0/0/0/0/0/0/0/0/0;
+!!IF:F99/////0; !!IF:E1/99; !!VRz999&z1<>z2:Sz1;
+
+!!IF:M^Skirmish Name is now %Z999^;

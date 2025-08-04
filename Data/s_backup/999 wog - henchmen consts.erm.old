@@ -1,0 +1,6 @@
+ZVSE2
+; =========== LIMITS ===========
+!#DC(HENCHMAN_EXP_MAX)    = 10000;
+!#DC(HENCHMAN_PCT_MAX)    = 100;
+!#DC(HENCHMAN_SPELL_MAX)  = 100;
+; ========= END LIMITS =========

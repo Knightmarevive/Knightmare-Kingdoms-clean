@@ -1,0 +1,410 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+
+!?CM0; change skirmish name
+!!CM:I?y1 F?y2;
+!!FU&y1<>5:E;
+!_!FU&y2<>4:E;
+
+!!VRz1:S^Choose Skirmish Name^;
+
+!!VRz9:S^Skirmish^;
+!!IF:D99/0/1/0/0/0/0/0/0/0/0/0/0/0/0/0;
+!!IF:F99/////0; !!IF:E1/99;
+
+!!VRz2:S^^;
+!!VRz999&z1<>z2:Sz1;
+!!IF:M^Skirmish Name is %Z999^;
+
+!!CM:R0;
+***
+
+!?PI;
+!!BA:Q0;
+
+!?GM0;
+!_!BA:Q0;
+
+!?DL&v998=99;
+
+
+!!if&v999=1:;
+!_!DL99:A1/3/?z999/1;
+!!FU:E;
+!!en:;
+
+!!if&v999=30722/v1000=13:;
+;released ok
+!_!DL:A1/3/?z999/1;
+!!DL:C1;
+
+!!en:;
+
+!_#DL99:N^SKIRMISH.TXT^ S?z999;
+!_#DL99:A1/3/?z999;
+!_#IF:M^Skirmish %Z999 Started^;
+
+!?PI;
+!!SN:W^IsOptionsMenu^/-1;
+
+!?GM0;
+!!SN:W^IsOptionsMenu^/-1;
+
+!?FU99001;
+!_!IF:L^UnlockArtifacts^;
+!!SN:W^IsOptionsMenu^/-1;
+!?FU99002;
+!!SN:W^IsOptionsMenu^/?y99;
+!_!IF&y99<>1:L^LockArtifacts^;
+
+!?TM99;
+!!SN:W^Skirmish Started^/?y9; !!FU&y9>1:E;
+!!VRz2:S^%Z999_Skirmish_Start^;
+!!VRz7:S^{~w}Saved{~} as %Z3^;
+
+!_!SN:L^Angel.dll^/?y1 Ay1/^SaveGame^/?y2 Ey2/0/z2/1/0/0/1;
+!_!SN:F^SaveGame^/z2;
+!_!FU(eqs.OnSave):P0/2/7;
+
+!!SN:W^Skirmish Started^/2;
+!_!FU77999:P1/2; Sound ON
+!!SN&y5=37:W^IsOptionsMenu^/-1;
+!!VRz2:S^%Z999_Unknown_State^;
+
+!?TM2;
+!!SN:W^Skirmish Started^/?y1;
+!!DL99&y1=0:N^SKIRMISH.TXT^ A1/3/z999 S;
+!_!IF:M^Skirmish %Z999 Started^;
+!!SN:W^Skirmish Started^/1;
+
+
+
+!?TM2;
+!!FU:E;
+
+!!SN:W^SKIRMISH^/?y1;
+!!FU&y1>0:E;
+!_!IF:M^Prepare To Skirmish !^;
+!!DL99:N^SKIRMISH.TXT^;
+!!IF&-1:M^Failed init menu :(^;
+!!SN:W^SKIRMISH^/1;
+!!DL99:S;
+!!FU:E;
+
+
+!?CM5;
+!_!UN:P999/?y1;
+!_!FU&y1=0:E;
+
+!_!SN:W^IsAutosave^/0;
+!!CM:I?y1 F?y2;
+!!FU&y1<>10:E;
+!!FU&y2<>0:E;
+
+!!SN:W^IsOptionsMenu^/1;
+
+!?FU77014;
+
+!!SN:X?y1;
+
+!!if&y1=0:;
+  !!SN:W^InChat^/1;
+!!en:;
+
+!!if&y1=2:;
+  !!SN:W^InChat^/0;
+!!en:;
+
+!?GM0;
+
+!!FU:E; moved to emerald.dll
+!!SN:W^InChat^/0;
+
+!?CM0;
+!!FU:E; disabled
+
+!!SN:W^IsAutosave^/?y1;
+!!SN:W^IsOptionsSave^/?y2;
+
+
+!!SN:W^IsAutosave^/0;
+!!SN:W^IsOptionsSave^/0;
+
+!?CM5;
+
+!!SN:W^IsAutosave^/?y1;
+!!SN:W^IsOptionsSave^/?y2;
+
+
+!?CM5;
+!!UN:P999/?y1;
+!_!FU&y1=0:E;
+
+!_!SN:W^IsAutosave^/0;
+!!CM:I?y1;
+!_!FU&y1<>12:E;
+!!if&y1<>12:;
+!!SN:W^IsAutosave^/1;
+!_!SN:W^IsOptionsSave^/0;
+!!el:;
+!!SN:W^IsAutosave^/0;
+!_!SN:W^IsOptionsSave^/1;
+
+!!en:;
+
+!?CM5;
+!!UN:P999/?y1;
+!_!FU&y1=0:E;
+
+!!FU:E;
+
+!!SN:W^IsOptionsSave^/0;
+!!CM:I?y1;
+!!FU&y1<>10:E;
+!!SN:W^IsOptionsSave^/1;
+!!SN:W^IsAutosave^/0;
+
+!?GM0;
+!_!VRz2:S^Custom^;
+
+!?GM1;
+!!FU:E;
+
+!!UN:P999/?y1;
+!_!FU&y1=0:E;
+
+!!SN:W^IsAutosave^/?y1;
+!_!FU&y1<>1:E;
+
+!!SN:W^IsOptionsSave^/?y17;
+
+!!if&y1=1:;
+!!SN:W^IsAutosave^/0;
+
+!!SN:W^IsOptionsSave^/?y17;
+
+!!VRy2:Sc-1%7+1;
+!!VRz2:S^%Z999_%Y2_%Gc_Autosave^;
+!_!SN:L^32.dll^/?y2 Ay2/^lstrcpyA^/?y3 Ey3/1/6828940/?z2;
+!!SN:Xz2;
+!!el:;
+!_!VRz2:S^Custom^;
+!!FU:E;
+!!en:;
+
+
+!?GM1;
+
+!_!SN:W^IsOptionsSave^/?y17;
+
+
+!!SN:W^IsOptionsMenu^/?y17;
+!!if&y17=1:;
+  !_!IF:L^You tried to save via options menu. Trigger GM1.^;
+  !_!FU:E;
+!!en:;
+
+!!SN:X?z3;
+
+!?FU77008;
+** after savegame
+!_!SN:W^IsOptionsMenu^/0;
+
+!!SN:W^IsOptionsMenu^/?y17;
+!!if&y17=1:;
+  !_!IF:L^You tried to save via options menu. Trigger FU77008^;
+  !_!FU:E;
+!!en:;
+
+!_!FU&z2=z3:E;
+!!SN:W^SAVEGAME_%Z3^/?y11;
+!!VRy11:+1;
+!!SN:W^SAVEGAME_%Z3^/y11;
+!!SN:W^SAVEGAME_^/y11;
+
+!_!SN:W^SAVEGAME_%Z3^/1;
+!_!SN:W^SAVEGAME_^/1;
+
+
+!?GM0;
+!_!SN:W^SAVEGAME_^/0;
+
+!?CM5;
+!_!FU:E;
+
+!!SN:W^IsOptionsMenu^/?y17;
+!!if&y17=1:;
+  !_!IF:L^You tried to save via options menu. Trigger CM5^;
+  !_!FU:E;
+!!en:;
+
+!!SN:W^SAVEGAME_^/?y11;
+!!FU|y11>1/y11=0:E;
+
+!!SN:W^SAVEGAME_%Z3^/?y11;
+!!FU|y11>1/y11=0:E;
+
+!_!CM:R0;
+!!VRy11:+1;
+!!SN:W^SAVEGAME_%Z3^/y11;
+
+!_!SN:L^Angel.dll^/?y1 Ay1/^SaveGame^/?y2 Ey2/0/z3/1/0/0/1;
+
+!_!VRz7:S^{~w}Saved{~} as %Z3^;
+!_!FU77998:P;
+
+!?CM5;
+!_!FU:E;
+
+!!SN:W^IsOptionsMenu^/?y17;
+!_!FU&y17=1:E;
+
+
+!!SN:W^SAVEGAME_^/?y11;
+!!SN&y11>1:W^SAVEGAME_^/0;
+!!SN&y11>1:W^SAVEGAME_%Z3^/0;
+!!FU|y11>1/y11=0:E;
+!_!CM:R0;
+!_!SN:L^Angel.dll^/?y1 Ay1/^SaveGame^/?y2 Ey2/0/z3/1/0/0/1;
+!_!SN:L^Angel.dll^/?y1 Ay1/^SaveGame^/?y2 Ey2/0/z3/1/0/0/1;
+
+
+!_!SN:W^IsOptionsMenu^/?y17;
+!_!FU&y17=1:E;
+
+!!VRz7:S^{~w}Saved{~} as %Z3^;
+!_!FU77998:P;
+
+!?CM5;
+!_!FU:E;
+!!CM:I?y5 F?y6;
+!_!SN|y5=37/y5=0:W^IsOptionsMenu^/-1;
+!!SN&y5<>0/y5<>10/y6=0:W^IsOptionsMenu^/-1;
+!_!SN&y5=37:W^IsOptionsMenu^/-1;
+
+; Sound Control
+!?FU77999;
+; Arguments: SoundIsOn: boolean; OldValue: v-index
+!!if&x1=1:;
+  !!VRy4:Svx2;
+  !!VRy1:Sy4%256;
+  !!VRy4::256;
+  !!VRy2:Sy4%256;
+  !!VRy4::256;
+  !!VRy3:Sy4%256;
+  !!UN:C6916016/1/y1 C6916020/1/y2 C6916028/1/y3;
+!!el:;
+  !!UN:C6916016/1/?y1 C6916020/1/?y2 C6916028/1/?y3 C6916016/1/0 C6916020/1/0 C6916028/1/0;
+  !!VRy3:*65536;
+  !!VRy2:*256;
+  !!VRvx2:Sy1+y2+y3;
+!!en:;
+
+; Quiet message
+!?FU77998;
+; Arguments: Message: z7;
+!!SN:W^IsOptionsMenu^/?y99;
+!_!FU&y99=1:E;
+
+!!VRy1:Sv2;
+
+!!FU77999&y99<1:P0/2;
+!!IF:Lz7;
+!!FU77999&y99<1:P1/2;
+
+!!VRv2:Sy1;
+
+!?FU77003; Keystroke
+!_!UN:P999/?y1;
+!_!FU&y1=0:E;
+
+!!SN:W^IsAutosave^/?y17;
+!_!FU&y17=0:E;
+
+
+!!SN:W^InChat^/?y1;
+!!SN&y1=1:Q;
+
+!!SN:X?y1;
+!!FU&y1<>83:E;
+
+!_!SN:W^IsOptionsSave^/?y19;
+!!SN:W^IsOptionsMenu^/?y19;
+!_!FU&y19=1:E;
+
+!_!SN:L^Era.dll^/?y1 Ay1/^GetGameState^/?y2 Ey2/0/?y10;
+!!SN:F^GetGameState^/?y10;
+
+!_!FU|y10<>y11/y10<>4205280:E;
+!!if|y10<>y11/y10<>4205280:;
+
+  !!FU:E;
+!!en:;
+
+!_!SN:W^IsOptionsSave^/?y19;
+!_!FU&y19=1:E;
+
+
+!_!IF:M^saving game^;
+!_!SN:L^emerald3.era^/?y1 Ay1/^UndoProhibitionTables^/?y2 Ey2/1/0;
+
+!!VRy8:Sc;
+!!SN:W^last_day_save^/?y7;
+!!SN:W^last_save_today^/?y6;
+!_!VRy6&y8>y7:S0;
+!!VRy6:+1;
+!!VRy5:Sc :28 +1;
+!!VRy4:Sc :7  +1;
+!!VRy3:Sc -1 %7 +1;
+!!SN:W^last_save_today^/y6;
+!!VRz2:S^%Z999_%Y5_%Y4_%Y3_%Gc_%Y6^;
+!!SN:L^Angel.dll^/?y1 Ay1/^SaveGame^/?y2 Ey2/0/z2/1/0/0/1;
+!!VRz7:S^{~w}Saved{~} as %Z2^;
+!!FU77998:P;
+!_!SN:W^last_save_today^/y6;
+!!SN:X0/1;
+!_!SN:Q;
+
+!?TM1;
+!!SN:W^last_save_today^/0;
+
+!?FU87020;
+!!UN:P889/?y1;     !!FU&y1<>1:E;         [проверили опцию ВКЛ/ОТКЛ]
+!!UN:P729/?y1;     !!FU&y1<>0:E;         [проверили опцию в ES Rus ВКЛ/ОТКЛ]
+!!OW:C?y2 Iy2/?y3; !!FU&y3<>0:E;         [проверили на игрока-человека]
+!!UN:C6919480/4/?y1;
+!!VRz2:S^%Z999_BattleSave!^;
+!!SN:E4975456/2/y1/z2/1/0/1/0;
+
+!?FU77003;
+!!FU:E; LOCKED
+
+!!UN:P999/?y1;
+!!FU&y1=0:E;
+
+!!SN:W^InChat^/?y1;
+!!SN&y1=1:Q;
+
+!!SN:X?y1;
+!!FU&y1<>116:E;
+
+!!SN:L^Era.dll^/?y1 Ay1/^GetGameState^/?y2 Ey2/0/?y10;
+!_!FU|y10<>y11/y10<>4205280:E;
+!!if|y10<>y11/y10<>4205280:;
+
+  !!FU:E;
+!!en:;
+
+
+!_!IF:M^saving game^;
+!_!SN:L^emerald3.era^/?y1 Ay1/^UndoProhibitionTables^/?y2 Ey2/1/0;
+
+!!VRy1:Sc-1%7+1;
+!!VRz2:S^%Y1_%Gc_Quick^;
+!!SN:L^Angel.dll^/?y1 Ay1/^SaveGame^/?y2 Ey2/0/z2/1/0/0/1;
+!!VRz7:S^{~w}Quicksaved!{~}^;
+!!FU77998:P;
+!!SN:X0/1;
+!!SN:Q;
+

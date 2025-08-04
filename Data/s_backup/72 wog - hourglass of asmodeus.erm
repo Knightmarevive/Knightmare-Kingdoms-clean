@@ -1,0 +1,8 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=5.5(May).2016
+
+!#UN:P106/0; [Disable Hourglass of Asmodeus script even if
+;             is enabled in WoGify Options]
+

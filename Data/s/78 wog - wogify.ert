@@ -3,8 +3,8 @@
 After this message, there will be a delay while the map is converted 
 to include WoG features (and then another message when it's done). 
  
-Hint: You can view or save current WoGify options during the game
-by pressing 'S' and then clicking on the WoG Options button. 
+Hint: You can view current WoGify options during the game
+by choosing 'Save Game' and then clicking on the WoG Options button. 
 Option changes CANNOT be made during a game from this screen.	String type = <!!S>	07.06.2003
 100001	Large maps may take a few minutes on slow systems. Please be patient.	String type = <!!S>	07.06.2003
 100002	The WoG Options button is located on the Scenario Selection screen.	String type = <!!S>	07.06.2003
@@ -68,6 +68,3 @@ Although WoGification has been cancelled, most ongoing WoGify scripts will remai
 
 WARNING: Since the map is "half-wogified" some scripts may not work as intended. Continue playing at your own risk.		
 100039	None		
-100040	{Attention:}
-
-Arrow Tower Experience has been DISABLED because this is a Network game and the feature is not yet compatible with Network games.		

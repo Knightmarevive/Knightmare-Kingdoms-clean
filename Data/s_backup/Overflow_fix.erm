@@ -1,0 +1,171 @@
+ZVSE
+
+
+
+!?CM2;
+!!HE-1:N?y11;
+!!CM:I?v2 F?v3 S?v4;
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^APlus.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P1/y11;
+
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^AMin.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P2/y11;
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^DPlus.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P3/y11;
+
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^DMin.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P4/y11;
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^SPlus.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P5/y11;
+
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^SMin.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P6/y11;
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^KPlus.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P7/y11;
+
+
+!?CM2&v3=0/v4=13;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^KMin.ExpButton^;
+!!VRy3:Sv1;
+!!FU&y3<>v2:E;
+!!FU100200300:P8/y11;
+
+!?FU100200300;
+;exit if storage is empty
+!!if|x1=1/x1=3/x1=5/x1=7:;
+!!SN:W^Hero%X2^/?y1;
+!!IF&y1<1:M^There are no primary stats stored. Decrease one of them first!^;
+!!FU&y1<1:E;
+!!en:;
+
+;increase attack
+!!if&x1=1:;
+!!HEx2:F?y2/d/d/d;
+!!IF&y2>240:Q1/31/240/1^Your Attack is already at maximum value^;
+!!FU&y2>240:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd1/d/d/d;
+!!VRy1:-1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+;increase defense
+!!if&x1=3:;
+!!HEx2:Fd/?y2/d/d;
+!!IF&y2>240:Q1/32/240/1^Your Defense is already at maximum value^;
+!!FU&y2>240:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd/d1/d/d;
+!!VRy1:-1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+;increase sp
+!!if&x1=5:;
+!!HEx2:Fd/d/?y2/d;
+!!IF&y2>240:Q1/33/240/1^Your Spell Power is already at maximum value^;
+!!FU&y2>240:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd/d/d1/d;
+!!VRy1:-1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+;increase knowledge
+!!if&x1=7:;
+!!HEx2:Fd/d/d/?y2;
+!!IF&y2>240:Q1/34/240/1^Your Knowledge is already at maximum value^;
+!!FU&y2>240:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd/d/d/d1;
+!!VRy1:-1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+
+;Decrease attack
+!!if&x1=2:;
+!!HEx2:F?y1/d/d/d;
+!!IF&y1<200:Q1/31/200/1^Attack must be over 200 value to activate the overflow Helper^;
+!!FU&y1<200:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd-1/d/d/d;
+!!VRy1:+1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+;Decrease defense
+!!if&x1=4:;
+!!HEx2:Fd/?y1/d/d;
+!!IF&y1<200:Q1/32/200/1^Defense must be over 200 value to activate the overflow Helper^;
+!!FU&y1<200:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd/d-1/d/d;
+!!VRy1:+1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+;Decrease sp
+!!if&x1=6:;
+!!HEx2:Fd/d/?y1/d;
+!!IF&y1<200:Q1/33/200/1^Spell Power must be over 200 value to activate the overflow Helper^;
+!!FU&y1<200:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd/d/d-1/d;
+!!VRy1:+1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+
+;Decrease knowledge
+!!if&x1=8:;
+!!HEx2:Fd/d/d/?y1;
+!!IF&y1<200:Q1/34/200/1^Knowledge must be over 200 value to activate the overflow Helper^;
+!!FU&y1<200:E;
+!!SN:W^Hero%X2^/?y1;
+!!HEx2:Fd/d/d/d-1;
+!!VRy1:+1;
+!!SN:W^Hero%X2^/y1;
+!!en:;
+!!UN:R3/x2;
+
+;Fix experience overflow (if one stack has negative experience
+!?FU77004;
+!!HE-1:N?y1;
+!!DO100200301/0/6/1:Py1;
+
+!?FU100200301;
+;x1 Hero ID
+!!HEx1:C0/x16/?y1/?y2/?y3/2; y1=type, y2=no., y3=experience
+!!FU&y1<0:E; exit if no monster
+!!FU&y3>=0:E; exit if experience positive or zero
+!!UN:N3/z2/y1/1; get monster name
+!!IF:Q1/21/y1/1^%Z2's experience rank was fixed.^;
+!!HEx1&y3<0:C0/x16/d/d/11/12; set rank to 11 if negative experience was gained (overflow occurred)

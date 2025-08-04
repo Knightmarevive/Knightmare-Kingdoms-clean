@@ -1,0 +1,1237 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+
+* DragonPeaks, JHV, June 30, 2012
+
+* uses z709, FU1337, FU6150-6161, flags 411-2 (v1=v10, z1-z10 temporarily)
+
+* uses SN:W Neutral Towns %X %Y %L
+**** 1 Dragon Peaks
+**** 2 Great Library (not yet)
+
+!?FU(OnOpenTownScreen);
+!!CA0/x1:P?y1/?y2/?y3;
+!!SN:W^Neutral Town %Y1 %Y2 %Y3^/?y9; !!FU&y9=0:E;
+!!MP&y9=1:P^DragonPeaks^/0/1;
+!!MP&y9=2:P^DivineLibrary^/0/1;
+
+!!FU:E;
+
+!#VRz709:S^Dragon Peak^;
+!#IF:V411/1; flag on TM1 to setup DP's
+
+!#TM1:S1/999/1/255;    triggers every color every day [same as Tobyn's Universal Timer--no conflict]
+!#TM2:S1/999/1/255;    same but triggers only *after* all calculations from TM1 are done
+
+!?TM2;
+!!OW:C?y1; !!OW:Iy1/?y2; !!FU&y2=0:E; exit if human player
+!!UN:U98/-1/?y3; !!VRy4:S0; !!VRv2:S0 -1; !!FU&y3=0:E;
+[:NextTown]
+!!UN:U98/-1/-1/2; !!CAv2/v3/v4:O?y5;
+!!SN:W^Neutral Town %V2 %V3 %V4^/?y6;
+!!VRy11:S0; !!VRy11|y1<>y5/y6=0:S1;
+
+  !!VRy4&y11=1:+1;
+  !!SN&y11=1/y4<y3:G[NextTown];
+  !!FU&y11=1:E;
+
+!!VRy7:S0;
+[:NextDiceRoll]
+!!VRy8:S0;
+
+[:NextLevel]
+!!VRy9:S0 R999; ** promile dice **
+!!FU6161&y9<40:Pv2/v3/v4/y8/0/1;
+!!VRy8:+1; !!SN&y8<7:G[NextLevel];
+
+!!VRy7:+1; !!SN&y7<25:G[NextDiceRoll];
+!!VRy4:+1; !!SN&y4<y3:G[NextTown];
+
+!?FU6161; recruit unit from neutral town (mostly for AI)
+** x1/x2/x3 - town position
+** x4       - dwelling level (can be negative for battery2.dll)
+** x5       - dwelling slot
+** x6       - force check for neutral town (if positive)
+
+!!SN:W^Neutral Town %X1 %X2 %X3^/?y11; !!FU&y11=0/x6>0:E;
+!!CAx1/x2/x3:O?y24; !!FU&y24<0:E;
+
+//disabled for now
+!_!CAx1/x2/x3:Dx4/x5/?y21/?y22;
+!!CAx1/x2/x3:U?y88;   !!FU(dex_CA_D):Py88/x4/x5/?y21/?y22;
+
+!!FU&y21<0:E; !!FU&y22<1:E;
+!!MA:Cy21/0/?y30 Cy21/1/?y31 Cy21/2/?y32 Cy21/3/?y33 Cy21/4/?y34 Cy21/5/?y35 Cy21/6/?y36;
+!!OW:Ry24/0/?y40 Ry24/1/?y41 Ry24/2/?y42 Ry24/3/?y43 Ry24/4/?y44 Ry24/5/?y45 Ry24/6/?y46;
+!!FU|y40<y30/y41<y31/y42<y32/y43<y33/y44<y34/y45<y35/y46<y36:E;
+
+!!VRy27:S0;
+[:TownSlotOccupied]
+!!CAx1/x2/x3:M2/y27/?y51/?y52;
+!!if&y51=y21/y52>0:;
+   !!VRy40:-y30; !!VRy41:-y31; !!VRy42:-y32; !!VRy43:-y33; !!VRy44:-y34; !!VRy45:-y35; !!VRy46:-y36;
+   !!OW:Ry24/0/y40 Ry24/1/y41 Ry24/2/y42 Ry24/3/y43 Ry24/4/y44 Ry24/5/y45 Ry24/6/y46;
+
+   //disabled for now
+   !_!CAx1/x2/x3:Dx4/x5/d/d-1;
+    !!CAx1/x2/x3:U?y88;
+    !!FU(dex_CA_D):Py88/x4/x5/d/d-1;
+
+   !!CAx1/x2/x3:M2/y27/d/d1;
+   !!FU:E;
+!!en:;
+!!VRy27:+1; !!SN&y27<7:G[TownSlotOccupied];
+
+!!VRy27:S0;
+[:TownSlotUnoccupied]
+!!CAx1/x2/x3:M2/y27/?y51/?y52;
+!!if|y51=-1/y52=0:;
+   !!VRy40:-y30; !!VRy41:-y31; !!VRy42:-y32; !!VRy43:-y33; !!VRy44:-y34; !!VRy45:-y35; !!VRy46:-y36;
+   !!OW:Ry24/0/y40 Ry24/1/y41 Ry24/2/y42 Ry24/3/y43 Ry24/4/y44 Ry24/5/y45 Ry24/6/y46;
+
+   //disabled for now
+   !_!CAx1/x2/x3:Dx4/x5/d/d-1;
+    !!CAx1/x2/x3:U?y88;
+    !!FU(dex_CA_D):Py88/x4/x5/d/d-1;
+   
+   !!CAx1/x2/x3:M2/y27/y21/1;
+   !!FU:E;
+!!en:;
+!!VRy27:+1; !!SN&y27<7:G[TownSlotUnoccupied];
+
+!?FU55211;
+!_!VRy1:Sx1;
+
+
+!_!SN:W^script144 Free Towns^/?y93;
+!_!SN:W^script144 Unlocked Dragon Utopias^/?y94;
+
+!!FU6153:P12/12;
+
+!_!SN:W^Dragon Utopias converted to Neutral Towns^/?y54;
+!_!VRv5:-y54;
+
+!_!SN:W^script144 Towns Count^/?y53;
+!_!VRv2:S-1; must initialize v2<0 for "next" search
+
+!!SN:W^script144 Free Towns^/?y93;
+!!SN:W^script144 Unlocked Dragon Utopias^/?y94;
+!!SN:W^script144 How Many to Replace^/?y59;
+
+!!FU&y59<=0:E;
+!!VRy91:S0 +y93 +y94;
+!!FU&y91<=0:E;
+!!SN:G0;
+
+!?FU55210;
+  !!SN:W^script144 Verbose^/0;
+
+  !!SN:W^Pure Dragon Utopias^/0;
+  !!SN:W^Unowned Towns^/0;
+  !!SN:W^script144 Free Towns^/0;
+  !!SN:W^script144 Unlocked Dragon Utopias^/0;
+
+  !!UN:U25/-1/?y9; get total # of Utopias on map
+  !!SN:W^All Utopia-Like Objects^/y9;
+  !!VRv2:S-1; must initialize v2<0 for "next" search
+  !!DO55209/1/y9/1&y9>0:P25/-1;
+
+  !!UN:U98/-1/?y9; get total # of Towns on map
+  !!SN:W^All Towns^/y9;
+  !!VRv2:S-1; must initialize v2<0 for "next" search
+  !!DO55209/1/y9/1&y9>0:P98/-1;
+
+!?FU55209;
+* x1 type
+* x2 subtype
+
+!!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+!!OBv2/v3/v4:T?y1 U?y2; get type/subtype
+
+!!if&y1=25:;
+      !!SN:W^Knightmare CreBank %V2 %V3 %V4^/?y77;
+      !!SN&y77<>0:W^Fake Dragon Utopias^/d1;
+      !!FU&y77<>0:E; !!FU&y2<>0:E;
+      !!SN:W^Pure Dragon Utopias^/d1;
+      !!FU55205:Py1/y2/v2/v3/v4/?y13; !!FU&y13=0:E;
+      !!SN:W^script144 Unlocked Dragon Utopias^/d1;
+!!en:;
+
+!!if&y1=98:;
+
+  !!CA2:O?y22; y2=-1 for neutral
+  !!SN:W^Town Marked at %V2 %V3 %V4^/?y21;
+  !!FU&y22>-1:E; exit if not neutral
+  !!SN:W^Unowned Towns^/d1;
+  !!SN:W^Neutral Town %V2 %V3 %V4^/?y11;
+  !!SN|y21>0/y11>0:W^Custom Town Count^/d1;
+  !!FU&y21>0:E; !!FU&y11>0:E;
+  !!SN:W^script144 Free Towns^/d1;
+!!en:;
+
+--------------------------------------------------------------------------------
+
+**Function to change building position.
+!?FU1337;
+!!if&x6=0:;
+  !!VRy1:S8; //city
+  !!VRy2:Sx16; //building ID
+  !!VRy6:S0; //frames num in new def
+  !!VRy3:S0; //new x
+  !!VRy4:S0; //new y
+**    x6:S0  //deprecated use (convenant)
+!!el:;
+  !!VRy1:Sx1; //city
+  !!VRy2:Sx2; //building ID
+  !!VRy6:Sx3; //frames num in new def
+  !!VRy3:Sx4; //new x
+  !!VRy4:Sx5; //new y
+**    x6<>0   //new use (any town)
+!!en:;
+
+!!VRy5:Sy1 *44 +y2 *6 +6859276;
+
+!!UN:Cy5/2/y6;
+!!VRy5:+2;
+!!UN:Cy5/2/y3;
+!!VRy5:+2;
+!!UN:Cy5/2/y4;
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+!?CM5; !!FU:E;
+!!CM:P?y1/?y2/?y3;
+!!OBy1/y2/y3:T?y4;
+!_!CM&y4=98:R0;
+!!FU&y4<>98:E;
+
+!!VRy99:S0;
+!!VRy7:Sy1 +1; !!VRy8:Sy2 +2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1; !!VRy8:Sy2 +2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 -1; !!VRy8:Sy2 +2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 +2; !!VRy8:Sy2 +1;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 +1; !!VRy8:Sy2 +1;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1; !!VRy8:Sy2 +1;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 -1; !!VRy8:Sy2 +1;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 -2; !!VRy8:Sy2 +1;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 +2; !!VRy8:Sy2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 +1; !!VRy8:Sy2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1; !!VRy8:Sy2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 -1; !!VRy8:Sy2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!!VRy7:Sy1 -2; !!VRy8:Sy2;
+!!SN:W^Neutral Town %Y7 %Y8 %Y3^/?y98;
+
+!!VRy99&y98<>0:S1;
+!_!IF&y99=0:V412/1; // majaczek - prevent locks
+!!FU6150&y99<>0:P;
+!!FU6151&y99=0:P;
+
+!?TM2&411; day 1 only
+
+!!UN:U98/-1/?y53; get total # of Towns on map
+!!SN:W^script144 Towns Count^/y53;
+!!SN:W^Custom Town Count^/0;
+
+!!VRz709:S^Randomized Neutral Town^;
+!!FU55201:P-1;
+!!SN:W^Randomized Neutral Town Placement^/?y11;
+!!FU&y11>0:E;
+
+!!FU:E;
+
+!!VRz709:S^Dragon Peak^;
+!!FU55201:P1;
+
+!!VRz709:S^Divine Library^;
+!!FU55201:P2;
+
+!?TM2; Every week, excluding first
+!!VRy1:Sc; !!FU&y1<5:E;
+!!VRy1:%7;
+!!SN&y1>1:W^CustomTown week^/0;
+!!FU&y1<>1:E;
+
+!!SN:W^CustomTown week^/?y2; !!FU&y2>0:E;
+!_!IF:M^Debug^;
+
+!!UN:U98/-1/?y9; get total # of Towns on map
+!!VRv2:S-1; must initialize v2<0 for "next" search
+!!DO55204/1/y9/1&y9>0:P;
+
+!!SN:W^CustomTown week^/1;
+
+
+!?FU55207; x1=type, x2=subtype, x3=DP#, x4= neutral town type  x5= chance
+
+!!SN:W^script144 Towns Count^/?y53;
+!!FU&y53>=48:E;
+
+!!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+
+!!VRy88:S0 R99;
+!!FU&y88>x5:E;
+
+!_!UN:U98/-1/?y55;
+!_!SN&y55>=48:W^Estimated Neutral Town Count^/0;
+!_!SN:W^Estimated Neutral Town Count^/?y55;
+!_!FU&y55<1:E;
+
+
+!_!SN:W^Neutral Town %V2 %V3 %V4^/1;
+!_!SN:W^Town Marked at %V2 %V3 %V4^/?y1;
+!_!FU&y1>0:E;
+!_!SN:W^Town Marked at %V2 %V3 %V4^/1;
+
+
+!!SN:W^script144 How Many to Replace^/?y59;
+!!FU&y59<=0:E;
+
+
+!_!FU55202:P-1/-1;
+!_!SN:W^Placed Neutral Town Type^/?y77;
+
+!_!CA2:Ty77 N^%Z709 %X3^; converted to DP
+!!FU55206:Pv2/v3/v4/-1/-1;
+
+
+!_!IF:M^Dragon Utopia converted to %Z709 %X3^;
+!_!SN:W^Neutral Town %V2 %V3 %V4^/1;
+!_!VRx16:S99; end loop
+
+
+!?FU55206;
+x1 = Utopia x
+x2 = Utopia y
+x3 = Utopia z
+x4 = town type
+x5 = ID number
+
+!!VRy1:Sx1 +1;
+!!VRy2:Sx2;
+!!VRy3:Sx3;
+
+!!VRy5:Sx1 -1;
+
+
+!_!SN:W^Town Marked at %X1 %X2 %X3^/1;
+!_!SN:W^Town Marked at %Y1 %Y2 %Y3^/1;
+
+!!SN:W^Knightmare CreBank %X1 %X2 %X3^/?y77;
+!_!SN&y77<>0:W^Fake Dragon Utopias^/d1;
+!!FU&y77<>0:E; Ommit custom dragon utopias
+
+
+!_!SN:W^script144 Towns Count^/?y53;
+!!SN:W^All Towns^/?y53;
+!!IF&y53>=48:M^Can't Convert Dragon Utopia to Town. Town Limit Reached^;
+!!FU&y53>=48:E;
+
+!_!SN:W^script144 How Many to Replace^/?y55;
+!_!FU&y55<=0:E;
+
+!!FU55205:P25/0/x1/x2/x3/?y13; !!FU&y13=0:E;
+* exit if no place around utopia
+
+!!VRy57:Sx5;   !!SN:W^All Towns^/d1;
+!!SN:W^Unowned Towns^/d1;
+!!SN:W^script144 Towns Count^/d1;
+!!SN:W^Custom Town Count^/d1;
+!!SN:W^script144 Free Towns^/d1;
+!!SN:W^script144 How Many to Replace^/d-1;
+!!SN:W^Dragon Utopias converted to Neutral Towns^/d1;
+!!SN:W^Pure Dragon Utopias^/d-1;
+!!SN:W^script144 Unlocked Dragon Utopias^/d-1;
+!!SN:W^All Utopia-Like Objects^/d-1;
+!!SN&x5<=0:W^Dragon Utopias converted to Neutral Towns^/?y57;
+!!UN:Ox1/x2/x3; remove it
+!!FU55212:P25/0/x1/x2/x3;
+
+
+!!FU55202:Px4/x5;
+!!SN:W^Placed Neutral Town Type^/?y79;
+!!SN:W^Placed Neutral Town Name Number^/?y78;
+
+!!UN:Iy1/y2/y3/98/y79;
+
+
+!!SN:W^script144 Verbose^/?y73;
+!!IF&y73>0:M^Dragon Utopia converted to %Z709 %Y78^;
+
+!!VRy1:-2; !!VRz4:S^%Z709 %Y78^;
+!!CAy1/y2/y3:Nz4; converted to DP
+!!CAy1/y2/y3:M1/0/0/0 M1/1/0/0 M1/2/0/0 M1/3/0/0 M1/4/0/0 M1/5/0/0 M1/6/0/0;
+!!SN:W^Town Marked at %Y1 %Y2 %Y3^/1;
+!!SN:W^Neutral Town %Y1 %Y2 %Y3^/1;
+
+
+
+!_!IF:M^Dragon Utopia converted to %Z709 %X5^;
+
+!_!VRx15:Sy1 -2;
+!_!SN:W^Neutral Town %Y1 %Y2 %Y3^/1;
+!_!SN:W^Custom Town Count^/d1;
+!_!VRx16:S99; end loop
+
+!_!VRv2:Sy5;
+!_!VRv3:Sy2;
+!_!VRv4:Sy3;
+
+
+!_!FU55208:Px4;  // change town internals
+!_!FU:Py5/y2/y3;
+
+!_!VRv2:Sx1;
+!_!VRv3:Sx2;
+!_!VRv4:Sx3;
+
+!!FU:E;
+
+!?FU55212;
+*  x1 - type
+*  x2 - subtype
+*  x3/x4/x5 - position
+!!if&x1=25/x2=0:;
+!!VRy22:S1;
+
+!!VRy1:Sx3;
+!!VRy2:Sx4;
+!!VRy3:Sx5;
+
+
+!!VRy89:Sy2 -1;
+!!VRy88:Sy2 +0;
+!!VRy87:Sy2 +1;
+
+!!VRy99:Sy1 -3;
+!!VRy98:Sy1 -2;
+!!VRy97:Sy1 -1;
+!!VRy96:Sy1 +0;
+!!VRy95:Sy1 +1;
+
+
+** locked fields after replace **
+!!VRy23:S3;
+
+!!TRy99/y88/y3:P1;
+!!TRy95/y88/y3:P1;
+!!TRy95/y89/y3:P1;
+!!FU:E;
+
+!!en:;
+
+!?FU55205;
+*  x1 - type
+*  x2 - subtype
+*  x3/x4/x5 - position
+* ?x6 = 1 can be replaced
+* ?x6 = 0 can't  be replaced
+
+!!if&x1=25/x2=0:;
+!!VRy22:S1;
+
+!!VRy1:Sx3;
+!!VRy2:Sx4;
+!!VRy3:Sx5;
+
+
+!!VRy89:Sy2 -1;
+!!VRy88:Sy2 +0;
+!!VRy87:Sy2 +1;
+
+!!VRy99:Sy1 -3;
+!!VRy98:Sy1 -2;
+!!VRy97:Sy1 -1;
+!!VRy96:Sy1 +0;
+!!VRy95:Sy1 +1;
+
+
+** locked fields after replace **
+!!VRy23:S3;
+
+!!UN:Ey99/y88/y3;
+!!VRy23&1:-1; !!VRy7:S1;
+!!TRy99/y88/y3:P?y7;
+!!VRy23&y7=0:+1;
+
+!!UN:Ey95/y88/y3;
+!!VRy23&1:-1; !!VRy7:S1;
+!!TRy95/y88/y3:P?y7;
+!!VRy23&y7=0:+1;
+
+!!UN:Ey95/y89/y3;
+!!VRy23&1:-1; !!VRy7:S1;
+!!TRy95/y89/y3:P?y7;
+!!VRy23&y7=0:+1;
+
+!!VRy22&y23<3:S0;
+
+** nice to have (to be able to enter town) **
+!!VRy23:S3;
+
+!!UN:Ey98/y87/y3;
+!!VRy23&1:-1; !!VRy7:S1;
+!!TRy98/y87/y3:E?y7;
+!!VRy23&y7=0:+1;
+
+!!UN:Ey97/y87/y3;
+!!VRy23&1:-1; !!VRy7:S1;
+!!TRy97/y87/y3:E?y7;
+!!VRy23&y7=0:+1;
+
+!!UN:Ey96/y87/y3;
+!!VRy23&1:-1; !!VRy7:S1;
+!!TRy96/y87/y3:E?y7;
+!!VRy23&y7=0:+1;
+
+!!VRy22&y23<=0:S0;
+
+!!VRx6:Sy22;
+!!FU:E;
+
+!!en:;
+
+!!VRx6:S0;
+
+!?FU55204;
+
+!!UN:U98/-1/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+!_!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+!!FU55203:Pv2/v3/v4;
+
+!?FU55203;
+x1 = Town x
+x2 = Town y
+x3 = Town z
+
+
+!_!IF:M^Debug 1^;
+
+!!SN:W^Neutral Town %X1 %X2 %X3^/?y99;
+!!FU&y99=0:E; !!CAx1/x2/x3:T?y77 U?y88;
+
+!_!IF:M^Debug 2^;
+
+!!if&v1<>v1:; impossible condition
+!!UN:Ty77/0/0/?y10; !!MA:Gy10/?y20; !!CAx1/x2/x3:M1/0/?y30/d; !!VRy30:-y20; !!VRy30&y30<0:S0; !!CAx1/x2/x3:M1/0/y30/0;
+!!UN:Ty77/1/0/?y11; !!MA:Gy11/?y21; !!CAx1/x2/x3:M1/1/?y31/d; !!VRy31:-y21; !!VRy31&y31<0:S0; !!CAx1/x2/x3:M1/1/y31/0;
+!!UN:Ty77/2/0/?y12; !!MA:Gy12/?y22; !!CAx1/x2/x3:M1/2/?y32/d; !!VRy32:-y22; !!VRy32&y32<0:S0; !!CAx1/x2/x3:M1/2/y32/0;
+!!UN:Ty77/3/0/?y13; !!MA:Gy13/?y23; !!CAx1/x2/x3:M1/3/?y33/d; !!VRy33:-y23; !!VRy33&y33<0:S0; !!CAx1/x2/x3:M1/3/y33/0;
+!!UN:Ty77/4/0/?y14; !!MA:Gy14/?y24; !!CAx1/x2/x3:M1/4/?y34/d; !!VRy34:-y24; !!VRy34&y34<0:S0; !!CAx1/x2/x3:M1/4/y34/0;
+!!UN:Ty77/5/0/?y15; !!MA:Gy15/?y25; !!CAx1/x2/x3:M1/5/?y35/d; !!VRy35:-y25; !!VRy35&y35<0:S0; !!CAx1/x2/x3:M1/5/y35/0;
+!!UN:Ty77/6/0/?y16; !!MA:Gy16/?y26; !!CAx1/x2/x3:M1/6/?y36/d; !!VRy36:-y26; !!VRy36&y36<0:S0; !!CAx1/x2/x3:M1/6/y36/0;
+!!en:;
+
+!!CAx1/x2/x3:M1/0/0/0;
+!!CAx1/x2/x3:M1/1/0/0;
+!!CAx1/x2/x3:M1/2/0/0;
+!!CAx1/x2/x3:M1/3/0/0;
+!!CAx1/x2/x3:M1/4/0/0;
+!!CAx1/x2/x3:M1/5/0/0;
+!!CAx1/x2/x3:M1/6/0/0;
+
+
+!!CAx1/x2/x3:M1/0/0/0 M1/1/0/0 M1/2/0/0 M1/3/0/0 M1/4/0/0 M1/5/0/0 M1/6/0/0;
+
+!!if&y77=1:;
+   !_!CAx1/x2/x3:M1/0/0/0;
+   !_!CAx1/x2/x3:M1/1/0/0;
+   !_!CAx1/x2/x3:M1/2/d1/d;
+   !_!CAx1/x2/x3:M1/3/d1/d;
+   !_!CAx1/x2/x3:M1/4/d1/d;
+   !_!CAx1/x2/x3:M1/5/0/0;
+   !_!CAx1/x2/x3:M1/6/d1/d;
+
+   //test version for now
+   !_!CAx1/x2/x3:D0/0/139/0;
+   !!FU(dex_CA_D):Py88/0/0/139/0;
+   !_!CAx1/x2/x3:D1/0/139/0;
+   !!FU(dex_CA_D):Py88/1/0/139/0;
+   !_!CAx1/x2/x3:D2/0/134/d1;
+   !!FU(dex_CA_D):Py88/2/0/134/?y95;
+   !!VRy95:+1;
+   !!FU(dex_CA_D):Py88/2/0/134/y95;
+   !_!CAx1/x2/x3:D3/0/135/d1;
+   !!FU(dex_CA_D):Py88/3/0/135/?y95;
+   !!VRy95:+1;
+   !!FU(dex_CA_D):Py88/3/0/135/y95;
+   !_!CAx1/x2/x3:D4/0/133/d1;
+   !!FU(dex_CA_D):Py88/4/0/133/?y95;
+   !!VRy95:+1;
+   !!FU(dex_CA_D):Py88/4/0/133/y95;
+   !_!CAx1/x2/x3:D5/0/139/0;
+   !!FU(dex_CA_D):Py88/5/0/139/0;
+   !_!CAx1/x2/x3:D6/0/132/d1;
+   !!FU(dex_CA_D):Py88/6/0/132/?y95;
+   !!VRy95:+1;
+   !!FU(dex_CA_D):Py88/6/0/132/y95;
+!!en:;
+
+!!if&y77=2:;
+   !_!CAx1/x2/x3:M1/0/d2/d;
+   !_!CAx1/x2/x3:M1/1/d2/d;
+   !_!CAx1/x2/x3:M1/2/d2/d;
+   !_!CAx1/x2/x3:M1/3/d2/d;
+   !_!CAx1/x2/x3:M1/4/d2/d;
+   !_!CAx1/x2/x3:M1/5/d2/d;
+   !_!CAx1/x2/x3:M1/6/d1/d;
+
+
+   //test version for now
+   !_!CAx1/x2/x3:D0/0/254/d2;   Druid
+   !!FU(dex_CA_D):Py88/0/0/254/?y95;
+   !!VRy95:+2;
+   !!FU(dex_CA_D):Py88/0/0/254/y95;
+   !_!CAx1/x2/x3:D1/0/287/d2;   Planeswalker
+   !!FU(dex_CA_D):Py88/1/0/287/?y95;
+   !!VRy95:+2;
+   !!FU(dex_CA_D):Py88/1/0/287/y95;
+   !_!CAx1/x2/x3:D2/0/292/d2;   Nicolai
+   !!FU(dex_CA_D):Py88/2/0/292/?y95;
+   !!VRy95:+2;
+   !!FU(dex_CA_D):Py88/2/0/292/y95;
+   !_!CAx1/x2/x3:D3/0/266/d2;   Fire Acolite
+   !!FU(dex_CA_D):Py88/3/0/266/?y95;
+   !!VRy95:+2;
+   !!FU(dex_CA_D):Py88/3/0/266/y95;
+   !_!CAx1/x2/x3:D4/0/265/d2;   Ice Acolite
+   !!FU(dex_CA_D):Py88/4/0/265/?y95;
+   !!VRy95:+2;
+   !!FU(dex_CA_D):Py88/4/0/265/y95;
+   !_!CAx1/x2/x3:D5/0/268/d2;   Raido
+   !!FU(dex_CA_D):Py88/5/0/268/?y95;
+   !!VRy95:+2;
+   !!FU(dex_CA_D):Py88/5/0/268/y95;
+   !_!CAx1/x2/x3:D6/0/293/d1;   Sylfaen Dragon
+   !!FU(dex_CA_D):Py88/6/0/293/?y95;
+   !!VRy95:+1;
+   !!FU(dex_CA_D):Py88/6/0/293/y95;
+!!en:;
+
+!?FU55202;
+* x1 - Town Type
+* x2 - Town Name Number
+
+!!VRy79:Sx1;
+!!if&x1<0:;
+    !!VRy66:S0 R99;
+    !!VRy79&y66>=0/y66<50:S1;
+    !!VRy79&y66>=50/y66<100:S2;
+!!en:;
+
+!!VRz709:S^Unknown Neutral Town Type^;
+!!VRz709&y79=1:S^Dragon Peak^;
+!!VRz709&y79=2:S^Divine Library^;
+
+!!VRy78:Sx2; !!SN&y78<0:W^Custom Town Count^/?y78;
+
+!!SN:W^Placed Neutral Town Type^/y79;
+!!SN:W^Placed Neutral Town Name Number^/y78;
+
+!?FU55201;
+!!IF:V411/0;
+
+!!FU55210:P;
+
+!_!UN:U25/0/?y99;
+!_!SN:W^Pure Dragon Utopias^/?y99;
+!!SN:W^script144 Unlocked Dragon Utopias^/?y99;
+
+!_!UN:U98/-1/?v1; get total # of Towns on map (48 max, use 40 max for DP's)
+
+
+!_!UN:U98/-1/?y53; get total # of Towns on map
+!_!SN:W^script144 Towns Count^/y53;
+!_!SN:W^script144 Towns Count^/v1;
+!!SN:W^script144 Free Towns^/?v1;
+
+!!VRv5:S32;
+!!VRz1:S^4^;
+!!VRz2:S^8^;
+!!VRz2&v1>40:S^^;
+!!VRz3:S^12^;
+!!VRz3&v1>36:S^^;
+!!VRz4:S^18^;
+!!VRz4&v1>30:S^^;
+!!VRz5:S^24^;
+!!VRz5&v1>24:S^^;
+!!VRz6:S^32^;
+!!VRz6&v1>16:S^^;
+!!VRz7:S^None^;  64
+!!VRz9:S^The map has %V1 Towns and %Y99 Dragon Utopias to replace.
+Select the maximum number of %Z709 to be added:^;
+!!IF&v1<40:G1/5/64/9/1/2/3/4/5/6/7; result in v5
+!!FU&v5=64:E;
+!!VRv5&v5=32:S32; !!VRv5&v5=16:S24; !!VRv5&v5=8:S18;
+!!VRv5&v5=4:S12;  !!VRv5&v5=2:S8;   !!VRv5&v5=1:S4;
+
+!!VRy12:Sy99 +v1; !!VRv5&v5>y12:Sy12;
+!!SN:W^script144 How Many to Replace^/v5;
+
+!!VRv3:S1 T2048;
+!!VRv4:R1/v3; set random seed
+!_!IF:Q1^Do you want me to remove 1/3 of resource piles to make room for %Z709?^;
+!_!FU6158&1:P;
+!!UN:X?v1/?v2; size, # of levels
+!!VRv2:Sv1:6;row & column size (0--v2-1)
+!!VRv3:Sv2*v2-1; matrix size-1
+
+
+!!FU55211:P;
+
+!_!UN:U98/x1/?v1; get total # of Rampart towns on map
+!!SN:W^script144 Towns Count^/?y53;
+!!VRv2:S-1; must initialize v2<0 for "next" search
+!_!DO6152/1/v1/1&v1>0:P98/x1;
+!!DO6152/1/y53/1&y53>0:P98/-1;
+
+
+!!SN&x1=-1/v5<32:W^Randomized Neutral Town Placement^/1;
+
+* function to setup Neutral Towns
+!?FU6152;  x1=type, x2=subtype
+!_!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+!!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+!!CA2:N?z3 T?y77; get Town Name and Subtype
+
+!!SN:W^Neutral Town %V2 %V3 %V4^/?y99;
+!_!VRz2:M1/z3/0/11; get substring "Neutral Town" if Town is a DP
+!_!FU&z2<>z709:E; exit if not Neutral Town
+!!FU&y99=0:E;
+!!FU55208:Py77;
+
+!?FU55208; !!VRy77:Sx1;
+!!SN:W^Neutral Town %V2 %V3 %V4^/1;
+
+!!if&y77=1:;
+* demolish
+!!CA2:B2/7 B2/5 B2/10 B2/30 B2/31; Fort, Tavern, Village Hall, DW1, DW2
+* build
+!!CA2:B6/11 B6/32 B6/33 B6/34 B6/36; Town Hall, DW3-5, DW7
+* disable
+!!CA2:B5/0 B5/5 B5/6 B5/7 B5/12 B5/14 B5/16 B5/17 B5/21 B5/24 B5/26;
+!!CA2:B5/30 B5/31 B5/35 B5/39 B5/40 B5/41 B5/43;
+* available troops
+!_!CA2:M1/5/0/0 M1/1/0/0 M1/0/0/0; //fix Dwarves at Dragon Peaks' Buy All
+!_!CA2:M1/2/1/0 M1/3/1/0 M1/4/1/0 M1/6/1/0;
+* garrison
+!!CA2:M2/0/134/1 M2/1/135/1 M2/2/133/1 M2/3/132/1;
+!_!CA2:D2/0/134/1 M3/0/135/1 M4/0/133/1 M6/0/132/1;
+
+//disabled for now
+!_!CA2:D2/0/134/1; [level 2 no upg - Faerie Dragons]
+!_!CA2:D3/0/135/1; [level 3 no upg - Rust Dragons]
+!_!CA2:D4/0/133/1; [level 4 no upg - Crystal Dragons]
+!_!CA2:D6/0/132/1; [level 6 no upg - Azure Dragons]
+
+
+   !!CA2:U?y88;
+   //test version for now
+   !_!CAx1/x2/x3:D0/0/139/0;
+   !!FU(dex_CA_D):Py88/0/0/139/0;
+   !_!CAx1/x2/x3:D1/0/139/0;
+   !!FU(dex_CA_D):Py88/1/0/139/0;
+   !_!CAx1/x2/x3:D2/0/134/d1;
+   !!FU(dex_CA_D):Py88/2/0/134/1;
+   !_!CAx1/x2/x3:D3/0/135/d1;
+   !!FU(dex_CA_D):Py88/3/0/135/1;
+   !_!CAx1/x2/x3:D4/0/133/d1;
+   !!FU(dex_CA_D):Py88/4/0/133/1;
+   !_!CAx1/x2/x3:D5/0/139/0;
+   !!FU(dex_CA_D):Py88/5/0/139/0;
+   !_!CAx1/x2/x3:D6/0/132/d1;
+   !!FU(dex_CA_D):Py88/6/0/132/1;
+
+!!en:;
+
+!!if&y77=2:;
+* demolish
+!!CA2:B2/7 B2/5 B2/10 B2/14 B2/15; Fort, Tavern, Village Hall, marketplace, resource silo
+* build
+!!CA2:B6/11 B6/30 B6/31 B6/32 B6/33 B6/34 B6/35 B6/36 ; Town Hall, DW1-5
+!!CA2:B4/16 B6/16; blaksmith
+!!CA2:B6/0 B6/1 B6/2 B6/3 B6/4 B6/22 B6/17 B6/23; mage guild, library, artifact merchant wall of knowledge
+* disable
+!!CA2: B5/5 B5/6 B5/7 B5/12 B5/14 B5/21 B5/24 B5/26;
+!!CA2: B5/39 B5/40 B5/41 B5/42 B5/43 B5/15;
+* available troops
+!_!CA2:M1/0/2/0 M1/1/2/0 M1/2/2/0 M1/3/2/0 M1/4/2/0 M1/5/2/0 M1/6/1/0;
+* garrison
+!!CA2:M2/0/265/4 M2/1/266/4 M2/2/268/4 M2/3/293/1 M2/4/292/4 M2/5/287/4 M2/6/254/4;
+
+
+//dwellings
+//disabled for now
+!_!CA2:D0/0/254/2;
+!_!CA2:D1/0/287/2;
+!_!CA2:D2/0/292/2;
+!_!CA2:D3/0/266/2;
+!_!CA2:D4/0/265/2;
+!_!CA2:D5/0/268/2;
+!_!CA2:D6/0/293/1;
+
+   !!CA2:U?y88;
+   //test version for now
+   !_!CAx1/x2/x3:D0/0/254/2;   Druid
+   !!FU(dex_CA_D):Py88/0/0/254/2;
+   !_!CAx1/x2/x3:D1/0/287/2;   Planeswalker
+   !!FU(dex_CA_D):Py88/1/0/287/2;
+   !_!CAx1/x2/x3:D2/0/292/2;   Nicolai
+   !!FU(dex_CA_D):Py88/2/0/292/2;
+   !_!CAx1/x2/x3:D3/0/266/2;   Fire Acolite
+   !!FU(dex_CA_D):Py88/3/0/266/2;
+   !_!CAx1/x2/x3:D4/0/265/d2;   Ice Acolite
+   !!FU(dex_CA_D):Py88/4/0/265/2;
+   !_!CAx1/x2/x3:D5/0/268/2;   Raido
+   !!FU(dex_CA_D):Py88/5/0/268/2;
+   !_!CAx1/x2/x3:D6/0/293/1;   Sylfaen Dragon
+   !!FU(dex_CA_D):Py88/6/0/293/1;
+
+!!en:;
+
+* reset availble troops
+!!CA2:M1/0/0/0 M1/1/0/0 M1/2/0/0 M1/3/0/0 M1/4/0/0 M1/5/0/0 M1/6/0/0;
+
+!!CA2:I-1;
+!!VRy1:Sv2+2;
+!!TRy1/v3/v4:P1; passable (must be doen after CA:I-1)
+!!VRy2:Sv3-1;
+!!TRy1/y2/v4:P1; passable
+!!VRy1:-1;
+!!VRy2:-1;
+!!TRy1/y2/v4:P1; passable
+
+*** function to place Neutral Towns
+!?FU6153;
+* x1 - chance   Utopia    -> new town
+* x2 - chance   Old Town  -> new town
+
+!!VRv6:S0; try counter
+
+* //disabled for safety
+!_!FU6154:Px1/x2/x16/x3; pick random unused cell
+!_!FU&v4=0:E; random placement worked
+!_!IF:Q1^%Z709 %X16 could not be placed randomly.  Do you want me to look for a neutral town to convert?^;
+!_!FU&-1:E;
+
+!_!SN:W^Estimated Neutral Town Count^/?y55;
+!_!FU&y55<1:E;
+
+
+!_!UN:U98/-1/?y53; get total # of Towns on map
+!_!SN:W^script144 Towns Count^/y53;
+
+!_!UN:U25/-1/?y1; get total # of All Utopias on map
+!_!UN:U25/0/?y21; get total # of Normal Utopias on map
+!!SN:W^All Utopia-Like Objects^/?y21;
+!!SN:W^Fake Dragon Utopias^/?y91;
+!!SN:W^script144 Unlocked Dragon Utopias^/?y23;
+
+
+!!VRv2:S-1; must initialize v2<0 for "next" search
+!_!DO55207/1/y1/1&y1>y91/y21>0:P25/-1/x16/y77;
+!!DO55207/1/y21/1&y23>0:P25/-1/-1/-1/x1;
+!_!FU&v2>=0:E;
+
+!!SN:W^Dragon Utopias converted to Neutral Towns^/?y54;
+
+!_!UN:R1; redraw
+
+!_!UN:U98/-1/?y1; get total # of Towns on map
+!_!SN:W^script144 Towns Count^/?y53;
+!!SN:W^All Towns^/?y53;
+!!SN:W^script144 Free Towns^/?y52;
+
+!!VRv2:S-1; must initialize v2<0 for "next" search
+!!DO6157/1/y53/1&y52>0:P98/-1/-1/-1/x2;
+!_!DO6157/1/x1/1&x1>0:P98/-1/x16/y77;
+
+
+!?FU6154;
+* x4 - town type
+
+
+!!FU:E;
+
+!!VRy1:S0 Rx2; random cell
+!!VRy2:Sy1%x1*6+3; x
+!!VRy3:Sy1:x1*6+4; y
+
+!_!POy2/y3/0:N?v4;
+!!SN:W^Town Marked at %Y2 %Y3 0^/?v4;
+
+!!DO6155/-2/1/1&v4=0:Py2/y3; scan 6x6 area, y first
+
+!_!POy2/y3/0:N1; mark as used
+!!SN:W^Town Marked at %Y2 %Y3 0^/1;
+
+!!VRy4:Sy2+2; LRCx of object
+!!UN&v4=0:Iy4/y3/0/98/x1; place DP
+!!CAy2/y3/0&v4=0:N^%Z709 %X3^; name it
+!!SN&v4=0:W^Neutral Town %Y2 %Y3 0^/1;
+!!VRv6&v4>0:+2;
+!!FU6154&v4>0/v6<x2/v6<400:Px1/x2/x3/x4;
+
+!?FU6155; x16=dy, x1=YSx, x2=YSy
+!!DO6156/-2/2/1:Px1/x2/x16;
+!!FU&v4=0:E;
+!!VRx16:S99; end loop
+
+!?FU6156; x16=dx, x3=dy, x1=YSx, x2=YSy
+!!VRy1:Sx16+x1; x
+!!VRy2:Sx3+x2;  y
+!!TRy1/y2/0:T?y7/d/d/d/d/d/d/d;
+!!UN:Ey1/y2/0; f1=1 if RS or YS
+!!FU&-1/y7<8:E; water & rock N/G.
+!!VRv4:S1;
+!!VRx16:S99; end loop
+
+* function to convert random Towns to Neutral Towns
+!?FU6157;  x1=type, x2=subtype, x3=DP#, x4= neutral town type, x5= chance
+!_!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+
+!!UN:P904/1;    !!VRy13:S0;
+!!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+!!UN:P905/?y13; !!UN:P905/0; !!UN:P904/0; !!FU&y13=1:E;
+
+!_!SN:W^Estimated Neutral Town Count^/?y55;
+!_!FU&y55<1:E;
+
+!!SN:W^Town Marked at %V2 %V3 %V4^/?y87; !!FU&y87>0:E;
+
+
+
+!!VRy88:S0 R99;
+!!FU&y88>x5:E;
+
+
+!!SN:W^script144 How Many to Replace^/?y55;
+!!FU&y55<=0:E;
+
+!!SN:W^Neutral Town %V2 %V3 %V4^/?y1;
+!!FU&y1>0:E;
+!_!PO2:N?y1; check for marked town
+!!SN:W^Town Marked at %V2 %V3 %V4^/?y1;
+!!FU&y1>0:E;
+!!CA2:O?y2; y2=-1 for neutral
+!!FU&y2>-1:E; exit if not neutral
+
+
+
+!!SN:W^Custom Town Count^/d1;
+!!SN:W^script144 How Many to Replace^/d-1;
+
+!!FU55202:Px4/-1;
+!!SN:W^Placed Neutral Town Type^/?y77;
+!!SN:W^Placed Neutral Town Name Number^/?y78;
+
+!!VRz3:S^%Z709 %Y78^;
+!!CA2:Ty77 Nz3; converted to DP
+
+!!SN:W^script144 Verbose^/?y73;
+!!IF&y73>0:M^Random Town converted to %Z709 %Y78^;
+!!SN:W^Neutral Town %V2 %V3 %V4^/1;
+!!SN:W^Town Marked at %V2 %V3 %V4^/1;
+
+!!CA2:M1/0/0/0 M1/1/0/0 M1/2/0/0 M1/3/0/0 M1/4/0/0 M1/5/0/0 M1/6/0/0;
+
+
+!?FU6158; function to remove some resource piles
+!!UN:U79/-1/?y1; get total # of resource piles on map
+!!VRv2:S-1; must initialize v2<0 for "next" search
+!!DO6159/1/y1/1&y1>0:P79/-1;
+
+!?FU6159;  x1=type, x2=subtype
+!!FU:E;
+!_!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+!!UN:P904/1;    !!VRy13:S0;
+!!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+!!UN:P905/?y13; !!UN:P905/0; !!UN:P904/0; !!FU&y13=1:E;
+
+!!VRy1:Sx16-1:3%3;  1,2,3,4,5,6,7,8,9,... --> 0,0,0,1,1,1,2,2,2,0,0,0,...
+!!FU&y1<>0:E;
+!!UN:Ov2/v3/v4;
+
+!_?FU6150&-412; set DP Town Cr's
+!?FU6150; set DP Town Cr's
+
+!_!UN:T1/2/0/134; [level 2 no upg - Faerie Dragon3]
+!_!UN:T1/3/0/135; [level 3 no upg - Rust Dragons]
+!_!UN:T1/4/0/133; [level 4 no upg - Crystal Dragons]
+!_!UN:T1/6/0/132; [level 6 no upg - Azure Dragons]
+
+!_!UN:T2/0/0/254;
+!_!UN:T2/1/0/287;
+!_!UN:T2/2/0/292;
+!_!UN:T2/3/0/266;
+!_!UN:T2/4/0/265;
+!_!UN:T2/5/0/268;
+!_!UN:T2/6/0/293;
+
+* change "TB" and "TO" to "JV"
+!!SN:L^Era.dll^/?y1; y1=handle
+!!SN:Ay1/^RedirectFile^/?y2; y2=FU address
+!!SN:Ey2/1/^TBRMDW_2.def^/^JVRMDW_2.def^;
+!!SN:Ey2/1/^TBRMDW_3.def^/^JVRMDW_3.def^;
+!!SN:Ey2/1/^TBRMDW_4.def^/^JVRMDW_4.def^;
+!!SN:Ey2/1/^TBRMDW_6.def^/^JVRMDW_6.def^;
+!!SN:Ey2/1/^TBRMEXT2.def^/^JVRMEXT2.def^;
+!!SN:Ey2/1/^TBRMEXT3.def^/^JVRMEXT3.def^;
+!!SN:Ey2/1/^TBRMHAL2.def^/^JVRMHAL2.def^;
+!!SN:Ey2/1/^TORDR1AA.PCX^/^JVRDR1AA.PCX^;
+!!SN:Ey2/1/^TORELF1.PCX^/^JVRELF1.PCX^;
+!!SN:Ey2/1/^TORHAL2.PCX^/^JVRHAL2.PCX^;
+!!SN:Ey2/1/^TORPEG1A.PCX^/^JVRPEG1A.PCX^;
+!!SN:Ey2/1/^TORTRE1.PCX^/^JVRTRE1.PCX^;
+!!SN:Ey2/1/^tbrmback.pcx^/^JVrmback.pcx^;
+
+
+
+!!SN:Ey2/1/^TBTWDW_0.def^/^JVTWDW_0.def^;
+!!SN:Ey2/1/^TBTWDW_1.def^/^JVTWDW_1.def^;
+!!SN:Ey2/1/^TBTWDW_2.def^/^JVTWDW_2.def^;
+!!SN:Ey2/1/^TBTWDW_3.def^/^JVTWDW_3.def^;
+!!SN:Ey2/1/^TBTWDW_4.def^/^JVTWDW_4.def^;
+!!SN:Ey2/1/^TBTWDW_5.def^/^JVTWDW_5.def^;
+!!SN:Ey2/1/^TBTWDW_6.def^/^JVTWDW_6.def^;
+
+!!SN:Ey2/1/^TBTWSPEC.def^/^JVTWSPEC.def^;
+!!SN:Ey2/1/^TBTWblak.def^/^JVTWblak.def^;
+!!SN:Ey2/1/^TBTWhal2.def^/^JVTWhal2.def^;
+
+!!SN:Ey2/1/^TOTGar1.pcx^/^JVTWBLN2.pcx^;
+!!SN:Ey2/1/^TZTGar1.pcx^/^JVTWBLN4.pcx^;
+
+!!SN:Ey2/1/^TOTGen1.pcx^/^JVTWBLNK.pcx^;
+!!SN:Ey2/1/^TOTGol1A.pcx^/^JVTWBLNK.pcx^;
+!!SN:Ey2/1/^TOTGrm1A.pcx^/^JVTWBLNK.pcx^;    !!FU1337:P2/30/0/353/221/1;
+!!SN:Ey2/1/^TOTMag1.pcx^/^JVTWBLNK.pcx^;     !!FU1337:P2/33/0/413/95/1;
+!!SN:Ey2/1/^TOTNag1.pcx^/^JVTWBLNK.pcx^;     !!FU1337:P2/35/0/481/208/1;
+!!SN:Ey2/1/^TOTtit1.pcx^/^JVTWBLNK.pcx^;
+!!SN:Ey2/1/^TOThal2.pcx^/^JVTWBLNK.pcx^;
+!!SN:Ey2/1/^TOTblka.pcx^/^JVTWBLNK.pcx^;     !!FU1337:P2/16/0/428/211/1;
+!!SN:Ey2/1/^TOTMrkA.pcx^/^JVTWBLNK.pcx^;
+
+!!SN:Ey2/1/^TzTGen1.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTGol1A.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTGrm1A.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTMag1.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTNag1.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTtit1.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzThal2.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTblka.pcx^/^JVTWBLN3.pcx^;
+!!SN:Ey2/1/^TzTMrkA.pcx^/^JVTWBLN3.pcx^;
+
+!!SN:Ey2/1/^tbtwback.pcx^/^JVtwback.pcx^;
+
+!!SN:W^Knightmare Themes^/?y11;
+!_!MP&y11>0:S2/^DragonPeaks^ S3/^DivineLibrary^;
+
+!!IF:V412/1; prevent redirected redirects
+
+!_?FU6151&412; restore Rampart Town Cr's
+!?FU6151; restore Rampart Town Cr's
+!_!UN:T1/2/0/18;
+!_!UN:T1/3/0/20;
+!_!UN:T1/4/0/22;
+!_!UN:T1/6/0/26;
+
+!_!UN:T2/0/0/28;
+!_!UN:T2/1/0/30;
+!_!UN:T2/2/0/32;
+!_!UN:T2/3/0/34;
+!_!UN:T2/4/0/36;
+!_!UN:T2/5/0/38;
+!_!UN:T2/6/0/40;
+
+
+* undo tower coordinates
+!!FU1337:P2/30/0/453/221/1;
+!!FU1337:P2/33/0/613/95/1;
+!!FU1337:P2/35/0/681/208/1;
+!!FU1337:P2/16/0/478/211/1;
+
+!_!MP:S2/^rampart^ S3/^towertown^;
+
+* undo all redirects
+!!SN:L^Era.dll^/?y1; y1=handle
+!!SN:Ay1/^RedirectFile^/?y2; y2=FU address
+!!SN:Ey2/1/^^/^^;
+
+
+
+
+!!IF:V412/0; unflag redirects
+
+
+!?FU(OnPreTownScreen);
+!!CA0/x1:P?y1/?y2/?y3;
+
+!!SN:W^Neutral Town %Y1 %Y2 %Y3^/?y99;
+!_!IF&y99=0:V412/1; // majaczek - prevent locks
+!!FU6150&y99<>0/-412:P;
+!!FU6151&y99=0/412:P;
+
+!?OB98; Hero enters Rampart Town
+!!FU:E;
+!!CA998:N?z3; get Town Name
+!_!VRz2:M1/z3/0/11; get substring "Neutral Town" if Town is a DP
+!_!FU6150&z2=z709/-412:P;
+!_!FU6151&z2<>z709/412:P;
+!!SN:W^Neutral Town %V998 %V999 %V1000^/?y99;
+!_!IF&y99=0:V412/1; // majaczek - prevent locks
+!!FU6150&y99<>0/-412:P;
+!!FU6151&y99=0/412:P;
+
+
+!?FU(OnPostTownScreen);
+!!CA0/x1:P?y1/?y2/?y3;
+
+!!SN:W^Neutral Town %Y1 %Y2 %Y3^/?y99;
+!!FU&y99=0:E;
+
+!!CA0/x1:I-1; restore demolishment on exit
+!!VRy11:Sy1 +2;
+!!TRy11/y2/y3:P1; passable (must be doen after CA:I-1)
+!!VRy12:Sy2 -1;
+!!TRy1/y12/y3:P1; passable
+!!VRy11:-1;
+!!VRy12:-1;
+!!TRy11/y12/y3:P1; passable
+
+!$OB98; Hero exits Rampart Town
+!!FU:E;
+!!CA998:N?z3; get Town Name
+!_!VRz2:M1/z3/0/11; get substring "Neutral Town" if Town is a DP
+!!FU6151&412:P;
+
+!!SN:W^Neutral Town %V998 %V999 %V1000^/?y99;
+!_!FU&z2<>z709:E;
+!!FU&y99=0:E;
+
+!!CA998:I-1; restore demolishment on exit
+!!VRy1:Sv998 +2;
+!!TRy1/v999/v1000:P1; passable (must be doen after CA:I-1)
+!!VRy2:Sv999 -1;
+!!TRy1/y2/v1000:P1; passable
+!!VRy1:-1;
+!!VRy2:-1;
+!!TRy1/y2/v1000:P1; passable
+
+!?CM5; LMB on Town List slot in Adventure Screen
+!!FU:E;
+!!CM:I?y1;
+!!FU|y1<32/y1>36:E; not town slot
+!!VRy2:Sy1 -32; convert to slot # 0-4
+!!OW:N-1/y2/?y3; y3=town #
+!!CA0/y3:N?z3; get Town name
+!_!VRz2:M1/z3/0/11; get substring "Neutral Town" if Town is a DP
+
+!!CA0/y3:P?y81/?y82/?y83;
+!!SN:W^Neutral Town %Y81 %Y82 %Y83^/?y99;
+
+!_!FU6150&z2=z709/-412:P;
+!_!FU6151&z2<>z709/412:P;
+!!FU6150&y99<>0/-412:P;
+!!FU6151&y99=0/412:P;
+
+//not fixed
+!?CM1; LMB push in Town Screen, on Town slot in Town List
+!!CM:I?y1 S?y2;
+!_!FU|y1<155/y1>157/y2<>12:E; not LMB push on town slot
+!!FU|y1<155/y1>157:E; not click on town slot
+
+!!CM:R0; !!FU:E; disabled by majaczek
+
+!?FU6160; function to check all towns for name match to zx3
+!_!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+
+!!UN:P904/1;    !!VRy13:S0;
+!!UN:Ux1/x2/-1/2; put coordinates of next type x1/x2 object --> (v2,v3,v4)
+!!UN:P905/?y13; !!UN:P905/0; !!UN:P904/0; !!FU&y13=1:E;
+
+!!CA2:N?z6; [N?z-1 N.G.]
+!!FU&z6<>zx3:E;
+!!VRx16:S99; match found, end loop
+!!VRv5:S1;
+
+!?CM1; LMB release in Town Screen, on Town slot in Town List
+!!CM:I?y1 S?y2;
+!!FU|y1<155/y1>157/y2<>13:E; not LMB release on town slot
+!!UN:R4/1 R4/2;
+
+!?CM1; LMB push in Town Screen, on Town Hall
+!!CM:I?y1 S?y2;
+!!FU|y1<10/y1>13:E; not push on Town Hall
+
+!!CA-1:N?z3; get Town name
+!_!VRz2:M1/z3/0/11; get substring "Neutral Town" if Town is a DP
+!_!FU&z2<>z709:E;
+
+!!CA-1:P?y81/?y82/?y83;
+!!SN:W^Neutral Town %Y81 %Y82 %Y83^/?y99;
+!!CM:R1; !!FU&y99=0:E;
+
+!!CM:R0; disable
+!!IF:M^Sorry, you cannot develop this city any further.^;
+!!CM:R0; disable
+!!SN:Q;
+
+!?CM5;
+!!CM:I?y99;
+!!CM&y99=3:R0;
+
+!?GM0;
+!!IF:V412/1; // majaczek - prevent locks
+!!FU6151&412:P;
+
+!?CM1; !!FU:E;
+!!CM:F?y1; !!FU&y1<>4:E;
+!!CM:A?y4/?y5;
+!!IF:L^x=%Y4 y=%Y5^;

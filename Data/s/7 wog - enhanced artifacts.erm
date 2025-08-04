@@ -1,7 +1,5 @@
-ZVSE
-ERMS_ScriptDate=28.4(April).2016
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ZVSE2
+
 ** ENHANCED ARTIFACTS  -  ERM script 71
 
 ** By Arstahd
@@ -10,14 +8,8 @@ ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
 ** September 16, 2004 to correct some y variables that should have been y- variables.
 ** Special thanks to Fnord for help with bug fixing and script maintenance
 ** Artifact descriptions transferred to script75 on Jul. 18. 2004 by Hermann the Weird
-
-** Variables Used: i
-** V variables:    v998, v7178, v7182,  v7057-v7079,  v7130-v7134
-** Z variables:    z1-z4
-** Y Variables:    y1-y10
-** Flags Used:     76
-** Functions Used: 7030-7039
-** Timers Used: 51
+** Updated Jan 2023 by daemon_n with perfect optimization and nativization kek 
+** Updated Feb 2024 by Archer30
 
 
 ** Improves many weak artifacts
@@ -49,8 +41,7 @@ ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
 ** Breastplate of Petrified Wood upgrades Dendroid Guards
 ** Helm of the Alabaster Unicorn upgrades Unicorns
 ** New combination artifact (above 4 artifacts)
-**    Garb of the Forest Lord: was giving 1 War Unicorn, 2 Dendroid Soldiers, 4 Battle Dwarves, 8 Centaur Captains each week
-**    Garb of the Forest Lord: [gives 3 Sylvan Dragons, 1 Sylfaen Dragon] *majaczek*
+**    Garb of the Forest Lord: gives 1 War Unicorn, 2 Dendroid Soldiers, 4 Battle Dwarves, 8 Centaur Captains each week
 ** Commander artifacts can be worn by heroes granting two random abilities (as well as functioning normally)
 **    +1 to +5 Primary Stat bonus (1, 2, or all 4 stats)
 **    add one rank to a random secondary skill (if this puts you at expert, the bonus is permanent)
@@ -58,549 +49,522 @@ ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
 ** Ring of the Diplomat reduces monster aggression by 1                    {Treasure}
 ** Ambassador's Sash reduces monster aggression by 1                       {Treasure}
 ** New combination artifact (above 3 artifacts)
-**     Bards Mandola: monster aggression is further reduced by 2 *majaczek*
+**     The Vestments of Authority: monster aggression is further reduced by 1
 ** Ring of Life                                                            {Treasure}
 ** Vial of Lifeblood                                                       {Treasure}
-
-
 
 ** All artifacts function for the AI if worn.
 
 
 ** Initialization Code
+!#UN:P71/?i^wog_71_enabled^;  [Check if Enhanced Artifacts II is enabled in WoGify Options]
+!#UN:P219/?i^wog_219_enabled^; [Check if Enhanced Commander Artifacts is enabled in WoGify Options]
 
-!#UN:P71/?v7182;  [Check if Enhanced Artifacts is enabled in WoGify Options]
-!#UN:P219/?v7178; [Check if Enhanced Commander Artifacts is enabled in WoGify Options]
-!#VRv7178:S0;     [Ignore Enhanced Commander Artifacts, just disable]
+!?FU(WOG_CreateERMHook)&i^wog_71_enabled^;
+!!SN:Ex1/1/4288967/(WOG_71_OnMonsterClickDiplomacy); [hooks for the artifacts decreasing mon gression]
+!!SN:Ex1/1/4879500/(WOG_71_OnMonsterAttackDiplomacy);
+!!SN:Ex1/1/4355710/(WOG_71_OnGetArmyDiplomacyValue);
 
-*#VRv7182:S1;                  [enable for stand-alone use]
-*#VRv7178:S1;                  [enable for stand-alone use]
-!#VRv7178:S0;     [Ignore Enhanced Commander Artifacts, just disable]
+!!SN:Ex1/1/5137385/(WOG_71_OnMonGetSpec);[hook for the artifacts giving mon stats]
 
-!#TM51&v7182=1:S8/999/7/255;                         [timer once/week for all players - starts on day 8]
-*#TM51&v7182=1:S2/999/1/255;          ****test timer once/day****
+!?FU(OnAfterErmInstructions);
+!!if&i^wog_219_enabled^;
 
-!#UN&v7178=1:A146/2/4;                                [set axe of smashing - right hand]
-!#UN&v7178=1:A147/2/6;                                [set mithril mail - torso]
-!#UN&v7178=1:A148/2/4;                                [set sword of sharpness - right hand]
-!#UN&v7178=1:A149/2/1;                                [set helm of immortality - head]
-!#UN&v7178=1:A150/2/3;                                [set pendant of sorcery - neck]
-!#UN&v7178=1:A151/2/8;                                [set boots of haste - feet]
-!#UN&v7178=1:A152/2/5;                                [set bow of seeking - left hand]
-!#UN&v7178=1:A153/2/7;                                [set dragon eye ring - ring]
-!#UN&v7178=1:A154/2/5;                                [set hardened shield - left hand]
-!#UN&v7178=1:A155/2/7;                                [set slava's ring of power - ring]
+  !#VA(artSlots[10]:y);
+  !#VA(skillBitSet[10]:y);
 
-!#VRv7060&v7178=1:S1 R4;                                      [random primary skill value 1-5]
-!#VRv7061&v7178=1:S0 R27;                                     [random secondary skill 0-27]
-!#VRv7062&v7178=1:S1 R4;
-!#VRv7063&v7178=1:S0 R27;
-!#VRv7064&v7178=1:S1 R4;
-!#VRv7065&v7178=1:S0 R27;
-!#VRv7066&v7178=1:S1 R4;
-!#VRv7067&v7178=1:S0 R27;
-!#VRv7068&v7178=1:S1 R4;
-!#VRv7069&v7178=1:S0 R27;
-!#VRv7070&v7178=1:S1 R4;
-!#VRv7071&v7178=1:S0 R27;
-!#VRv7072&v7178=1:S1 R4;
-!#VRv7073&v7178=1:S0 R27;
-!#VRv7074&v7178=1:S1 R4;
-!#VRv7075&v7178=1:S0 R27;
-!#VRv7076&v7178=1:S1 R4;
-!#VRv7077&v7178=1:S0 R27;
-!#VRv7078&v7178=1:S1 R4;
-!#VRv7079&v7178=1:S0 R27;
+  !!VR(artSlots[0]):C4/6/4/1/3/8/5/7/5/7;[set axe of smashing etc right slots ]
+  !!VR(skillBitSet[0]):C1/2/1/2/4/8/1/12/2/15;
 
-!#UN&v7178=1:N4/960/v7061;                          [store skill name]
-!#UN&v7178=1:N4/961/v7063;
-!#UN&v7178=1:N4/962/v7065;
-!#UN&v7178=1:N4/963/v7067;
-!#UN&v7178=1:N4/964/v7069;
-!#UN&v7178=1:N4/965/v7071;
-!#UN&v7178=1:N4/966/v7073;
-!#UN&v7178=1:N4/967/v7075;
-!#UN&v7178=1:N4/968/v7077;
-!#UN&v7178=1:N4/969/v7079;
+  ; Set up the array for random skills in order to generate different skills - Archer30
+  ; If Warfare is enabled, War Machines skills will be skipped (fewer issues and less imba)
+  !!FU(NewIntArray):P?(secondarySkillList:y);
+  !!UN:P193/?(warfareEnabled:y);
 
+  !!re i/(SEC_SKILL_FIRST)/(SEC_SKILL_LAST);
+    !!FU(WOG_GameMgr_Skill_isBanned):Pi/?(skillBanned:y);
 
+    !!if&(skillBanned); Skip the skill if it is banned
+      !!co;
+    !!en;
+    
+    !!if&(warfareEnabled);
+      !!co|i=(SKILL_BALLISTICS)/i=(SKILL_ARTILLERY)/i=(SKILL_FIRST_AID);
+    !!en;
 
-!#VRz970&v7178=1:Sz171000;
-!#VRz971&v7178=1:Sz171001;
-!#UN&v7178=1:A146/10/970;
-!#UN&v7178=1:A146/9/971;
-***
-!#VRz972&v7178=1:Sz171002;
-!#VRz973&v7178=1:Sz171003;
-!#UN&v7178=1:A147/10/972;
-!#UN&v7178=1:A147/9/973;
-***
-!#VRz974&v7178=1:Sz171004;
-!#VRz975&v7178=1:Sz171005;
-!#UN&v7178=1:A148/10/974;
-!#UN&v7178=1:A148/9/975;
-***
-!#VRz976&v7178=1:Sz171006;
-!#VRz977&v7178=1:Sz171007;
-!#UN&v7178=1:A149/10/976;
-!#UN&v7178=1:A149/9/977;
-***
-!#VRz978&v7178=1:Sz171008;
-!#VRz979&v7178=1:Sz171009;
-!#UN&v7178=1:A150/10/978;
-!#UN&v7178=1:A150/9/979;
-***
-!#VRz980&v7178=1:Sz171010;
-!#VRz981&v7178=1:Sz171011;
-!#UN&v7178=1:A151/10/980;
-!#UN&v7178=1:A151/9/981;
-***
-!#VRz982&v7178=1:Sz171012;
-!#VRz983&v7178=1:Sz171013;
-!#UN&v7178=1:A152/10/982;
-!#UN&v7178=1:A152/9/983;
-***
-!#VRz984&v7178=1:Sz171014;
-!#VRz985&v7178=1:Sz171015;
-!#UN&v7178=1:A153/10/984;
-!#UN&v7178=1:A153/9/985;
-***
-!#VRz986&v7178=1:Sz171016;
-!#VRz987&v7178=1:Sz171017;
-!#UN&v7178=1:A154/10/986;
-!#UN&v7178=1:A154/9/987;
-***
-!#VRz988&v7178=1:Sz171018;
-!#VRz989&v7178=1:Sz171019;
-!#UN&v7178=1:A155/10/988;
-!#UN&v7178=1:A155/9/989;
+    !!FU(Array_Push):P(secondarySkillList)/i;
+  !!en;
 
-**
-!?AE0&v7178=1; take off artifact trigger
+  !!SN:M(secondarySkillList)/?(size:y);
+  !!if&(size);
+    !!FU(Array_Shuffle):P(secondarySkillList);
 
-!!FU7038&v998>145/v998<156:P;
-**
+    ; Generate details of the 10 commander artifacts
+    !!re i/0/9;(ART_SLAVAS_RING_OF_POWER);
+      !!VR(artId:y):Si +(ART_AXE_OF_SMASHING);
+      !!VR(randomPSval:y):R0/1/5;
+      ; Pop and get the skill from the array
+      !!FU(Array_Pop):P(secondarySkillList)/?(randomSS:y);
 
-**
-!?AE1&v7178=1; put on artifact trigger
+      !!SN:H^secskill^/(randomSS)/0/?(skillName:z);
+      !!UN:A(artId:y)/2/(artSlots[i]);
+      !!FU(PackUnion):P(randomPSval)/8/(skillBitSet[i])/8/(randomSS)/8/?(result:y);
+      !!VRi^wog_219_art_%(artId:y)^:S(result:y);
+      !!SN:T^wog.219.%(artId:y).description^/?(artDesc:z)/^value^/(randomPSval)/^skillName^/(skillName);
+      !!SN:H^art^/(artId:y)/0/?(artName:z);
+      !!SN:H^art^/(artId:y)/1/^{%(artName:z)}%T(wog.endl)%T(wog.endl)%(artDesc:z)^;
+      !!VR(size):-1;
+      !!br&(size)=0; break loop if out of skills
+    !!en;
+  !!en;
+!!en;
 
-!!FU7037&v998>145/v998<156:P;
-**
+!!if&i^wog_71_enabled^;
+  !!UN:A66/3/2;                                 [set class to treasure - statesman's medal]
+  !!UN:A67/3/2;                                 [set class to treasure - diplomat's ring]
+  !!UN:A68/3/2;                                 [set class to treasure - ambassador's sash]
+  !!UN:A95/3/2;                                 [set class to treasure - ring of life]
+  !!UN:A96/3/4;                                 [set class to minor - vial of lifeblood]
 
-
-
-
-
-
-!#UN&v7182=1:A66/3/2;                                 [set class to treasure - statesman's medal]
-!#UN&v7182=1:A67/3/2;                                 [set class to treasure - diplomat's ring]
-!#UN&v7182=1:A68/3/2;                                 [set class to treasure - ambassador's sash]
-!#UN&v7182=1:A95/3/2;                                 [set class to treasure - ring of life]
-!#UN&v7182=1:A96/3/4;                                 [set class to minor - vial of lifeblood]
-
-*****
-!#UN&v7182=1:A103/3/8;                                [set class to major - pendant of life]
-!#UN&v7182=1:A103/1/5000;                             [set cost]
-*****
-!#UN&v7182=1:A104/3/8;                                [set class to major - pendant of death]
-!#UN&v7182=1:A104/1/4000;                             [set cost]
-*****
-!#UN&v7182=1:A107/3/4;                                [set class to minor - pendant of true aim (total recall)]
-*****
-!#UN&v7182=1:A101/3/4;                                [set class to minor - pendant of second sight]
-*****
-!#UN&v7182=1:A102/3/8;                                [set class to major - pendant of holiness]
-*****
-!#UN&v7182=1:A100/3/4;                                [set class to minor - pendant of focused rage (dispassion)]
-*****
-!#UN&v7182=1:A105/3/4;                                [set class to minor - pendant of resolve (free will)]
-*****
+  *****
+  !!UN:A103/3/8;                                [set class to major - pendant of life]
+  !!UN:A103/1/5000;                             [set cost]
+  *****
+  !!UN:A104/3/8;                                [set class to major - pendant of death]
+  !!UN:A104/1/4000;                             [set cost]
+  *****
+  !!UN:A107/3/4;                                [set class to minor - pendant of true aim (total recall)]
+  *****
+  !!UN:A101/3/4;                                [set class to minor - pendant of second sight]
+  *****
+  !!UN:A102/3/8;                                [set class to major - pendant of holiness]
+  *****
+  !!UN:A100/3/4;                                [set class to minor - pendant of focused rage (dispassion)]
+  *****
+  !!UN:A105/3/4;                                [set class to minor - pendant of resolve (free will)]
+!!en;
 
 ** end of Initialization Code
 
+!?FU(OnBeforeBattleUniversal);
+!!VRi^wog_219_inCombat^:S(TRUE);
+!?FU(OnAfterBattleUniversal);
+!!VRi^wog_219_inCombat^:S(FALSE);
 
-** Timer routine
-!?TM51&v7182=1; [Continue trigger if script is enabled]
+; WARNING: using (CURRENT_HERO) isn't ideal as it conflict with HD backpack
+; Report: https://discord.com/channels/665742159307341827/1246447170622587011
+!?FU(OnEquipArt)&v998>=(ART_AXE_OF_SMASHING)/v998<=(ART_SLAVAS_RING_OF_POWER)/i^wog_219_enabled^;
+!!FU(WOG_219_ArtProc):Pv998/1;
 
-!!OW:C?y-1;                              [get current player]
-!!VRv7057:S0;                            [start with hero #0]
-!!DO7030/0/155/1:Py-1;                   [iterate through all heroes]
+!?FU(OnUnequipArt)&v998>=(ART_AXE_OF_SMASHING)/v998<=(ART_SLAVAS_RING_OF_POWER)/i^wog_219_enabled^;
+!!FU(WOG_219_ArtProc):Pv998/-1;
 
-** end of timer routine
+!?FU(WOG_219_ArtProc);
+!#VA(artId:x) (value:x);
+!#VA(pSkills[4]:y);
 
+!!FU(UnpackUnion):Pi^wog_219_art_%(artId)^/?(psValue:y)/8/?(psBitSet:y)/8/?(sSkill:y)/8;
 
-** Mouse-click in hero screen            [added by Fnord]
-!?CM2&v7182=1/v7178=1;                   [hero mouse-click trigger if Enhanced Commander Artifacts enabled]
-!!CM:S?y-1 I?y-2;                        [type of click: y-1, position of click: y-2]
-!!FU|y-1=14/y-2<2/y-2>44:E;              [exit if it's a right-click or not an artifact area]
-!!UN:R3/-1;                              [redraw Hero screen to update added skills]
+!!re i/0/3;
+  !!VR(bitMask:y):S1 Sd<<i &(psBitSet:y);
 
-** end of mouse-click in hero screen
+  !!if&(bitMask);
+    !!VR(pSkills[i]):S(psValue:y) *(value);
+  !!en;
+!!en;
 
+!!HE(CURRENT_HERO):Fd(pSkills[0])/d(pSkills[1])/d(pSkills[2])/d(pSkills[3]) S(sSkill)/?(lvl:y);
+!!FU&i^wog_219_inCombat^:E;
 
-** function to iterate through current player's heroes
-!?FU7030;             x1=current player
+!!if&(value)>0;
+  !!HE(CURRENT_HERO)&(lvl)<(SKILL_EXPERT):S(sSkill)/d1;
+!!el&(lvl:y)>(SKILL_NOT_LEARNED)/(lvl)<(SKILL_EXPERT); [Arcerh30: if the hero granted Expert level SS by equipping the art, he/she granted the SS on Expert level permantely - same as in the original WoG Script]
+  !!HE(CURRENT_HERO):S(sSkill)/d-1;
+!!en;
 
-!!HEv7057:O?y1;                          [get owner of iterated hero]
-!!FU7031&y1>=0/x1=y1:P;                  [if hero in use and it's that hero's owner's turn, continue in function 7031]
-!!VRv7057:+1;                            [inc hero #]
+; Update for Secondary skills and spell points - Why haven't these be updated in AE triggers like Primary skills?
+!?FU(OnHeroScreenMouseClick)&i^mouse_action^=(MOUSE_LMB_RELEASED);
+!!VR(screenUpdate:y):S(FALSE);
+!!VR(screenUpdate)&i^mouse_item^>=2/i^mouse_item^<=10:S(TRUE);
+!!SN&(screenUpdate):D;
 
 ** end of function
 
 
-** function to check one hero for creature artifacts
-!?FU7031;
+** Timer routine
+!?FU(OnEveryDay)&i^timerWeekDay^=1/i^timerDay^>1/i^wog_71_enabled^; [Continue trigger if script is enabled, starting from the second week]
 
-!!HEv7057:A2/56/?y10/?y1;                   [check for Dead Man's Boots]
-!!HEv7057:A2/55/?y10/?y2;                   [check for Vampire's Cowl]
-!!HEv7057:A2/54/?y10/?y3;                   [check for Amulet of the Undertaker]
-!!HEv7057:A2/130/?y10/?y4;                  [check for Cloak of the Undead King]
-!!FU7032|y1>0/y4>0:P56/56/-1;                  [handle Dead Man's Boots if found]
-!!FU7032|y2>0/y4>0:P55/62/-1;                  [handle Vampire's Cowl if found]
-!!FU7032|y3>0/y4>0:P54/58/-1;                  [handle Amulet of the Undertaker if found]
+** check hero for creature artifacts
+!!OW:Hi^timerOwner^/1;
+!!FU&v1<=0:E;
+!#VA(usedY[10]:y);
+!!VR(heroNum:y):Sv1;
+!!re j/2/(heroNum:y)/1/1;
+  !!VRi:Svj;
 
-!!HEv7057:A2/415/?y10/?y99;                  [check for The Garb of the Forest Lord]
-!!HEv7057:A2/7/?y10/?y5;                    [check for Centaur's Axe]
-!!FU7032|y5>0/y99>0:P7/14/-1;                        [handle Centaur's Axe if found]
-!!HEv7057:A2/13/?y10/?y6;                   [check for Shield of the Dwarven Lords]
-!!FU7032|y6>0/y99>0:P13/16/-1;                       [handle Shield of the Dwarven Lords if found]
-!!HEv7057:A2/25/?y10/?y7;                   [check for Breastplate of Petrified Wood]
-!!FU7032|y7>0/y99>0:P25/22/-1;                       [handle Breastplate of Petrified Wood if found]
-!!HEv7057:A2/19/?y10/?y8;                   [check for Helm of the Alabaster Unicorn]
-!!FU7032|y8>0/y99>0:P19/24/-1;                       [handle Helm of the Alabaster Unicorn if found]
+  !!HEi:A2/(ART_DEAD_MANS_BOOTS)/?y10/?y1; [check for Dead Man's Boots]
+  !!HEi:A2/(ART_VAMPIRES_COWL)/?y10/?y2; [check for Vampire's Cowl]
+  !!HEi:A2/(ART_AMULET_OF_THE_UNDERTAKER)/?y10/?y3; [check for Amulet of the Undertaker]
+  !!HEi:A2/(ART_CLOAK_OF_THE_UNDEAD_KING)/?y10/?y4; [check for Cloak of the Undead King]
 
-!!VRy88:S0; !!VRy88&y5>0/y6>0/y7>0/y8>0:S1;  !!VRy88&y99>0:S1;
-!!HEv7057:B0/?z1;
-!!IF&1000/y88>0:M1/z171020;
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)|y1>0/y4>0:Pi/(ART_DEAD_MANS_BOOTS)/(MON_SKELETON); [handle Dead Man's Boots if found]
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)|y2>0/y4>0:Pi/(ART_VAMPIRES_COWL)/(MON_VAMPIRE); [handle Vampire's Cowl if found]
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)|y3>0/y4>0:Pi/(ART_AMULET_OF_THE_UNDERTAKER)/(MON_WALKING_DEAD); [handle Amulet of the Undertaker if found]
 
-!_!HEv7057&1000/y88>0:C25/1/23/2/17/4/15/8/-1/0/-1/0/-1/0; [gives 1 war unicorn, 2 dendroid soldiers, 4 battle dwarves, 8 centaur captains]
-!_!HEv7057&-1000/y88>0:C2/25/1/0; [offer AI war unicorn]
-!_!HEv7057&-1000/y88>0:C2/23/2/0; [offer AI dendroid soldiers]
-!_!HEv7057&-1000/y88>0:C2/17/4/0; [offer AI battle dwarves]
-!_!HEv7057&-1000/y88>0:C2/15/8/0; [offer AI centaur captains]
+  !!HEi:A2/(ART_CENTAUR_AXE)/?y10/?y5;                   [check for Centaur's Axe]
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)&y5>0:Pi/(ART_CENTAUR_AXE)/(MON_CENTAUR); [handle Centaur's Axe if found]
 
-!!HEv7057&1000/y88>0:C272/2/-1/0/-1/0/-1/0/-1/0/-1/0/-1/0; [gives 2 Sylvan Dragons, 0 Sylfaen Dragon] *majaczek*
-!!HEv7057&-1000/y88>0:C2/272/2/0;  [offer AI Sylvan Dragons]
-!_!HEv7057&-1000/y88>0:C2/293/1/0; [offer AI Sylfaen Dragon]
+  !!HEi:A2/(ART_SHIELD_OF_THE_DWARVEN_LORDS)/?y10/?y6;   [check for Shield of the Dwarven Lords]
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)&y6>0:Pi/(ART_SHIELD_OF_THE_DWARVEN_LORDS)/(MON_DWARF); [handle Shield of the Dwarven Lords if found]
+
+  !!HEi:A2/(ART_BREASTPLATE_OF_PETRIFIED_WOOD)/?y10/?y7; [check for Breastplate of Petrified Wood]
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)&y7>0:Pi/(ART_BREASTPLATE_OF_PETRIFIED_WOOD)/(MON_DENDROID_GUARD); [handle Breastplate of Petrified Wood if found]
+
+  !!HEi:A2/(ART_HELM_OF_THE_ALABASTER_UNICORN)/?y10/?y8; [check for Helm of the Alabaster Unicorn]
+  !!FU(WOG_71_UpgradeMonsterWithArtifact)&y8>0:Pi/(ART_HELM_OF_THE_ALABASTER_UNICORN)/(MON_UNICORN); [handle Helm of the Alabaster Unicorn if found]
+
+  !!if&y5>0/y6>0/y7>0/y8>0;
+    !!if&999;
+      !!FU(NewIntArray):P8/(PIC_TYPE_MONSTER)/?(monsters:y);
+      !#VA(monType[4]:y);
+      !!VR(monType[0]):C(MON_WAR_UNICORN)/(MON_DENDROID_SOLDIER)/(MON_BATTLE_DWARF)/(MON_CENTAUR_CAPTAIN); 
+
+      !!VR(bit:y):S1;
+
+      !!re k/0/(monType[SIZE])/1/-1;
+        !!VR(monAmount:y):S(bit) *65536 +(monType[k]); Sd<<16 |(monType[k]);
+        !!VR(ind:y):Sk*2+1;
+        !!SN:M(monsters)/(ind)/(monAmount);
+        !!VR(bit):Sd<<1;
+      !!en;
+
+      !!FU(PrepareMultiPicDialog):P(monsters);
+      !!HEi:B0/?(heroName:z);
+      !!SN:T^wog.71.join^/?(msg:z)/^heroName^/(heroName);
+      !!IF:N1/(msg:z);
+
+      !!HEi:C25/1/23/2/17/4/15/8/-1/0/-1/0/-1/0; [give 1 war unicorn, 2 dendroid soldiers, 4 battle dwarves, 8 centaur captains - use HE:C in order to manage them altogether]
+    !!el&i^timerIsAi^;
+      !!HEi:C2/25/1/0; [offer AI war unicorn]
+      !!HEi:C2/23/2/0; [offer AI dendroid soldiers]
+      !!HEi:C2/17/4/0; [offer AI battle dwarves]
+      !!HEi:C2/15/8/0; [offer AI centaur captains]
+    !!en;
+  !!en;
+!!en;
+
+!!SN&1000:D;                            [redraw screen to show upgraded creatures]
 
 
-** majaczek **
-!!HEv7057:A2/134/?y10/?y89;                  [check for Power of the Dragon Father]
-!!if&y89>0:;
-      !!HEv7057:B0/?z1;
+!?FU(OnSetupBattlefield)&i^wog_71_enabled^;
+!!VRi^wog_71_hero_0_spellDamageBonus^:S0;
+!!VRi^wog_71_hero_1_spellDamageBonus^:S0;
 
-      !!FU7032:P134/26/272  P134/27/272  P134/151/272;  [handle Uprades]
-      !!FU7032:P134/82/271  P134/83/271  P134/155/271;  [handle Uprades]
-      !!FU7032:P134/132/286 P134/133/286 P134/135/286;  [handle Uprades]
-      !!FU7032:P134/134/293;                            [handle Uprades]
+!!re i/(BATTLE_LEFT)/i^battle_hero_vs_hero^;
+  !!VR(bonus:y):S(NULL);
+  !!HEi^battle_hero_%i^:A2/(ART_RING_OF_THE_MAGI)/?(backpacked:y)/?(isRingOfMagi:y);
 
-      !_!IF&1000:M^Wearing the {Power of the Dragon Father} has attracted volunteers to %Z1's army.^;
-      !_!HEv7057&1000:C272/3/271/3/286/3/293/3/-1/0/-1/0/-1/0;
+  !!if&(isRingOfMagi:y);
+    !!VR(bonus:y):S50;
+  !!el;
+    !!re j/0/2;
+      !!VR(artId:y):Sj +(ART_COLLAR_OF_CONJURING);
+      !!HEi^battle_hero_%i^:A2/(artId:y)/?(backpacked:y)/?(isEqipped:y);
 
-      !_!HEv7057&-1000:C2/272/3/0; [offer AI Sylvan  Dragons]
-      !_!HEv7057&-1000:C2/271/3/0; [offer AI Magma   Dragons]
-      !_!HEv7057&-1000:C2/286/3/0; [offer AI Chinese Dragons]
-      !_!HEv7057&-1000:C2/293/3/0; [offer AI Sylfaen Dragons]
+      !!if&(isEqipped);
+        !!VR(bonusAdd:y):Sj*5 +5;
+        !!VR(bonus):+(bonusAdd);
+      !!en;
+    !!en;
+  !!en;
+  
+  !!VRi^wog_71_hero_%i_spellDamageBonus^:S(bonus);
+!!en;
 
-!!en:;
+!?FU(OnMagicBasicResistance)&i^wog_71_enabled^/i^wog_71_hero_%i(battle_current_side)_spellDamageBonus^>0;
+!!BG:A?(action:y);                      [get active stack #, action type]
 
-!!UN&1000:R1;                            [redraw screen to show upgraded creatures]
+!!if&(action)=(BATTLE_ACTION_HERO_CAST);
+  !!MR:D?(basicDmg:y);                  [get spell damage]
+  !!VR(newDmg:y):S(basicDmg) *i^wog_71_hero_%i(battle_current_side)_spellDamageBonus^ :100 +(basicDmg);
+  !!MR&(newDmg)>(basicDmg):D(newDmg);
+!!en;
+
+!?FU(OnAfterBattleUniversal)&i^wog_71_enabled^;
+!!re i/(BATTLE_LEFT)/i^battle_hero_vs_hero^;
+  !!VRi^wog_71_hero_%i_spellDamageBonus^:S(NULL);
+!!en;
 
 
 ** end of function
 
 ** function to handle creature artifacts for a hero who has one
-!?FU7032;                          x1=artifact number  x2=creature type
-**                                 x3=upgraded creature type (-1 means default)
+!?FU(WOG_71_UpgradeMonsterWithArtifact);                          x2=artifact number  x3=creature type
+!#VA(hero:x) (art:x) (monster:x);
 
-!!VRv7058:S0 -1;                             [reset v7058]
-!!DO7033/0/6/1:Px2;                          [check for slot with same creature type]
-!!HEv7057&1000/v7058>-1:B0/?z1;              [get hero name]
-!!HEv7057&1000/v7058>-1:R2/?y1;              [get hero sex]
-!!VRz2&y1=0/1000/v7058>-1:Sz171021;
-!!VRz2&y1=1/1000/v7058>-1:Sz171022;
-!!UN&1000/v7058>-1:N0/3/x1;                  [get artifact name]
-!!UN&1000/v7058>-1:N3/4/x2/1;                [get creature name - plural]
-!!IF&1000/v7058>-1:Q1/8/x1/1/z171023;
-!!VRy2&v7058>-1/x3<0:Sx2 +1;                      [set for upgrade]
-!!VRy2&v7058>-1/x3>=0:Sx3;                        [set for upgrade]
-!!HEv7057&v7058>-1:C1/x2/y2/d/0/3;           [upgrade creatures without changing stack exp.]
+!!VR(index:y)&(art)=(ART_CENTAUR_AXE):S0;
+!!VR(index)&(art)=(ART_SHIELD_OF_THE_DWARVEN_LORDS):S1;
+!!VR(index)&(art)=(ART_HELM_OF_THE_ALABASTER_UNICORN):S2;
+!!VR(index)&(art)=(ART_BREASTPLATE_OF_PETRIFIED_WOOD):S3;
+!!VR(index)&(art)=(ART_AMULET_OF_THE_UNDERTAKER):S4;
+!!VR(index)&(art)=(ART_VAMPIRES_COWL):S5;
+!!VR(index)&(art)=(ART_DEAD_MANS_BOOTS):S6;
+
+!!VR(bit:y):S1 Sd<<(index);
+!!VR(isDisabled:y):Si^wog_71_disabledUpgrades_%(hero)^ &(bit);
+!!FU&(isDisabled):E;
+
+!!VR(monCount:y):S0;
+
+!!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+  !!HE(hero):C0/i/?(heroMon:y)/?(num:y);
+  !!VR(monCount)&(heroMon)=(monster):+(num);
+!!en;
+
+!!if&(monCount)>0;
+  !!if&1000;
+    !!HE(hero):B0/?(heroName:z);        [get hero name]
+    !!HE(hero):R2/?(gender:y);          [get hero sex]
+    !!SN:T^wog.whose%(gender)^/?(whose:z);     
+    !!SN:H^art^/(art)/0/?(artName:z);   [get artifact name]
+    !!VR(isPlural:y):S(monCount) -1 B;  [get creature name]
+    !!SN:H^monname^/(monster)/(isPlural)/?(monName:z);
+    !!SN:T^wog.71.upgrade^/?(msg:z)/^monName^/(monName:z)/^heroName^/(heroName)/^whose^/(whose)/^artName^/(artName);
+    !!IF:Q1/(PIC_TYPE_ART)/(art)/(MSG_TYPE_MES)/(msg:z);
+  !!en;
+
+  !!VR(upgMon:y):S(monster) +1;         [set for upgrade]
+  !!HE(hero):C1/(monster)/(upgMon)/d/0/3;[upgrade creatures without changing stack exp.]
+!!en;
+
 ** end of function
 
-** function to check a slot for a creature type
-!?FU7033;                 x1=creature type
-
-!!HEv7057:C0/x16/?y1/?y2;                     [get creature type in slot]
-!!VRv7058&v7058=-1/y1=x1:Sx16;                [it's our type]
-
-** end of function
-
-** start of pre-battle trigger **
-!?BA0&v7182=1/-998;
-!!OB7130:T?y-1;                         [check for monster stack at position]
-!!MO7130&76/y-1=54:G?y-2;               [check for monsters at position]
-!!MO7130&76/y-1=54/y-2>0:Rv7059/1;             [reset monster aggression level if flag 76 is set (for diplo arts)]
-!!IF:V76/0;                                          [reset flag 76]
-
-!!BA:H0/?y-3;                                  [get attacking hero #]
-!!HEy-3&y-3>-1:A2/76/?y-4/?y-5 A2/77/?y-4/?y-6 A2/78/?y-4/?y-7 A2/139/?y-4/?y-8;  [see if attacker has Conjuring items or Ring of the Magi]
-!!VRv7133:S100;                                [set for 100%]
-!!VRv7133&y-3>-1/y-5>0:+5;                     [add 5% for Collar of Conjuring]
-!!VRv7133&y-3>-1/y-6>0:+10;                    [add 10% for Ring of Conjuring]
-!!VRv7133&y-3>-1/y-7>0:+15;                    [add 15% for Cape of Conjuring]
-!!VRv7133&y-3>-1/y-8>0:+50;                    [add 50% for Ring of the Magi]
-
-!!BA:H1/?y-3;                                  [get defending hero #]
-!!HEy-3&y-3>-1:A2/76/?y-4/?y-5 A2/77/?y-4/?y-6 A2/78/?y-4/?y-7 A2/139/?y-4/?y-8;  [see if defender has Conjuring items or Ring of the Magi]
-!!VRv7134:S100;                                [set for 100%]
-!!VRv7134&y-3>-1/y-5>0:+5;                     [add 5% for Collar of Conjuring]
-!!VRv7134&y-3>-1/y-6>0:+10;                    [add 10% for Ring of Conjuring]
-!!VRv7134&y-3>-1/y-7>0:+15;                    [add 15% for Cape of Conjuring]
-!!VRv7134&y-3>-1/y-8>0:+50;                    [add 50% for Ring of the Magi]
-
-** end of pre-battle trigger **
 
 ** start of battlefield start trigger
-!?BF&v7182=1/-998;
+!?FU(OnSetupBattlefield)&i^wog_71_enabled^;
 
-!!BA:H0/?v7057;                                       [get attacking hero #]
-!!FU7034&v7057>-1:P-1/20;
-!!BA:H1/?v7057;                                       [get defending hero #]
-!!FU7034&v7057>-1:P20/-1;
-** end of battlefield start trigger
+!#VA(arts[10]:y) (spells[10]:y) (sides[10]:y);
 
-** start of magic resist trigger
-!?MR0&-998;
+!!VR(arts[0]):C(ART_PENDANT_OF_DISPASSION)/(ART_PENDANT_OF_SECOND_SIGHT)/(ART_PENDANT_OF_HOLINESS)/(ART_PENDANT_OF_FREE_WILL)/(ART_PENDANT_OF_TOTAL_RECALL)/
+(ART_ORB_OF_VULNERABILITY)/(ART_ORB_OF_THE_FIRMAMENT)/(ART_ORB_OF_SILT)/(ART_ORB_OF_TEMPESTUOUS_FIRE)/(ART_ORB_OF_DRIVING_RAIN);
+!!VR(spells[0]):C(SPELL_BLOODLUST)/(SPELL_AIR_SHIELD)/(SPELL_BLESS)/(SPELL_STONE_SKIN)/(SPELL_PRECISION)/
+73/(SPELL_PROTECTION_FROM_AIR)/(SPELL_PROTECTION_FROM_EARTH)/(SPELL_PROTECTION_FROM_FIRE)/(SPELL_PROTECTION_FROM_WATER);
+!!VR(sides[0]):C0/0/0/0/0/1/0/0/0/0;
 
-!!BG:N?y1 A?y3;                                   [get active stack #, action type]
-!!MR:D?y2;  !!FU&y2<=0:E;                         [get spell damage]
+!!re i/0/i^battle_hero_vs_hero^;
+  !!re j/0/(arts[SIZE])/1/-1;
+    !!FU(WOG_71_CheckIfHeroHasArt):Pi^battle_hero_%i^/(arts[j])/?(equipped:y); [For mod compatibility, here we use a function]
 
-!!VRy2&y3=1/y1<21/v7133>100:*v7133 :100;         [calculate new damage - attacker cast]
-!!MR&y3=1/y-1<21/v7133>100:Dy2;                   [set new damage - attacker cast]
+    !!if&(equipped);
+      !!VR(targetSide:y):Si X(sides[j]);
+      !!FU(WOG_Battle_SetSideSpellEffects):Pi/(targetSide)/(spells[j])/50/(SKILL_NOT_LEARNED)/(FALSE);
+    !!en;
+  !!en;
+!!en;
 
-!!VRy2&y3=1/y1>20/v7134>100:*v7134 :100;         [calculate new damage - defender cast]
-!!MR&y3=1/y1>20/v7134>100:Dy2;                   [set new damage - defender cast]
+!!FU(WOG_CleanUpSpells):P73/(WOG_StackIsLiving);
 
+; Function for mod compatibility
+!?FU(WOG_71_CheckIfHeroHasArt);
+!#VA(hero:x) (art:x) (result:x);
 
-** end of magic resist trigger
+!!HE(hero):A2/(art)/?t/?(result);
 
+!?FU(WOG_StackIsLiving);
+!#VA(stackId:x) (result:x);
+!!BM(stackId):F?f;
+!!VR(result):Sf &(MON_FLAG_ALIVE);
 
-** function to check for battle artifacts     (Parameters: x1=base hero stack, x2=base enemy stack)
-!?FU7034;
-!!VRy1:Sx1;                                 [hero's base stack number]
-!!VRy2:Sx2;                                 [enemy's base stack number]
+!?FU(WOG_CleanUpSpells);
+!#VA(spellId:x) (callback:x);
+!!re i/0/(BATTLE_STACK_LAST);
+  !!BMi:N?n T?t;
+  !!if&n/t<>(NO_MON);
+    !!FU(callback):Pi/?(result:y);
+    !!if&(result)=(FALSE);
+      !!BMi:Z?(stack:y);
+      !!SN:E4473392/(CALLCONV_THISCALL)/(stack)/(spellId);
+    !!en;
+  !!en;
+!!en;
 
-!!HEv7057:A2/543/?y7/?y99;                  [see if hero has Scarab Pendant] majaczek
-
-!!HEv7057:A2/100/?y7/?y8;                   [see if hero has a Pendant of Focused Rage (Dispassion)]
-!!DO7035/0/20/1|y8>0/y99>0:Py1/43/50/0;     [prepare to bloodlust hero's troops]
-!!HEv7057:A2/101/?y7/?y8;                   [see if hero has a Pendant of Second Sight]
-!!DO7035/0/20/1|y8>0/y99>0:Py1/28/50/0;     [prepare to air shield hero's troops]
-!!HEv7057:A2/102/?y7/?y8;                   [see if hero has a Pendant of Holiness]
-!!DO7035/0/20/1|y8>0/y99>0:Py1/41/50/0;     [prepare to bless hero's troops]
-!!HEv7057:A2/103/?y7/?y8;                   [see if hero has a Pendant of Life]
-!!DO7036/0/20/1&y8>0:Py1/1/1;               [prepare to add hit points to hero's living troops]
-!!HEv7057:A2/104/?y7/?y8;                   [see if hero has a Pendant of Death]
-!!DO7036/0/20/1&y8>0:Py1/5/2;               [prepare to add attack to hero's undead troops]
-!!DO7036/0/20/1&y8>0:Py1/5/3;               [prepare to add defense to hero's undead troops]
-!!DO7036/0/20/1&y8>0:Py1/1/4;               [prepare to add speed to hero's undead troops]
-!!HEv7057:A2/105/?y7/?y8;                   [see if hero has a Pendant of Resolve (Free Will)]
-!!DO7035/0/20/1|y8>0/y99>0:Py1/46/50/0;     [prepare to stoneskin hero's troops]
-!!HEv7057:A2/107/?y7/?y8;                   [see if hero has a Pendant of True Aim (Total Recall)]
-!!DO7035/0/20/1|y8>0/y99>0:Py1/44/50/0;           [prepare to precision hero's troops]
-!!HEv7057:A2/92/?y7/?y8;                    [see if hero has a Sphere of Permanence]
-!!DO7036/0/20/1&y8>0:Py1/10/6;              [prepare to add 10 health to hero's non-living non-undead troops]
-!!HEv7057:A2/93/?y7/?y8;                    [see if hero has an Orb of Vulnerability]
-!!DO7035/0/20/1&y8>0:Py2/73/50/0;           [prepare to disease opponent's troops]
-!!HEv7057:A2/79/?y7/?y8;                    [see if hero has an Orb of the Firmament]
-!!DO7035/0/20/1&y8>0:Py1/30/50/0;           [prepare to prot air hero's troops]
-!!HEv7057:A2/80/?y7/?y8;                    [see if hero has an Orb of Silt ]
-!!DO7035/0/20/1&y8>0:Py1/33/50/0;           [prepare to prot earth hero's troops]
-!!HEv7057:A2/81/?y7/?y8;                    [see if hero has an Orb of Tempestuous Fire]
-!!DO7035/0/20/1&y8>0:Py1/31/50/0;           [prepare to prot fire hero's troops]
-!!HEv7057:A2/82/?y7/?y8;                    [see if hero has an Orb of Driving Rain]
-!!DO7035/0/20/1&y8>0:Py1/32/50/0;           [prepare to prot water hero's troops]
-*!HEv7057:A2/76/?y7/?y8;                    [see if hero has a Collar of Conjuring]
-*!DO7036/0/20/1&y8>0:Py1/1/5;               [prepare to add to spells remaining of hero's troops]
-*!HEv7057:A2/77/?y7/?y8;                    [see if hero has a Ring of Conjuring]
-*!DO7036/0/20/1&y8>0:Py1/2/5;               [prepare to add to spells remaining of hero's troops]
-*!HEv7057:A2/78/?y7/?y8;                    [see if hero has a Cape of Conjuring]
-*!DO7036/0/20/1&y8>0:Py1/3/5;               [prepare to add to spells remaining of hero's troops]
-*!HEv7057:A2/139/?y7/?y8;                   [see if hero has a Ring of the Magi]
-*!DO7036/0/20/1&y8>0:Py1/56/5;              [prepare to add to spells remaining of hero's troops]
-
-** end of function
-
-** function to spell troops         (Parameters: x1=stack, x2=spell, x3=rounds, x4=level)
-!?FU7035;
-!!VRx1:+1;                                  [increment stack number]
-!!BMx1:F?y1;                                [read stack flags: y1]
-!!VRy1&x2=44:&4;                            [if spell is Precision check if stack is a shooter]
-!!BMx1&y1>0:Mx2/x3/x4;                      [cast spell on stack unless Precision and non-shooter]
-** end of function
-
-** function to edit monster stats   (Parameters: x1=stack, x2=stat bonus, x3=filter)
-!?FU7036;
-
-!!VRx1:+1;                                           [increment stack number]
-!!VRi:S1;                                            [set i to 1]
-!!BMx1&x3>0:F?i;                                     [read flags if P3 is set]
-!!VRi&x3=1:&16;                                      [just look at alive bit]
-!!VRi|x3=2/x3=3/x3=4:&262144;                        [just look at undead bit]
-!!VRi&x3=6:&262160;                                  [just look at alive & undead bits]
-!!BMx1&i>0/x3=1:T?y2;                                [get monster type]
-!!MA&i>0/x3=1/y2>-1:Ly2/?y3;                         [get monster level]
-!!VRx2&i>0/x3=1/y2>-1/y3=0:S1;                       [level 1 = 1]
-!!VRx2&i>0/x3=1/y2>-1/y3=1:S3;                       [level 2 = 3]
-!!VRx2&i>0/x3=1/y2>-1/y3=2:S6;                       [level 3 = 6]
-!!VRx2&i>0/x3=1/y2>-1/y3=3:S10;                      [level 4 = 10]
-!!VRx2&i>0/x3=1/y2>-1/y3=4:S15;                      [level 5 = 15]
-!!VRx2&i>0/x3=1/y2>-1/y3=5:S25;                      [level 6 = 25]
-!!VRx2&i>0/x3=1/y2>-1/y3=6:S50;                      [level 7 = 50]
-
-!!BMx1&i>0/x3=1:Hdx2;                                [set hit points]
-!!BMx1&i>0/x3=2:Adx2;                                [set attack]
-!!BMx1&i>0/x3=3:Ddx2;                                [set defense]
-!!BMx1&i>0/x3=4:Sdx2;                                [set speed]
-!!BMx1&i>0/x3=5:Edx2;                                [set spells remaining]
-!!BMx1&i=0/x3=6:Hdx2;                                [set hit points]
-
-** end of function
-
-** function to check when artifacts are put on
-!?FU7037;             [artifacts on]
-
-!!HE-1&v998=146:Fdv7060/d/d/d;                               [set axe of smashing]
-!!VRy2&v998=146:Sv7061;                                      [copy to y2]
-!!HE-1&v998=147:Fd/dv7062/d/d;                               [set mithril mail]
-!!VRy2&v998=147:Sv7063;                                      [copy to y2]
-!!HE-1&v998=148:Fdv7064/d/d/d;                               [set sword of sharpness]
-!!VRy2&v998=148:Sv7065;                                      [copy to y2]
-!!HE-1&v998=149:Fd/dv7066/d/d;                               [set helm of immortality]
-!!VRy2&v998=149:Sv7067;                                      [copy to y2]
-!!HE-1&v998=150:Fd/d/dv7068/d;                               [set pendant of sorcery]
-!!VRy2&v998=150:Sv7069;                                      [copy to y2]
-!!HE-1&v998=151:Fd/d/d/dv7070;                               [set boots of haste]
-!!VRy2&v998=151:Sv7071;                                      [copy to y2]
-!!HE-1&v998=152:Fdv7072/d/d/d;                               [set bow of seeking]
-!!VRy2&v998=152:Sv7073;                                      [copy to y2]
-!!HE-1&v998=153:Fd/d/dv7074/dv7074;                          [set dragon eye ring]
-!!VRy2&v998=153:Sv7075;                                      [copy to y2]
-!!HE-1&v998=154:Fd/dv7076/d/d;                               [set hardened shield]
-!!VRy2&v998=154:Sv7077;                                      [copy to y2]
-!!HE-1&v998=155:Fdv7078/dv7078/dv7078/dv7078;                [set slava's ring of power]
-!!VRy2&v998=155:Sv7079;                                      [copy to y2]
-!!HE-1:Sy2/?y3;                                              [get skill level]
-!!HE-1&y3<3:Sy2/d1;                                          [set skill]
-
-** end of function
-
-** function to check when artifacts are taken off
-!?FU7038;            [artifacts off]
-
-!!VRy1&v998=146:S0 -v7060;                           [invert value]
-!!HE-1&v998=146:Fdy1/d/d/d;                          [reset axe of smashing]
-!!VRy2&v998=146:Sv7061;                              [copy to y2]
-
-!!VRy1&v998=147:S0 -v7062;                           [invert value]
-!!HE-1&v998=147:Fd/dy1/d/d;                          [reset mithril mail]
-!!VRy2&v998=147:Sv7063;                              [copy to y2]
-
-!!VRy1&v998=148:S0 -v7064;                           [invert value]
-!!HE-1&v998=148:Fdy1/d/d/d;                          [reset sword of sharpness]
-!!VRy2&v998=148:Sv7065;                              [copy to y2]
-
-!!VRy1&v998=149:S0 -v7066;                           [invert value]
-!!HE-1&v998=149:Fd/dy1/d/d;                          [reset helm of immortality]
-!!VRy2&v998=149:Sv7067;                              [copy to y2]
-
-!!VRy1&v998=150:S0 -v7068;                           [invert value]
-!!HE-1&v998=150:Fd/d/dy1/d;                          [set pendant of sorcery]
-!!VRy2&v998=150:Sv7069;                              [copy to y2]
-
-!!VRy1&v998=151:S0 -v7070;                           [invert value]
-!!HE-1&v998=151:Fd/d/d/dy1;                          [set boots of haste]
-!!VRy2&v998=151:Sv7071;                              [copy to y2]
-
-!!VRy1&v998=152:S0 -v7072;                           [invert value]
-!!HE-1&v998=152:Fdy1/d/d/d;                          [reset bow of seeking]
-!!VRy2&v998=152:Sv7073;                              [copy to y2]
-
-!!VRy1&v998=153:S0 -v7074;                           [invert value]
-!!HE-1&v998=153:Fd/d/dy1/dy1;                        [reset dragon eye ring]
-!!VRy2&v998=153:Sv7075;                              [copy to y2]
-
-!!VRy1&v998=154:S0 -v7076;                           [invert value]
-!!HE-1&v998=154:Fd/dy1/d/d;                          [reset hardened shield]
-!!VRy2&v998=154:Sv7077;                              [copy to y2]
-
-!!VRy1&v998=155:S0 -v7078;                           [invert value]
-!!HE-1&v998=155:Fdy1/dy1/dy1/dy1;                    [reset slava's ring of power]
-!!VRy2&v998=155:Sv7079;                              [copy to y2]
-
-!!HE-1:Sy2/?y3;                                      [get skill level]
-!!HE-1&y3<3/y3>0:Sy2/d-1;                            [reset skill]
-** end of function
+!?FU(WOG_71_OnMonGetSpec);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EBX)/4/?(hero:y) C(hero)/26/2/?(heroId:y);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EBP)/4/?(ebp:y)  C(ebp)/8/4/?(monType:y);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_ESI)/4/?(monInfo:y);
 
 
-** start of object trigger - monsters
-
-!?OB54&v7182=1;                                      [object trigger - monsters]
-!!IF:V76/0;                                          [reset flag 76]
-!!VRv7130:Cv998/v999/v1000;                          [copy position to v7130/v7131/v7132]
-!!MO7130:R?v7059/1;                                  [get aggression level]
-!!VRy-1:Sv7059;                                      [copy to y-1]
-!!HE-1:A2/66/?y-3/?y-4;                              [see if hero has a Statesman's Medal]
-!_!VRy-1&y-1>0/y-1<10/y-4>0:-1;                       [reduce by 1 if not compliant or savage]
-!!HE-1:A2/67/?y-3/?y-5;                              [see if hero has a Diplomat's Ring]
-!_!VRy-1&y-1>0/y-1<10/y-5>0:-1;                       [reduce by 1 if not compliant or savage]
-!!HE-1:A2/68/?y-3/?y-6;                              [see if hero has an Ambassador's Sash]
-!_!VRy-1&y-1>0/y-1<10/y-6>0:-1;                       [reduce by 1 if not compliant or savage]
-!!HE-1:A2/486/?y-3/?y-7;
-!!if&y-7>0:; handle Bard's mandola
-!!VRy-4:S1; !!VRy-5:S1; !!VRy-6:S1;
-!!en:;
-
-!!VRy-1&y-1>0/y-1<10/y-4>0:-1;                       [reduce by 1 if not compliant or savage]
-!!VRy-1&y-1>0/y-1<10/y-5>0:-1;                       [reduce by 1 if not compliant or savage]
-!!VRy-1&y-1>0/y-1<10/y-6>0:-1;                       [reduce by 1 if not compliant or savage]
-
-!!VRy-1&y-1>0/y-1<10/y-4>0/y-5>0/y-6>0:-1;           [if hero has all 3 reduce by 1 if not compliant or savage]
-!!VRy-1&y-1>0/y-1<10/y-4>0/y-5>0/y-6>0:-1;           [if hero has all 3 reduce by 1 if not compliant or savage]
-!_!MO7130|y-4>0/y-5>0/y-6>0:Ry-1/1;                   [set new aggression level]
-!_!IF&v7059<>y-1:V76/1;                               [set flag 76 to true - aggression changed]
-** end of object trigger - monsters
-
-**  object trigger - post visit - Centaur's Axe
-!$OB5/7&v7182=1;
-!!FU7039:P1/13/25/19;
-**  object trigger - post visit - Shield of the Dwarven Lords
-!$OB5/13&v7182=1;
-!!FU7039:P1/7/25/19;
-**  object trigger - post visit - Breastplate of Petrified Wood
-!$OB5/25&v7182=1;
-!!FU7039:P1/7/13/19;
-**  object trigger - post visit - Helm of the Alabaster Unicorn
-!$OB5/19&v7182=1;
-!!FU7039:P1/7/13/25;
-
-**  object trigger - post visit - Statesman's Medal
-!$OB5/66&v7182=1;
-!!FU7039:P2;
-**  object trigger - post visit - Diplomat's Ring
-!$OB5/67&v7182=1;
-!!FU7039:P2;
-**  object trigger - post visit - Ambassador's Sash
-!$OB5/68&v7182=1;
-!!FU7039:P2;
+!!HE(heroId:y):A2/(ART_PENDANT_OF_LIFE)/?y99/?(isEqipped:y);            [see if hero has a Pendant of Life]
+!!if&(isEqipped:y);
+  !!MA:X(monType)/?f;
+  !!VRf:&(MON_FLAG_ALIVE);
+  !!if&f;
+    !!MA:L(monType)/?l;
+    !!if&l<5;
+      !!VR(saveL:y):Sl +1;
+      !!VRl:S1 +(saveL:y) *(saveL:y) :2;
+    !!el;
+      !!VRl:-5 *25 +25;
+    !!en;
+    !!UN:C(monInfo)/76/4/dl;                                            [add hit points to hero's living troops]
+  !!en;
+!!en;
+!!HE(heroId:y):A2/(ART_SPHERE_OF_PERMANENCE)/?y99/?(isEqipped:y);       [see if hero has a Sphere of Permanence]
+!!if&(isEqipped:y);
+  !!MA:X(monType)/?f;
+  !!VRf:&262160;                                                        [just look at alive & undead bits]
+  !!if&f=0;
+    !!UN:C(monInfo)/76/4/d10;                                           [ add 10 health to hero's non-living non-undead troops]
+  !!en;
+!!en;
+!!HE(heroId:y):A2/(ART_PENDANT_OF_DEATH)/?y99/?(isEqipped:y);           [see if hero has a Pendant of Death]
+!!if&(isEqipped:y);
+  !!MA:X(monType)/?f;
+  !!VRf:&(MON_FLAG_UNDEAD);
+  !!if&f;
+    !!UN:C(monInfo)/80/4/d1 C(monInfo)/84/4/d5 C(monInfo)/88/4/d5;      [to add attack,defense and speed to hero's undead troops]
+  !!en;
+!!en;
 
 
-** function to check for combo artifacts
-!?FU7039;   x1= switch
+!?FU(WOG_71_GetDiploBonus);
+!#VA(heroId:x) (result:x);
 
-!!HE-1&x1=1:A2/7/?y1/?y2 A2/13/?y1/?y3 A2/25/?y1/?y4 A2/19/?y1/?y5;  [see if hero has Centaur's Axe, Shield of the Dwarven Lords, Breastplate of Petrified Wood, Helm of the Alabaster Unicorn]
-!!HE-1&x1=2:A2/66/?y1/?y2 A2/67/?y1/?y3 A2/68/?y1/?y4;  [see if hero has Statesman's Medal, Diplomat's Ring, Ambassador's Sash]
+!!VR(result):S(NULL);
 
-!_!IF&1000/x1=1/y2>0/y3>0/y4>0:N8/7/8/13/8/19/8/25;
-!_!IF&1000/x1=1/y2>0/y3>0/y4>0:N1/z171024;
-!!IF&1000/x1=2/y2>0/y3>0/y4>0:Q2/8/66/8/67/8/68/1/z171025;
+!!re i/0/2;
+  !!VR(artId:y):Si +(ART_STATESMANS_MEDAL);
+  !!HE(heroId):A2/(artId)/?(has:y)/?(equipped:y);
+  !!VR(result)&(equipped):+1;
+!!en;
+
+!!VR(artId:y):S486; handle Bard's mandola
+!!HE(heroId):A2/(artId)/?(has:y)/?(equipped:y);
+!!VR(result)&(equipped):+1;
+
+
+; Diplomacy artifacts
+!?FU(WOG_71_OnMonsterClickDiplomacy);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_ESI)/4/?(hero:y) C(hero)/26/4/?(activeHeroId:y);
+!!FU&(activeHeroId)=(NO_HERO):E;
+
+!!FU(WOG_71_GetDiploBonus):P(activeHeroId:y)/?(result:y);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EDX)/4/?(diplo:y);
+!!VR(diplo):+(result) F0/3;
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EDX)/4/(diplo);
+
+!?FU(WOG_71_OnMonsterAttackDiplomacy);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EDI)/4/?(hero:y) C(hero)/26/4/?(activeHeroId:y);
+!!FU&(activeHeroId)=(NO_HERO):E;
+
+!!FU(WOG_71_GetDiploBonus):P(activeHeroId:y)/?(result:y);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EBX)/4/?(diplo:y);
+!!VR(diplo):+(result) F0/3;
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_EBX)/4/(diplo);
+
+!?FU(WOG_71_OnGetArmyDiplomacyValue);
+!!UN:Cx1/(STRUCT_HOOK_CONTEXT_ESI)/4/?(hero:y) C(hero)/26/4/?(heroId:y);
+!!FU(WOG_71_GetDiploBonus):P(heroId)/?(result:y);
+
+; Multiply the army's diplomacy value by 3 times if having all three diplomacy artifacts
+!!if&(result)>=3;
+  !!UN:Cx1/(STRUCT_HOOK_CONTEXT_EAX)/4/?(value:y);
+
+  !!if&(value)<0;
+    !!VR(value):S(INT_MAX);
+  !!el;
+    !!VR(value):*3;
+    !!VR(value)&(value)<0:S(INT_MAX);
+  !!en;
+
+  !!UN:Cx1/(STRUCT_HOOK_CONTEXT_EAX)/4/(value);
+!!en;
+
+// Enable/Disable artifact creature upgrades on Monday
+!?FU(WOG_OnResetHero);
+!#VA(hero:x);
+
+!!UN:P71/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
+
+!!VRi^wog_71_disabledUpgrades_%(hero)^:S0;
+
+!?FU(OnHeroScreenMouseClick)&i^mouse_action^=(MOUSE_RMB_PRESSED)/999;
+!!UN:P71/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
+
+; Exit if the hero does not belong to the interacting player
+!!OW:C?(player:y)/?(interactPlayer:y);  [Get the player who's clicking the mouse button]
+!!HE(CURRENT_HERO):O?(owner:y);
+!!FU&(interactPlayer)<>(owner):E;
+
+!!VR(slot:y):S(NO_ART_SLOT);
+!!VR(item:y):Si^mouse_item^;
+
+!!if&(item)>=2/(item)<=14|(item)=20;
+  !!VR(slot):S(item) -2;
+!!en;
+
+!!FU&(slot)=(NO_ART_SLOT):E;
+
+!!HE(CURRENT_HERO):N?(hero:y);
+!!FU(WOG_71_PrepareToDisableArt):P(hero)/(slot);
+
+!?FU(OnHeroesMeetScreenMouseClick)&i^mouse_action^=(MOUSE_RMB_PRESSED)/999;
+!!UN:P71/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
+
+!!VR(hero:y):S(NO_HERO);
+!!VR(item:y):Si^mouse_item^;
+
+!!if&(item)>=27/(item)<=39|(item)=45;
+  !!VR(slot:y):S(item) -27;
+  !!CM:H?(hero)/?(otherHero:y);
+!!el&(item)>=46/(item)<=58|(item)=64;
+  !!VR(slot):S(item) -46;
+  !!CM:H?(otherHero)/?(hero);
+!!en;
+
+!!FU&(hero)=(NO_HERO):E;
+
+!!FU(WOG_71_PrepareToDisableArt):P(hero)/(slot);
+
+!?FU(WOG_71_PrepareToDisableArt);
+!#VA(hero:x) (slot:x);
+
+!!HE(hero):A1/?(art:y)/(slot);
+
+; This script works for all 7 artifact upgrades, but here we enable only Dead Man's Boots 
+; as it seems to be the only case we want to disable (cause raising Skeletons are sometimes stronger)
+; Note that right-click menu here could conflict with the interaction of combination artifacts
+; It is allowed only for Dead man's boots also for this reason
+*!if|(art)=(ART_CENTAUR_AXE)/(art)=(ART_SHIELD_OF_THE_DWARVEN_LORDS)/(art)=(ART_HELM_OF_THE_ALABASTER_UNICORN)/(art)=(ART_BREASTPLATE_OF_PETRIFIED_WOOD)
+  /(art)=(ART_AMULET_OF_THE_UNDERTAKER)/(art)=(ART_VAMPIRES_COWL)/(art)=(ART_DEAD_MANS_BOOTS);
+!!if&(art)=(ART_DEAD_MANS_BOOTS);
+
+  !!CM:R0;
+
+  !!VR(index:y)&(art)=(ART_CENTAUR_AXE):S0;
+  !!VR(index)&(art)=(ART_SHIELD_OF_THE_DWARVEN_LORDS):S1;
+  !!VR(index)&(art)=(ART_HELM_OF_THE_ALABASTER_UNICORN):S2;
+  !!VR(index)&(art)=(ART_BREASTPLATE_OF_PETRIFIED_WOOD):S3;
+  !!VR(index)&(art)=(ART_AMULET_OF_THE_UNDERTAKER):S4;
+  !!VR(index)&(art)=(ART_VAMPIRES_COWL):S5;
+  !!VR(index)&(art)=(ART_DEAD_MANS_BOOTS):S6;
+
+  !!VR(bit:y):S1 Sd<<(index);
+  !!VR(isDisabled:y):Si^wog_71_disabledUpgrades_%(hero)^ &(bit);
+
+  !!if&(isDisabled)=(FALSE);
+    !!VR(stat:z):S^%T(wog.102.on)^;
+    !!VR(rstat:z):S^%T(wog.102.off)^;
+  !!el;
+    !!VR(stat):S^%T(wog.102.off)^;
+    !!VR(rstat):S^%T(wog.102.on)^;
+  !!en;
+
+  !!SN:H^art^/(art)/1/?(artDesc:z) T^wog.71.switch^/?(msg:z)/^art_name^/(artDesc)/^stat^/(stat)/^rstat^/(rstat);
+
+  !!IF:Q1/(PIC_TYPE_ART)/(art)/(MSG_TYPE_QUESTION)/(msg);
+  !!VRi^wog_71_disabledUpgrades_%(hero)^&1:X(bit);
+!!en;

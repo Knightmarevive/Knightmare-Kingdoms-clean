@@ -1,0 +1,74 @@
+ZVSE
+
+!?PI; keystroke
+!!UN:C6919480/4/?y10;
+!!VRy11:Sy10 +128980; //получить адрес начала имени папки с картой
+!!UN:Cy11/1/?y11; //получить первый символ
+!!FU&y11<>114:E; //если не 'r' (random_maps), то выйти; 109 - maps; 104 - h2sw )
+!!UN:U6/-1/?y60;
+!!DO4072145/1/y60/1:P;
+
+
+!?GM0; keystroke
+!!UN:C6919480/4/?y10;
+!!VRy11:Sy10 +128980; //получить адрес начала имени папки с картой
+!!UN:Cy11/1/?y11; //получить первый символ
+!!FU&y11<>114:E; //если не 'r' (random_maps), то выйти; 109 - maps; 104 - h2sw )
+!!UN:U6/-1/?y60;
+!!DO4072145/1/y60/1:P;
+
+!?FU4072145;
+!!UN:U6/-1/x16/601;
+
+!!VRy25:S0 R2;
+!!VRz1&y25=0:S^pandsph1.def^;
+!!VRz1&y25=1:S^pandsph2.def^;
+!!VRz1&y25=2:S^pandsph3.def^;
+
+!!PA601:C0/d/?y35;
+!!VRz1&y35>0:S^pandunit.def^;
+
+!!PA601:E?y35;
+!!VRz1&y35>0:S^pandfire.def^;
+
+!!PA601:R6/?y35;
+!!VRy25:S0 R1;
+!!VRz1&y35>0/y25=0:S^pandsack.def^;
+!!VRz1&y35>0/y25=1:S^pandsac2.def^;
+
+
+!!UN:C6919480/4/?y15; gamemgr
+!!UN:C6918840/4/?y10; advmgr
+!!VRy11:Sy10 +92;
+!!UN:Cy11/4/?y11; gamemap
+!!SN:E4228816/2/y11/v601/v602/v603;
+!!VRy12:Sv1; mapitem
+
+!!OBv601/v602/v603:T?y30 U?y31 T5 U5;
+!!TRv601/v602/v603:E?y32 E0;
+!!UN:C6781300/4/9597928;
+
+!!SN:E5019216/2/y15/y12;
+
+!!UN:C6781300/4/6782120;
+!!TRv601/v602/v603:Ey32;
+!!OBv601/v602/v603:Ty30 Uy31;
+
+!?OB6&1000;
+!!UN:C6919480/4/?y10;
+!!VRy11:Sy10 +128980; //получить адрес начала имени папки с картой
+!!UN:Cy11/1/?y11; //получить первый символ
+!!FU&y11<>114:E; //если не 'r' (random_maps), то выйти; 109 - maps; 104 - h2sw )
+!!VRz1:S^A few old parchemins lay in a strange glass spere, you pick them then feel wiser.^;
+
+!!PA998:C0/d/?y15;
+!!VRz1&y15>0:S^In the drifting snow the soldiers ranks are indistinguishable. You let them join, they will anyway die.^;
+
+!!PA998:E?y15;
+!!VRz1&y15>0:S^Fiery fireworks are dancing in the winter sky. While contemplating their complex design, you feel you are now more experienced.^;
+
+!!PA998:R6/?y15;
+!!VRz1&y15>0:S^Inside the imposant bag, a heap of gold catches your sight. You quickly pick it then walk away innocently.^;
+
+!!PA998:Mz1;
+

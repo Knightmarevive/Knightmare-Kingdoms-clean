@@ -1,0 +1,37 @@
+ZVSE
+; Commander Sanctuary 0.2 by Timothy Pulver
+; WoGify name: script76.erm
+; Updated: February 03, 2019
+
+; Enhances Sanctuary (object 80)
+
+; [Sanctuary is post-visit trigger]
+!$OB80;
+!!UN:P3/?y1; [Check if Commanders are enabled: y1=0 if enabled]
+!!CO-1:D?y2; [Check if Commander is alive: y2=1 if dead]
+!!UN:P76/?y7; [Check if script is enabled: y7=1 if enabled]
+!!FU|y1<>0/y2<>1/y7<>1:E; [Exit if Commanders or script not enabled or Commander isn't dead]
+
+!!if&999:;                [for human player at this pc only]
+  !!CO-1:T?y3;            [Commander Type: y3]
+  !!VRy4:S174 +y3 +65536; [Creature picture number for Commander]
+  !!VRy5:S4 R1;           [Random gems or crystals]
+  !!IF:Q2/21/y4/y5/2/2/z176000;
+
+  !!if&2:;
+    !!OW:R-1/y5/?y6;   [Check current player's number of resource: y6]
+
+    !!if&y6>=2:;
+      !!OW:R-1/y5/d-2; [Remove two resources from player]
+      !!IF:Q1/21/8/1/z176003;
+    !!el:;
+      !!IF:Q1/21/8/1/z176002;
+    !!en;
+    
+    !!CO-1:D0; [Revive human Commander]
+  !!el:;
+    !!IF:Q1/21/8/1/z176001;
+  !!en;
+!!en:;
+
+!!CO-1&-1000:D0; [Revive AI Commander]

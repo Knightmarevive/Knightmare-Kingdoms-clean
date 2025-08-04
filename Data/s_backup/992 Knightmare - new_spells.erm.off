@@ -1,0 +1,395 @@
+ZVSE
+!?GM0;
+
+!!SN:W^Knightmare_Skills^/?y1;
+!_!FU&y1>0:E;
+
+!!SS1:F37457 L4 O0 S4 X46 P60 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS82:F37457 L4 O0 S4 X46 P60 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 82 behaves as^/26; Ice Blizzard
+
+!!SS7:F37457 L4 O-1 S4 X46 P90 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS83:F37457 L4 O-1 S4 X46 P90 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 83 behaves as^/16; Greater Frost Bolt
+
+!!SS3:F37457 L4 O0 S2 X53 P90 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS85:F37457 L4 O0 S2 X53 P90 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 85 behaves as^/21; Greater Fireball
+
+!!SS5:F37457 L4 O-1 S1 X37 P90 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS86:F37457 L4 O-1 S1 X37 P90 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 86 behaves as^/26; Thor's Hammer
+
+!!SS88:F5294297 L4 O-1 S15 X21 P144 E0/144 E1/360 E2/720 E3/1440 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 88 behaves as^/60; Knightmare Ring
+
+!!SS89:F267397 L4 O-1 S2 X9 P5 E0/5 E1/5 E2/5 E3/5 C0/40 C1/35 C2/35 C3/35;
+!!SN:W^SS 89 behaves as^/59; Scarab Pendant
+
+!?PI;
+
+!!SN:W^Knightmare_Spells^/1;
+
+!!SS1:F37457 L4 O0 S4 X46 P60 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS82:F37457 L4 O0 S4 X46 P60 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 82 behaves as^/26; Ice Blizzard
+
+!!SS7:F37457 L4 O-1 S4 X46 P90 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS83:F37457 L4 O-1 S4 X46 P90 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 83 behaves as^/16; Greater Frost Bolt
+
+!!SS3:F37457 L4 O0 S2 X53 P90 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS85:F37457 L4 O0 S2 X53 P90 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 85 behaves as^/21; Greater Fireball
+
+!!SS5:F37457 L4 O-1 S1 X37 P90 E0/120 E1/240 E2/360 E3/360  C0/40 C1/35 C2/30 C3/25;
+!!SS86:F37457 L4 O-1 S1 X37 P90 E0/120 E1/240 E2/360 E3/360 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 86 behaves as^/26; Thor's Hammer
+
+!!SS88:F5294297 L4 O-1 S15 X21 P144 E0/144 E1/360 E2/720 E3/1440 C0/40 C1/35 C2/30 C3/25;
+!!SN:W^SS 88 behaves as^/60; Knightmare Ring
+
+
+!!SS89:F267397 L4 O-1 S2 X9 P5 E0/5 E1/5 E2/5 E3/5 C0/40 C1/35 C2/35 C3/35;
+!!SN:W^SS 89 behaves as^/59; Scarab Pendant
+
+
+!?TM2;
+
+!!FU:E;
+!!SS1:F561745 L4 O-1 S4 X46 P60 E0/120 E1/240 E2/360 E3/360;
+
+!!SS3:F299601 L4 O-1 S4 X46 P60 E0/120 E1/240 E2/360 E3/360;
+!!SS5:F299601 L4 O-1 S4 X46 P60 E0/120 E1/240 E2/360 E3/360;
+
+!?BA0;
+!!SN:W^BH 0 Custom Spell^/0;
+!!SN:W^BH 1 Custom Spell^/0;
+
+!?BA0;
+!!BA:H0/?y10 H1/?y11;
+!!if&y10>=0:;
+     !!HEy10:M1/?y20 M0/?y25;
+     !!HEy10:M3/?y30 M5/?y35;
+     !!HEy10:A2/491/d/?y40;
+     !!HEy10:A2/543/d/?y45;
+     !!SN:W^HE SS %Y10 01 82^/y20;
+     !!SN:W^HE SS %Y10 07 83^/y25;
+     !!SN:W^HE SS %Y10 03 85^/y30;
+     !!SN:W^HE SS %Y10 05 86^/y35;
+     !!SN:W^HE SS %Y10 AA 88^/y40;
+     !!SN:W^HE SS %Y10 AA 89^/y45;
+     !!if&y20>0:;
+         !!HEy10:M1/0;
+         !_!HEy10:M82/1;
+     !!en:;
+     !!if&y25>0:;
+         !!HEy10:M7/0;
+         !_!HEy10:M83/1;
+     !!en:;
+
+     !!if&y30>0:;
+         !!HEy10:M3/0;
+         !_!HEy10:M85/1;
+     !!en:;
+     !!if&y35>0:;
+         !!HEy10:M5/0;
+         !_!HEy10:M86/1;
+     !!en:;
+!!en:;
+
+!!if&y11>=0:;
+     !!HEy11:M1/?y21 M0/?y26;
+     !!HEy11:M3/?y31 M5/?y36;
+     !!HEy11:A2/491/d/?y41;
+     !!HEy11:A2/543/d/?y46;
+     !!SN:W^HE SS %Y11 01 82^/y21;
+     !!SN:W^HE SS %Y11 07 83^/y26;
+     !!SN:W^HE SS %Y11 03 85^/y31;
+     !!SN:W^HE SS %Y11 05 86^/y36;
+     !!SN:W^HE SS %Y11 AA 88^/y41;
+     !!SN:W^HE SS %Y11 AA 89^/y46;
+     !!if&y21>0:;
+         !!HEy11:M1/0;
+         !_!HEy10:M82/1;
+     !!en:;
+     !!if&y26>0:;
+         !!HEy11:M7/0;
+         !_!HEy10:M83/1;
+     !!en:;
+     !!if&y31>0:;
+         !!HEy11:M3/0;
+         !_!HEy11:M85/1;
+     !!en:;
+     !!if&y36>0:;
+         !!HEy11:M5/0;
+         !_!HEy11:M86/1;
+     !!en:;
+!!en:;
+
+
+!?BA1;
+!!BA:H0/?y10 H1/?y11;
+!!if&y10>=0:;
+     !_!HEy10:M82/?y20;
+     !!SN:W^HE SS %Y10 01 82^/?y20;
+     !!SN:W^HE SS %Y10 07 83^/?y25;
+     !!SN:W^HE SS %Y10 03 85^/?y30;
+     !!SN:W^HE SS %Y10 05 86^/?y35;
+
+     !!if&y20>0:;
+         !_!HEy10:M82/0;
+         !!HEy10:M1/1;
+     !!en:;
+     !!if&y25>0:;
+         !_!HEy10:M83/0;
+         !!HEy10:M7/1;
+     !!en:;
+     !!if&y30>0:;
+         !_!HEy10:M85/0;
+         !!HEy10:M3/1;
+     !!en:;
+     !!if&y35>0:;
+         !_!HEy10:M86/0;
+         !!HEy10:M5/1;
+     !!en:;
+!!en:;
+
+!!if&y11>=0:;
+     !_!HEy11:M82/?y21;
+     !!SN:W^HE SS %Y11 01 82^/?y21;
+     !!SN:W^HE SS %Y11 07 83^/?y26;
+     !!SN:W^HE SS %Y11 03 85^/?y31;
+     !!SN:W^HE SS %Y11 05 86^/?y36;
+     !!if&y21>0:;
+         !_!HEy11:M82/0;
+         !!HEy11:M1/1;
+     !!en:;
+     !!if&y26>0:;
+         !_!HEy11:M83/0;
+         !!HEy11:M7/1;
+     !!en:;
+     !!if&y31>0:;
+         !_!HEy11:M85/0;
+         !!HEy11:M3/1;
+     !!en:;
+     !!if&y36>0:;
+         !_!HEy11:M86/0;
+         !!HEy11:M5/1;
+     !!en:;
+
+!!en:;
+
+!!SN:W^BH 0 Custom Spell^/0;
+!!SN:W^BH 1 Custom Spell^/0;
+
+!?CM4;
+
+!!BG:Q?y3 H?y4;
+!!FU&y4<0:E;
+
+!!SN:W^BH %Y3 Custom Spell^/?y11;
+!!CM&y11=0:R1;
+!_!CM:R0;
+!!FU&y11=0:E;
+!!CM:F?y1 I?y2;
+!!FU&y2=2008:E;
+
+!_!FU&y1<>0:E;
+!!CM:R0;
+!_!FU&y2<>1:E;
+
+!_!FU&y1<>0/y2<>1:E;
+
+!_!IF:M^DEBUG1^;
+!_!CM&y2>=2000:R1;
+!!FU&y2>=2000:E;
+!_!IF:M^DEBUG2^;
+
+
+!!BG:Q?y3 H?y4;
+!!BG:A0;
+
+!!FU&y4<0:E;
+!_!IF:M^DEBUG3^;
+
+!_!BG:D?y5;
+!_!BG:E?y6;
+!_!FU&y6<0:E;
+!_!IF:M^DEBUG4^;
+
+!_!CM:R1;
+
+!!CM:D?y5;
+!_!BHy3:C16/y5/2/1;
+!_!BHy3:Cy11/y5/2/1;
+
+!!SN:W^SS %Y11 behaves as^/?y9;
+
+!!HEy4:S14/?y14 S15/?y15 S16/?y16 S17/?y17;
+!!VRy99:S0; !!SSy11:S?y98;
+!!VRy24:Sy98 &2; !!VRy25:Sy98 &1;
+!!VRy26:Sy98 &4; !!VRy27:Sy98 &8;
+!!VRy99&y14>y99/y24>0:Sy14;
+!!VRy99&y15>y99/y24>0:Sy15;
+!!VRy99&y16>y99/y24>0:Sy16;
+!!VRy99&y17>y99/y24>0:Sy17;
+
+!!FU55409:Py11/y9/y5/y99/1;
+!_!BG:A1 Sy11;
+!_!BG:A1 S16;
+
+!!SN:W^BH 0 Custom Spell^/0;
+!!SN:W^BH 1 Custom Spell^/0;
+
+
+!!BG:A0; !!CM:R0; !!SN:Q;
+
+!?MM;
+!!FU:E;
+!_!BG:Q?y3;
+!_!SN:W^BH %Y3 Custom Spell^/?y1;
+!_!FU&y1=0:E;
+
+!!SN:W^BH 0 Custom Spell^/?y10;
+!!SN:W^BH 1 Custom Spell^/?y11;
+!!FU&y10=0/y11=0:E;
+
+!!UN:R5/3/0; Spellbook cursor
+
+!?CM4;
+!!CM:F?y1 I?y2;
+!!CM:R1;
+!!FU|y1<>512/y2<>2008:E;
+!!BG:Q?y3 H?y4; !!BHy3:M?y7;
+!!FU|y4<0/y7=1:E;
+
+!!BG:Q?y3; !!BHy3:N?y5; !!FU&y5<0:E;
+!_!HEy5:S14/?y14 S15/?y15 S16/?y16 S17/?y17;
+!_!DL55409:A1001/4/y16 A1002/4/y16; water spells
+!_!SS82:Dy16/?z1;
+!_!SS83:Dy16/?z2;
+!_!DL55409:H1/z1 H1001/z1 H2001/z1 H2/z2 H1002/z2 H2002/z2;
+
+!_!IF:M^Custom Spell^;
+!!DL55409:N^55409_spellbook.txt^ S;
+
+!!CM:R0;
+!_!BG:A1 S82;
+!_!SN:W^BH %Y3 Custom Spell^/82;
+!_!SN:Q;
+
+!?DL;
+!_!DL55409:A1001/4/?y12 A1001/4/?y13;
+
+!_!SS82:Dy12/?z1;
+!_!SS83:Dy13/?z2;
+!_!VRz1:S^Blizzard^;
+!_!VRz2:S^Greater Frost Bolt^;
+!_!DL55409:H1/z1 H1001/z1 H2001/z1 H2/z2 H1002/z2 H2002/z2;
+
+!!FU&v998<>55409:E;
+
+!!if&v1000=13:;
+!!DL55409&v999=2999:C1;
+!!FU&v999=2999:E;
+
+!!BG:H?y11; !!FU&y11<0:E;
+
+!!SN:W^HE SS %Y11 01 82^/?y82;
+!!SN:W^HE SS %Y11 07 83^/?y83;
+!!SN:W^HE SS %Y11 03 85^/?y85;
+!!SN:W^HE SS %Y11 05 86^/?y86;
+!!SN:W^HE SS %Y11 AA 88^/?y88;
+!!SN:W^HE SS %Y11 AA 89^/?y89;
+
+!!SN&v999=2001/y82>0:W^BH %Y3 Custom Spell^/82;
+!!SN&v999=2002/y83>0:W^BH %Y3 Custom Spell^/83;
+!!SN&v999=2003/y85>0:W^BH %Y3 Custom Spell^/85;
+!!SN&v999=2004/y86>0:W^BH %Y3 Custom Spell^/86;
+!!SN&v999=2005/y88>0:W^BH %Y3 Custom Spell^/88;
+!!SN&v999=2006/y89>0:W^BH %Y3 Custom Spell^/89;
+
+!!SN:W^BH %Y3 Custom Spell^/?y99;
+!!if&y99=0/v999>2000/v999<2999:;
+!!IF:M^You don't have this spell!^;
+!!en:;
+
+!!DL55409&v999>2000/v999<2777:C1;
+!!en:;
+
+!!FU:E;
+
+!?FU55409;
+x1 - new spell number
+x2 - temp spell
+x3 - position to cast
+x4 - Magic School level
+x5 - check for dead stack
+x6 - non-zero is free
+
+
+!_!UN:R5/0/0; reset  cursor
+
+store temp spell
+!!SSx2:C0/?y80 C1/?y81 C2/?y82 C3/?y83 E0/?y90 E1/?y91 E2/?y92 E3/?y93;
+!!SSx2:F?y72 O?y73 P?y74 S?y75 W?y76 X?y77 L?y78;
+
+
+scan new spell
+!!SSx1:C0/?y10 C1/?y11 C2/?y12 C3/?y13 E0/?y20 E1/?y21 E2/?y22 E3/?y23;
+!!SSx1:F?y2 O?y3 P?y4 S?y5 W?y6 X?y7 L?y8;
+
+
+check enough mana
+!!BG:Q?y55;
+!!BHy55:N?y56;
+!!HEy56:I?y57/1;
+!!FU&x4=0/y57<y10/x6=0:E;
+!!FU&x4=1/y57<y11/x6=0:E;
+!!FU&x4=2/y57<y12/x6=0:E;
+!!FU&x4=3/y57<y13/x6=0:E;
+
+!!SN:W^Spell_Specialist.SS%X2:P^/?y43;
+!!SN:W^Spell_Specialist.SS%X2:C0^/?y97;
+!!SN:W^Spell_Specialist.SS%X2:C1^/?y17;
+!!SN:W^Spell_Specialist.SS%X2:C2^/?y27;
+!!SN:W^Spell_Specialist.SS%X2:C3^/?y37;
+
+
+!!VRy4&y4<y43:Sy43; !!SN:W^Spell_Specialist.SS%X2:P^/y4;
+
+!!VRy10&y10>y80:Sy80; !!SN:W^Spell_Specialist.SS%X2:C0^/y10;
+!!VRy11&y11>y81:Sy81; !!SN:W^Spell_Specialist.SS%X2:C1^/y11;
+!!VRy12&y12>y82:Sy82; !!SN:W^Spell_Specialist.SS%X2:C2^/y12;
+!!VRy13&y13>y83:Sy83; !!SN:W^Spell_Specialist.SS%X2:C3^/y13;
+
+
+!!BG:N?y49;
+!!FU55103:Py49/0/0;
+
+
+tweak temp spell
+!!SSx2:C0/y10 C1/y11 C2/y12 C3/y13 E0/y20 E1/y21 E2/y22 E3/y23;
+!!SSx2:Fy2 Oy3 Py4 Sy5 Wy6 Xy7 Ly8;
+
+!_!SN:W^Spell_Specialist.SS%X2:P^/?y9;
+
+
+cast spell
+!!BG:Q?y55;
+!!BHy55:Cx2/x3/x4/x5;
+!!HEy56&x6<>0:Iy57/1;
+
+!!SN:W^Spell_Specialist.SS%X2:P^/y43;
+!!SN:W^Spell_Specialist.SS%X2:C0^/y97;
+!!SN:W^Spell_Specialist.SS%X2:C1^/y17;
+!!SN:W^Spell_Specialist.SS%X2:C2^/y27;
+!!SN:W^Spell_Specialist.SS%X2:C3^/y37;
+
+!!BG:N?y49; !!FU55103:Py49/0/0;
+
+restore temp spell
+!!SSx2:C0/y80 C1/y81 C2/y82 C3/y83 E0/y90 E1/y91 E2/y92 E3/y93;
+!!SSx2:Fy72 Oy73 Py74 Sy75 Wy76 Xy77 Ly78;
+

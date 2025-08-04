@@ -1,0 +1,97 @@
+ZVSE
+ERMS_ScriptDate=15.8(August).2004
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
+*Made by Jonas Gustafsson. Email me at jonas@byteware.de
+*This is a script to change the orginal Battlefields in the game
+*Put all ***.pcx files in DATA folder
+*The script is made by Donald X, Robert Bergerfjäll and Timothy Pulver
+*The file hosting by Dieter Averbeck
+*Many thanks to you guys!
+*Battlefield pictures are made by Dutch, Robert Bergerfjäll and Jonas Gustafsson.
+
+* Updated: August 15, 2004
+
+** Variables used: v1 plus local variables only
+** Function used: FU62
+
+!?BA0&1000; [do this code when a battle starts but not for AI-only battles]
+!!FU62:P;
+
+!?BA50&1000; [for defender in MP battle]
+!!FU62:P;
+
+!?FU62;
+!!UN:P68/?y1; [check if script is enabled]
+!!BA:Q?y5; [state of Quick Combat: y5=1 if it's a Quick Combat battle]
+!!BA&y5=0:B-1; [enable default battlefield if battle isn't a Quick Combat]
+!!FU|y1<>1/y5=1:E; [exit if script isn't enabled or if battle is a Quick Combat]
+**[function without bugs]
+
+!!VRv1:Sv998;   [updated by rennyo 26..02.2012]
+!!VRv2:Sv999;   [updated by rennyo 26..02.2012]
+!!VRv3:Sv1000;  [updated by rennyo 26..02.2012]
+
+
+
+
+
+
+!!TR1:T?y2/d/d/d/d/d/d/d;  [get terrain, rivers, roads]
+!!TR1:G?y3; [check for special terrain: y3]
+!!VRy4:S0 R2; [random number, 0 to 2]
+!!FU&y4=2:E; [Exit trigger if y4=2 and use default picture]
+
+!!IF:V1/0; [Initialize Flag 1 to False]
+!!UN&y2=0/y4=0:J8/5/^dirt1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=0/y4=1:J8/5/^dirt2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=1/y4=0:J8/5/^sand1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=1/y4=1:J8/5/^sand2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=2/y4=0:J8/5/^grass1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=2/y4=1:J8/5/^grass2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=3/y4=0:J8/5/^snow1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=3/y4=1:J8/5/^snow2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=4/y4=0:J8/5/^swamp1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=4/y4=1:J8/5/^swamp2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=5/y4=0:J8/5/^rough1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=5/y4=1:J8/5/^rough2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=6/y4=0:J8/5/^subt1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=6/y4=1:J8/5/^subt2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=7/y4=0:J8/5/^lava1.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y2=7/y4=1:J8/5/^lava2.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=046/y4=0:J8/5/^magic.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=226/y4=0:J8/5/^fiery.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=231/y4=0:J8/5/^rockl.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=229/y4=0:J8/5/^air.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=228/y4=0:J8/5/^lucid.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=227/y4=0:J8/5/^holy.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=222/y4=0:J8/5/^clover.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=224/y4=0:J8/5/^evil.pcx^; [Check if file is present: Flag 1=0 if file missing]
+!!UN&y3=021/y4=0:J8/5/^cursed.pcx^; [Check if file is present: Flag 1=0 if file missing]
+
+!!BA&y2=0/y4=0/1:B^s\dirt1.pcx^; [if dirt, use your dirt1.pcx file half the time]
+!!BA&y2=0/y4=1/1:B^s\dirt2.pcx^; [your other dirt picture, the other half of the time]
+!!BA&y2=1/y4=0/1:B^s\sand1.pcx^; [and so on]
+!!BA&y2=1/y4=1/1:B^s\sand2.pcx^;
+!!BA&y2=2/y4=0/1:B^s\grass1.pcx^;
+!!BA&y2=2/y4=1/1:B^s\grass2.pcx^;
+!!BA&y2=3/y4=0/1:B^s\snow1.pcx^;
+!!BA&y2=3/y4=1/1:B^s\snow2.pcx^;
+!!BA&y2=4/y4=0/1:B^s\swamp1.pcx^;
+!!BA&y2=4/y4=1/1:B^s\swamp2.pcx^;
+!!BA&y2=5/y4=0/1:B^s\rough1.pcx^;
+!!BA&y2=5/y4=1/1:B^s\rough2.pcx^;
+!!BA&y2=6/y4=0/1:B^s\subt1.pcx^;
+!!BA&y2=6/y4=1/1:B^s\subt2.pcx^;
+!!BA&y2=7/y4=0/1:B^s\lava1.pcx^;
+!!BA&y2=7/y4=1/1:B^s\lava2.pcx^;
+!!BA&y3=046/1:B^s\magic.pcx^;
+!!BA&y3=226/1:B^s\fiery.pcx^;
+!!BA&y3=231/1:B^s\rockl.pcx^;
+!!BA&y3=229/1:B^s\air.pcx^;
+!!BA&y3=228/1:B^s\lucid.pcx^;
+!!BA&y3=227/1:B^s\holy.pcx^;
+!!BA&y3=222/1:B^s\clover.pcx^;
+!!BA&y3=224/1:B^s\evil.pcx^;
+!!BA&y3=021/1:B^s\cursed.pcx^;
+

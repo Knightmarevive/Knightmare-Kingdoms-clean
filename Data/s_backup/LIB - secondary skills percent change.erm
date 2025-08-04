@@ -1,0 +1,33 @@
+ZVSE
+
+!?FU55998; [Author: Demiurg, Berserker. set up float value for secondary skill]
+; x1 - skill, x2 - level (0..3), x3 - value in percents, i.e 80
+!!FU|x1<1/x1=5/x1=7/x1=10/x1>26:E;//skills aren't supported
+!!FU&x1>13/x1<21:E;//skills aren't supported
+!!FU|x2<0/x2>3:E;//wrong mastery (must be 0..3)
+!!VRy1&x1=1:S6547944;//archery
+!!VRy1&x1=2:S6548072;//logistics
+!!VRy1&x1=3:S6547928;//scouting
+!!VRy1&x1=4:S6548024;//diplomacy
+!!VRy1&x1=6:S6547880;//leadership
+!!VRy1&x1=8:S6547912;//mysticism
+!!VRy1&x1=9:S6547864;//luck
+!!VRy1&x1=11:S6548008;//eagle eye
+!!VRy1&x1=12:S6547896;//necromancy
+!!VRy1&x1=13:S6547992;//estate
+!!VRy1&x1=21:S6548056;//learning
+!!VRy1&x1=22:S6547960;//attack
+!!VRy1&x1=23:S6547976;//armorer
+!!VRy1&x1=24:S6548104;//intelligence
+!!VRy1&x1=25:S6548088;//sorcery
+!!VRy1&x1=26:S6548040;//resistance
+!!VRx2:*4;
+!!VRy1:+x2;
+!!if|x1=3/x1=6/x1=9:;
+!!UN:Cy1/4/x3;
+!!el:;
+!!VRe1:Sx3:100;
+!!SN:X?y2 Xe1 X?y3 Xy2;
+!!UN:Cy1/4/y3;
+!!en:;
+

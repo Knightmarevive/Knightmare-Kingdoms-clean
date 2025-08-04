@@ -1,0 +1,2006 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ERMS_ScriptDate=6.5(May).2016
+
+!#UN:P51/?v7185;
+!#UN:P186/?v7177;
+!#UN:P3/?v1;
+!#VRv7185&v1=1:S0;
+!#CO-2&v7185=1:P1;
+!#UN:B6/1;
+!?FU7072;
+!!MA:Xx16/?i;
+!!VRi:+16;
+!!VRi|x16=178/x16=187:-16;
+!!MA:Xx16/i;
+!#DO7072/174/191/1&v7185=1:P;
+
+!?FU(KK_reset_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Receptive=1^;
+!!SN:Ey5/1/x16/^RegenerationHitPoints=250^;
+!!SN:Ey5/1/x16/^Self-resurrection=0^;
+!!SN:Ey5/1/x16/^MagicMirror=0^;
+!!SN:Ey5/1/x16/^Fire shield=0^;
+!!SN:Ey5/1/x16/^DeathBlow=0^;
+!!SN:Ey5/1/x16/^JoustingImmune=0^;
+!!SN:Ey5/1/x16/^JoustingBonus=0^;
+
+!!SN:Ey5/1/x16/^AlwaysPositiveMorale=0^;
+!!SN:Ey5/1/x16/^AlwaysPositiveLuck=0^;
+
+!!SN:Ey5/1/x16/^Fearless=0^;
+!!SN:Ey5/1/x16/^Fear=0^;
+!!SN:Ey5/1/x16/^isDragonSlayer=0^;
+
+!!SN:Ey5/1/x16/^PreventiveStrike=0^;
+!!SN:Ey5/1/x16/^ShootingResistance=0^;
+
+!!SN:Ey5/1/x16/^Resistance effect=8^; // default
+
+!!SN:Ey5/1/x16/^ImposedSpell1Number=0 ImposedSpell1Level=0^;
+!!SN:Ey5/1/x16/^ImposedSpell2Number=0 ImposedSpell2Level=0^;
+!!SN:Ey5/1/x16/^ImposedSpell3Number=0 ImposedSpell3Level=0^;
+
+!!SN:Ey5/1/x16/^AfterDefendSpell=0^;
+!!SN:Ey5/1/x16/^AfterDefendSpell2=0^;
+
+!!SN:Ey5/1/x16/^Poison=0^;
+!!SN:Ey5/1/x16/^Aging=0^;
+!!SN:Ey5/1/x16/^Paralyze=0^;
+
+!!SN:Ey5/1/x16/^MovesTwice=0^;
+!!SN:Ey5/1/x16/^isHellHydra=0^;
+
+!!SN:Ey5/1/x16/^MeleeResistance=0^;
+!!SN:Ey5/1/x16/^ShootingResistance=0^;
+
+!?FU(OnGameEnter);
+!!DO(KK_reset_commanders)/174/191/1:P;
+!!DO(KK_reset_commanders)/294/302/1:P;
+
+
+!!SN:L^amethyst2_4.dll^/?y3; !!FU&y3=0:E;
+!!SN:Ay3/^ChangeCreatureTable^/?y5; !!FU&y5=0:E;
+!!re i/174/191:;
+  !!VRy9:Si;
+  !!SN:Ey5/1/y9/^NoGolemOverflow=1^;
+  !_!IF:M^%Y9^;
+!!en:;
+
+!?MF1;     [before stack takes physical damage]
+!!MF:F?y1 N?y2; !!BMy2:T?y3;
+!!UN:C42149568/4/?y10;    Get Physical Damage type
+!!FU&y10<>4460149:E;      Only Death Stare    
+
+!!MF&y3>=174/y3<=191:E0; Commanders are imune to death stare
+!!MF&y3>=294/y3<=302:E0;
+
+!?FU(KK_Commander_AfterAction); !!FU:E;
+!!BMx1:T?y3 I?y4;
+!!if&y3>=174/y3<=191;
+   !_!VRz5:S^KK_Commander_AfterAction %X1 %X2 %Y3 %Y4^;  
+   !_!BM:Mz5; !_!IF:Lz5;
+!!en;
+!!FU|x2<0/x2>41:E;
+!!BMx2:F?y7 P?y8;
+
+
+!!SN:W^majaczek.LCO00^/?y30; !!SN:W^majaczek.RCO00^/?y40;
+!!FU7073&y3>=174/y3<=191/y30=1/y4=0:Py7/y8/0; // Age (Horrible Wounds)
+!!FU7073&y3>=174/y3<=191/y40=1/y4=1:Py7/y8/0; //
+
+!!SN:W^majaczek.LCO03^/?y33; !!SN:W^majaczek.RCO03^/?y43;
+!!FU7073&y3>=174/y3<=191/y33=8/y4=0:Py7/y8/3; // Poison Sting
+!!FU7073&y3>=174/y3<=191/y43=8/y4=1:Py7/y8/3; //
+
+
+!!SN&v7083>-1:W^majaczek.LCO04^/?y34; !!SN&v7085>-1:W^majaczek.RCO03^/?y44;
+!!SN&v7083>-1:W^majaczek.LCO_L^/?y89; !!SN&v7085>-1:W^majaczek.RCO_L^/?y99;
+!_!CO-3:X2/?y30; !!VRy30:*2 +12; !!VRy10&y3>=174/y3<=191/y4=0:S0 R99; //  Flash Swing
+!_!CO-4:X2/?y40; !!VRy40:*2 +12; !!VRy11&y3>=174/y3<=191/y4=1:S0 R99; //
+!!FU7073&y3>=174/y3<=191/y34=16/y4=0/y10<y89:Py7/y8/4; //
+!!FU7073&y3>=174/y3<=191/y44=16/y4=1/y11<y99:Py7/y8/4; //
+
+
+!!FU:E;
+
+!!SN&v7083>-1:W^majaczek.LCO00^/?y30; !!SN&v7085>-1:W^majaczek.RCO00^/?y40;
+!!FU7073&y3>=174/y3<=191/v7081=6/y30=1/v7087>0/y4=0/y6>-1/y9=0:Py7/y8/0; // Age (Horrible Wounds)
+!!FU7073&y3>=174/y3<=191/v7081=6/y40=1/v7087>0/y4=1/y6>-1/y9=0:Py7/y8/0; //
+
+!!SN&v7083>-1:W^majaczek.LCO03^/?y33; !!SN&v7085>-1:W^majaczek.RCO03^/?y43;
+!!FU7073&y3>=174/y3<=191/v7081=6/y33=8/v7087>0/y4=0/y6>-1/y9=0:Py7/y8/3; // Poison Sting
+!!FU7073&y3>=174/y3<=191/v7081=6/y43=8/v7087>0/y4=1/y6>-1/y9=0:Py7/y8/3; //
+
+!!SN&v7083>-1:W^majaczek.LCO_L^/?y89; !!SN&v7085>-1:W^majaczek.RCO_L^/?y99;
+!_!CO-3:X2/?y30; !!VRy30:*2 +12; !!VRy10&y3>=174/y3<=191/v7081=6/v7084=16/v7087>0/y4=0/y6>-1/y9=0:S0 R99; //  Flash Swing
+!_!CO-4:X2/?y40; !!VRy40:*2 +12; !!VRy11&y3>=174/y3<=191/v7081=6/v7086=16/v7087>0/y4=1/y6>-1/y9=0:S0 R99; //
+!!FU7073&y3>=174/y3<=191/v7081=6/v7084=16/v7087>0/y4=0/y10<y89/y6>-1/y9=0:Py7/y8/4; //
+!!FU7073&y3>=174/y3<=191/v7081=6/v7086=16/v7087>0/y4=1/y11<y99/y6>-1/y9=0:Py7/y8/4; //
+
+
+!?MF1; 
+!!MF:F?y1 N?y2; !_!BMy2:T?y3;
+!_!UN:C42149568/4/?y10;    Get Physical Damage type
+!_!FU&y10<>4462398/y10<>4456676:E; Normal or all around
+
+!!BG:N?y21; !_!VRz5:S^%Y21^; !_!MM:Sz5;
+!!BMy21:T?y23;
+
+!_!VRz5:S^MF1 %y23 %y21 %y2^;  !_!BM:Mz5; !_!IF:Lz5;
+
+!!FU(KK_Commander_AfterAction)&y23>=174/y23<=191:Py21/y2;
+!!FU(KK_Commander_AfterAction)&y23>=294/y23<=302:Py21/y2;
+
+
+!?FU55999;
+!!HEx16:A2/0/?y1/?y2;
+!!HEx16&y2=0:A4/0;
+
+!#DO55999/0/155/1:P;
+
+!?PI;
+!!SN:W^Knightmare_Commanders^/1;
+
+by Berserker
+!!UN:C7785525/2/37008;//disable Succubus Charming
+!!UN:C7772712/2/37008;//disable astral spirit
+
+!?GM0;
+
+by Berserker
+!!UN:C7785525/2/37008;//disable Succubus Charming
+!!UN:C7772712/2/37008;//disable astral spirit
+
+!?BA0;
+!_!UN:C7724636/4/250; change Commander Regen
+
+!?BA52; reset specialities
+!!SN:W^majaczek.LCO_Z^/0;
+!!SN:W^majaczek.RCO_Z^/0;
+!!SN:W^majaczek.COM_BR^/0;
+
+!?BR;  once per round
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+!!SN:W^majaczek.COM_BR^/?y99;
+!!FU&v997<y99:E;
+!!SN:W^majaczek.COM_BR^/v997;
+!!DO55007/0/41/1:P; //only for non-slayed commanders
+
+!?BG0;
+
+!!BG:N?y16 A?y19;
+!!BMy16:F?y12 T?y2; !!VRy12:&8388608;
+
+!!if&y12<>0/y2>=174/y2<=191/y19=10;
+  !_!BMy16:E0;
+  !_!BG:A0;
+  !!BG:A12;
+  
+!!en;
+
+!?FU55007;
+
+x16 - battle monster
+!!BMx16:I?y1 T?y2 N?y3 H?y4;
+!!FU&y3<1:E; !!FU&y4<1:E;
+
+!!BMx16:F?y12; !!VRy12:&8388608;
+
+!!if&y12<>0/y2>=174/y2<=191;
+  !!BMx16:E0;
+!!en;
+
+!!if&y1=0/y2>=174/y2<=182/y12=0:;
+ !!SN&v7083>-1:W^majaczek.LCO_L^/?y69;
+ !!SN&v7083>-1:W^majaczek.LCO_Z^/dy69;
+ !!SN&v7083>-1:W^majaczek.LCO_Z^/d1;
+!!en:;
+
+!!if&y1=1/y2>=183/y2<=191/y12=0:;
+ !!SN&v7085>-1:W^majaczek.RCO_L^/?y89;
+ !!SN&v7085>-1:W^majaczek.RCO_Z^/dy89;
+ !!SN&v7085>-1:W^majaczek.RCO_Z^/d1;
+!!en:;
+
+!?FU55446; // count monsters
+x16 - BM id
+!!SN&x16=0:W^KNIGHTMARE_MON_ATTACKER^/0;
+!!SN&x16=0:W^KNIGHTMARE_MON_DEFENDER^/0;
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!SN&y5<0:Q;
+!!SN&y5>500:Q;
+!!SN&y6<1:Q;
+
+!!BMx16:I?y7; check side
+
+!!SN&y7=0:W^KNIGHTMARE_MON_ATTACKER^/d1;
+!!SN&y7=1:W^KNIGHTMARE_MON_DEFENDER^/d1;
+
+!!SN:Q; // don't  run other functions with same number
+
+
+
+!?CO0&v7185=1;
+!!HE-1:N?y1;
+!!FU55000:Py1/-1/1/-1;
+
+
+!?HL-1&v7185=1;
+!!HE-1:N?y1;
+!!FU55000:Py1/-1/1/-1;
+
+
+!?BA52;
+!!SN:W^majaczek.LCO.battle^/1;
+!?BA53;
+!!SN:W^majaczek.LCO.battle^/0;
+
+!_?BA0; 
+!?BR;
+!!BU:T?y66; !!FU&y66=0:E; //exit if not Tactics Phase
+!!SN:W^majaczek.Commanders.BR_once^/1;
+
+
+!?BA0;
+!_!BA:S?y-30;
+!_!SN:W^majaczek.siege^/y-30;
+!?BA53;
+!_!SN:W^majaczek.siege^/-1;
+
+!?FU55006; calculate and limit war machines
+!!BMx16:T?y25;
+!_!FU|y25<145/y25>149:E;
+!!SN:W^majaczek.Commanders.BR_once^/?y2; !!FU&y2=0:E;
+!!BMx16:N?y26 I?y29;
+
+!!SN:W^majaczek.LCO_T^/?y7; !!SN:W^majaczek.RCO_T^/?y8;
+!!SN:W^majaczek.LCO_L^/?y9; !!SN:W^majaczek.RCO_L^/?y10;
+
+!!BH0:N?y50; !!HEy50&y50>=0:X?y51/?y52/?y53/?y54/?y55/?y56/?y57 E?y58/?y59;
+!!BH1:N?y60; !!HEy60&y60>=0:X?y61/?y62/?y63/?y64/?y65/?y66/?y67 E?y68/?y69;
+
+!!if|y25=145/y25=45:; Catapults (or Magog Catapult)
+   !!BMx16:F?y44; !!FU&y44<>132165:E; monster flags (132165 = catapult if not siege)
+   !!if&y29=0/y7=8:; Attacker Astral Spirit
+      !!VRy26: *2;
+      !_!IF:M^catapult says: Boo!^;
+   !!en:;
+   !!if&y29=1/y8=8:; Defender Astral Spirit
+      !!VRy26: *2;
+   !!en:;
+
+   !!if&y29=0/y51=1/y52=145:;
+      !!VRy26:*2 +3;
+      !!VRy26&y59>=20:+5;
+      !!VRy26&y59>=35:+5;
+      !!VRy26&y59>=50:+5;
+      !!VRy26&y59>=65:+5;
+      !!VRy26&y59>=80:+5;
+   !!en:;
+   !!if&y29=1/y61=1/y62=145:;
+      !!VRy26:*2 +3;
+      !!VRy26&y69>=20:+5;
+      !!VRy26&y69>=35:+5;
+      !!VRy26&y69>=50:+5;
+      !!VRy26&y69>=65:+5;
+      !!VRy26&y69>=80:+5;
+   !!en:;
+
+   !!VRy26&y26>9:S9;
+
+   !!BMx16:Ny26 By26;
+!!en:;
+
+
+!?FU55000;
+!_!VRv7080:C-1/-1/-1/-1/-1/-1/-1/-1/-1/-1;
+!!SN:W^majaczek.LCO.battle^/?y1; !_!IF:M^FU5000 battle=%Y1^; !!FU&x3=1/y1=1:E; // x3=1 only out of battle
+!_!BA:H0/?v7083; !!VRv7083:Sx1;  //left hero
+!_!BA:H1/?v7085; !!VRv7085:Sx2;  //right hero
+// x4= -1 for real comander - else x4= side
+
+
+!!VRy5:S-1; !!VRy6:S-1;
+
+!!SN:W^majaczek.LHE^/v7083; !!SN:W^majaczek.RHE^/v7085;
+
+!!VRy86:S0;!!VRy87:S0;!!VRy88:S0;!!VRy89:S0;
+
+//dead info
+!!COv7083&v7083>-1:D?y66;
+!!COv7085&v7085>-1:D?y86;
+!!SN&v7083>-1:W^majaczek.LCO_D^/y66; !!SN&v7085>-1:W^majaczek.RCO_D^/y86;
+
+//enabled  info
+!!COv7083&v7083>-1:E?y67;
+!!COv7085&v7085>-1:E?y87;
+!!SN&v7083>-1:W^majaczek.LCO_E^/y67; !!SN&v7085>-1:W^majaczek.RCO_E^/y87;
+
+//commander class
+!!COv7083&v7083>-1:T?y68;
+!!COv7085&v7085>-1:T?y88;
+!!SN&v7083>-1:W^majaczek.LCO_T^/y68; !!SN&v7085>-1:W^majaczek.RCO_T^/y88;
+
+!!COv7083&v7083>-1:X2/?y69;
+!!COv7085&v7085>-1:X2/?y89;
+!!SN&v7083>-1:W^majaczek.LCO_L^/y69; !!SN&v7085>-1:W^majaczek.RCO_L^/y89;
+//comander level
+
+!!VRy40:S1;!!VRy41:S1;!!VRy42:S1;!!VRy43:S1;!!VRy44:S1;!!VRy45:S1; !!VRy46:S1;
+//primary skill levels
+!!COv7083&v7083>-1:S0/?y30;
+!!COv7085&v7085>-1:S0/?y40;
+!!SN&v7083>-1:W^majaczek.LCO0B^/y30; !!SN&v7085>-1:W^majaczek.RCO0B^/y40;
+
+!!COv7083&v7083>-1:S1/?y31;
+!!COv7085&v7085>-1:S1/?y41;
+!!SN&v7083>-1:W^majaczek.LCO1B^/y31; !!SN&v7085>-1:W^majaczek.RCO1B^/y41;
+
+!!COv7083&v7083>-1:S2/?y32;
+!!COv7085&v7085>-1:S2/?y42;
+!!SN&v7083>-1:W^majaczek.LCO2B^/y32; !!SN&v7085>-1:W^majaczek.RCO2B^/y42;
+
+!!COv7083&v7083>-1:S3/?y33;
+!!COv7085&v7085>-1:S3/?y43;
+!!SN&v7083>-1:W^majaczek.LCO3B^/y33; !!SN&v7085>-1:W^majaczek.RCO3B^/y43;
+
+!!COv7083&v7083>-1:S4/?y34;
+!!COv7085&v7085>-1:S4/?y44;
+!!SN&v7083>-1:W^majaczek.LCO4B^/y34; !!SN&v7085>-1:W^majaczek.RCO4B^/y44;
+
+!!COv7083&v7083>-1:S5/?y35;
+!!COv7085&v7085>-1:S5/?y45;
+!!SN&v7083>-1:W^majaczek.LCO5B^/y35; !!SN&v7085>-1:W^majaczek.RCO5B^/y45;
+
+!!COv7083&v7083>-1:S6/?y36;
+!!COv7085&v7085>-1:S6/?y46;
+!!SN&v7083>-1:W^majaczek.LCO6B^/y36; !!SN&v7085>-1:W^majaczek.RCO6B^/y46;
+
+
+
+!!COv7083&v7083>-1:A4/?y1/?y2/?y3/?y4/?y5/?y6/?y7/?y8/?y9/?y10/?y11/?y12;
+!!VRy16:S-1;  !!VRy16&y1=150:Sy2; !!VRy16&y3=150:Sy4;!!VRy16&y5=150:Sy6;!!VRy16&y7=150:Sy8;!!VRy16&y9=150:Sy10;!!VRy16&y11=150:Sy12;
+!!SN&v7083>-1:W^majaczek.LCO_Art150^/y16;
+!!VRy15:S-1;  !!VRy15&y1=152:Sy2; !!VRy15&y3=152:Sy4;!!VRy15&y5=152:Sy6;!!VRy15&y7=152:Sy8;!!VRy15&y9=152:Sy10;!!VRy15&y11=152:Sy12;
+!!SN&v7083>-1:W^majaczek.LCO_Art152^/y15;
+!!VRy16:S-1;  !!VRy16&y1=153:Sy2; !!VRy16&y3=153:Sy4;!!VRy16&y5=153:Sy6;!!VRy16&y7=153:Sy8;!!VRy16&y9=153:Sy10;!!VRy16&y11=153:Sy12;
+!!SN&v7083>-1:W^majaczek.LCO_Art153^/y16; !_!IF:M^%Y16^;
+!!VRy16:S-1;  !!VRy16&y1=155:Sy2; !!VRy16&y3=155:Sy4;!!VRy16&y5=155:Sy6;!!VRy16&y7=155:Sy8;!!VRy16&y9=155:Sy10;!!VRy16&y11=155:Sy12;
+!!SN&v7083>-1:W^majaczek.LCO_Art155^/y16;
+
+
+!!COv7083&v7083>-1/y15>4:B1/4/1; fix bow of seeking basic Flash Swing
+
+
+!!COv7085&v7085>-1:A4/?y1/?y2/?y3/?y4/?y5/?y6/?y7/?y8/?y9/?y10/?y11/?y12;
+!!VRy16:S-1;  !!VRy16&y1=150:Sy2; !!VRy16&y3=150:Sy4;!!VRy16&y5=150:Sy6;!!VRy16&y7=150:Sy8;!!VRy16&y9=150:Sy10;!!VRy16&y11=150:Sy12;
+!!SN&v7085>-1:W^majaczek.RCO_Art150^/y16;
+!!VRy15:S-1;  !!VRy15&y1=152:Sy2; !!VRy15&y3=152:Sy4;!!VRy15&y5=152:Sy6;!!VRy15&y7=152:Sy8;!!VRy15&y9=152:Sy10;!!VRy15&y11=152:Sy12;
+!!SN&v7085>-1:W^majaczek.RCO_Art152^/y15;
+!!VRy16:S-1;  !!VRy16&y1=153:Sy2; !!VRy16&y3=153:Sy4;!!VRy16&y5=153:Sy6;!!VRy16&y7=153:Sy8;!!VRy16&y9=153:Sy10;!!VRy16&y11=153:Sy12;
+!!SN&v7085>-1:W^majaczek.RCO_Art153^/y16;
+!!VRy16:S-1;  !!VRy16&y1=155:Sy2; !!VRy16&y3=155:Sy4;!!VRy16&y5=155:Sy6;!!VRy16&y7=155:Sy8;!!VRy16&y9=155:Sy10;!!VRy16&y11=155:Sy12;
+!!SN&v7085>-1:W^majaczek.RCO_Art155^/y16;
+
+!!COv7085&v7085>-1/y15>4:B1/4/1; fix bow of seeking basic Flash Swing
+
+
+!!COv7083&v7083>-1:B0/?y11 T?v7088;
+!!COv7085&v7085>-1:B0/?y12 T?v7089;
+
+!!FU7070:Pv7083; !!FU7070:Pv7085; // apply secondary skills and primary skill points
+
+
+!!SN&v7083>-1:W^majaczek.LCO_SS^/y11; !!SN&v7085>-1:W^majaczek.RCO_SS^/y12;
+//all secondary skills
+
+//secondary skills
+!!VRy50&v7083<>-1:Sy11 &1;
+!!VRy70&v7085<>-1:Sy12 &1;
+!!SN&v7083>-1:W^majaczek.LCO00^/y50; !!SN&v7085>-1:W^majaczek.RCO00^/y70;
+
+!!VRy51&v7083<>-1:Sy11 &2;
+!!VRy71&v7085<>-1:Sy12 &2;
+!!SN&v7083>-1:W^majaczek.LCO01^/y51; !!SN&v7085>-1:W^majaczek.RCO01^/y71;
+
+!!VRy52&v7083<>-1:Sy11 &4;
+!!VRy72&v7085<>-1:Sy12 &4;
+!!SN&v7083>-1:W^majaczek.LCO02^/y52; !!SN&v7085>-1:W^majaczek.RCO02^/y72;
+
+!!VRy53&v7083<>-1:Sy11 &8;
+!!VRy73&v7085<>-1:Sy12 &8;
+!!SN&v7083>-1:W^majaczek.LCO03^/y53; !!SN&v7085>-1:W^majaczek.RCO03^/y73;
+
+!!VRv7084&v7083<>-1:Sy11 &16;
+!!VRv7086&v7085<>-1:Sy12 &16;
+
+!!VRy54&v7083<>-1:Sy11 &16;
+!!VRy74&v7085<>-1:Sy12 &16;
+!!SN&v7083>-1:W^majaczek.LCO04^/y54; !!SN&v7085>-1:W^majaczek.RCO04^/y74;
+
+!!VRy55&v7083<>-1:Sy11 &32;
+!!VRy75&v7085<>-1:Sy12 &32;
+!!SN&v7083>-1:W^majaczek.LCO05^/y55; !!SN&v7085>-1:W^majaczek.RCO05^/y75;
+
+!!VRy56&v7083<>-1:Sy11 &64;
+!!VRy76&v7085<>-1:Sy12 &64;
+!!SN&v7083>-1:W^majaczek.LCO06^/y56; !!SN&v7085>-1:W^majaczek.RCO06^/y76;
+
+!!VRv7090&v7083<>-1:Sy11 &128;
+!!VRv7091&v7085<>-1:Sy12 &128;
+
+!!VRy57&v7083<>-1:Sy11 &128;
+!!VRy77&v7085<>-1:Sy12 &128;
+!!SN&v7083>-1:W^majaczek.LCO07^/y57; !!SN&v7085>-1:W^majaczek.RCO07^/y77;
+
+!!VRy58&v7083<>-1:Sy11 &256;
+!!VRy78&v7085<>-1:Sy12 &256;
+!!SN&v7083>-1:W^majaczek.LCO08^/y58; !!SN&v7085>-1:W^majaczek.RCO08^/y78;
+
+!!VRy59&v7083<>-1:Sy11 &512;
+!!VRy79&v7085<>-1:Sy12 &512;
+!!SN&v7083>-1:W^majaczek.LCO09^/y59; !!SN&v7085>-1:W^majaczek.RCO09^/y79;
+
+!!VRy60&v7083<>-1:Sy11 &1024;
+!!VRy80&v7085<>-1:Sy12 &1024;
+!!SN&v7083>-1:W^majaczek.LCO10^/y60; !!SN&v7085>-1:W^majaczek.RCO10^/y80;
+
+!!VRy61&v7083<>-1:Sy11 &2048;
+!!VRy81&v7085<>-1:Sy12 &2048;
+!!SN&v7083>-1:W^majaczek.LCO11^/y61; !!SN&v7085>-1:W^majaczek.RCO11^/y81;
+
+!!VRy62&v7083<>-1:Sy11 &4096;
+!!VRy82&v7085<>-1:Sy12 &4096;
+!!SN&v7083>-1:W^majaczek.LCO12^/y62; !!SN&v7085>-1:W^majaczek.RCO12^/y82;
+
+!!VRy63&v7083<>-1:Sy11 &8192;
+!!VRy83&v7085<>-1:Sy12 &8192;
+!!SN&v7083>-1:W^majaczek.LCO13^/y63; !!SN&v7085>-1:W^majaczek.RCO13^/y83;
+
+!!VRy64&v7083<>-1:Sy11 &16384;
+!!VRy84&v7085<>-1:Sy12 &16384;
+!!SN&v7083>-1:W^majaczek.LCO14^/y64; !!SN&v7085>-1:W^majaczek.RCO14^/y84;
+
+
+!!SN&v7083>-1:W^majaczek.LCO4P^/?y34; !!SN&v7085>-1:W^majaczek.RCO4P^/?y44;
+!_!IF:M^left %Y34    right %Y44^;
+!!VRz7:S^CreatureSpellPowerMultiplier=%Y34^; !!VRz8:S^CreatureSpellPowerMultiplier=%Y44^;
+!!VRy34:*5; !!VRy44:*5;
+!!VRz5:S^CreatureSpellPowerMultiplier=%Y34^; !!VRz6:S^CreatureSpellPowerMultiplier=%Y44^;
+
+!!SN:L^amethyst2_4.dll^/?y99;
+!!if&y99<>0:;
+  !!SN:Ay99/^ChangeCreatureTable^/?y98; 
+  !!SN&v7083>-1:Ey98/1/174/z7 Ey98/1/175/z7 Ey98/1/176/z5 Ey98/1/177/z7 Ey98/1/179/z5 Ey98/1/181/z7 Ey98/1/182/z7;
+  !!SN&v7085>-1:Ey98/1/183/z8 Ey98/1/184/z8 Ey98/1/185/z6 Ey98/1/186/z8 Ey98/1/188/z6 Ey98/1/190/z8 Ey98/1/191/z8; 
+!!en:;
+
+
+!?FU55005;
+!!BMx16:T?y25; !!VRy22:S-1; !!VRy22:-x16;
+
+!!FU|y25<174/y25>191:E;
+
+!!SN:W^majaczek.Commanders.BR_once^/?y-1;
+!_!BMx16&y-1=1/v997=0:P?y-2 C35/y-2/0/99/1; //dispel on self - crashes
+!_!BMx16:G44/-1/-1; //disable precision - glitches
+
+!!SN:W^Knightmare_Skills^/?y1;
+!!if&y1>0/y-1=1/v997=0:;
+  !!HEv7083&v7083>-1:S4/?y3; !!HEv7085&v7085>-1:S4/?y4;  //check Nobility (former Diplomacy)
+  !_!BMx16:N?y2;
+  !!if&y25<=182/v7083>-1:;
+     !_!VRy3:+1; !_!VRy2:*y3;
+        !_!BMx16&y3>0:M49/99/3; //mirth
+        !_!BMx16&y3>0:M51/99/3; //fortune
+        !_!BMx16&y3>1:M48/99/3; //prayer
+     !_!VRy2&y3>2:+1; !_!BMx16:By2 Ny2; //count
+  !!en:;
+  !!if&y25>=183/v7085>-1:;
+     !_!VRy4:+1;  !_!VRy2:*y4;
+        !_!BMx16&y4>0:M49/99/3; //mirth
+        !_!BMx16&y4>0:M51/99/3; //fortune
+        !_!BMx16&y4>1:M48/99/3; //prayer
+     !_!VRy2&y4>2:+1; !_!BMx16:By2 Ny2; //count
+  !!en:;
+!!en:;
+
+//Astral Spirit Summon-Guard
+!!SN:W^majaczek.Commanders.BR_once^/?y-1;
+!!if&y-1=1/y25=182/v997=0/v1>v1:;
+   !!SN:W^majaczek.LCO_L^/?y9;
+   !!VRy9: :2 +1;
+   !!BU:S136/y9/71/0/-1/0;
+   !!BU:S136/y9/105/0/-1/0;
+!!en:;
+!!if&y-1=1/y25=191/v997=0/v1>v1:;
+   !!SN:W^majaczek.RCO_L^/?y10;
+   !!VRy10: :2 +1;
+   !!BU:S136/y10/80/1/-1/0;
+   !!BU:S136/y10/114/1/-1/0;
+!!en:;
+
+!_!DO55001/x16/x16/1:P;
+
+!_!UN:R6/250; !_!BU:R; !_!UN:R6/250;
+
+!_!CO-3&y25<=182/v7083>-1:E1; !_!CO-4&y25>=183/v7085>-1:E1;
+
+!?FU55001;
+!!BMx16:T?y25; !!VRy22:S-1; !!VRy22:-x16;
+
+!!FU|y25<174/y25>191:E;
+
+
+
+!_!IF:M^debug x16 %X16 y22 %Y22 y25 %Y25 ^;
+
+!!SN:W^majaczek.LCO00^/?y50; !!SN:W^majaczek.RCO00^/?y70;
+!!SN:W^majaczek.LCO01^/?y51; !!SN:W^majaczek.RCO01^/?y71;
+!!SN:W^majaczek.LCO02^/?y52; !!SN:W^majaczek.RCO02^/?y72;
+!!SN:W^majaczek.LCO03^/?y53; !!SN:W^majaczek.RCO03^/?y73;
+!!SN:W^majaczek.LCO04^/?y54; !!SN:W^majaczek.RCO04^/?y74;
+!!SN:W^majaczek.LCO05^/?y55; !!SN:W^majaczek.RCO05^/?y75;
+!!SN:W^majaczek.LCO06^/?y56; !!SN:W^majaczek.RCO06^/?y76;
+!!SN:W^majaczek.LCO07^/?y57; !!SN:W^majaczek.RCO07^/?y77;
+!!SN:W^majaczek.LCO08^/?y58; !!SN:W^majaczek.RCO08^/?y78;
+!!SN:W^majaczek.LCO09^/?y59; !!SN:W^majaczek.RCO09^/?y79;
+!!SN:W^majaczek.LCO10^/?y60; !!SN:W^majaczek.RCO10^/?y80;
+!!SN:W^majaczek.LCO11^/?y61; !!SN:W^majaczek.RCO11^/?y81;
+!!SN:W^majaczek.LCO12^/?y62; !!SN:W^majaczek.RCO12^/?y82;
+!!SN:W^majaczek.LCO13^/?y63; !!SN:W^majaczek.RCO13^/?y83;
+!!SN:W^majaczek.LCO14^/?y64; !!SN:W^majaczek.RCO14^/?y84;
+
+
+!!BMx16:U3/0; //No Ammo
+
+!!BMx16&y25<=182:F?y31; !!BMx16&y25>=183:F?y32;
+!_!VRy31:|; !_!VRy32:|; //or flags
+!!VRy31:&-3; !!VRy32:&-3; //clear fly flag
+!!VRy31:|4096; !!VRy32:|4096; //no meelee penalty
+!!VRy31&y64>0:|2; !!VRy32&y84>0:|2; //flyers fly
+!!VRy31&y56>0:|524288; !!VRy32&y76>0:|524288; //attack all around
+!!VRy31&y53>0:|65536;  !!VRy32&y73>0:|65536; //no enemy retaliation
+!_!VRy31:&-5; !_!VRy32:&-5; //shooting is disabled, no matter what
+!!BMx16&y25<=182:Fy31; !!BMx16&y25>=183:Fy32;
+
+
+
+!!SN:W^majaczek.LCO0P^/?y3; !!SN:W^majaczek.RCO0P^/?y4;
+!_!BMx16&y25<=182:Ay3; !_!BMx16&y25>=183:Ay4;
+
+!!SN:W^majaczek.LCO1P^/?y3; !!SN:W^majaczek.RCO1P^/?y4;
+!_!BMx16&y25<=182:Dy3; !_!BMx16&y25>=183:Dy4;
+
+!!SN:W^majaczek.LCO2P^/?y3; !!SN:W^majaczek.RCO2P^/?y4;
+!_!BMx16&y25<=182:Hy3; !_!BMx16&y25>=183:Hy4;
+
+
+!!SN:W^majaczek.LCO5P^/?y3; !!SN:W^majaczek.RCO5P^/?y4;
+!_!BMx16&y25<=182:Sy3; !_!BMx16&y25>=183:Sy4;
+
+!!SN:W^majaczek.LCO4P^/?y3; !!SN:W^majaczek.RCO4P^/?y4;
+!_!BMx16&y25<=182:Ey3; !_!BMx16&y25>=183:Ey4;
+
+!!SN:W^majaczek.LCO3P^/?y33; !!SN:W^majaczek.RCO3P^/?y34;
+!_!BMx16&y25<=182:U2/y33; !_!BMx16&y25>=183:U2/y34; //maximum damage always
+!_!BMx16&y25<=182:U1/y33; !_!BMx16&y25>=183:U1/y34;
+
+
+!!EAy22:Oy25/0;
+!!EAy22:E0/2/d/d;
+!!DO7074/x16/x16/1:P;
+
+!?FU55004; //commander prebattle trigger (summoning?)
+!!SN:W^majaczek.LHE^/?y1; !!SN:W^majaczek.RHE^/?y2;
+!!SN&y1>-1:W^majaczek.LCO_D^/?y3; !!SN&y2>-1:W^majaczek.RCO_D^/?y4;
+!!SN&y1>-1:W^majaczek.LCO_E^/?y5; !!SN&y2>-1:W^majaczek.RCO_E^/?y6;
+!!SN:W^majaczek.LCO_T^/?y7; !!SN:W^majaczek.RCO_T^/?y8;
+!!SN:W^majaczek.LCO_L^/?y9; !!SN:W^majaczek.RCO_L^/?y10;
+
+!!if&y7=0; //paladin attacker
+   !!VRy9: *y10 +19 :20;
+   !!BU&y1>-1/y3=0/y5=1:S169/y9/71/0/-1/0 E71/?y99;
+   !!BU&y1>-1/y3=0/y5=1:S169/y9/105/0/-1/0 E105/?y99;
+!!en:;
+
+
+!!if&y8=0; //paladin defender
+   !!VRy10: *y10 +19 :20;
+   !!BU&y1>-1/y4=0/y6=1:S169/y10/80/1/-1/0 E80/?y99;
+   !!BU&y1>-1/y4=0/y6=1:S169/y10/114/1/-1/0 E114/?y99;
+!!en:;
+
+!!if&y7=8; //astral spirit attacker
+   !!VRy9: *y9 +4 :5;
+   !!BU&y1>-1/y3=0/y5=1:S121/y9/71/0/-1/0;
+   !!BU&y1>-1/y3=0/y5=1:S121/y9/105/0/-1/0;
+!!en:;
+
+
+!!if&y8=8; //astral spirit defender
+   !!VRy10: *y10 +4 :5;
+   !!BU&y1>-1/y4=0/y6=1:S121/y10/80/1/-1/0;
+   !!BU&y1>-1/y4=0/y6=1:S121/y10/114/1/-1/0;
+!!en:;
+
+!!if&y7=5; //Brute attacker
+   !!VRy9: *y9 +4 :5;
+   !!BU&y1>-1/y3=0/y5=1:S73/y9/71/0/-1/0;
+   !!BU&y1>-1/y3=0/y5=1:S73/y9/105/0/-1/0;
+!!en:;
+
+
+!!if&y8=5; //Brute defender
+   !!VRy10: *y10 +4 :5;
+   !!BU&y1>-1/y4=0/y6=1:S73/y10/80/1/-1/0;
+   !!BU&y1>-1/y4=0/y6=1:S73/y10/114/1/-1/0;
+!!en:;
+
+!!if&y7=1; //Hierophant attacker
+   !!VRy9: *y9 +2 :3;
+   !!BU&y1>-1/y3=0/y5=1:S138/y9/71/0/-1/0;
+   !!BU&y1>-1/y3=0/y5=1:S138/y9/105/0/-1/0;
+!!en:;
+
+
+!!if&y8=1; //Hierophant defender
+   !!VRy10: *y10 +2 :3;
+   !!BU&y1>-1/y4=0/y6=1:S138/y10/80/1/-1/0;
+   !!BU&y1>-1/y4=0/y6=1:S138/y10/114/1/-1/0;
+!!en:;
+
+!!if&y7=2; //Temple Guardian attacker
+   !!VRy9: *y9 +19 :20;
+   !!BU&y1>-1/y3=0/y5=1:S136/y9/71/0/-1/0;
+   !!BU&y1>-1/y3=0/y5=1:S136/y9/105/0/-1/0;
+!!en:;
+
+
+!!if&y8=2; //Temple Guardian defender
+   !!VRy10: *y10 +19 :20;
+   !!BU&y1>-1/y4=0/y6=1:S136/y10/80/1/-1/0;
+   !!BU&y1>-1/y4=0/y6=1:S136/y10/114/1/-1/0;
+!!en:;
+
+!?FU55003; //spawn additional commanders
+!!SN:W^majaczek.LHE^/?y1; !!SN:W^majaczek.RHE^/?y2;
+!!SN&y1>-1:W^majaczek.LCO_D^/?y3; !!SN&y2>-1:W^majaczek.RCO_D^/?y4;
+!!SN&y1>-1:W^majaczek.LCO_E^/?y5; !!SN&y2>-1:W^majaczek.RCO_E^/?y6;
+!!SN:W^majaczek.LCO_T^/?y7; !!SN:W^majaczek.RCO_T^/?y8;
+!!VRy7:+174; !!VRy8:+183;
+
+!!VRy9:S-1; !!VRy10:S-1;
+//use BU for summon - BM just crash
+!!BU&y1>-1/y3=0/y5=1:Sy7/1/89/0/-1/0 E89/?y9;
+!!BU&y2>-1/y4=0/y6=1:Sy8/1/97/1/-1/0 E97/?y10;
+!!VRx1:Sy9; !!VRx1:Sy10;
+
+!!CO-3&v7083>-1:E1;
+!!CO-4&v7085>-1:E1;
+
+
+!?FU55002;
+!_!BMx16:T?y25; !_!VRy22:S-1; !_!VRy22:-x16;
+
+
+
+!!VRy25:Sx16;
+!!FU|y25<174/y25>191:E;
+!_!BMx16:P?y11;
+
+!!SN:W^majaczek.LCO00^/?y50; !!SN:W^majaczek.RCO00^/?y70;
+!!SN:W^majaczek.LCO01^/?y51; !!SN:W^majaczek.RCO01^/?y71;
+!!SN:W^majaczek.LCO02^/?y52; !!SN:W^majaczek.RCO02^/?y72;
+!!SN:W^majaczek.LCO03^/?y53; !!SN:W^majaczek.RCO03^/?y73;
+!!SN:W^majaczek.LCO04^/?y54; !!SN:W^majaczek.RCO04^/?y74;
+!!SN:W^majaczek.LCO05^/?y55; !!SN:W^majaczek.RCO05^/?y75;
+!!SN:W^majaczek.LCO06^/?y56; !!SN:W^majaczek.RCO06^/?y76;
+!!SN:W^majaczek.LCO07^/?y57; !!SN:W^majaczek.RCO07^/?y77;
+!!SN:W^majaczek.LCO08^/?y58; !!SN:W^majaczek.RCO08^/?y78;
+!!SN:W^majaczek.LCO09^/?y59; !!SN:W^majaczek.RCO09^/?y79;
+!!SN:W^majaczek.LCO10^/?y60; !!SN:W^majaczek.RCO10^/?y80;
+!!SN:W^majaczek.LCO11^/?y61; !!SN:W^majaczek.RCO11^/?y81;
+!!SN:W^majaczek.LCO12^/?y62; !!SN:W^majaczek.RCO12^/?y82;
+!!SN:W^majaczek.LCO13^/?y63; !!SN:W^majaczek.RCO13^/?y83;
+!!SN:W^majaczek.LCO14^/?y64; !!SN:W^majaczek.RCO14^/?y84;
+
+!!EAy25:B0/0/0////////////;
+!!EAy25:B1/0/0////////////;
+!!EAy25:B2/0/0////////////;
+!!EAy25:B3/0/0////////////;
+!!EAy25:B4/0/0////////////;
+!!EAy25:B5/0/0////////////;
+!!EAy25:B6/0/0////////////;
+!!EAy25:B7/0/0////////////;
+!!EAy25:B8/0/0////////////;
+!!EAy25:B9/0/0////////////;
+!!EAy25:B10/0/0////////////;
+!!EAy25:B11/0/0////////////;
+!!EAy25:B12/0/0////////////;
+!!EAy25:B13/0/0////////////;
+!!EAy25:B14/0/0////////////;
+!!EAy25:B15/0/0////////////;
+!!EAy25:B16/0/0////////////;
+!!EAy25:B17/0/0////////////;
+!!EAy25:B18/0/0////////////;
+!!EAy25:B19/0/0////////////;
+
+
+!!SN&v7083>-1:W^majaczek.LCO_L^/?y91; !!SN&v7085>-1:W^majaczek.RCO_L^/?y92;
+//comander level
+!!VRy91:*10 +100; !!VRy92:*10 +100;
+
+!!EAy25:F0/?y10; //multiple summon for Astral Spirit (doesn't work)
+!_!EAy25&x16=182:By10/1/85/121/100/100/100/100/100/100/100/100/100/100/100;
+!_!EAy25&x16=191:By10/1/85/121/100/100/100/100/100/100/100/100/100/100/100;
+!_!EAy25&x16=182:By10/1/85/121/y91/y91/y91/y91/y91/y91/y91/y91/y91/y91/y91;
+!_!EAy25&x16=191:By10/1/85/121/y92/y92/y92/y92/y92/y92/y92/y92/y92/y92/y92;
+
+!_!IF:M^debug Astral Spirit L %Y91 R %Y92^;
+
+
+!!EAy25:F0/?y10; //age - additional to ignore 50% target defence = Horrible Wounds
+!_!EAy25&x16<=182/y50>0:By10/1/99/75/100/100/100/100/100/100/100/100/100/100/100;
+!_!EAy25&x16>=183/y70>0:By10/1/99/75/100/100/100/100/100/100/100/100/100/100/100;
+
+
+!_!EAy25:F0/?y10; //Fearsome
+!_!EAy25&x16<=182/y51>0:By10/1/70/37/1/1/1/1/1/1/1/1/1/1/1;
+!_!EAy25&x16>=183/y71>0:By10/1/70/37/1/1/1/1/1/1/1/1/1/1/1;
+
+!_!EAy25:F0/?y10; //death blow - addditional to maximum damage =crushing damage
+!_!EAy25&x16<=182/y52>0:By10/1/101/37/50/50/50/50/50/50/50/50/50/50/50;
+!_!EAy25&x16>=183/y72>0:By10/1/101/37/50/50/50/50/50/50/50/50/50/50/50;
+
+!!EAy25:F0/?y10; //No enemy retaliation + Poison = Sting
+!_!EAy25&x16<=182/y53>0:By10/1/99/71/100/100/100/100/100/100/100/100/100/100/100;
+!_!EAy25&x16>=183/y73>0:By10/1/99/71/100/100/100/100/100/100/100/100/100/100/100;
+
+!!EAy25:F0/?y10; // Strike and return additional to flash swing instead of shooting
+!!EAy25&x16<=182/y54>0:By10/1/102/98/1/1/1/1/1/1/1/1/1/1/1;
+!!EAy25&x16>=183/y74>0:By10/1/102/98/1/1/1/1/1/1/1/1/1/1/1;
+
+!!EAy25:F0/?y10; //unlimited retaliations +additional always positive morale =vigor
+!!EAy25&x16<=182/y55>0:By10/1/82/61/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000;
+!!EAy25&x16>=183/y75>0:By10/1/82/61/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000;
+!_!EAy25&x16<=182/y55>0:By10/1/102/109/1/1/1/1/1/1/1/1/1/1/1;
+!_!EAy25&x16>=183/y75>0:By10/1/102/109/1/1/1/1/1/1/1/1/1/1/1;
+
+!_!EAy25:F0/?y10; //Block
+!_!EAy25&x16<=182/y58>0:By10/1/66/37/50/50/50/50/50/50/50/50/50/50/50;
+!_!EAy25&x16>=183/y78>0:By10/1/66/37/50/50/50/50/50/50/50/50/50/50/50;
+
+!_!EAy25:F0/?y10; //Strike twice
+!_!EAy25&x16<=182/y59>0:By10/1/102/68/1/1/1/1/1/1/1/1/1/1/1;
+!_!EAy25&x16>=183/y79>0:By10/1/102/68/1/1/1/1/1/1/1/1/1/1/1;
+
+!_!EAy25:F0/?y10; //blind (instead of paralyze)
+!_!EAy25&x16<=182/y60>0:By10/1/99/62/50/50/50/50/50/50/50/50/50/50/50;
+!_!EAy25&x16>=183/y80>0:By10/1/99/62/50/50/50/50/50/50/50/50/50/50/50;
+
+!_!EAy25:F0/?y10; //Rebirth (instead of paralyze)
+!_!EAy25&x16<=182/y60>0:By10/1/102/114/1/1/1/1/1/1/1/1/1/1/1;
+!_!EAy25&x16>=183/y80>0:By10/1/102/114/1/1/1/1/1/1/1/1/1/1/1;
+
+
+!_!EAy25:F0/?y10; //regeneration
+!_!EAy25&x16<=182/y61>0:By10/1/114/100/250/250/250/250/250/250/250/250/250/250/250;
+!_!EAy25&x16>=183/y81>0:By10/1/114/100/250/250/250/250/250/250/250/250/250/250/250;
+
+!_!EAy25:F0/?y10; //death stare - increase effect
+!_!EAy25&x16<=182/y62>0:By10/1/69/37/100/100/100/100/100/100/100/100/100/100/100;
+!_!EAy25&x16>=183/y82>0:By10/1/69/37/100/100/100/100/100/100/100/100/100/100/100;
+
+
+!_!EAy25:F0/?y10; //champion charge
+!_!EAy25&x16<=182/y63>0:By10/1/102/99/1/1/1/1/1/1/1/1/1/1/1;
+!_!EAy25&x16>=183/y83>0:By10/1/102/99/1/1/1/1/1/1/1/1/1/1/1;
+
+
+!_!EAy25&x16<=182/y64>0:By10/1/71/37/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000;
+!_!EAy25&x16>=183/y84>0:By10/1/71/37/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000/5000;
+
+!_!EAy25:F0/?y10;
+!_!EAy25&x16<=182/y64>0:By10/1/71/61/0/0/0/0/0/0/0/0/0/0/0;
+!_!EAy25&x16>=183/y84>0:By10/1/71/61/0/0/0/0/0/0/0/0/0/0/0;
+
+!_!EAy25:F0/?y10; //grenadier - additional to FLY  = Aircraft
+!_!EAy25&x16<=182/y64>0:By10/1/112/11/100/100/100/100/100/100/100/100/100/100/100;
+!_!EAy25&x16>=183/y84>0:By10/1/112/11/100/100/100/100/100/100/100/100/100/100/100;
+
+
+!_!IF&x16<=182/y64>0:M^debug attacker commander fly^;
+!_!IF&x16>=183/y84>0:M^debug defender commander fly^;
+
+
+
+!_!EAy25:F0/?y10;
+!_!EAy25&x16<=182:By10/1/112/11/99/99/99/99/99/99/99/99/99/99/99;
+!_!EAy25&x16>=183:By10/1/112/11/99/99/99/99/99/99/99/99/99/99/99;
+
+
+
+!!SN:W^majaczek.LCO6P^/?y41; !!SN:W^majaczek.RCO6P^/?y42; !_!UN:P3/?y43;
+!!EAy25:F0/?y10; //magic resistance
+!_!EAy25&x16<=182:By10/1/103/37/y41/y41/y41/y41/y41/y41/y41/y41/y41/y41/y41;
+!_!EAy25&x16>=183:By10/1/103/37/y42/y42/y42/y42/y42/y42/y42/y42/y42/y42/y42;
+
+
+!_?BR&v7185=1/-998;
+!_!FU&v997<>0:E;
+!_!DO55001/0/41/1:P;
+
+!_?BG0&v7185=1/-998;
+!_!BG:N?y99;
+!_!FU55009:Py99/1/-1/1;
+!_!FU55009:Py99/0/-1/1;
+
+
+!?BA52&v7185=1;
+!!VRv7080:C-1/-1/-1/-1/-1/-1/-1/-1/-1/-1;
+
+!_!IF:M^debug BA^;
+
+!!BA:H0/?v7083;
+!!BA:H1/?v7085;
+!!COv7083&v7083>-1:B0/?y-1 T?v7088;
+!!COv7085&v7085>-1:B0/?y-2 T?v7089;
+!_!VRy5:S-1; !_!VRy6:S-1;
+
+!!BA:H0/?y20; !!BA:H1/?y21; !!FU55000:Py20/y21/0/-1;
+!!BA:H0/?v7083;
+!!BA:H1/?v7085;
+!!FU7070&v7083>-1:Pv7083;
+!!FU7070&v7085>-1:Pv7085;
+
+!_!DO55002/174/191/1:P;
+
+!_!VRv7084&v7083>-1:Sy-1 &16;
+!_!VRv7086&v7085>-1:Sy-2 &16;
+!_!SN:W^majaczek.LCO04^/v7084 W^majaczek.RCO04^/v7086;
+
+// do we need those two lines?
+!_!COv7083&v7083>-1/v7084=16:B1/4/0; //shooting disabling
+!_!COv7085&v7085>-1/v7086=16:B1/4/0; //shooting disabling
+!!UN:C7776134/4/0;//shooting disabling
+!!UN:C7782860/4/0;//shooting disabling
+!!UN:C7782937/4/0;//shooting disabling
+!!UN:C7781476/4/0;//shooting disabling
+
+!!VRv7090&v7083>-1:Sy-1 &128;
+!!VRv7091&v7085>-1:Sy-2 &128;
+!!SN:W^majaczek.LCO07^/v7090 W^majaczek.RCO07^/v7091;
+!_!COv7083&v7083>-1/v7090=128:B1/7/0; //fireshield disabling
+!_!COv7085&v7085>-1/v7091=128:B1/7/0; //fireshield disabling
+!!UN:C7788085/4/0; //fireshield disabling
+
+!_!COv7083&v7083>-1:B1/10/0; //paralyze disabling
+!_!COv7085&v7085>-1:B1/10/0; //paralyze disabling
+!!UN:C7788930/4/0;//paralyze disabling
+
+!!UN:C7781738/1/0; dragonbreath disabling
+!!UN:C7783185/1/0; dragonbreath disabling
+!_!DO55009/0/41/1:P-2/1/1/0;
+
+
+!_!UN:P3/1;command deprecated in this script
+
+!_!DO55002/174/191/1:P;
+!_!DO55001/0/41/1:P;
+!_!FU55003:P;
+
+
+
+!?BF&v7185=1;
+!!DO7074/0/41/1:P;
+
+!_!FU55003:P;
+!_!DO55009/0/41/1:P-2/1/1/0;
+!_!DO55002/174/191/1:P;
+!_!DO55001/0/41/1:P;
+
+!_!UN:P3/0;command deprecated in this script
+
+ !!SN:W^majaczek.LCO_Z^/-1;  !!SN:W^majaczek.RCO_Z^/-1; //reset speciality points to -1 for beginning of battle
+
+
+
+
+!?BR&v7185=1;
+!!DO7074/0/41/1:P;
+
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+!!FU&v997<>0:E;
+
+//fixes something, I don't know how
+!_!SN:W^majaczek.Commanders.BR_once^/?y2; !_!FU&y2>0:E;
+
+
+//debug chain
+!_!FU55003:P?y3/?y5;
+!_!FU7070:Py3;
+!_!FU7070:Py5;
+
+!!DO55002/174/191/1:P;
+
+!!DO55005/0/41/1:P; //Nobility and Astral spirit's guards
+
+!!DO55001/0/41/1:P;
+!!DO55006/0/41/1:P;
+
+
+!_!FU55004:P; //do not summon commander guards
+
+!?BG0&v7185=1;
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+!!BG:N?y-1;
+
+!!FU|y-1<0/y-1>41:E; exit if no stack
+
+!_!FU&v997<0:E; //exit if Tactics round
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+//fixes something, I don't know how
+!_!SN:W^majaczek.Commanders.BR_once^/?y2; !_!FU&y2>0:E;
+
+!!BMy-1:F?y-2 T?y-3 F?y-4; !!VRy-2:&8388608; !!VRy-4:&251658240;
+
+!!if&y-2=0/y-4=0/y-3>=174/y-3<=191:;
+ !_!DO55007/0/41/1:P; //only for non-slayed commanders
+
+ !_!SN&v7083>-1:W^majaczek.LCO_L^/?y-69;
+ !_!SN&v7085>-1:W^majaczek.RCO_L^/?y-89;
+
+ !_!SN&v7083>-1:W^majaczek.LCO_Z^/y-69;
+ !_!SN&v7085>-1:W^majaczek.RCO_Z^/y-89;
+
+ !!SN&v7083>-1:W^majaczek.LCO_Z^/?y-69;
+ !!SN&v7085>-1:W^majaczek.RCO_Z^/?y-89;
+
+ !!VRz2:S^Commander Speciality refreshed to Attacker: %Y-69   Defender: %Y-89^;
+ !!BA:Q?y99; !!IF&y99=0:Lz2; !!UN:R6/250;
+!!en:;
+
+!!if&y-2<>0/y-4=0/y-3>=174/y-3<=191:;
+     !_!BG:A3;
+!!en:;
+
+
+!?BG&v7185=1;
+
+!!BG:N?v7080 A?v7081 E?v7082;
+!!BMv7082&v7082>-1/v7082<42:R?v7087;
+!!BMv7080&v7080>-1/v7080<42:T?v7092;
+!_!VRy-2&v7092=182/v7081=10:S66 T3;
+!_!BMv7080&v7092=182/v7081=10:U4/y-2;
+!_!VRy-2&v7092=191/v7081=10:S66 T3;
+!_!BMv7080&v7092=191/v7081=10:U4/y-2;
+
+
+!_!FU&v997<0:E; //exit if Tactics round
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+!!SS99:F17 S0; reset spell 99
+
+//fixes something, I don't know how
+!_!SN:W^majaczek.Commanders.BR_once^/?y2; !_!FU&y2>0:E;
+
+//majaczek
+!_!FU&v7081<>10:E;
+!!if&v7081=10:;
+ //this section is not buggy
+
+ !_!BMv7080&v7080>-1/v7080<42/v7092=174:U4/37;        
+ !_!BMv7080&v7080>-1/v7080<42/v7092=183:U4/37; //paladin Cures
+ 
+ !_!BMv7080&v7080>-1/v7080<42/v7092=175:U4/37;        
+ !_!BMv7080&v7080>-1/v7080<42/v7092=184:U4/37; //Hierophant Cures
+ 
+ !!BMv7080&v7080>-1/v7080<42/v7092=177:U4/99;        !!BMv7080&v7080>-1/v7080<42/v7092=186:U4/99; //Succubus Casts spell 99
+
+ !!VRy-6:S0; !!BMv7082&v7082>-1:F?y-6; !!VRy-6:&4194304; //check summon bit of target
+ !!VRy-9:S0; !!BMv7082&v7082>-1:F?y-9; !!VRy-9:&16;      //check alive  bit of target
+ !!VRy-8:S0; !!BMv7082&v7082>-1:B?y-8; !!BMv7082&v7082>-1:N?y-7; !!VRy-8:-y-7; //check if left any monster to ressurrect
+ !_!BMv7080&v7080>-1/v7092=174/y-9=16/y-8>0/y-6=0:U4/38; !_!BMv7080&v7080>-1/v7092=183/y-9=16/y-8>0/y-6=0:U4/38; //paladin ressurects if above ok
+ !_!BMv7080&v7080>-1/v7092=175/y-9=16/y-8>0/y-6=0:U4/38; !_!BMv7080&v7080>-1/v7092=184/y-9=16/y-8>0/y-6=0:U4/38; //Hierophant ressurects if above ok
+ !_!BMv7080&v7080>-1/v7092=177/y-9=16/y-8>0/y-6=0:U4/38; !_!BMv7080&v7080>-1/v7092=186/y-9=16/y-8>0/y-6=0:U4/38; //Succubus ressurects if above ok
+
+
+
+!!en:;
+
+!!if&v7080>-1/v7080<42/v7081=7/v7092>=174/v7092<=191:;
+ !!BMv7080:U3/0;
+ !!BMv7080:F?i; !!VRi:&-5; !!BMv7080:Fi;
+ !!BG:A0; cancel shooting
+!!en:;
+
+!?BG1&v7185=1;
+!!BMv7080&v7080>-1/v7080<42:T?y-3 I?y-4;
+!!FU7071&y-3>=174/y-3<=191/v7081=10:Pv7080/y-3;
+!!BMv7082&v7082>-1:F?y-7 P?y-8;
+
+!!BG:A?y78 N?y21 E?y2; !_!FU|y78<>6/y2<0:E;
+!!FU(KK_Commander_AfterAction)&y-3>=174/y-3<=191:Py21/y2;
+!!FU(KK_Commander_AfterAction)&y-3>=294/y-3<=302:Py21/y2;
+
+!!FU:E; //test line for debbugging - should be off if not testing
+!_!UN:R6/2500;
+
+
+!!SN&v7083>-1:W^majaczek.LCO00^/?y-30; !!SN&v7085>-1:W^majaczek.RCO00^/?y-40;
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-30=1/y-4=0:Py-7/y-8/0; // Age (Horrible Wounds)
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-40=1/y-4=1:Py-7/y-8/0; //
+
+!!SN&v7083>-1:W^majaczek.LCO03^/?y-33; !!SN&v7085>-1:W^majaczek.RCO03^/?y-43;
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-33=8/y-4=0:Py-7/y-8/3; // Poison Sting
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-43=8/y-4=1:Py-7/y-8/3; //
+
+!!SN&v7083>-1:W^majaczek.LCO_L^/?y-89; !!SN&v7085>-1:W^majaczek.RCO_L^/?y-99;
+!_!CO-3:X2/?y-30; !!VRy-30:*2 +12; !!VRy-10&y-3>=174/y-3<=191/v7081>=6/v7081<=7/v7084=16/y-4=0:S0 R99; //  Flash Swing
+!_!CO-4:X2/?y-40; !!VRy-40:*2 +12; !!VRy-11&y-3>=174/y-3<=191/v7081>=6/v7081<=7/v7086=16/y-4=1:S0 R99; //
+!!FU7073&y-3>=174/y-3<=191/v7081=6/v7084=16/y-4=0/y-10<y-89:Py-7/y-8/4; //
+!!FU7073&y-3>=174/y-3<=191/v7081=6/v7086=16/y-4=1/y-11<y-99:Py-7/y-8/4; //
+
+
+!!BMv7080&v7092=182/v7081=10:U4/58;
+!!BMv7080&v7092=191/v7081=10:U4/58;
+!!BMv7082&v7082>-1:T?y-3 I?y-4 P?y-5;
+!!BU&v7082>-1:Ey-5/?y-6;
+!!BMv7080&v7080>-1/v7080<42:F?y-9;
+!!VRy-9&v7080>-1:&65536;
+!!BMv7080&v7080>-1/v7080<42:F?y-7 P?y-8;
+
+
+!!SN&v7083>-1:W^majaczek.LCO00^/?y-30; !!SN&v7085>-1:W^majaczek.RCO00^/?y-40;
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-30=1/v7087>0/y-4=0/y-6>-1/y-9=0:Py-7/y-8/0; // Age (Horrible Wounds)
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-40=1/v7087>0/y-4=1/y-6>-1/y-9=0:Py-7/y-8/0; //
+
+!!SN&v7083>-1:W^majaczek.LCO03^/?y-33; !!SN&v7085>-1:W^majaczek.RCO03^/?y-43;
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-33=8/v7087>0/y-4=0/y-6>-1/y-9=0:Py-7/y-8/3; // Poison Sting
+!!FU7073&y-3>=174/y-3<=191/v7081=6/y-43=8/v7087>0/y-4=1/y-6>-1/y-9=0:Py-7/y-8/3; //
+
+!!SN&v7083>-1:W^majaczek.LCO_L^/?y-89; !!SN&v7085>-1:W^majaczek.RCO_L^/?y-99;
+!_!CO-3:X2/?y-30; !!VRy-30:*2 +12; !!VRy-10&y-3>=174/y-3<=191/v7081=6/v7084=16/v7087>0/y-4=0/y-6>-1/y-9=0:S0 R99; //  Flash Swing
+!_!CO-4:X2/?y-40; !!VRy-40:*2 +12; !!VRy-11&y-3>=174/y-3<=191/v7081=6/v7086=16/v7087>0/y-4=1/y-6>-1/y-9=0:S0 R99; //
+!!FU7073&y-3>=174/y-3<=191/v7081=6/v7084=16/v7087>0/y-4=0/y-10<y-89/y-6>-1/y-9=0:Py-7/y-8/4; //
+!!FU7073&y-3>=174/y-3<=191/v7081=6/v7086=16/v7087>0/y-4=1/y-11<y-99/y-6>-1/y-9=0:Py-7/y-8/4; //
+
+!!BU:C?y-1;
+!_!COv7083&v7083>-1/v7084=16/y-1=1:B1/4/1;  //restore shooting
+!_!COv7085&v7085>-1/v7086=16/y-1=1:B1/4/1;
+!_!COv7083&v7083>-1/v7090=128/y-1=1:B1/7/1; // restore fire shield
+!_!COv7085&v7085>-1/v7091=128/y-1=1:B1/7/1;
+
+!!SN&v7083>-1:W^majaczek.LCO_SS^/?y-51; !!SN&v7085>-1:W^majaczek.RCO_SS^/?y-52;
+!!COv7083&v7083>-1/y-1=1:B0/y-51; !!COv7085&v7085>-1/y-1=1:B0/y-52; //restore all Secondary Skills as it were
+
+
+
+
+!?BG1&v7185=1;
+!_!FU&v997<0:E; //exit on tactics round
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+!!BG:N?y-1;
+!!FU|y-1<0/y-1>41:E; exit if no stack
+
+
+//speciality counter
+!!SN:W^majaczek.LCO_Z^/?y-69; !!SN:W^majaczek.RCO_Z^/?y-89;
+
+  !_!IF:M^Commander Speciality before used %Y-69   %Y-89^;
+
+!!SN&v7083>-1:W^majaczek.LCO_T^/?y-53; !!SN&v7085>-1:W^majaczek.RCO_T^/?y-54;
+
+!!BG:Q?y-95;
+
+!!BG:A?y-96 N?y-97;
+!!BMy-97:P?y-98 T?y-99;
+
+
+!!BH0&v7083>-1:M?y-50; !!BH1&v7085>-1:M?y-51;  //check if hero can cast
+
+!!BH0&v7083>-1/y-53=2/y-69>=13/y-50=1:M0; !!BH1&v7085>-1/y-54=2/y-89>=13/y-51=1:M0; //Temple Guardian gives hero Multicast
+!!BH0&v7083>-1/y-53=5/y-69>=13/y-50=1:M0; !!BH1&v7085>-1/y-54=5/y-89>=13/y-51=1:M0; //Brute gives hero Multicast
+
+
+
+!!VRy-69&y-53=2/y-69>0/y-50=1:-13; !!VRy-89&y-54=2/y-89>0/y-51=1:-13; //temple guardian (specialty works only after cast)
+!!VRy-69&y-53=5/y-69>0/y-50=1:-13; !!VRy-89&y-54=5/y-89>0/y-51=1:-13; //Brute (specialty works only after cast)
+
+
+//speciality counter
+!!SN:W^majaczek.LCO_Z^/y-69; !!SN:W^majaczek.RCO_Z^/y-89;
+
+!?BG&v7185=1;
+!_!FU&v997=-1:E; //exit on tactics round
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+!!BG:N?y-1;
+!!FU|y-1<0/y-1>41:E; exit if no stack
+
+//fixes something, I don't know how
+!!SN:W^majaczek.Commanders.BR_once^/?y2; !!FU&y2>0:E;
+
+//speciality counter
+!!SN:W^majaczek.LCO_Z^/?y-69; !!SN:W^majaczek.RCO_Z^/?y-89;
+
+
+!!SN&v7083>-1:W^majaczek.LCO_T^/?y-53; !!SN&v7085>-1:W^majaczek.RCO_T^/?y-54;
+
+!!BG:Q?y-95;
+
+!!BG:A?y-96 N?y-97;
+!!BMy-97:P?y-98 T?y-99;
+
+
+
+!!BH0&v7083>-1:M?y-50; !!BH1&v7085>-1:M?y-51;  //check if hero can cast
+!!HEv7083&v7083>-1:I?y-40/1; !!HEv7085&v7085>-1:I?y-41/1; //store spellpoints
+
+
+!!BH0&v7083>-1/y-53=4/y-69>=32:C24/0/3/0 My-50; !!BH1&v7085>-1/y-54=4/y-89>=32:C24/0/3/0 My-51; //Soul Eater gives hero Multiple Death Ripple
+
+!!BH0&v7083>-1/y-53=0/y-69>=25:C25/0/3/0 My-50; !!BH1&v7085>-1/y-54=0/y-89>=25:C25/0/3/0 My-51; //Paladin gives hero multiple Expert destroy undead
+
+!_!BH0&v7083>-1/y-99=175/y-69>0:C37/0/3/0 My-50;
+!_!BH1&v7085>-1/y-99=184/y-89>0:C37/0/3/0 My-51;
+ //Hierophant gives hero Mass Cure after commander action (too powerful)
+
+!_!BH0&v7083>-1/y-53=5/y-69>=15:C10/0/3/0 My-50; !_!BH1&v7085>-1/y-54=5/y-89>=15:C10/0/3/0 My-51; //Brute gives hero Multiple Expert quicksand
+
+
+!!BA:S?y-30;
+!_!SN:W^majaczek.siege^/?y-30;
+!_!VRz1:S^siege %Y-30^; !_!IF:Mz1;  !_!MM&y-53=8:Sz1;
+!!BH0&v7083>-1/y-53=8/y-69>=25/y-30>0:C14/0/1/0 My-50; !_!BH1&v7085>-1/y-54=8/y-89>=25/y-30>0:C14/0/1/0 My-51; //Astral Spirit gives hero Multiple basic earthquake when siege
+
+
+!!HEv7083&v7083>-1:Iy-40/1; !!HEv7085&v7085>-1:Iy-41/1; //reset spellpoints to stored value
+
+
+
+!!SN&v7083>-1:W^majaczek.LCO_T^/?y-53; !!SN&v7085>-1:W^majaczek.RCO_T^/?y-54;
+!!VRy-69&y-53=4/y-69>=32:-32;  !!VRy-89&y-54=4/y-89>=32:-32; //Soul Eater  (specialty works every time if sufficient points)
+!!VRy-69&y-53=0/y-69>=25:-25;  !!VRy-89&y-54=0/y-89>=25:-25; //Paladin  (specialty works every time if sufficient points)
+!_!VRy-69&y-53=5/y-69>=15:-15; !_!VRy-89&y-54=5/y-89>=15:-15; //Brute  (specialty works every time if sufficient points)
+!!VRy-69&y-53=8/y-69>=25:-25;  !!VRy-89&y-54=8/y-89>=25:-25; //Astral Spirit  (specialty works every time if sufficient points)
+
+
+
+  !!DO55446/0/41/1:P; //count monsters
+  !!SN&y7=0:W^KNIGHTMARE_MON_ATTACKER^/?y98;
+  !!SN&y7=1:W^KNIGHTMARE_MON_DEFENDER^/?y99;
+
+!!BMy-97&y98<20/v7083>-1/y-99=181/y-96<>8/y-69>=15:C65/y-98/3/3/1; !!BMy-97&y99<20/v7085>-1/y-99=190/y-96<>8/y-89>=15:C65/y-98/3/3/1; //Shaman Clones Self
+!_!BG&y-99=181/y-69>0:A8; !_!BG&y-99=190/y-89>0:A8;
+!!BMy-97|y-99=181/y-99=190:U5/?y-90;
+!!if&y-90>-1:;
+ !!BMy-90|y-99=181/y-99=190:U4/37;
+
+ !!VRy-91:S0 -1 -y-90;
+ !!EAy-91:F114/y-92;
+ !_!EAy-91:By-92/0/0/0/0/0/0/0/0/0/0/0/0/0/0;
+!!en:;
+
+
+!!VRy-69&y-99=181/y-69>=15:-15; !!VRy-89&y-99=190/y-89>=15:-15; //shaman  (specialty works only on shaman turn)
+
+//speciality counter
+!!SN:W^majaczek.LCO_Z^/y-69; !!SN:W^majaczek.RCO_Z^/y-89;
+
+!_!UN:R6/1000;
+
+!?CO2&v7185=1/v7177<>1;
+!!HE-1:P?y-1/?y-2/?y-3;
+!!OBy-1/y-2/y-3:U?y-4;
+!!CO-1:Ty-4;
+!?FU7070;
+!!SN&v7083=x1:W^majaczek.LCO_L^/?y2; !!SN&v7083<>x1:W^majaczek.RCO_L^/?y2;
+!!SN&v7083=x1:W^majaczek.LCO_T^/?y5; !!SN&v7083<>x1:W^majaczek.RCO_T^/?y5;
+!!SN&v7083=x1:W^majaczek.LCO_Art152^/?y16; !!SN&v7083<>x1:W^majaczek.RCO_Art152^/?y16;
+!_!COx1:X2/?y2 T?y5;
+
+!!UN:P3/?y99; !!VRy98&x1>=0:Sx1; !!VRy98&x1<0:S-1;
+
+
+!!VRy13:S0; !!VRy14:S100;
+!!SN:W^Knightmare_Skills^/?y19;
+!!if&y19>0:;
+ !!HEv7083&v7083=x1/v7083>-1:S4/?y13;
+ !!HEv7085&v7085=x1/v7085>-1:S4/?y13;  //check Nobility
+ !_!IF:M^Nobility %Y13^;
+
+!!SN:W^more_SS_levels.era^/?y88;
+ //now nobility skill affects commander
+ !!VRy14&y13=0:S100; //100% HP & DMG
+ !!VRy14&y13=1:S125; //125% HP & DMG
+ !!VRy14&y13=2:S150; //150% HP & DMG
+ !!VRy14&y13=3:S200; //200% HP & DMG
+ !!VRy14&y88<>0:Sy13 *7 +100; // 7% per level
+
+ !_!VRy16::10; !!VRy14:+y16; // dragon eye ring bonus
+
+
+ //now diplomacy artifacts gives +12% nobility, combination of them  doubles the bonus
+ !!VRy72:S0; !!VRy73:S0; !!VRy74:S0; !!VRy75:S0;
+ !!HEx1&x1>-1:A2/66/?y71/?y72;  !!VRy14&y72>0:+25;  !!VRy14&y72>0/y88<>0:+12;
+ !!HEx1&x1>-1:A2/67/?y71/?y73;  !!VRy14&y73>0:+25;  !!VRy14&y73>0/y88<>0:+12;
+ !!HEx1&x1>-1:A2/68/?y71/?y74;  !!VRy14&y74>0:+25;  !!VRy14&y74>0/y88<>0:+12;
+ !!HEx1&x1>-1:A2/486/?y71/?y75; !!VRy14&y75>0:+175; !!VRy14&y75>0/y88<>0:+36;
+ !!VRy14&y74>0/y73>0/y72>0:+75; !!VRy14&y74>0/y73>0/y72>0/y88<>0:+45;
+
+!!en:;
+
+!_!COx1:S0/?y3;
+!!SN&v7083=x1:W^majaczek.LCO0B^/?y3; !!SN&v7083<>x1:W^majaczek.RCO0B^/?y3;
+!!VRy4&y3=0:Sy2 :5 +5;
+!!VRy4&y3=1:Sy2 :5 +7 *125 :100 -2;
+!!VRy4&y3=2:Sy2 :5 +7 *150 :100 -2;
+!!VRy4&y3=3:Sy2 :5 +7 *175 :100 -5;
+!!VRy4&y3=4:Sy2 :5 +7 *2 -9;
+!!VRy4&y3=5:Sy2 :5 +7 *225 :100 -12;
+!!COx1&y99=0/y98>-1:P0/y4;
+!!SN&v7083=x1:W^majaczek.LCO0P^/y4; !!SN&v7083<>x1:W^majaczek.RCO0P^/y4;
+
+!_!COx1:S1/?y3;
+!!SN&v7083=x1:W^majaczek.LCO1B^/?y3; !!SN&v7083<>x1:W^majaczek.RCO1B^/?y3;
+!!VRy4&y3=0:Sy2 :5 +5;
+!!VRy4&y3=1:Sy2 :5 +7 *125 :100 -2;
+!!VRy4&y3=2:Sy2 :5 +7 *150 :100 -2;
+!!VRy4&y3=3:Sy2 :5 +7 *175 :100 -5;
+!!VRy4&y3=4:Sy2 :5 +7 *2 -9;
+!!VRy4&y3=5:Sy2 :5 +7 *225 :100 -12;
+!!COx1&y99=0/y98>-1:P1/y4;
+!!SN&v7083=x1:W^majaczek.LCO1P^/y4; !!SN&v7083<>x1:W^majaczek.RCO1P^/y4;
+
+!_!COx1:S2/?y3;
+!!SN&v7083=x1:W^majaczek.LCO2B^/?y3; !!SN&v7083<>x1:W^majaczek.RCO2B^/?y3;
+!!VRy4&y3=0:Sy2 *25 +40            *y14 :100;
+!!VRy4&y3=1:Sy2 *25 +40 *125 :110  *y14 :100;
+!!VRy4&y3=2:Sy2 *25 +40 *150 :125  *y14 :100;
+!!VRy4&y3=3:Sy2 *25 +40 *175 :145  *y14 :100;
+!!VRy4&y3=4:Sy2 *25 +40 *200 :170  *y14 :100;
+!!VRy4&y3=5:Sy2 *25 +40 *225 :200  *y14 :100;
+!!COx1&y99=0/y98>-1:P2/y4;
+!!SN&v7083=x1:W^majaczek.LCO2P^/y4; !!SN&v7083<>x1:W^majaczek.RCO2P^/y4;
+
+!_!COx1:S3/?y3;
+!!SN&v7083=x1:W^majaczek.LCO3B^/?y3; !!SN&v7083<>x1:W^majaczek.RCO3B^/?y3;
+!!VRy4&y3=0:Sy2 *7 +10            *y14 :100;
+!!VRy4&y3=1:Sy2 *7 +10 *125 :110  *y14 :100;
+!!VRy4&y3=2:Sy2 *7 +10 *150 :125  *y14 :100;
+!!VRy4&y3=3:Sy2 *7 +10 *175 :145  *y14 :100;
+!!VRy4&y3=4:Sy2 *7 +10 *200 :170  *y14 :100;
+!!VRy4&y3=5:Sy2 *7 +10 *225 :200  *y14 :100;
+!!COx1&y99=0/y98>-1:P3/y4;
+!!SN&v7083=x1:W^majaczek.LCO3P^/y4; !!SN&v7083<>x1:W^majaczek.RCO3P^/y4;
+
+!!VRy1:Sy2 :4; //from wogmod
+!_!COx1:S4/?y3;
+!!SN&v7083=x1:W^majaczek.LCO4B^/?y3; !!SN&v7083<>x1:W^majaczek.RCO4B^/?y3;
+!!VRy6:Sy3 +1 *3 +y1;   // from wogmod
+!_!VRy6&y5=4:Sy3 +1 +y1; // from wogmod
+!_!VRy6&y5=8:Sy3 +1 +y1; // from wogmod
+!!VRy4:Sy6;
+!_!VRy4&y3=0:Sy6;
+!_!VRy4&y3=1:Sy6 -1;
+!_!VRy4&y3=2:Sy6 -3;
+!_!VRy4&y3=3:Sy6 -7;
+!_!VRy4&y3=4:Sy6 -14;
+!_!VRy4&y3=5:Sy6 -29;
+!!COx1&y99=0/y98>-1:P4/y4;
+!!SN&v7083=x1:W^majaczek.LCO4P^/y4; !!SN&v7083<>x1:W^majaczek.RCO4P^/y4;
+
+!!VRy1:Sy2 -1 *2 :3; //from wogmod
+!!VRy4&y3=0:S0;   // from wogmod
+!!VRy4&y3=1:S+5;  // from wogmod
+!!VRy4&y3=2:S+5;  // from wogmod
+!!VRy4&y3=3:S-5;
+!!VRy4&y3=4:S-12;
+!!VRy4&y3=5:S-17; !!VRy4:Sdy1;//from wogmod
+!!VRy4&y4>75:S75; //majaczek - limit MR to 75?
+!_!VRy4&y4>75:S75; //majaczek - limit MR to 75?
+!!COx1&y99=0/y98>-1:P6/y4;
+!!SN&v7083=x1:W^majaczek.LCO6P^/y4; !!SN&v7083<>x1:W^majaczek.RCO6P^/y4;
+
+!!VRy6:Sy2 :4 +5; // from wogmod
+!!COx1&y99=0/y98>-1:P5/y6;     // from wogmod
+!!SN&v7083=x1:W^majaczek.LCO5P^/y6; !!SN&v7083<>x1:W^majaczek.RCO5P^/y6;
+
+!_!COx1&y98>-1/y5=0/y99=0:B1/5/1;  //Paladin has Vigor
+!_!SN&v7083>-1/y5=0:W^majaczek.LCO05^/32; !_!SN&v7085>-1/y5=0:W^majaczek.RCO05^/32;
+!!COx1&y98>-1/y5=0/y99=0:B1/10/1;
+!!SN&v7083>-1/y5=0:W^majaczek.LCO10^/1024;  !!SN&v7085>-1/y5=0:W^majaczek.RCO10^/1024; //Paladin Rebirths
+
+!!COx1&y98>-1/y5=1/y99=0:B1/7/1;  //Hierophant has Magic Armor
+!!SN&v7083>-1/y5=1:W^majaczek.LCO07^/128; !!SN&v7085>-1/y5=1:W^majaczek.RCO07^/128;
+
+!!COx1&y98>-1/y5=2/y99=0:B1/4/1;  //Temple Guardian has blitz (former Flash Swing)
+!!SN&v7083>-1/y5=2:W^majaczek.LCO04^/16; !!SN&v7085>-1/y5=2:W^majaczek.RCO04^/16;
+
+!!COx1&y98>-1/y5=3/y99=0:B1/14/1; //Succubus has Aircraft
+!!SN&v7083>-1/y5=3:W^majaczek.LCO14^/16384; !!SN&v7085>-1/y5=3:W^majaczek.RCO14^/16384;
+!_!COx1&y98>-1/y5=3/y99=0:B1/10/1; //succubus has vigor
+!_!SN&v7083>-1/y5=3:W^majaczek.LCO10^/1024;  !_!SN&v7085>-1/y5=3:W^majaczek.RCO10^/1024;
+
+!!COx1&y98>-1/y5=4/y99=0:B1/12/1; //Soul Eater has Death Stare
+!!SN&v7083>-1/y5=4:W^majaczek.LCO12^/4096; !!SN&v7085>-1/y5=4:W^majaczek.RCO12^/4096;
+
+!!COx1&y98>-1/y5=5/y99=0:B1/13/1; //Brute Charges
+!!SN&v7083>-1/y5=5:W^majaczek.LCO13^/8192; !!SN&v7085>-1/y5=5:W^majaczek.RCO13^/8192;
+
+!!COx1&y98>-1/y5=6/y99=0:B1/9/1;  //Ogre Leader Strikes Twice
+!!SN&v7083>-1/y5=6:W^majaczek.LCO09^/512; !!SN&v7085>-1/y5=6:W^majaczek.RCO09^/512;
+
+!!COx1&y98>-1/y5=7/y99=0:B1/11/1; //shamans regenerates
+!!SN&v7083>-1/y5=7:W^majaczek.LCO11^/2048; !!SN&v7085>-1/y5=7:W^majaczek.RCO11^/2048;
+
+!!COx1&y98>-1/y5=8/y99=0:B1/6/1;  //astral spirit attacks all around
+!!SN&v7083>-1/y5=8:W^majaczek.LCO06^/64; !!SN&v7085>-1/y5=8:W^majaczek.RCO06^/64;
+
+!!VRx1:+1;
+!?FU7071;
+!!BMv7082&v7082>-1:P?y8;
+!!HE-1:N?y5;   !!VRy20:S0; !!VRy21:S0;
+!!COy5:P4/?y6; !!BMv7082&v7082>=0/v7082<=41:B?y20 N?y21; 
+!!VRy22:Sy20;  !!VRy22&y21>y20:Sy21;
+!!if&v7082>-1:;
+!_!BMv7082|x2=174/x2=183:By22 V36 M41/y6/2; //paladin
+!_!BMv7082|x2=175/x2=184:V20 M49/y6/2 V0 M48/y6/2; //hierophant
+!_!BMv7082|x2=176/x2=185:V5 M34/y6/1; // temple guardian
+!_!BMv7082|x2=177/x2=186:V51 M43/y6/2 V11 M29/y6/2; //succcubus
+!_!BMv7082|x2=178/x2=187:V2 M28/y6/2 V31 M53/y6/2;  //Soul Eater
+!_!BMv7082|x2=179/x2=188:V54 M46/y6/2 V31 M53/y6/2; //brute
+!_!BMv7082|x2=180/x2=189:V7 M58/y6/2 V20 M49/y6/2; //ogre leader
+!_!BMv7082|x2=181/x2=190:V18 M51/y6/2 V20 M49/y6/2 V28 M55/y6/3; //shaman
+!!en:;
+
+!!FU:E;
+!!if|x2=177/x2=186:; //succubus gating
+  !!BMv7082:B?y31 N?y32 H?y33 T?y34;
+  !!MA:Oy34/?y35;
+  !!if&y35=3:; //Inferno
+    !!VRy39:S0; !!VRy36:S0;
+    !!CO-4&x2=186:P4/?y36; !!CO-3&x2=177:P4/?y36; // commander power
+    !!VRy36&x2=297:S3; //neutral succubus
+    !!VRy39&y33>0:S75 *y36 +125 :y33;
+    !!VRy38:Sy33 +y39;
+    !!BMv7082:Bdy39 Ndy39;
+  !!en:;
+!!en:;
+
+
+!!FU:E;
+!!if|x2=174/x2=183/x2=175/x2=184:; // paladin/hierophant resurrection
+   !!BMv7082:B?y31 N?y32 H?y33 T?y34 F?y35;
+   !!VRy37:Sy35 &16;
+   !!if&y37=16/y31>y32:;
+
+     !!VRy36:S9;
+     !!CO-4|x2=184/x2=183:P4/?y36; // commander power
+     !!CO-3|x2=175/x2=174:P4/?y36; // commander power
+     !!VRy38:Sy36 *100 +50;        // calculate hitpoints for ressurection
+     !!VRy39:Sy38 :y33 +y32 +1;
+     !!if&y39>y31:;
+       !!BMv7082:Ny31;
+     !!el:;
+       !!BMv7082:Ny39;
+     !!en:;
+     !!BMv7082:V50;
+
+   !!en:;
+!!en:;
+
+
+!?FU7073;         //cast poison - changed to handle Flash Swing
+
+!_!FU&v997<0:E; //exit if Tactics round
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+//fixes something, I don't know how
+!_!SN:W^majaczek.Commanders.BR_once^/?y2; !_!FU&y2>0:E;
+
+!_!FU:E; //test line for debbugging - should be off if not testing
+
+!_!VRx1:&16; !!VRy3:Sx1 &16; alive !!VRy4:Sx1 &262144; undead !!VRy5:Sx1 &33554432; waiting
+!!BG:N?y9; !!BG:Q?y3;
+
+!!FU|y9<0/y9>41:E; exit if no stack
+
+!!BMy9:T?y99; 
+!!FU&y99>=174/y99<=191:E;
+!!FU&y99>=294/y99<=302:E;
+
+!_!FU:E; //test line for debbugging - should be off if not testing
+
+
+!!BMy9:P?y-10; [check stack position]
+!!UN:R6/50;
+!!BU:Ey-10/?y-11; [check if alive stack at that position]
+!!FU&y-11<0:E; [will return -1 if dead]
+!!UN:R6/50;
+!!BU:Ex2/?y-11; [check if alive stack at that position]
+!!FU&y-11<0:E; [will return -1 if dead]
+
+!_!VRz5:S^debug FU7073 %X1 %X2 %X3^; !_!BU:Mz5; !_!IF:Lz5;
+!!if&x3=4:; //Flash Swing
+
+ !!SN&v7083>-1/y3=0:W^majaczek.LCO_Art152^/?y15; !!SN&v7085>-1/y3=1:W^majaczek.RCO_Art152^/?y15;
+
+ !_!VRz1:S^Bow of seeking level %Y15^;
+ !_!MM:Sz1;
+
+ !!BMy9:P?y-10; [check stack position]
+ !!UN:R6/50;     //wait
+ !!BU:Ey-10/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!UN:R6/50;     //wait
+
+ !!BU:Ex2/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+
+
+ !!BMy9:C57/x2/3/3/1; Titan's lighting Bolt
+ !_!BMy1&y5>0:C57/x2/1/3/1; once more if stack is waiting
+
+
+ !!FU&y15<25:E;   begin // once more for bow of seeeking after 25 won battles
+ !!BMy9:P?y-10; [check stack position]
+ !!UN:R6/50;     //wait
+ !!BU:Ey-10/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!UN:R6/50;     //wait
+ !!BU:Ex2/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+
+ !!BMy9:C57/x2/3/3/1; end // once more for bow of seeeking after 25 won battles
+
+ !!FU&y15<50:E;   begin // once more for bow of seeeking after 50 won battles
+ !!BMy9:P?y-10; [check stack position]
+ !!UN:R6/50;     //wait
+ !!BU:Ey-10/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!UN:R6/50;     //wait
+ !!BU:Ex2/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!BMy9:C57/x2/3/3/1; end // once more for bow of seeeking after 50 won battles
+
+ !!UN:R6/50;
+!!en:;
+
+!!if&x3=3:; //Poison
+ !!BMy9:P?y-10; [check stack position]
+ !!UN:R6/50;     //wait
+ !!BU:Ey-10/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!UN:R6/50;     //wait
+ !!BU:Ex2/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!BMy9&y3=16:C71/x2/1/3/1;                       [if target is alive have current stack cast poison]
+!!en:;
+
+!!if&x3=0:; //Age
+   !!IF:M^Age^;
+ !!BMy9:P?y-10; [check stack position]
+ !!UN:R6/50;     //wait
+ !!BU:Ey-10/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+ !!UN:R6/50;     //wait
+ !!BU:Ex2/?y-11; [check if alive stack at that position]
+ !!FU&y-11<0:E; [will return -1 if dead]
+
+ !!BMy9:C75/x2/1/3/1;                       [current stack cast Age]
+!!en:;
+
+
+!?FU7074;
+!!BMx16:T?y9;
+!_!BMx16&y9>=174/y9<=191/v7090=128/x16<21:M36/127/2; // Advanced magic mirror
+!_!BMx16&y9>=174/y9<=191/v7091=128/x16>20:M36/127/2; // Advanced magic mirror
+!_!BMx16&y9>=174/y9<=191/v7090=128/x16<21:M29/127/2; //Advanced fire shield
+!_!BMx16&y9>=174/y9<=191/v7091=128/x16>20:M29/127/2; //Advanced fire shield
+!!BMx16&y9>=174/y9<=191/v7090=128/x16<21:M28/127/2; //Advanced air shield
+!!BMx16&y9>=174/y9<=191/v7091=128/x16>20:M28/127/2; //Advanced air shield
+!!BMx16&y9>=174/y9<=191/v7090=128/x16<21:M27/127/2; //Advanced shield
+!!BMx16&y9>=174/y9<=191/v7091=128/x16>20:M27/127/2; //Advanced shield
+
+!!BMx16&y9=176/v997=0:U4/48; !_!BMx16&y9=174/v997=0:U4/38; !!BMx16&y9=181/v997=0:U4/65;
+!!BMx16&y9=185/v997=0:U4/48; !_!BMx16&y9=183/v997=0:U4/38; !!BMx16&y9=190/v997=0:U4/65;
+[Temple Guardian]            [Paladin]                    [Shaman]
+/\ changed spells
+
+!_!BMx16&y9=175/v997=0:U4/38; !_!BMx16&y9=177/v997=0:U4/38; !!BMx16&y9=179/v997=0:U4/37; !!BMx16&y9=180/v997=0:U4/37;
+!_!BMx16&y9=184/v997=0:U4/38; !_!BMx16&y9=186/v997=0:U4/38; !!BMx16&y9=188/v997=0:U4/37; !!BMx16&y9=189/v997=0:U4/37;
+[Hierophant]                 [Succubus]                   [Brute]                      [Ogre Leader]
+
+
+!_!BMx16&y9=298/v997=0:U4/39;  // neutral soul eater
+!!BMx16&y9=297/v997=0:U4/37;  // neutral succubus
+
+!_!VRy99:S-1 -x16;
+!_!SN:W^majaczek.LCO14^/?y114;
+!_!SN:W^majaczek.RCO14^/?y214;
+!_!EAy9&y9>=174/y9<=191/y114>0/x16<21:B0/1/71/61/50/50/50/50/50/50/50/50/50/50/50;
+!_!EAy9&y9>=174/y9<=191/y214>0/x16>20:B0/1/71/61/50/50/50/50/50/50/50/50/50/50/50;
+
+!_!IF&y9>=174/y9<=191/y114>0:M^debug -- EA should be fired - attacker^;
+!_!IF&y9>=174/y9<=191/y214>0:M^debug -- EA should be fired - defender^;
+
+!?FU(KK_Sorcery_Commander);
+!!VRy1:Sx1 +1 :20 +1; !!VRy2:S0 -1;
+!_!VRy2&x16>=174/x16<=182:Sv7083;
+!_!VRy2&x16>=183/x16<=191:Sv7085;
+!_!MA:Bx16/dy1;
+!!re i/0/41;
+  !!BMi:T?y3;
+  !!VRy2&y3=x16:Si;
+!!en;
+
+!!BMy2&y2>=0:Edy1;
+!_!IF&y2>=0:M^%X1 %Y1 %V7083 %V7085^;
+
+!?FU(KK_ZZZ_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^^;
+
+
+!?FU(KK_Dragon_Ring_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!_!SN:Ey5/1/x16/^isHellHydra=1^;
+!!SN:Ey5/1/x16/^MeleeResistance=0.75^;
+!!SN:Ey5/1/x16/^ShootingResistance=0.75^;
+
+!?FU(KK_Age_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Aging=9^;
+
+
+!?FU(KK_Posion_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Poison=9^;
+
+!?FU(KK_Paralyze_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Paralyze=1^; 
+!!VRy99:S15; !!VRy99&x1>0:+x1;
+!!SN:Ey5/1/x16/^ParalyzeChance=%Y99^;
+
+!?FU(KK_Blitz_25_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!_!SN:Ey5/1/x16/^PreventiveStrike=1^;
+!!SN:Ey5/1/x16/^Resistance effect=14^; // resist speed
+
+!!SN:Ey5/1/x16/^ImposedSpell1Number=48 ImposedSpell1Level=4^;
+
+!?FU(KK_Blitz_50_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!_!SN:Ey5/1/x16/^ShootingResistance=0.5^;
+!!SN:Ey5/1/x16/^PreventiveStrike=1^;
+
+
+!?FU(KK_FireShield_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Fire shield=0.75^;
+
+
+
+!?FU(KK_MagicMirror_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+
+!!SN:Ey5/1/x16/^MagicMirror=1^;
+
+
+!?FU(KK_rebirth_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Self-resurrection=1^;
+
+
+!?FU(KK_DeathBlow_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^DeathBlow=33^;
+
+
+!?FU(KK_Jousting_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^JoustingImmune=1^;
+!_!SN:Ey5/1/x16/^JoustingBonus=1^;
+!!SN:Ey5/1/x16/^AfterDefendSpell=37^;
+
+!!SN:Ey5/1/x16/^MovesTwice=1^;
+
+
+
+!?FU(KK_Vigor_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^AlwaysPositiveMorale=1^;
+!!SN:Ey5/1/x16/^AlwaysPositiveLuck=1^;
+
+
+!?FU(KK_Legendary_commanders);
+!_!IF:M^Debug^;
+!!SN:L^amethyst2_4.dll^/?y3;
+!!IF&y3=0:M^KK_reset_commanders Debug: 
+no amethyst^; !!FU&y3=0:E;
+
+!!SN:Ay3/^ChangeCreatureTable^/?y5;
+!!IF&y5=0:M^KK_reset_commanders Debug: 
+no function ChangeCreatureTable^; !!FU&y5=0:E;
+
+!!SN:Ey5/1/x16/^Fear=1^;
+!!SN:Ey5/1/x16/^Fearless=1^;
+!!SN:Ey5/1/x16/^isDragonSlayer=1^;
+
+!?BR&v997=0;
+
+ !!SN:W^majaczek.LCO_Art152^/?y65; !!SN:W^majaczek.RCO_Art152^/?y85;
+ !!SN:W^majaczek.LCO_Art153^/?y66; !!SN:W^majaczek.RCO_Art153^/?y86;
+ !!SN:W^majaczek.LCO_Art150^/?y67; !!SN:W^majaczek.RCO_Art150^/?y87;
+
+
+!!DO(KK_Sorcery_Commander)/174/182/1&y67>=0:Py66;
+!!DO(KK_Sorcery_Commander)/183/191/1&y87>=0:Py87;
+!!DO(KK_Sorcery_Commander)/294/302/1:P40;
+
+!?BA52;
+// appply skills to commanders
+
+!!DO(KK_reset_commanders)/174/191/1:P;
+!!DO(KK_reset_commanders)/294/302/1:P;
+
+!!SN:W^majaczek.LCO00^/?y50; !!SN:W^majaczek.RCO00^/?y70; Age (Horrible Wounds)
+!!SN:W^majaczek.LCO01^/?y51; !!SN:W^majaczek.RCO01^/?y71; // Brave 
+!!SN:W^majaczek.LCO02^/?y52; !!SN:W^majaczek.RCO02^/?y72; // DeathBlow
+!!SN:W^majaczek.LCO03^/?y53; !!SN:W^majaczek.RCO03^/?y73; // Poison Sting
+!!SN:W^majaczek.LCO04^/?y54; !!SN:W^majaczek.RCO04^/?y74; // Flash Swing
+!!SN:W^majaczek.LCO05^/?y55; !!SN:W^majaczek.RCO05^/?y75; // Vigor
+!!SN:W^majaczek.LCO06^/?y56; !!SN:W^majaczek.RCO06^/?y76; // Strike all around
+!!SN:W^majaczek.LCO07^/?y57; !!SN:W^majaczek.RCO07^/?y77; // Magic Armour
+!!SN:W^majaczek.LCO08^/?y58; !!SN:W^majaczek.RCO08^/?y78; // Block
+!!SN:W^majaczek.LCO09^/?y59; !!SN:W^majaczek.RCO09^/?y79; // Attack Twice
+!!SN:W^majaczek.LCO10^/?y60; !!SN:W^majaczek.RCO10^/?y80; // Rebirths
+!!SN:W^majaczek.LCO11^/?y61; !!SN:W^majaczek.RCO11^/?y81; // regen (250hp)
+!!SN:W^majaczek.LCO12^/?y62; !!SN:W^majaczek.RCO12^/?y82; // Death Stare
+!!SN:W^majaczek.LCO13^/?y63; !!SN:W^majaczek.RCO13^/?y83; // Charge
+!!SN:W^majaczek.LCO14^/?y64; !!SN:W^majaczek.RCO14^/?y84; // Magic Mirror + Fly
+
+ !!SN:W^majaczek.LCO_Art152^/?y65; !!SN:W^majaczek.RCO_Art152^/?y85;
+ !!SN:W^majaczek.LCO_Art153^/?y66; !!SN:W^majaczek.RCO_Art153^/?y86;
+ !!SN:W^majaczek.LCO_Art150^/?y67; !!SN:W^majaczek.RCO_Art150^/?y87;
+
+!_!IF:M^%Y66^;
+
+
+!!DO(KK_Dragon_Ring_commanders)/174/182/1&y66>=0:P;
+!!DO(KK_Dragon_Ring_commanders)/183/191/1&y86>=0:P;
+!!DO(KK_Dragon_Ring_commanders)/294/302/1:P35;
+
+
+
+!!DO(KK_Paralyze_commanders)/174/182/1&y54<>0:Py65;
+!!DO(KK_Paralyze_commanders)/183/191/1&y74<>0:Py85;
+!!DO(KK_Paralyze_commanders)/294/302/1:P35;
+
+
+!!DO(KK_Age_commanders)/174/182/1&y50<>0:P;
+!!DO(KK_Age_commanders)/183/191/1&y70<>0:P;
+!!DO(KK_Age_commanders)/294/302/1:P;
+
+!!DO(KK_Posion_commanders)/174/182/1&y53<>0:P;
+!!DO(KK_Posion_commanders)/183/191/1&y73<>0:P;
+!!DO(KK_Posion_commanders)/294/302/1:P;
+
+
+!!DO(KK_rebirth_commanders)/174/182/1&y60<>0:P;
+!!DO(KK_rebirth_commanders)/183/191/1&y80<>0:P;
+!!DO(KK_rebirth_commanders)/294/302/1:P;
+
+!!DO(KK_MagicMirror_commanders)/174/182/1&y64<>0:P;
+!!DO(KK_MagicMirror_commanders)/183/191/1&y84<>0:P;
+!!DO(KK_MagicMirror_commanders)/294/302/1:P;
+
+!!DO(KK_FireShield_commanders)/174/182/1&y54<>0:P;
+!!DO(KK_FireShield_commanders)/183/191/1&y74<>0:P;
+!!DO(KK_FireShield_commanders)/294/302/1:P;
+
+!!DO(KK_DeathBlow_commanders)/174/182/1&y52<>0:P;
+!!DO(KK_DeathBlow_commanders)/183/191/1&y72<>0:P;
+!!DO(KK_DeathBlow_commanders)/294/302/1:P;
+
+!!DO(KK_Jousting_commanders)/174/182/1&y63<>0:P;
+!!DO(KK_Jousting_commanders)/183/191/1&y83<>0:P;
+!!DO(KK_Jousting_commanders)/294/302/1:P;
+
+!!DO(KK_Vigor_commanders)/174/182/1&y55<>0:P;
+!!DO(KK_Vigor_commanders)/183/191/1&y75<>0:P;
+!!DO(KK_Vigor_commanders)/294/302/1:P;
+
+
+!!DO(KK_Legendary_commanders)/174/182/1&y51<>0:P;
+!!DO(KK_Legendary_commanders)/183/191/1&y71<>0:P;
+!!DO(KK_Legendary_commanders)/294/302/1:P;
+
+!!DO(KK_Blitz_25_commanders)/174/182/1&y65>=25:P;
+!!DO(KK_Blitz_25_commanders)/183/191/1&y85>=25:P;
+!!DO(KK_Blitz_25_commanders)/294/302/1:P;
+
+!!DO(KK_Blitz_50_commanders)/174/182/1&y65>=50:P;
+!!DO(KK_Blitz_50_commanders)/183/191/1&y85>=50:P;
+!!DO(KK_Blitz_50_commanders)/294/302/1:P;
+
+!?BA52;
+
+
+!?BG1;
+// restore skills to commanders
+
+!!BU:C?y99; !!FU&y99=0:E;
+
+!!SN:W^majaczek.LCO00^/?y50; !!SN:W^majaczek.RCO00^/?y70;
+!!SN:W^majaczek.LCO01^/?y51; !!SN:W^majaczek.RCO01^/?y71; // Brave 
+!!SN:W^majaczek.LCO02^/?y52; !!SN:W^majaczek.RCO02^/?y72; // DeathBlow
+!!SN:W^majaczek.LCO03^/?y53; !!SN:W^majaczek.RCO03^/?y73;
+!!SN:W^majaczek.LCO04^/?y54; !!SN:W^majaczek.RCO04^/?y74; // Magic Armor
+!!SN:W^majaczek.LCO05^/?y55; !!SN:W^majaczek.RCO05^/?y75; // Vigor
+!!SN:W^majaczek.LCO06^/?y56; !!SN:W^majaczek.RCO06^/?y76;
+!!SN:W^majaczek.LCO07^/?y57; !!SN:W^majaczek.RCO07^/?y77;
+!!SN:W^majaczek.LCO08^/?y58; !!SN:W^majaczek.RCO08^/?y78;
+!!SN:W^majaczek.LCO09^/?y59; !!SN:W^majaczek.RCO09^/?y79;
+!!SN:W^majaczek.LCO10^/?y60; !!SN:W^majaczek.RCO10^/?y80; // Rebirths
+!!SN:W^majaczek.LCO11^/?y61; !!SN:W^majaczek.RCO11^/?y81;
+!!SN:W^majaczek.LCO12^/?y62; !!SN:W^majaczek.RCO12^/?y82;
+!!SN:W^majaczek.LCO13^/?y63; !!SN:W^majaczek.RCO13^/?y83;
+!!SN:W^majaczek.LCO14^/?y64; !!SN:W^majaczek.RCO14^/?y84; // Magic Mirror
+
+!!VRy1:Sy50 |y51 |y52 |y53 |y54 |y55 |y56 |y57 |y58 |y59 |y60 |y61 |y62 |y63 |y64;
+!!VRy2:Sy70 |y71 |y72 |y73 |y74 |y75 |y76 |y77 |y78 |y79 |y80 |y81 |y82 |y83 |y84;
+
+!!BA:H0/?y33 H1/?y44;
+
+!!COy33:B0/?y3; !!VRy3:|y1; !!COy33:B0/y3; 
+
+!!if&y44>=0:;
+  !!COy44:B0/?y4; !!VRy4:|y2; !!COy44:B0/y4; 
+!!en;
+
+!?BR;
+!!BU:T?y66; !!FU&y66=1:E; //exit if Tactics Phase
+
+!!FU&v997<>0:E;
+
+!!SN:W^majaczek.Commanders.BR_once^/0;
+
+****below all cloned from wogmod ****
+**  object trigger - opal
+!?OB101/7&v7185=1;
+!!HE-1:N?y-1;
+!!VRy-4:S0 T14;                                  [random roll 0-14]
+!!VRz2&y-4=0:Sz151000;                           [set string]
+!!VRz2&y-4=1:Sz151001;                           [set string]
+!!VRz2&y-4=2:Sz151002;                           [set string]
+!!VRz2&y-4=3:Sz151003;                           [set string]
+!!VRz2&y-4=4:Sz151004;                           [set string]
+!!VRz2&y-4=5:Sz151005;                           [set string]
+!!VRz2&y-4=6:Sz151006;                           [set string]
+!!VRz2&y-4=7:Sz151007;                           [set string]
+!!VRz2&y-4=8:Sz151008;                           [set string]
+!!VRz2&y-4=9:Sz151009;                           [set string]
+!!VRz2&y-4=10:Sz151010;                          [set string]
+!!VRz2&y-4=11:Sz151011;                          [set string]
+!!VRz2&y-4=12:Sz151012;                          [set string]
+!!VRz2&y-4=13:Sz151013;                          [set string]
+!!VRz2&y-4=14:Sz151014;                          [set string]
+
+!!COy-1:B1/y-4/?y-5 D?y-6 E?y-7 N?z1 X2/?y-8;               [check if commander has skill, is alive, is enabled, get name]
+!!OB998&y-6=0/y-7=1:T101 U6;                                [set to chest 6 if commander is alive, enabled]
+!!COy-1&y-5=0/y-6=0/y-7=1:B1/y-4/1;                         [give skill if commander doesn't have it and is alive, enabled]
+
+!!IF&y-5=0/y-6=0/y-7=1/1000:M1/z151015;
+
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz3:S^Opal^;
+!!IF:V1/0;
+!!IF&y-5=1:V1/1; ?xp
+!!COy-1&1:X1/dy-9;      add xp
+
+!!IF&1/1000:M1/z151033;
+
+** end of object trigger
+
+
+**  object trigger - ruby
+!?OB101/8&v7185=1;
+!!HE-1:N?y-1;
+!!COy-1:S0/?y-2 S3/?y-3 D?y-6 E?y-7 N?z1 X2/?y-8;            [get Attack / Damage levels, check if alive, enabled, get name]
+!!OB998&y-6=0/y-7=1:T101 U6;                                 [set to chest 6 if commander is alive, enabled]
+!!COy-1&y-6=0/y-7=1/y-2>y-3:S3/d1;                           [if Attack > Damage add 1 to Damage level]
+!!COy-1&y-6=0/y-7=1/y-2<y-3:S0/d1;                           [if Attack < Damage add 1 to Attack level]
+!!VRy-4:S0 T99;                    [percentage roll]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:S3/d1;              [if Attack = Damage and < 6 and roll is < 50 add 1 to Damage level]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:S0/d1;              [if Attack = Damage and < 6 and roll is < 50 add 1 to Attack level]
+
+!!IF&1000/y-6=0/y-7=1/y-2>y-3:M1/z151017;
+!!IF&1000/y-6=0/y-7=1/y-2<y-3:M1/z151018;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:M1/z151019;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:M1/z151020;
+
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz2:S^Ruby^;
+!!IF:V1/0;
+!!IF&y-6=0/y-7=1/y-2=y-3/y-2>4:V1/1; ?xp
+!!COy-1&1:X1/dy-9;      add xp
+
+!!IF&1/1000:M1/z151032;
+
+** end of object trigger
+
+
+**  object trigger - sapphire  *Z added exp instead of no effect
+!?OB101/9&v7185=1;
+!!HE-1:N?y-1;
+!!COy-1:S1/?y-2 S2/?y-3 D?y-6 E?y-7 N?z1 X2/?y-8;            [get Defense / Hit Points levels, check if alive, enabled, get name]
+!!OB998&y-6=0/y-7=1:T101 U6;                                 [set to chest 6 if commander is alive, enabled]
+!!COy-1&y-6=0/y-7=1/y-2>y-3:S2/d1;                           [if Defense > Hit Points add 1 to Hit Points level]
+!!COy-1&y-6=0/y-7=1/y-2<y-3:S1/d1;                           [if Defense < Hit Points add 1 to Defense level]
+!!VRy-4:S0 T99;                    [percentage roll]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:S2/d1;              [if Defense = Hit Points and < 6 and roll is < 50 add 1 to Hit Points level]
+!!COy-1&y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:S1/d1;              [if Defense = Hit Points and < 6 and roll is < 50 add 1 to Defense level]
+
+!!IF&1000/y-6=0/y-7=1/y-2>y-3:M1/z151022;
+!!IF&1000/y-6=0/y-7=1/y-2<y-3:M1/z151023;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4<50:M1/z151024;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2<5/y-4>49:M1/z151025;
+
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz2:S^Sapphire^;
+!!IF:V1/0;
+!!IF&1000/y-6=0/y-7=1/y-2=y-3/y-2>4:V1/1; ?xp
+!!COy-1&1:X1/dy-9;      add xp
+
+!!IF&1/1000:M1/z151032;
+** end of object trigger
+
+
+**  object trigger - emerald
+!?OB101/10&v7185=1;
+!!HE-1:N?y-1;
+
+*Z clean up CO:B6 bug: speed or experience for emerald. y-8:exp ->z2
+
+!!COy-1:S4/?y-2 S5/?y-3 D?y-6 E?y-7 N?z1 X2/?y-8;     [get Magic Power / Speed levels, check if alive, enabled get name]
+!!VRy-9:Sy-8 *1000; xp bonus
+!!VRz2:S^Emerald^;
+!!IF:V1/0;
+!!IF&y-6=0/y-7=1/y-3<5:V1/1;    welcome to speed limit..
+
+!!OB998&y-6=0/y-7=1:T101 U6;                                 [set to chest 6 if commander is alive, enabled]
+
+
+!!COy-1&1:S5/d1;              [add +1 to Speed level if below max]
+!!COy-1&-1:X1/dy-9;      add xp
+
+*display text
+!!IF&1/1000:M1/z151027;
+!!IF&-1/1000:M1/z151032;
+** end of object trigger

@@ -1,43 +1,41 @@
-ZVSE
-ERMS_ScriptDate=1.5(May).2016
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ZVSE2
 
 ** Artifact Boost ERM script v1.4 - Donald X. Vaccarino
 ** Updated Jul. 18. 2004 by Hermann the Weird
+** Updated Dec 2022 by Archer30
 ** Requires WOG version 3.58 or later
 ** Make formerly weak artifacts do something special, usually once/week
 ** WoGify Name: script02.erm
 
-** Bird Of Perception gives 36 Rogues
-** Pendant Of Life gives 2 Druids
+** Bird Of Perception gives 6 Royal Griffins
+** Pendant Of Life gives 24 Sprites
 ** Pendant Of Death gives 12 Zombies
 ** Targ Of The Rampaging Ogre provokes a fight with 30 Ogres
 ** Dead Man's Boots gives Dead Man's Boots
 ** Pendant Of Total Recall gives 1000 experience
-** Emblem Of Cognizance gives 25 gold per troop
+** Emblem Of Cognizance gives 15 gold per troop
 ** Stoic Watchman reveals a large map area
 ** Pendant Of Second Sight upgrades lowly shooters
 ** Pendant Of Holiness gives a random holy spell
-** (disabled) Boots Of Polarity may be traded for a one-time movement bonus
-** (disabled) Garniture Of Interference may be traded for a magic skill
+** Boots Of Polarity may be traded for a one-time movement bonus
+** Garniture Of Interference may be traded for a magic skill
 ** Pendant Of Dispassion gives +1 knowledge
 ** Pendant Of Free Will upgrades golems and peasants
 
 ** following artifacts new as of script version 1.3
 
-** (disabled) Diplomat's Ring may be traded to double number of first level troops hero has
+** Diplomat's Ring may be traded to double number of first level troops hero has
 ** Surcoat Of Counterpoise doubles the effects of these artifacts, where applicable
-** Orb Of Vulnerability gives 1 *Enchanter* plus another per level of Wisdom
-** Sphere Of Permanence gives 1 *Nightmare* plus another per 10 Defense
-** (disabled) Statesman's Medal may be traded at a town for up to three buildings
-** (disabled) Orb Of Inhibition may be traded to modify a creature's abilities
+** Orb Of Vulnerability gives 1 Archmage plus another per level of Wisdom
+** Sphere Of Permanence gives 1 Mighty Gorgon plus another per 10 Defense
+** Statesman's Medal may be traded at a town for up to three buildings
+** Orb Of Inhibition may be traded to modify a creature's abilities
 
 ** All artifacts function for the AI (if worn) but AI won't agree to trades.
 
 ** To use this code, put it into a Global Event, set to never happen.
 
-** Variables Used: v600-v628, v630-v631, v640-v648, z326-z331, i-l
+** Variables Used: v600-v628, v631, v640-v648, z326-z331, i-l
 ** Flags Used: 1, 2, 5, 710-714
 
 ** w33 must not be modified by other programs, used for enabling/disabling weekly creatures!
@@ -45,387 +43,625 @@ ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
 ** The other variables may be used elsewhere but will be trashed by this code.
 
 ** Functions Used: 599-609, 612, 613
-** Timers Used: 85 (was 76)
+!#DC(WOG_ART_BOOST_W_VAR_ID) = 33;
 
 
-** Initialization Code
+; Set up global vars for Diplomat's Ring and Emblem of Conizance
+!?FU(WOG_OnResetHero);
+!#VA(hero:x);
 
-!#UN:P102/?v1; [Check if Artifact Boost is enabled in WoGify Options]
+!!UN:P102/?(wogOption:y);                 [Check for Enhanced Artifacts I]
+!!FU&(wogOption)<>(TRUE):E;
 
-!#TM85&v1=1:S1/999/7/255; [timer once/week for all players]
+!!IF:W(hero);
+!!VRw33:S0;
 
-** end of Initialization Code
+!?FU(OnAfterErmInstructions);
+!!UN:P102/?(wogOption:y);                 [Check for Enhanced Artifacts I]
+!!FU&(wogOption)<>(TRUE):E;
 
+!!VR(unitLimit:y):S(INT_MAX);
+!!VR(goldLimit:y):S(INT_MAX);
+!!UN:J2/?(diff:y); // get difficulty (unlimited for easy, text won't be set)
+
+!!if&(diff)>0;
+  ; Diplomat's Ring
+  !!VR(unitLimit)&(diff)=1:S1000; // max 1000 for normal and easy
+  !!VR(unitLimit)&(diff)=2:S500; // max 500 for hard
+  !!VR(unitLimit)&(diff)=3:S250; // max 250 for expert
+  !!VR(unitLimit)&(diff)>=4:S100; // max 100 for impossible
+
+  ; Emblem of Cognizance
+  !!VR(goldLimit):S(unitLimit) *100;100000; // max 100000/50000/25000/10000 gold for normal/hard/expert/impossible
+!!en;
+
+; Set global var to be used each week
+!!VRi^wog_102_diplomatsRingLimit^:S(unitLimit);
+!!VRi^wog_102_emblemOfCognizanceLimit^:S(goldLimit);
 
 ** Timer routine
 
-!?TM85;
+!?FU(OnEveryDay)&i^timerWeekday^=1/i^timerWeek^>1;
+  !!UN:P102/?(wogOption:y);               [Check if Artifact Boost Script is enabled in WoGify Options]
+  !!FU&(wogOption)<>(TRUE):E;             [Exit if it isn't]
 
-!!UN:P102/?y-1; [Check if Artifact Boost Script is enabled in WoGify Options]
-!!FU&y-1<>1:E;     [Exit if it isn't]
+  !!OW:Hi^timerOwner^/1; 
+  
+  !!if&v1;
+    !!VR(size:y):Sv1;
+    !!FU(NewIntArray):P(size)/?(heroes:y);
 
-!!OW:C?v630; [get current player]
-!!VRv600:S0; [start with hero #0]
-!!DO600/0/155/1:P; [iterate through all heroes]
+    !!re (vHeroId:y)/2/(size)/1/1; loop this player hero!
+      !!VR(itemId:y):S(vHeroId) -2;
+      !!SN:M(heroes)/(itemId:y)/v(vHeroId); daemon_n added this part cause some fucntions below changes v-var array
+    !!en;
 
-** end of timer routine
+    !!re i/0/(size:y)/1/-1;
+      !!SN:M(heroes)/i/?(heroId:y);
+      !!FU(WOG_102_ExecuteArtifactEffects):P(heroId:y); [Iterate through all player heroes]
+    !!en;
+  !!en;
+
+; Function for checking whether Surcoat of Counterpoise is worn
+ !?FU(WOG_102_GetSurcoatBonus);
+ !#VA(hero:x) (surcoatBonus:x);
+
+  !!VR(surcoatBonus):S0;
+  !!HE(hero):A2/(ART_SURCOAT_OF_COUNTERPOISE)/?(has:y)/?(equipped:y);
+  !!VR(surcoatBonus)&(equipped)>0:S1;
+
+!?FU(OnHeroScreenMouseClick)&i^mouse_action^=(MOUSE_RMB_PRESSED)/999;
+!!UN:P102/?(wogOption:y); [Check if Artifact Boost Script is enabled in WoGify Options]
+!!FU&(wogOption)<>(TRUE):E;     [Exit if it isn't]
+
+; Exit if the hero does not belong to the interacting player
+!!OW:C?(player:y)/?(interactPlayer:y);  [Get the player who's clicking the mouse button]
+!!HE(CURRENT_HERO):O?(owner:y);
+!!FU&(interactPlayer)<>(owner):E;
+
+!!VR(slot:y):S(NO_ART_SLOT);
+!!VR(item:y):Si^mouse_item^;
+
+!!if&(item)>=2/(item)<=14|(item)=20;
+  !!VR(slot):S(item) -2;
+!!en;
+
+!!FU&(slot)=(NO_ART_SLOT):E;
+
+!!HE(CURRENT_HERO):N?(hero:y);
+!!FU(WOG_102_PrepareToDisableArt):P(hero)/(slot);
+
+!?FU(OnHeroesMeetScreenMouseClick)&i^mouse_action^=(MOUSE_RMB_PRESSED)/999;
+!!UN:P102/?(wogOption:y); [Check if Artifact Boost Script is enabled in WoGify Options]
+!!FU&(wogOption)<>(TRUE):E;     [Exit if it isn't]
+
+!!VR(hero:y):S(NO_HERO);
+!!VR(item:y):Si^mouse_item^;
+
+!!if&(item)>=27/(item)<=39|(item)=45;
+  !!VR(slot:y):S(item) -27;
+  !!CM:H?(hero)/?(otherHero:y);
+!!el&(item)>=46/(item)<=58|(item)=64;
+  !!VR(slot):S(item) -46;
+  !!CM:H?(otherHero)/?(hero);
+!!en;
+
+!!FU&(hero)=(NO_HERO):E;
+
+!!FU(WOG_102_PrepareToDisableArt):P(hero)/(slot);
 
 
-!?CM2;     [R-click trigger for enabling/disabling weekly creatures from artifacts]
+!?FU(WOG_102_PrepareToDisableArt);
+!#VA(hero:x) (clickedSlot:x);
 
-!!IF:W-1;     [w vars refer to current hero]
-!!CM:F?y-1;     [Check if its a r-click]
-!!FU&y-1<>512:E;     [Exit if it isn't]
+!!HE(hero):A1/?(clickedArt:y)/(clickedSlot);     [Check for weekly creature artifacts]
 
-!!UN:P102/?y-1; [Check if Artifact Boost Script is enabled in WoGify Options]
-!!FU&y-1<>1:E;     [Exit if it isn't]
-
-!!CM:I?y-1;     [Get r-click location]
-!!FU&y-1<>11/y-1<>12/y-1<>13/y-1<>14/y-1<>20/y-1<>4:E;     [Exit if not neck slot or misc. 1-5]
-
-!!VRy-1&y-1=11:S9;     [Translate r-click location to slot numbers]
-!!VRy-1&y-1=12:S10;
-!!VRy-1&y-1=13:S11;
-!!VRy-1&y-1=14:S12;
-!!VRy-1&y-1=20:S18;
-!!VRy-1&y-1=4:S2;
-
-!!HE-1:A1/?y1/y-1;     [Check for weekly creature artifacts]
-!!VRy-2:Sy1;
-!!FU&y-2<>103/y-2<>104/y-2<>63/y-2<>92/y-2<>93:E;     [Exit if no weekly creature artifact]
+!!FU&(clickedArt)<>103/(clickedArt)<>104/(clickedArt)<>63/(clickedArt)<>92/(clickedArt)<>93:E;     [Exit if no weekly creature artifact]
 !!CM:R0;     [Disable standard r-click info]
 
-!!VRz-1&y-2=63:Sz420;     [Set strings for r-click info]
-!!VRz-1&y-2=92:Sz924;
-!!VRz-1&y-2=93:Sz925;
-!!VRz-1&y-2=103:Sz930;
-!!VRz-1&y-2=104:Sz931;
+!!FU(NewIntArray):P?(arr:y);
+!!FU(Array_Push):P(arr)/63/92/93/103/104;
+!!SN:M(arr)/?(size:y);
+!!IF:W(hero);     [w vars refer to current hero]
 
-!!VRz-2:Sz102068+^.^;     [Set strings for status report]
-!!VRz-3:Sz102069;
+!!re i/0/(size)/1/-1;
+  !!SN:M(arr)/i/?(artId:y);
+  !!if&(artId)=(clickedArt);
+    !!VR(bit:y):S1 Sd<<i;
+    !!VR(bitCheck:y):Sw33 &(bit);
 
-!!VRy-3&y-2=63:Sw33;
-!!VRy-3&y-2=63:&1;
-!!VRz-2&y-2=63/y-3>0:Sz102069+^.^;
+    !!if&(bitCheck);
+      !!VR(stat:z):S^%T(wog.102.off)^;
+      !!VR(rstat:z):S^%T(wog.102.on)^;
+    !!el;
+      !!VR(stat):S^%T(wog.102.on)^;
+      !!VR(rstat):S^%T(wog.102.off)^;
+    !!en;
+    !!br;
+  !!en;
+!!en;
 
-!!VRy-3&y-2=92:Sw33;
-!!VRy-3&y-2=92:&2;
-!!VRz-2&y-2=92/y-3>0:Sz102069+^.^;
-
-!!VRy-3&y-2=93:Sw33;
-!!VRy-3&y-2=93:&4;
-!!VRz-2&y-2=93/y-3>0:Sz102069+^.^;
-
-!!VRy-3&y-2=103:Sw33;
-!!VRy-3&y-2=103:&8;
-!!VRz-2&y-2=103/y-3>0:Sz102069+^.^;
-
-!!VRy-3&y-2=104:Sw33;
-!!VRy-3&y-2=104:&16;
-!!VRz-2&y-2=104/y-3>0:Sz102069+^.^;
-
-!!VRz-3&y-3>0:Sz102068;
+!!SN:H^art^/(artId)/1/?(artDesc:z) T^wog.102.switch^/?(msg:z)/^art_name^/(artDesc)/^stat^/(stat)/^rstat^/(rstat);
 
 ** Display question for enabling/disabling **
-!!IF:Q2/8/y-2/2/z102070;
-
-!!FU&-2:E;     [Exit if no answered]
-
-!!VRw33&y-3=1/y-2=63:-1;     [Set bit for Bird of Perception; y-3=0: enabled]
-!!VRw33&y-3=0/y-2=63:+1;
-
-!!VRw33&y-3=2/y-2=92:-2;     [Set bit for Sphere of Permanence]
-!!VRw33&y-3=0/y-2=92:+2;
-
-!!VRw33&y-3=4/y-2=93:-4;     [Set bit for Orb Of Vulnerability]
-!!VRw33&y-3=0/y-2=93:+4;
-
-!!VRw33&y-3=8/y-2=103:-8;     [Set bit for Pendant Of Life]
-!!VRw33&y-3=0/y-2=103:+8;
-
-!!VRw33&y-3=16/y-2=104:-16;     [Set bit for Pendant Of Death]
-!!VRw33&y-3=0/y-2=104:+16;
+!!IF:Q2/(PIC_TYPE_ART)/(clickedArt)/(MSG_TYPE_QUESTION)/(msg);
+!!VRw33&2:X(bit:y);
 
 ** end of r-click trigger for enabling/disabling weekly creature artifacts **
-
-
-** function to iterate through current player's heroes
-
-!?FU600;
-
-!!HEv600:O?v602; [get owner of iterated hero]
-!!FU602&v602>=0/v630=v602:P; [if hero in use and it's that hero's owner's turn, continue in function 602]
-!!VRv600:+1; [inc hero #]
-
-** end of function
 
 
 ** function to check one hero for special artifacts
 ** note the code is broken up into multiple functions to speed it up
 ** checking 156 heroes for 12 artifacts would take forever
 
-!?FU602;
+*?FU(WOG_102_Get)
+  !?FU(WOG_102_GetBirdPercepBon);
+  !#VA(heroId:x) (armyArrayId:x) (artsNum:x);
+  !!VR(monBon:y):S6 *(artsNum);
+  !!FU(Array_Push):P(armyArrayId)/(MON_ROYAL_GRIFFIN)/(monBon);
+  !!if&i^timerIsAi^=(FALSE);
+    !!FU(WOG_102_GetArmyAddMsg):P(heroId)/(MON_ROYAL_GRIFFIN)/1;
+  !!en;
 
-!!OW:Iv602/?v603; [get AI (1) or human (0)]
+  !?FU(WOG_102_GetVulnerSphereBon);
+  !#VA(heroId:x) (armyArrayId:x) (artsNum:x);
+  !!HE(heroId):S(SKILL_WISDOM)/?(skillLvl:y);
+  !!VR(monBon:y):S(skillLvl:y) +1 *(artsNum);
+  !!FU(Array_Push):P(armyArrayId)/(MON_ARCH_MAGE)/(monBon);
+  !!if&i^timerIsAi^=(FALSE);
+    !!VR(index:y):S(monBon) F1/2 Sd-1 |(Wisdom) F1/2;
+    !!FU(WOG_102_GetArmyAddMsg):P(heroId)/(MON_ARCH_MAGE)/(index:y);
+  !!en;
+  
+  !?FU(WOG_102_GetPermaSphereBon);
+  !#VA(heroId:x) (armyArrayId:x) (artsNum:x);
 
-!!HEv600:A2/63/0/?v610;    [check for Bird Of Perception]
-!!HEv600:A2/161/?y16/?y12; Helm of vision
-!!VRv610&y12>0:+y12;       has Bird of Perception
+  ; Get the defense of the hero. Correct the value to 0 if it exceeds the max possible value (possible with artifacts that reduce PS)
+  !!FU(WOG_GetMaxPrimarySkillValue):P?(maxPrimSkill:y);
+  !!HE(heroId):F?y99/?(defense:y)/?y99/?y99;
+  !!VR(defense)&(defense)>(maxPrimSkill):S0;
 
-!!HEv600:A2/103/0/?v611; [check for Pendant Of Life]
-!!HEv600:A2/104/0/?v612; [check for Pendant Of Death]
-!!HEv600:A2/16/0/?v613; [check for Targ Of The Rampaging Ogre]
-!!HEv600:A2/56/0/?v614; [check for Dead Man's Boots]
+  !!VR(monBon:y):S(defense:y) :10 +1 *(artsNum);
+  !!FU(Array_Push):P(armyArrayId)/(MON_MIGHTY_GORGON)/(monBon);
+  !!if&i^timerIsAi^=(FALSE);
+    !!VR(index:y):S(monBon) F1/2 Sd-1 |(defense) F1/2;
+    !!FU(WOG_102_GetArmyAddMsg):P(heroId)/(MON_MIGHTY_GORGON)/1;
+  !!en;
+  !?FU(WOG_102_GetLifePendantBon);
+  !#VA(heroId:x) (armyArrayId:x) (artsNum:x);
+  !!VR(monBon:y):S24 *(artsNum);
+  !!FU(Array_Push):P(armyArrayId)/(MON_SPRITE)/(monBon);
+  !!if&i^timerIsAi^=(FALSE);
+    !!FU(WOG_102_GetArmyAddMsg):P(heroId)/(MON_SPRITE)/1;
+  !!en;
+  !?FU(WOG_102_GetDeathPendantBon);
+  !#VA(heroId:x) (armyArrayId:x) (artsNum:x);
+  !!VR(monBon:y):S12 *(artsNum);
+  !!FU(Array_Push):P(armyArrayId)/(MON_ZOMBIE)/(monBon);
+  !!if&i^timerIsAi^=(FALSE);
+    !!FU(WOG_102_GetArmyAddMsg):P(heroId)/(MON_ZOMBIE)/1;
+  !!en;
 
-!!HEv600:A2/65/0/?v616; [check for Emblem Of Cognizance]
-!!VRv616&y12>0:+y12;
+  !?FU(WOG_102_GetArmyAddMsg);
+  !#VA(heroId:x) (monId:x) (ind:x);
+  !!HE(heroId):B0/?(heroName:z) R2/?(gender:y);
+  !!SN:T^wog.whose%(gender:y)^/?(whose:z)
+  T^wog.102.giveCreature.%(monId).%(ind)^/?(msg:z)/^heroName^/(heroName:z)/^whose^/(whose:z)/^whose^/(whose:z);
+  !!VRs^wog_102_AddArmyMsg^:+^%(msg:z)%T(wog.endl)^;
 
-!!HEv600:A2/64/0/?v617; [check for Stoic Watchman]
-!!VRv617&y12>0:+y12;
+!?FU(WOG_102_GivingSingleCreatureArts);
+  !#VA(heroId:x) (surcoatBonus:x);
+  !#VA(artsToGiveCreatures[5]:y) (fooPtrs[5]:y);
+  !!VR(artsToGiveCreatures[0]):C(ART_BIRD_OF_PERCEPTION)/(ART_SPHERE_OF_PERMANENCE)/
+  (ART_ORB_OF_VULNERABILITY)/(ART_PENDANT_OF_LIFE)/(ART_PENDANT_OF_DEATH);
 
-!!HEv600:A2/59/0/?v620; [check for Boots Of Polarity]
-!!HEv600:A2/57/0/?v621; [check for Garniture Of Interference]
-!!HEv600:A2/58/0/?v625; [check for Surcoat Of Counterpoise]
-!!HEv600:A2/164/0/?y6;    Horned Ring
-!!if&y6>0:;               is combined from above artifacts
-!!VRv625:+1; !!VRv620:+1; !!VRv621:+1;
-!!en:;                    so it sets they are worn
+  !!VR(fooPtrs[0]):C(WOG_102_GetBirdPercepBon)/(WOG_102_GetPermaSphereBon)/
+  (WOG_102_GetVulnerSphereBon)/(WOG_102_GetLifePendantBon)/(WOG_102_GetDeathPendantBon);
 
-!!HEv600:A2/107/0/?v615; [check for Pendant Of Total Recall]
-!!HEv600:A2/101/0/?v618; [check for Pendant Of Second Sight]
-!!HEv600:A2/102/0/?v619; [check for Pendant Of Holiness]
-!!HEv600:A2/100/0/?v622; [check for Pendant Of Dispassion]
-!!HEv600:A2/105/0/?v623; [check for Pendant Of Free Will]
-!!HEv600:A2/543/0/?y5;    Scarab Pendant
-!!if&y5>0:;               is combined from above artifacts
-!!VRv615:+1; !!VRv618:+1; !!VRv619:+1; !!VRv622:+1;  !!VRv623:+1;
-!!en:;                    so it sets they are worn
+  !!FU(NewIntArray):P?(monArmy:y);
+  !!IF:W(heroId);
+  !!re i/0/(artsToGiveCreatures[SIZE])/1/-1;
 
-!!HEv600:A2/67/0/?v624; [check for Diplomat's Ring]
-!!HEv600:A2/486/0/?y3; !!VRv624:+y3; Bard's Mandola
+    !!if&(artsToGiveCreatures[i])<>(ART_BIRD_OF_PERCEPTION);
+      !!HE(heroId):A2/(artsToGiveCreatures[i])/?y99/?(equippedArts:y);
+    !!el;
+      !!FU(WOG_102_GetBirdOfPerceptionQty):P(heroId)/?(equippedArts:y); [here we use a function for mod compatibility]
+    !!en;
 
-!_!HEv600:A2/58/0/?v625; [check for Surcoat Of Counterpoise]  (moved upwards)
+    !!if&(equippedArts);
+      !!VR(bit:y):S1 Sd<<i &w(WOG_ART_BOOST_W_VAR_ID);
+      !!if|(bit)=0/i^timerIsAi^;
+        !!FU(fooPtrs[i]):P(heroId)/(monArmy)/(equippedArts:y); [call function by ptr id]
+      !!en;
+    !!en;
+  !!en;
 
-!!HEv600:A2/93/0/?v626; [check for Orb Of Vulnerability]
-!!HEv600:A2/162/0/?y9;  Sword of Deepest Knightmare
-!!VRv626&y9>0:+y9;      has Orb of  Vulnerability as it's part
+  !!SN:M(monArmy)/?(size:y);
 
-!!HEv600:A2/92/0/?v627; [check for Sphere Of Permanence]
-!!HEv600:A2/126/0/?v628; [check for Orb Of Inhibition]
+  !!if&(size);
+    !!if&i^timerIsAi^=0;
+      !!FU(NewIntArray):P(size)/?(monDlg:y);
+      !!re i/0/(size)/2/-1;
+        !!VRj:Si +1;
+        !!SN:M(monArmy)/i/?(monType:y) M(monArmy)/j/?(monNum:y);
+        !!VR(monNum):Sd<<(surcoatBonus:x) Sd<<16 |(monType:y);
+        !!SN:M(monDlg)/i/(PIC_TYPE_MONSTER) M(monDlg)/j/(monNum:y);
+      !!en;
+      !!FU(Array_Push)&(surcoatBonus):P(monDlg)/(PIC_TYPE_ART)/(ART_SURCOAT_OF_COUNTERPOISE);
+      !!FU(PrepareMultiPicDialog):P(monDlg);
 
-!!VRv608:Sv610 +v611 +v612 +v613 +v614 +v615 +v616 +v617 +v618 +v619 +v620 +v621 +v622 +v623;
-!!VRv608:+v624 +v625 +v626 +v627 +v628;
-!!FU601&v608>0:P; [handle any artifacts if found]
+      !!IF:N(MSG_TYPE_MES)/s^wog_102_AddArmyMsg^;^lol^;
+      !!VRs^wog_102_AddArmyMsg^:S^^;
+    !!en;
+
+    !!VR(isHuman:y):Si^timerIsAi^ X1;
+    !!if&(isHuman);
+      !!UN:C6885977/1/?(gosolo:y); gosolo
+      !!VR(isHuman):X(gosolo);
+    !!en;
+    
+    !!re i/0/(size)/2/-1;
+      !!VRj:Si +1;
+      !!SN:M(monArmy)/i/?(monType:y) M(monArmy)/j/?(monNum:y);
+      !!VR(monNum):Sd<<(surcoatBonus);
+      !!HE(heroId):C2/(monType:y)/(monNum)/(isHuman:y);
+    !!en;
+  !!en;
+
+!?FU(WOG_102_GetBirdOfPerceptionQty);
+!#VA(heroId:x) (result:x);
+
+!!VR(result):S0;
+!!HE(heroId):A2/(ART_BIRD_OF_PERCEPTION)/?(has:y)/?(result);
+
+!?FU(WOG_102_ExecuteArtifactEffects);
+!#VA(heroId:x);
+
+!!FU(WOG_102_GetSurcoatBonus):P(heroId)/?(surcoatBonus:y); [Use a function for mod compatibility]
+
+!!FU(WOG_102_GivingSingleCreatureArts):P(heroId:x)/(surcoatBonus);
+
+!!FU(WOG_102_GivingStaticBonusArts):P(heroId:x)/(surcoatBonus);
+
+!!FU(WOG_102_AskingStaticBonusArts):P(heroId:x)/(surcoatBonus);
+
+
+!!OW:Ii^timerOwner^/?v603; [get AI (1) or human (0)]
+!!VRv600:S(heroId);
+
+!!HEv600:A2/(ART_TARG_OF_THE_RAMPAGING_OGRE)/?(has:y)/?v613; [check for Targ Of The Rampaging Ogre]
+
+!!HEv600:A2/(ART_DEAD_MANS_BOOTS)/?(has)/?v614; [check for Dead Man's Boots]
+!!HEv600:A2/(ART_PENDANT_OF_TOTAL_RECALL)/?(has)/?v615; [check for Pendant Of Total Recall]
+
+!!FU(WOG_102_GetEmblemOfCognizanceQty):Pv600/?v616; [Use a function for mod compatibility]
+
+!!HEv600:A2/(ART_STOIC_WATCHMAN)/?(has)/?v617; [check for Stoic Watchman]
+!!HEv600:A2/(ART_PENDANT_OF_HOLINESS)/?(has)/?v619; [check for Pendant Of Holiness]
+!!HEv600:A2/(ART_PENDANT_OF_DISPASSION)/?(has)/?v622; [check for Pendant Of Dispassion]
+
+!!HEv600:A2/(ART_PENDANT_OF_SECOND_SIGHT)/?(has)/?v618; [check for Pendant Of Second Sight] upgrade
+!!HEv600:A2/(ART_PENDANT_OF_FREE_WILL)/?(has)/?v623; [check for Pendant Of Free Will]
+
+!!HEv600:A2/(ART_BOOTS_OF_POLARITY)/?(has)/?v620; [check for Boots Of Polarity]
+!!HEv600:A2/(ART_GARNITURE_OF_INTERFERENCE)/?(has)/?v621; [check for Garniture Of Interference]
+
+!!HEv600:A2/(ART_DIPLOMATS_RING)/?(has)/?v624; [check for Diplomat's Ring]
+!!HEv600:A2/(ART_ORB_OF_INHIBITION)/?(has)/?v628; [check for Orb of Inhibittion]
+
+!!FU(WOG_102_HandleArtifacts):P(surcoatBonus); [handle any artifact if found]
+
+; Function to get the quantity of Emblem Of Cognizance. Here we use a funciton for it to be modified by other scripts
+!?FU(WOG_102_GetEmblemOfCognizanceQty);
+!#VA(hero:x) (result:x);
+
+!!HE(hero):A2/(ART_EMBLEM_OF_COGNIZANCE)/?(has:y)/?(result); [check for Emblem Of Cognizance]
 
 ** end of function
 
 
 ** function to handle special artifacts for a hero who has one
 
-!?FU601;
+!?FU(WOG_102_HandleArtifacts);
+!#VA(surcoatBonus:x);                       [Bonuses provided by Surcoat Of Counterpoise]
+!#VA(usedY[10]:y);
+
+!!VRv608:Sv613 +v614 +v615 +v616 +v617 +v618 +v619 +v620 +v621 +v622 +v623;
+!!VRv608:+v624 +v628;
+!!FU&v608=0:E;
 
 !!IF:Wv600;     [w vars refer to hero v600]
 !!HEv600:B0/?z326; [get hero name]
 !!HEv600:P?v604/?v605/?v606; [get hero x/y/level]
 !!HEv600:R2/?v607; [get hero sex]
-!!VRz327&v607=0:Sz102019;
-!!VRz327&v607=1:Sz102020;
-!!VRz328&v607=0:Sz102021;
-!!VRz328&v607=1:Sz102022;
+
+!!if&v607=0;
+  !!VRz327:Sz102019;
+  !!VRz328:Sz102021;
+!!el;
+  !!VRz327&v607=1:Sz102020;
+  !!VRz328&v607=1:Sz102022;
+!!en;
+
 !!IF:V5/0;
 !!IF&v603=0:V5/1; [use flag 5 to mean we've got a human player's hero]
 
-!!IF&5/v625>0:M1/z102023;
+!!if&5/(surcoatBonus)>0;
+  !!VR(surcoatActive:y):Sv613 +v615 +v616 +v617 +v620 +v623 +v624;
+  !!IF&(surcoatActive):M1/z102023;
+!!en;
+
 !!VRv631:S1;
-!!VRv631&v625>0:S2; [some effects will be multiplied by v631 - doubled for Surcoat]
+!!VRv631&(surcoatBonus)>0:S2; [some effects will be multiplied by v631 - doubled for Surcoat]
 
-!!VRy3:Sw33;
-!!VRy3:&1;
-!!IF&5/v610>0/y3=0:Q1/21/5/1^%Z102024^;
-!!VRv610:*36;
-!!VRv610:*v631; [Surcoat factor]
-!!HEv600&5/v610>0/y3=0:C2/143/v610/1; [give 36 rougues per Bird]
-!!FU603&-5/v610>0:P143/v610; [offer AI rougues]
+; Dead Man's Boots
+!!if&v614>0;
+  ; Calculate how many pairs are in the backpack and if there is any slot available in the backpack
+  !!VRy31:S0;
 
-!!VRy3:Sw33;
-!!VRy3:&8;
-!!IF&5/v611>0/y3=0:Q1/21/119/1^%Z102025^;
-!!VRy1:S2;
-!!VRy1:*v631; [Surcoat factor]
-!!HEv600&5/v611>0/y3=0:C2/254/y1/1; [give 2 Druids]
-!!FU603&-5/v611>0:P254/y1; [offer AI Druids]
+  !!re i/(ART_SLOT_BACKPACK_FIRST)/(ART_SLOT_BACKPACK_LAST);
+    !!HEv600:A1/?y32/i;
 
-!!VRy3:Sw33;
-!!VRy3:&16;
-!!IF&5/v612>0/y3=0:Q1/21/59/1^%Z102026^;
-!!VRy1:S12;
-!!VRy1:*v631; [Surcoat factor]
-!!HEv600&5/v612>0/y3=0:C2/59/y1/1; [give 12 zombies]
-!!FU603&-5/v612>0:P59/y1; [offer AI zombies]
+    !!br&y32=(ART_DEAD_MANS_BOOTS);
 
-!!VRy3:Sw33;
-!!VRy3:&4;
-!!HEv600:S7/?y2; [get wisdom level]
-!!VRy1:Sy2;
-!!VRy1:+1; [and one more]
-!!VRy1:*v626; [per Orb Of Vulnerability]
-!!VRy1:*v631; [Surcoat factor]
-!!IF&5/v626>0/y1=1/y3=0:Q1/21/136/1^%Z102027^;
-!!IF&5/v626>0/y1>1/y2=0/y3=0:Q1/21/136/1^%Z102028^;
-!!IF&5/v626>0/y1>1/y2>0/y3=0:Q1/21/136/1^%Z102029^;
-!!HEv600&5/v626>0/y3=0:C2/136/y1/1; [give 1-4 Enchanters]
-!!FU603&-5/v626>0:P136/y1; [offer AI Enchanters]
+    !!VRy31&y32=(NO_ART):+1;
+  !!en;
 
-!!VRy3:Sw33;
-!!VRy3:&2;
-!!HEv600:Fd/?y2/d/d; [get defense]
-!!VRy2::10; [every 10 gets you a mighty gorgon]
-!!VRy1:Sy2;
-!!VRy1:+1; [plus one base gorgon]
-!!VRy1:*v627; [per Sphere Of Permanence]
-!!VRy1:*v631; [Surcoat factor]
-!!IF&5/v627>0/y1=1/y3=0:Q1/21/172/1^%Z102030^;
-!!IF&5/v627>0/y1>1/y2=0/y3=0:Q1/21/172/1^%Z102031^;
-!!IF&5/v627>0/y1>1/y2>0/y3=0:Q1/21/172/1^%Z102032^;
-!!HEv600&5/v627>0/y3=0:C2/172/y1/1; [give 1 or more mighty gorgons]
-!!FU603&-5/v627>0:P172/y1; [offer AI mighty gorgons]
-103 -> 172
-mighty gorgons -> Nightmares
+  ; Give boots if there is a slot and there are no Dead Man's Boots in the backpack
+  !!if&i>(ART_SLOT_BACKPACK_LAST)/y31>0;
+    !!HEv600:A(ART_DEAD_MANS_BOOTS); [give Dead Man's Boots]
+    !!IF&5:Q1/8/56/1/z102033;
+  !!en;  
+!!en;
 
-!!IF&5/v614>0:Q1/8/56/1/z102033;
-!!HEv600&v614>0:A56; [give Dead Man's Boots]
-!!HEv600&v614>0/v625>0:A56; [another pair for Surcoat]
+; Pendant Of Total Recall
+!!if&v615>0;
+  !!VRy1:S1000;
+  !!VRy1:*v631; [Surcoat factor]
+  !!IF&5:Q1/17/y1/1/z102034;
+  !!HEv600:Edy1; [give 1000 experience]
+!!en;
 
-!!VRy1:S1000;
-!!VRy1:*v631; [Surcoat factor]
-!!IF&5/v615>0:Q1/17/y1/1/z102034;
-!!HEv600&v615>0:Edy1; [give 1000 experience]
+; Emblem of Cognizance
+!!if&v616>0;
+  !!VRv24:S0; [0 counted]
+  !!DO606/0/6/1:P; [count number of creatures Hero has]
 
-!!VRk:S0; [0 counted]
-!!DO606/0/6/1&v616>0:P; [count number of creatures Hero has]
-!!VRj:S25;
-!!VRj:*v631; [Surcoat factor]
-!!VRk&v616>0:*j; [25 gold per creature per Emblem]
-!!VRk&v616>0:*v616;
-!!IF&5/v616>0/k>0:Q1/6/k/1/z102035; fix [k>0], only if hero has creatures, which may not be always true
-!!OW&v616>0/k>0:Rv602/6/dk; [give the gold]
+  ; only if hero has creatures, which may not be always true
+  !!if&v24>0;
+    !!VRv27:S15;
+    !!VRv27:*v631; [Surcoat factor]
 
-!!IF&5/v617>0:M1/z102036;
-!!VRy1:S30; [area]
-!!VRy1&v625>0:S42; [double area for Surcoat - 30 times square root of 2]
-!!UN&v617>0:Sv604/v605/v606/v602/y1; [reveal area]
-!!UN&v617>0:R1; [redraw screen]
+    !!VRv24:*v27; [15 gold per creature]
+    !!VRv24:F0/i^wog_102_emblemOfCognizanceLimit^; // limit the gold (depending on the difficulty)
 
-!!IF&5/v618>0:M1/z102037;
-!!HEv600&v618>0:C1/2/3/d; [turn archers to marksmen]
-!!HEv600&v618>0:C1/18/19/d; [turn wood elves to grand elves]
-!!HEv600&v618>0:C1/28/29/d; [turn gremlins to master gremlins]
-!!HEv600&v618>0:C1/44/45/d; [turn gogs to magogs]
-!!HEv600&v618>0:C1/74/75/d; [turn beholders to evil eyes]
-!!HEv600&v618>0:C1/88/89/d; [turn orcs to orc chieftans]
-!!HEv600&v618>0:C1/100/101/d; [turn lizard men to lizard warriors]
-!!HEv600&v618>0:C1/112/127/d; [turn air elementals to storm elementals]
+    !!VRv24:*v616; [number of Emblems the hero has]
+    !!VRv27:*v616;
+    
+    !!IF&5:Q1/(PIC_TYPE_RES_GOLD)/v24/(MSG_TYPE_MES)/z102035;
+    !!OW:Ri^timerOwner^/(RES_GOLD)/dv24; [give the gold]
+  !!en;
+!!en;
 
-!!FU612&v619>0:P;     [Call function if Pendant of Holiness equipped]
+; Stoic Watchman
+!!if&v617>0;
+  !!IF&5:M1/z102036;
+  !!VRy1:S30; [area]
+  !!VRy1&(surcoatBonus)>0:S42; [double area for Surcoat - 30 times square root of 2]
+  !!UN:Sv604/v605/v606/i^timerOwner^/y1; [reveal area]
+  !!SN&5:D; [redraw screen]
+!!en;
 
-!!if&2=3:; impossible
-!!IF&5/v620>0:Q2/z102040;
-!!IF&5/v620>0/-2:M1/z102041;
-!!IF&5/v620>0/2:M1/z102042;
-!!VRy1:S1700; [about a day's movement]
-!!VRy1:*v631; [Surcoat factor]
-!!HEv600&5/v620>0/2:Wdy1; [add movement]
-!!HEv600&5/v620>0/2:A3/59/1/1; [remove Boots Of Polarity]
-!!en:;
+; Pendant of Second Sight
+!!if&v618>0;
+  !!VR(upgraded:y):S(FALSE);
+  !!VR(mons[8]:y):C(MON_ARCHER)/(MON_WOOD_ELF)/(MON_GREMLIN)/(MON_GOG)/(MON_BEHOLDER)/(MON_ORC)/(MON_LIZARDMAN)/(MON_AIR_ELEMENTAL);
 
-!!if&v1>v1:; impossible
-!!VRi&5/v621>0:S14 R3; [pick a random magic skill]
-!!UN&5/v621>0:N4/z329/i; [get name of skill]
-!!IF&5/v621>0:Q2/z102043;
-!!IF&5/v621>0/-2:M1/z102044;
-!!HEv600&5/v621>0/2:Si/?j; [get level in that skill]
-!!IF&5/v621>0/2/j=3:M1/z102045;
-!!VRk&5/v621>0/2/j<3:Si *3 +3 +j; [get picture number of skill at level given]
-!!IF&5/v621>0/2/j<3:Q1/20/k/1/z102046;
-!!HEv600&5/v621>0/2/j<3:A3/57/1/1; [remove Garniture Of Interference]
-!!HEv600&5/v621>0/2/j<3:Si/d1; [give skill]
-!!en:;
+  !!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+    !!HEv600:C0/i/?(type:y)/?(num:y);
+    !!co&(num)<=0;
 
-!!IF&5/v622>0:Q1/34/v631/1/z102047;
-!!HEv600&v622>0:Fd/d/d/dv631; [+1 knowledge]
+    !!re j/0/7;
+      !!br&(type)=(mons[j]);
+    !!en;
 
-!!IF&5/v623>0:M1/z102048;
-!!HEv600&v623>0:C1/139/143/d; [turn peasants to rogues]
-!!HEv600&v623>0:C1/116/117/d; [turn gold golems to diamond golems]
-!!HEv600&v623>0:C1/33/116/d; [turn iron golems to gold golems]
-!!HEv600&v623>0:C1/32/33/d; [turn stone golems to iron golems]
-!!HEv600&v623>0/v625>0:C1/116/117/d; [turn gold golems to diamond golems, again for Surcoat]
-!!HEv600&v623>0/v625>0:C1/33/116/d; [turn iron golems to gold golems, again for Surcoat]
+    !!if&j<=7;
+      !!VR(upgraded):S(TRUE);
+      !!FU(GetUpgradedMonster):P(mons[j])/?(upgMon:y);
+      !!HEv600:C0/i/(upgMon)/d;
+    !!en;
+  !!en;
 
-!!if&v1>v1:; impossible
-!!VRk:S0; [0 counted]
-!!DO607/0/6/1:P; [count number of first level troop stacks into k]
-!!IF&5/v624>0/k>0:Q2/z102049;
-!!IF&5/v624>0/k>0/2:M1/z102050;
-!!IF&5/v624>0/k>0/-2:M1/z102051;
-!!IF&-5:V2/0; [AI just says no]
-!!DO608/0/6/1&v624>0/k>0/2:P; [double qty in first level stacks]
-!!HEv600&5/v624>0/k>0/2:A3/67/1/1; [remove a Diplomat's Ring]
-!!UN&v624>0/2:R1; [redraw screen]
-!!en:;
+  !!IF&5/(upgraded):M1/z102037;
+!!en;
+
+; Pendant of Holiness
+!!FU(WOG_102_LearnPendantOfHolinessSpell)&v619>0:P;     [Call function if Pendant of Holiness equipped]
 
 
-!!if&v1>v1:; impossible
-!!VRk:S0 R6; [random slot # to start from]
-!!DO599/0/6/1:P; [find a slot with a creature - we always will]
-!!HEv600:C0/l/?j/?i; [get j type i qty of our random slot creature]
-!!UN&j>=0/i>0:N3/330/j/1; [get plural name of creature into z330]
-!!VRy1:S0 R1; [pick no-retaliation or attack-twice to offer]
-!!VRz331&y1=0:Sz102052;
-!!VRz331&y1=1:Sz102053;
-!!IF&5/v628>0/j>=0/i>0:Q2/z102054;
-!!IF|j<0/i=0:V2/0; [If no creatures, don't do anything]
-!!IF&-5:V2/0; [AI doesn't do it]
-!!IF&5/v628>0/2:M1/z102055;
-!!IF&5/v628>0/-2/j>=0/i>0:M1/z102056;
-!!HEv600&v628>0/2:A3/126/1/1; [remove an Orb Of Inhibition]
-!!MA&v628>0/2:Xj/?y2; [read current creature flags]
-!!VRy2&v628>0/2/y1=0:|32768; [attack twice bit]
-!!VRy2&v628>0/2/y1=1:|65536; [no retaliation bit]
-!!MA&v628>0/2:Xj/y2; [set creature flags!]
-!!en:;
+!!if&5;
+  ; Boots Of Polarity (works only for human player)
+  !!if&v620>0;
+    !!IF:Q2/z102040;
+    !!IF&-2:M1/z102041;
+    !!IF&2:M1/z102042;
 
-!!IF&5/v613>0:M1/z102057;
-!!VRy1:S30;
-!!VRy1:*v631; [Surcoat factor]
-!!HEv600&v613>0:Tv604/v605/v606/90/y1; [ogre fight]
+    !!if&2;
+      !!VRy1:S1700; [about a day's movement]
+      !!VRy1:*v631; [Surcoat factor]
 
-** end of function
+      !!HEv600:Wdy1; [add movement]
+      !!HEv600:A3/59/1/1; [remove Boots Of Polarity]
+    !!en;
+  !!en;
 
+  ; Garniture Of Interference (works only for human player)
+  !!if&v621>0;
+    ; Check if the hero can learn a new skill
+    !!FU(WOG_GetNumberOfSecSkills):Pv600/?(numSkills:y);
+    !!UN:C4881872/1/?(skillLimit:y);
 
-** function to try to give creatures to AI hero
-** x1=creature type x2=quantity
+    ; Get all the available choice of the hero
+    !!FU(NewIntArray):P?(availMagicSkillsList:y);
 
-!?FU603;
+    !!re i/(SKILL_FIRE_MAGIC)/(SKILL_EARTH_MAGIC);
+      !!HEv600:Si/?(skillLvl:y);
+      !!co&(skillLvl)<=(SKILL_NOT_LEARNED)/(numSkills)>=(skillLimit);
 
-!!VRv609:S0 -1; [-1 indicates no slot found]
-!!DO604/0/6/1:Px1; [iterate through slots]
-!!HEv600&v609>=0:C0/v609/?i/d; [see what's in the slot we found]
-!!HEv600&v609>=0/i=x1:C0/v609/x1/dx2; [gain creatures in existing slot]
-!!HEv600&v609>=0/i=-1:C0/v609/x1/x2; [set creatures in empty slot]
+      !!FU(Array_Push)&(skillLvl)<(SKILL_EXPERT):P(availMagicSkillsList)/i;
+    !!en;
 
-** end of function
+    !!SN:M(availMagicSkillsList)/?(size:y);
 
+    ; If the hero can learn (upgrade) any magic skill, pick one randomly
+    !!if&(size)>0;
+      !!VR(random:y):R0/1/(size) -1;
+      !!SN:M(availMagicSkillsList)/(random)/?v26;
+      !!HEv600:Sv26/?v27; [get level in that skill]
 
-** function to check if an AI hero slot is empty or has a given creature type
-** x1=creature type x16=slot
-** result is to set v609 to the slot # if usable
+      !!SN:H^secskill^/v26/0/?z329; [get name of skill]
+      !!VRv24:Sv26 *3 +3 +v27; [get picture number of skill at level given]
+      !!IF:Q2/(PIC_TYPE_SEC_SKILL)/v24/(MSG_TYPE_QUESTION)/z102043;
 
-!?FU604;
+      !!if&-2;
+        !!IF:M1/z102044;
+      !!el;
+        !!IF:Q1/(PIC_TYPE_SEC_SKILL)/v24/(MSG_TYPE_MES)/z102046;
+        !!HEv600:A3/(ART_GARNITURE_OF_INTERFERENCE)/1/1; [remove Garniture Of Interference]
+        !!HEv600:Sv26/d1; [give skill]
+      !!en;
+    !!en;
+  !!en;
+!!en;
 
-!!HEv600:C0/x16/?i/d; [check creature type without modifying]
-!!VRv609&i=-1:Sx16; [it's empty!]
-!!VRv609&i=x1:Sx16; [it's our type!]
+; Pendant Of Dispassion
+!!if&v622>0;
+  !!IF&5:Q1/34/v631/1/z102047;
+  !!HEv600:Fd/d/d/dv631; [+1 knowledge]
+!!en;
+
+; Pendant Of Free Will
+!!if&v623>0;
+  !!VR(upgraded):S(FALSE);
+  !!VR(mons[0]):C(MON_PEASANT)/(MON_GOLD_GOLEM)/(MON_IRON_GOLEM)/(MON_STONE_GOLEM);
+  !!VR(upgMons[4]:y):C(MON_ROGUE)/(MON_DIAMOND_GOLEM)/(MON_GOLD_GOLEM)/(MON_IRON_GOLEM);
+  !!VR(upgMons[2])&(surcoatBonus):C(MON_DIAMOND_GOLEM)/(MON_GOLD_GOLEM); [If Surcoat is active, change the upgrade type (upgrading twice)]
+
+  !!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+    !!HEv600:C0/i/?(type)/?(num);
+    !!co&(num)<=0;
+
+    !!re j/0/3;
+      !!br&(type)=(mons[j]);
+    !!en;
+
+    !!if&j<=3;
+      !!VR(upgraded):S(TRUE);
+      !!HEv600:C0/i/(upgMons[j])/d;
+    !!en;
+  !!en;
+
+  !!IF&5/(upgraded):M1/z102048;
+!!en;
+
+; Diplomat's Ring (works only for human players)
+!!if&5/v624>0;
+  ; Check if the hero has any level 1 monster
+  !!VR(hasLvOneMon:y):S(FALSE);
+
+  !!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+    !!HEv600:C0/i/?(mon:y)/?(qty:y);
+
+    !!if&(mon)>(NO_MON)/(qty)>0;
+      !!MA:L(mon)/?(lv:y);
+      !!VR(hasLvOneMon)&(lv)=(MON_MIN_LEVEL):S(TRUE);
+    !!en;
+  !!en;
+
+  ; Ask if the hero would like to double level 1 monsters if he/she has any
+  !!if&(hasLvOneMon);
+    !!IF:Q2/z102049;
+
+    ; Double level 1 if agreed
+    !!if&2;
+      !!IF:M1/z102050;
+
+      ; Loop through all the stacks and double level 1
+      !!re (slot:y)/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+        !!HEv600:C0/(slot)/?(mon:y)/?(qty:y);
+
+        !!if&(mon)>(NO_MON)/(qty)>0;
+          !!MA:L(mon)/?(lv:y);
+
+          !!if&(mon)>(NO_MON)/(qty)>0/(lv)=(MON_MIN_LEVEL);
+            !!VR(additionalUnits:y):S(qty) F0/i^wog_102_diplomatsRingLimit^ Sd<<(surcoatBonus);// double bonus for Surcoat
+            !!HEv600:C0/(slot)/?(mon)/d(additionalUnits); // add bonus creatures to the original creatures
+          !!en;
+        !!en;
+      !!en;
+
+      !!HEv600:A3/(ART_DIPLOMATS_RING)/1/1; [remove a Diplomat's Ring]
+
+      !!SN:D; [redraw screen]
+    ; Show msg if the hero disagreed
+    !!el;
+      !!IF:M1/z102051;
+    !!en;
+  !!en;
+!!en;
+
+; Orb Of Inhibition (works only for human players)
+!!if&5/v628>0;
+  ; Find a monater from the hero's army which did not learn either Attack Twice or No Retailiation
+  !!FU(WOG_102_GetRandMonFromHeroArmy):P?(mon:y);
+
+  ; Get the ability to learn if target is found
+  !!if&(mon)>(NO_MON);                  [if the hero does have a creature]
+    !!SN:H^monname^/(mon)/1/?z330;      [get plural name of creature into z330]
+    !!MA:X(mon)/?(monFlags:y);
+    !!VR(hasAtkTwice:y):S(monFlags) &(MON_FLAG_ATTACKS_TWICE);
+    !!VR(hasNoRetail:y):S(monFlags) &(MON_FLAG_NO_RETALIATION);
+
+    !!if&(hasAtkTwice)/(hasNoRetail)=(FALSE);
+      !!VR(ability:y):S1;
+    !!el&(hasAtkTwice)=(FALSE)/(hasNoRetail);
+      !!VR(ability):S0;
+    !!el&(hasAtkTwice)=(FALSE)/(hasNoRetail)=(FALSE);
+      !!VR(ability):R0/0/1;             [pick no-retaliation or attack-twice to offer]
+    !!en;
+
+    !!if&(ability)=0;
+      !!VRz331:Sz102052;
+    !!el;
+      !!VRz331:Sz102053;
+    !!en;
+
+    ; Ask if the player wants to procced with the trade
+    !!IF:Q2/z102054;
+
+    ; Remove the orb and add the ability to the found monster
+    !!if&2;
+      !!IF:M1/z102055;
+      !!HEv600:A3/(ART_ORB_OF_INHIBITION)/1/1; [remove an Orb Of Inhibition]
+
+      !!if&(ability)=0;
+        !!MA:X(mon)/d|(MON_FLAG_ATTACKS_TWICE); [attack twice]
+      !!el;
+        !!MA:X(mon)/d|(MON_FLAG_NO_RETALIATION); [no retaliation]
+      !!en;
+    ; Refuse the offer
+    !!el;
+      !!IF:M1/z102056;
+    !!en;
+  !!en;
+!!en;
+
+; Targ Of The Rampaging Ogre
+!!if&v613>0;
+  !!IF&5:M1/z102057;
+  !!VR(qty:y):S30 *v631;[Surcoat factor]
+  !!HEv600:Tv604/v605/v606/(MON_OGRE)/(qty); [ogre fight]
+!!en;
 
 ** end of function
 
@@ -435,160 +671,141 @@ mighty gorgons -> Nightmares
 
 !?FU606;
 
-!!HEv600:C0/x16/d/?i; [get # of troops in slot x16]
-!!VRk:+i; [add them up]
+!!HEv600:C0/x16/d/?v26; [get # of troops in slot x16]
+!!VRv24:+v26; [add them up]
 
 ** end of function
 
 
-** function to check a slot for first-level-troops
-** slot number is x16; result accumulates in k
+** function to get a creature form the hero's army which didn't learn either Attack Twice or No Retaliation
 
-!?FU607;
+!?FU(WOG_102_GetRandMonFromHeroArmy);
+!#VA(randMon:x);
 
-!!HEv600:C0/x16/?y1/?y2; [get y1 creature type y2 qty]
-!!FU609&y2>0:Py1; [check creature type for being first level]
-!!VRk&y2>0/j=1:+1; [count it]
+!!VR(randMon):S(NO_MON);
+!!FU(NewIntArray):P?(monArmy:y);
 
-** end of function
+!!re i/(ARMY_SLOT_FIRST)/(ARMY_SLOT_LAST);
+  !!HEv600:C0/i/?(mon:y)/?(qty:y);
 
+  !!if&(mon)>(NO_MON)/(qty)>0;
+    !!MA:X(mon)/?(monFlags:y);
 
-** function to double first level troop slots
-** slot number is x16
+    !!VR(hasAtkTwice:y):S(monFlags) &(MON_FLAG_ATTACKS_TWICE);
+    !!VR(hasNoRetail:y):S(monFlags) &(MON_FLAG_NO_RETALIATION);
 
-!?FU608;
+    !!FU(Array_Push)|(hasAtkTwice)=(FALSE)/(hasNoRetail)=(FALSE):P(monArmy)/(mon);
+  !!en;
+!!en;
 
-!!HEv600:C0/x16/?y1/?y2; [get y1 creature type y2 qty]
-!!FU609&y2>0:Py1; [check creature type for being first level]
-!!VRy2:*2; [double qty]
-!!VRy2&v625>0:*2; [again for Surcoat]
-!!HEv600&y2>0/j=1:C0/x16/y1/y2; [double the stack]
+!!SN:M(monArmy)/?(size:y);
 
-** end of function
+!!if&(size)>0;
+  !!VR(maxIndex:y):S(size) -1;
+  !!VR(random:y):R0/0/(maxIndex);
 
-
-** function to check creature type for being first level
-** type checked is x1, result (0 or 1) returned in j
-
-!?FU609;
-
-!!VRj:S0;
-!!VRj&x1=138:S1; [halflings]
-!!VRj&x1=139:S1; [peasants]
-!!VRj&x1=143:S1; [rogues]
-!!VRx1::2; [now normal and upgraded are same number]
-!!VRj&x1=0:S1; [pikemen]
-!!VRj&x1=7:S1; [centaurs]
-!!VRj&x1=14:S1; [gremlins]
-!!VRj&x1=21:S1; [imps]
-!!VRj&x1=28:S1; [skeletons]
-!!VRj&x1=35:S1; [troglodytes]
-!!VRj&x1=42:S1; [goblins]
-!!VRj&x1=49:S1; [gnolls]
-!!VRj&x1=59:S1; [pixies]
+  !!SN:M(monArmy)/(random)/?(randMon);
+!!en;
 
 ** end of function
 
 
-** function to check a slot for creatures
-** k = random slot to check, l = slot found
-
-!?FU599;
-
-!!VRy1:Sk;
-!!VRy1:%7; [now we have a usable slot number]
-!!HEv600:C0/y1/?i/?j; [get i type j qty]
-!!VRl&i<>-1/j>0:Sy1; [it's got something!]
-!!VRk:+1; [next slot]
-
-** end of function
-
-
-** trigger for visiting towns/castles
-
-!?OB98;
-
-!!UN:P102/?y-1; [Check if Artifact Boost script is enabled in WoGify Options]
-!!FU&y-1<>1:E;     [Exit if it isn't]
-
-!!if&v1>v1:; impossible
-!!HE-1:A2/66/0/?v628; [check for Statesman's Medal]
-!!IF:V2/0; [AI won't give medal]
-!!IF&1000/v628>0:Q2/8/66/2/z102058;
-!!IF&1000/v628>0/-2:M1/z102059;
-!!FU605&2:Pv998/v999/v1000; [handle giving the medal]
-!!en:;
-
-** end of trigger
-
+** trigger for clicking on Village Hall
 ** function to handle statesman's medal when trade chosen
 
-!?FU605;
+!?FU(OnTownMouseClick)&i^mouse_action^=(MOUSE_LMB_PRESSED)/999; // trigger for click inside a town (TH0 will not work, because Wog crashes, if you build something inside a TH0-trigger)
+!!UN:P102/?y-1; [Check if Artifact Boost script is enabled in WoGify Options]
+!!FU&y-1<>1:E;     [Exit if it isn't]
+!#VA(usedY[3]:y);
+!!OW:C?y99/?(clickedPlayer:y);
+!!CM:I?y-1; // get the clicked field
+!!FU|y-1<10/y-1>13:E; // exit, if not clicked at Village-, Town- or City-Hall or Capitol
+!!CA-1:H0/?(heroId:y) H1/?(anotherHeroId:y) O?(townOwner:y); // get garrison and visiting hero / town number
+!!FU&(townOwner)<>(clickedPlayer):E;
+!!VRv628:S0; // init
 
-!!HE-1:A3/66/1/1; [remove Statesman's Medal]
-!!CAx1/x2/x3:T?y7; [get town type]
+!!HE(heroId:y)&(heroId:y)>-1:A2/(ART_STATESMANS_MEDAL)/?y99/?v628; // check for Statesman's Medal - garrision hero
+!!VR(heroId:y)&v628=0:S(anotherHeroId:y); // use visiting instead, if garrison has no Medal (or there is no)
+!!HE(heroId:y)&(heroId:y)>-1:A2/(ART_STATESMANS_MEDAL)/?y99/?v628 O?(heroOwner:y); // check for Statesman's Medal - garrision hero
 
-!!CAx1/x2/x3:B3/37; [check for upgraded dwelling 1]
-!!VRy1:S0;
-!!VRy1&-1:S1; [y1=1 means we built upgraded dwelling 1]
-!!CAx1/x2/x3:B3/30; [check for basic dwelling 1 - to see if we should add creatures]
-!!CAx1/x2/x3&-1:B6/30; [build basic dwelling if needed]
-!!CAx1/x2/x3:B6/37; [build upgraded dwelling 1]
-!!VRy8:Sy7;
-!!VRy8:*14; [get number of 1st level creature]
-!!VRy8:+1; [upgraded]
-!!VRy8&y8=113:S119; [sprites]
-!!MA:Gy8/?y9; [get growth rate of that creature]
-!!CAx1/x2/x3&-1:M1/0/d/y9; [add creatures (0 = 1st level) if dwelling 1 wasn't there before]
-!!UN:N2/326/y7/37; [name of upgrade building]
+!!FU|v628<1/(heroOwner:y)<>(townOwner):E; // exit, if nobody has the medal
 
-!!VRv640:C21/17/21/21/17/22/21/21/21; [look-up table of special building numbers by town]
-!!VRv600:Sy7;
-!!VRv600:+640; [now vv600 = special building number]
-!!VRk:S1; [assume we met requirements to build it]
-!!CAx1/x2/x3:B3/33; [check for dwelling 4 (barracks)]
-!!VRk&-1/y7=0:S0; [needed for castle's stables]
-!!CAx1/x2/x3:B3/7; [check for fort]
-!!VRk&-1/y7=2:S0; [needed for tower's lookout tower]
-!!VRk&-1/y7=7:S0; [and for fortress's glyphs]
-!!VRk&-1/y7=4:S0; [and for necropolis's cover of darkness]
-!!VRk&-1/y7=3:S0; [and for inferno's brimstone stormclouds]
-!!CAx1/x2/x3:B3/14; [check for market]
-!!VRk&-1/y7=6:S0; [needed for stronghold's freelancer's guild]
-!!VRk&y7=8:S0; [conflux gets no special building]
-!!CAx1/x2/x3:B3/vv600; [check for special building]
-!!VRy2:S0;
-!!VRy2&-1/k=1:S1; [y2=1 means we built special building]
-!!CAx1/x2/x3&-1/k=1:B6/vv600; [build special building if requirements met and not there]
-!!UN:N2/327/y7/vv600; [name of special building]
-!!HE-1&y2=1/y7=2:O?v602; [get hero owner]
-!!UN&y2=1/y7=2:Sv604/v605/v606/v602/20; [reveal area for lookout tower]
-!!UN&y2=1/y7=2:R1; [redraw screen]
+*!IF:V2/0; [AI won't give medal]
+!!FU(NewIntArray):P?(buldingList:y);
+!!CA(CURRENT_TOWN):U?(townId:y);
+!!FU(WOG_102_GetBuildingArrayList):P(townId)/(buldingList:y);
+!!SN:M(buldingList:y)/?(size:y);
+!!if&(size);
 
-!!VRy3:S0; [assume nothing built]
-!!CAx1/x2/x3:B3/14; [check for market]
-!!VRy3&1:S1; [y3=1 means market there]
-!!CAx1/x2/x3&y3=1:B3/15; [check for resource silo]
-!!VRy3&1:S0; [now y3=1 means market but no silo]
-!!CAx1/x2/x3&y3=1:B6/15; [build resource silo]
-!!UN:N2/328/y7/15; [name of resource silo]
+  !!IF:Q2/(PIC_TYPE_ART)/(ART_STATESMANS_MEDAL)/(MSG_TYPE_QUESTION)/z102058;
+  !!if&2;
 
-!!IF&y1=1/y2=1/y3>0:M1/z102060;
-!!IF&y1=1/y2=1/y3=0:M1/z102061;
-!!IF&y1=1/y2=0/y3>0:M1/z102062;
-!!IF&y1=0/y2=1/y3>0:M1/z102063;
-!!IF&y1=1/y2=0/y3=0:M1/z102064;
-!!IF&y1=0/y2=1/y3=0:M1/z102065;
-!!IF&y1=0/y2=0/y3>0:M1/z102066;
-!!IF&y1=0/y2=0/y3=0:M1/z102067;
+    *!FU(WOG_Town_IsPossibleToBuildBuilding):P(townId)/30/?(canBuild:y);
+
+    !!re i/0/(size)/1/-1;
+      !!SN:M(buldingList)/i/?(buildingId:y);
+      !!FU(WOG_Town_BuildBuildingWithAnimation):P(buildingId:y);      
+    !!en;
+
+    ; Show info and remove medal
+    *!IF&y1=1/y2=1/y3>0:M1/z102060;
+    *!IF&y1=1/y2=1/y3=0:M1/z102061;
+    *!IF&y1=1/y2=0/y3>0:M1/z102062;
+    *!IF&y1=0/y2=1/y3>0:M1/z102063;
+    *!IF&y1=1/y2=0/y3=0:M1/z102064;
+    *!IF&y1=0/y2=1/y3=0:M1/z102065;
+    *!IF&y1=0/y2=0/y3>0:M1/z102066;
+    *!VRy4:Sy1 +y2 +y3; // if y4 is now 0, nothing is built
+
+    *!if&y4=0;
+      *!IF:M1/z102067; // nothing built
+    *!el;
+      !!HE(heroId:y):A3/(ART_STATESMANS_MEDAL)/1/1; // remove Statesman's Medal, if something is built
+    *!en;
+      !!CM:R0;
+
+  !!en;
+!!en;
+!?FU(WOG_102_GetBuildingArrayList);
+!#VA(townId:x) (arrayId:x);
+
+!!CA0/(townId):T?(townType:y); [get town type]
+
+!!VR(specBuidldingId:y):S21;
+!!if|(townType:y)=(TOWN_RAMPART)/(townType:y)=(TOWN_NECROPOLIS);
+  !!VR(specBuidldingId:y):S17;
+!!el&(townType:y)=(TOWN_DUNGEON);
+  !!VR(specBuidldingId:y):S22;
+!!en;
+!#VA(buildings[4]:y);
+!!VR(buildings[0]):C30/37/(specBuidldingId)/15;
+!!CA0/(townId):B3/30;                          [check if little building isn't built]
+!!if&-1;
+  !!VR(trick:y):S(TRUE);
+  !!CA0/(townId):B6/30;
+!!en;
+!!re i/0/(buildings[SIZE])/1/-1;
+  !!CA0/(townId):B3/(buildings[i]);
+  !!if&-1;
+    !!FU(WOG_Town_IsPossibleToBuildBuilding):P(townId)/(buildings[i])/?(canBuild:y);
+    !!FU(Array_Push)&(canBuild):P(arrayId)/(buildings[i]);
+  !!en;
+!!en;
+!!if&(trick:y);                                           [return to builded state]
+  !!VR(trick:y):S(TRUE);
+  !!CA0/(townId):B2/30;
+!!en;
 
 ** end of function
 
-!?FU612;     [Function for Pendant of Holiness]
+!?FU(WOG_102_LearnPendantOfHolinessSpell);     [Function for Pendant of Holiness]
 
-!!HEv600:A2/0/?k/?l; [check for spell book]
-!!IF&5/l=0:Q1/8/102/1/z102038;     [Message if no spell book]
-!!FU&l=0:E;     [Exit if no spell book]
+!!HEv600:A2/0/?v24/?v25; [check for spell book]
+
+!!if&v25=0;
+  !!IF&5:Q1/8/102/1/z102038;     [Message if no spell book]
+  !!FU:E;     [Exit if no spell book]
+!!en;
 
 !!IF:V1/0;     [Init flag for counting spells]
 !!VRv1:S0;     [Init v var that carries spell number]
@@ -632,4 +849,4 @@ mighty gorgons -> Nightmares
 !!VRvx1&x2=1/-1/x3=1:Sx16;
 !!VRx16&x2=1/-1/x3=1:S999;
 !!VRx2&x2>1/-1:-1;
-
+ 

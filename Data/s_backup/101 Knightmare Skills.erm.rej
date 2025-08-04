@@ -1,0 +1,9 @@
+diff a/Knightmare_Mods/Knightmare Heroes/Data/s/101 Knightmare Skills.erm b/Knightmare_Mods/Knightmare Heroes/Data/s/101 Knightmare Skills.erm	(rejected hunks)
+@@ -38,7 +38,6 @@
+ !!SS60:P?y60; !!SN:W^Spell_Specialist.SS60:P^/y60;
+ 
+ !?PI; Knightmare Spell specialists
+-!!FU:E; Covered by FU55104
+ !!SN:W^Knightmare_Spells^/?y1; !!FU&y1>0:E;
+ !!SS1:P?y1; !!SN:W^Spell_Specialist.SS1:P^/y1;
+ !!SS4:P?y4; !!SN:W^Spell_Specialist.SS4:P^/y4;

@@ -1,0 +1,96 @@
+ZVSE
+********************************************************************************
+ Swap troops
+********************************************************************************
+** Transfer or Swap Troops between Heroes on Hero Visiting Screen
+** by Timothy Pulver version 0.1
+** Last Updated: September 7, 2006
+
+** Functions: FU29131-FU29134
+
+!?CM3; [Hero Visiting screen mouse-click is trigger]
+!!UN:P184/?v1; [Check if Disable Autosave is selected: v1]
+!!FU&v1<>1:E;
+!!CM:F?y-1 S?y-2; [Flags: y-1, Subtype: y-2]
+!!CM:A?y-3/?y-4; [x:y-3, y:y-4]
+!!FU|y-3<379/y-3>423/y-4>=269/y-4<=258:E; [Left arrow clicked: y-5=1]
+!!FU&y-1<>0/y-2<>12:E; [Exit if no arrow clicked or not a left click]
+
+!!CM:H?y-6/?y-7; [Left hero: y-6, Right hero: y-7]
+!!HEy-6:B0/?z-1; [Left hero's name: z-1]
+!!HEy-7:B0/?z-2; [Right hero's name: z-2]
+
+!!VRz1:S^Transfer troops^;
+!!VRz2:S^Give %Z-2's troops to %Z-1^;
+!!VRz3:S^Give %Z-1's troops to %Z-2^;
+!!VRz4:S^Swap %Z-1 and %Z-2's troops^;
+!!VRz5:S^Exit (no change)^;
+!!IF:G1/2/8/z1/z2/z3/z4/z5;
+!!FU&v2=8:E;
+
+!!DO29131/0/6/1&v2=1:Py-7/y-6; [Give right hero's troops to left hero]
+!!DO29131/0/6/1&v2=2:Py-6/y-7; [Give left hero's troops to right hero]
+!!DO29134/0/6/1&v2=4:Py-6/y-7; [Swap left and right heroes' troops]
+
+--------------------------------------------------------------------------------
+
+ [Transfer Troops]
+ [x1=hero giving troops, x2=hero receiving troops]
+!?FU29131;
+!!HEx1:C0/x16/?y1/?y2/?y3; [Hero giving troops, Slot x16, Type: y1, Number: y2, XP: y3]
+!!EXx1/x16:R?y4/?y5/?y6/?y7; [Warlord's Banner: y4=1 if yes, Type: y5=156, Option: y6, Extra Copies: y7]
+!!VRy-8:S0; [Initialize y-8 to 0]
+!!DO29132/0/6/1:Px1/x2/y1/y2/y3/x16/y4/y6/y7; [Add troop stack to receiving hero's existing troops, if there's a match]
+!!DO29133/0/6/1&y-8=0:Px1/x2/y1/y2/y3/x16/y4/y6/y7; [If receiving hero has no troops of same type, put in empty slot]
+
+--------------------------------------------------------------------------------
+
+ [Add transferred troops to receiving hero's existing stack of same type (if any), y-8 set to 1 if troops given]
+ [x1=hero giving troops, x2=hero receiving troops, x3=new troop type]
+ [x4=new troop numbers, x5=new troop XP, x6=slot number of given troops]
+ [x7=new troop's Warlord's Banner (1=yes), x8=new troop's Banner Option, x9=new troop's extra Banners]
+!?FU29132;
+!!HEx2:C0/x16/?y1/?y2/?y3; [Receiving hero's troops in slot x16: y1=type, y2=number, y3=XP]
+!!FU|y1<0/y1<>x3/y2<=0:E; [Exit if no match or slot is empty]
+!!EXx2/x16:R?y4/?y5/?y6/?y7; [Warlord's Banner: y4=1 if yes, Type: y5=156, Option: y6, Extra Copies: y7]
+!!HEx2:C0/x16/d/dx4/x5/0; [Add new troops to receiving hero's existing stack, XP is averaged]
+!!EXx2/x16&y4=0/x7=1:R1/156/x8/x9; [Set Warlord's Banner with option and extra copies, if any]
+!!EXx2/x16&y4=1/x7=0:R1/156/y6/y7; [Preserve existing Warlord's Banner with extra copies, if any]
+!!VRy8&y4=1/x7=1:S1 +y7 +x9; [If both have Banners, add all Warlord's Banners together: y8]
+!!VRy8&y8>3:S3; [Maximum of 3 extra Banners per stack: y8]
+!!EXx2/x16&y4=1/x7=1:R1/156/y6/y8; [Preserve existing Warlord's Banner option plus add extra copies]
+!!HEx1:C0/x6/-1/0/0/2; [Set giving hero's slot x6 to empty]
+!!VRy-8:S1;
+!!VRx16:S999; [Exit loop]
+
+--------------------------------------------------------------------------------
+
+ [Transfer troops to receiving hero's empty slot (if any)]
+ [x1=hero giving troops, x2=hero receiving troops, x3=new troop type]
+ [x4=new troop numbers, x5=new troop XP, x6=slot number of given troops]
+ [x7=new troop's Warlord's Banner (1=yes), x8=new troop's Banner Option, x9=new troop's extra Banners]
+!?FU29133;
+!!HEx2:C0/x16/?y1/?y2; [Receiving hero's troops in slot x16: y1=type, y2=number]
+!!FU|y1>=0/y2>0:E; [Exit if slot isn't empty]
+!!HEx2:C0/x16/x3/x4/x5/2; [Place troops in receiving hero's empty troop slot]
+!!EXx2/x16&x7=1:R1/156/x8/x9; [Set Warlord's Banner with option and extra copies, if any]
+!!HEx1:C0/x6/-1/0/0/2; [Set giving hero's slot x6 to empty]
+!!VRx16:S999; [Exit loop]
+
+--------------------------------------------------------------------------------
+
+ [Swap heroes' troops]
+ [x1=left hero, x2=right hero]
+!?FU29134;
+!!HEx1:C0/x16/?y1/?y2/?y3; [Left Hero, Slot x16, Type: y1, Number: y2, XP: y3]
+!!HEx2:C0/x16/?y4/?y5/?y6; [Right Hero, Slot x16, Type: y4, Number: y5, XP: y6]
+!!EXx1/x16:R?y7/?y8/?y9/?y10; [Warlord's Banner: y7=1 if yes, Type: y8=156, Option: y9, Extra Copies: y10]
+!!EXx2/x16:R?y11/?y12/?y13/?y14; [Warlord's Banner: y11=1 if yes, Type: y12=156, Option: y13, Extra Copies: y14]
+!!HEx1:C0/x16/y4/y5/y6/2; [Swap stack x16 from right hero to left hero]
+!!EXx1/x16:Ry11/y12/y13/y14; [Set left hero's Warlord's Banner with option and extra copies]
+!!HEx2:C0/x16/y1/y2/y3/2; [Swap stack x16 from left hero to right hero]
+!!EXx2/x16:Ry7/y8/y9/y10; [Set right hero's Warlord's Banner with option and extra copies]
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+

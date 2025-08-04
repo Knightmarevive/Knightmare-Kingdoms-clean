@@ -1,0 +1,39 @@
+ZVSE
+
+!?FU(KK_LookOutTower);
+!!OW:C?y9; !!OW:Iy9/?y8; !!FU&y8=1:E;
+!!HEx1:N?y1;!!SN:L^new_advmap_objects.era^/?y3; !!SN:Ay3/^proxyWitchHut^/?y4; !!SN:Ey4/1/y1/3;
+!?OB58;
+!!FU(KK_LookOutTower):P-1;
+!?OB60;
+!!FU(KK_LookOutTower):P-1;
+
+
+!?FU(KK_Machinery_Learn);
+!!OW:C?y9; !!OW:Iy9/?y8; !!FU&y8=1:E;
+!!HEx1:N?y1;!!SN:L^new_advmap_objects.era^/?y3; !!SN:Ay3/^proxyWitchHut^/?y4; !!SN:Ey4/1/y1/27;
+!?OB106;
+!!FU(KK_Machinery_Learn):P-1;
+
+!?FU(KK_Conflux_University);
+!!OW:C?y9; !!OW:Iy9/?y8; !!FU&y8=1:E; !!CM:R0;
+!!HEx1:N?y1;!!SN:L^new_advmap_objects.era^/?y3; !!SN:Ay3/^proxyWitchHut^/?y4; 
+!!SN:Ey4/1/y1/14;!!SN:Ey4/1/y1/15;!!SN:Ey4/1/y1/16;!!SN:Ey4/1/y1/17;
+
+
+!?CM1;
+!!CM:I?y1; !!CA-1:T?y2; !!VRy2:%9; 
+!!CA-1:H1/?y3; !!FU&y3<0:E;
+!_!FU(KK_LookOutTower)&y1=21/y2=2:Py3;
+!_!FU(KK_Machinery_Learn)&y1=22/y2=6:Py3;
+!_!FU(KK_Conflux_University)&y1=21/y2=8:Py3;
+!!IF&y1=21/y2=8:M^University^;
+
+!?FU(OnGameEnter);
+!!SN:L^new_advmap_objects.era^/?y3; !!SN:Ay3/^set_default_hill_fort_multiplier_promile^/?y4; 
+!!SN:Ey4/1/1500/1750/1750/1750/2000/2000/3000;
+
+!?HM-1; !!FU:E;
+!!SN:L^new_advmap_objects.era^/?y3; !!SN:Ay3/^set_default_hill_fort_multiplier_promile^/?y4; 
+!!SN:Ey4/1/9999/9999/9999/9999/9999/9999/9999;
+

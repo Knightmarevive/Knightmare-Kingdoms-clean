@@ -1,0 +1,26 @@
+ZVSE
+
+!?PI;
+!_!UN:C7496977/4/1024;
+!?GM0;
+!_!UN:C7496977/4/1024;
+
+
+
+!?PI; !!FU:E;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Backpack^;
+!!VRy99:Sv1; !!IF:M^%Y99^;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.BCKPCK^;
+!!VRy99:Sv1; !!IF:M^%Y99^;
+!?GM0; !!FU:E;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Backpack^;
+!!VRy99:Sv1; !!IF:M^%Y99^;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.BCKPCK^;
+!!VRy99:Sv1; !!IF:M^%Y99^;
+
+!?CM2; !!FU:E;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Backpack^;
+!!VRy99:Sv1; !!IF:L^%Y99^;
+!!SN:L^Era.dll^/?y1 Ay1/^GetButtonID^/?y2 Ey2/0/^Knightmare.BCKPCK^;
+!!VRy99:Sv1; !!IF:L^%Y99^;
+

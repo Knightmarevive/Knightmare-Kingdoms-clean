@@ -1,0 +1,27 @@
+ZVSE
+
+;Portable Altar of Sacrifice
+;2 november 2018
+;Authors: Valery, Igrik
+
+!?FU77003; !!FU:E;
+!!SN:L^Era.dll^/?y1 Ay1/^GetGameState^/?y2 Ey2/1/?y98;
+!!FU&y99<>5117840:E; hero screen only
+!!SN:X?y1;
+!!FU&y1<>75:E;  K key
+!!HE-1:Ed/?y2 B0/?z2 N?y3; get exp, name and ID
+!!IF&y2<10:M^%Z2 needs to be at least level 10 to use the portable Altar^;
+!!FU&y2<10:E;
+!!FU644505:Py3;
+
+!?FU644505;
+; x1 - hero number
+!!UN:R5/0/1;
+!!VRy1:S8943212 +32; _ptr_ var "v2" EDIT: v10
+!!SN:E7411341/1/x1;        0x71168D
+!!VRy2:Sv1;
+!!HEx1:O?y3;
+!!SN:E5636192/2/y1/y2/y3;  0x560060
+!!SN:E6289408/2/y1/-1/-1;  0x5FF800
+!!SN:E5658176/2/y1/0;      0x565640
+

@@ -1,0 +1,167 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=1.7(July).2016
+
+!_#HE0:S26/?v1; !_#HE0&v1<3:S26/d1;
+
+** Skill28 is now Damnation **
+
+
+
+!?FU77012; New event "OnStackToStackDamage"
+!_!FU:E;
+
+!!SN:X?y55/?y10/?y40/?y41/?y42/?y43/?y44/?y45/?y46;
+Detect Good
+!_!BG:E?y10;
+!!FU&y10<0:E;
+!!FU&y55<0:E;
+!!FU&y55>41:E;
+!!FU&y46>0:E;
+
+
+!!BMy55:I?y88; !!VRy88&y88<0:S0;
+
+!!BMy55:T?y21 F?y99; !!VRy99:&64;
+!!FU&y99>0:E; //Exit if source is war machine
+!!FU&y21<0:E; !!FU&y21>999:E;
+!!MA:Oy21/?y22;
+
+
+; Good Units cannot use Damnation
+; maybe add some drawback to this?
+!!if&y22>=0/y22<=2/y99=0:;
+  !!BA:Hy88/?y2; !!FU&y2<0:E; 
+  !_!SN:W^HE%Y2 Resistance SS^/?y24;
+  !!HEy2:S28/?y24; !!FU&y24<=0:E;
+  !!VRz1:S^Your Evil Deity weakens the Pure Soul by reducing it's Damage^; 
+  !!MM:Sz1; !!VRy77:Sy24 *4 *x4 :100; !!VRx4:-y77;
+  !!FU:E;
+!!en:;
+
+!_!VRy10&y22>=3/y22<=5/y99=0:Sy55;
+; Evil Units hits themselves,
+; if are not war machines
+
+!!BMy10:F?y99; !!VRy99:&64; !!FU&y99>0:E; //Exit if target is war machine
+
+!!BMy10:T?y11;
+!!FU&y11<0:E;
+!!MA:Oy11/?y12;
+!_!IF:M^Boo! y10=%Y10 y11=%Y11 y12=%Y12 y55=%Y55^;
+!!FU|y12<0/y12>2:E; // Only hits Good
+
+!!BMy55:T?y21;
+
+
+!_!BG:Q?y88; !!BA:Hy88/?y2;
+!_!IF:M^Boo! y2=%Y2 y88=%Y88^;
+!!FU&y2<0:E;
+!!HEy2:A2/164/?y98/?y99;
+
+!_!IF:M^Boo!^;
+
+
+!_!BG:Q?y88;
+
+
+!!HEy2:X?y3/?y4/?y5/?y6/?y7/?y8/?y9;  y5-y9 are dummies
+!!HEy2:E?y20/?y21/1; //check level and speciality
+
+!_!SN:W^HE%Y2 Resistance SS^/?y24;
+!_!IF|y24<0/y24>15:M^Error y24=%Y24^;
+!!HEy2:S28/?y24;
+
+!!if|y3<>0/y4<>28:;
+  !!FU&y24<=0:E;    //Only Damned may pass this line
+!!en:;
+
+!_!BG:N?y55;    BM of attacker
+!!BMy55:N?y66;  Count of attacker
+!!BMy55:T?y68;  Type of attacker
+!!MA:Fy68/?y69; Fight Value
+
+!!BMy55:T?y56;
+!!if&y56>=174/y56<=191:; Commander
+!!COy2:X2/?y66; Take Commander Level as Count
+
+!!VRy66::3+5;   But processed by math
+!!VRy66:*y66 :3;
+
+!_!VRy69:S50; Fight Value simulation
+!!en:;
+
+
+How Much to strike?
+
+!!VRy26:Sy21 *5  +100;      //Specialist Bonus
+!!VRy27:Sy24 *50 +25;      //SS Level Bonus
+
+!!VRy77:Sy66;                //Attacking Stack Count Bonus
+!!VRy27&y3=0/y4=29:  *y26;   //SS *Specialist Bonus
+!!VRy27|y3<>0/y4<>29:*100;   //SS *100
+
+!!VRy30:Sc :7 +7;          //Week Bonus
+!!VRy27:*y30 *y77;         //Multiplied Bonus
+!!VRy27&y99>0: *3;         //Horned ring Bonus
+!!VRy27::1000 *y69 :21000;  //Final math
+
+!!VRy27&y27<0:S536870911;  //Overflow Fix
+!!BMy10:V82 Ky27; Go Back to Hell Bastard !
+!!VRz1:S^Your Evil Deity strike the Pure Soul by %Y27 Damage^; !!MM:Sz1;
+
+
+
+!?CM2; Hero Screen,
+!!HE-1:N?y10;
+!!HEy10:X?y11/?y12/?y13/?y14/?y15/?y16/?y17;
+
+!_!FU&y10<>0:E; Orrin
+!!if|y11<>0/y12<>28:;
+  !!FU:E; Exit if not Damnation Specialist
+!!en:;
+
+!!CM:I?y1 S?y2 F?y3;
+!!if&y1=118:;
+
+!!VRz2:S^Damnation Gives all your units additional damage versus good units.
+The formula is Creature_Fight_Value * Stack_Count * (Skill*50+25) + (Specialist_Level*5+100) * (Week+7) / 7 000 000^;
+
+!!IF:N20/83/8/2/9/48;
+!!IF:N^%Z2^;
+!_!IF:M^%Z2^;
+!!CM:R0;
+!!en:;
+
+!?FU55128; Fix for Damnation Specialist
+!!SN:X?y1/0; //registers addres
+
+ErmHandlerFunc receives two SN:X arguments: (Context pointer, ExecuteOverwrittenCode? = 1)
+If you set ExecuteOverwrittenCode to 0, be sure to change context.RetAddr
+Context structure (offsets in brackets):
+: EDI (0), ESI (4), EBP (8), ESP (12), EBX (16), EDX (20), ECX (24), EAX (28)
+: RetAddr (32)
+
+!!VRy2:Sy1 +28; // y2 is pointer to EAX
+!!UN:Cy2/4/?y3; // get EAX to y3
+!!VRy4:Sy3 +26; // y4 is pointer to hero number
+!!UN:Cy4/4/?y5; // get hero number to y5
+
+!!HEy5:X?y11/?y12/?y13/?y14/?y15/?y16/?y17;
+
+!!VRy22:Sy1 +32;
+
+!!if|y11<>0/y12<>28:;
+  !!UN:Cy22/4/7717637;
+  !!FU:E; Exit if not Damnation Specialist
+!!en:;
+
+!!UN:Cy22/4/7717607;
+
+!?BA0&1000; !!FU:E; disabled
+!!SN:L^EraPlugins\erm_hooker.era^/?y1 Ay1/^SetHook^/?y2;
+!!SN:Ey2/1/7717601/55128;
+!?BA1&1000; !!FU:E; disabled
+!!SN:L^EraPlugins\erm_hooker.era^/?y1 Ay1/^UnsetHook^/?y2;
+!!SN:Ey2/1/7717601;

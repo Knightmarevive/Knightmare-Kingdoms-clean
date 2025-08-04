@@ -1,12 +1,10 @@
-ZVSE
-ERMS_ScriptDate=10.5(May).2012
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ZV_SE2
 
 ** TownC ERM script v1.2 - Donald X. Vaccarino, Jonas Gustafsson and Timothy Pulver,
 ** with some balancing suggestions from Kerill Kennedy.
 ** Requires WOG version 3.58 or later
 ** Updated  July 26, 2004
+** Updated Jan 2023 by Archer30
 
 ** Turns Conflux into a town of neutral creatures
 ** Fire/Air Messengers changed into new level 3 monsters
@@ -30,171 +28,23 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 ** Variables Used: v900-914 (not exclusive)
 ** Flags Used: none
 ** Functions Used: 6100-6106
-** Timers Used: TM2 (script00)
 
 ** Timer routine
 
-!?TM2&$day$=1/$once$=1; // only once at day 1
-!!UN:P67/?y-1; [check if script is enabled: y-1]
-!!FU6104&y-1=1:P; // do conversion if script is enabled
+!?FU(OnEveryDay)&i^timerDay^=1/i^timerOnce^; [only once at day 1]
+!!UN:P67/?(neutralTownOn:y);            [check if script is enabled]
+
+!!if&(neutralTownOn);                   [do conversion if script is enabled]
+  !!FU(WOG_67_SetUpMapObjectws):P; 
+  !!FU(WOG_67_SetNewMonsterFactions):P;
+!!en;
 
 ** end of timer routine
 
 
 ** function to convert Conflux into neutral town
 
-!?FU6104;
-
-// change Dwellings in the town
-!!UN:T8/0/0/138; [level 1 no upg - Halfling]
-!!UN:T8/0/1/143; [level 1    upg - Rogue]
-!!UN:T8/1/0/140; [level 2 no upg - Boar]
-!!UN:T8/1/1/142; [level 2    upg - Nomad]
-!!UN:T8/2/0/164; [level 3 no upg - Fire messenger]
-!!UN:T8/2/1/166; [level 3    upg - Air messenger]
-!!UN:T8/3/0/194; [level 4 no upg - Werewolf]
-!!UN:T8/3/1/144; [level 4    upg - Troll]
-!!UN:T8/4/0/193; [level 5 no upg - Sorceress]
-!!UN:T8/4/1/136; [level 5    upg - Enchanter]
-!!UN:T8/5/0/195; [level 6 no upg - Hell Steed]
-!!UN:T8/5/1/172; [level 6    upg - Nightmare]
-!!UN:T8/6/0/168; [level 7 no upg - Gorynych]
-!!UN:T8/6/1/135; [level 7    upg - Rust Dragon]
-
-
-!!MA:U138/143; [upg halfing to rogue]
-!!MA:U140/142; [upg boar to nomad]
-!!MA:U164/166; [upg fire msg to air msg]
-!!MA:U194/144; [upg werewolf to troll]
-!!MA:U193/136; [upg sorceress to enchanter]
-!!MA:U195/172; [upg hellsteed to nightmare]
-!!MA:U168/135; [upg gorynych to rust dragon]
-
-!!MA:O138/8; [these creatures all count as being conflux troops]
-!!MA:O143/8;
-!!MA:O140/8;
-!!MA:O142/8;
-!!MA:O144/8;
-!!MA:O164/8;
-!!MA:O166/8;
-!!MA:O193/8;
-!!MA:O136/8;
-!!MA:O172/8;
-!!MA:O168/8;
-!!MA:O135/8;
-!!MA:O195/8;
-!!MA:O194/8;
-
- [change messengers]
-
-!!MA:L164/2; [level 2 (3)]
-!!MA:L166/2;
-!!MA:C164/6/250; [costs $250]
-!!MA:C166/6/300; [costs $300]
-!!MA:F4/?v600; [griffin fight value]
-!!MA:F164/v600;
-!!MA:F5/?v600; [royal griffin fight value]
-!!MA:F166/v600;
-!!MA:I4/?v600; [griffin ai value]
-!!MA:I164/v600;
-!!MA:I5/?v600; [royal griffin ai value]
-!!MA:I166/v600;
-!!MA:G4/?v600; [griffin grow rate]
-!!MA:G164/v600;
-!!MA:G166/v600;
-!!MA:R4/?v600; [griffin grow H]
-!!MA:R164/v600;
-!!MA:R166/v600;
-!!MA:P164/30; [30 hit points]
-!!MA:P166/30;
-!!MA:S164/5; [Fire Messenger: speed 5]
-!!MA:S166/8; [Air Messenger: speed 8]
-!!MA:A164/8; [Fire Messenger: attack 8]
-!!MA:A166/10; [Air Messenger: attack 10]
-!!MA:D164/8; [Fire Messenger: defense 8]
-!!MA:D166/8; [Air Messenger: defense 8]
-!!MA:M164/3; [Fire Messenger: min dmg 3]
-!!MA:M166/4; [Air Messenger: min dmg 4]
-!!MA:E164/5; [Fire Messenger: max dmg 5]
-!!MA:E166/6; [Air Messenger: max dmg 6]
-!!MA:X164/32784; [Fire Messenger: alive, attack twice for Fire Messengers]
-!!MA:X166/32786; [Air Messenger: fly, alive, attack twice for Air Messengers]
-!!MA:L164/2; //set Monster Level to L3
-!!MA:L166/2; //set Monster Level to L3
-
-!!UN:P50/?y1; [Check if Enhanced Monsters is enabled: y1=1 if yes]
-!!VRz707&y1=0:Sz167000;
-!!UN&y1=0:G1/164/2/707;      [fire messenger]
-!!VRz708&y1=0:Sz167001;
-!!UN&y1=0:G1/166/2/708;      [air messenger]
-
- [adjust Rogues and Halflings]
-!!MA:L143/0; //set Rogue Monster Level to L1
-!!MA:L138/0; //set Halfing Monster Level to L1
-!!MA:G143/14; [Increase Rogue Growth to 14]
-!!MA:C143/6/90; [Reduce Rogue cost to 90 Gold]
-!!MA:G138/14; [Reduce Halfing Growth to 14]
-
- [adjust Boars]
-!!MA:G140/7; [Reduce Boar Growth to 7]
-!!MA:L140/1; //set Monster Level to L2
-!!MA:L142/1; //set Nomands Monster Level to L2
-
- [adjust Trolls]
-!!MA:G144/4; [Increase Troll Growth to 4]
-!!MA:L144/3; //set Monster Level to L4
-!!MA:L194/3; //set Werewolf Monster Level to L4
-
-
- [adjust Sorceresses and Enchanters]
-!!MA:G193/3; [Increase Sorceress Growth to 3]
-!!MA:G136/3; [Increase Enchanter Growth to 3]
-!!MA:L136/4; // set Monster Level to L5
-!!MA:L193/4; // set Monster Level to L5
-
-[adjust Gorynyches]
-!!MA:C168/6/3200; [Decrease Gorynych cost to 3200 Gold]
-!!MA:C168/1/1; [Increase Gorynych resource cost to 1 Mercury]
-!!MA:L168/6; // set Monster Level to L7
-
- [adjust Rust Dragons]
-!!MA:P135/300; Change Rust dragons, 300 HP
-!!MA:C135/6/5000; Change Rust dragons, cost 5000
-!!MA:C135/1/5 C135/3/0; Change Rust dragons, cost 5 Mercury and 0 Sulfur
-!!MA:M135/30; Change Rust dragons, [min dmg 30 (50 ori)]
-!!MA:S135/15; Change Rust dragons, [speed 15 (17 ori)]
-!!MA:L135/6; // set Monster Level to L7
-
-
- [adjust conflux might hero specialties]
-!!HE128:X4/194/2/1/2; [Pasis - Werewolf/Troll specialist: +2 att, +1 def, +2 dmg]
-!!VRz169:Sz167002; [Pasis' specialty text]
-!!UN:G2/128/2/169; [Set Pasis' specialty text to z169]
-!!HE129:X0/13; [Thunar - Estates specialist]
-!!VRz170:Sz167003; [Thunar's specialty text]
-!!UN:G2/129/2/170; [Set Thunar's specialty text to z170]
-!!HE130:X0/20; [Ignissa - Artillery specialist]
-!!VRz171:Sz167004; [Ignissa's specialty text]
-!!UN:G2/130/2/171; [Set Ignissa's specialty text to z171]
-!!HE131:X5/2; [Lacus - Speed bonus (like Sir Mullich)]
-!!VRz172:Sz167005; [Lacus' specialty text]
-!!UN:G2/131/2/172; [Set Lacus' specialty text to z172]
-!!HE132:X4/193/3/3/3; [Monere - Sorceress/Enchanter specialist: +3 att, +3 def, +3 dmg]
-!!VRz173:Sz167006; [Monere's specialty text]
-!!UN:G2/132/2/173; [Set Monere's specialty text to z173]
-!!HE133:S13/0 S19/0 S23/2 X0/23; [Erdamon - Armorer Specialist - starts with Advanced Armorer instead of Basic Tactics and Estates]
-!!VRz174:Sz167007; [Erdamon's specialty text]
-!!UN:G2/133/2/174; [Set Erdamon's specialty text to z174]
-!!HE134:X1/164; [Fiur - Fire Messenger/Air Messenger specialist (old style)]
-!!VRz175:Sz167008; [Fiur's specialty text]
-!!UN:G2/134/2/175; [Set Fiur's specialty text to z175]
-!!HE135:X0/21 Y9/100/999/1; [Kalt - Learning bonus plus gains 100 experience daily (Blessing)]
-!!VRz176:Sz167009; [Kalt's specialty text]
-!!UN:G2/135/2/176; [Set Kalt's specialty text to z176]
-
-
-!!DO6100/0/155/1:P0; [iterate through all heroes to fix starting troops]
-!!DO6105/128/143/1:P; [set future starting troops for conflux heroes]
+!?FU(WOG_67_SetUpMapObjectws);
 
 ** replace dwellings (by Thomas Franz alias samot)
 
@@ -226,12 +76,28 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!UN:U17/y2/?y1; // get number of dwellings
 !!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
 
+!!VRy2:S7; // Air Elemental Conflux
+!!VRy3:S75; !!VRy4:S0; !!VRy5:S77; !!VRy6:S0; // Boar Glen / Nomads Tent
+!!VRv900:C0/0/0/1/1/0/0/0/0/0/0/0; // changes of passability
+!!VRy7:S140; !!VRy8:S142; // creatures
+!!UN:U17/y2/?y1; // get number of dwellings
+!!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
+
+
 !!VRy2:S72; // Altar Water
 !!VRy3:S16; !!VRy4:S1; !!VRy5:S7; !!VRy6:S1; // Fire / Air Messenger
 !!VRv900:C0/0/1/0/0/0/0/0/1/0/0/0; // changes of passability
 !!VRy7:S164; !!VRy8:S166; // creatures
 !!UN:U17/y2/?y1; // get number of dwellings
 !!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
+
+!!VRy2:S47; // Water Elemental Conflux
+!!VRy3:S16; !!VRy4:S1; !!VRy5:S7; !!VRy6:S1; // Fire / Air Messenger
+!!VRv900:C0/0/1/0/0/0/0/0/1/0/0/0; // changes of passability
+!!VRy7:S164; !!VRy8:S166; // creatures
+!!UN:U17/y2/?y1; // get number of dwellings
+!!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
+
 
 !!VRy2:S71; // Altar Fire
 !!VRy3:S98; !!VRy4:S0; !!VRy5:S79; !!VRy6:S0; // Werewolf / Troll
@@ -240,7 +106,21 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!UN:U17/y2/?y1; // get number of dwellings
 !!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
 
+!!VRy2:S16; // Fire Elemental Conflux
+!!VRy3:S98; !!VRy4:S0; !!VRy5:S79; !!VRy6:S0; // Werewolf / Troll
+!!VRv900:C0/0/0/0/0/0/0/0/0/1/0/0; // changes of passability
+!!VRy7:S194; !!VRy8:S144; // creatures
+!!UN:U17/y2/?y1; // get number of dwellings
+!!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
+
 !!VRy2:S70; // Altar Earth
+!!VRy3:S97; !!VRy4:S0; !!VRy5:S66; !!VRy6:S0; // Sorceresses / Enchanters
+!!VRv900:C0/0/1/0/0/0/0/0/0/0/0/0; // changes of passability
+!!VRy7:S193; !!VRy8:S136; // creatures
+!!UN:U17/y2/?y1; // get number of dwellings
+!!DO6106/1/y1/1:P0/y2/y3/y4/y5/y6/y7/y8/y9; // call replace routine
+
+!!VRy2:S13; // Earth Elemental Conflux
 !!VRy3:S97; !!VRy4:S0; !!VRy5:S66; !!VRy6:S0; // Sorceresses / Enchanters
 !!VRv900:C0/0/1/0/0/0/0/0/0/0/0/0; // changes of passability
 !!VRy7:S193; !!VRy8:S136; // creatures
@@ -460,4 +340,161 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!TRy7/y9/v914&y6=1/y7<=y8:P1; // set passable
 
 ********* end of function FU6106 **************
-
+
+; This must executed later than Enhanced Monsters stats alteration in order to override the changes
+; This must be executed earlier than Hero Spec Boost in order to be set up new creature specs
+!?FU(OnAfterErmInstructions);
+!!UN:P67/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
+
+// change Dwellings in the town
+!!UN:T8/0/0/138; [level 1 no upg - Halfling]
+!!UN:T8/0/1/143; [level 1    upg - Rogue]
+!!UN:T8/1/0/140; [level 2 no upg - Boar]
+!!UN:T8/1/1/142; [level 2    upg - Nomad]
+!!UN:T8/2/0/164; [level 3 no upg - Fire messenger]
+!!UN:T8/2/1/166; [level 3    upg - Air messenger]
+!!UN:T8/3/0/194; [level 4 no upg - Werewolf]
+!!UN:T8/3/1/144; [level 4    upg - Troll]
+!!UN:T8/4/0/193; [level 5 no upg - Sorceress]
+!!UN:T8/4/1/136; [level 5    upg - Enchanter]
+!!UN:T8/5/0/195; [level 6 no upg - Hell Steed]
+!!UN:T8/5/1/172; [level 6    upg - Nightmare]
+!!UN:T8/6/0/168; [level 7 no upg - Gorynych]
+!!UN:T8/6/1/135; [level 7    upg - Rust Dragon]
+
+
+!!MA:U138/143; [upg halfing to rogue]
+!!MA:U140/142; [upg boar to nomad]
+!!MA:U164/166; [upg fire msg to air msg]
+!!MA:U194/144; [upg werewolf to troll]
+!!MA:U193/136; [upg sorceress to enchanter]
+!!MA:U195/172; [upg hellsteed to nightmare]
+!!MA:U168/135; [upg gorynych to rust dragon]
+
+; Set up original Conflux upgrade chains
+!!MA:U(MON_PIXIE)/(MON_SPRITE);
+!!MA:U(MON_AIR_ELEMENTAL)/(MON_STORM_ELEMENTAL);
+!!MA:U(MON_WATER_ELEMENTAL)/(MON_ICE_ELEMENTAL);
+!!MA:U(MON_FIRE_ELEMENTAL)/(MON_ENERGY_ELEMENTAL);
+!!MA:U(MON_EARTH_ELEMENTAL)/(MON_MAGMA_ELEMENTAL);
+!!MA:U(MON_PSYCHIC_ELEMENTAL)/(MON_MAGIC_ELEMENTAL);
+!!MA:U(MON_PHOENIX)/(MON_FIREBIRD);
+
+ [change messengers]
+!!MA:L164/2; [level 2 (3)]
+!!MA:L166/2;
+!!MA:C164/6/250; [costs $250]
+!!MA:C166/6/300; [costs $300]
+!!MA:F4/?(fightValue:y); [griffin fight value]
+!!MA:F164/(fightValue);
+!!MA:F5/?(fightValue); [royal griffin fight value]
+!!MA:F166/(fightValue);
+!!MA:I4/?(aiValue:y); [griffin ai value]
+!!MA:I164/(aiValue);
+!!MA:I5/?(aiValue); [royal griffin ai value]
+!!MA:I166/(aiValue);
+!!MA:G4/?(growRate:y); [griffin grow rate]
+!!MA:G164/(growRate);
+!!MA:G166/(growRate);
+!!MA:R4/?(growH:y); [griffin grow H]
+!!MA:R164/(growH);
+!!MA:R166/(growH);
+!!MA:P164/30; [30 hit points]
+!!MA:P166/30;
+!!MA:S164/5; [Fire Messenger: speed 5]
+!!MA:S166/8; [Air Messenger: speed 8]
+!!MA:A164/8; [Fire Messenger: attack 8]
+!!MA:A166/10; [Air Messenger: attack 10]
+!!MA:D164/8; [Fire Messenger: defense 8]
+!!MA:D166/8; [Air Messenger: defense 8]
+!!MA:M164/3; [Fire Messenger: min dmg 3]
+!!MA:M166/4; [Air Messenger: min dmg 4]
+!!MA:E164/5; [Fire Messenger: max dmg 5]
+!!MA:E166/6; [Air Messenger: max dmg 6]
+!!MA:X164/32784; [Fire Messenger: alive, attack twice for Fire Messengers]
+!!MA:X166/32786; [Air Messenger: fly, alive, attack twice for Air Messengers]
+
+; Set up messager descriptions (overrides new desc from Enhanced Monsters)
+!!SN:H^monname^/(MON_FIRE_MESSENGER)/2/z167000; [fire messenger]
+!!SN:H^monname^/(MON_AIR_MESSENGER)/2/z167001; [air messager]
+
+ [adjust Rogues and Halflings]
+!!MA:L143/0; //set Rogue Monster Level to L1
+!!MA:L138/0; //set Halfing Monster Level to L1
+!!MA:G143/14; [Increase Rogue Growth to 14]
+!!MA:C143/6/90; [Reduce Rogue cost to 90 Gold]
+!!MA:G138/14; [Reduce Halfing Growth to 14]
+
+ [adjust Boars]
+!!MA:G140/7; [Reduce Boar Growth to 7]
+!!MA:L140/1; //set Monster Level to L2
+!!MA:L142/1; //set Nomands Monster Level to L2
+
+ [adjust Trolls]
+!!MA:G144/4; [Increase Troll Growth to 4]
+!!MA:L144/3; //set Monster Level to L4
+!!MA:L194/3; //set Werewolf Monster Level to L4
+
+ [adjust Sorceresses and Enchanters]
+!!MA:G193/3; [Increase Sorceress Growth to 3]
+!!MA:G136/3; [Increase Enchanter Growth to 3]
+!!MA:L136/4; // set Monster Level to L5
+!!MA:L193/4; // set Monster Level to L5
+
+ [adjust Gorynyches]
+!!MA:C168/(RES_GOLD)/3200; [Decrease Gorynych cost to 3200 Gold]
+!!MA:C168/(RES_MERCURY)/1; [Increase Gorynych resource cost to 1 Mercury]
+!!MA:L168/6; // set Monster Level to L7
+
+ [adjust Rust Dragons]
+!!MA:P135/300; Change Rust dragons, 300 HP
+!!MA:C135/(RES_GOLD)/5000; Change Rust dragons, cost 5000
+!!MA:C135/(RES_MERCURY)/5 C135/(RES_SULFUR)/0; Change Rust dragons, cost 5 Mercury and 0 Sulfur
+!!MA:M135/30; Change Rust dragons, [min dmg 30 (50 ori)]
+!!MA:S135/15; Change Rust dragons, [speed 15 (17 ori)]
+!!MA:L135/6; // set Monster Level to L7
+
+; Adjust fight values and AI values (1.2 times values of Black Dragon)
+!!MA:F(MON_BLACK_DRAGON)/?(fightValue:y);
+!!VR(fightValue):*6 :5;
+!!MA:F(MON_RUST_DRAGON)/(fightValue);
+
+!!MA:I(MON_BLACK_DRAGON)/?(aiValue:y);
+!!VR(aiValue:y):*6 :5;
+!!MA:I(MON_RUST_DRAGON)/(aiValue);
+
+ [adjust conflux might hero specialties]
+!!HE(HERO_PASIS):X4/(MON_WEREWOLF)/2/1/2;                                                                  [Pasis - Werewolf/Troll specialist: +2 att, +1 def, +2 dmg]
+!!HE(HERO_THUNAR):X0/(SKILL_ESTATES);                                                                      [Thunar - Estates specialist]
+!!HE(HERO_IGNISSA):X0/(SKILL_ARTILLERY);                                                                   [Ignissa - Artillery specialist]
+!!HE(HERO_LACUS):X5/2;                                                                                     [Lacus - Speed bonus (like Sir Mullich)]
+!!HE(HERO_MONERE):X4/(MON_SORCERESS)/3/3/3;                                                                [Monere - Sorceress/Enchanter specialist: +3 att, +3 def, +3 dmg]
+!!HE(HERO_ERDAMON):S(SKILL_TACTICS)/(NO_SKILL) S19/0 S(SKILL_ARMORER)/(SKILL_ADVANCED) X0/(SKILL_ARMORER); [Erdamon - Armorer Specialist - starts with Advanced Armorer instead of Basic Tactics and Estates]
+!!HE(HERO_FIUR):X1/(MON_AIR_MESSENGER);                                                                    [Fiur - Fire Messenger/Air Messenger specialist (old style)]
+!!HE(HERO_KALT):X0/(SKILL_LEARNING) Y9/100/999/1;                                                          [Kalt - Learning bonus plus gains 100 experience daily (Blessing)]
+
+; Set up specialty descriptions from ert
+!!re i/(HERO_PASIS)/(HERO_KALT);
+  !!VR(ertInd:y):Si +166874;            [index of ert]
+  !!SN:H^spec^/i/2/z(ertInd);
+!!en;
+
+!!DO6100/0/155/1:P0; [iterate through all heroes to fix starting troops]
+!!DO6105/128/143/1:P; [set future starting troops for conflux heroes]
+
+!?FU(WOG_67_SetNewMonsterFactions);
+!!MA:O138/8; [these creatures all count as being conflux troops]
+!!MA:O143/8;
+!!MA:O140/8;
+!!MA:O142/8;
+!!MA:O144/8;
+!!MA:O164/8;
+!!MA:O166/8;
+!!MA:O193/8;
+!!MA:O136/8;
+!!MA:O172/8;
+!!MA:O168/8;
+!!MA:O135/8;
+!!MA:O195/8;
+!!MA:O194/8;

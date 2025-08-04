@@ -1,0 +1,93 @@
+ZV_SE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=30.8(August).2015
+
+[disable one elemental type limit]
+!?BG0;
+!!BG:A?y1 Q?y2 S?y3;
+!!SN:W^BG.A^/y1 W^BG.Q^/y2 W^BG.S^/y3;
+
+!?BG1;
+!!SN:W^BG.A^/?y1 W^BG.Q^/?y2 W^BG.S^/?y3;
+!!FU|y1<>1/y3<66/y3>69:E;[Hero cast SumnElm]
+!!UN:C6919200/4/?y10;
+!!VRy11:Sy2 *4+y10+78504;
+!!UN:Cy11/4/-1;
+
+=============================================================================
+
+[Reset Summon Elemental spell]
+!?BG0;
+!!UN:C5906498/1/114; 0x72 Fire Elemental
+!!UN:C5906519/1/113; 0x71 Earth Elemental
+!!UN:C5906540/1/115; 0x73 Water Elemental
+!!UN:C5906561/1/112; 0x70 Air Elemental
+
+=============================================================================
+
+[Air Magic]
+!?BG0;
+!!BG:Q?y1;   Get Current side
+!!BHy1:N?y2; Get Current Hero
+!!FU&y2<0:E; Exit if no Hero
+
+!!HEy2:S15/?y3; Air Magic Level into y3
+!!UN&y3=2:C5906561/1/127; 0x70 Air Elemental -> Storm Elementals
+!_!UN&y3=3:C5906561/1/208; 0x70 Air Elemental -> Hurricane Elementals [don't work]
+!!UN&y3=3:C5906561/1/127; 0x70 Air Elemental -> Storm Elementals [temporary]
+
+
+=============================================================================
+
+[Fire Magic]
+!?BG0;
+!!BG:Q?y1;   Get Current side
+!!BHy1:N?y2; Get Current Hero
+!!FU&y2<0:E; Exit if no Hero
+
+!!HEy2:S14/?y3; Fire Magic Level into y3
+!!UN&y3=2:C5906498/1/129; 0x72 Fire Elemental -> Energy Elemental
+!!UN&y3=3:C5906498/1/129; 0x72 Fire Elemental -> Energy Elemental
+
+=============================================================================
+
+[Earth Magic]
+!?BG0;
+!!BG:Q?y1;   Get Current side
+!!BHy1:N?y2; Get Current Hero
+!!FU&y2<0:E; Exit if no Hero
+
+!!HEy2:S17/?y3; Earth Magic Level into y3
+!!UN&y3=2:C5906519/1/125; 0x71 Earth Elemental -> Magma Elementals
+!!UN&y3=3:C5906519/1/125; 0x71 Earth Elemental -> Magma Elementals
+
+=============================================================================
+
+[Water Magic]
+!?BG0;
+!!BG:Q?y1;   Get Current side
+!!BHy1:N?y2; Get Current Hero
+!!FU&y2<0:E; Exit if no Hero
+
+!!HEy2:S16/?y3; Water Magic Level into y3
+!!UN&y3=2:C5906540/1/123; 0x73 Water Elemental -> Ice Elementals
+!!UN&y3=3:C5906540/1/123; 0x73 Water Elemental -> Ice Elementals
+
+=============================================================================
+
+[Necromancy]
+!?BG0;
+!!BG:Q?y1;   Get Current side
+!!BHy1:N?y2; Get Current Hero
+!!FU&y2<0:E; Exit if no Hero
+
+!!HEy2:S12/?y3; Necromancy Level into y3
+!!UN&y3>0:C5906498/1/159; 0x72 Fire Elemental   -> Ghosts
+!!UN&y3>0:C5906519/1/159; 0x71 Earth Elemental  -> Ghosts
+!!UN&y3>0:C5906540/1/159; 0x73 Water Elemental  -> Ghosts
+!!UN&y3>0:C5906561/1/159; 0x70 Air Elemental    -> Ghosts
+
+
+=============================================================================
+

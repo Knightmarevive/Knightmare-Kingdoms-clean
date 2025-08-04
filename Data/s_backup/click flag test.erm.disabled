@@ -1,0 +1,44 @@
+ZV_SE
+script disabled
+
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=12.2(February).2015
+
+!?CM0;
+skanowanie
+!_!MA:X1/?y1; flags of creature 1 saved in y1
+!!MA:X117/?y1; Fanatyk/Diamond Golem     197
+!!MA:X138/?y2; Potworne oko/Halfing      198
+!!MA:X139/?y3; Prastare enty/Peasants    199
+
+!!MA:X164/?y4; Krwawy Minotaur/Fire Messenger        200
+!!MA:X165/?y5; ¯ywio³ak Minera³ów/Earth Messenger    201
+!!MA:X166/?y6; ¯ywio³ak Elektrycznoœci/Air Messenger 202
+!!MA:X167/?y7; Staro¿ytny Bazyliszek/Water Messenger 203
+!!MA:X168/?y8; Kwasowa Wiwerna/Gorynych              204
+169
+!!MA:X170/?y9; Ifryt Rad¿a/Arctic Sharpshooter       205
+!!MA:X171/?y10; Cesarska Meduza/Lava Sharpshooter    206
+!!MA:X172/?y11; Ptak burzy/Nightmare                 207
+
+
+!!MA:X193/?y12; ¯ywio³ak huraganu/Sorceress          208
+194
+!!MA:X195/?y13; Czarci Stra¿nik/Hell Steed           209
+!!MA:X196/?y14; Królewski Lisz/Dracolich             210
+
+
+³atanie
+!!VRy14:-3; [Licz 1 pole]
+!!VRy13:-3; [czarci strazniik 1 pole]
+!!VRy8:-524296; [ kwasowa wiwerna - nie atakuje wszytskich dodoko³a]
+!!VRy11:+2;     [ptak burzy - latanie]
+!!VRy11:-8;     [ ptak burzy - brak zioniecia]
+!!VRy2:+36864;  [potworne oko- podwojny strzal i brak kary w walce wrecz]
+!!VRy1:+32768;  [Fanatyk- powdójny atak]
+!!VRy12:+32768; [zywiolak huraganu- powdójny atak]
+
+wyœwietlanie
+!!IF:M^flagi %Y1 %Y2 %Y3 %Y4 %Y5 %Y6 %Y7 %Y8 %Y9 %Y10 %Y11 %Y12 %Y13 %Y14 ...^;
+

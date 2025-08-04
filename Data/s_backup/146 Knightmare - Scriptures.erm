@@ -1,0 +1,103 @@
+ZVSE
+
+!?CM2; click in hero screen
+!!HE-1:N?y1;
+!!CM:S?y2; !!FU&y2<>14:E;
+!!CM:I?y3; !!VRy4:S0;
+!!VRy4|y3=20/y3=18:S1;
+!!VRy4&y3>10/y3<15:S1;
+!!FU&y4=0:E; exit if wrong artifat slot
+!!FU55711:Py1;
+
+!?FU55711;
+!!HEx1:S18/?y5; !!FU&y5=0:E; check scholar level
+
+!!DO55701/1/2000/1:Px1;
+
+!?FU55701;  !!VRy1:S0;
+** x1  current hero
+** x16 current artifact
+
+!!VRy1&x16>1000/x16<1071:S1; Scrolls
+
+!!VRy1&x16=470:S3; Learning book tome 1
+!!VRy1&x16=502:S4; Learning book tome 2
+!!VRy1&x16=471:S5; Learning book tome 3
+
+!!VRy1&x16>=86/x16<=89:S7; Elemental Books
+
+!!VRy1&x16=485:S9; Dracopedia
+
+!!FU&y1=0:E;
+
+!!HEx1:A2/x16/?y2/?y3;
+!!FU&y3=0:E; exit if hero doesn't have it
+
+
+!!if&y1=1:;
+!!VRy4:S0; !!VRy5:S0;
+!!VRy15:Sx16 -1001;
+!!SSy15:L?y16; !!VRy16:-1;
+!!VRy4:Sy16 *y16 + 1 *1000;
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1>2/y1<6:;
+!!VRy4:S0; !!VRy5:S0;
+
+!!VRy4:Sy1 *y1 *y1 -22 *1000;
+!!VRy5:Sy1 *y1 -3;
+
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1=7:;
+!!VRy4:S22000; !!VRy5:S22;
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1=9:;
+!!VRy4:S256000; !!VRy5:S77;
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+
+!!if&y1=99:;
+!!VRy4:S0; !!VRy5:S0;
+
+!!FU55702:Px1/x16/y1/y4/y5;
+!!en:;
+
+!?FU55702;
+** x1  current hero
+** x2  current artifact (scripture)
+** x3  copying level
+** x4  gold cost
+** x5  mithril cost
+
+!!HEx1:O?y1; !!OW:Ry1/6/?y4 Ry1/7/?y5;
+!_!UN:Ax2/9/?z2; store art name to z2
+
+!!VRy33:S8; !!VRy22:Sx2;
+
+!!if&x2>1000/x2<1071:;
+!!VRy33:S9;
+!!VRy22:Sx2 -1001;
+!!en:;
+
+
+!!if|y5<x5/y4<x4:;
+!!IF:Q1/y33/y22/6/x4/7/x5/1^You cannot copy the scripture because you need more resources.^;
+!!FU:E;
+!!en:;
+
+!!IF:Q1/y33/y22/6/x4/7/x5/2^Do You want to copy the scripture for %X4 Gold an %X5 Mithrill ?^;
+!!FU&-1:E;
+
+
+!!VRy4:-x4; !!VRy5:-x5;
+!!OW:Ry1/6/y4 Ry1/7/y5;
+!!HEx1:Ax2; !!IF:M^Scripture Copied !^;

@@ -1,0 +1,272 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
+ERMS_ScriptDate=2.7(July).2016
+
+!?PI;
+!!UN:J2/?y7; get internal difficulty level
+!!IF&y7<>2:M^Knightmare Difficulty Warning:
+You should set starting difficulty to 130%^;
+
+!!SN:L^era.dll^/?y66 Ay66/^PluginExists^/?y77 Ey77/1/^Skirmish^; !!VRy99:Sv1; [majaczek]
+!!FU&v1<>0:E;
+
+!!FU55489:P0;
+
+!?FU(KK_Dificulty);
+!!SN:W^Knightmare Difficulty Level^/?v5;
+!!FU55489&v5=0:P0;
+
+!!SN&v5<128:W^Knightmare Difficulty Enabled^/1;
+!!SN&v5=128:W^Knightmare Difficulty Enabled^/0;
+
+
+!!VRy6&v5=128:S0; 
+!!VRy6&v5=64:S36000;
+!!VRy6&v5=32:S19000;  
+!!VRy6&v5=16:S13000; 
+!!VRy6&v5=8:S7500;
+!!VRy6&v5=4:S5000;   
+!!VRy6&v5=2:S2500;  
+!!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty AI XP Bonus^/y6;
+
+!!VRy6&v5=128:S3; !!VRy6&v5=64:S1;
+!!VRy6&v5=32:S1;  !!VRy6&v5=16:S2; !!VRy6&v5=8:S3;
+!!VRy6&v5=4:S4;   !!VRy6&v5=2:S5;  !!VRy6&v5=1:S7;
+!!SN:W^Knightmare Difficulty Mithril Smelter^/y6;
+
+!!VRy6&v5=128:S0; !!VRy6&v5=64:S7;
+!!VRy6&v5=32:S4;  !!VRy6&v5=16:S4; !!VRy6&v5=8:S3;
+!!VRy6&v5=4:S2;   !!VRy6&v5=2:S1;  !!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty Monthly^/y6;
+
+!!VRy6&v5=128:S0; !!VRy6&v5=64:S13;
+!!VRy6&v5=32:S9;  !!VRy6&v5=16:S7;   !!VRy6&v5=8:S5;
+!!VRy6&v5=4:S2;   !!VRy6&v5=2:S1;    !!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty Wild Monsters General^/y6;
+
+!!VRy6&v5=128:S0; !!VRy6&v5=64:S85;
+!!VRy6&v5=32:S75; !!VRy6&v5=16:S66;  !!VRy6&v5=8:S50;
+!!VRy6&v5=4:S32;  !!VRy6&v5=2:S15;   !!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty Wild Monsters Magic^/y6;
+
+!!VRy6&v5=128:S0; !!VRy6&v5=64:S44;
+!!VRy6&v5=32:S32; !!VRy6&v5=16:S27;  !!VRy6&v5=8:S20;
+!!VRy6&v5=4:S12;  !!VRy6&v5=2:S5;    !!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty Wild Monsters Might^/y6;
+
+!!VRy6&v5=128:S100; !!VRy6&v5=64:S50;
+!!VRy6&v5=32:S66;   !!VRy6&v5=16:S75; !!VRy6&v5=8:S100;
+!!VRy6&v5=4:S125;   !!VRy6&v5=2:S175; !!VRy6&v5=1:S250;
+!!SN:W^Knightmare Difficulty PC Base Income Multiplier^/y6;
+
+!!VRy6&v5=128:S100; !!VRy6&v5=64:S250;
+!!VRy6&v5=32:S200;  !!VRy6&v5=16:S150; !!VRy6&v5=8:S100;
+!!VRy6&v5=4:S75;    !!VRy6&v5=2:S66;   !!VRy6&v5=1:S50;
+!!SN:W^Knightmare Difficulty AI Base Income Multiplier^/y6;
+
+
+!!VRy6&v5=128:S2; !!VRy6&v5=64:S3;
+!!VRy6&v5=32:S2;  !!VRy6&v5=16:S3; !!VRy6&v5=8:S1;
+!!VRy6&v5=4:S3;   !!VRy6&v5=2:S2;  !!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty AI Free Build Count^/y6;
+
+
+!!VRy6&v5=128:S2; !!VRy6&v5=64:S1;
+!!VRy6&v5=32:S1;  !!VRy6&v5=16:S2; !!VRy6&v5=8:S1;
+!!VRy6&v5=4:S2;   !!VRy6&v5=2:S1;  !!VRy6&v5=1:S1;
+!!SN:W^Knightmare Difficulty AI Free Build Frequency^/y6;
+
+
+!!VRy6&v5=128:S0; !!VRy6&v5=64:S17;
+!!VRy6&v5=32:S13; !!VRy6&v5=16:S11; !!VRy6&v5=8:S9;
+!!VRy6&v5=4:S6;   !!VRy6&v5=2:S3;   !!VRy6&v5=1:S0;
+!!SN:W^Knightmare Difficulty PC Royalty Penalty^/y6;
+
+!!VRy6&v5=128:S0; !!VRy6&v5=64:S0;
+!!VRy6&v5=32:S1;  !!VRy6&v5=16:S2; !!VRy6&v5=8:S3;
+!!VRy6&v5=4:S4;   !!VRy6&v5=2:S5;  !!VRy6&v5=1:S7;
+!!SN:W^Knightmare Difficulty AI Royalty Penalty^/y6;
+
+!?FU(KK_starting_AI_armies);
+x1 - hero
+!!HEx1:B2/?y1; !!VRy1::2; alignment
+!!SN:W^Knightmare Difficulty Enabled^/?y2; !!FU&y2=0:E;
+!!SN:W^Knightmare Difficulty Level^/?y5;
+
+!!VRy6&y5=64:S6; !!VRy6&y5=32:S5; !!VRy6&y5=16:S4;
+                 !!VRy6&y5=8:S3;
+!!VRy6&y5=4:S2;  !!VRy6&y5=2:S1;  !!VRy6&y5=1:S0;
+
+!!VRy7:Sy6 *2 +1; !!VRy8:Sy1 *14; !!VRy8&y1=8:S118;
+!!VRy9:Sy8 +y7;   !!MA:Gy9/?y10;  !!VRy11:Sy10*5;
+
+!!HEx1:C2/y9/y11/0; !!HEx1:E?y77;
+
+!_!IF:M^hero %X1, %Y11 monsters %Y9, %Y77 experience^;
+
+!?FU55489;
+
+!!if&x1>0:;
+  !!SN:W^Knightmare Difficulty Level^/x1;
+  !!FU(KK_Dificulty):P;
+  !!FU:E;
+!!en;
+
+!!VRv5:S128;
+!!VRz1:S^Chieftain^;
+!!VRz2:S^Leader^;
+!!VRz3:S^General^;
+!!VRz4:S^Duke^;
+!!VRz5:S^King^;
+!!VRz6:S^Emperor^;
+!!VRz7:S^Deity^;
+!!VRz8:S^None^;  128
+!!VRz9:S^Knightmare Difficulty
+Choose AI modifier Difficulty:^;
+!!IF:G1/5/8/9/1/2/3/4/5/6/7/8; result in v5
+!!SN:W^Knightmare Difficulty Level^/v5;
+!!FU(KK_Dificulty):P;
+
+!?FU(KK_Dificulty_FirstDay);
+!!VRy1:Sc; !!FU&y1<>1:E;
+
+ !!OW:C?y3;   !!OW:Iy3/?y4;
+ !!FU&y4=0:E; !_!IF:L^First Day^;
+
+!!re i/0/155:;
+  !!VRy9:Si; !!HEy9:O?y2; 
+
+  !!HEy9:E?y7;  !!UN:P118/?y6;
+  !!HEy9&y2=y3/y7<5000/y6>0:Ed5000;
+  !!SN:W^Knightmare Difficulty AI XP Bonus^/?y5;
+  !!HEy9&y2=y3:Edy5;
+  
+  !!FU(KK_starting_AI_armies)&y2=y3:Py9;
+
+!!en:;
+
+
+!?TM2;
+!!VRy1:Sc; !!FU&y1<>1:E;
+
+!!SN:W^Knightmare Skirmish saved_neutral_might applied^/?y33;
+!!FU&y33<>0:E;
+
+!!SN:W^Knightmare Skirmish saved_neutral_might^/?y77;
+!!UN:U54/-1/?y99;
+!_!VRy99:-1;
+!!re i/1/y99:;
+  !!UN:U54/-1/i/3; 
+  !!MO3:G?y88; !!VRy88:*y77 :100;
+  !!VRy88&y88>4000:S4000; !!MO3:Gy88;
+!!en:;
+
+!_!IF:M^KK saved_neutral_might^;
+!!SN:W^Knightmare Skirmish saved_neutral_might applied^/1;
+
+!?FU(OnEveryDay);
+!!FU(KK_Dificulty):P;
+
+!?TM2;
+!!FU(KK_Dificulty_FirstDay):P;
+
+!?BA0;
+!!SN:W^Difficulty_BR0^/0;
+
+!?BR;
+!!FU&v997<>0:E;
+!!SN:W^Difficulty_BR0^/?y1;
+!!VRy1:+1;
+!!SN:W^Difficulty_BR0^/y1;
+
+!?BR;
+!!FU&v997<>0:E;
+!_!SN:W^Difficulty_BR0^/?y1;
+!_!FU&y1<>2:E;
+
+!_!IF:M^difficulty^;
+
+!!BH0:N?y5; !!BH1:N?y6;
+!!VRy7:S0;  !!VRy8:S0;
+
+!!DO55480/0/41/1:P;
+
+!?FU55480;
+x16 - battle monster
+
+// if there is no stack leave
+!!BMx16:T?y5 N?y6;
+!!FU&y5<0:E;
+!!FU&y5>999:E;
+!!FU&y6<1:E;
+
+!_!UN:J2/?y7; get difficulty level
+!_!VRy8:S5 -y7; !!VRy7:+4;
+
+!!VRy9: S0 -1 -x16; set y9 for battle experience ID
+!!VRy10:Sc -1 :28 +2;
+
+!!BH0:N?y20; !!BH1:N?y21;
+!!VRy22:S0;  !!VRy23:S0;
+!!VRy23&y21<0:S1;
+
+!!BMx16:I?y25;
+!!if&y25=1/y23=0:;
+  !!HEy21:O?y31;
+  !!OW:Iy31/?y32;
+  !!FU&y32=0:E;
+!!en:;
+!!if&y25=0/y22=0:;
+  !!HEy20:O?y31;
+  !!OW:Iy31/?y32;
+  !!FU&y32=0:E;
+!!en:;
+
+; Here we know we have existing stack under control of AI
+; So let give it some powerups
+
+!!if&y23=1:; Wild Monsters
+  !_!EAy9:L?y99;
+  !_!EAy9:Ey99/2/d/d;
+
+  !!SN:W^Knightmare Difficulty Wild Monsters General^/?y99;
+  !!BMx16:D?y30 A?y31 R?y32 S?y33;
+  !_!VRy30:*y7 *2 :3; !!VRy30:+y99;
+  !_!VRy31:*y7 *2 :3; !!VRy31:+y99;
+  !_!VRy32:+1; !_!VRy33:+1;
+  !!BMx16:Dy30 Ay31 Ry32 Sy33;
+!!en:;
+
+; Any Monsters
+!!SN:W^Knightmare Difficulty Monthly^/?y99;
+!!BMx16:D?y30 A?y31 R?y32 S?y33;
+!!VRy40:Sy99 *y10;
+!!VRy41:Sy99 *y10;
+
+!_!VRy30:*y7 *y10 :13; !!VRy30:+y40;
+!_!VRy31:*y7 *y10 :13; !!VRy31:+y41;
+
+!_!VRy32:+1; !!VRy33:+1;
+!!BMx16:Dy30 Ay31 Ry32 Sy33;
+
+
+; AI Player Monsters
+!!BA:Hy25/?y27;
+!!FU&y27<0:E;
+
+!?MR0;
+!!SN:W^Knightmare Difficulty Wild Monsters Magic^/?y99;
+!!MR:N?y1;    !!FU&y1<=0:E;
+!!BH1:N?y21;  !!FU&y21>=0:E;
+!!BMy1:I?y25; !!FU&y25=0:E;  !!VRy2:S100 -y99;
+!!MR:D?y3;    !!VRy3:*y2 :100; !!MR:Fy3;
+
+
+!?MF1;
+!!SN:W^Knightmare Difficulty Wild Monsters Might^/?y99;
+!!MF:N?y1;    !!FU&y1<=0:E;
+!!BH1:N?y21;  !!FU&y21>=0:E;
+!!BMy1:I?y25; !!FU&y25=0:E;  !!VRy2:S100 -y99;
+!!MF:D?y3;    !!VRy3:*y2 :100; !!MF:Fy3;

@@ -1,0 +1,347 @@
+ZVSE
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_ScriptDate=9.1(January).2016
+
+!?PI;
+!!SN:W^Knightmare_Skills^/1;
+!!DO55104/0/69/1:P;
+
+!?GM0;
+!!DO55106/0/69/1:P;
+
+!?FU55104;
+!!SSx16:P?y13;
+ !!SN:W^Spell_Specialist.SS%X16:P^/y13;
+ !!SN:W^Spell_Base.SS%X16:P^/y13;
+
+!!SSx16:C0/?y90; !!SSx16:C1/?y10; !!SSx16:C2/?y20; !!SSx16:C3/?y30;
+!!SN:W^Spell_Specialist.SS%X16:C0^/y90;
+!!SN:W^Spell_Specialist.SS%X16:C1^/y10;
+!!SN:W^Spell_Specialist.SS%X16:C2^/y20;
+!!SN:W^Spell_Specialist.SS%X16:C3^/y30;
+
+!!SN:W^Spell_Base.SS%X16:C0^/y90;
+!!SN:W^Spell_Base.SS%X16:C1^/y10;
+!!SN:W^Spell_Base.SS%X16:C2^/y20;
+!!SN:W^Spell_Base.SS%X16:C3^/y30;
+
+!?FU55105;  //normal spell restore
+!!SN:W^Spell_Specialist.SS%X16:P^/?y13;
+!!SSx16:Py13;
+
+!!SN:W^Spell_Specialist.SS%X16:C0^/?y90;
+!!SN:W^Spell_Specialist.SS%X16:C1^/?y10;
+!!SN:W^Spell_Specialist.SS%X16:C2^/?y20;
+!!SN:W^Spell_Specialist.SS%X16:C3^/?y30;
+!!SSx16:C0/y90; !!SSx16:C1/y10; !!SSx16:C2/y20; !!SSx16:C3/y30;
+
+
+!?FU55106;  //emergency spell restore
+
+!!SN:W^Spell_Base.SS%X16:P^/?y13;
+!!SSx16:Py13;
+
+!!SN:W^Spell_Base.SS%X16:C0^/?y90;
+!!SN:W^Spell_Base.SS%X16:C1^/?y10;
+!!SN:W^Spell_Base.SS%X16:C2^/?y20;
+!!SN:W^Spell_Base.SS%X16:C3^/?y30;
+!!SSx16:C0/y90; !!SSx16:C1/y10; !!SSx16:C2/y20; !!SSx16:C3/y30;
+
+
+
+!?PI; //minor spell specialists
+!!FU:E; Covered by FU55104
+
+!?PI; Knightmare Spell specialists
+!!FU:E; Covered by FU55104
+!!SN:W^Knightmare_Spells^/?y1; !!FU&y1>0:E;
+!!SS1:P?y1; !!SN:W^Spell_Specialist.SS1:P^/y1;
+!!SS4:P?y4; !!SN:W^Spell_Specialist.SS4:P^/y4;
+!!SS5:P?y5; !!SN:W^Spell_Specialist.SS5:P^/y5;
+!!SS7:P?y7; !!SN:W^Spell_Specialist.SS7:P^/y7;
+
+
+!?FU77007;  restore spells power
+!!SN:X?y1/?y98/?y99;
+!!FU55103:Py1/y98/y99;
+
+!?FU55103; bridge to new function
+!!DO55105/0/69/1:P;
+
+!?FU55103;
+!!FU:E; //covered by FU55105
+!!VRy1:Sx1;
+!!VRy98:Sx2;
+!!VRy99:Sx3;
+
+
+!_?FU77007;  restore spells power
+!?FU55103;
+!!FU:E; //covered by FU55105
+//Knightmare Spells
+!!SN:W^Knightmare_Spells^/?y1; !!FU&y1>0:E;
+!!SN:W^Spell_Specialist.SS1:P^/?y1; !!SS1:Py1;
+!!SN:W^Spell_Specialist.SS4:P^/?y4; !!SS4:Py4;
+!!SN:W^Spell_Specialist.SS5:P^/?y5; !!SS5:Py5;
+!!SN:W^Spell_Specialist.SS7:P^/?y7; !!SS7:Py7;
+
+!_?FU77007; //battle spell specialist bonus
+!?FU55103;
+!_!SN:X?y1/?y98/?y99;
+!!VRy1:Sx1;
+!!VRy98:Sx2;
+!!VRy99:Sx3;
+
+!!HEy1:N?y3;
+!!BMy1&y3>=0:I?y2;
+!!BHy2&y3>=0:N?y3; check owner hero
+!!FU&y3<0:E; //exit if no hero
+
+!!HEy3:E?y71/?y72 X?y73/?y74/?y75/?y76/?y77/?y78/?y79;  y71, y75-y79 are dummies
+!!VRy81:S45 *y72 +1000; +4.5% per level
+!!VRy82:S60 *y72 +1000; +6.0% per level
+!!VRy83:S75 *y72 +1000; +7.5% per level
+!!VRy84:S85 *y72 +1000; +8.5% per level
+
+
+//damage spells
+!!SN:W^Spell_Specialist.SS13:P^/?y13; !!VRy13&y73=3/y74=13:*y82 :1000; !!SS13:Py13;
+!!SN:W^Spell_Specialist.SS15:P^/?y15; !!VRy15&y73=3/y74=15:*y84 :1000; !!SS15:Py15;
+!!SN:W^Spell_Specialist.SS16:P^/?y16; !!VRy16&y73=3/y74=16:*y83 :1000; !!SS16:Py16;
+!!SN:W^Spell_Specialist.SS18:P^/?y18; !!VRy18&y73=3/y74=18:*y82 :1000; !!SS18:Py18;
+!!SN:W^Spell_Specialist.SS20:P^/?y20; !!VRy20&y73=3/y74=20:*y83 :1000; !!SS20:Py20;
+!!SN:W^Spell_Specialist.SS21:P^/?y21; !!VRy21&y73=3/y74=21:*y83 :1000; !!SS21:Py21;
+!!SN:W^Spell_Specialist.SS22:P^/?y22; !!VRy22&y73=3/y74=22:*y82 :1000; !!SS22:Py22;
+!_!SN:W^Spell_Specialist.SS24:P^/?y24; !_!VRy24&y73=3/y74=24:*y82 :1000; !_!SS24:Py24;    //handled by necromncy
+!_!SN:W^Spell_Specialist.SS25:P^/?y25; !_!VRy25&y73=3/y74=25:*y82 :1000; !_!SS25:Py25; //handled By life Magic
+!!SN:W^Spell_Specialist.SS57:P^/?y57; !!VRy57&y73=3/y74=57:*y81 :1000; !!SS57:Py57;
+//elemental summon
+!!SN:W^Spell_Specialist.SS66:P^/?y66; !!VRy66&y73=3/y74=66:*y81 :1000; !!SS66:Py66;
+!!SN:W^Spell_Specialist.SS67:P^/?y67; !!VRy67&y73=3/y74=67:*y81 :1000; !!SS67:Py67;
+!!SN:W^Spell_Specialist.SS68:P^/?y68; !!VRy68&y73=3/y74=68:*y81 :1000; !!SS68:Py68;
+!!SN:W^Spell_Specialist.SS69:P^/?y69; !!VRy69&y73=3/y74=69:*y81 :1000; !!SS69:Py69;
+//miscolanleus
+!!SN:W^Spell_Specialist.SS60:P^/?y60; !!VRy60&y73=3/y74=60:*y82 :1000; !!SS60:Py60;
+
+**Knightmare Spell specialists
+!!SN:W^Knightmare_Spells^/?y1; !!FU&y1>0:E;
+!!SN:W^Spell_Specialist.SS1:P^/?y1; !!VRy1&y73=3/y74=1:*y85 :1000; !!SS1:Py1;
+!!SN:W^Spell_Specialist.SS4:P^/?y4; !!VRy4&y73=3/y74=4:*y85 :1000; !!SS4:Py4;
+!!SN:W^Spell_Specialist.SS5:P^/?y5; !!VRy5&y73=3/y74=5:*y85 :1000; !!SS5:Py5;
+!!SN:W^Spell_Specialist.SS7:P^/?y7; !!VRy7&y73=3/y74=7:*y85 :1000; !!SS7:Py7;
+
+
+--------------------------------------------------------------------------------
+
+//Astromancy (Navigation) Bonus
+!_?FU77007;  restore spells power
+!?FU55103;
+!!SN:W^Spell_Specialist.SS17:P^/?y17;   !!SS17:Py17; //lighting bolt
+!!SN:W^Spell_Specialist.SS19:P^/?y19;   !!SS19:Py19; //chain lighting
+!!SN:W^Spell_Specialist.SS23:P^/?y23;   !!SS23:Py23; //meteor shower
+!!SN:W^Spell_Specialist.SS26:P^/?y26;   !!SS26:Py26; //armagedon
+
+!_?FU77007; set spells before BG so it displays ok in magic book
+!?FU55103;
+!_!SN:X?y1/?y98/?y99;
+!!SN:W^more_SS_levels.era^/?y88; 
+
+!!VRy1:Sx1;
+!!VRy98:Sx2;
+!!VRy99:Sx3;
+
+!!HEy1:N?y3;
+!!BMy1&y3>=0:I?y2;
+!!BHy2&y3>=0:N?y3; check owner hero
+!!FU&y3<0:E; //exit if no hero
+
+!!HEy3:S5/?y7; //Astromancy (Navigation)
+!!VRy7&y88=0:*33 +100;
+!!VRy7&y88<>0:*22 +100;
+
+!!HEy3:E?y71/?y72 X?y73/?y74/?y75/?y76/?y77/?y78/?y79;  y71, y75-y79 are dummies
+!!VRy70:S3 *y72 +100; 3% per level
+!!VRy69:S7 *y72 +100; 7% per level
+
+!!VRy77:Sy7; !!VRy77&y73=0/y74=5:+33; !!VRy7:Sy77 *100;
+!!VRy7&y73=0/y74=5:Sy77 *y70; 33% bonus + above for specialist
+
+//astromancy
+!!SN:W^Spell_Specialist.SS17:P^/?y17; //lighting bolt
+!!SN:W^Spell_Specialist.SS19:P^/?y19; //chain lighting
+!!SN:W^Spell_Specialist.SS23:P^/?y23; //meteor shower
+!!SN:W^Spell_Specialist.SS26:P^/?y26; //armagedon
+
+!!VRy99:S100;
+!!VRy8:Sy99 ;   !!VRy8&y73=3/y74=17:Sy69; //lighting bolt specialist bonus
+!!VRy9:Sy99 ;   !!VRy9&y73=3/y74=19:Sy69; //chain lighting specialist bonus
+!!VRy10:Sy99;  !!VRy10&y73=3/y74=23:Sy69; //meteor shower specialist bonus
+!!VRy11:Sy99;  !!VRy11&y73=3/y74=26:Sy69; //armageddon specialist bonus
+
+
+
+//Begin of spellpower routine
+!!VRy17:*y7 :1000 *y8  :1000 ; !!SS17:Py17; //lighting bolt
+!!VRy19:*y7 :1000 *y9  :1000 ; !!SS19:Py19; //chain lighting
+!!VRy23:*y7 :1000 *y10 :1000 ; !!SS23:Py23; //meteor shower
+!!VRy26:*y7 :1000 *y11 :1000 ; !!SS26:Py26; //armagedon
+//END of spellpower routine
+
+--------------------------------------------------------------------------------
+
+!_?FU77007;   restore spells power
+!?FU55103;
+!!FU:E; //covered by FU55105
+!!SN:W^Spell_Specialist.SS37:P^/?y37;   !!SS37:Py37; //cure
+!!SN:W^Spell_Specialist.SS38:P^/?y38;   !!SS38:Py38; //Ressurection
+!!SN:W^Spell_Specialist.SS39:P^/?y39;   !!SS39:Py39; //Animate dead
+!!SN:W^Spell_Specialist.SS40:P^/?y40;   !!SS40:Py40; //Sacrifice
+
+//Life Magic (Luck) Bonus
+!_?FU77007; set spells before BG so it displays ok in magic book
+!?FU55103;
+!_!SN:X?y1/?y98/?y99;
+!!SN:W^more_SS_levels.era^/?y88; 
+
+!!VRy1:Sx1;
+!!VRy98:Sx2;
+!!VRy99:Sx3;
+
+!!HEy1:N?y3;
+!!BMy1&y3>=0:I?y2;
+!!BHy2&y3>=0:N?y3; check owner hero
+!!FU&y3<0:E; //exit if no hero
+
+!!HEy3:S9/?y7; //Life Magic (Luck)
+!!VRy7&y88=0:*33 +100;
+!!VRy7&y88<>0:*25 +100;
+
+!!HEy3:S12/?y6; //Necromancy
+!!VRy6&y88=0:*33 +100;
+!!VRy6&y88<>0:*6 +100;
+
+// Life Magic
+!!SN:W^Spell_Specialist.SS37:P^/?y37; //cure
+!!SN:W^Spell_Specialist.SS38:P^/?y38; //Ressurection
+!!SN:W^Spell_Specialist.SS40:P^/?y40; //Sacrifice
+!!SN:W^Spell_Specialist.SS25:P^/?y25; //destroy undead
+
+// Necromancy
+!!SN:W^Spell_Specialist.SS24:P^/?y24; //death ripple
+!!SN:W^Spell_Specialist.SS39:P^/?y39; //Animate dead
+
+
+!!HEy3:E?y71/?y72 X?y73/?y74/?y75/?y76/?y77/?y78/?y79;  y71, y75-y79 are dummies
+!!VRy70:S6 *y72 +100; 6% per level
+!!VRy69:S9 *y72 +100; 9% per level
+!!VRy71:S4 *y72 +100; 4% per level
+
+!!VRy77:Sy7; !!VRy77&y73=0/y74=9:+33;  !!VRy7:Sy77 *100;
+!!VRy7&y73=0/y74=9:Sy77 *y70; 33% bonus + above for specialist (Life Magic)
+
+!!VRy66:Sy6; !!VRy66&y73=0/y74=12:+33; !!VRy6:Sy66 *100;
+!!VRy6&y73=0/y74=12:Sy66 *y71; 33% bonus + above for specialist (Necromancy)
+
+!!VRy99:S100;
+!!VRy8:Sy99  ;  !!VRy8&y73=3/y74=37:Sy69; //cure specialist bonus
+!!VRy9:Sy99  ;  !!VRy9&y73=3/y74=38:Sy69; //ressurection specialist bonus
+!!VRy11:Sy99 ; !!VRy11&y73=3/y74=40:Sy69; //sacrifice specialist bonus
+!!VRy12:Sy99 ; !!VRy12&y73=3/y74=25:Sy69; //Destroy undead specialist bonus
+
+!!VRy99:S100;
+!!VRy10:Sy99; !!VRy10&y73=3/y74=39:Sy69; //animate dead specialist bonus
+!!VRy13:Sy99; !!VRy13&y73=3/y74=24:Sy69; //Death ripple specialist bonus
+
+//Begin of spellpower routine
+!!VRy37:*y7 :1000 *y8  :1000 ; !!SS37:Py37; //cure
+!!VRy38:*y7 :1000 *y9  :1000 ; !!SS38:Py38; //Ressurection
+!!VRy40:*y7 :1000 *y11 :1000 ; !!SS40:Py40; //Sacrifice
+!!VRy25:*y7 :1000 *y12 :1000 ; !!SS25:Py25; //Destroy Undead
+
+!!VRy39:*y6 :1000 *y10 :1000 ; !!SS39:Py39; //Animate dead
+!!VRy24:*y6 :1000 *y13 :1000 ; !!SS39:Py24; //Death Ripple
+//END of spellpower routine
+
+
+
+//Buckler of Beelzebub free teleport
+!?FU55103;
+!!BG:H?y1 N?y2;
+!!IF&y1<>-1:Wy1;
+!!SS63&y1<>-1/w95>0:C0/0 C1/0 C2/0 C3/0; **majaczek**
+
+--------------------------------------------------------------------------------
+
+!?BG1;[restore spells power after end of battle]
+!!FU:E; DO55105 later
+
+--------------------------------------------------------------------------------
+
+Adventure spell specialists
+!?PI;                         //store cost
+!!FU:E; Covered by FU55104
+
+
+
+//restore cost
+!?MG0;
+!_!FU55100:P;
+!!DO55105/0/69/1:P;
+!?MG1;
+!_!FU55100:P;
+!!DO55105/0/69/1:P;
+!?FU55100;
+
+!!FU:E; //covered by FU55105
+
+!?MG0;
+!!OW:A-1/?y1;
+!!IF&y1<0:L^Warning - Spell casting - Hero not found^;
+!!UN&y1<0:R6/3000; !!FU&y1<0:E;
+!!HEy1:E?y71/?y72 X?y73/?y74/?y75/?y76/?y77/?y78/?y79;  y71, y75-y79 are dummies
+!!FU|y73<>3/y74>9/y74<0:E; exit if not adventure spell specialist
+!_!FU&v997<>y74:E; exit if not this spell specialist
+!!IF:L^Adventure spell specialist^;
+
+!!VRy69:Sy72;
+!!SSy74:C0/?y60; !!SSy74:C1/?y61; !!SSy74:C2/?y62; !!SSy74:C3/?y63;
+!!VRy60:-y69; !!VRy61:-y69; !!VRy62:-y69; !!VRy63:-y69;
+!!VRy60&y60<0:S0; !!VRy61&y61<0:S0; !!VRy62&y62<0:S0; !!VRy63&y63<0:S0;
+!!SSy74:C0/y60; !!SSy74:C1/y61; !!SSy74:C2/y62; !!SSy74:C3/y63;
+--------------------------------------------------------------------------------
+powerless battle spells specialists
+!?PI;                         //store cost
+!!FU:E; Covered by FU55104
+
+!?BG1;[restore spells cost after end of battle]
+!!BU:C?y-1; !!FU&y-1<>1:E;
+!!DO55105/0/69/1:P;
+!!FU55101:P;
+
+!_?FU77007;
+!?FU55103;
+!!FU55101:P;
+
+!_!SN:X?y1/?y98/?y99;
+
+!!VRy1:Sx1;
+!!VRy98:Sx2;
+!!VRy99:Sx3;
+
+!!BMy1:I?y2;
+!!BHy2:N?y3; check owner hero
+!!FU&y3<0:E; //exit if no hero
+
+!!HEy3:E?y71/?y72 X?y73/?y74/?y75/?y76/?y77/?y78/?y79;  y71, y75-y79 are dummies
+!!FU|y73<>3/y74<10/y74>69:E; exit if not battle spell specialist
+!!FU&y74<>65/y74<>64/y74<>63/y74<>12/y74<>36/y74<>35/y74<>55/y74<>48:E;  //exit if not spell from list
+
+!!VRy69:Sy72; //1 mana per level cheaper
+!!SSy74:C0/?y60; !!SSy74:C1/?y61; !!SSy74:C2/?y62; !!SSy74:C3/?y63;
+!!VRy60:-y69; !!VRy61:-y69; !!VRy62:-y69; !!VRy63:-y69;
+!!VRy60&y60<0:S0; !!VRy61&y61<0:S0; !!VRy62&y62<0:S0; !!VRy63&y63<0:S0;
+!!SSy74:C0/y60; !!SSy74:C1/y61; !!SSy74:C2/y62; !!SSy74:C3/y63;
+
+!?FU55101; //restore cost
+!!FU:E; //covered by FU55105

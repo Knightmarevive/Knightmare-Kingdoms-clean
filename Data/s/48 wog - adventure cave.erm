@@ -1,10 +1,8 @@
-ZVSE
-ERMS_ScriptDate=11.9(September).2004
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
+ZVSE2
 
 ** Adventure Cave ERM script v1.0 - Donald X. Vaccarino
 ** Updated: Sep. 11. 2004 by Hermann the Weird
+** Updated: Jan 2024 by Archer30
 ** Requires WOG v3.58 or later.
 ** A location where lots of different things can happen
 
@@ -14,7 +12,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** You can generate a specific cave through ERM by initializing its PO values
 ** in a timer numbered higher than 90, on day one. You can set these values easily
-** by calling functions 767 and 769 (or the hard way through PO).
+** by calling functions (WOG_30_SetBits) or the hard way through PO.
 
 ** Caves 0, 1, 2 are stored in PO:H, PO:T, PO:S, low 7 bits
 ** Cave 3 is stored with its low 4 bits in PO:N, the next 3 bits the hi bits of PO:S, PO:T, PO:H
@@ -78,13 +76,12 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** For four, left-left is 0, left-right 1, right-left 2, right-right 3
 
 
-** Variables Used: z326-z330, z360-z366, z368-z379, z404, v1, v510-v548, v550-v559, v600-v669, w61-w78, i
-** v510-v548, w61-w74, and z404 must not be changed elsewhere!
+** Variables Used: z326-z330, z360-z366, z368-z379, z404, v1, v510-v547, v550-v559, v600-v669, w61-w78, i
+** v510-v547, w61-w74, and z404 must not be changed elsewhere!
 ** v550-v559 is a bit table also used by the map rules, it must not be changed but may be used elsewhere.
 ** The other variables may be used elsewhere but will be trashed by this code.
-** Flags used: 2, 600-603
-** Functions Used: 730-776, 780-799, 820-835
-** Timers Used: 90
+** Flags used: 2, 602-603
+** Functions Used: 736-776, 781-799, 820-835
 
 ** Notes on hero w variables:
 **   w61 4 bits for what Rogue cave positions have been visited this turn
@@ -108,49 +105,57 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 
 ** Initialization code
-!#UN:P30/?v1;     [Check for WoG option]
-!#VRz404&v1=1:Sz130000;
-!#HT63/57&v1=1:T404; [set hint to z404]
+!?FU(WOG_30_Initialization);
+!!UN:P30/?v1;     [Check for WoG option]
+!!FU&v1<>(TRUE):E;
 
-!#TM90&v1=1:S1/999/1/255; [timer every day for all players]
-!#VRv548&v1=1:S0; [haven't initialized caves]
-!#VRv547&v1=1:S0; [special battle screen to use]
-!#VRv524&v1=1:C0/0/0/0/0/0/0/0; [stolen gold mine #'s by player]
-!#VRv510&v1=1:C0/0/0/0/0/0/0/0; [obelisk treasures by player]
+!!VRz404:Sz130000;
+!!HT63/57:T404; [set hint to z404]
 
-!#VRv550&v1=1:C1/2/4/8/16/32/64/128/256/512; [bit table, also in map rules]
+!!VRi^wog_30_advCaveBattleType^:S0; [special battle screen to use]
+!!VRv524:C0/0/0/0/0/0/0/0; [stolen gold mine #'s by player]
+!!VRv510:C0/0/0/0/0/0/0/0; [obelisk treasures by player]
 
-!#VRz368&v1=1:Sz130001;
-!#VRz369&v1=1:Sz130002;
-!#VRz370&v1=1:Sz130003;
-!#VRz371&v1=1:Sz130004;
+!!VRv550:C1/2/4/8/16/32/64/128/256/512; [bit table, also in map rules]
 
-!#VRz372&v1=1:Sz130005;
-!#VRz373&v1=1:Sz130006;
-!#VRz374&v1=1:Sz130007;
-!#VRz375&v1=1:Sz130008;
-!#VRz376&v1=1:Sz130009;
-!#VRz377&v1=1:Sz130010;
-!#VRz378&v1=1:Sz130011;
-!#VRz379&v1=1:Sz130012;
+!!VRz368:Sz130001;
+!!VRz369:Sz130002;
+!!VRz370:Sz130003;
+!!VRz371:Sz130004;
+
+!!VRz372:Sz130005;
+!!VRz373:Sz130006;
+!!VRz374:Sz130007;
+!!VRz375:Sz130008;
+!!VRz376:Sz130009;
+!!VRz377:Sz130010;
+!!VRz378:Sz130011;
+!!VRz379:Sz130012;
+
+!#FU(WOG_30_Initialization):P;
 
 ** end of Initialization code
 
 
 ** Timer routine
 
-!?TM90;
+!?FU(OnEveryDay);
 !!UN:P30/?y-1;     [Check for WoG option]
 !!FU&y-1=0:E;     [Exit if its disabled]
 
-!!UN&v548=0:U63/57/?v600; [count caves]
-!!DO730/1/v600/1&v548=0:P; [loop through caves]
-!!DO750/0/155/1&v548=0:P; [initialize hero w variables]
-!!VRv548:S1; [indicate we've initialized
+; Initialization
+!!if&i^timerDay^=1/i^timerOnce^;
+  !!UN:U63/57/?v600; [count caves]
+  !!DO(WOG_30_InitializeACave)/1/v600/1:P; [loop through caves]
+
+  !!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+    !!FU(WOG_30_InitializeHeroVars):Pi; [initialize hero w variables - must be OnEveryDay]
+  !!en;
+!!en;
 
 !!OW:C?y-1; [get current player]
 
-!!DO752/0/155/1:Py-1; [clear/check daily hero w variables]
+!!DO752/(HERO_FIRST)/(HERO_LAST_WOG)/1:Py-1; [clear/check daily hero w variables]
 
 !!VRy-2:S524 +y-1; [get index of variable tracking robbed mines by player]
 !!IF&1000/vy-2>0:M1/z130013;
@@ -164,58 +169,71 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** Object routine
 
-!?OB63/57;
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
-!!HE-1:O?v1; [Visiting player's colour]
-!!PM998:V0 Pv1/1; [Tell AI object is visited so it won't try to visit again]
+!?OB(OBJ_NEW_WOG_OBJECTS)/57;
+!!UN:P30/?(wogOption:y);     [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;     [Exit if its disabled]
 
-!?OB63/57&1000; [object is for humans only]
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
+!!HE(CURRENT_HERO):O?(owner:y); [Visiting player's colour]
+!!PM998:V0 P(owner)/1; [Tell AI object is visited so it won't try to visit again]
 
-!!OB998:S; [disable object so UN:L command will work]
-!!FU768:P601/998; [read split cave bits in v601]
-!!VRv601:&3; [just look at split cave type]
+!!if&1000;
+  !!OB998:S; [disable object so UN:L command will work]
+  !!FU(WOG_30_ReadSplitCaveBits):P601/998; [read split cave bits in v601]
+  !!VRv601:&3; [just look at split cave type]
 
-!!VRz326:Sz130014;
-!!VRz327:Sz130015;
-!!VRz328:Sz130016;
-!!FU733&v601=0:P53/98/602; [get choice in v602 - 0 is explore]
+  !!VRz326:Sz130014;
+  !!VRz327:Sz130015;
+  !!VRz328:Sz130016;
 
-!!IF&v601=0/v602=1:M1/z130017;
-!!FU731&v601=0/v602=0:P0; [handle visiting cave 0]
+  !!if&v601=0;
+    !!FU(WOG_30_GetChoice):P53/98/602; [get choice in v602 - 0 is explore]
 
-!!FU732&v601<>0:P; [handle split cave]
+    !!if&v602;
+      !!IF:M1/z130017;
+    !!el;
+      !!FU(WOG_30_HandleVisitingCave):P0; [handle visiting cave 0]
+    !!en;
+  !!el;
+    !!FU(WOG_30_HandleSplitCave):Pv601; [handle split cave]
+  !!en;
+!!en;
 
 ** end of object routine
 
 
+** Loading game routine
+
+!?FU(OnAfterLoadGame)&i^wog_30_advCaveBattleType^;
+!!VRi^wog_30_advCaveBattleType^:S0;
+
+** end of loading game routine
+
+
 ** function to initialize a cave
 
-!?FU730;
+!?FU(WOG_30_InitializeACave);
 
 !!UN:U63/57/x16/601; [get x/y/level in v601-v603]
 !!PM601:V0; [tell AI not to come here]
-!!DO770/0/3/1:P; [randomize cave bits]
-!!VRy1:S0 R3; [random split cave value, monster not killed]
-!!FU769:Py1/601; [store it]
+!!DO(WOG_30_RandomizeCaveBits)/0/3/1:P; [randomize cave bits]
+!!VRy1:R0/0/3; [random split cave value, monster not killed]
+!!PO601:Oy1; [store it]
 
 ** end of function
 
 
 ** function to handle visiting cave x1
 
-!?FU731;
+!?FU(WOG_30_HandleVisitingCave);
 
-!!FU734:Px1/610; [get cave type in v610]
-!!FU766:Px1/611/998; [read cave bits into v611]
+!!FU(WOG_30_GetTypeOfCave):Px1/610; [get cave type in v610]
+!!FU(WOG_30_ReadCaveBits):Px1/611/998; [read cave bits into v611]
 !!VRv611::4; [throw away low cave type bits]
 
-!!FU742&v610=0:Px1/v611; [handle Rogue cave]
-!!FU772&v610=1:Px1/v611; [handle Hermit cave]
-!!FU784&v610=2:Px1/v611; [handle monster cave]
-!!FU795&v610=3:Px1/v611; [handle other cave]
+!!FU(WOG_30_HandleRogueCave)&v610=0:Px1/v611; [handle Rogue cave]
+!!FU(WOG_30_HandleHermitCave)&v610=1:Px1/v611; [handle Hermit cave]
+!!FU(WOG_30_HandleMonsterCave)&v610=2:Px1/v611; [handle monster cave]
+!!FU(WOG_30_HandleOtherCave)&v610=3:Px1/v611; [handle other cave]
 
 ** end of function
 
@@ -225,107 +243,151 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** splits can continue two caves deep (to four total end caves)
 ** further split caves are always just forks in the tunnel
 
-** v601=1 -> left is 0, right is 1
-** v601=2 -> left is 0-1, right is 2
-** v601=3 -> left is 0-1, right is 2-3
+** x1=1 -> left is 0, right is 1
+** x1=2 -> left is 0-1, right is 2
+** x1=3 -> left is 0-1, right is 2-3
 
-!?FU732;
+!?FU(WOG_30_HandleSplitCave);
+!#VA(caveType:x);
 
-!!VRy1:Sv998 %4; [use x mod 4 as split cave type]
-!!FU768:P609/998; [read split cave values]
-!!VRy1&y1=1/v609>=4:S0; [then treat monster cave as empty cave]
+!!VR(caveSubtype:y):Sv998 %4;              [use x mod 4 as split cave type]
+!!FU(WOG_30_ReadSplitCaveBits):P609/998;[read split cave values]
+!!VR(splitCaveValue:y):Sv609;
+!!VR(caveSubtype)&(caveSubtype)=1/(splitCaveValue)>=4:S0; [then treat monster cave as empty cave]
 
 [initial foray into the cave]
 
 !!VRz326:Sz130018;
 !!VRz327:Sz130019;
 !!VRz328:Sz130020;
-!!FU733:P53/98/602; [get choice in v602 - 0 is searching]
+!!FU(WOG_30_GetChoice):P53/98/602;                     [get choice in v602 - 0 is searching]
+!!VR(choice:y):Sv602;
 
-!!IF&v602=1:M1/z130021;
+!!if&(choice)=1;
+  !!IF:M1/z130021;
 
-!!IF&v602=0/y1=1:M1/z130022;
-!!VRv547&v602=0/y1=1:S1; [use battlefield #1 for this fight]
-!!HE-1&v602=0/y1=1:Tv998/v999/v1000/71/70; [provoke battle w/ 70 infernal trogs]
-!!HE-1:O?y3; [check owner in y3 to see if hero died]
-!!VRv609:|4; [set split-cave-monster-killed bit]
-!!FU769&v602=0/y1=1/y3<>-1:Pv609/998; [store modified bits if monster and it's beaten]
-!!VRv602&v602=0/y1=1/y3=-1:S1; [treat dead hero as not searching]
+; Fight with Infernal Troglodyte if it is the first time visiting/mod =1 
+!!el&(choice)=0/(caveSubtype)=1;
+  !!IF:M1/z130022;
+  !!VRi^wog_30_advCaveBattleType^:S1;   [i, use battlefield #1 for this fight]
+  !!HE(CURRENT_HERO):Tv998/v999/v1000/(MON_INFERNAL_TROGLODYTE)/70; [provoke battle w/ 70 infernal trogs]
+!!en;
+
+!!HE(CURRENT_HERO):O?(owner:y);         [check owner to see if hero died]
+
+!!if&(choice)=0/(caveSubtype)=1;
+  !!if&(owner)>(NO_OWNER);
+    !!VR(splitCaveValue):|4;            [set split-cave-monster-killed bit]
+    !!PO998:O(splitCaveValue);          [store modified bits if monster and it's beaten]
+  !!el;
+    !!VR(choice):S1;                    [treat dead hero as not searching]
+  !!en;
 
 [choice of initial two tunnels, sometimes with signpost]
+  !!VRz329:Sz130024;
+  !!VR(caveSubtype):S0;                    [from now on treat monster cave as empty cave]
 
-!!VRz329&y1=0:Sz130023;
-!!VRz329&v602=0/y1=1:Sz130024;
-!!VRy1&v602=0/y1=1:S0; [from now on treat monster cave as empty cave]
+!!el&(caveSubtype)=0;
+  !!VRz329:Sz130023;
+!!en;
 
-!!FU734:P0/603; [get type of cave 0 in v603]
-!!VRv608:S-1; [default is no other left cave]
-!!FU734&v601>1:P1/608; [get other left cave in v608]
-!!FU734&v601=1:P1/604; [get type of cave 1 in v604]
-!!FU734&v601>1:P2/604; [get type of cave 2 instead]
-!!VRv609:S-1; [default is no other right cave]
-!!FU734&v601=3:P3/609; [get other right cave in v609]
+!!FU(WOG_30_GetTypeOfCave):P0/603;                         [get type of cave 0 in v603]
+!!VRv608:S-1;                           [v608, default is no other left cave]
 
-!!FU735&v602=0:Pv603/v608/360; [get z360 name of left cave type(s)]
-!!FU735&v602=0:Pv604/v609/361; [get z361 name of right cave type(s)]
+!!if&(caveType)>1;
+  !!FU(WOG_30_GetTypeOfCave):P1/608;                       [get other left cave in v608]
+  !!FU(WOG_30_GetTypeOfCave):P2/604;                       [get type of cave 2 instead]
 
-!!VRz330:Sz360; [temporary copy]
-!!VRy4:Sv999 %2; [use bit 0 of object y as a psuedo-random #]
-!!VRz360&y1=3/y4=0:Sz361; [switch sign sides half the time if down]
-!!VRz361&y1=3/y4=0:Sz330;
+!!el&(caveType)=1;
+  !!FU(WOG_30_GetTypeOfCave):P1/604;                       [get type of cave 1 in v604]
+!!en;
 
-!!IF:V2/0; [assume names are different]
-!!IF&z360=z361:V2/1; [they're the same]
-!!VRz329&y1=2/-2:Sz130025;
-!!VRz329&y1=2/2:Sz130026;
-!!VRz329&y1=3/-2:Sz130027;
-!!VRz329&y1=3/2:Sz130028;
+!!VRv609:S-1;                           [v609, default is no other right cave]
+!!FU(WOG_30_GetTypeOfCave)&(caveType)=3:P3/609;            [get other right cave in v609]
+
+!!if&(choice)=0;
+  !!FU(WOG_30_GetNameOfCaveTypes):Pv603/v608/360;               [get z360 name of left cave type(s)]
+  !!FU(WOG_30_GetNameOfCaveTypes):Pv604/v609/361;               [get z361 name of right cave type(s)]
+!!en;
+
+!!VRz330:Sz360;                         [z330, temporary copy]
+!!VR(bit:y):Sv999 %2;                   [use bit 0 of object y as a psuedo-random #]
+
+!!if&(caveSubtype)=3/(bit)=0;
+  !!VRz360:Sz361;                       [z360, switch sign sides half the time if down]
+  !!VRz361:Sz330;
+!!en;
+
+!!IF:V2/0;                              [flg#2, assume names are different]
+!!IF&z360=z361:V2/1;                    [flg#2, they're the same]
+
+!!if&(caveSubtype)=2;
+  !!VRz329&-2:Sz130025;
+  !!VRz329&2:Sz130026;
+!!el&(caveSubtype)=3;
+  !!VRz329&-2:Sz130027;
+  !!VRz329&2:Sz130028;
+!!en;
 
 !!VRz362:S^"%Z360?" "%Z361?"^;
-!!VRz362&2:S^"%Z360"^; [if fallen but sides same, just show one name]
+!!VRz362&2:S^"%Z360"^;                  [z362, if fallen but sides same, just show one name]
 
 !!VRz326:Sz329+z130029;
 !!VRz327:Sz130030;
 !!VRz328:Sz130031;
-!!VRv605:S1; [assume hero leaves (for not searching or dead heroes)]
-!!FU733&v602=0:P50/98/605; [get choice in v605 - 0 is exploring]
+!!VRv605:S1;                            [v605, assume hero leaves (for not searching or dead heroes)]
 
-!!IF&v602=0/v605=1:M1/z130032;
+!!if&(choice)=0;
+  !!FU(WOG_30_GetChoice):P50/98/605;                   [get choice in v605 - 0 is exploring]
+
+  !!IF&v605=1:M1/z130032;
+!!en;
 
 !!VRz326:Sz130033;
 !!VRz327:Sz130034;
-!!VRz327&y1=2:Sz130035+z360+^"^;
-!!VRz327&y1=3:Sz130036+z62;
+!!VRz327&(caveSubtype)=2:Sz130035+z360+^"^;
+!!VRz327&(caveSubtype)=3:Sz130036+z362;
 !!VRz328:Sz130037;
-!!VRz328&y1=2:Sz130038+z361+^"^;
-!!VRz328&y1=3:Sz130039+z362;
-!!FU733&v605=0:P38/128/606; [get tunnel choice in v606]
+!!VRz328&(caveSubtype)=2:Sz130038+z361+^"^;
+!!VRz328&(caveSubtype)=3:Sz130039+z362;
+!!FU(WOG_30_GetChoice)&v605=0:P38/128/606;             [get tunnel choice in v606]
 
 [handle case with only two caves]
 
-!!FU731&v605=0/v601=1/v606=0:P0; [handle visiting cave 0 on left]
-!!FU731&v605=0/v601=1/v606=1:P1; [handle visiting cave 1 on right]
+!!if&v605=0/(caveType)=1;
+  !!if&v606=0;
+    !!FU(WOG_30_HandleVisitingCave):P0;                         [handle visiting cave 0 on left]
+  !!el;
+    !!FU(WOG_30_HandleVisitingCave):P1;                         [handle visiting cave 1 on right]
+  !!en;
+!!en;
 
 [handle case with caves 0-1 left and cave 2 right]
 
 !!VRz326:Sz130040;
 !!VRz327:Sz130041;
 !!VRz328:Sz130042;
-!!FU733&v605=0/v601=2/v606=0:P38/128/607; [get 2nd tunnel choice in v607]
-!!FU731&v605=0/v601=2/v606=0/v607=0:P0; [handle visiting left-left cave 0]
-!!FU731&v605=0/v601=2/v606=0/v607=1:P1; [handle visiting left-right cave 1]
-!!FU731&v605=0/v601=2/v606=1:P2; [handle visiting cave 2 on right]
+
+!!if&v605=0/(caveType)=2;
+  !!FU(WOG_30_GetChoice)&v606=0:P38/128/607;           [get 2nd tunnel choice in v607]
+  !!FU(WOG_30_HandleVisitingCave)&v606=0/v607=0:P0;             [handle visiting left-left cave 0]
+  !!FU(WOG_30_HandleVisitingCave)&v606=0/v607=1:P1;             [handle visiting left-right cave 1]
+  !!FU(WOG_30_HandleVisitingCave)&v606=1:P2;                    [handle visiting cave 2 on right]
+!!en;
 
 [handle case with caves 0-1 left and caves 2-3 right]
 
 !!VRz326:Sz130043;
 !!VRz327:Sz130044;
 !!VRz328:Sz130045;
-!!FU733&v605=0/v601=3:P38/128/607; [get 2nd tunnel choice in v607]
-!!FU731&v605=0/v601=3/v606=0/v607=0:P0; [handle left-left cave 0]
-!!FU731&v605=0/v601=3/v606=0/v607=1:P1; [handle left-right cave 1]
-!!FU731&v605=0/v601=3/v606=1/v607=0:P2; [handle right-left cave 2]
-!!FU731&v605=0/v601=3/v606=1/v607=1:P3; [handle right-right cave 3]
+
+!!if&v605=0/(caveType)=3;
+  !!FU(WOG_30_GetChoice):P38/128/607;                  [get 2nd tunnel choice in v607]
+  !!FU(WOG_30_HandleVisitingCave)&v606=0/v607=0:P0;             [handle left-left cave 0]
+  !!FU(WOG_30_HandleVisitingCave)&v606=0/v607=1:P1;             [handle left-right cave 1]
+  !!FU(WOG_30_HandleVisitingCave)&v606=1/v607=0:P2;             [handle right-left cave 2]
+  !!FU(WOG_30_HandleVisitingCave)&v606=1/v607=1:P3;             [handle right-right cave 3]
+!!en;
 
 ** end of function
 
@@ -336,7 +398,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** x1/x2 are artifact numbers for pictures
 ** vx3 returns the choice (0 left, 1 right)
 
-!?FU733;
+!?FU(WOG_30_GetChoice);
 
 !!UN:Ax1/9/?y1; [remember left artifact name]
 !!UN:Ax1/10/?y2; [remember left artifact description]
@@ -362,9 +424,9 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to get type of cave #x1 and return it in vx2
 
-!?FU734;
+!?FU(WOG_30_GetTypeOfCave);
 
-!!FU766:Px1/x2/998; [get cave's bits into vx2]
+!!FU(WOG_30_ReadCaveBits):Px1/x2/998; [get cave's bits into vx2]
 !!VRvx2:&3; [cave type is low 2 bits]
 
 ** end of function
@@ -372,7 +434,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to get name of cave types x1/x2 into zx3
 
-!?FU735;
+!?FU(WOG_30_GetNameOfCaveTypes);
 
 !!VRzx3&x1=0/x2=-1:Sz130046;
 !!VRzx3&x1=0/x2=0:Sz130047;
@@ -398,65 +460,88 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** end of function
 
 
-** function to set-up special battlefield v547
+** function to set-up special battlefield i^wog_30_advCaveBattleType^
 
 !?FU736;
 
 !!BF:C; [always start with empty battlefield]
 
-!!BF&v547=1:O47/36 O47/155 O47/146 O46/92 O46/178 O45/63 O44/43 O44/103 O20/99 O79/160 O45/184 O80/14 O46/6 O60/51;
+!!if&i^wog_30_advCaveBattleType^=1;
+  !!BF:O47/36 O47/155 O47/146 O46/92 O46/178 O45/63 O44/43 O44/103 O20/99 O79/160 O45/184 O80/14 O46/6 O60/51;
 
-!!BF&v547=2:O45/18 O46/3 O44/38 O46/171 O47/173 O40/163 O41/77 O55/167 O42/65 O40/99 O43/47 O37/154;
+!!el&i^wog_30_advCaveBattleType^=2;
+  !!BF:O45/18 O46/3 O44/38 O46/171 O47/173 O40/163 O41/77 O55/167 O42/65 O40/99 O43/47 O37/154;
 
-!!BF&v547=3:O45/18 O42/29 O35/86 O35/120 O35/92 O35/126 O47/182;
+!!el&i^wog_30_advCaveBattleType^=3;
+  !!BF:O45/18 O42/29 O35/86 O35/120 O35/92 O35/126 O47/182;
 
-!!BF&v547=4:O0/69 O3/171 O57/105 O3/38 O3/160 O1/127 O3/96 O57/60 O0/11 O3/6;
+!!el&i^wog_30_advCaveBattleType^=4;
+  !!BF:O0/69 O3/171 O57/105 O3/38 O3/160 O1/127 O3/96 O57/60 O0/11 O3/6;
 
-!!BF&v547=5:M49152/40952/32784/16286/8192/15608/12320/10190/12288/9470/34304/79;
+!!el&i^wog_30_advCaveBattleType^=5;
+  !!BF:M49152/40952/32784/16286/8192/15608/12320/10190/12288/9470/34304/79;
 
-!!BF&v547=6:O64/36 O62/103 O62/138 O62/173 O61/71 O61/124 O61/24 O61/143 O67/158 O61/110 O61/59 O69/24 O61/78 O61/146 O62/165 O66/150 O62/132 O62/99 O61/64 O65/28;
+!!el&i^wog_30_advCaveBattleType^=6;
+  !!BF:O64/36 O62/103 O62/138 O62/173 O61/71 O61/124 O61/24 O61/143 O67/158 O61/110 O61/59 O69/24 O61/78 O61/146 O62/165 O66/150 O62/132 O62/99 O61/64 O65/28;
 
-!!BF&v547=7:O80/8 O80/10 O79/25 O79/29 O80/42 O80/44 O79/65 O80/76 O80/78 O79/93 O79/97 O80/110 O80/112 O79/133 O80/144 O80/146 O79/161 O79/165 O80/178 O80/180;
+!!el&i^wog_30_advCaveBattleType^=7;
+  !!BF:O80/8 O80/10 O79/25 O79/29 O80/42 O80/44 O79/65 O80/76 O80/78 O79/93 O79/97 O80/110 O80/112 O79/133 O80/144 O80/146 O79/161 O79/165 O80/178 O80/180;
 
-!!BF&v547=8:O57/20 O3/106 O38/159 O67/160 O23/162 O20/179 O2/171 O38/74 O20/27 O20/9 O68/24;
+!!el&i^wog_30_advCaveBattleType^=8;
+  !!BF:O57/20 O3/106 O38/159 O67/160 O23/162 O20/179 O2/171 O38/74 O20/27 O20/9 O68/24;
 
-!!BF&v547=9:O80/43 O53/56 O82/78 O53/86 O80/105 O81/113 O82/139 O79/143 O53/161 O51/18 O81/183 O80/171 O80/30;
+!!el&i^wog_30_advCaveBattleType^=9;
+  !!BF:O80/43 O53/56 O82/78 O53/86 O80/105 O81/113 O82/139 O79/143 O53/161 O51/18 O81/183 O80/171 O80/30;
 
-!!BF&v547=10:M0/992/63504/33264/31752/16632/15876/8316/7938/62/0/75;
+!!el&i^wog_30_advCaveBattleType^=10;
+  !!BF:M0/992/63504/33264/31752/16632/15876/8316/7938/62/0/75;
+!!en;
 
 ** end of function
 
 
-** function to set-up initial troop positions for special battlefield v547
+** function to set-up initial troop positions for special battlefield i^wog_30_advCaveBattleType^
 
 !?FU737;
 
-!!FU738&v547=1:P57/59/90/77/125/111/127/3/133/30/137/70/164/174;
-!!FU740&v547=1:P70/10/4 P70/10/31 P70/10/48 P70/10/173 P70/10/165;
+!!if&i^wog_30_advCaveBattleType^=1;
+  ; Warning: Battling Troglodytes at the entrance of cave could resutl in the amount of troops in the hero army messing up in Quick Combat
+  !!FU738&i^battle_isVisible^:P57/59/90/77/125/111/127/3/133/30/137/70/164/174;
+  !!FU740:P(MON_TROGLODYTE)/10/4 P(MON_TROGLODYTE)/10/31 P(MON_TROGLODYTE)/10/48 P(MON_TROGLODYTE)/10/173 P(MON_TROGLODYTE)/10/165;
 
-!!FU738&v547=2:P36/53/69/86/103/121/138/41/58/75/93/109/127/144;
-!!FU740&v547=2:P143/10/60 P143/10/95 P143/10/129 P143/10/110 P143/10/80 P143/10/47 P143/10/133 P143/10/148;
+!!el&i^wog_30_advCaveBattleType^=2;
+  !!FU738:P36/53/69/86/103/121/138/41/58/75/93/109/127/144;
+  !!FU740:P143/10/60 P143/10/95 P143/10/129 P143/10/110 P143/10/80 P143/10/47 P143/10/133 P143/10/148;
 
-!!FU738&v547=3:P96/92/88/86/90/94/98/140/39/142/41/144/43/146;
-!!BM21&v547=3:Q1/40/0 Q1/42/0 Q1/82/0 Q1/83/0 Q1/116/0 Q1/117/0 Q1/141/0 Q1/143/0 Q1/145/0 Q1/57/0 Q1/58/0 Q1/59/0 Q1/60/0 Q1/124/0 Q1/125/0 Q1/126/0 Q1/127/0 Q1/128/0 Q1/129/0;
+!!el&i^wog_30_advCaveBattleType^=3;
+  !!FU738:P96/92/88/86/90/94/98/140/39/142/41/144/43/146;
+  !!BM21:Q1/40/0 Q1/42/0 Q1/82/0 Q1/83/0 Q1/116/0 Q1/117/0 Q1/141/0 Q1/143/0 Q1/145/0 Q1/57/0 Q1/58/0 Q1/59/0 Q1/60/0 Q1/124/0 Q1/125/0 Q1/126/0 Q1/127/0 Q1/128/0 Q1/129/0;
 
-!!FU738&v547=4:P21/53/56/89/121/124/157/31/48/65/82/116/133/150;
+!!el&i^wog_30_advCaveBattleType^=4;
+  !!FU738:P21/53/56/89/121/124/157/31/48/65/82/116/133/150;
 
-!!FU738&v547=5:P1/35/69/86/103/137/171/80/31/147/47/131/48/164;
+!!el&i^wog_30_advCaveBattleType^=5;
+  !!FU738:P1/35/69/86/103/137/171/80/31/147/47/131/48/164;
 
-!!FU738&v547=6:P89/57/125/93/61/129/97/42/162/131/56/160/63/123;
+!!el&i^wog_30_advCaveBattleType^=6;
+  !!FU738:P89/57/125/93/61/129/97/42/162/131/56/160/63/123;
 
-!!FU738&v547=7:P1/35/69/86/103/137/171/94/26/162/96/28/164/95;
-!!FU740&v547=7:P116/10/27 P116/10/163 P35/90/99;
+!!el&i^wog_30_advCaveBattleType^=7;
+  !!FU738:P1/35/69/86/103/137/171/94/26/162/96/28/164/95;
+  !!FU740:P116/10/27 P116/10/163 P35/90/99;
 
-!!FU738&v547=8:P35/52/69/86/103/120/137/31/167/99/66/134/64/132;
-!!BM21&v547=8:Q0/76/0 Q0/77/0 Q0/93/0 Q0/94/0 Q0/95/0 Q0/110/0 Q0/111/0;
+!!el&i^wog_30_advCaveBattleType^=8;
+  !!FU738:P35/52/69/86/103/120/137/31/167/99/66/134/64/132;
+  !!BM21:Q0/76/0 Q0/77/0 Q0/93/0 Q0/94/0 Q0/95/0 Q0/110/0 Q0/111/0;
 
-!!FU738&v547=9:P74/76/91/93/95/108/110/57/59/61/90/97/125/129;
-!!FU740&v547=9:P43/25/58 P43/25/60 P43/25/73 P43/25/78 P43/25/107 P43/25/112 P43/25/126 P43/25/127 P43/25/128 P45/30/38 P45/30/45 P45/30/164;
+!!el&i^wog_30_advCaveBattleType^=9;
+  !!FU738:P74/76/91/93/95/108/110/57/59/61/90/97/125/129;
+  !!FU740:P43/25/58 P43/25/60 P43/25/73 P43/25/78 P43/25/107 P43/25/112 P43/25/126 P43/25/127 P43/25/128 P45/30/38 P45/30/45 P45/30/164;
 
-!!FU738&v547=10:P39/72/105/138/130/97/64/42/75/108/141/128/95/62;
-!!FU792&v547=10:P39/42 P72/75 P105/108 P138/141 P130/128 P97/95 P64/62;
+!!el&i^wog_30_advCaveBattleType^=10;
+  !!FU738:P39/72/105/138/130/97/64/42/75/108/141/128/95/62;
+  !!FU792:P39/42 P72/75 P105/108 P138/141 P130/128 P97/95 P64/62;
+!!en;
 
 ** end of function
 
@@ -497,11 +582,10 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** x1 = type, x2 = qty, x3 = position
 
 !?FU740;
+!#VA(mon:x) (qty:x) (idealPos:x);
 
-!!BU:Ex3/?y1; [see what's at our position]
-!!BMy1&y1<>-1:N?y2; [see how many creatures in that stack]
-!!VRy1&y1<>-1/y2=0:S-1; [treat no creatures as no stack]
-!!BU&y1=-1:Sx1/x2/x3/1/-1/0; [if nothing there, place our new stack]
+!!FU(WOG_GetValidPositionForStack):P(idealPos)/(mon)/(BATTLE_RIGHT)/?(realPos:y);
+!!BU&(realPos)>-1:S(mon)/(qty)/(realPos)/(BATTLE_RIGHT)/-1/0; [if nothing there, place our new stack]
 
 ** end of function
 
@@ -513,83 +597,125 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !!VRy1:S539 +x16; [get index of variable with monster position]
 !!BU:Evy1/?y2; [see what stack is at that position]
-!!BMy2&y2<>-1:N?y3; [if stack, see how many critters]
-!!VRv523&y2<>-1:+y3; [add up critters]
-!!VRy2&y2<>-1/y3=0:S-1; [treat no critters as no stack]
-!!BU&y2=-1:Sx1/1/vy1/1/-1/0; [place new stack of just 1 monster]
+
+!!if&y2<>-1;
+  !!BMy2:N?y3; [if stack, see how many critters]
+  !!VRv523:+y3; [add up critters]
+  !!VRy2&y3=0:S-1; [treat no critters as no stack]
+!!el;
+  !!BU:Sx1/1/vy1/1/-1/0; [place new stack of just 1 monster]
+!!en;
 
 ** end of function
 
 
 ** Battlefield obstacle set-up trigger
 
-!?BF;
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
+!?FU(OnSetupBattlefield);
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
 
-!!FU736&v547<>0:P; [set-up any special battlefield]
+!!FU736&i^wog_30_advCaveBattleType^:P;                      [set-up any special battlefield]
 
 ** end of Battlefield obstacle trigger
 
 
+** Troop position/special effect set-up trigger
+
+!?FU(OnAfterTacticsPhase);              [fix incompatibility with the latest ERA - Archer]
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
+
+!!FU737&i^wog_30_advCaveBattleType^:P;  [set-up special troop positions]
+
+** end of Troop position/special effect trigger
+
+
 ** Battlefield round trigger
 
-!?BR;
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
+!?FU(OnBattleRound);
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
 
-!!FU737&v547<>0/v997=-1:P; [set-up special troop positions]
-!!FU785&v547>=3/v547<=10:P; [handle special battlefield stuff]
-!!FU820&v997=-1:P; [handle pool effects]
-!!FU826:P; [handle altar effects]
+*!FU737&i^wog_30_advCaveBattleType^/v997=0:P; [set-up special troop positions - moved to OnAfterTacticsPhase]
+!!FU785&i^wog_30_advCaveBattleType^>=3/i^wog_30_advCaveBattleType^<=10:P;             [handle special battlefield stuff]
+!!FU820&v997=0:P;                       [handle pool effects]
+!!FU826:P;                              [handle altar effects]
 
 ** end of Battlefield round trigger
 
 
 ** Pre-battle trigger
 
-!?BA0;
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
+!?FU(OnBeforeBattleUniversal);
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
 
-!!BA&v547<>0:B12; [subterranean background]
-!!IF:V600/0 V601/0; [clear flags for extra spell cast]
-!!BA:H0/?v519; [get attacking hero number]
-!!HEv519&v547<>0:R4/0; [disable tactics for special battles]
-!!FU832&v547<>0:Pv519; [remove war machines, remember them]
+!!if&i^wog_30_advCaveBattleType^;
+  !!BA:B12; [subterranean background]
+  !!HEi^battle_hero_0^:R4/?i^wog_30_tacticsStatus^ R4/(FALSE); [disable tactics for special battles]
+  !!FU(WOG_30_RemoveOrRestoreWarMachinesOnBattle):Pi^battle_hero_0^/0;
+!!en;
+
+; Set up extra cast vars
+!?FU(OnSetupBattlefield);
+!!re i/(BATTLE_LEFT)/(BATTLE_RIGHT);
+  !!VRi^wog_30_extraCastSpent_%i^:S0;
+!!en;
+
+!!FU(WOG_30_RemoveOrRestoreWarMachinesOnBattle)&i^wog_30_advCaveBattleType^:Pi^battle_hero_0^/1;
 
 ** end of pre-battle trigger
 
 
 ** Post-battle trigger
 
-!?BA1;
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
-
-!!BA:H0/?v519; [get attacking hero number]
-!!HEv519&v519>=0:R4/1; [enable tactics]
-!!FU833&v547<>0:Pv519; [restore war machines]
-!!VRv547:S0; [clear battlefield number for next battle]
+!?FU(OnAfterBattleUniversal)&i^wog_30_advCaveBattleType^;
+!!HEi^battle_hero_0^:R4/i^wog_30_tacticsStatus^; [restore tactics]
+!!VRi^wog_30_tacticsStatus^:S0;
+!!VRi^wog_30_advCaveBattleType^:S0;
 
 ** end of post-battle trigger
 
 
 ** BG0 trigger
 
-!?BG0;
-!!UN:P30/?y-1;     [Check for WoG option]
-!!FU&y-1=0:E;     [Exit if its disabled]
+!?FU(OnBeforeBattleAction);
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
 
-!!FU783:P; [handle hermit-related stuff]
 !!FU827:P; [handle altar stuff]
 
 ** end of BG0 trigger
 
 
+** OnAfterMelee Hook
+
+!?FU(WOG_OnAfterMelee);
+!#VA(atkStack:x) (defStack:x);
+
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
+
+!!FU(WOG_30_ExecuteSpecialAbilities)&i^battle_acting_stack^=(atkStack):P(atkStack)/(defStack); [cannot be retaliation]
+
+** end of OnAfterMelee Hook
+
+
+** OnBattleActionEnd trigger
+
+!?FU(OnBattleActionEnd);
+!!UN:P30/?(wogOption:y);                [Check for WoG option]
+!!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
+
+!!FU(WOG_30_HandleExtraSpell):P;        [handle hermit double casts]
+
+** end of OnBattleActionEnd trigger
+
+
 ** function to handle Rogue caves, x1 cave, x2 cave bits 65432
 
-!?FU742;
+!?FU(WOG_30_HandleRogueCave);
 
 !!VRy1:Sx2 &3; [get base Friendliness level in y1]
 !!VRy2:Sx2 :4 &3; [get ability in y2 - 0 sell Rogues, 1 steal mine, 2 attack hero, 3 steal artifact]
@@ -658,7 +784,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz327&y4=5:Sz130104;
 !!VRz328&y4=5:Sz130105;
 !!VRv613:S-1; [default if Rogues dead]
-!!FU733&y3=0:Py5/y6/613; [get choice in v613 - 0 is left]
+!!FU(WOG_30_GetChoice)&y3=0:Py5/y6/613; [get choice in v613 - 0 is left]
 !!VRv613&v613=0:Sy5;
 !!VRv613&v613=1:Sy6; [now v613 has chosen picture - 66 peace, 12 fight, 90 flee]
 
@@ -673,10 +799,13 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326:Sz130108;
 !!VRz327:Sz130109;
 !!VRz328:Sz130110;
-!!FU733&v613=66/y4=5:P50/98/614; [get choice in v614 - 0 disturb, 1 leave]
+!!FU(WOG_30_GetChoice)&v613=66/y4=5:P50/98/614; [get choice in v614 - 0 disturb, 1 leave]
 
-!!IF&v613=66/y4=5/v614=1:M1/z130111;
-!!IF&v613=66/y4=5/v614=0:M1/z130112;
+!!if&v613=66/y4=5;
+  !!IF&v614=1:M1/z130111;
+  !!IF&v614=0:M1/z130112;
+!!en;
+
 !!VRy1:+1; [+1 friendliness]
 !!FU746&v613=66/y4=5/v614=0:Py1/y2/x1;
 
@@ -693,7 +822,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU743;
 
-!!HE-1:C0/x16/?y1/?y2; [get monster type y1 qty y2]
+!!HE(CURRENT_HERO):C0/x16/?y1/?y2; [get monster type y1 qty y2]
 !!VRv611&y1=143:+y2; [add up Rogues]
 !!MA&y1<>-1:Py1/?y3; [get hit points of one monster]
 !!VRy3&y1<>-1:*y2 :10; [times qty for total hit points, 1/10 to avoid overflows]
@@ -706,11 +835,11 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU744;
 
-!!HE-1:R0/?y1; [get morale]
+!!HE(CURRENT_HERO):R0/?y1; [get morale]
 !!VRy1:+x1;
 !!VRy1&y1<-3:S-3; [minimum of -3]
 !!VRy1&y1>3:S3; [maximum of +3]
-!!HE-1:R0/y1; [set new morale]
+!!HE(CURRENT_HERO):R0/y1; [set new morale]
 
 ** end of function
 
@@ -719,9 +848,9 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU745;
 
-!!VRv547:S2; [use battlefield #2 for this fight]
-!!HE-1:Tv998/v999/v1000/143/x1; [provoke Rogues battle]
-!!HE-1:O?y1; [get owner in y1]
+!!VRi^wog_30_advCaveBattleType^:S2; [use battlefield #2 for this fight]
+!!HE(CURRENT_HERO):Tv998/v999/v1000/143/x1; [provoke Rogues battle]
+!!HE(CURRENT_HERO):O?y1; [get owner in y1]
 !!FU748&y1<>-1:Px2; [set bit if Rogues killed]
 
 !!UN:U57/-1/?v620; [count obelisks into v620]
@@ -734,7 +863,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz327:Sz130117;
 !!VRz328:Sz130118;
 !!VRv624:S-1; [default if no obelisk or no survivor or hero died]
-!!FU733&y1<>-1/v620>0/y3<50:P117/12/624; [get choice in v624 - 0 live, 1 kill]
+!!FU(WOG_30_GetChoice)&y1<>-1/v620>0/y3<50:P117/12/624; [get choice in v624 - 0 live, 1 kill]
 
 !!VRz326:Sz130119;
 !!VRz327:Sz130120;
@@ -746,7 +875,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRv640:C8/14/20/26/37/45/105/107/56/52; [artifact table]
 !!FU747:P609; [get hero alignment in v609]
 !!IF&v624=1/y4<25/v609<>1:Q1/8/vy5/1/z130122;
-!!HE-1&v624=1/y4<25/v609<>1:Avy5; [give artifact]
+!!HE(CURRENT_HERO)&v624=1/y4<25/v609<>1:Avy5; [give artifact]
 
 !!IF&v624=0:M1/z130123;
 !!UN&v624=0:Sv621/v622/v623/y1/3; [reveal obelisk]
@@ -796,7 +925,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU747;
 
-!!HE-1:N?y1; [get hero's number]
+!!HE(CURRENT_HERO):N?y1; [get hero's number]
 !!VRvx1:S0; [assume neutral, and neutral for campaign heroes]
 !!VRvx1&y1<48:S1; [good hero]
 !!VRvx1&y1>=48/y1<96:S-1; [evil hero]
@@ -808,9 +937,9 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU748;
 
-!!FU766:Px1/660/998; [read cave bits into v660]
+!!FU(WOG_30_ReadCaveBits):Px1/660/998; [read cave bits into v660]
 !!VRv660:|64; [set monsters-killed bit]
-!!FU767:Px1/v660/998; [set cave bits]
+!!FU(WOG_30_SetBits):Px1/v660/998; [set cave bits]
 
 ** end of function
 
@@ -839,9 +968,10 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to initialize w variables for hero x16
 
-!?FU750;
+!?FU(WOG_30_InitializeHeroVars);
+!#VA(hero:x);
 
-!!IF:Wx16; [pick hero x16 for w variables]
+!!IF:W(hero); [pick hero x16 for w variables]
 !!VRw62:S-1; [hero paying for Rogue attack]
 !!VRw63:S-1; [artifact stolen by Rogues]
 !!VRw64:S0; [hermit wealth skill]
@@ -885,7 +1015,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRy1&x16=v604:S8;
 !!UN:U57/-1/x16/605; [get obelisk location into v605-v607]
 !!VRy1|v998<>v605/v999<>v606/v1000<>v607:S0; [hero has to be there]
-!!HE-1:O?y7; [get hero owner]
+!!HE(CURRENT_HERO):O?y7; [get hero owner]
 
 !!VRy2:S15 -y1; [get bit mask]
 !!VRy8:S510 +y7; [get index of obelisk variables]
@@ -900,11 +1030,12 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRy5:S620 R9; [index to boosted artifact]
 !!VRy6:S0 R5 *500 +2500; [2500-5000 gold]
 
-!!IF&y1>0/y3>=20:Q1/6/y6/8/vy4/8/vy5/1/z130132;
-
-!!HE-1&y1>0/y3>=20:Avy4; [give artifacts]
-!!HE-1&y1>0/y3>=20:Avy5;
-!!OW&y1>0/y3>=20:Ry7/6/dy6; [give gold]
+!!if&y1>0/y3>=20;
+  !!IF:Q1/6/y6/8/vy4/8/vy5/1/z130132;
+  !!HE(CURRENT_HERO):Avy4; [give artifacts]
+  !!HE(CURRENT_HERO):Avy5;
+  !!OW:Ry7/6/dy6; [give gold]
+!!en;
 
 ** end of function
 
@@ -919,8 +1050,6 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !!HEx16:O?y1; [get hero owner]
 !!HEx16:B0/?z326; [get hero name]
-
-!!VRw62&w62>155:S-1;  fix by majaczek
 
 !!HEw62&w62>=0/x1=y1:B0/?z327; [get paying hero's name]
 !!IF&1000/w62>=0/x1=y1:M1/z130133;
@@ -946,7 +1075,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRy1:S601 +x16; [get index of variable tracking obelisk number]
 !!VRvy1:Sx16 *7 %v600 +1; [set obelisk number]
 !!VRy2:S550 +x16; [get bit number from table]
-!!HE-1:O?y4; [get hero owner]
+!!HE(CURRENT_HERO):O?y4; [get hero owner]
 !!VRy5:S510 +y4; [get index of obelisk variable]
 !!VRy3:Svy5 &vy2; [look at bit indicating findable treasure]
 !!VRvy1&y3=0:S-1; [clear obelisk number if hero can't find that treasure]
@@ -979,14 +1108,14 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326:Sz130135;
 !!VRz327:Sz130136;
 !!VRz328:Sz130137;
-!!FU733:P117/98/621; [get choice in v621 - 0 deal, 1 no]
+!!FU(WOG_30_GetChoice):P117/98/621; [get choice in v621 - 0 deal, 1 no]
 
 !!IF&v621=1:M1/z130138;
 
 !!FU761&v621=0:Pv620/x2; [handle gold transaction]
 
 !!IF&v621=0/3:M1/z130139;
-!!HE-1&v621=0/3:C2/143/15/1; [give 15 Rogues]
+!!HE(CURRENT_HERO)&v621=0/3:C2/(MON_ROGUE)/15/1; [give 15 Rogues]
 
 ** end of function
 
@@ -994,7 +1123,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** function to handle Rogues that steal gold mines, x1 friendly, x2 cave
 
 !?FU756;
-!!HE-1:O?y4; [get hero owner]
+!!HE(CURRENT_HERO):O?y4; [get hero owner]
 !!UN:U53/6/?y5; [count gold mines]
 !!VRv620:S-1; [no usable gold mine found]
 !!DO754/1/y5/1&y5>0:Py4; [find gold mine of player not y4, not robbed this round]
@@ -1009,7 +1138,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326:Sz130141;
 !!VRz327:Sz130142;
 !!VRz328:Sz130143;
-!!FU733&v620<>-1:P117/98/626; [get choice in v626 - 0 deal, 1 leave]
+!!FU(WOG_30_GetChoice)&v620<>-1:P117/98/626; [get choice in v626 - 0 deal, 1 leave]
 
 !!IF&v620<>-1/v626=1:M1/z130144;
 !!VRv626&v620=-1:S1; [now treat no mine available as saying no]
@@ -1033,7 +1162,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU757;
 
-!!HE-1:O?y1; [get hero owner]
+!!HE(CURRENT_HERO):O?y1; [get hero owner]
 !!VRv620:S-1; [assume no hero found]
 !!VRv621:S32767; [and high army strength]
 !!DO762/0/155/1:Py1; [find approx. weakest hero not this player's or already attacked]
@@ -1067,7 +1196,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326:Sz130159;
 !!VRz327:Sz130160;
 !!VRz328:Sz130161;
-!!FU733&v620<>-1:P117/98/624; [get choice in v624 - 0 deal, 1 leave]
+!!FU(WOG_30_GetChoice)&v620<>-1:P117/98/624; [get choice in v624 - 0 deal, 1 leave]
 
 !!IF&v620<>-1/v624=1:M1/z130162;
 !!VRv624&v620=-1:S1; [now treat no target as saying no]
@@ -1075,7 +1204,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!FU761&v624=0:Pv623/x2; [handle gold transaction]
 
 !!IF&v624=0/3:Wv620; [use w variables of target hero]
-!!HE-1:N?y5; [get number of buying hero]
+!!HE(CURRENT_HERO):N?y5; [get number of buying hero]
 !!VRw62&v624=0/3:Sy5; [set flag for Rogue battle on their turn]
 !!IF&v624=0/3:M1/z130163;
 
@@ -1086,7 +1215,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU758;
 
-!!HE-1:O?y1; [get hero owner]
+!!HE(CURRENT_HERO):O?y1; [get hero owner]
 !!VRv620:S-1; [number of suitable hero found]
 !!VRv621:S-1; [index number of found liftable artifact]
 !!VRv630:C52/53/46/47/48/49/50/51/64/63; [table of artifacts to steal]
@@ -1107,7 +1236,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326:Sz130165;
 !!VRz327:Sz130166;
 !!VRz328:Sz130167;
-!!FU733&v620<>-1:P117/98/623; [get choice in v623 - 0 deal, 1 leave]
+!!FU(WOG_30_GetChoice)&v620<>-1:P117/98/623; [get choice in v623 - 0 deal, 1 leave]
 
 !!IF&v620<>-1/v623=1:M1/z130168;
 !!VRv623&v620=-1:S1; [now treat no artifact available as saying no]
@@ -1117,7 +1246,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!HEv620&v623=0/3:A3/vv621/1/1; [steal artifact]
 !!IF&v623=0/3:Wv620; [now refer to the robbed hero's w variables]
 !!VRw63&v623=0/3:Svv621; [set flag for robbery message on that player's turn]
-!!HE-1&v623=0/3:Avv621; [give artifact]
+!!HE(CURRENT_HERO)&v623=0/3:Avv621; [give artifact]
 !!IF&v623=0/3:M1/z130169;
 
 ** end of function
@@ -1146,12 +1275,12 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !!IF:M1/z130178;
 !!VRy1:S0 R99; [roll % dice]
-!!FU766:Px1/660/998; [read cave's bits into v660]
+!!FU(WOG_30_ReadCaveBits):Px1/660/998; [read cave's bits into v660]
 !!VRy2:Sv660 :4 &3; [now y2 is unmodified friendliness]
 !!VRy2&y2>0/y1<50:-1; [50% chance to get permanently less friendly if possible]
 !!VRy2:*4; [get bits back to position we need them in]
 !!VRv660:&115 |y2; [clear friendliness bits, then OR our new value in]
-!!FU767:Px1/v660/998; [store new cave bits]
+!!FU(WOG_30_SetBits):Px1/v660/998; [store new cave bits]
 
 ** end of function
 
@@ -1162,7 +1291,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU761;
 
-!!HE-1:O?y1; [get hero owner]
+!!HE(CURRENT_HERO):O?y1; [get hero owner]
 !!OW:Ry1/6/?y2; [get hero's owner's gold]
 !!IF:V3/0; [assume not enough gold]
 !!IF&y2>=x1:V3/1; [player has enough gold]
@@ -1229,7 +1358,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to read cave x1's bits into vx2, location x3
 
-!?FU766;
+!?FU(WOG_30_ReadCaveBits);
 
 !!POx3:H?y1; [read various PO bytes and nybble]
 !!POx3:T?y2;
@@ -1250,7 +1379,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to set cave x1's bits equal to x2, location x3
 
-!?FU767;
+!?FU(WOG_30_SetBits);
 
 !!POx3&x1=0:H?y1; [store cave 0 in low 7 bits of PO:H]
 !!VRy1:&128 |x2;
@@ -1289,7 +1418,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to read split cave bits into vx1, location x2
 
-!?FU768;
+!?FU(WOG_30_ReadSplitCaveBits);
 !!POx2:O?vx1; [reads bits from PO:O nybble]
 !!VRvx1:&7; [just 3 meaningful bits]
 !!VRy1:Svx1;
@@ -1298,21 +1427,12 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** end of function
 
 
-** function to set split cave bits to x1, location x2
-
-!?FU769;
-!d!IF:M^Set x2=%X2, x1=%X1^;
-!!POx2:Ox1; [set PO:O nybble]
-
-** end of function
-
-
 ** function to initialize cave x16 to random
 
-!?FU770;
+!?FU(WOG_30_RandomizeCaveBits);
 
 !!VRy1:S0 R63; [random cave bits - hi bit always clear]
-!!FU767:Px16/y1/601; [set bits]
+!!FU(WOG_30_SetBits):Px16/y1/601; [set bits]
 
 ** end of function
 
@@ -1323,15 +1443,18 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !!VRy1:S539 +x16; [get index of variable with monster position]
 !!BU:Evy1/?y2; [see what stack is at that position]
-!!BMy2&y2<>-1:N?y3; [see how many there]
-!!BMy2&y2<>-1/y3>0:Nx1 Bx1; [set number of monsters and starting number]
+
+!!if&y2<>-1;
+  !!BMy2:N?y3; [see how many there]
+  !!BMy2&y3>0:Nx1 Bx1; [set number of monsters and starting number]
+!!en;
 
 ** end of function
 
 
 ** function to handle Hermit caves, x1 cave, x2 cave bits 65432
 
-!?FU772;
+!?FU(WOG_30_HandleHermitCave);
 
 !!VRy1:Sx2 &3; [get requirements in y1 - 0 none 1 sick 2 antisocial 3 ascetic]
 !!VRy2:Sx2 :4 &3; [get lesson in y2 - 0 wealth 1 combat 2 magic 3 voodoo]
@@ -1363,7 +1486,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326&v615=1/wy4>0/wy4<3/w68=0:Sz130188;
 !!VRz327:Sz130189;
 !!VRz328:Sz130190;
-!!FU733&v615=1/wy4<3/w68=0:P88/98/616; [get choice in v616 - 0 learn, 1 leave]
+!!FU(WOG_30_GetChoice)&v615=1/wy4<3/w68=0:P88/98/616; [get choice in v616 - 0 learn, 1 leave]
 
 !!IF&v615=1/wy4=0/v616=1/w68=0:M1/z130191;
 !!IF&v615=1/wy4>0/wy4<3/v616=1/w68=0:M1/z130192;
@@ -1431,11 +1554,11 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU774;
 
-!!HE-1:S27/?y1; [get y1 first aid skill level 0-3]
-!!HE-1:A2/6/?y2/?y3; [get y3 # of equipped first aid tents]
-!!HE-1:A2/94/?y2/?y4; [get y4 # of equipped rings of vitality]
-!!HE-1:A2/95/?y2/?y5; [get y5 # of equipped rings of life]
-!!HE-1:A2/96/?y2/?y6; [get y6 # of equipped vials of lifeblood]
+!!HE(CURRENT_HERO):S27/?y1; [get y1 first aid skill level 0-3]
+!!HE(CURRENT_HERO):A2/6/?y2/?y3; [get y3 # of equipped first aid tents]
+!!HE(CURRENT_HERO):A2/94/?y2/?y4; [get y4 # of equipped rings of vitality]
+!!HE(CURRENT_HERO):A2/95/?y2/?y5; [get y5 # of equipped rings of life]
+!!HE(CURRENT_HERO):A2/96/?y2/?y6; [get y6 # of equipped vials of lifeblood]
 !!VRz361:Sz130221;
 
 !!VRy7:S0; [no cure available]
@@ -1456,17 +1579,17 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326&y7=5:Sz130228;
 !!VRz327:Sz130229;
 !!VRz328:Sz130230;
-!!FU733&y7<>0:P6/98/612; [get choice in v612 - 0 heal, 1 leave]
+!!FU(WOG_30_GetChoice)&y7<>0:P6/98/612; [get choice in v612 - 0 heal, 1 leave]
 
 !!VRz326:Sz130231;
 !!VRz327:Sz130232;
 !!VRz328:Sz130233;
 !!FU749&y7<>0/v612=1:P-1; [award morale for evil action]
 
-!!HE-1&v612=0/y7=2:A3/6/1/1; [remove used First Aid Tent]
-!!HE-1&v612=0/y7=3:A3/94/1/1; [remove used Ring Of Vitality]
-!!HE-1&v612=0/y7=4:A3/95/1/1; [remove used Ring Of Life]
-!!HE-1&v612=0/y7=5:A3/96/1/1; [remove used Vial Of Lifeblood]
+!!HE(CURRENT_HERO)&v612=0/y7=2:A3/6/1/1; [remove used First Aid Tent]
+!!HE(CURRENT_HERO)&v612=0/y7=3:A3/94/1/1; [remove used Ring Of Vitality]
+!!HE(CURRENT_HERO)&v612=0/y7=4:A3/95/1/1; [remove used Ring Of Life]
+!!HE(CURRENT_HERO)&v612=0/y7=5:A3/96/1/1; [remove used Vial Of Lifeblood]
 
 !!VRz361:Sz130234;
 !!VRz361&y7=2:Sz130235;
@@ -1475,9 +1598,9 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz361&y7=5:Sz130238;
 !!VRz360:Sz130239;
 
-!!FU766:Px1/613/998; [read cave's bits into v613]
+!!FU(WOG_30_ReadCaveBits):Px1/613/998; [read cave's bits into v613]
 !!VRv613:&115; [clear hermit requirement bits]
-!!FU767&v612=0:Px1/v613/998; [store new cave bits]
+!!FU(WOG_30_SetBits)&v612=0:Px1/v613/998; [store new cave bits]
 
 !!VRv615&v612=0:S1; [hermit is usable only if healed]
 
@@ -1490,15 +1613,15 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !!VRv611:S0; [assume no occupants]
 !!VRv614:S0; [assume no hermits]
-!!FU768:P612/998; [read split cave bits into v612]
+!!FU(WOG_30_ReadSplitCaveBits):P612/998; [read split cave bits into v612]
 !!VRv612:&3; [just look at number of additional caves, 0-3]
 !!DO781/0/3/1:Pv612; [check each cave's living occupants]
 
 !!IF&v611>1:M1/z130240;
 
-!!FU766:Px1/613/998; [read cave's bits into v613]
+!!FU(WOG_30_ReadCaveBits):Px1/613/998; [read cave's bits into v613]
 !!VRv613:&115; [clear hermit requirement bits]
-!!FU767&v611<2:Px1/v613/998; [store new cave bits]
+!!FU(WOG_30_SetBits)&v611<2:Px1/v613/998; [store new cave bits]
 
 !!VRz360:Sz130241;
 !!VRv615&v611<2:S1; [hermit is usable only if alone]
@@ -1509,29 +1632,29 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** function to handle ascetic hermit
 
 !?FU776;
+; Check if the hero has any artifact except for spell book and war machines
+; The script used to check war machines too, but conflict with Enhanced War Machiens I (becaue of no way to discard them)
+!!re i/(ART_SLOT_FIRST)/(ART_SLOT_LAST);
+  ; Skip for War Machiens and Spell book
+  !!co&i>=(ART_SLOT_WAR_MACHINE_FIRST)/i<=(ART_SLOT_WAR_MACHINE_LAST);
+  !!co&i=(ART_SLOT_SPELL_BOOK);
 
-!!VRv611:S0; [assume no artifacts]
-!!DO780/4/143/1:P; [count artifacts]
+  !!HE(CURRENT_HERO):A1/?(art:y)/i;
 
-!!IF&v611>0:M1/z130242;
+  !!br&(art)>(NO_ART);
+!!en;
 
-!!VRz360&v611=0:Sz130243;
-!!VRv615&v611=0:S1; [hermit is usable only with no artifacts / war machines]
+!!if&i<=(ART_SLOT_LAST);
+  !!IF:M1/z130242;
+!!el;
+  !!VRz360:Sz130243;
+  !!VRv615:S1; [hermit is usable only with no artifacts]
+!!en;
 
 ** end of function
 
 
 ** skip Palace Of Dreams function numbers 777-779
-
-
-** function to count artifact x16
-
-!?FU780;
-
-!!HE-1:A2/x16/?y1/?y2; [check for artifacts / equipped artifacts]
-!!VRv611:+y1; [count artifacts]
-
-** end of function
 
 
 ** treasure chest trigger
@@ -1569,7 +1692,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU781;
 
-!!FU766:Px16/613/998; [read cave x16's bits into v613]
+!!FU(WOG_30_ReadCaveBits):Px16/613/998; [read cave x16's bits into v613]
 !!VRy1:Sv613 &3; [type of cave in y1]
 !!VRy2:Sv613 :64; [occupied or not in y2]
 !!VRv611&x1>=x16/y2=0/y1<3:+1; [count occupants, including hermit himself]
@@ -1581,46 +1704,92 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** end of function
 
 
-** unused function
+** function to handle hermit-related BG0 and after attack stuff
 
-!?FU782;
+!?FU(WOG_30_HandleExtraSpell);
+
+*!BA:E?(networkType:y);                 [Check if Network Battle]
+*!FU&(networkType)>0:E;                 [Continue function if not a Network Battle]
+
+!!BG:A?(action:y);
+!!FU&(action)<>(BATTLE_ACTION_HERO_CAST):E;
+
+!!BG:Q?(side:y);                        [get current acting side]
+
+!!if&i^wog_30_extraCastSpent_%(side)^<>(TRUE)/i^battle_hero_%(side)^>(NO_HERO);
+  !!IF:Wi^battle_hero_%(side)^;         [use acting hero's w variables]
+
+  !!if&w66=3;
+    !!BH(side):M?(spellUsed:y);         [get current spellcasting enabling]
+
+    !!if&(spellUsed);
+      !!BH(side):M(FALSE);              [re-enable spellcasting]
+      !!VRi^wog_30_extraCastSpent_%(side)^:S(TRUE);
+    !!en;
+  !!en;
+!!en;
 
 
-** end of function
+!?FU(WOG_30_ExecuteSpecialAbilities);
+!#VA(atkStack:x) (defStack:x);
 
+*!BA:E?(networkType:y);                 [Check if Network Battle]
+*!FU&(networkType)>0:E;                 [Continue function if not a Network Battle]
 
-** function to handle hermit-related BG0 stuff
+; Exit if the defending stack is killed
+!!BM(defStack):N?(defNum:y);
+!!FU&(defNum)<=0:E;
 
-!?FU783;
-!!BA:E?v1; [Check if Network Battle: v1>0 if yes]
+; Get info
+!!BM(atkStack):I?(atkSide:y);
+!!BM(defStack):T?(type:y);
 
-!?FU783&v1=0; [Continue function 783 if not a Network Battle]
-!!BG:A?y1; [get type of action]
-!!BG:Q?y2; [get current acting side]
-!!BHy2:N?y3; [get acting hero number if any]
-!!BG:E?y5; [get destination monster stack]
+; Remove some abilities (Voodoo)
+!!if&i^battle_hero_%(atkSide)^>(NO_HERO);
+  !!IF:Wi^battle_hero_%(atkSide)^;
 
-!!IF&y3<>-1:Wy3; [use acting hero's w variables]
+  !!if&w67=3;
+    ; Exit if not lucky
+    *!VR(random:y):R0/0/99;
+    *!FU&(random)>=30:E;
 
-!!VRy4:S0; [assume no extra-spell ability]
-!!VRy4&y2=0/-600:S1; [check flag by side for allowing extra spell]
-!!VRy4&y2=1/-601:S1;
-!!BHy2&y3<>-1/w66=3/y4=1:M?y6; [get current spellcasting enabling]
-!!BHy2&y3<>-1/w66=3/y4=1/y6=1:M0; [re-enable spellcasting]
-!!IF&y3<>-1/w66=3/y4=1/y6=1/y2=0:V600/1; [remember extra spell was granted]
-!!IF&y3<>-1/w66=3/y4=1/y6=1/y2=1:V601/1;
+    !!BM(defStack):F?i;
+    !!VR(isFlyer:y):Si &(MON_FLAG_FLYER);
+    !!VR(isShooter:y):Si &(MON_FLAG_SHOOTER);
 
-!!BMy5&y5<>-1:F?i; [get flags of target stack]
-!!VRi:&-623631; [remove some abilities]
-!!BMy5&y5<>-1/y1=6/y3<>-1/w67=3:Fi; [steal abilities with voodoo]
+    !!if|(isFlyer)/(isShooter);
+      ; remove flyer and shooter - if applicable
+      !!VR(removedFlags:y):S(MON_FLAG_FLYER) +(MON_FLAG_SHOOTER);
+      !!BM(defStack):Fd~(removedFlags);
 
-!!VRy7:S1 -y2; [get attacked side]
-!!BHy7:N?y8; [get attacked hero number if any]
-!!IF&y8<>-1:Wy8; [use attacked hero's w variables]
+      !!if&i^battle_isVisible^;
+        !!BM(defStack):N?(num:y);
+        !!VR(isPlural:y):S(num) -1 B;
+        !!SN:H^monname^/(type)/(isPlural)/?(monName:z);
+        !!VR(abilityType:y)&(isFlyer)/(isShooter)=(FALSE):S0;
+        !!VR(abilityType)&(isFlyer)=(FALSE)/(isShooter):S1;
+        !!VR(abilityType)&(isFlyer)/(isShooter):S2;
+        !!SN:T^wog.30.voodooAbil%(abilityType)^/?(abilName:z);
+        !!SN:T^wog.30.voodooLog%(isPlural)^/?(battleLog:z)/^mon^/(monName)/^abilities^/(abilName);
+        !!MM:S(battleLog);
 
-!!BMy5&y5<>-1:R?y9; [get number of retaliates]
-!!VRy9:+1;
-!!BMy5&y5<>-1/y8<>-1/w65=3/y1=6:Ry9; [regain a retaliate]
+        ; Play Sacrifice sound and animation
+        !!SN:P^sacrif1^;
+        !!BM(defStack):V51;
+      !!en;
+    !!en;
+  !!en;
+!!en;
+
+; Unlimited retaliations
+!!if&(type)<>(MON_NOT_USED_2)/(type)<>(MON_CATAPULT)/(type)<>(MON_BALLISTA)/(type)<>(MON_FIRST_AID_TENT)/(type)<>(MON_AMMO_CART);
+  !!BM(defStack):I?(defSide:y);
+
+  !!if&i^battle_hero_%(defSide)^>(NO_HERO);
+    !!IF:Wi^battle_hero_%(defSide)^;
+    !!BM(defStack)&w65=3:Rd1;
+  !!en;
+!!en;
 
 ** end of function
 
@@ -1638,7 +1807,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** 6 - familiar / magog pit -                - 4000 + toys (1000)
 ** 7 - crusader duels       -                - 5000 + tulips (2000)
 
-!?FU784;
+!?FU(WOG_30_HandleMonsterCave);
 
 !!VRy1:Sx2 &7; [get battle type in y1]
 !!VRy2:Sx2 :8 &1; [get battle variant in y2]
@@ -1666,7 +1835,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz326&y3=0:Sz130264;
 !!VRz327:Sz130265;
 !!VRz328:Sz130266;
-!!FU733&y3=0:P50/98/610; [get choice in v610 - 0 continue, 1 leave]
+!!FU(WOG_30_GetChoice)&y3=0:P50/98/610; [get choice in v610 - 0 continue, 1 leave]
 
 !!IF&y3=0/v610=1:M1/z130267;
 
@@ -1681,17 +1850,17 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !!VRv620:C137/107/79/159/116/65/43/7; [base creature type table]
 !!VRv630:C70/84/56/210/70/77/175/7; [creature qty table]
-!!VRv547&y3=0/v610=0:S3 +y1; [set special battle #]
+!!VRi^wog_30_advCaveBattleType^&y3=0/v610=0:S3 +y1; [set special battle #]
 !!VRv522&y3=0/v610=0:Sy2; [set battle variant or not]
 !!VRy4:S620 +y1; [index into creature type table]
 !!VRy5:S630 +y1; [index into creature qty table]
 !!IF:V603/0; [flag for crusaders appearing]
 
 !!VRv150:Sy1; [preserve value of y1]
-!!HE-1&y3=0/v610=0:Tv998/v999/v1000/vy4/vy5; [provoke battle]
+!!HE(CURRENT_HERO)&y3=0/v610=0:Tv998/v999/v1000/vy4/vy5; [provoke battle]
 !!VRy1:Sv150; [restore value of y1]
 
-!!HE-1:O?y6; [get hero owner in y6]
+!!HE(CURRENT_HERO):O?y6; [get hero owner in y6]
 !!VRy6|y3<>0/v610<>0:S-1; [now combine no battle with dead hero flag]
 !!FU748&y6<>-1:Px1; [set bit if monsters killed]
 
@@ -1733,21 +1902,21 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU785;
 
-!!FU788&v547=3/v522=1/v997>=1:P1/137/520; [get sharpshooter stack # in v520] [should be v997>=0]
-!!FU786&v547=3/v522=1/v997>=1/v520<>-1:Pv520/63/13 Pv520/148/13; [fire walls] [ditto]
+!!FU788&i^wog_30_advCaveBattleType^=3/v522=1/v997>=1:P1/137/520; [get sharpshooter stack # in v520] [should be v997>=0]
+!!FU786&i^wog_30_advCaveBattleType^=3/v522=1/v997>=1/v520<>-1:Pv520/63/13 Pv520/148/13; [fire walls] [ditto]
 
-!!DO790/0/41/1&v547=4/v997=-1:P70/0/0/4; [turn army to stone]
-!!IF&v547=4/v522=1/v997=1:M1/z130286;
-!!BU&v547=4/v522=1/v997=1:S7/30/1/0/-1/1; [crusaders arrive]
-!!IF&v547=4/v522=1/v997=1:V603/1; [remember that crusaders appeared]
+!!FU(WOG_30_TurnArmyToStone)&i^wog_30_advCaveBattleType^=4/i^battle_round^<=1:P; [turn army to stone for the first 2 rounds]
+!!IF&i^wog_30_advCaveBattleType^=4/v522=1/v997=1:M1/z130286;
+!!BU&i^wog_30_advCaveBattleType^=4/v522=1/v997=1:S7/30/1/0/-1/1; [crusaders arrive]
+!!IF&i^wog_30_advCaveBattleType^=4/v522=1/v997=1:V603/1; [remember that crusaders appeared]
 
-!!FU788&v547=7:P1/35/520; [get archmage stack # in v520]
+!!FU788&i^wog_30_advCaveBattleType^=7:P1/35/520; [get archmage stack # in v520]
 !!VRy1:Sv520; [remember archmage stack]
-!!FU788&v547=7/v520=-1:P1/116/520; [get a gold golem stack # in v520]
+!!FU788&i^wog_30_advCaveBattleType^=7/v520=-1:P1/116/520; [get a gold golem stack # in v520]
 !!VRv520&y1<>-1:Sy1; [use archmages for remove obstacles if found, otherwise use golems]
-!!BMy1&v547=7/v997=-1/y1<>-1:M34/3/3; [3 rounds of Anti-Magic on archmages]
-!!BMv520&v547=7/v997=1/v520<>-1:C64/25/3/3/0 C64/93/3/3/0 C64/161/3/3/0; [remove obstacles]
-!!DO791/0/41/1&v547=7/v997>0/y1<>-1:Py1/15; [magic arrow barrage]
+!!BMy1&i^wog_30_advCaveBattleType^=7/v997=0/y1<>-1:M34/3/3; [3 rounds of Anti-Magic on archmages]
+!!BMv520&i^wog_30_advCaveBattleType^=7/v997=1/v520<>-1:C64/25/3/3/0 C64/93/3/3/0 C64/161/3/3/0; [remove obstacles]
+!!DO791/0/41/1&i^wog_30_advCaveBattleType^=7/v997>0/y1<>-1:Py1/15; [magic arrow barrage]
 
 !!VRy1:Sv997 %4; [round # mod 4 for new ghosts position]
 !!VRy2&y1=1:S1; [find ghost position]
@@ -1756,14 +1925,14 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRy2&y1=0:S171;
 !!BU:Ey2/?y3; [see if a stack is there]
 !!VRy4:S0; [assume no ghosts will be created]
-!!VRy4&v547=6/v522=1/v997>0/v997<5/y3=-1:S1; [conditions for new ghosts]
+!!VRy4&i^wog_30_advCaveBattleType^=6/v522=1/v997>0/v997<5/y3=-1:S1; [conditions for new ghosts]
 !!BU&y4=1:S159/30/y2/1/-1/1; [create ghosts]
 !!BU:Ey2/?y5; [see if ghosts were created]
 !!IF&y4=1/y5<>-1:M1/z130287;
 
 !!IF:V602/0; [assume nobody poisoned]
-!!DO790/0/41/1&v547=8/v522=1/v997=1:P71/0/1/4; [poison alive troops]
-!!IF&v547=8/v522=1/v997=1/602:M1/z130288;
+!!DO790/0/41/1&i^wog_30_advCaveBattleType^=8/v522=1/v997=1:P71/0/1/4; [poison alive troops]
+!!IF&i^wog_30_advCaveBattleType^=8/v522=1/v997=1/602:M1/z130288;
 
 ** end of function
 
@@ -1819,6 +1988,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** flag 602 is set if the spell is actually put on anything
 
 !?FU790;
+!#VA(spell:x) (side:x) (isAliveOnly:x) (duration:x);
 
 !!BMx16:I?y1 N?y3 F?i; [get side, qty, flags]
 !!VRi:&16; [alive bit]
@@ -1827,6 +1997,36 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!IF&y1=x2/y3>0/i<>0:V602/1; [set flag if cast spell]
 
 ** end of function
+
+
+// Funciton to turn army to stone for the first two rounds
+!?FU(WOG_30_TurnArmyToStone);
+!!re i/(BATTLE_DEFENDER_STACK_FIRST)/(BATTLE_DEFENDER_STACK_LAST);
+  !!BMi:T?(type:y) N?(num:y);
+
+  !!if&(type)>(NO_MON)/(num)>0;
+    !!FU(BattleStack_MakeActive):Pi;
+
+    !!br;
+  !!en;
+!!en;
+
+!!FU&i>(BATTLE_DEFENDER_STACK_LAST):E;
+
+!!VR(duration:y):S4 -i^battle_round^;
+
+!!re i/(BATTLE_ATTACKER_STACK_FIRST)/(BATTLE_ATTACKER_STACK_LAST);
+  !!BMi:T?(type:y) N?(num:y);
+
+  !!if&(type)>(NO_MON)/(num)>0;
+    !!BMi:M70/(duration)/0;
+  !!en;
+!!en;
+
+!!if&i^battle_isVisible^;
+  !!SN:P^Paralyze^;
+  !!SN:D;
+!!en;
 
 
 ** function to have stack x1 cast spell x2 on player stack x16
@@ -1903,7 +2103,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!IF&1000/2:Q1/6/v600/1^%Z328^; [deal! message]
 !!IF&wx2>0/1000/-2:M^%Z360^; [no deal message]
 
-!!HE-1:O?y1; [get hero owner]
+!!HE(CURRENT_HERO):O?y1; [get hero owner]
 !!OW&2:Ry1/6/dv600; [give gold]
 !!UN&1000/2:R2; [redraw resource status line]
 !!VRwx2&2:S0; [remove items]
@@ -2023,7 +2223,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 ** function to handle Other caves, x1 cave, x2 cave bits 65432
 
-!?FU795;
+!?FU(WOG_30_HandleOtherCave);
 
 !!VRy1:Sx2 &3; [get variant in y1]
 !!VRy2:Sx2 :4 &3; [get cave type in y2 - 0 pool 1 orb 2 cache 3 altar]
@@ -2061,11 +2261,11 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 
 !?FU797;
 
-!!HE-1:O?y1; [get hero owner]
+!!HE(CURRENT_HERO):O?y1; [get hero owner]
 !!VRz326:Sz130328;
 !!VRz327:Sz130329;
 !!VRz328:Sz130330;
-!!UN:U98/-1/?y2; [count towns]
+!!UN:U(OBJ_TOWN)/(ANY_OBJ)/?y2; [count towns]
 
 !!IF&x2=0:M1/z130331;
 !!DO822/0/155/1&x2=0:Py1; [reveal heroes owned but not by this player]
@@ -2079,7 +2279,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!IF&x2=3:M1/z130334;
 !!DO825/1/y2/1&x2=3:Py1; [conceal towns owned by this player]
 
-!!UN:R1; [redraw]
+!!SN:D; [redraw]
 
 ** end of function
 
@@ -2102,9 +2302,9 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!IF&x2=2/x3=0:Q1/6/1000/1/z130342;
 !!IF&x2=3/x3=0:M1/z130343;
 
-!!HE-1:O?y1; [get hero owner]
+!!HE(CURRENT_HERO):O?y1; [get hero owner]
 !!VRy2:S611 +x2; [index of gold amt]
-!!OW&x3=0:Ry1/6/dy2; [give gold]
+!!OW&x3=0:Ry1/6/dvy2; [give gold]
 
 !!IF:W-1; [use current hero's w variables]
 !!VRy3:S75 +x2; [get # of w variable for item]
@@ -2121,7 +2321,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !?FU799;
 
 !!VRv611:C15/25/10/10; [spell point table]
-!!HE-1:I?y1/1; [get hero spell points - no redraw syntax]
+!!HE(CURRENT_HERO):I?y1/1; [get hero spell points - no redraw syntax]
 !!VRy2:S611 +x2; [get index of spell point cost]
 !!VRy3:Svy2; [get spell point cost]
 !!VRy4:S550 +x2; [get bit value index]
@@ -2143,13 +2343,13 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRz327:Sz130355;
 !!VRz328:Sz130356;
 !!VRv615:S1; [assume no spell cast]
-!!FU733&y1>=y3/y5=0:P124/98/615; [get choice in v615 - 0 cast, 1 don't]
+!!FU(WOG_30_GetChoice)&y1>=y3/y5=0:P124/98/615; [get choice in v615 - 0 cast, 1 don't]
 
 !!IF&y1>=y3/y5=0/v615=1:M1/z130357;
 
 !!IF&v615=0:M1/z130358;
 !!VRy6:Sy3 *-1; [get amt of spell pts to subtract]
-!!HE-1&v615=0:Idy6/1; [subtract spell points - no redraw syntax]
+!!HE(CURRENT_HERO)&v615=0:Idy6/1; [subtract spell points - no redraw syntax]
 !!VRw74&v615=0:|vy4; [set bit for this altar effect]
 
 ** end of function
@@ -2255,8 +2455,10 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!BG:H?y1 Q?y3; [get acting hero and side]
 !!IF&y1<>-1:Wy1; [use that hero's w variables]
 !!VRy2&y1<>-1:Sw74 &3; [look at just relevant altar effect bits]
-!!BA:E?y4; [Check if Network Battle: y4>0 if yes]
-!!FU831&y1<>-1/y2>0/y4=0:Py3/y2/y1; [continue if have altar ability and not Network Battle]
+*!BA:E?y4; [Check if Network Battle: y4>0 if yes]
+*!FU&y4:E;
+
+!!FU831&y1<>-1/y2>0:Py3/y2/y1; [continue if have altar ability]
 
 ** end of function
 
@@ -2268,7 +2470,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!IF:Wx1; [use attacker's w variables]
 !!VRy1:Sw74 &4; [check altar-visited bits]
 !!VRy2:Sw74 &8;
-!!DO829/0/41/1&y1<>0/v997=-1:Px2; [double 1st-level hit points]
+!!DO829/0/41/1&y1<>0/v997=0:Px2; [double 1st-level hit points]
 !!DO830/0/41/1&y2<>0/v997>=1/v997<=20:Px2; [+2 att/def/speed each round]
 
 ** end of function
@@ -2318,33 +2520,53 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 ** end of function
 
 
-** function to store war machines in v518 and remove them, hero x1
+** function to store or restore war machines, hero x1
 
-!?FU832;
+!?FU(WOG_30_RemoveOrRestoreWarMachinesOnBattle);
+!#VA(hero:x) (mode:x);
 
-!!VRv518:S0; [assume no war machines]
-!!HEx1:A2/4/?y1/?y2; [count ballistas]
-!!VRv518&y2>0:+1;
-!!HEx1:A2/5/?y1/?y2; [count ammo carts]
-!!VRv518&y2>0:+2;
-!!HEx1:A2/6/?y1/?y2; [count first aid tents]
-!!VRv518&y2>0:+4;
+; Fix compatibility with Enhanced War Machines III
+!!if&i^WOG_73_enabled^;
+  !!IF:W(hero);
 
-!!HEx1:A-4 A-5 A-6; [remove war machines]
+  !!if&(mode)=0;
+    !!VRi^wog_30_w81^:Sw81;
+    !!VRi^wog_30_w82^:Sw82;
+    !!VRi^wog_30_w83^:Sw83;
+  !!en;
+!!en;
 
-** end of function
+; Loop through all the war machine artifacts
+!!re (wmArt:y)/(ART_BALLISTA)/(ART_FIRST_AID_TENT);
+  !!VR(slot:y):S(wmArt) +9;
 
+  ; Remove war machine before battle
+  !!if&(mode)=0;
+    !!HE(hero):A1/?(art:y)/(slot);
 
-** function to restore war machines
+    !!if&(art)>(NO_ART);
+      !!VRi^wog_30_%(slot)HasArt^:S(art);
+      !!FU(UnequipArtFromSlot):P(hero)/(slot);
+    !!en;
+  ; Restore war machine
+  !!el;
+    !!if&i^wog_30_%(slot)HasArt^;
+      !!HE(hero):A1/i^wog_30_%(slot)HasArt^/(slot);
+      !!VRi^wog_30_%(slot)HasArt^:S0;
+    !!en;
+  !!en;
+!!en;
 
-!?FU833;
+; Fix compatibility with Enhanced War Machines III
+!!if&i^WOG_73_enabled^/(mode)=1;
+  !!VRw81:Si^wog_30_w81^;
+  !!VRw82:Si^wog_30_w82^;
+  !!VRw83:Si^wog_30_w83^;
 
-!!HEx1&v518>=4:A1/6/15; [equip first aid tent]
-!!VRv518:&3;
-!!HEx1&v518>=2:A1/5/14; [equip ammo cart]
-!!VRv518:&1;
-!!HEx1&v518>=1:A1/4/13; [equip ballista]
-!!VRv518:S0;
+  !!VRi^wog_30_w81^:S0;
+  !!VRi^wog_30_w82^:S0;
+  !!VRi^wog_30_w83^:S0;
+!!en;
 
 ** end of function
 

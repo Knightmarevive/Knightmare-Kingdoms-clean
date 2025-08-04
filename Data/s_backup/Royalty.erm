@@ -1,0 +1,172 @@
+ZVSE2
+
+!?FU(KK_clean_royal_heroes);
+!!SN:W^KK_Royalty_OW%X16^/-1;
+
+!?PI;
+!!DO(KK_clean_royal_heroes)/0/7/1:P;
+
+!?BA52;
+!!BA:H0/?y1 H1/?y2;
+!!HEy1:O?y3; 
+!!SN:W^KK_Royalty_Left^/y3;
+
+!!VRy4:S-1;
+!!HEy2&y2>=0:O?y4;
+!!SN:W^KK_Royalty_Right^/y4;
+
+!?BA53;
+!!BA:H0/?y1 H1/?y2;
+!!HEy1:O?y3;
+
+!!if&y3<0;
+  !!SN:W^KK_Royalty_Left^/?y99;
+  !!SN:W^KK_Royalty_OW%Y99^/?y9;
+  
+  !!OW:Vy99/?y98/?y97;!!OW:Iy99/?y95;
+  !!if&y9>=0/y1=y9/y9<>y97/y9<>y98;
+    !!HEy1:E?y8; !!VRy66:S0;
+    !!SN&y95=0:W^Knightmare Difficulty PC Royalty Penalty^/?y66;
+    !!SN&y95=1:W^Knightmare Difficulty AI Royalty Penalty^/?y66;
+    !!VRy8:*y66 :100;
+    !!HEy1:Ed-y8;
+    !!OW:Vy99/d/y1;
+  !!en;
+
+!!en;
+
+
+!!VRy4:S-1;
+!!HEy2&y2>=0:O?y4;
+
+!!if&y4<0/y2>=0;
+  !!SN:W^KK_Royalty_Right^/?y99;
+  !!SN:W^KK_Royalty_OW%Y99^/?y9;
+  
+  !!OW:Vy99/?y98/?y97; !!OW:Iy99/?y95;
+  !!if&y9>=0/y2=y9/y9<>y97/y9<>y98;
+    !!HEy2:E?y8; !!VRy66:S0;
+    !!SN&y95=0:W^Knightmare Difficulty PC Royalty Penalty^/?y66;
+    !!SN&y95=1:W^Knightmare Difficulty AI Royalty Penalty^/?y66;
+    !!VRy8:*y66 :100;
+    !!HEy2:Ed-y8;
+    !!OW:Vy99/d/y2;
+  !!en;
+  
+!!en;
+
+!?FU(OnEveryDay);
+!!VRy1:Sc %7; !!FU&y1<>1:E; 
+!!OW:C?y2; !!SN:W^KK_Royalty_OW%Y2^/?y3;
+!!FU&y3<0:E; !!HEy3&y3>=0:O?y9;
+!!OW&y9<0:Vy2/d/y3;
+
+*******************
+*** x1 - player ***
+*** x2 -  hero  ***
+*******************
+!?FU(KK_Royalty_MakeHeir);
+!!OW:Ix1/?y2; !!SN:W^KK_Royalty_OW%X1^/?y3;
+!!if&y2=0;
+  !!FU&y3>=0:E;
+  !!IF:Q2^Do You want this Hero to become the only Heir to the Throne?^;
+  !!if&2;
+    !!SN:W^KK_Royalty_OW%X1^/x2;
+  !!el;
+    !!IF:M^The Throne need official Heir.
+    But choose wisely. This cannot be Undone^;
+  !!en;
+!!el;
+  !!SN:W^KK_Royalty_OW%X1^/x2;
+!!en;
+
+[Hero screen trigger]
+!?CM2;
+!!UN:P187/?y1; [Check if Rename Hero is enabled: y-1]
+!!FU&y1=1:E; [Exit if Rename Hero enabled]
+
+!!CM:A?y11/?y12; [x/y location clicked]
+!!VRy13:S0; [Initialize v3 to 0]
+!!VRy13&y11>=146/y12>=27/y11<=362/y12<=60:S1; [Set v3 to 1 if Hero's name is clicked on]
+!!FU&v3<>1:E; [Exit if Hero's name isn't clicked]
+
+!!HE-1:N?y99; !!OW:C?y77;
+!!FU(KK_Royalty_MakeHeir):Py77/y99;
+
+
+*******************
+*** x1 - player ***
+*** x2 -  hero  ***
+*******************
+!?FU(KK_Roytalty_AI_Best_Hero);
+!!VRy99:S0;
+!!re i/0/155;
+  !!HEi:O?y1;
+  !!co&y1<>x1; 
+  !!HEi:E?y3;
+  !!if&y3>y99;
+    !!VRx2:Si;
+    !!VRy99:Sy3;
+  !!en;
+!!en;
+
+
+!?FU(OnEveryDay);
+!!OW:C?y1; !!OW:Iy1/?y2; !!FU&y2=0:E; exit if human
+!!FU(KK_Roytalty_AI_Best_Hero):Py1/?y7;
+!!FU(KK_Royalty_MakeHeir):Py1/y7;
+
+!?FU(OnAdvMapTileHint);
+!#VA(ox:x) (oy:x) (oz:x);
+!#VA(type:x) (subtype:x);
+!#VA(mx:x) (my:x) (mz:x);
+!#VA(hx:y) (hy:y) (hz:y);   
+!#VA(he:y) (king:y);   
+
+!_!MM:M^%X4^;
+!_!FU&x4<>34/x4<>0:E;
+!_!HEx6/x7/x8:N?y77;
+
+!!VR(hx):S-1; !!VR(hy):S-1; !!VR(hz):S-1;
+!!VR(he):S-1; !!VR(king):S-1;
+
+!!re y93/0/7;
+    !_!VRy93:Si;
+    !!SN:W^KK_Royalty_OW%Y93^/?(he);
+    !!HE(he)&(he)>=0:O?y88;
+    !!if&y88>=0;
+      !!HE(he)&(he)>=0:P?(hx)/?(hy)/?(hz);
+      !_!VRy92&y94=y77/y94>=0:Sy94;
+      !!VR(king)&(hx)=(mx)/(hy)=(my)/(hz)=(mz):S(he);
+    !!en;
+!!en;
+!_!IF:L^debug^;
+
+!_!MM:M^%X1 %X2 %X3 %X4 %X5 %X6 %X7 %X8 || %Y92 %Y93 %Y94^;
+
+!_!IF:L^%Y92^;
+!!FU&(king)<0:E;
+
+!!HE(king):O?y99;
+!!VRz7&y99=0:S^Red^;
+!!VRz7&y99=1:S^Blue^;
+!!VRz7&y99=2:S^Tan^;
+!!VRz7&y99=3:S^Green^;
+!!VRz7&y99=4:S^Orange^;
+!!VRz7&y99=5:S^Purple^;
+!!VRz7&y99=6:S^Teal^;
+!!VRz7&y99=7:S^Pink^; 
+!!MM:M?z8; 
+!!VRz6:S^{~>itgflags.def:0:%Y99} {~>itgflags.def:0:%Y99} {~>itgflags.def:0:%Y99}^;
+!!MM:M^%Z6 {%Z8, Heir of the %Z7 Empire} %Z6^;
+
+!?CM0; AdVMap
+!!CM:I?y2; !!FU&y2=37:E;
+
+!?HM-1; !!FU:E;
+!!HE-1:N?y91;
+!!re i/0/7;
+  !!VRy93:Si;
+  !!SN:W^KK_Royalty_OW%Y93^/?y94;
+  !_!UN&y91=y94:R1;
+!!en;

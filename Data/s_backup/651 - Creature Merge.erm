@@ -1,0 +1,48 @@
+ZVSE
+
+!?FU(cr_merge_find_cre);
+x1 - hero
+x2 - type
+x3 - return slot
+x4 - return count
+!!re i/0/6:;
+  !!HEx1:C0/i/?y1/?y2;
+  !!if&y1=x2:;
+    !!VRx3:Si;
+    !!VRx4:Sy2;
+    !!FU:E;
+  !!en;  
+!!en:;
+
+!!VRx3:S0 -1;
+!!VRx4:S0;
+
+
+!?FU(cr_merge_Void_Lord);
+x1 - hero
+!!FU(cr_merge_find_cre):Px1/122/?y11/?y12;
+!!FU(cr_merge_find_cre):Px1/124/?y21/?y22;
+!!FU(cr_merge_find_cre):Px1/126/?y31/?y32;
+!!FU(cr_merge_find_cre):Px1/128/?y41/?y42;
+
+!!if&y12>0/y22>0/y32>0/y42>0:;
+  !!VRy92:Sy12;
+  !!VRy92&y22<y92:Sy22;
+  !!VRy92&y32<y92:Sy32;
+  !!VRy92&y42<y92:Sy42;
+
+  !!HEx1:C0/y11/d/d-y92;
+  !!HEx1:C0/y21/d/d-y92;
+  !!HEx1:C0/y31/d/d-y92;
+  !!HEx1:C0/y41/d/d-y92;
+
+  !!HEx1:C2/326/y92/0;  
+!!en;
+
+!?CM2;
+!!HE-1:N?y99;
+!!FU(cr_merge_Void_Lord):Py99;
+
+!?BA53;
+!!HE-10:N?y99;
+!!FU(cr_merge_Void_Lord):Py99;
