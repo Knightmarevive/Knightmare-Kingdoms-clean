@@ -201,7 +201,7 @@ WoGify ERM code: 101 (0-5) plus 111-130 (0-1) for individual rules
     !!en;
   !!en;
 
-  !!FU(WOG_101_SetHeroes5thLevel)&i^wog_101_map_rule_7_isEnabled^:Pi^timerOwner^;             [executed once]
+  !_!FU(WOG_101_SetHeroes5thLevel)&i^wog_101_map_rule_7_isEnabled^:Pi^timerOwner^;             [executed once]
 
 
 ** end of timer routine
@@ -450,6 +450,36 @@ WoGify ERM code: 101 (0-5) plus 111-130 (0-1) for individual rules
       !!en;
     !!en;
   *!en;
+
+
+!?FU(majaczek_SetHeroes5thLevel);
+
+!!SN:W^Hero%X16.5th_level^/?y7; !!FU&y7>0:E;
+
+!!HEx16:O?y1 E?y2; [get hero's owner]
+!!HEx16&y1=x1/y2<3500:Ed5000; [give 5000 experience]
+!!SN&y1=x1/y2<3500:W^Hero%X16.5th_level^/1;
+
+!_!IF&y1=x1/y1>=0:M^debug fu702 y1=%Y1 x1=%X1 x16=%X16^;
+!_!IF:M^debug fu702 y1=%Y1 x1=%X1 x16=%X16^;
+** end of function
+
+
+!?HM-1;
+!!HE-1:N?y9; !!FU&y9<0:E;
+
+!!FU709:P8; [check for rule 8]
+!!OW:C?y5; [get current player: y-5]
+!!DO(majaczek_SetHeroes5thLevel)/y9/y9/1&3:Py5; [upgrade this player's hero to 5th level(if below 3500 XP)]
+
+!_!SN:L^test 1^;
+
+!?FU(OnOpenHeroScreen);
+!!VRy9:Sx1;!!FU&y9<0:E;
+
+!!FU709:P8; [check for rule 8]
+!!OW:C?y5; [get current player: y-5]
+!!DO(majaczek_SetHeroes5thLevel)/y9/y9/1&3:Py5; [upgrade this player's hero to 5th level(if below 3500 XP)]
 
 
 
