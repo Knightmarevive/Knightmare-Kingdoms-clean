@@ -5,14 +5,8 @@
 				"7": {
 					"density": 100,
 					"name": "Smugglers Hideout",
-					"optionId": 108,
+					"optionId": 701,
 					"value": 4000
-				},
-				"8": {
-					"density": -1,
-					"name": "Junk Merchant",
-					"value": -1,
-					"enabled": 0
 				}
 			}
 		}

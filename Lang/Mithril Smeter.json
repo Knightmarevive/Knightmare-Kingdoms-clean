@@ -2,16 +2,10 @@
 	"RMG": {
 		"objectGeneration": {
 			"63": {
-				"22": {
-					"density": -1,
-					"name": "Forgotten Shrine",
-					"value": -1,
-					"enabled": 0
-				},
 				"27": {
 					"density": 100,
 					"name": "Mithril Smeter",
-					"optionId": 60,
+					"optionId": 700,
 					"value": 9000
 				}
 			}
