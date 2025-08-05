@@ -29,7 +29,7 @@ ERMS_ScriptDate=27.4(April).2016
 !!VRz5:S^You gain a mithril smelter^;
 !!VRz6&v9613=1:S^bar^;
 !!VRz6&v9613>1:S^bars^;
-!!VRz7:S^{Mithril Smelter (%V9613 %Z6 Weekly)}^;
+!!VRz7:S^{Mithril Smelter (%V9613 %Z6 Daily)}^;
 !!IF&1000:D15/5/0/0/4/0/0/0/7/0/0/0/0/0/0/0;
 !!IF&1000/v5<>v6:E1/15;
 !_!VRv9613:*-1;
@@ -117,7 +117,9 @@ This Mithril Smelter already belongs to you^;
 !_!VRv9613&y2=4:S1;
 
 !!VRy99:S0 +c %7; y99 is day of week (0 to 6)
-!!OW&y99=1:Ry4/7/dv9613; if same, give mithril
+!_!OW&y99=1:Ry4/7/dv9613; if same, give mithril
+!!OW:Ry4/7/dv9613; Just give mithril
+
 
 !?FU32502;  run all players and get value dead/alive
 !!VRv9600&x16>0:+1;

@@ -32,8 +32,8 @@ You should set starting difficulty to 130%^;
 !!SN:W^Knightmare Difficulty AI XP Bonus^/y6;
 
 !!VRy6&v5=128:S3; !!VRy6&v5=64:S1;
-!!VRy6&v5=32:S1;  !!VRy6&v5=16:S2; !!VRy6&v5=8:S3;
-!!VRy6&v5=4:S4;   !!VRy6&v5=2:S5;  !!VRy6&v5=1:S7;
+!!VRy6&v5=32:S1;  !!VRy6&v5=16:S2; !!VRy6&v5=8:S2;
+!!VRy6&v5=4:S2;   !!VRy6&v5=2:S3;  !!VRy6&v5=1:S3;
 !!SN:W^Knightmare Difficulty Mithril Smelter^/y6;
 
 !!VRy6&v5=128:S0; !!VRy6&v5=64:S7;
