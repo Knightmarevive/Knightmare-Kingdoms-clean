@@ -232,9 +232,9 @@ Note: Function 5209 is used in the update of WoGify: script00.erm.
 !!SN:H^secskill^/y31/(SKILL_NOT_LEARNED)/?z2; [Lookup name of 2nd Secondary Skill - store in z2]
 
 !!VRz6&y8=1:Sz131005;                   [Skill level in 1st skill if Basic: z6]
-!!VRz6&y8=2:Sz131006;                   [Skill level in 1st skill if Advanced: z6]
+!!VRz6&y8>=2:Sz131006;                   [Skill level in 1st skill if Advanced: z6]
 !!VRz7&y9=1:Sz131005;                   [Skill level in 2nd skill if Basic: z7]
-!!VRz7&y9=2:Sz131006;                   [Skill level in 2nd skill if Advanced: z7]
+!!VRz7&y9>=2:Sz131006;                   [Skill level in 2nd skill if Advanced: z7]
 
 ; Show dialog for human players to choose a skill
 !!if&1000;
