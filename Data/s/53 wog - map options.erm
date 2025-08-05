@@ -234,7 +234,7 @@ Dialogue Box numbers used: 17
 !!en;
 
 ; Loop through all the heroes
-!!re (hero:y)/0/(HERO_LAST_WOG);
+!!re (hero:y)/0/(HERO_LAST_KK);
   !!re j/0/10;
     !!SN:M(bannedSpells)/j/?(bSpell:y);
     !!HE(hero):M(bSpell)/?(learned:y);
@@ -1343,7 +1343,7 @@ ERM Numbers used: 100
 
 !!if&(extHeroOn);
   ; Enable extension heroes
-  !!re i/(HERO_SIR_MULLICH)/(HERO_LAST_WOG);
+  !!re i/(HERO_SIR_MULLICH)/(HERO_LAST_KK);
     ; Skip Asmodeus if necessary
     !!co&(hourglassOn)/i=i^wog_106_Asmodeus^;
 

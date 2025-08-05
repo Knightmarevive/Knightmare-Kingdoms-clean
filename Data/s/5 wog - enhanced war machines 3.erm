@@ -52,7 +52,7 @@ ZVSE2
   !!MA:C(MON_FIRST_AID_TENT)/(RES_GOLD)/750;    [War machines cost 750 gold except for Ballista]
   !!MA:C(MON_AMMO_CART)/(RES_GOLD)/750;
 
-  !!re i/0/(HERO_LAST_WOG);                     [reset all w-vars]
+  !!re i/0/(HERO_LAST_KK);                     [reset all w-vars]
     !!IF:Wi;
     !!FU(WOG_73_Func_CorrectHeroVariablesW):Pi; [correct w-vars if there are some wm equipped]
   !!en;

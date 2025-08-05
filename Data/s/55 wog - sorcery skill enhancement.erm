@@ -81,7 +81,7 @@ Function Variables Used in this Script: x1-x5,x16,y1-y17
 
   !!if&(hero);
     !!UN:C(hero)/26/4/?(heroId:y);
-    !!if&(heroId)>(NO_HERO)/(heroId)<=(HERO_LAST_WOG);
+    !!if&(heroId)>(NO_HERO)/(heroId)<=(HERO_LAST_KK);
 
       !!HE(heroId):S(SKILL_SORCERY)/?(sorceryLevel:y);
 

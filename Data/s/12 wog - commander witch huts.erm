@@ -50,7 +50,7 @@ ZVSE2
 !!UN:P66/?(wogOption:y);                [Check for WoG option]
 !!FU&(wogOption)<>(TRUE):E;             [Exit if its disabled]
 
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);    [loop through all heroes to clear w variable]
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);    [loop through all heroes to clear w variable]
   !!IF:Wi;                              [use hero i's w variables]
   !!VRw40:S0;                           [clear our variable (tracking types of witch huts visited)]
 !!en;

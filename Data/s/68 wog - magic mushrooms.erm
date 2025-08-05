@@ -73,7 +73,7 @@ modified by majaczek to support more_SS_Levels.era
 !!UN:P904/(FALSE);                      [Re-enable error msg]
 
 !?FU(WOG_110_ResetVariables);
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!IF:Wi;
   *** water
   !!HEi&w21=1:S16/w20;

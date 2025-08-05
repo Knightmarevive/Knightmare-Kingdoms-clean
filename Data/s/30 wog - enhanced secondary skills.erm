@@ -199,7 +199,7 @@ Navigation, Pathfinding, Resistance, Scholar, Scouting is enabled in WoGify Opti
 !!FU(WOG_GetExpRequirementOfLevel)&(maxLevel)>0:P(maxLevel)/?(maxExp:y);
 
 ; Check all the heroes owned by the player
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!HEi:O?(owner:y);
 
   !!if&(owner)=i^timerOwner^;
@@ -219,7 +219,7 @@ Navigation, Pathfinding, Resistance, Scholar, Scouting is enabled in WoGify Opti
 !!en;
 
 !?FU(OnEveryDay)&i^timerWeekday^=1/i^timerDay^>1; [weekly - continue if estates or scholar enabled]
-!!DO(WOG_203_211_ManageWeeklyEvents)/(HERO_FIRST)/(HERO_LAST_WOG)/1|i^wog_203_enabled^/i^wog_211_enabled^:P; [iterate through all heroes]
+!!DO(WOG_203_211_ManageWeeklyEvents)/(HERO_FIRST)/(HERO_LAST_KK)/1|i^wog_203_enabled^/i^wog_211_enabled^:P; [iterate through all heroes]
 ** end of timer routines
 
 

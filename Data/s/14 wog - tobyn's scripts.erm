@@ -1197,7 +1197,7 @@ lvl 10+ and cycling
 
 !?FU(OnAfterErmInstructions)&i^wog_193_enabled^=1;
 
-!!re i/0/(HERO_LAST_WOG);
+!!re i/0/(HERO_LAST_KK);
   !!FU(WOG_193_GetWarfareMaxSkillLvl):Pi/?(level:y)/?(ssNumber:y);
 
   !!IF:Wi;                                                                        [set w var reference to current hero]

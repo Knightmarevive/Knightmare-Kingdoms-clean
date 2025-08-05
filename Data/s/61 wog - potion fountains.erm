@@ -52,7 +52,7 @@ z275: Hint code for Valhalla's Fountain (visited)
 !!UN:P17/?(wogOption:y); [Check if script is enabled]
 !!FU&(wogOption)<>(TRUE):E;
 
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!IF:Wi;
   !!VRw10:S0;
   !!VRw11:S0;

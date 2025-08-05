@@ -570,7 +570,7 @@ WoGify ERM code: 101 (0-5) plus 111-130 (0-1) for individual rules
 
 ** function to let hero revisit objects
 !?FU(WOG_101_ClearHeroVisistedObjects);
-  !!re i/0/(HERO_LAST_WOG);
+  !!re i/0/(HERO_LAST_KK);
     !!re j/0/9;
       !!HEi:Vj/0; [set hero to have not visited all objects of this type]
     !!en;
@@ -878,7 +878,7 @@ EveryDays Routine
   !#VA(monsIntoUpgrade[9]:y);
   !!VR(monsToUpgrade[0]):C13/27/41/55/69/83/97/111/131;
   !!VR(monsIntoUpgrade[0]):C150/151/152/153/154/155/156/157/158;
-  !!re i/0/(HERO_LAST_WOG);
+  !!re i/0/(HERO_LAST_KK);
     !!HEi:Z?(hero:y);
     !!VR(hero):+145;                                                [add army offset to pass armyptr]
     !!re j/0/(monsToUpgrade[SIZE])/1/-1;
@@ -904,7 +904,7 @@ EveryDays Routine
   !!en;
 
 !?FU(WOG_101_SetDoubledHeroesMovements);
-  !!re i/0/(HERO_LAST_WOG);
+  !!re i/0/(HERO_LAST_KK);
     !!HEi:Wd<<1 Gd<<1; [set hero's new movement plus initial hero movement values]
   !!en;
 
@@ -1053,7 +1053,7 @@ EveryDays Routine
 
 !?FU(WOG_101_IncreaseArmies);        [** function to make slot x16 of hero x1's army grow by 4%, to 10000]
 
-  !!re i/0/(HERO_LAST_WOG);
+  !!re i/0/(HERO_LAST_KK);
     !!re j/0/(ARMY_SLOT_LAST);
       !!HEi:C0/j/?t/?q;              [get t type q qty]
       !!if&t<>(NO_MON);

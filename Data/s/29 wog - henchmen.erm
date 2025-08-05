@@ -32,7 +32,7 @@ ZVSE2
 
 ; Initialise variables
 !?FU(OnAfterErmInited)&i^hench_enabled^;
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!IF:Wi;
   !!VRw117:S0;
   !!VRw118:S(NO_MON);

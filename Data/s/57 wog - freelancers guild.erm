@@ -359,20 +359,20 @@ Dialogues: 30-32
   ; Check is input is a valid hero number
   !!FU(WOG_CheckIfZ1FirstCharIsNum):P?(isNum:y);
   !!VRv214&(isNum):Vz1;
-  !!VRv214|v214<(NO_HERO)/v214>(HERO_LAST_WOG):S(NO_HERO);
+  !!VRv214|v214<(NO_HERO)/v214>(HERO_LAST_KK):S(NO_HERO);
 
   ; Get the hero's name if it is a valid hero number
   !!if&v214>(NO_HERO);
     !!HEv214:B0/?z218;
   ; If input is not a valid hero number, check if it is a hero's name
   !!el;
-    !!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+    !!re i/(HERO_FIRST)/(HERO_LAST_KK);
       !!HEi:B0/?z218;
 
       !!br&z218=z1;
     !!en;
 
-    !!VRv214&i<=(HERO_LAST_WOG):Si;
+    !!VRv214&i<=(HERO_LAST_KK):Si;
   !!en;
 !!en;
 

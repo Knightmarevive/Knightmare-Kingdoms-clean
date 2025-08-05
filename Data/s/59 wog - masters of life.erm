@@ -35,7 +35,7 @@ ZVSE2
 
 !!UN:P67/?(neutralTown:y);
 
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!HEi:O?(owner:y);
   !!co&(owner)<>i^timerOwner^;
 

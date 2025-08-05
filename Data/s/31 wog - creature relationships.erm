@@ -16,7 +16,7 @@ ZVSE2
 !#UN:P47/?i^wog_47_enabled^; [check for active script]
 
 !?FU(OnEveryDay)&i^wog_47_enabled^/i^timerIsHuman^; [Each turn check...]
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!HEi:O?(owner:y);
 
   !!if&(owner)=i^timerOwner^;

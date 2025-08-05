@@ -5,6 +5,7 @@ ZVSE2
 
 ; MAIN WOG Script
 
+!#DC(HERO_LAST_KK)     = 1023;
 
 ; Manage default WoG Options selections
 !?FU(WOG_ManageWoGOptions);
@@ -1631,7 +1632,7 @@ The game may fall at any time.^;
 !!FU(NewIntArray):P?(availHeroes:y);
 
 ; Loop through all the heroes
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   ; Skip if the hero is Asmodeus (When Hourglass of Asmodeus is enabled)
   !!co&(hourglassOn)/i=i^wog_106_Asmodeus^;
 

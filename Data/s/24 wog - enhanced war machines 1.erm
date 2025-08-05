@@ -45,7 +45,7 @@ ZV_SE2
 !!EA(MON_NOT_USED_2)&(stackExp):O(MON_CATAPULT);
 
 ; Reset w vars
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!re j/81/83;
     !!IF:Wi;
     !!VRwj:S0;

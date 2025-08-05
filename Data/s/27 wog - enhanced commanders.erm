@@ -72,7 +72,7 @@ ZV_SE2
 !#VA(npcId:x);
 
 !!VR(firstHeroId:y):S(HERO_FIRST);
-!!VR(lastHeroId:y):S(HERO_LAST_WOG);
+!!VR(lastHeroId:y):S(HERO_LAST_KK);
 !!if&(npcId)<>(NO_HERO);
   !!VR(firstHeroId:y):S(npcId);
   !!VR(lastHeroId:y):S(npcId);

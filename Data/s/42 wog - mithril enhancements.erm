@@ -314,7 +314,7 @@ x6= object subtype
     !!if|(type)=(OBJ_WINDMILL)/(type)=(OBJ_WITCH_HUT)/(type)=(OBJ_WATER_WHEEL)/(type)=(OBJ_MONOLITH_ONE_WAY_ENTRANCE)/(type)=(OBJ_MONOLITH_TWO_WAY)/(type)=(OBJ_UNIVERSITY)/
       (type)=(OBJ_SHRINE_OF_MAGIC_INCANTATION)/(type)=(OBJ_SHRINE_OF_MAGIC_GESTURE)/(type)=(OBJ_SHRINE_OF_MAGIC_THOUGHT);
 
-      !!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+      !!re i/(HERO_FIRST)/(HERO_LAST_KK);
         !!HEi:O?(owner:y);
 
         !!if&(owner)=i^timerOwner^;
@@ -329,7 +329,7 @@ x6= object subtype
         !!en;
       !!en;
 
-      !!FU&i>(HERO_LAST_WOG):E;
+      !!FU&i>(HERO_LAST_KK):E;
     !!en;
 
     ; For Witch Huts and Shrines, check if the object has been visited once by the current player

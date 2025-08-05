@@ -54,7 +54,7 @@ ZV_SE2
 
 ; This must be executed later than Neutral Town hero spec in order to set up new creature specs
 !?FU(OnAfterErmInited)&i^wog_39_enabled^; [initialize of heroes w28-w32]
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!HEi:X?(specType:y)/?(specSubtype:y);
 
   !!if|(specType)=1/(specType)=4;

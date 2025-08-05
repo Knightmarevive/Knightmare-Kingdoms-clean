@@ -34,7 +34,7 @@ Flags:
 !!FU&(wogOption)<>(TRUE):E;
 
 ; Loop through all the heroes to show Week of Monsters info and add extra spell points
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!HEi:O?y1 S(SKILL_MYSTICISM)/?y2; (Check hero owner and level of Mysticism)
   !!co|y1=(NO_OWNER)/y2<=(SKILL_NOT_LEARNED);   (Next if not the same)
 

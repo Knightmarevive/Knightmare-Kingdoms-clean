@@ -28,7 +28,7 @@ ZVSE2
 !!VRv590:S0;
 !!HT(OBJ_NEW_WOG_OBJECTS)/24:V590/0/402; [set hint to z402, whenever v590 is 0, which it always will be]
 
-!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+!!re i/(HERO_FIRST)/(HERO_LAST_KK);
   !!IF:Wi;
   !!VRw13:S0;
 !!en;
