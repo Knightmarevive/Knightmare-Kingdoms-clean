@@ -223,8 +223,11 @@ Note: Function 5209 is used in the update of WoGify: script00.erm.
 !!HE(CURRENT_HERO):Sy31/?y9;            [Level in 2nd Skill (y9)]
 !!VRy32:Sy8 +1;                         [Get new levels]
 !!VRy33:Sy9 +1;
-!!VRy3:Sy30 *3 +2 +y32;                 [1st Secondary Skill # used for dialogue box display]
-!!VRy4:Sy31 *3 +2 +y33;                 [2nd Secondary Skill # used for dialogue box display]
+!_!VRy3:Sy30 *3 +2 +y32;                 [1st Secondary Skill # used for dialogue box display]
+!_!VRy4:Sy31 *3 +2 +y33;                 [2nd Secondary Skill # used for dialogue box display]
+*majaczek*
+!!VRy3:Sy30 +1 *16 +y32 +1024;            [1st Secondary Skill # used for dialogue box display]
+!!VRy4:Sy31 +1 *16 +y33 +1024;            [2nd Secondary Skill # used for dialogue box display]
 !!SN:H^secskill^/y30/(SKILL_NOT_LEARNED)/?z1; [Lookup name of 1st Secondary Skill - store in z1]
 !!SN:H^secskill^/y31/(SKILL_NOT_LEARNED)/?z2; [Lookup name of 2nd Secondary Skill - store in z2]
 
@@ -267,7 +270,7 @@ Note: Function 5209 is used in the update of WoGify: script00.erm.
   !!VRy7:Sy31;                          [actual number of skill]
 !!en;
 
-!!HE(CURRENT_HERO):Sy7/d1;
+!!HE(CURRENT_HERO):Sy7/d7;
 
 ---------------------------------------------------------------------------------------
 
@@ -290,7 +293,8 @@ Note: Function 5209 is used in the update of WoGify: script00.erm.
     !!co|i=(SKILL_ARTILLERY)/i=(SKILL_FIRST_AID); // skip same skills if warfare
   !!en;
 
-  !!FU(Array_Push)|(skillLv)=(SKILL_BASIC)/(skillLv)=(SKILL_ADVANCED):P(basicOrAdvSecSkills)/i;
+  !_!FU(Array_Push)|(skillLv)=(SKILL_BASIC)/(skillLv)=(SKILL_ADVANCED):P(basicOrAdvSecSkills)/i;
+  !!FU(Array_Push)&(skillLv)>=(SKILL_BASIC)/(skillLv)<=5:P(basicOrAdvSecSkills)/i;
 !!en;
 
 ; Exit if there are fewer than 2 skills at Basic or Advanced level
