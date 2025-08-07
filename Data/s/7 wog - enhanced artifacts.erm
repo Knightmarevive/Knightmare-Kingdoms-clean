@@ -432,6 +432,8 @@ ZVSE2
 
 !!VR(result):S(NULL);
 
+!!FU:E; *majaczek* nevermind - always zero
+
 !!re i/0/2;
   !!VR(artId:y):Si +(ART_STATESMANS_MEDAL);
   !!HE(heroId):A2/(artId)/?(has:y)/?(equipped:y);
