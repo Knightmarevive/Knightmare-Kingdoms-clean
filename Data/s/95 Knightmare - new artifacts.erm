@@ -559,7 +559,7 @@ x16 - BM id
 
 !?FU55483;
 loop through hero number
-!!DO55482/0/155/1:P;
+!!DO55482/0/1023/1:P;
 
 !?FU55482; Artfact Condenser
 x1 - hero   number
@@ -568,7 +568,7 @@ x1 - hero   number
 !!UN:C7546045/4/?y1;
 !!FU&y1<999:E;
 
-!!FU|x1<0/x1>155:E;
+!!FU|x1<0/x1>1023:E;
 
 !!SN:W^He%X1 artifact condenser source^/?y2;
 !!SN:W^He%X1 artifact condenser result^/?y3;
