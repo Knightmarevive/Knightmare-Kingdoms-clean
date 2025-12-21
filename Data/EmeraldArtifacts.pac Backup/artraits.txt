@@ -1,0 +1,1398 @@
+		Hero Slots																				
+Name	Cost	Spell Book	War Machine 4	War Machine 3	War Machine 2	War Machine 1	Misc 5	Misc 4	Misc 3	Misc 2	Misc 1	Feet	Left Ring	Right Ring	Torso	Left Hand	Right Hand	Neck	Shoulders	Head	"Class (S,T,N,J,R)"	Description
+Spell Book	0	x	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	 	B	"{Spell Book}
+
+Left-click on the spell book to view your spells."
+Spell Scroll	2500	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	B	"{Spell Scroll}
+
+This scroll contains the [spell name] spell which is added into your spell book for as long as you carry the scroll."
+The Grail	0	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	 	S	"{The Grail}
+
+Carry the Grail to the city of your choice and the populace there will build a fantastic structure which will provide a tremendous advantage to the city's owner."
+Catapult	1000	 	x	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	 	W	"{Catapult}
+
+Use this war machine to target your enemy's fortifications in combat."
+Ballista	2500	 	 	 	 	x		 	 	 	 	 	 	 	 	 	 	 	 	 	W	"{Ballista}
+
+Use this war machine to target your enemy's troops in combat."
+Ammo Cart	1000	 	 	 	x	 		 	 	 	 	 	 	 	 	 	 	 	 	 	W	"{Ammo Cart}
+
+The Ammo Cart ensures that your missile troops will never run out of ammunition in combat."
+First Aid Tent	750	 	 	x	 	 		 	 	 	 	 	 	 	 	 	 	 	 	 	W	"{First Aid Tent}
+
+The First Aid Tent provides healing to your troops during each round of combat."
+Centaurs Axe	2000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	T	"{Centaur's Axe}
+
+This right handed weapon increases your Attack skill by +2."
+Blackshard of the Dead Knight	3000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	N	"{Blackshard of the Dead Knight}
+
+This right handed weapon increases your Attack skill by +3."
+Greater Gnoll's Flail	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	N	"{Greater Gnoll's Flail}
+
+This right handed weapon increases your Attack skill by +4."
+Ogre's Club of Havoc	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	J	"{Ogre's Club of Havoc}
+
+This right handed weapon increases your Attack skill by +5."
+Sword of Hellfire	6000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	J	"{Sword of Hellfire}
+
+This right handed weapon increases your Attack skill by +6."
+Titan's Gladius	10000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	R	"{Titan's Gladius}
+
+Held with the right hand, this massive relic increases your Attack skill by +12, but reduces your Defense skill by -3."
+Shield of the Dwarven Lords	2000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	T	"{Shield of the Dwarven Lords}
+
+This left handed item increases your Defense skill by +2."
+Shield of the Yawning Dead	3000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	N	"{Shield of the Yawning Dead}
+
+This left handed item increases your Defense skill by +3."
+Buckler of the Gnoll King	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	N	"{Buckler of the Gnoll King}
+
+This left handed item increases your Defense skill by +4."
+Targ of the Rampaging Ogre	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	J	"{Targ of the Rampaging Ogre}
+
+This left handed item increases your Defense skill by +5."
+Shield of the Damned	6000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	J	"{Shield of the Damned}
+
+This left handed item increases your Defense skill by +6."
+Sentinel's Shield	10000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	R	"{Sentinel's Shield}
+
+Held with the left hand, this relic increases your Defense skill by +12, but reduces your Attack skill by -3."
+Helm of the Alabaster Unicorn	1000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	T	"{Helm of the Alabaster Unicorn}
+
+Worn on the head, this item increases your Knowledge skill by +1."
+Skull Helmet	3000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	T	"{Skull Helmet}
+
+Worn on the head, this item increases your Knowledge skill by +2."
+Helm of Chaos	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	N	"{Helm of Chaos}
+
+Worn on the head, this item increases your Knowledge skill by +3."
+Crown of the Supreme Magi	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	N	"{Crown of the Supreme Magi}
+
+Worn on the head, this item increases your Knowledge skill by +4."
+Hellstorm Helmet	6000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	J	"{Hellstorm Helmet}
+
+Worn on the head, this item increases your Knowledge skill by +5."
+Thunder Helmet	10000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	R	"{Thunder Helmet}
+
+When worn, this relic increases your Knowledge skill by +10, but reduces your Power skill by -2."
+Breastplate of Petrified Wood	1000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	T	"{Breastplate of Petrified Wood}
+
+Worn on the torso, this item increases your Power skill by +1."
+Rib Cage	3000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	N	"{Rib Cage}
+
+Worn on the torso, this item increases your Power skill by +2."
+Scales of the Greater Basilisk	4000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	N	"{Scales of the Greater Basilisk}
+
+Worn on the torso, this item increases your Power skill by +3."
+Tunic of the Cyclops King	5000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	J	"{Tunic of the Cyclops King}
+
+Worn on the torso, this item increases your Power skill by +4."
+Breastplate of Brimstone	6000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	J	"{Breastplate of Brimstone}
+
+Worn on the torso, this item increases your Power skill by +5."
+Titan's Cuirass	10000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	R	"{Titan's Cuirass}
+
+When worn, this massive relic increases your Power skill by +10, but reduces your Knowledge skill by -2."
+Armor of Wonder	4000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	N	"{Armor of Wonder}
+
+Worn on the torso, the Armor of Wonder increases all four primary skills by +1."
+Sandals of the Saint	8000	 	 	 	 	 		 	 	 	 	x	 	 	 	 	 	 	 	 	R	"{Sandals of the Saint}
+
+Worn on the feet, the Sandals of the Saint increase all four primary skills by +2."
+Celestial Necklace of Bliss	12000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	R	"{Celestial Necklace of Bliss}
+
+Worn about the neck, the Celestial Necklace of Bliss increases all four primary skills by +3."
+Lion's Shield of Courage	16000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	R	"{Lion's Shield of Courage}
+
+Held with the left hand, the Lion's Shield of Courage increases all four primary skills by +4."
+Sword of Judgement	20000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	R	"{Sword of Judgement}
+
+Held with the right hand, the Sword of Judgement increases all four primary skills by +5."
+Helm of Heavenly Enlightenment	24000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	R	"{Helm of Heavenly Enlightenment}
+
+Worn on the head, the Helm of Heavenly Enlightenment increases all four primary skills by +6."
+Quiet Eye of the Dragon	2000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	T	"{Quiet Eye of the Dragon}
+
+Worn on a finger, this item increases your Attack and Defense skills by +1."
+Red Dragon Flame Tongue	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	x	 	 	 	N	"{Red Dragon Flame Tongue}
+
+Held with the right hand, this item increases your Attack and Defense skills by +2."
+Dragon Scale Shield	6000	 	 	 	 	 		 	 	 	 	 	 	 	 	x	 	 	 	 	J	"{Dragon Scale Shield}
+
+Held with the left hand, this item increases your Attack and Defense skills by +3."
+Dragon Scale Armor	8000	 	 	 	 	 		 	 	 	 	 	 	 	x	 	 	 	 	 	R	"{Dragon Scale Armor}
+
+Worn on a torso, this item increases your Attack and Defense skills by +4."
+Dragonbone Greaves	2000	 	 	 	 	 		 	 	 	 	x	 	 	 	 	 	 	 	 	T	"{Dragonbone Greaves}
+
+Worn on the feet, this item increases your Knowledge and Power skills by +1."
+Dragon Wing Tabard	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	N	"{Dragon Wing Tabard}
+
+Worn on the shoulders, this item increases your Knowledge and Power skills by +2."
+Necklace of Dragonteeth	6000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	J	"{Necklace of Dragonteeth}
+
+Worn about the neck, this item increases your Knowledge and Power skills by +3."
+Crown of Dragontooth	8000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	R	"{Crown of Dragontooth}
+
+Worn on the head, this item increases your Knowledge and Power skills by +4."
+Still Eye of the Dragon	2000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	T	"{Still Eye of the Dragon}
+
+Worn on the finger, this item increases your Luck and Morale by +1."
+Clover of Fortune	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Clover of Fortune}
+
+The Clover of Fortune increases your Luck by +1."
+Cards of Prophecy	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Cards of Prophecy}
+
+The Cards of Prophecy increase your Luck by +1."
+Ladybird of Luck	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Ladybird of Luck}
+
+The Ladybird of Luck increases your Luck by +1."
+Badge of Courage	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Badge of Courage}
+
+The Badge of Courage increases your Morale by +1 and grants immunity to all hostile mind spells."
+Crest of Valor	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Crest of Valor}
+
+The Crest of Valor increases your Morale by +1."
+Glyph of Gallantry	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Glyph of Gallantry}
+
+The Glyph of Gallantry increases your Morale by +1."
+Speculum	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Speculum}
+
+The Speculum increases your Scouting radius by +1."
+Spyglass	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Spyglass}
+
+The Spyglass increases your Scouting radius by +1."
+Amulet of the Undertaker	2000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	T	"{Amulet of the Undertaker}
+
+Worn about the neck, this amulet increases your Necromancy skill by 5%."
+Vampire's Cowl	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	N	"{Vampire's Cowl}
+
+Worn about the shoulders, this cowl increases your Necromancy skill by 10%."
+Dead Man's Boots	6000	 	 	 	 	 		 	 	 	 	x	 	 	 	 	 	 	 	 	J	"{Dead Man's Boots}
+
+Worn on the feet, these boots increase your Necromancy skill by 15%."
+Garniture of Interference	2000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	J	"{Garniture of Interference}
+
+Worn about the neck, this item increases your Magic Resistance by 5%."
+Surcoat of Counterpoise	4000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	J	"{Surcoat of Counterpoise}
+
+Worn about the shoulders, this item increases your Magic Resistance by 10%."
+Boots of Polarity	6000	 	 	 	 	 		 	 	 	 	x	 	 	 	 	 	 	 	 	R	"{Boots of Polarity}
+
+Worn on the feet, these boots increase your Magic Resistance by 15%."
+Bow of Elven Cherrywood	2000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Bow of Elven Cherrywood}
+
+This bow increases your Archery skill by 5%."
+Bowstring of the Unicorn's Mane	4000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	N	"{Bowstring of the Unicorn's Mane}
+
+This bowstring increases your Archery skill by 10%."
+Angel Feather Arrows	6000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Angel Feather Arrows}
+
+These arrows increase your Archery skill by 15%."
+Bird of Perception	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Bird of Perception}
+
+This figurine increases your Eagle Eye skill by 5%."
+Stoic Watchman	2000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Stoic Watchman}
+
+This figurine increases your Eagle Eye skill by 10%."
+Emblem of Cognizance	3000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	N	"{Emblem of Cognizance}
+
+This item increases your Eagle Eye skill by 15%."
+Statesman's Medal	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	J	"{Statesman's Medal}
+
+Worn about the neck, the Statesman's Medal reduces the cost of surrendering."
+Diplomat's Ring	5000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	J	"{Diplomat's Ring}
+
+Worn on the finger, the Diplomat's Ring reduces the cost of surrendering."
+Ambassador's Sash	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	J	"{Ambassador's Sash}
+
+Worn about the shoulders, the Ambassador's Sash reduces the cost of surrendering."
+Ring of the Wayfarer	5000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	J	"{Ring of the Wayfarer}
+
+When placed on the finger, this ring increases the combat speed of all your units by +1."
+Equestrian's Gloves	3000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	N	"{Equestrian's Gloves}
+
+Worn on the hands, these gloves increase your hero's movement rate over land."
+Necklace of Ocean Guidance	10000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	J	"{Necklace of Ocean Guidance}
+
+Worn about the neck, this necklace increases your hero's movement rate at sea."
+Angel Wings	20000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	R	"{Angel Wings}
+
+Worn about the shoulders, these wings allow you to fly."
+Charm of Mana	500	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Charm of Mana}
+
+This charm helps you recover 1 extra spell point per day."
+Talisman of Mana	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Talisman of Mana}
+
+This talisman helps you recover 2 extra spell points per day."
+Mystic Orb of Mana	1500	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Mystic Orb of Mana}
+
+This orb helps you recover 3 extra spell points per day."
+Collar of Conjuring	500	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	T	"{Collar of Conjuring}
+
+Worn about the neck, this item increases the duration of all your spells by 1."
+Ring of Conjuring	1000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	T	"{Ring of Conjuring}
+
+Worn on a finger, this item increases the duration of all your spells by 2."
+Cape of Conjuring	1500	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	T	"{Cape of Conjuring}
+
+Worn about the shoulders, this item increases the duration of all your spells by 3."
+Orb of the Firmament	6000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Orb of the Firmament}
+
+This powerful orb causes your Air spells to inflict an additional 50% damage."
+Orb of Silt	6000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Orb of Silt}
+
+This powerful orb causes your Earth spells to inflict an additional 50% damage."
+Orb of Tempestuous Fire	6000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Orb of Tempestuous Fire}
+
+This powerful orb causes your Fire spells to inflict an additional 50% damage."
+Orb of Driving Rain	6000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Orb of Driving Rain}
+
+This powerful orb causes your Water spells to inflict an additional 50% damage."
+Recanter's Cloak	8000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	J	"{Recanter's Cloak}
+
+While wearing this cloak, neither you nor your opponent will be able to cast level 3 or higher spells during combat."
+Spirit of Oppression	2000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Spirit of Oppression}
+
+This item negates all Morale bonuses during combat for both you and your opponent."
+Hourglass of the Evil Hour	2000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Hourglass of the Evil Hour}
+
+This item negates all Luck bonuses during combat for both you and your opponent."
+Tome of Fire Magic	20000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	R	"{Tome of Fire Magic}
+
+This heavy book contains all spells in the school of Fire Magic.  It must be equipped for the spells to be available."
+Tome of Air Magic	20000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	R	"{Tome of Air Magic}
+
+This heavy book contains all spells in the school of Air Magic.  It must be equipped for the spells to be available."
+Tome of Water Magic	20000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	R	"{Tome of Water Magic}
+
+This heavy book contains all spells in the school of Water Magic.  It must be equipped for the spells to be available."
+Tome of Earth Magic	20000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	R	"{Tome of Earth Magic}
+
+This heavy book contains all spells in the school of Earth Magic.  It must be equipped for the spells to be available."
+Boots of Levitation	10000	 	 	 	 	 		 	 	 	 	x	 	 	 	 	 	 	 	 	R	"{Boots of Levitation}
+
+When worn, these boots allow you to walk across water."
+Golden Bow	8000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Golden Bow}
+
+When wielded, the Golden Bow allows your troops to shoot through any obstacle or at any range without penalty."
+Sphere of Permanence	7500	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Sphere of Permanence}
+
+Wielding this sphere renders your units immune to the Dispel Magic spell."
+Orb of Vulnerability	25000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	R	"{Orb of Vulnerability}
+
+During combat, this orb negates the natural magic resistance of all creatures on the battlefield."
+Ring of Vitality	5000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	T	"{Ring of Vitality}
+
+This item increases the health of all your units by +1."
+Ring of Life	5000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	N	"{Ring of Life}
+
+This item increases the health of all your units by +1."
+Vial of Lifeblood	10000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Vial of Lifeblood}
+
+This item increases the health of all your units by +2."
+Necklace of Swiftness	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	T	"{Necklace of Swiftness}
+
+Worn about the neck, this necklace increases the combat speed of all your units by +1."
+Boots of Speed	6000	 	 	 	 	 		 	 	 	 	x	 	 	 	 	 	 	 	 	N	"{Boots of Speed}
+
+Worn on the feet, these boots increase your hero's movement rate over land."
+Cape of Velocity	10000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	J	"{Cape of Velocity}
+
+Worn about the shoulders, this cape increases the combat speed of all your units by +2."
+Pendant of Dispassion	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 		 	 	T	"{Pendant of Dispassion}
+
+Wearing this item renders your units immune to the Berserk spell."
+Pendant of Second Sight	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 		 	 	J	"{Pendant of Second Sight}
+
+Wearing this item renders your units immune to the Blind spell."
+Pendant of Holiness	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 		 	 	T	"{Pendant of Holiness}
+
+Wearing this item renders your units immune to the Curse spell."
+Pendant of Life	2500	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	T	"{Pendant of Life}
+
+Wearing this item renders your units immune to the Death Ripple spell."
+Pendant of Death	2500	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	T	"{Pendant of Death}
+
+Wearing this item renders your units immune to the Destroy Undead spell."
+Pendant of Free Will	1000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 		 	 	T	"{Pendant of Free Will}
+
+Wearing this item renders your units immune to the Hypnotize spell."
+Pendant of Negativity	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	J	"{Pendant of Negativity}
+
+Wearing this item renders your units immune to the Lightning Bolt and Chain Lightning spells."
+Pendant of Total Recall	3000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 		 	 	T	"{Pendant of Total Recall}
+
+Wearing this item renders your units immune to the Forgetfulness spell."
+Pendant of Courage	7000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	x	 	 	J	"{Pendant of Courage}
+
+When worn, this item bestows +3 Luck and Morale to your hero's troops."
+Everflowing Crystal Cloak	5000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	x	 	J	"{Everflowing Crystal Cloak}
+
+When worn, this cloak increases your Crystal production by +1 per day."
+Ring of Infinite Gems	5000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	J	"{Ring of Infinite Gems}
+
+When worn, this ring increases your Gem production by +1 per day."
+Everpouring Vial of Mercury	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 		 	 	J	"{Everpouring Vial of Mercury}
+
+When equipped, this vial increases your Mercury production by +1 per day."
+Inexhaustible Cart of Ore	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	N	"{Inexhaustible Cart of Ore}
+
+When equipped, this cart provides you with an additional +1 Ore per day."
+Eversmoking Ring of Sulfur	5000	 	 	 	 	 		 	 	 	 	 	x	x	 	 	 	 	 	 	J	"{Eversmoking Ring of Sulfur}
+
+When worn, this ring increases your Sulfur production by +1 per day."
+Inexhaustible Cart of Lumber	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	N	"{Inexhaustible Cart of Lumber}
+
+When equipped, this cart provides you with an additional +1 Wood per day."
+Endless Sack of Gold	10000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	R	"{Endless Sack of Gold}
+
+When equipped, the Endless Sack of Gold increases your income by 1000 gold per day."
+Endless Bag of Gold	7500	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Endless Bag of Gold}
+
+When equipped, the Endless Bag of Gold increases your income by 750 gold per day."
+Endless Purse of Gold	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Endless Purse of Gold}
+
+When equipped, the Endless Purse of Gold increases your income by 500 gold per day."
+Legs of Legion	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	T	"{Legs of Legion}
+
+This item, when equipped by a hero in a town, increases the growth of your 2nd level units (in that town) by 5 per week."
+Loins of Legion	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	N	"{Loins of Legion}
+
+This item, when equipped by a hero in a town, increases the growth of your 3rd level units (in that town) by 4 per week."
+Torso of Legion	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	N	"{Torso of Legion}
+
+This item, when equipped by a hero in a town, increases the growth of your 4th level units (in that town) by 3 per week."
+Arms of Legion	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Arms of Legion}
+
+This item, when equipped by a hero in a town, increases the growth of your 5th level units (in that town) by 2 per week."
+Head of Legion	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 	 	 	 	 	 	J	"{Head of Legion}
+
+This item, when equipped by a hero in a town, increases the growth of your 6th level units (in that town) by 1 per week."
+Sea Captain's Hat	15000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	R	"{Sea Captain's Hat}
+
+When worn, this hat increases your movement at sea, allows you to summon and destroy boats, and protects you from whirlpools."
+Spellbinder's Hat	30000	 	 	 	 	 		 	 	 	 	 	 	 	 	 	 	 	 	x	R	"{Spellbinder's Hat}
+
+When worn, this hat allows you to cast all 5th level spells."
+Shackles of War	5000	 	 	 	 	 	x	x	x	x	x	 	 	 	 			 	 	 	J	"{Shackles of War}
+
+When these shackles are wielded in combat, neither you nor your opponent may retreat or surrender."
+Orb of Inhibition	20000	 	 	 	 	 	x	x	x	x	x		 	 	 	 	 	 	 	 	R	"{Orb of Inhibition}
+
+This powerful orb prevents all spell casting in combat."
+Vial of Dragon Blood	20000						x	x	x	x	x										R	"{Vial of Dragon Blood}
+
+All dragons under your command receive +5 to their attack and +5 to defense."
+Armageddon's Blade	50000																x				R	"{Armageddon's Blade}
+
++ 3 Attack. + 3 Defense. + 6 Knowledge. + 3 Power. Places Expert Armageddon Spell in your hero's spell book. All allied creatures become immune to Armageddon."
+Angelic Alliance																	x				R	"{Angelic Alliance}
+
+Allows Rampart, Tower, Fortress, Stronghold and Castle creatures to be mixed without a morale penalty, for the player.  Casts Expert Prayer at the start of combat."
+Cloak of the Undead King																			x		R	"{Cloak of the Undead King}
+
+30% of battlefield dead are resurrected as Skeletons.  If hero already has the Necromancy skill then the percentages are added to the skill and the level of skill determines what type is resurrected.  Basic: Zombies
+Advanced: Wights
+Expert:  Liches"
+Elixir of Life							x	x	x	x	x										R	"{Elixir of Life}
+
+All creatures get a 25% health bonus and gain the regeneration ability.  Does not work on Undead or unliving creatures"
+Armor of the Damned															x						R	"{Armor of the Damned}
+
+All opponents have these spells effective on them for fifty turns: Slow, Curse, Weakness, and Misfortune."
+Statue of Legion							x	x	x	x	x										R	"{Statue of Legion}
+
+All creature production increases by 50%, in all towns based off of the castle creature generation level, does not include flagged structures or other like bonuses."
+Power of the Dragon Father															x						R	"{Power of the Dragon Father}
+
++6 to all primary skills, all troops are immune to 1-4th level spells."
+Titan's Thunder																	x				R	"{Titan's Thunder}
+
+Hero gains the ability to cast Lightning Bolt for 600 points of damage, does not cost any spell points, adds a spell book into their inventory (permanently)."
+Admiral's Hat																				x	R	"{Admiral's Hat}
+
+No boarding or unboarding ship penalty.  Converts movement points between the Hero's Land and Water movement."
+Bow of the Sharpshooter							x	x	x	x	x						 				R	"{Bow of the Sharpshooter}
+
+Ranged shooters may fire projectiles while adjacent to an enemy creature.  No archery penalty for range or obstacle"
+Wizard's Well							x	x	x	x	x										R	"{Wizard's Well}
+
+Regenerates all spell points each day"
+Ring of the Magi													x	x							R	"{Ring of the Magi}
+
+Add 50 rounds to spell duration."
+Cornucopia							x	x	x	x	x										R	"{Cornucopia}
+
+Generates 4 of each precious resource, each day."
+Magic Wand							x	x	x	x	x										R	"{Magic Wand}
+
+Transforms equipped artifacts daily.
+{Slot1}=Head and Neck
+{Slot2}=Right and Left Hand
+{Slot3}=Right and Left Ring
+{Slot4}=Torso and Feet
+{Slot5}=Shoulders and Slot4"
+Gold Tower Arrow							x	x	x	x	x										R	"{Gold Tower Arrow}
+
+Gives power over Arrow Towers. If equipped by attacking hero, towers will not shoot at all. If equipped by defending hero, depends on ballistics skill:
+None: Towers shoot twice.
+Basic: Towers shoot 3 times.
+Advanced: Towers shoot 4 times.
+Expert: Towers shoot 5 times."
+Monster's Power							x	x	x	x	x										R	"{Monster's Power}
+
+Casts Prayer spell on all monsters of one type, randomly chosen from the hero's army at the beginning of each week. Affects all monsters of this type for the week, regardless of owner."
+-1							x	x	x	x	x										R	"-1d"
+-2							x	x	x	x	x										R	"-2d"
+Axe of Smashing							 	 	 	 	 										R	"{Axe of Smashing}
+
+Gives +5 Attack
+plus +1 Attack after 6 victorious battles.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Mithril Mail							 		 	 	 										R	"{Mithril Mail}
+
+Gives +12% Health
+plus +1% Health after every victorious battle.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Sword of Sharpness							 		 	 	 										R	"{Sword of Sharpness}
+
+Gives +12% Damage
+plus +1% Damage after every victorious battle.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Helm of Immortality							 		 	 	 										R	"{Helm of Immortality}
+
+Revives a slain Commander immediately after battle
+(artifact incremental bonuses are not lost).
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Pendant of Sorcery							 		 	 	 										R	"{Pendant of Sorcery}
+
+Gives +1 Magic Power
+plus +1 Magic Power after 10 victorious battles.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Boots of Haste							 		 	 	 										R	"{Boots of Haste}
+
+Gives +1 Speed
+plus +1 Speed after 10 victorious battles.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Bow of Seeking							 		 	 	 										R	"{Bow of Seeking}
+
+Gives "No Obstacle Penalty"
+plus "No Long-Range Penalty" after 25 victorious battles.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Dragon Eye Ring							 		 	 	 										R	"{Dragon Eye Ring}
+
+Gives Commander Breath Attack (two squares)
+and
+Dragon nature (gets bonuses as Dragons).
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Hardened Shield							 		 	 	 										R	"{Hardened Shield}
+
+Gives +5 Defense
+plus +1 Defense after 6 victorious battles.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Slava's Ring of Power							 		 	 	 										R	"{Slava's Ring of Power}
+
+Gives Commander all six Primary Skills at Advanced level.
+
+To give this artifact to your Commander, drag it to the Commander icon."
+Warlord's Banner							 		 	 	 										T	"{Warlord's Banner}
+
+With stack experience enabled, the Warlord's Banner gives additional bonuses in combat. To equip it, drag it to the troop stack of your choice.
+
+Choose a bonus by right-clicking on the Banner in the stack's experience screen. You can change the bonus any time except in combat."
+Crimson Shield of Retribution	20000															x					J	"{Crimson Shield of Retribution}
+
+Held in the left hand, this artifact increases Defense skill by +2 and gives all creatures in a hero's ranks the ability to retaliate against creatures that cannot normally be retaliated against."
+Barbarian Lord's Axe of Ferocity	50000																x				R	"{Barbarian Lord's Axe of Ferocity}
+
+In addition to the regular bonuses, the Barbarian Lord's Axe of Ferocity gives all non-shooting creatures in a hero's ranks an additional strike with each attack. This extra strike is added to the number of strikes the creature normally makes--if a creature already strikes twice, it will now strike three times. Note: even if making a melee attack, shooting creatures won't receive this bonus."
+Dragonheart	20000						x	x	x	x	x										R	"{Dragonheart}
+
+This ancient relic summons up to [100 HP x Hero Level] dragons for the duration of a battle (minimum one dragon). Dragon type is random but may be influenced by terrain.
+
+In addition, dragons in a hero's army always have positive morale."
+Gate Key	18000						x	x	x	x	x										R	"{Gate Key}
+
+Upon entering a town you own, the Gate Key gives you the option to lock it for 5 days. Heroes can leave locked towns but no hero can enter except by Town Portal or Castle Gate, and the town cannot be attacked.
+
+The Gate Key will vanish when used and returns to the hero 10 days later. A town cannot be relocked by any Gate Key for 5 days after it becomes unlocked. If a player is vanquished, their locked towns will be unlocked for all players the following day."
+Helmet #161	0																			x	R	"{Helmet (Artifact #161)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Sword #162	0																x				R	"{Sword (Artifact #162)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Shield #163	0															x					R	"{Shield (Artifact #163)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Horned Ring #164	0												x	x							R	"{Horned Ring (Artifact #164)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+3-Gemmed Ring #165	0												x	x							R	"{3-Gemmed Ring (Artifact #165)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Neck Broach #166	0																	x			R	"{Neck Broach (Artifact #166)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Armor #167	0														x						R	"{Armor (Artifact #167)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Surcoat #168	0																		x		R	"{Surcoat (Artifact #168)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Boots #169	0											x									R	"{Boots (Artifact #169)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Horn #170	0						x	x	x	x	x										R	"{Horn (Artifact #170)}
+
+This artifact is {BLANK} and must be programmed by ERM."
+Hammer of Doom	400																x				N	"{Hammer of Doom}
+
+This right handed weapon increases your Attack skill by +3 and Spellpower by +1."
+Eclipse Shield	4000															x					N	"{Eclipse Shield}
+
+This left handed item increases your Defense skill by +3 and Knowledge by +1."
+Helmet of Fallen Paladin	4000																			x	N	"{Helmet of Fallen Paladin}
+
+Worn on the head, this item increases your Knowledge skill by +3 and Attack by +1"
+Dragonrider's Armor	4000														x						N	"{Dragonrider's Armor}
+
+Worn on the torso, this item increases your Spellpower skill by +3 and Defence by +1"
+#175	0															x					S	175
+#176	0															x					S	176
+#177	0															x					S	177
+#178	0															x					S	178
+#179	0															x					S	179
+#180	0															x					S	180
+#181	0															x					S	181
+#182	0															x					S	182
+#183	0															x					S	183
+#184	0															x					S	184
+#185	0															x					S	185
+#186	0															x					S	186
+#187	0															x					S	187
+#188	0															x					S	188
+#189	0															x					S	189
+#190	0															x					S	190
+#191	0															x					S	191
+#192	0															x					S	192
+#193	0															x					S	193
+#194	0															x					S	194
+#195	0															x					S	195
+#196	0															x					S	196
+#197	0															x					S	197
+#198	0															x					S	198
+#199	0															x					S	199
+#200	0															x					S	200
+#201	0															x					S	201
+#202	0															x					S	202
+#203	0															x					S	203
+#204	0															x					S	204
+#205	0															x					S	205
+#206	0															x					S	206
+#207	0															x					S	207
+#208	0															x					S	208
+#209	0															x					S	209
+#210	0															x					S	210
+#211	0															x					S	211
+#212	0															x					S	212
+#213	0															x					S	213
+#214	0															x					S	214
+#215	0															x					S	215
+#216	0															x					S	216
+#217	0															x					S	217
+#218	0															x					S	218
+#219	0															x					S	219
+#220	0															x					S	220
+#221	0															x					S	221
+#222	0															x					S	222
+#223	0															x					S	223
+#224	0															x					S	224
+#225	0															x					S	225
+#226	0															x					S	226
+#227	0															x					S	227
+#228	0															x					S	228
+#229	0															x					S	229
+#230	0															x					S	230
+#231	0															x					S	231
+#232	0															x					S	232
+#233	0															x					S	233
+#234	0															x					S	234
+#235	0															x					S	235
+#236	0															x					S	236
+#237	0															x					S	237
+#238	0															x					S	238
+#239	0															x					S	239
+#240	0															x					S	240
+#241	0															x					S	241
+#242	0															x					S	242
+#243	0															x					S	243
+#244	0															x					S	244
+#245	0															x					S	245
+#246	0															x					S	246
+#247	0															x					S	247
+#248	0															x					S	248
+#249	0															x					S	249
+#250	0															x					S	250
+#251	0															x					S	251
+#252	0															x					S	252
+#253	0															x					S	253
+#254	0															x					S	254
+#255	0															x					S	255
+#256	0															x					S	256
+#257	0															x					S	257
+#258	0															x					S	258
+#259	0															x					S	259
+#260	0															x					S	260
+#261	0															x					S	261
+#262	0															x					S	262
+#263	0															x					S	263
+#264	0															x					S	264
+#265	0															x					S	265
+#266	0															x					S	266
+#267	0															x					S	267
+#268	0															x					S	268
+#269	0															x					S	269
+#270	0															x					S	270
+#271	0															x					S	271
+#272	0															x					S	272
+#273	0															x					S	273
+#274	0															x					S	274
+#275	0															x					S	275
+#276	0															x					S	276
+#277	0															x					S	277
+#278	0															x					S	278
+#279	0															x					S	279
+#280	0															x					S	280
+#281	0															x					S	281
+#282	0															x					S	282
+#283	0															x					S	283
+#284	0															x					S	284
+#285	0															x					S	285
+#286	0															x					S	286
+#287	0															x					S	287
+#288	0															x					S	288
+#289	0															x					S	289
+#290	0															x					S	290
+#291	0															x					S	291
+#292	0															x					S	292
+#293	0															x					S	293
+#294	0															x					S	294
+#295	0															x					S	295
+#296	0															x					S	296
+#297	0															x					S	297
+#298	0															x					S	298
+#299	0															x					S	299
+#300	0															x					S	300
+#301	0															x					S	301
+#302	0															x					S	302
+#303	0															x					S	303
+#304	0															x					S	304
+#305	0															x					S	305
+#306	0															x					S	306
+#307	0															x					S	307
+#308	0															x					S	308
+#309	0															x					S	309
+#310	0															x					S	310
+#311	0															x					S	311
+#312	0															x					S	312
+#313	0															x					S	313
+#314	0															x					S	314
+#315	0															x					S	315
+#316	0															x					S	316
+#317	0															x					S	317
+#318	0															x					S	318
+#319	0															x					S	319
+#320	0															x					S	320
+#321	0															x					S	321
+#322	0															x					S	322
+#323	0															x					S	323
+#324	0															x					S	324
+#325	0															x					S	325
+#326	0															x					S	326
+#327	0															x					S	327
+#328	0															x					S	328
+#329	0															x					S	329
+#330	0															x					S	330
+#331	0															x					S	331
+#332	0															x					S	332
+#333	0															x					S	333
+#334	0															x					S	334
+#335	0															x					S	335
+#336	0															x					S	336
+#337	0															x					S	337
+#338	0															x					S	338
+#339	0															x					S	339
+340 Red A-Grade	0															x					S	340 Red A-Grade
+341 Red A-Grade	0															x					S	341 Red A-Grade
+342 Red A-Grade	0															x					S	342 Red A-Grade
+343 Red A-Grade	0															x					S	343 Red A-Grade
+344 Red A-Grade	0															x					S	344 Red A-Grade
+345 Red B-Grade	0															x					S	345 Red B-Grade
+346 Red B-Grade	0															x					S	346 Red B-Grade
+347 Red B-Grade	0															x					S	347 Red B-Grade
+348 Red B-Grade	0															x					S	348 Red B-Grade
+349 Red B-Grade	0															x					S	349 Red B-Grade
+350 Red C-Grade	0															x					S	350 Red C-Grade
+351 Red C-Grade	0															x					S	351 Red C-Grade
+352 Red C-Grade	0															x					S	352 Red C-Grade
+353 Red C-Grade	0															x					S	353 Red C-Grade
+354 Red C-Grade	0															x					S	354 Red C-Grade
+355 Red D-Grade	0															x					S	355 Red D-Grade
+356 Red D-Grade	0															x					S	356 Red D-Grade
+357 Red D-Grade	0															x					S	357 Red D-Grade
+358 Red D-Grade	0															x					S	358 Red D-Grade
+359 Red D-Grade	0															x					S	359 Red D-Grade
+360 Blue A-Grade	0															x					S	360 Blue A-Grade
+361 Blue A-Grade	0															x					S	361 Blue A-Grade
+362 Blue A-Grade	0															x					S	362 Blue A-Grade
+363 Blue A-Grade	0															x					S	363 Blue A-Grade
+364 Blue A-Grade	0															x					S	364 Blue A-Grade
+365 Blue B-Grade	0															x					S	365 Blue B-Grade
+366 Blue B-Grade	0															x					S	366 Blue B-Grade
+367 Blue B-Grade	0															x					S	367 Blue B-Grade
+368 Blue B-Grade	0															x					S	368 Blue B-Grade
+369 Blue B-Grade	0															x					S	369 Blue B-Grade
+370 Blue C-Grade	0															x					S	370 Blue C-Grade
+371 Blue C-Grade	0															x					S	371 Blue C-Grade
+372 Blue C-Grade	0															x					S	372 Blue C-Grade
+373 Blue C-Grade	0															x					S	373 Blue C-Grade
+374 Blue C-Grade	0															x					S	374 Blue C-Grade
+375 Blue D-Grade	0															x					S	375 Blue D-Grade
+376 Blue D-Grade	0															x					S	376 Blue D-Grade
+377 Blue D-Grade	0															x					S	377 Blue D-Grade
+378 Blue D-Grade	0															x					S	378 Blue D-Grade
+379 Blue D-Grade	0															x					S	379 Blue D-Grade
+380 Yellow A-Grade	0															x					S	380 Yellow A-Grade
+381 Yellow A-Grade	0															x					S	381 Yellow A-Grade
+382 Yellow A-Grade	0															x					S	382 Yellow A-Grade
+383 Yellow A-Grade	0															x					S	383 Yellow A-Grade
+384 Yellow A-Grade	0															x					S	384 Yellow A-Grade
+385 Yellow B-Grade	0															x					S	385 Yellow B-Grade
+386 Yellow B-Grade	0															x					S	386 Yellow B-Grade
+387 Yellow B-Grade	0															x					S	387 Yellow B-Grade
+388 Yellow B-Grade	0															x					S	388 Yellow B-Grade
+389 Yellow B-Grade	0															x					S	389 Yellow B-Grade
+390 Yellow C-Grade	0															x					S	390 Yellow C-Grade
+391 Yellow C-Grade	0															x					S	391 Yellow C-Grade
+392 Yellow C-Grade	0															x					S	392 Yellow C-Grade
+393 Yellow C-Grade	0															x					S	393 Yellow C-Grade
+394 Yellow C-Grade	0															x					S	394 Yellow C-Grade
+395 Yellow D-Grade	0															x					S	395 Yellow D-Grade
+396 Yellow D-Grade	0															x					S	396 Yellow D-Grade
+397 Yellow D-Grade	0															x					S	397 Yellow D-Grade
+398 Yellow D-Grade	0															x					S	398 Yellow D-Grade
+399 Yellow D-Grade	0															x					S	399 Yellow D-Grade
+#400	0															x					S	400
+#401	0															x					S	401
+#402	0															x					S	402
+#403	0															x					S	403
+#404	0															x					S	404
+#405	0															x					S	405
+#406	0															x					S	406
+#407	0															x					S	407
+#408	0															x					S	408
+#409	0															x					S	409
+#410	0															x					S	410
+#411	0															x					S	411
+#412	0															x					S	412
+#413	0															x					S	413
+#414	0															x					S	414
+#415	0															x					S	415
+#416	0															x					S	416
+#417	0															x					S	417
+#418	0															x					S	418
+#419	0															x					S	419
+#420	0															x					S	420
+#421	0															x					S	421
+#422	0															x					S	422
+#423	0															x					S	423
+#424	0															x					S	424
+#425	0															x					S	425
+#426	0															x					S	426
+#427	0															x					S	427
+#428	0															x					S	428
+#429	0															x					S	429
+#430	0															x					S	430
+#431	0															x					S	431
+#432	0															x					S	432
+#433	0															x					S	433
+#434	0															x					S	434
+#435	0															x					S	435
+#436	0															x					S	436
+#437	0															x					S	437
+#438	0															x					S	438
+#439	0															x					S	439
+#440	0															x					S	440
+#441	0															x					S	441
+#442	0															x					S	442
+#443	0															x					S	443
+#444	0															x					S	444
+#445	0															x					S	445
+#446	0															x					S	446
+#447	0															x					S	447
+#448	0															x					S	448
+#449	0															x					S	449
+#450	0															x					S	450
+#451	0															x					S	451
+#452	0															x					S	452
+#453	0															x					S	453
+#454	0															x					S	454
+#455	0															x					S	455
+#456	0															x					S	456
+#457	0															x					S	457
+#458	0															x					S	458
+#459	0															x					S	459
+#460	0															x					S	460
+#461	0															x					S	461
+#462	0															x					S	462
+#463	0															x					S	463
+#464	0															x					S	464
+#465	0															x					S	465
+#466	0															x					S	466
+#467	0															x					S	467
+#468	0															x					S	468
+#469	0															x					S	469
+#470	0															x					S	470
+#471	0															x					S	471
+#472	0															x					S	472
+#473	0															x					S	473
+#474	0															x					S	474
+#475	0															x					S	475
+#476	0															x					S	476
+#477	0															x					S	477
+#478	0															x					S	478
+#479	0															x					S	479
+#480	0															x					S	480
+#481	0															x					S	481
+#482	0															x					S	482
+#483	0															x					S	483
+#484	0															x					S	484
+#485	0															x					S	485
+#486	0															x					S	486
+#487	0															x					S	487
+#488	0															x					S	488
+#489	0															x					S	489
+#490	0															x					S	490
+#491	0															x					S	491
+#492	0															x					S	492
+#493	0															x					S	493
+#494	0															x					S	494
+#495	0															x					S	495
+#496	0															x					S	496
+#497	0															x					S	497
+#498	0															x					S	498
+#499	0															x					S	499
+#500	0															x					S	500
+#501	0															x					S	501
+#502	0															x					S	502
+#503	0															x					S	503
+#504	0															x					S	504
+#505	0															x					S	505
+#506	0															x					S	506
+#507	0															x					S	507
+#508	0															x					S	508
+#509	0															x					S	509
+#510	0															x					S	510
+#511	0															x					S	511
+#512	0															x					S	512
+#513	0															x					S	513
+#514	0															x					S	514
+#515	0															x					S	515
+#516	0															x					S	516
+#517	0															x					S	517
+#518	0															x					S	518
+#519	0															x					S	519
+#520	0															x					S	520
+#521	0															x					S	521
+#522	0															x					S	522
+#523	0															x					S	523
+#524	0															x					S	524
+#525	0															x					S	525
+#526	0															x					S	526
+#527	0															x					S	527
+#528	0															x					S	528
+#529	0															x					S	529
+#530	0															x					S	530
+#531	0															x					S	531
+#532	0															x					S	532
+#533	0															x					S	533
+#534	0															x					S	534
+#535	0															x					S	535
+#536	0															x					S	536
+#537	0															x					S	537
+#538	0															x					S	538
+#539	0															x					S	539
+#540	0															x					S	540
+#541	0															x					S	541
+#542	0															x					S	542
+#543	0															x					S	543
+#544	0															x					S	544
+#545	0															x					S	545
+#546	0															x					S	546
+#547	0															x					S	547
+#548	0															x					S	548
+#549	0															x					S	549
+#550	0															x					S	550
+#551	0															x					S	551
+#552	0															x					S	552
+#553	0															x					S	553
+#554	0															x					S	554
+#555	0															x					S	555
+#556	0															x					S	556
+#557	0															x					S	557
+#558	0															x					S	558
+#559	0															x					S	559
+#560	0															x					S	560
+#561	0															x					S	561
+#562	0															x					S	562
+#563	0															x					S	563
+#564	0															x					S	564
+#565	0															x					S	565
+#566	0															x					S	566
+#567	0															x					S	567
+#568	0															x					S	568
+#569	0															x					S	569
+#570	0															x					S	570
+#571	0															x					S	571
+#572	0															x					S	572
+#573	0															x					S	573
+#574	0															x					S	574
+#575	0															x					S	575
+#576	0															x					S	576
+#577	0															x					S	577
+#578	0															x					S	578
+#579	0															x					S	579
+#580	0															x					S	580
+#581	0															x					S	581
+#582	0															x					S	582
+#583	0															x					S	583
+#584	0															x					S	584
+#585	0															x					S	585
+#586	0															x					S	586
+#587	0															x					S	587
+#588	0															x					S	588
+#589	0															x					S	589
+#590	0															x					S	590
+#591	0															x					S	591
+#592	0															x					S	592
+#593	0															x					S	593
+#594	0															x					S	594
+#595	0															x					S	595
+#596	0															x					S	596
+#597	0															x					S	597
+#598	0															x					S	598
+#599	0															x					S	599
+#600	0															x					S	600
+#601	0															x					S	601
+#602	0															x					S	602
+#603	0															x					S	603
+#604	0															x					S	604
+#605	0															x					S	605
+#606	0															x					S	606
+#607	0															x					S	607
+#608	0															x					S	608
+#609	0															x					S	609
+#610	0															x					S	610
+#611	0															x					S	611
+#612	0															x					S	612
+#613	0															x					S	613
+#614	0															x					S	614
+#615	0															x					S	615
+#616	0															x					S	616
+#617	0															x					S	617
+#618	0															x					S	618
+#619	0															x					S	619
+#620	0															x					S	620
+#621	0															x					S	621
+#622	0															x					S	622
+#623	0															x					S	623
+#624	0															x					S	624
+#625	0															x					S	625
+#626	0															x					S	626
+#627	0															x					S	627
+#628	0															x					S	628
+#629	0															x					S	629
+#630	0															x					S	630
+#631	0															x					S	631
+#632	0															x					S	632
+#633	0															x					S	633
+#634	0															x					S	634
+#635	0															x					S	635
+#636	0															x					S	636
+#637	0															x					S	637
+#638	0															x					S	638
+#639	0															x					S	639
+#640	0															x					S	640
+#641	0															x					S	641
+#642	0															x					S	642
+#643	0															x					S	643
+#644	0															x					S	644
+#645	0															x					S	645
+#646	0															x					S	646
+#647	0															x					S	647
+#648	0															x					S	648
+#649	0															x					S	649
+#650	0															x					S	650
+#651	0															x					S	651
+#652	0															x					S	652
+#653	0															x					S	653
+#654	0															x					S	654
+#655	0															x					S	655
+#656	0															x					S	656
+#657	0															x					S	657
+#658	0															x					S	658
+#659	0															x					S	659
+#660	0															x					S	660
+#661	0															x					S	661
+#662	0															x					S	662
+#663	0															x					S	663
+#664	0															x					S	664
+#665	0															x					S	665
+#666	0															x					S	666
+#667	0															x					S	667
+#668	0															x					S	668
+#669	0															x					S	669
+#670	0															x					S	670
+#671	0															x					S	671
+#672	0															x					S	672
+#673	0															x					S	673
+#674	0															x					S	674
+#675	0															x					S	675
+#676	0															x					S	676
+#677	0															x					S	677
+#678	0															x					S	678
+#679	0															x					S	679
+#680	0															x					S	680
+#681	0															x					S	681
+#682	0															x					S	682
+#683	0															x					S	683
+#684	0															x					S	684
+#685	0															x					S	685
+#686	0															x					S	686
+#687	0															x					S	687
+#688	0															x					S	688
+#689	0															x					S	689
+#690	0															x					S	690
+#691	0															x					S	691
+#692	0															x					S	692
+#693	0															x					S	693
+#694	0															x					S	694
+#695	0															x					S	695
+#696	0															x					S	696
+#697	0															x					S	697
+#698	0															x					S	698
+#699	0															x					S	699
+#700	0															x					S	700
+#701	0															x					S	701
+#702	0															x					S	702
+#703	0															x					S	703
+#704	0															x					S	704
+#705	0															x					S	705
+#706	0															x					S	706
+#707	0															x					S	707
+#708	0															x					S	708
+#709	0															x					S	709
+#710	0															x					S	710
+#711	0															x					S	711
+#712	0															x					S	712
+#713	0															x					S	713
+#714	0															x					S	714
+#715	0															x					S	715
+#716	0															x					S	716
+#717	0															x					S	717
+#718	0															x					S	718
+#719	0															x					S	719
+#720	0															x					S	720
+#721	0															x					S	721
+#722	0															x					S	722
+#723	0															x					S	723
+#724	0															x					S	724
+#725	0															x					S	725
+#726	0															x					S	726
+#727	0															x					S	727
+#728	0															x					S	728
+#729	0															x					S	729
+#730	0															x					S	730
+#731	0															x					S	731
+#732	0															x					S	732
+#733	0															x					S	733
+#734	0															x					S	734
+#735	0															x					S	735
+#736	0															x					S	736
+#737	0															x					S	737
+#738	0															x					S	738
+#739	0															x					S	739
+#740	0															x					S	740
+#741	0															x					S	741
+#742	0															x					S	742
+#743	0															x					S	743
+#744	0															x					S	744
+#745	0															x					S	745
+#746	0															x					S	746
+#747	0															x					S	747
+#748	0															x					S	748
+#749	0															x					S	749
+#750	0															x					S	750
+#751	0															x					S	751
+#752	0															x					S	752
+#753	0															x					S	753
+#754	0															x					S	754
+#755	0															x					S	755
+#756	0															x					S	756
+#757	0															x					S	757
+#758	0															x					S	758
+#759	0															x					S	759
+#760	0															x					S	760
+#761	0															x					S	761
+#762	0															x					S	762
+#763	0															x					S	763
+#764	0															x					S	764
+#765	0															x					S	765
+#766	0															x					S	766
+#767	0															x					S	767
+#768	0															x					S	768
+#769	0															x					S	769
+#770	0															x					S	770
+#771	0															x					S	771
+#772	0															x					S	772
+#773	0															x					S	773
+#774	0															x					S	774
+#775	0															x					S	775
+#776	0															x					S	776
+#777	0															x					S	777
+#778	0															x					S	778
+#779	0															x					S	779
+#780	0															x					S	780
+#781	0															x					S	781
+#782	0															x					S	782
+#783	0															x					S	783
+#784	0															x					S	784
+#785	0															x					S	785
+#786	0															x					S	786
+#787	0															x					S	787
+#788	0															x					S	788
+#789	0															x					S	789
+#790	0															x					S	790
+#791	0															x					S	791
+#792	0															x					S	792
+#793	0															x					S	793
+#794	0															x					S	794
+#795	0															x					S	795
+#796	0															x					S	796
+#797	0															x					S	797
+#798	0															x					S	798
+#799	0															x					S	799
+#800	0															x					S	800
+#801	0															x					S	801
+#802	0															x					S	802
+#803	0															x					S	803
+#804	0															x					S	804
+#805	0															x					S	805
+#806	0															x					S	806
+#807	0															x					S	807
+#808	0															x					S	808
+#809	0															x					S	809
+#810	0															x					S	810
+#811	0															x					S	811
+#812	0															x					S	812
+#813	0															x					S	813
+#814	0															x					S	814
+#815	0															x					S	815
+#816	0															x					S	816
+#817	0															x					S	817
+#818	0															x					S	818
+#819	0															x					S	819
+#820	0															x					S	820
+#821	0															x					S	821
+#822	0															x					S	822
+#823	0															x					S	823
+#824	0															x					S	824
+#825	0															x					S	825
+#826	0															x					S	826
+#827	0															x					S	827
+#828	0															x					S	828
+#829	0															x					S	829
+#830	0															x					S	830
+#831	0															x					S	831
+#832	0															x					S	832
+#833	0															x					S	833
+#834	0															x					S	834
+#835	0															x					S	835
+#836	0															x					S	836
+#837	0															x					S	837
+#838	0															x					S	838
+#839	0															x					S	839
+#840	0															x					S	840
+#841	0															x					S	841
+#842	0															x					S	842
+#843	0															x					S	843
+#844	0															x					S	844
+#845	0															x					S	845
+#846	0															x					S	846
+#847	0															x					S	847
+#848	0															x					S	848
+#849	0															x					S	849
+#850	0															x					S	850
+#851	0															x					S	851
+#852	0															x					S	852
+#853	0															x					S	853
+#854	0															x					S	854
+#855	0															x					S	855
+#856	0															x					S	856
+#857	0															x					S	857
+#858	0															x					S	858
+#859	0															x					S	859
+#860	0															x					S	860
+#861	0															x					S	861
+#862	0															x					S	862
+#863	0															x					S	863
+#864	0															x					S	864
+#865	0															x					S	865
+#866	0															x					S	866
+#867	0															x					S	867
+#868	0															x					S	868
+#869	0															x					S	869
+#870	0															x					S	870
+#871	0															x					S	871
+#872	0															x					S	872
+#873	0															x					S	873
+#874	0															x					S	874
+#875	0															x					S	875
+#876	0															x					S	876
+#877	0															x					S	877
+#878	0															x					S	878
+#879	0															x					S	879
+#880	0															x					S	880
+#881	0															x					S	881
+#882	0															x					S	882
+#883	0															x					S	883
+#884	0															x					S	884
+#885	0															x					S	885
+#886	0															x					S	886
+#887	0															x					S	887
+#888	0															x					S	888
+#889	0															x					S	889
+#890	0															x					S	890
+#891	0															x					S	891
+#892	0															x					S	892
+#893	0															x					S	893
+#894	0															x					S	894
+#895	0															x					S	895
+#896	0															x					S	896
+#897	0															x					S	897
+#898	0															x					S	898
+#899	0															x					S	899
+#900	0															x					S	900
+#901	0															x					S	901
+#902	0															x					S	902
+#903	0															x					S	903
+#904	0															x					S	904
+#905	0															x					S	905
+#906	0															x					S	906
+#907	0															x					S	907
+#908	0															x					S	908
+#909	0															x					S	909
+#910	0															x					S	910
+#911	0															x					S	911
+#912	0															x					S	912
+#913	0															x					S	913
+#914	0															x					S	914
+#915	0															x					S	915
+#916	0															x					S	916
+#917	0															x					S	917
+#918	0															x					S	918
+#919	0															x					S	919
+#920	0															x					S	920
+#921	0															x					S	921
+#922	0															x					S	922
+#923	0															x					S	923
+#924	0															x					S	924
+#925	0															x					S	925
+#926	0															x					S	926
+#927	0															x					S	927
+#928	0															x					S	928
+#929	0															x					S	929
+#930	0															x					S	930
+#931	0															x					S	931
+#932	0															x					S	932
+#933	0															x					S	933
+#934	0															x					S	934
+#935	0															x					S	935
+#936	0															x					S	936
+#937	0															x					S	937
+#938	0															x					S	938
+#939	0															x					S	939
+#940	0															x					S	940
+#941	0															x					S	941
+#942	0															x					S	942
+#943	0															x					S	943
+#944	0															x					S	944
+#945	0															x					S	945
+#946	0															x					S	946
+#947	0															x					S	947
+#948	0															x					S	948
+#949	0															x					S	949
+#950	0															x					S	950
+#951	0															x					S	951
+#952	0															x					S	952
+#953	0															x					S	953
+#954	0															x					S	954
+#955	0															x					S	955
+#956	0															x					S	956
+#957	0															x					S	957
+#958	0															x					S	958
+#959	0															x					S	959
+#960	0															x					S	960
+#961	0															x					S	961
+#962	0															x					S	962
+#963	0															x					S	963
+#964	0															x					S	964
+#965	0															x					S	965
+#966	0															x					S	966
+#967	0															x					S	967
+#968	0															x					S	968
+#969	0															x					S	969
+#970	0															x					S	970
+#971	0															x					S	971
+#972	0															x					S	972
+#973	0															x					S	973
+#974	0															x					S	974
+#975	0															x					S	975
+#976	0															x					S	976
+#977	0															x					S	977
+#978	0															x					S	978
+#979	0															x					S	979
+#980	0															x					S	980
+#981	0															x					S	981
+#982	0															x					S	982
+#983	0															x					S	983
+#984	0															x					S	984
+#985	0															x					S	985
+#986	0															x					S	986
+#987	0															x					S	987
+#988	0															x					S	988
+#989	0															x					S	989
+#990	0															x					S	990
+#991	0															x					S	991
+#992	0															x					S	992
+#993	0															x					S	993
+#994	0															x					S	994
+#995	0															x					S	995
+#996	0															x					S	996
+#997	0															x					S	997
+#998	0															x					S	998
+#999	0															x					S	999
+#1000	0															x					S	1000
+
+
