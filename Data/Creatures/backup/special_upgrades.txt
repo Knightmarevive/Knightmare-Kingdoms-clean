@@ -1,0 +1,27 @@
+ !#MA&v1=1:U197/253; [mod] Templar
+ !#MA&v1=1:U169/285; [War Zealots to Priestess] *Castle*
+ !#MA&v1=1:U291/192; [majaczek] Sylvan Centaurs
+ !#MA&v1=1:U216/195; [majaczek] Legendary Unicorns into Hell steed
+ !#MA&v1=1:U116/117; [Gold Golems to Diamond Golems] *Tower*
+ !#MA&v1=1:U230/252; [majaczek] Master Archmages into Red Wizards
+ !#MA&v1=1:U212/262; [Greater Demons to Demon Princes] *Inferno*
+ !#MA&v1=1:U205/274; [Efreet rajahs to Efreet khans] *Inferno*
+ !#MA&v1=1:U290/141; [Mummy servants to Mummy priests] *Necropolis*
+ !#MA&v1=1:U159/288; [Ghosts to elder ghosts] *Necropolis*
+ !#MA&v1=1:U234/263; [majaczek] Seducing Harpies into Harpy Countess
+ !#MA&v1=1:U198/276; [mod]  Potworne Oko
+ !#MA&v1=1:U222/277; [majaczek] Blood Hornets into Deadly wasps
+ !#MA&v1=1:U203/289; [Ancient Basilisks to prehistoric basilisks] *Fort
+
+
+!#MA&v1=1:U136/292; Enchanter
+!#MA&v1=1:U193/287; Sorceress
+!#MA&v1=1:U196/255; Dracolich into Supreme Dracolich
+!#MA&v1=1:U134/293; Faerie dragon ->sylfaen dragon
+!#MA&v1=1:U259/281; Pirates
+!#MA&v1=1:U261/260; Rats
+
+!#MA&v1=1:U154/196; Blood Dragon into Dracolich
+!#MA&v1=1:U155/271; Magma Dragon
+!#MA&v1=1:U151/272; Sylvan Dragon
+!#MA&v1=1:U157/270; Hell Hydras into Mantis
