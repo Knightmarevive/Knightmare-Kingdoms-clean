@@ -100,7 +100,8 @@ ZVSE
   !!if&x1=83:; 'S' pressed
     !!VRy3:Sc-1%7+1; !!VRy31:Sc-1:7%4+1; !!VRy32:Sc-1:28+1; 
     !!OW:C?y73; 
-    !!SN:W^KK_Royalty_OW%Y73^/?y63;
+    !_!SN:W^KK_Royalty_OW%Y73^/?y63;
+    !!OW:Qy73/?y63;
     !!VRy73:+1; !!VRz3:S^(%Y73)%Gc^; 
 
     !!if&y63>=0;
