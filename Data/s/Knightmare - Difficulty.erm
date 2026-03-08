@@ -189,9 +189,9 @@ Choose AI modifier Difficulty:^;
 !!BH0:N?y5; !!BH1:N?y6;
 !!VRy7:S0;  !!VRy8:S0;
 
-!!DO55480/0/41/1:P;
+!!DO(KK_55480)/0/41/1:P;
 
-!?FU55480;
+!?FU(KK_55480);
 x16 - battle monster
 
 // if there is no stack leave
