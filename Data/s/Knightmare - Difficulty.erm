@@ -1,7 +1,4 @@
 ZVSE
-_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
-ERMS_ScriptDate=2.7(July).2016
 
 !?PI;
 !!UN:J2/?y7; get internal difficulty level
@@ -11,7 +8,7 @@ You should set starting difficulty to 130%^;
 !!SN:L^era.dll^/?y66 Ay66/^PluginExists^/?y77 Ey77/1/^Skirmish^; !!VRy99:Sv1; [majaczek]
 !!FU&v1<>0:E;
 
-!!FU55489:P0;
+!_!FU55489:P0; DISABLED
 
 !?FU(KK_Dificulty);
 !!SN:W^Knightmare Difficulty Level^/?v5;
@@ -106,7 +103,8 @@ x1 - hero
 
 !_!IF:M^hero %X1, %Y11 monsters %Y9, %Y77 experience^;
 
-!?FU55489;
+!?FU(KN55489);
+!!FU:E; DISABLED
 
 !!if&x1>0:;
   !!SN:W^Knightmare Difficulty Level^/x1;
