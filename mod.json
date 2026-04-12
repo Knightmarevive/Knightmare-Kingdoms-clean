@@ -19,10 +19,20 @@
 		"file": "penrose_64.ico",
 		"index": 0
 	},
-	"mod_version": "2.1.79",
+	"mod_version": "2.1.80",
 	"priority": 3,
 	"compatibility": {
 		"class": "default",
+		"incompatible": [
+			"10SSkills",
+			"Advanced Classes Mod",
+			"ERA+",
+			"Heroes Enchanted 1.0",
+			"JS - commanders module v.1.01",
+			"JS - main module v.1.16",
+			"ResOunD",
+			"TUM Enchanted"
+		],
 		"entries": {
 			"WoG": true
 		}
