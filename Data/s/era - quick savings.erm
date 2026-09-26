@@ -96,6 +96,12 @@ ZVSE
 !!SN:F^GetGameState^/?y10;
 !!FU|y10<>y11/y10<>4205280:E; Adventure Map Dialog only
 
+
+!!UN:C8401572/4/?y93;
+!!UN:C7915236/4/?y94;
+!!FU|y93=0/y94=0:E; Current Player Only 
+
+
 !!if|x1=83/x1=116:; 'S' or 'F5' pressed
   !!if&x1=83:; 'S' pressed
     !!VRy3:Sc-1%7+1; !!VRy31:Sc-1:7%4+1; !!VRy32:Sc-1:28+1; 
