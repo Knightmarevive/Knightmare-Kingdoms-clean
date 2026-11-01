@@ -1,3 +1,5 @@
+NewSkillsOnly=0
+NewSkillsHeroCount=1024
 
 SS_Count=31
 Max_SS_Level=15
@@ -9,3 +11,6 @@ Diplo_Shift=0
 
 SS_Multiple_Build=10
 
+QuadChoice=1
+MoreFrames=1
+NewSkillsLearning=1
