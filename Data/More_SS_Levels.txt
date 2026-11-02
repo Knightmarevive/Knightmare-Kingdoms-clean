@@ -14,3 +14,4 @@ SS_Multiple_Build=10
 QuadChoice=1
 MoreFrames=1
 NewSkillsLearning=1
+force_network_unsafe=1
