@@ -4,6 +4,7 @@ NewSkillsHeroCount=1024
 SS_Count=31
 Max_SS_Level=15
 SS_Per_Hero=24
+SS_Per_Level=3
 LevelUpMultiplier=1.13
 
 Diplo_Divider=5
@@ -15,3 +16,7 @@ QuadChoice=1
 MoreFrames=1
 NewSkillsLearning=1
 force_network_unsafe=1
+ScrollSkills=1
+AutoLevelUp=1
+InitializeHeroSkillsFromConfig=1
+forceOldDescriptionsStyle=1
